@@ -1,0 +1,698 @@
+{
+  "project": "Howard_FPGA_RevC",
+  "status": "ENGINEERING_DRAFT_NOT_FABRICATION_RELEASE",
+  "fpga_ref": "U1",
+  "fpga": "XC7A200T-1SBG484C",
+  "configuration": {
+    "mode": "Master SPI",
+    "mode_bits_M2_M1_M0": "001",
+    "bank0_vcco_V": 3.3,
+    "bank14_vcco_V": 3.3,
+    "CFGBVS": "direct +3V3",
+    "bus_width": 4,
+    "flash_density_bits": 268435456,
+    "uncompressed_fpga_bitstream_bits": 77845216,
+    "jtag_instruction_bits": 6,
+    "minimum_flash_Mbit": 128,
+    "programmer_vref_V": 3.3
+  },
+  "fpga_config_pins": [
+    {
+      "pin": "L12",
+      "name": "CCLK_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "CCLK_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "dedicated configuration clock; through R111 to QSPI_SCK"
+    },
+    {
+      "pin": "V12",
+      "name": "TCK_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TCK",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.3"
+    },
+    {
+      "pin": "T13",
+      "name": "TMS_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TMS",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.4"
+    },
+    {
+      "pin": "R13",
+      "name": "TDI_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TDI",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.5"
+    },
+    {
+      "pin": "U13",
+      "name": "TDO_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TDO",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.6"
+    },
+    {
+      "pin": "N12",
+      "name": "PROGRAM_B_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "PROGRAM_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R101 pull-up and SW1 to GND"
+    },
+    {
+      "pin": "U12",
+      "name": "INIT_B_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "INIT_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R102 pull-up; test access"
+    },
+    {
+      "pin": "G11",
+      "name": "DONE_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "DONE",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R103 optional external pull-up; test access"
+    },
+    {
+      "pin": "U8",
+      "name": "CFGBVS_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "CFGBVS directly tied high for 3.3 V configuration"
+    },
+    {
+      "pin": "U11",
+      "name": "M0_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M0",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R107 1k to +3V3"
+    },
+    {
+      "pin": "U10",
+      "name": "M1_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M1",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R108 1k to GND"
+    },
+    {
+      "pin": "U9",
+      "name": "M2_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M2",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R109 1k to GND"
+    },
+    {
+      "pin": "P22",
+      "name": "IO_L1P_T0_D00_MOSI_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO0_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R112 to QSPI_IO0"
+    },
+    {
+      "pin": "R22",
+      "name": "IO_L1N_T0_D01_DIN_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO1_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R113 to QSPI_IO1"
+    },
+    {
+      "pin": "P21",
+      "name": "IO_L2P_T0_D02_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO2_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R114 to QSPI_IO2"
+    },
+    {
+      "pin": "R21",
+      "name": "IO_L2N_T0_D03_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO3_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R115 to QSPI_IO3"
+    },
+    {
+      "pin": "T19",
+      "name": "IO_L6P_T0_FCS_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_CS_N",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "U2.7 and R104 pull-up"
+    },
+    {
+      "pin": "U22",
+      "name": "IO_L3P_T0_DQS_PUDC_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "PUDC_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R110 1k to +3V3; disables global configuration pull-ups"
+    },
+    {
+      "pin": "F12",
+      "name": "VCCO_0",
+      "bank": "0",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "T12",
+      "name": "VCCO_0",
+      "bank": "0",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "M14",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "P18",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "R15",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "T22",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "U19",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "Y20",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    }
+  ],
+  "components": [
+    {
+      "ref": "U2",
+      "value": "S25FL256SAGMFI000",
+      "pins": {
+        "1": "QSPI_IO3",
+        "2": "+3V3",
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": "QSPI_CS_N",
+        "8": "QSPI_IO1",
+        "9": "QSPI_IO2",
+        "10": "GND",
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": "QSPI_IO0",
+        "16": "QSPI_SCK"
+      },
+      "pin_names": {
+        "1": "HOLD#/IO3",
+        "2": "VCC",
+        "3": "RFU",
+        "4": "DNU",
+        "5": "DNU",
+        "6": "RFU",
+        "7": "CS#",
+        "8": "SO/IO1",
+        "9": "WP#/IO2",
+        "10": "VSS",
+        "11": "DNU",
+        "12": "DNU",
+        "13": "NC",
+        "14": "RFU",
+        "15": "SI/IO0",
+        "16": "SCK"
+      },
+      "status": "PROPOSED",
+      "footprint": "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm",
+      "no_connect_pins": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "note": "Exact model 00: RESET and VIO are not brought out. RFU and DNU left unconnected by design. Do not substitute a G/R model without review.",
+      "manufacturer_part_number": "S25FL256SAGMFI000"
+    },
+    {
+      "ref": "J4",
+      "value": "JTAG_CUSTOM_2x3_1.27mm",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND",
+        "3": "JTAG_TCK",
+        "4": "JTAG_TMS",
+        "5": "JTAG_TDI",
+        "6": "JTAG_TDO"
+      },
+      "pin_names": {
+        "1": "VTREF",
+        "2": "GND",
+        "3": "TCK",
+        "4": "TMS",
+        "5": "TDI",
+        "6": "TDO"
+      },
+      "status": "PROPOSED",
+      "footprint": "Connector_PinHeader_1.27mm:PinHeader_2x03_P1.27mm_Vertical",
+      "note": "Custom pin map: requires documented adapter to external programmer. VTREF senses target 3.3 V; not a power input. No direct Digilent/ARM pinout compatibility claimed.",
+      "manufacturer_part_number": null
+    },
+    {
+      "ref": "SW1",
+      "value": "PROGRAM_B_RESET",
+      "pins": {
+        "1": "PROGRAM_B",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "A",
+        "2": "B"
+      },
+      "status": "PROPOSED",
+      "footprint": "Button_Switch_SMD:SW_SPST_TL3305A",
+      "note": "Candidate footprint; exact switch order code must be checked against mechanical drawing."
+    },
+    {
+      "ref": "R101",
+      "value": "4.7k",
+      "pins": {
+        "1": "PROGRAM_B",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "UG470 requires external pull-up <=4.7k."
+    },
+    {
+      "ref": "R102",
+      "value": "4.7k",
+      "pins": {
+        "1": "INIT_B",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "UG470 requires external pull-up <=4.7k."
+    },
+    {
+      "ref": "R103",
+      "value": "10k",
+      "pins": {
+        "1": "DONE",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Optional external pull-up proposed populated; DONE already has internal pull-up. No LED directly loading DONE."
+    },
+    {
+      "ref": "R104",
+      "value": "4.7k",
+      "pins": {
+        "1": "QSPI_CS_N",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "UG470 FCS_B external pull-up <=4.7k."
+    },
+    {
+      "ref": "R105",
+      "value": "4.7k",
+      "pins": {
+        "1": "QSPI_IO2",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "UG470 SPI x4 pull-up; do not tie directly high."
+    },
+    {
+      "ref": "R106",
+      "value": "4.7k",
+      "pins": {
+        "1": "QSPI_IO3",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "UG470 SPI x4 pull-up; do not tie directly high."
+    },
+    {
+      "ref": "R107",
+      "value": "1k",
+      "pins": {
+        "1": "MODE_M0",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "M0=1; valid <=1k mode strap."
+    },
+    {
+      "ref": "R108",
+      "value": "1k",
+      "pins": {
+        "1": "MODE_M1",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "M1=0; valid <=1k mode strap."
+    },
+    {
+      "ref": "R109",
+      "value": "1k",
+      "pins": {
+        "1": "MODE_M2",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "M2=0; M[2:0]=001 Master SPI."
+    },
+    {
+      "ref": "R110",
+      "value": "1k",
+      "pins": {
+        "1": "PUDC_B",
+        "2": "+3V3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Disables internal user-I/O pull-ups during configuration. External application-specific startup pulls remain required where needed."
+    },
+    {
+      "ref": "R111",
+      "value": "22",
+      "pins": {
+        "1": "CCLK_FPGA",
+        "2": "QSPI_SCK"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Provisional source termination; place next to U1 CCLK. Final value requires signal-integrity review, not established by a universal rule."
+    },
+    {
+      "ref": "R112",
+      "value": "0",
+      "pins": {
+        "1": "QSPI_IO0_FPGA",
+        "2": "QSPI_IO0"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Series tuning footprint; zero-ohm initial population."
+    },
+    {
+      "ref": "R113",
+      "value": "0",
+      "pins": {
+        "1": "QSPI_IO1_FPGA",
+        "2": "QSPI_IO1"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Series tuning footprint; zero-ohm initial population."
+    },
+    {
+      "ref": "R114",
+      "value": "0",
+      "pins": {
+        "1": "QSPI_IO2_FPGA",
+        "2": "QSPI_IO2"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Series tuning footprint; zero-ohm initial population."
+    },
+    {
+      "ref": "R115",
+      "value": "0",
+      "pins": {
+        "1": "QSPI_IO3_FPGA",
+        "2": "QSPI_IO3"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED_POPULATE",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "note": "Series tuning footprint; zero-ohm initial population."
+    },
+    {
+      "ref": "C101",
+      "value": "100nF_16V_X7R",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "note": "Proposed local U2 bypass, close to pin2/pin10."
+    },
+    {
+      "ref": "C102",
+      "value": "1uF_10V_X7R",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "status": "PROPOSED",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "note": "Proposed U2 local bulk; effective capacitance/rating must be checked."
+    }
+  ],
+  "clock_candidate": {
+    "ref": "Y1",
+    "frequency_hz": 100000000,
+    "output_standard": "3.3 V LVCMOS candidate",
+    "candidate_fpga_pin": "W19",
+    "candidate_fpga_pin_name": "IO_L12P_T1_MRCC_14",
+    "bank": 14,
+    "status": "TBD_BANK_PLAN_AND_PART",
+    "net": "SYS_CLK_100M",
+    "note": "W19 is a bank14 MRCC P input in exact SBG484 file. Keep unassigned in netlist until oscillator part and bank plan approved. This oscillator frequency is not ASIC clock frequency; an FPGA clocking block can generate intended32MHz after timing validation."
+  },
+  "other_fixed_config_pin_notes": [
+    {
+      "pin": "E12",
+      "name": "VCCBATT_0",
+      "proposal": "GND if no battery-backed AES key",
+      "status": "CONFIRM_CRYPTO_REQUIREMENT_WITH_SYSTEM_DESIGN"
+    }
+  ],
+  "counts": {
+    "flash": 1,
+    "jtag_header": 1,
+    "program_button": 1,
+    "resistors": 15,
+    "flash_caps": 2
+  },
+  "sources": [
+    {
+      "title": "AMD archived Artix7 pinout ZIP",
+      "path": "Original Sources/09_Manufacturer_Documentation/Datasheets/Pinouts/AMD_Artix7_all_package_pinouts.zip",
+      "url": "https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/a7all.zip"
+    },
+    {
+      "title": "AMD UG470 v1.17 2023-12-05",
+      "path": "Original Sources/09_Manufacturer_Documentation/Datasheets/AMD/UG470_Boot_Configuration.pdf",
+      "url": "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+    },
+    {
+      "title": "Infineon datasheet 001-98283 RevT 2025-04-21",
+      "url": "https://www.infineon.com/assets/row/public/documents/10/49/infineon-s25fl128s-s25fl256s-128-mb-16-mb-256-mb-32-mb-fl-s-flash-spi-multi-io-3-v-datasheet-en.pdf",
+      "sections": [
+        "3.1",
+        "3.6",
+        "3.19",
+        "3.20",
+        "17.1",
+        "17.2"
+      ]
+    },
+    {
+      "title": "Exact flash product",
+      "url": "https://www.infineon.com/part/S25FL256SAGMFI000"
+    }
+  ],
+  "unresolved": [
+    "Final exact JTAG header and switch manufacturer order codes.",
+    "Check flash definition supported by installed Vivado using get_cfgmem_parts; validate single/quad read options, QUAD configuration register setting, image generation and boot.",
+    "Images beyond 16MiB need correct >128Mbit addressing configuration; do not assume bank-address register default remains valid after user access.",
+    "Oscillator part and full bank/pin plan.",
+    "Power sequencing including flash-ready timing and initialization release.",
+    "ASIC per-pin startup states while PUDC_B is high.",
+    "CCLK/IO series resistor values after layout SI.",
+    "Complete core/aux/analog/transceiver power and decoupling supplied by power design.",
+    "Micro-HDMI protocol,pin map,voltage,receiver,cable,termination/protection.",
+    "External RAM choice,capacity,controller pins,power,VREF/termination.",
+    "Routing connector count/pin map,current ratings,ASIC IO bank plan."
+  ]
+}

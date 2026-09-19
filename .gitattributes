@@ -1,0 +1,15 @@
+# Preserve original document/image bytes and avoid treating PDF streams as text.
+*.pdf binary
+*.pptx binary
+*.docx binary
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.stl binary
+*.zip binary
+
+# Preserve imported fixed-format manufacturer tables and original source spacing.
+hardware/** -text -whitespace
+sources/** -text -whitespace
+docs/history/** -text -whitespace

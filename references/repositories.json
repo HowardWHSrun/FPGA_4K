@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "references": {
+    "fpga512": {
+      "source_id": "fpga512-pinned",
+      "url": "https://github.com/gt-ic/FPGA_512.git",
+      "commit": "767e82528780005cbcb37b3e926197755bac622e",
+      "directory": "external/FPGA_512",
+      "role": "Historical 512-channel ECP5/FT600 RTL and host-software reference; not the current 4K implementation.",
+      "license": "No repository-wide LICENSE file found in the pinned tree. Link and fetch separately; do not assign a license or vendor it here."
+    },
+    "cpsom": {
+      "source_id": "cpsom-pinned",
+      "url": "https://github.com/controlpaths/cp_som_one.git",
+      "commit": "b272899d62ac2e454f85c413d64d62271137da27",
+      "directory": "external/cp_som_one",
+      "role": "Artix-7 board-design reference; not a validated schematic or pinout for the team's board.",
+      "license": "MIT, copyright 2024 Pablo Trujillo; retain the upstream LICENSE when distributing covered material."
+    }
+  },
+  "related_projects": [
+    {
+      "name": "512channels educational practice bench",
+      "url": "https://github.com/HowardWHSrun/512channels",
+      "site": "https://howardwhsrun.github.io/512channels/",
+      "role": "Earlier educational project with browser Verilog exercises, tutorials, guides and optional native simulation. Live branch is not pinned by this repository."
+    }
+  ]
+}

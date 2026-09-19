@@ -1,0 +1,4392 @@
+{
+  "device": "XC7A200T",
+  "package": "SBG484",
+  "candidate_order_code": "XC7A200T-1SBG484C",
+  "source": "xc7a200tsbg484pkg.csv",
+  "source_sha256": "4b9b32d6b031251565f469f80f0c39e0dc07a5949c78124edbb6a47e32e078fe",
+  "pin_count": 484,
+  "pins": [
+    {
+      "pin": "N9",
+      "name": "DXN_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K10",
+      "name": "VCCADC_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K9",
+      "name": "GNDADC_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N10",
+      "name": "DXP_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L9",
+      "name": "VREFN_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M10",
+      "name": "VREFP_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L10",
+      "name": "VP_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M9",
+      "name": "VN_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E12",
+      "name": "VCCBATT_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L12",
+      "name": "CCLK_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "CCLK_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "dedicated configuration clock; through R111 to QSPI_SCK"
+    },
+    {
+      "pin": "V12",
+      "name": "TCK_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TCK",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.3"
+    },
+    {
+      "pin": "T13",
+      "name": "TMS_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TMS",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.4"
+    },
+    {
+      "pin": "U13",
+      "name": "TDO_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TDO",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.6"
+    },
+    {
+      "pin": "R13",
+      "name": "TDI_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "JTAG_TDI",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "J4.5"
+    },
+    {
+      "pin": "U12",
+      "name": "INIT_B_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "INIT_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R102 pull-up; test access"
+    },
+    {
+      "pin": "N12",
+      "name": "PROGRAM_B_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "PROGRAM_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R101 pull-up and SW1 to GND"
+    },
+    {
+      "pin": "U8",
+      "name": "CFGBVS_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "CFGBVS directly tied high for 3.3 V configuration"
+    },
+    {
+      "pin": "G11",
+      "name": "DONE_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "DONE",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R103 optional external pull-up; test access"
+    },
+    {
+      "pin": "U9",
+      "name": "M2_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M2",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R109 1k to GND"
+    },
+    {
+      "pin": "U11",
+      "name": "M0_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M0",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R107 1k to +3V3"
+    },
+    {
+      "pin": "U10",
+      "name": "M1_0",
+      "bank": "0",
+      "io_type": "CONFIG",
+      "manufacturer_no_connect": "NA",
+      "net": "MODE_M1",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R108 1k to GND"
+    },
+    {
+      "pin": "Y17",
+      "name": "IO_0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y16",
+      "name": "IO_L1P_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA16",
+      "name": "IO_L1N_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB16",
+      "name": "IO_L2P_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB17",
+      "name": "IO_L2N_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA13",
+      "name": "IO_L3P_T0_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB13",
+      "name": "IO_L3N_T0_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA15",
+      "name": "IO_L4P_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB15",
+      "name": "IO_L4N_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y13",
+      "name": "IO_L5P_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA14",
+      "name": "IO_L5N_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W14",
+      "name": "IO_L6P_T0_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y14",
+      "name": "IO_L6N_T0_VREF_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB11",
+      "name": "IO_L7P_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB12",
+      "name": "IO_L7N_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA9",
+      "name": "IO_L8P_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB10",
+      "name": "IO_L8N_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA10",
+      "name": "IO_L9P_T1_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA11",
+      "name": "IO_L9N_T1_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V10",
+      "name": "IO_L10P_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W10",
+      "name": "IO_L10N_T1_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y11",
+      "name": "IO_L11P_T1_SRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y12",
+      "name": "IO_L11N_T1_SRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W11",
+      "name": "IO_L12P_T1_MRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W12",
+      "name": "IO_L12N_T1_MRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V13",
+      "name": "IO_L13P_T2_MRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V14",
+      "name": "IO_L13N_T2_MRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U15",
+      "name": "IO_L14P_T2_SRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V15",
+      "name": "IO_L14N_T2_SRCC_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T14",
+      "name": "IO_L15P_T2_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T15",
+      "name": "IO_L15N_T2_DQS_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W15",
+      "name": "IO_L16P_T2_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W16",
+      "name": "IO_L16N_T2_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T16",
+      "name": "IO_L17P_T2_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U16",
+      "name": "IO_L17N_T2_13",
+      "bank": "13",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P20",
+      "name": "IO_0_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P22",
+      "name": "IO_L1P_T0_D00_MOSI_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO0_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R112 to QSPI_IO0"
+    },
+    {
+      "pin": "R22",
+      "name": "IO_L1N_T0_D01_DIN_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO1_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R113 to QSPI_IO1"
+    },
+    {
+      "pin": "P21",
+      "name": "IO_L2P_T0_D02_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO2_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R114 to QSPI_IO2"
+    },
+    {
+      "pin": "R21",
+      "name": "IO_L2N_T0_D03_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_IO3_FPGA",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "through R115 to QSPI_IO3"
+    },
+    {
+      "pin": "U22",
+      "name": "IO_L3P_T0_DQS_PUDC_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "PUDC_B",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "R110 1k to +3V3; disables global configuration pull-ups"
+    },
+    {
+      "pin": "V22",
+      "name": "IO_L3N_T0_DQS_EMCCLK_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T21",
+      "name": "IO_L4P_T0_D04_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U21",
+      "name": "IO_L4N_T0_D05_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P19",
+      "name": "IO_L5P_T0_D06_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R19",
+      "name": "IO_L5N_T0_D07_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T19",
+      "name": "IO_L6P_T0_FCS_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": "QSPI_CS_N",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "U2.7 and R104 pull-up"
+    },
+    {
+      "pin": "T20",
+      "name": "IO_L6N_T0_D08_VREF_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W21",
+      "name": "IO_L7P_T1_D09_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W22",
+      "name": "IO_L7N_T1_D10_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA20",
+      "name": "IO_L8P_T1_D11_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA21",
+      "name": "IO_L8N_T1_D12_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y21",
+      "name": "IO_L9P_T1_DQS_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y22",
+      "name": "IO_L9N_T1_DQS_D13_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB21",
+      "name": "IO_L10P_T1_D14_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB22",
+      "name": "IO_L10N_T1_D15_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U20",
+      "name": "IO_L11P_T1_SRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V20",
+      "name": "IO_L11N_T1_SRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W19",
+      "name": "IO_L12P_T1_MRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W20",
+      "name": "IO_L12N_T1_MRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y18",
+      "name": "IO_L13P_T2_MRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y19",
+      "name": "IO_L13N_T2_MRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V18",
+      "name": "IO_L14P_T2_SRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V19",
+      "name": "IO_L14N_T2_SRCC_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA19",
+      "name": "IO_L15P_T2_DQS_RDWR_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB20",
+      "name": "IO_L15N_T2_DQS_DOUT_CSO_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V17",
+      "name": "IO_L16P_T2_CSI_B_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W17",
+      "name": "IO_L16N_T2_A15_D31_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA18",
+      "name": "IO_L17P_T2_A14_D30_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB18",
+      "name": "IO_L17N_T2_A13_D29_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U17",
+      "name": "IO_L18P_T2_A12_D28_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U18",
+      "name": "IO_L18N_T2_A11_D27_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P14",
+      "name": "IO_L19P_T3_A10_D26_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R14",
+      "name": "IO_L19N_T3_A09_D25_VREF_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R18",
+      "name": "IO_L20P_T3_A08_D24_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T18",
+      "name": "IO_L20N_T3_A07_D23_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N17",
+      "name": "IO_L21P_T3_DQS_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P17",
+      "name": "IO_L21N_T3_DQS_A06_D22_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P15",
+      "name": "IO_L22P_T3_A05_D21_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R16",
+      "name": "IO_L22N_T3_A04_D20_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N13",
+      "name": "IO_L23P_T3_A03_D19_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N14",
+      "name": "IO_L23N_T3_A02_D18_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P16",
+      "name": "IO_L24P_T3_A01_D17_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R17",
+      "name": "IO_L24N_T3_A00_D16_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N15",
+      "name": "IO_25_14",
+      "bank": "14",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J16",
+      "name": "IO_0_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H13",
+      "name": "IO_L1P_T0_AD0P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G13",
+      "name": "IO_L1N_T0_AD0N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G15",
+      "name": "IO_L2P_T0_AD8P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G16",
+      "name": "IO_L2N_T0_AD8N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J14",
+      "name": "IO_L3P_T0_DQS_AD1P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H14",
+      "name": "IO_L3N_T0_DQS_AD1N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G17",
+      "name": "IO_L4P_T0_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G18",
+      "name": "IO_L4N_T0_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J15",
+      "name": "IO_L5P_T0_AD9P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H15",
+      "name": "IO_L5N_T0_AD9N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H17",
+      "name": "IO_L6P_T0_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H18",
+      "name": "IO_L6N_T0_VREF_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J22",
+      "name": "IO_L7P_T1_AD2P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H22",
+      "name": "IO_L7N_T1_AD2N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H20",
+      "name": "IO_L8P_T1_AD10P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G20",
+      "name": "IO_L8N_T1_AD10N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K21",
+      "name": "IO_L9P_T1_DQS_AD3P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K22",
+      "name": "IO_L9N_T1_DQS_AD3N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M21",
+      "name": "IO_L10P_T1_AD11P_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L21",
+      "name": "IO_L10N_T1_AD11N_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J20",
+      "name": "IO_L11P_T1_SRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J21",
+      "name": "IO_L11N_T1_SRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J19",
+      "name": "IO_L12P_T1_MRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H19",
+      "name": "IO_L12N_T1_MRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K18",
+      "name": "IO_L13P_T2_MRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K19",
+      "name": "IO_L13N_T2_MRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L19",
+      "name": "IO_L14P_T2_SRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L20",
+      "name": "IO_L14N_T2_SRCC_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N22",
+      "name": "IO_L15P_T2_DQS_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M22",
+      "name": "IO_L15N_T2_DQS_ADV_B_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M18",
+      "name": "IO_L16P_T2_A28_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L18",
+      "name": "IO_L16N_T2_A27_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N18",
+      "name": "IO_L17P_T2_A26_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N19",
+      "name": "IO_L17N_T2_A25_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N20",
+      "name": "IO_L18P_T2_A24_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M20",
+      "name": "IO_L18N_T2_A23_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K13",
+      "name": "IO_L19P_T3_A22_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K14",
+      "name": "IO_L19N_T3_A21_VREF_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M13",
+      "name": "IO_L20P_T3_A20_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L13",
+      "name": "IO_L20N_T3_A19_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K17",
+      "name": "IO_L21P_T3_DQS_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J17",
+      "name": "IO_L21N_T3_DQS_A18_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L14",
+      "name": "IO_L22P_T3_A17_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L15",
+      "name": "IO_L22N_T3_A16_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L16",
+      "name": "IO_L23P_T3_FOE_B_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K16",
+      "name": "IO_L23N_T3_FWE_B_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M15",
+      "name": "IO_L24P_T3_RS1_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M16",
+      "name": "IO_L24N_T3_RS0_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M17",
+      "name": "IO_25_15",
+      "bank": "15",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F15",
+      "name": "IO_0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F13",
+      "name": "IO_L1P_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F14",
+      "name": "IO_L1N_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F16",
+      "name": "IO_L2P_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E17",
+      "name": "IO_L2N_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C14",
+      "name": "IO_L3P_T0_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C15",
+      "name": "IO_L3N_T0_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E13",
+      "name": "IO_L4P_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E14",
+      "name": "IO_L4N_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E16",
+      "name": "IO_L5P_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D16",
+      "name": "IO_L5N_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D14",
+      "name": "IO_L6P_T0_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D15",
+      "name": "IO_L6N_T0_VREF_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B15",
+      "name": "IO_L7P_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B16",
+      "name": "IO_L7N_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C13",
+      "name": "IO_L8P_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B13",
+      "name": "IO_L8N_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A15",
+      "name": "IO_L9P_T1_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A16",
+      "name": "IO_L9N_T1_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A13",
+      "name": "IO_L10P_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A14",
+      "name": "IO_L10N_T1_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B17",
+      "name": "IO_L11P_T1_SRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B18",
+      "name": "IO_L11N_T1_SRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D17",
+      "name": "IO_L12P_T1_MRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C17",
+      "name": "IO_L12N_T1_MRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C18",
+      "name": "IO_L13P_T2_MRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C19",
+      "name": "IO_L13N_T2_MRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E19",
+      "name": "IO_L14P_T2_SRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D19",
+      "name": "IO_L14N_T2_SRCC_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F18",
+      "name": "IO_L15P_T2_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E18",
+      "name": "IO_L15N_T2_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B20",
+      "name": "IO_L16P_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A20",
+      "name": "IO_L16N_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A18",
+      "name": "IO_L17P_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A19",
+      "name": "IO_L17N_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F19",
+      "name": "IO_L18P_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F20",
+      "name": "IO_L18N_T2_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D20",
+      "name": "IO_L19P_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C20",
+      "name": "IO_L19N_T3_VREF_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C22",
+      "name": "IO_L20P_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B22",
+      "name": "IO_L20N_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B21",
+      "name": "IO_L21P_T3_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A21",
+      "name": "IO_L21N_T3_DQS_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E22",
+      "name": "IO_L22P_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D22",
+      "name": "IO_L22N_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E21",
+      "name": "IO_L23P_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D21",
+      "name": "IO_L23N_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G21",
+      "name": "IO_L24P_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G22",
+      "name": "IO_L24N_T3_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F21",
+      "name": "IO_25_16",
+      "bank": "16",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T3",
+      "name": "IO_0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T1",
+      "name": "IO_L1P_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U1",
+      "name": "IO_L1N_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U2",
+      "name": "IO_L2P_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V2",
+      "name": "IO_L2N_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R3",
+      "name": "IO_L3P_T0_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R2",
+      "name": "IO_L3N_T0_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W2",
+      "name": "IO_L4P_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y2",
+      "name": "IO_L4N_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W1",
+      "name": "IO_L5P_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y1",
+      "name": "IO_L5N_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U3",
+      "name": "IO_L6P_T0_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V3",
+      "name": "IO_L6N_T0_VREF_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA1",
+      "name": "IO_L7P_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB1",
+      "name": "IO_L7N_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB3",
+      "name": "IO_L8P_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB2",
+      "name": "IO_L8N_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y3",
+      "name": "IO_L9P_T1_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA3",
+      "name": "IO_L9N_T1_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA5",
+      "name": "IO_L10P_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB5",
+      "name": "IO_L10N_T1_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y4",
+      "name": "IO_L11P_T1_SRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA4",
+      "name": "IO_L11N_T1_SRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V4",
+      "name": "IO_L12P_T1_MRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W4",
+      "name": "IO_L12N_T1_MRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R4",
+      "name": "IO_L13P_T2_MRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T4",
+      "name": "IO_L13N_T2_MRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T5",
+      "name": "IO_L14P_T2_SRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U5",
+      "name": "IO_L14N_T2_SRCC_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W6",
+      "name": "IO_L15P_T2_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W5",
+      "name": "IO_L15N_T2_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U6",
+      "name": "IO_L16P_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V5",
+      "name": "IO_L16N_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R6",
+      "name": "IO_L17P_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T6",
+      "name": "IO_L17N_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y6",
+      "name": "IO_L18P_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA6",
+      "name": "IO_L18N_T2_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V7",
+      "name": "IO_L19P_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W7",
+      "name": "IO_L19N_T3_VREF_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB7",
+      "name": "IO_L20P_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB6",
+      "name": "IO_L20N_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V9",
+      "name": "IO_L21P_T3_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V8",
+      "name": "IO_L21N_T3_DQS_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA8",
+      "name": "IO_L22P_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB8",
+      "name": "IO_L22N_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y8",
+      "name": "IO_L23P_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y7",
+      "name": "IO_L23N_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W9",
+      "name": "IO_L24P_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y9",
+      "name": "IO_L24N_T3_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "U7",
+      "name": "IO_25_34",
+      "bank": "34",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F4",
+      "name": "IO_0_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B1",
+      "name": "IO_L1P_T0_AD4P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A1",
+      "name": "IO_L1N_T0_AD4N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C2",
+      "name": "IO_L2P_T0_AD12P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B2",
+      "name": "IO_L2N_T0_AD12N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E1",
+      "name": "IO_L3P_T0_DQS_AD5P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D1",
+      "name": "IO_L3N_T0_DQS_AD5N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E2",
+      "name": "IO_L4P_T0_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D2",
+      "name": "IO_L4N_T0_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G1",
+      "name": "IO_L5P_T0_AD13P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F1",
+      "name": "IO_L5N_T0_AD13N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F3",
+      "name": "IO_L6P_T0_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E3",
+      "name": "IO_L6N_T0_VREF_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K1",
+      "name": "IO_L7P_T1_AD6P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J1",
+      "name": "IO_L7N_T1_AD6N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H2",
+      "name": "IO_L8P_T1_AD14P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G2",
+      "name": "IO_L8N_T1_AD14N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K2",
+      "name": "IO_L9P_T1_DQS_AD7P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J2",
+      "name": "IO_L9N_T1_DQS_AD7N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J5",
+      "name": "IO_L10P_T1_AD15P_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H5",
+      "name": "IO_L10N_T1_AD15N_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H3",
+      "name": "IO_L11P_T1_SRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G3",
+      "name": "IO_L11N_T1_SRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H4",
+      "name": "IO_L12P_T1_MRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G4",
+      "name": "IO_L12N_T1_MRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K4",
+      "name": "IO_L13P_T2_MRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J4",
+      "name": "IO_L13N_T2_MRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L3",
+      "name": "IO_L14P_T2_SRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K3",
+      "name": "IO_L14N_T2_SRCC_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M1",
+      "name": "IO_L15P_T2_DQS_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L1",
+      "name": "IO_L15N_T2_DQS_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M3",
+      "name": "IO_L16P_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M2",
+      "name": "IO_L16N_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K6",
+      "name": "IO_L17P_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J6",
+      "name": "IO_L17N_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L5",
+      "name": "IO_L18P_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L4",
+      "name": "IO_L18N_T2_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N4",
+      "name": "IO_L19P_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N3",
+      "name": "IO_L19N_T3_VREF_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R1",
+      "name": "IO_L20P_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P1",
+      "name": "IO_L20N_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P5",
+      "name": "IO_L21P_T3_DQS_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P4",
+      "name": "IO_L21N_T3_DQS_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P2",
+      "name": "IO_L22P_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N2",
+      "name": "IO_L22N_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M6",
+      "name": "IO_L23P_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M5",
+      "name": "IO_L23N_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P6",
+      "name": "IO_L24P_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N5",
+      "name": "IO_L24N_T3_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L6",
+      "name": "IO_25_35",
+      "bank": "35",
+      "io_type": "HR",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D7",
+      "name": "MGTPTXP3_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D9",
+      "name": "MGTPRXP3_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C7",
+      "name": "MGTPTXN3_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C9",
+      "name": "MGTPRXN3_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B6",
+      "name": "MGTPTXP2_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B10",
+      "name": "MGTPRXP2_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A6",
+      "name": "MGTPTXN2_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A10",
+      "name": "MGTPRXN2_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E6",
+      "name": "MGTREFCLK0N_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F6",
+      "name": "MGTREFCLK0P_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F8",
+      "name": "MGTRREF_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F10",
+      "name": "MGTREFCLK1P_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E10",
+      "name": "MGTREFCLK1N_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D5",
+      "name": "MGTPTXP1_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D11",
+      "name": "MGTPRXP1_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C5",
+      "name": "MGTPTXN1_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C11",
+      "name": "MGTPRXN1_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B4",
+      "name": "MGTPTXP0_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B8",
+      "name": "MGTPRXP0_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A4",
+      "name": "MGTPTXN0_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A8",
+      "name": "MGTPRXN0_216",
+      "bank": "216",
+      "io_type": "GTP",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F7",
+      "name": "MGTAVCC",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E8",
+      "name": "MGTAVCC",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F9",
+      "name": "MGTAVCC",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D10",
+      "name": "MGTAVCC",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D6",
+      "name": "MGTAVCC",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C4",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B11",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B9",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C8",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B7",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B5",
+      "name": "MGTAVTT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W18",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "V21",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "V11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "V1",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "U14",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "Y15",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "Y5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "W8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "T17",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "U4",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "T11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "T7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "T9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "R10",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "R20",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "R12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "P9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "P7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "R8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "P13",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "P11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "N8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "N6",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "P3",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "N16",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "L22",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "L8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "L2",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "K15",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "M11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "M7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "K5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "M19",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "K11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "K7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "J8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "H21",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "H11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "H9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "H7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "J18",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "J12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "J10",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "H1",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G10",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G14",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "G6",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "F5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E20",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "F17",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "F11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "D13",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "E4",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "D8",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "D4",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "D12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "C12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "C10",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "C6",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "D3",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "C16",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "B3",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "C3",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "B19",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "B12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "AA22",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "AA12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "AB19",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "AB9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A22",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "AA2",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A12",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A11",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A9",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A5",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A7",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A2",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "A3",
+      "name": "GND",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "GND",
+      "status": "FIXED_PACKAGE_GROUND"
+    },
+    {
+      "pin": "T8",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T10",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R9",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R7",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P10",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P8",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N7",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M8",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K8",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L7",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J9",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J7",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H8",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H10",
+      "name": "VCCINT",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R11",
+      "name": "VCCAUX",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "P12",
+      "name": "VCCAUX",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M12",
+      "name": "VCCAUX",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K12",
+      "name": "VCCAUX",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H12",
+      "name": "VCCAUX",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T12",
+      "name": "VCCO_0",
+      "bank": "0",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "F12",
+      "name": "VCCO_0",
+      "bank": "0",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "Y10",
+      "name": "VCCO_13",
+      "bank": "13",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W13",
+      "name": "VCCO_13",
+      "bank": "13",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V16",
+      "name": "VCCO_13",
+      "bank": "13",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB14",
+      "name": "VCCO_13",
+      "bank": "13",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA17",
+      "name": "VCCO_13",
+      "bank": "13",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "Y20",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "U19",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "T22",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "R15",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "P18",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "M14",
+      "name": "VCCO_14",
+      "bank": "14",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": "+3V3",
+      "status": "PROPOSED_VERIFIED_PHYSICAL_PIN",
+      "note": "configuration banks 0/14 power; decoupling provided by power design"
+    },
+    {
+      "pin": "N21",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L17",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "K20",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J13",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H16",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "G19",
+      "name": "VCCO_15",
+      "bank": "15",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F22",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "E15",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "D18",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C21",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "B14",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "A17",
+      "name": "VCCO_16",
+      "bank": "16",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "W3",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "V6",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "T2",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "R5",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AB4",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "AA7",
+      "name": "VCCO_34",
+      "bank": "34",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N1",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "M4",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J3",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "H6",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "F2",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "C1",
+      "name": "VCCO_35",
+      "bank": "35",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "N11",
+      "name": "VCCBRAM",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "L11",
+      "name": "VCCBRAM",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    },
+    {
+      "pin": "J11",
+      "name": "VCCBRAM",
+      "bank": "NA",
+      "io_type": "NA",
+      "manufacturer_no_connect": "NA",
+      "net": null,
+      "status": "UNASSIGNED"
+    }
+  ]
+}
