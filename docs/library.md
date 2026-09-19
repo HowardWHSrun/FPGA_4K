@@ -19,6 +19,8 @@ These records summarize team discussions. The September 17 [questions for the ne
 
 ## Supplied hardware references
 
+The **[visual hardware overview](../hardware/overview.md)** brings together the system diagram, original assembly photograph, overall board renders and front/back layouts. [Downloadable PNG/SVG views](../hardware/previews/README.md) accompany the editable originals below.
+
 | Reference | Original files | Opening notes |
 |---|---|---|
 | ASIC carrier PCB-5 | [KiCad project](../hardware/references/asic-carrier/PCB.kicad_pro), [schematic](../hardware/references/asic-carrier/PCB.kicad_sch), [PCB](../hardware/references/asic-carrier/PCB.kicad_pcb), [pin spreadsheet](../hardware/references/asic-carrier/Pins.xlsx) | [Carrier notes](../hardware/README.md#asic-carrier-pcb-5) |

@@ -4,6 +4,8 @@
 
 Read `README.md`, `docs/library.md`, and the original files relevant to the task. Slides, meeting documents, native hardware files and the FPGA_512 reference source are included in the repository.
 
+For hardware orientation, read `hardware/overview.md` and inspect the linked board views before the relevant CAD. The diagram is a functional path; the supplied boards are separate references. 3D previews can omit unavailable component models, and front/back previews show selected outer layers only.
+
 ```sh
 python3 scripts/check_docs.py
 ```

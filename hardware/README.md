@@ -2,6 +2,8 @@
 
 This directory contains the supplied ASIC carrier and older LDO/routing references. These are source examples, not a completed new FPGA board or an approved fabrication package.
 
+Start with the **[visual hardware overview](overview.md)**: overall board views, front/back layouts, an original assembly photograph and the system signal path. [PNG and SVG files](previews/README.md) are included for viewing without KiCad.
+
 ## ASIC carrier PCB-5
 
 - [KiCad project](references/asic-carrier/PCB.kicad_pro)
