@@ -1,15 +1,11 @@
-## Change and reason
+## Shared source and provenance
 
-Describe the problem and the resulting behavior or documentation change.
+Identify the supplied document or original repository, who shared it, and its known date/revision.
 
-## Evidence and affected questions
+## Changes
 
-Link sources and Q/decision IDs. Separate accepted decisions from proposals.
+Describe added originals, faithful representations or navigation updates. Keep personal study/design output outside the collection.
 
-## Validation
+## Verification
 
-State checks actually run, results, and material limits. Include board/commit/tool identity for hardware or simulation claims.
-
-## Documentation
-
-Update current status, questions, library and source manifest where affected.
+State link/hash checks run and any limitations. Update the source manifest and document library where affected.

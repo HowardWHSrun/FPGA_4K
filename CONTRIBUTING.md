@@ -1,33 +1,19 @@
-# Contributing
+# Contributing shared sources
 
-This repository should let the next person understand a decision and find its evidence without needing the original conversation.
+Add material received from Gerald or another project collaborator, or the original public repository they shared. Keep independent personal studies and proposed designs outside this source collection.
 
-## Add a meeting or source
+For a new source:
 
-1. Add a dated Markdown record under `docs/meetings/`, using [the meeting template](docs/templates/meeting.md). Keep agreed decisions, proposals, estimates, actions and unanswered questions separate.
-2. Place the original shareable document under `sources/`, preserve its bytes, and record its origin and checksum in `sources/manifest.json`. Avoid duplicate exports or local backup histories.
-3. Add a library entry in [docs/library.md](docs/library.md). For slides, include searchable text and point readers to the diagrams in the original deck/PDF.
-4. Update [current status](docs/current-status.md), [decisions](docs/decisions.md) and [open questions](docs/open-questions.md) only where the new evidence supports a change.
-
-For a received message without a source date, record its **received date**. Do not invent a meeting date, deadline, owner acceptance or a Slack permalink. Public technical summaries should omit unrelated private conversation and access links.
-
-## Close a question or propose an interface
-
-Use the existing Q identifier in the issue/PR. State the proposed answer, affected boards/programs, evidence and acceptance conditions. Keep it open until the relevant owners have agreed and the required evidence is available. An issue template is available for questions; creating an issue does not automatically assign anyone.
-
-Use [the interface template](docs/templates/interface.md) when agreeing signals or a link. Both ends need one shared specification. A connector count or a pictured footprint is insufficient.
-
-## Add code or test evidence
-
-Use a branch and a pull request for collaborative changes. Describe how to run the change from a fresh clone, tool versions, expected output and limitations. Keep reference revisions explicit. Avoid committing generated bitstreams or large raw recordings as a substitute for a reproducible build.
-
-Hardware evidence should include the board revision, FPGA ordering code, commit/bitstream identity, tool versions, wiring, clocks, stimulus, expected result, observed result and saved traces. Report a failed or unrun check directly. Simulations and bench measurements belong in separate evidence records.
-
-## Check before sharing
+1. Identify who supplied it, its date/revision and any known limitations. Use “unknown” rather than inventing provenance.
+2. Preserve the original file; label any text extraction or meeting summary as a derived representation.
+3. Add its path, origin, status, transformation, byte count and SHA-256 to [the manifest](sources/manifest.json), then link it from [the library](docs/library.md).
+4. Check local links and file integrity:
 
 ```sh
 python3 scripts/check_docs.py
 git diff --check
 ```
 
-For each manifest file entry, `sha256` and `bytes` describe the published file. `source_sha256`, when present, describes the imported source before documented link/banner adaptations. New synthesized documentation is not an unchanged original. Use Python's `hashlib.sha256` to compute checksums.
+The `sha256` describes the shared file; `source_sha256`, when present, describes the input before a documented adaptation. Do not imply that a source file proves a completed implementation or that a meeting statement is a current approved specification. Keep original ownership and applicable terms.
+
+Use a pull request for collaborative updates. Describe the source, changes and verification. Report measurements separately from source documentation; a successful source check does not validate hardware.

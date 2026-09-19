@@ -1,47 +1,32 @@
-# Document and source library
+# Shared source library
 
-Read [current status](current-status.md) first. This index distinguishes current summaries, original inputs and historical proposals. The [manifest](../sources/manifest.json) records the imported files, origins, transformations, sizes and SHA-256 checksums.
+## Gerald's ASIC/interface slides
 
-## Current shared understanding
+- [Original 28-slide PowerPoint](../sources/slides/Chip_FPGA_Interface.pptx)
+- [Existing PDF representation](../sources/slides/Chip_FPGA_Interface.pdf)
+- [Searchable slide text](slides/asic-interface-text.md) and [selected slide previews](../sources/slides/previews/)
 
-- [Architecture and rate budget](architecture.md)
-- [Twelve open questions, owners and closure evidence](open-questions.md)
-- [Decision and supersession record](decisions.md)
-- [Current-decision source note](../sources/notes/2026-09-18-current-decisions.md)
-- [Current Gerald/Zitong handoff questions](../sources/notes/2026-09-18-current-questions.md)
-- [Routing-board handoff](../sources/notes/2026-09-18-routing-handoff.md) and [provisional routing parts](../sources/notes/2026-09-18-routing-parts.md)
-- [Howard's component proposal](../sources/notes/2026-09-18-component-proposal.md). Its 100 MHz candidate is superseded by oscillator frequency TBD.
-- [ASIC power reference audit](../sources/notes/2026-09-18-asic-power-audit.md). Recovered setpoints are not newly approved ASIC supply requirements.
+The PDF, extracted text and PNGs represent the supplied deck. They add no independent design proposal. Use the original slide diagrams for timing relationships that text extraction cannot preserve.
 
-## Meetings and slides
+## Team meeting records
 
-| Record | Read/search | Original or rendered files |
-|---|---|---|
-| September 17 project meeting | [Searchable final notes](meetings/2026-09-17.md) | [DOCX](../sources/meetings/2026-09-17-notes.docx), [PDF](../sources/meetings/2026-09-17-notes.pdf) |
-| Technical clarifications received September 18 | [Technical summary, roles and date caveat](meetings/2026-09-18-follow-up.md) | Reflected in dated engineering notes; raw chat remains in the owner's local archive |
-| Gerald's 28-slide ASIC/interface deck | [Page-by-page extracted text](slides/asic-interface-text.md) | [PPTX](../sources/slides/Chip_FPGA_Interface.pptx), [existing PDF render](../sources/slides/Chip_FPGA_Interface.pdf) |
+- September 17: [searchable notes](meetings/2026-09-17.md), [Word](../sources/meetings/2026-09-17-notes.docx), [PDF](../sources/meetings/2026-09-17-notes.pdf).
+- [Team follow-up received September 18](meetings/2026-09-18-follow-up.md): reported roles/progress and Gerald's voltage/clock clarification.
 
-Important slide diagrams also have [PNG previews](../sources/slides/previews/). Text extraction cannot preserve timing-waveform relationships; read the slide image/PDF before interpreting them. The source notes preserve the historical meeting statements even where a later decision supersedes them.
+These are summaries of team discussions, not Gerald-authored documents or new independent studies. The September 17 [questions for the next review](meetings/2026-09-17.md#questions-to-resolve-in-the-next-review) retain their dated context.
 
-## Programs, CAD and supporting references
+## Supplied hardware references
 
-- [Software guide and reproducible reference simulations](software.md)
-- [Previous GitHub repositories, learning website and manufacturer documents](../references/README.md)
-- [Hardware guide](../hardware/README.md): latest FPGA/routing placement studies; original carrier and LDO projects; original and compact mechanical concepts; proposed power/configuration inputs.
-- [Source scope and attribution](../sources/README.md)
+- [Carrier PCB-5 and Pins.xlsx](../hardware/README.md#asic-carrier-pcb-5)
+- [Older LDO/routing design](../hardware/README.md#ldorouting-reference)
 
-## Historical engineering material
+These are supplied examples. Their presence does not establish final mating compatibility, an approved new-board BOM or fabrication readiness.
 
-These files explain earlier work. They do **not** override current decisions.
+## Previous code
 
-| Record | Why it is retained | Superseded or limited scope |
-|---|---|---|
-| [September 16 meeting preparation PDF](history/2026-09-16-meeting-preparation.pdf) | Requirements-first discussion framework | Earlier FPGA/device/interface choices |
-| [September 17 meeting answers guide PDF](history/2026-09-17-meeting-answers-guide.pdf) | Detailed explanations and diagrams | Earlier reference-board direction |
-| [Gerald's two reference boards](history/2026-09-17-reference-board-guide.md) | Carrier versus regulator/routing roles; connector discrepancies | Old 35T discussion and unapproved interface counts |
-| [Slide/code comparison](history/2026-09-16-slide-code-audit.md), [FPGA_512 connection audit](history/2026-09-16-fpga512-audit.md) | Interface and clock discrepancies in the prior code | Does not validate the new 4K hardware |
-| [Earlier September 18 baseline](history/2026-09-18-earlier-baseline.md), [readiness review](history/2026-09-18-earlier-readiness.md) | Requirements and source reconciliation | Later current-decision note takes precedence |
-| [USB parts walkthrough](history/2026-09-18-usb-parts-walkthrough.md), [PDF guide](history/2026-09-18-superseded-usb-parts-guide.pdf) | Power/boot/clock background and old design calculations | USB/FX3 transport and its BOM/power totals are superseded |
-| [Broad earlier question list](history/2026-09-18-earlier-questions.md), [PDF](history/2026-09-18-earlier-questions.pdf) | Original broad requirements review | Current short handoff already incorporates 1.5 V/32 MHz confirmation |
+- [Gerald's FPGA_512 reference](../references/README.md)
+- [Access and original-program guide](software.md)
 
-Local-only references inside imported historical text are marked as archive references rather than broken workstation links. The earlier [512channels project](https://github.com/HowardWHSrun/512channels) carries additional educational guides and programs.
+The original source snapshot is pinned for repeatable reading. Personal learning sites, simulator wrappers, generated validation reports and independently developed board studies are excluded.
+
+[Source provenance and checksums](../sources/README.md) describe what is original, what is a faithful representation and the one library-path adaptation.
