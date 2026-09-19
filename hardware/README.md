@@ -4,6 +4,8 @@ This directory contains the supplied ASIC carrier and older LDO/routing referenc
 
 Start with the **[visual hardware overview](overview.md)**: overall board views, front/back layouts, an original assembly photograph and the system signal path. [PNG and SVG files](previews/README.md) are included for viewing without KiCad.
 
+The earlier **[overall assembly concept](assembly/README.md)** is also included as an unchanged STL with a labeled preview. It shows the carrier stack, routing section and FPGA-board arrangement; its dimensions remain provisional.
+
 ## ASIC carrier PCB-5
 
 - [KiCad project](references/asic-carrier/PCB.kicad_pro)

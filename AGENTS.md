@@ -6,6 +6,8 @@ Read `README.md`, `docs/library.md`, and the original files relevant to the task
 
 For hardware orientation, read `hardware/overview.md` and inspect the linked board views before the relevant CAD. The diagram is a functional path; the supplied boards are separate references. 3D previews can omit unavailable component models, and front/back previews show selected outer layers only.
 
+The user explicitly requested the earlier overall assembly model in `hardware/assembly/`. Its original author is unverified, dimensions are provisional and STL units are unspecified. Treat its region roles as the earlier discussion's interpretation, not an electrical or mechanical specification. Keep the original model distinct from the separately generated shortened-bridge study.
+
 ```sh
 python3 scripts/check_docs.py
 ```

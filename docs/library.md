@@ -19,6 +19,8 @@ These records summarize team discussions. The September 17 [questions for the ne
 
 ## Supplied hardware references
 
+The earlier [overall 3D assembly](../hardware/assembly/README.md) includes the original [STL](../hardware/assembly/stacked_headboard_original.stl) and its labeled preview, showing the ASIC-carrier stack, routing section and FPGA-board arrangement. Model dimensions are provisional; source authorship is unverified.
+
 The **[visual hardware overview](../hardware/overview.md)** brings together the system diagram, original assembly photograph, overall board renders and front/back layouts. [Downloadable PNG/SVG views](../hardware/previews/README.md) accompany the editable originals below.
 
 | Reference | Original files | Opening notes |

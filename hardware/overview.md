@@ -2,6 +2,14 @@
 
 Use these views to recognize the supplied boards, locate the main components and open the corresponding design files. The collection contains chip-carrier and LDO/routing references; it does not yet contain a finalized full-4K FPGA board or complete assembly.
 
+## Overall 3D assembly
+
+[![Earlier stacked-headboard assembly concept with labeled regions](assembly/stacked_headboard_labeled.png)](assembly/README.md)
+
+**[Open the 3D STL](assembly/stacked_headboard_original.stl)** · [Download STL](assembly/stacked_headboard_original.stl?raw=true) · [Assembly guide and source details](assembly/README.md)
+
+The earlier model discussion identified **A** as four ASIC-carrier boards with two ASICs each, **B + C** as the routing PCB, and **D** as the FPGA PCB. This is the original supplied arrangement model, with provisional dimensions and no encoded physical units. It covers the headboard assembly; the downstream KR260 and PC are shown in the functional diagram below. Its original author is unverified.
+
 ## Where the boards fit
 
 The [September 17 meeting](../docs/meetings/2026-09-17.md#system-and-responsibilities) records this functional path:
