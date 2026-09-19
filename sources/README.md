@@ -1,21 +1,21 @@
-# Provenance and collection scope
+# Source provenance
 
-This collection contains material received from Gerald and the project team. It excludes Howard's personal study/design output.
+The project files are stored in this repository. Attribution and copy details are recorded here so the main documentation can focus on the system and its interfaces.
 
-| Material | Provenance and status |
+| Material | Source and representation |
 |---|---|
-| ASIC/interface PPTX | Original deck supplied by Gerald; unchanged copy |
-| Slide PDF, searchable text and PNG previews | Faithful representations of that deck; not independent study results |
-| ASIC carrier PCB-5 and Pins.xlsx | Supplied chip-side reference files; unchanged copies |
-| LDO/routing project and connector footprints | Supplied reference files; unchanged except the library-table path adaptation below |
-| September 17 DOCX/PDF notes and searchable text | Summary prepared from the real team meeting; not a verbatim transcript or a Gerald-authored source document |
-| September 18 follow-up summary | Technical context extracted from supplied team messages; received date is known, original message dates were not provided |
-| FPGA_512 link and pinned revision | Original prior acquisition repository shared as the firmware reference |
+| ASIC/interface PowerPoint | Deck supplied by Gerald; unchanged original file |
+| Slide PDF, searchable text and PNG previews | Representations of the original deck; diagrams remain available in the PPTX/PDF |
+| Carrier PCB-5 and Pins.xlsx | Chip-side reference files shared for the project; unchanged copies |
+| LDO/routing project and connector footprints | Shared reference files; unchanged except the library-table path adaptation below |
+| September 17 DOCX/PDF notes | Summary prepared from the recorded team meeting; not a verbatim transcript |
+| September 18 follow-up | Technical summary of team messages; received date is known, individual message dates were not provided |
+| FPGA_512 code | Snapshot of [gt-ic/FPGA_512](https://github.com/gt-ic/FPGA_512/tree/767e82528780005cbcb37b3e926197755bac622e), shared as the prior acquisition reference; [included files and packaging details](../firmware/README.md) |
 
-[manifest.json](manifest.json) records the copied assets, original-project path labels, published byte lengths and SHA-256 hashes. Origin paths are provenance labels, not promised locations in a clone. For the LDO footprint-library table, `source_sha256` retains the original hash; the published path uses `${KIPRJMOD}/LDO_Board.pretty` so it resolves on another computer. The circuit files themselves are unchanged.
+[manifest.json](manifest.json) records each imported file's origin, size and SHA-256. Origins identify source revisions or archive labels; they are not paths required on a collaborator's computer.
 
-The [document library](../docs/library.md) and [reference register](../references/repositories.json) provide navigation. README/AGENTS and the fetch/check scripts are minimal repository support, not project design evidence.
+The LDO library table uses `${KIPRJMOD}/LDO_Board.pretty` in place of its original workstation path. `source_sha256` retains the original hash; the circuit files are unchanged. Included upstream program files retain their original bytes and notices. Upstream repository metadata and local caches are not part of the source copy.
 
-Independent component proposals, generated engineering guides, PCB size/placement studies, mechanical models, local design inputs, personal learning-site links and personal simulation results are outside the shared collection. Raw audio/private chat, backups, stale fabrication exports, caches and hidden histories are also excluded from the current file tree.
+The collection covers shared project files and faithful representations, with minimal navigation/checking support. Independent personal studies and design proposals, private chat/audio, local caches and hidden histories remain outside it.
 
-Sources retain their original ownership and applicable terms. Public access does not itself establish an open-source license. Do not assign a blanket license to imported lab material or upstream code.
+Original ownership and applicable terms are retained. No repository-wide license was found in the pinned FPGA_512 tree; this collection adds no license grant to that code or the imported lab material.

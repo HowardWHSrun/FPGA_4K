@@ -274,7 +274,7 @@ def check(root):
     if imported:
         try:
             ignored = subprocess.run(
-                ["git", "-C", str(root), "check-ignore", "--no-index", "--stdin"],
+                ["git", "-C", str(root), "check-ignore", "--stdin"],
                 input="\n".join(sorted(imported)) + "\n", text=True,
                 capture_output=True, timeout=15,
             )

@@ -1,0 +1,50 @@
+# =============================================================================
+# bringup_default.lpf  —  LFE5U-25F-7BG256I  (FPGA_UWB)
+# 64 MHz PLL + cycling 4-bit counter, routed to the UWB header (J6)
+# Pin assignments from KiCad netlist "FPGA board.net".
+#
+# J6 "UWB_HEADER" (1x07):
+#   Pin 1 -> GND
+#   Pin 2 -> +3V3
+#   Pin 3 -> FPGA A15   (data[0])
+#   Pin 4 -> FPGA A14   (data[1])
+#   Pin 5 -> FPGA B14   (data[2])
+#   Pin 6 -> FPGA A13   (data[3])
+#   Pin 7 -> FPGA A12   (clk_out_64)
+# =============================================================================
+
+BLOCK RESETPATHS ;
+BLOCK ASYNCPATHS ;
+SYSCONFIG MASTER_SPI_PORT=ENABLE MCCLK_FREQ=62 ;
+
+# 16 MHz crystal oscillator X1 — PLL reference clock
+LOCATE COMP "clk"          SITE "A7" ;
+IOBUF PORT  "clk"          IO_TYPE=LVCMOS33 ;
+FREQUENCY NET "clk"        16.000000 MHz ;
+
+# Cycling 4-bit number — one bit per UWB header pin (J6 pins 3-6)
+LOCATE COMP "data[0]"       SITE "A15" ;  # J6 pin 3 (LSB)
+LOCATE COMP "data[1]"       SITE "A14" ;  # J6 pin 4
+LOCATE COMP "data[2]"       SITE "B14" ;  # J6 pin 5
+LOCATE COMP "data[3]"       SITE "A13" ;  # J6 pin 6 (MSB)
+
+IOBUF PORT "data[0]"        IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "data[1]"        IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "data[2]"        IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "data[3]"        IO_TYPE=LVCMOS33 DRIVE=4 ;
+
+# 64 MHz PLL output clock — UWB header pin 7
+LOCATE COMP "clk_out_64"   SITE "A12" ;  # J6 pin 7
+IOBUF PORT  "clk_out_64"   IO_TYPE=LVCMOS33 DRIVE=12 SLEW=FAST ;
+
+# On-board status LEDs — active-high, Bank 1 LVCMOS33 (same pins as led_blink)
+# Mirrors the counter at a human-visible rate to confirm the design is running.
+LOCATE COMP "led_board[0]" SITE "R16" ;  # D0 (LSB)
+LOCATE COMP "led_board[1]" SITE "P16" ;  # D1
+LOCATE COMP "led_board[2]" SITE "M13" ;  # D2
+LOCATE COMP "led_board[3]" SITE "N14" ;  # D3 (MSB)
+
+IOBUF PORT "led_board[0]"  IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "led_board[1]"  IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "led_board[2]"  IO_TYPE=LVCMOS33 DRIVE=4 ;
+IOBUF PORT "led_board[3]"  IO_TYPE=LVCMOS33 DRIVE=4 ;

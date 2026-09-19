@@ -1,4 +1,4 @@
-# Hardware files shared by Gerald
+# Hardware design files
 
 This directory contains the supplied ASIC carrier and older LDO/routing references. These are source examples, not a completed new FPGA board or an approved fabrication package.
 
@@ -22,4 +22,4 @@ The older source declares KiCad 9. Its circuit/project files are unchanged copie
 
 Use a compatible KiCad installation and a working copy for format migrations. The reference projects are not a verified mating pair. Authoritative pin, electrical, power and mechanical requirements must come from the designers.
 
-Sources: [the September 17 meeting](../docs/meetings/2026-09-17.md) records the supplied chip and older routing/LDO examples; [the manifest](../sources/manifest.json) identifies the preserved source paths and hashes.
+The [September 17 meeting](../docs/meetings/2026-09-17.md) records the chip and older routing/LDO examples. [Source provenance](../sources/README.md) and [the manifest](../sources/manifest.json) identify their origin, preserved source paths and hashes.

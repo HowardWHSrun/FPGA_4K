@@ -1,0 +1,195 @@
+# FT600 Throughput Optimization Notes
+
+## Current Status
+- **Data integrity: PASS** — zero errors with settle-after-accept writer
+- **Throughput: 0.028 MB/s** — far below theoretical ~35 MB/s (USB 2.0 HS)
+- The settle cycle (pause 1 clock after each accepted write) kills throughput
+
+## Root Cause of All Errors
+The async FIFO uses non-blocking pointer advance (`rptr_bin <= rptr_bin + 1`).
+When `fifo_ren=1` and `data_out <= fifo_rdata` happen on the **same clock edge**,
+`fifo_rdata` still shows the **old** word (pre-advance) because non-blocking
+assignments evaluate RHS with pre-edge values.
+
+This means: every time we advance the FIFO and sample rdata simultaneously,
+we get the word we just consumed, not the next word.
+
+## Approaches Tried
+
+### 1. Direct combinational (first attempt)
+```verilog
+wire can_send = ~txe_n & ~fifo_empty;
+assign fifo_ren = can_send;
+data_out <= fifo_rdata;  // stale on advance edges
+```
+**Result:** ~2000 errors per 10 MB. 1 word skipped at irregular intervals (~1500 words).
+Skips happen because fifo_ren advances the pointer, but data_out gets stale rdata.
+The FT600 captures stale data, then the next fresh word is 1 ahead → skip.
+
+### 2. Registered TXE_N (`txe_n_r`)
+```verilog
+reg txe_n_r;
+always @(posedge clk) txe_n_r <= txe_n;
+if (!txe_n_r) begin wr_n <= 0; ... end
+```
+**Result:** 2 words skipped per 2048 words (4KB FT600 buffer boundary).
+The 1-cycle TXE_N delay means 1 extra write after buffer full + 1 from the
+pipeline. Counter increments for both but FT600 doesn't capture.
+
+### 3. Mixed registered + live TXE_N
+```verilog
+wire can_write = ~txe_n_r;      // drive decision on registered
+wire write_ok  = can_write & ~txe_n;  // counter advance on both
+```
+**Result:** 1 word skipped per 2048 words. Improved from 2 to 1 skip.
+
+### 4. Live TXE_N only (no register)
+```verilog
+if (!txe_n) begin wr_n <= 0; data_out <= counter; counter <= counter + 1; end
+```
+**Result:** 1 word skipped per 2048 words. Same as #3 — the skip is from the
+registered WR_N pipeline, not the TXE_N sampling.
+
+### 5. Holding register with `accepted` signal
+```verilog
+wire accepted = ~wr_n & ~txe_n;
+assign fifo_ren = accepted;
+// Various holding register strategies
+```
+**Result:** Duplicates instead of skips. The holding register re-drives the
+consumed word because fifo_rdata is stale on the advance edge.
+
+### 6. State machine (IDLE → PREFETCH → WRITE)
+**Result:** Both skips AND duplicates. More complex, more bugs, worse.
+
+### 7. Two-phase (LATCH → DRIVE with fifo_ren in DRIVE)
+```verilog
+assign fifo_ren = phase & ~txe_n & ~fifo_empty;  // advance in DRIVE
+// LATCH: word <= fifo_rdata
+// DRIVE: data_out <= word, fifo_ren fires
+```
+**Result:** Every other word skipped (0x0001, 0x0003, 0x0005...).
+fifo_ren is a reg, so its value persists into the LATCH cycle causing
+a spurious advance.
+
+### 8. Settle-after-accept
+```verilog
+wire accepted = ~wr_n & ~txe_n;
+assign fifo_ren = accepted;  // advance only on confirmed capture
+
+if (accepted)
+    wr_n <= 1;  // pause 1 cycle for pointer to settle
+else if (~fifo_empty & ~txe_n)
+    data_out <= fifo_rdata;  // safe: pointer is stable
+```
+**Result:** ZERO errors in direct-counter mode. Throughput = 0.028 MB/s — the
+settle cycle halves FIFO utilization AND interacts badly with the FT600's
+buffering, causing far worse throughput than expected. Re-tested with the async
+FIFO after USB path fixes: still very slow (~0.03 MB/s range), and **same
+duplicate errors** as approach #10 (~5–7 per 10 MB). The settle cycle does NOT
+fix the underlying CDC issue and kills throughput. Do not use.
+
+### 9. Confirmed-accept with counter bypass (CURRENT — ft600_streamer.v, WORKING)
+```verilog
+wire accepted = ~wr_n & ~txe_n;
+data_out <= accepted ? (counter + 1) : counter;
+if (accepted) counter <= counter + 1;
+```
+**Result:** ZERO errors, 35 MB/s (USB 2.0). Counter only advances on confirmed
+capture. Combinational bypass (`counter + 1`) keeps the pipeline full with no
+settle cycle. Eliminates the 1-skip-per-2048 boundary error completely.
+
+### 10. Look-ahead bypass with async FIFO (CURRENT — ft600_writer.v, ~4–7 dupes/10 MB)
+```verilog
+wire accepted = ~wr_n & ~txe_n;
+assign fifo_ren = accepted;
+data_out <= accepted ? fifo_rdata_next : fifo_rdata;
+// fifo_rdata_next = mem[rptr_bin + 1]  (added to async_fifo.v)
+// almost_empty guard prevents reading invalid rdata_next on last word
+```
+**Result:** ~22 MB/s throughput, but 4–7 duplicate errors per 10 MB.
+All errors are `got = expected - 1` (duplicates, not skips). The settle-after-
+accept approach (#8) produces the **identical error pattern**, proving this is
+NOT a timing/combinational-path issue in the look-ahead MUX. The root cause
+is in the async FIFO's CDC read path — see "Open Issue" below.
+
+## Key Lessons
+
+### Verilog / FPGA
+1. **Non-blocking assignments** mean `fifo_rdata` is stale on the same edge as `fifo_ren`.
+   You CANNOT advance and sample in the same cycle.
+2. **Combinational wires vs registered signals**: `fifo_ren` as a wire (`assign`) fires
+   immediately; as a `reg` it persists into the next cycle causing spurious advances.
+3. **The FTDI reference design** avoids this by using a LOCAL RAM with INDEPENDENT
+   read and memory-enable signals. `adv_c_rptr` (pointer advance) and `mem_rden`
+   (memory read) are separate. The pointer only advances when TXE_N is confirmed low.
+   The memory always shows data at the current pointer. No stale data issue because
+   the RAM output is combinational from a pointer that only advances on confirmed writes.
+4. **IO_TYPE must match VCCIO**: Bank 2 = 1.5V → LVCMOS15, Banks 6/7 = 2.5V → LVCMOS25.
+   Wrong IO_TYPE causes input threshold failures (signals unreadable).
+5. **FT600 requires `FT_SetStreamPipe`** from host before TXE_N asserts low.
+   Without it, the FIFO bus stays idle.
+
+### C / Host Side
+1. **`FT_ReadPipe` works on macOS**, not `FT_ReadPipeEx` (returns FT_INVALID_PARAMETER).
+2. **`FT_SetStreamPipe(handle, FALSE, FALSE, 0x82, chunk_size)`** must be called before
+   any reads. This activates TXE_N on the FIFO bus.
+3. **`FT_Create` requires the FTDI D3XX driver .dmg** installed on macOS. Without it,
+   returns FT_DEVICE_NOT_OPENED (status 3). PyD3XX's bundled dylib alone is not enough.
+4. **D3XX library version**: `/usr/local/lib/libftd3xx.dylib` from the FTDI .dmg.
+   Must allow in System Settings → Privacy & Security after first run.
+5. **USB cable must be data-capable** (not charge-only).
+6. **Unplug/replug USB after reflashing** FPGA — FT600 state is stale after JTAG flash.
+
+## Resolved: Async FIFO CDC Duplicates
+
+The async FIFO path (32 MHz write → 100 MHz read) was producing ~5
+duplicate words per 10 MB. Root cause: combinational reads from dual-clock
+distributed RAM (LUT-based). Yosys couldn't infer Block RAM because the
+original design used `assign rdata = mem[rptr_bin[AW-1:0]]` (combinational),
+which doesn't map to ECP5 DP16KD (requires registered reads).
+
+### 11. Block RAM + output buffer (CURRENT — async_fifo.v)
+```verilog
+(* ram_style = "block" *)
+reg [W-1:0] mem [0:D-1];
+always @(posedge rclk) mem_rdata <= mem[iptr_bin[AW-1:0]];  // registered read → DP16KD
+
+// 4-entry output buffer hides 1-cycle BRAM latency
+// Pre-fetch FSM fills ob[] whenever FIFO has data and ob has room
+// External interface (rdata, rdata_next, empty, almost_empty) unchanged
+assign rdata      = ob[ob_rptr[1:0]];       // combinational from registers
+assign rdata_next = ob[ob_rptr[1:0] + 1];   // safe: single clock domain
+```
+**Architecture:** registered BRAM read (1-cycle latency) → pre-fetch pipeline
+→ 4-entry register-based output buffer with combinational outputs. The
+output buffer is entirely in the rclk domain — no CDC on the data path.
+
+**Yosys workaround:** Default `synth_ecp5` runs `opt -undriven` which
+incorrectly removes DP16KD cells. The Makefile uses a split synthesis flow:
+`synth_ecp5 -run :map_ffram` (stops before the bad opt), manual `opt`
+without `-undriven`, then `synth_ecp5 -run map_gates:` to finish.
+
+**Result:** 4× DP16KD inferred, all clocks pass timing, 74% LUT utilization.
+ft600_writer.v and top_custom.v unchanged — same interface.
+
+**Previous "ruled out" note was wrong:** Block RAM alone forces a settle
+cycle (killing throughput to 0.028 MB/s), but Block RAM + output buffer
+provides combinational outputs with zero settle cycles. The pre-fetch
+pipeline sustains 1 word/cycle after 1-cycle startup.
+
+## Integrated System Results (2026-07-14)
+
+Full ADC pipeline running: ADC board → rx_process_mux → lane_framer →
+bit_packer (4 serial bits × 4 time-steps = 16-bit word) → async_fifo
+(16 MHz write → 100 MHz read) → ft600_writer → USB → host decode.
+
+- **Throughput:** 8 MB/s (16 MHz clock / 4 = 4 MW/s × 2 bytes)
+- **Frames decoded:** 815 per lane per 1 MB capture
+- **CRC errors:** 9–38 per 1 MB across 3 trials (variable)
+- **Error amplification:** each CDC glitch corrupts a 16-bit packed word
+  containing 16 serial bits across all 4 lanes. One FIFO glitch can
+  cause up to 4 CRC failures (one per lane per affected frame).
+- **Estimated CDC events:** 2–10 per MB, worse than the counter test
+  (~0.5/MB) because the FIFO is mostly empty at 4 MW/s write rate,
+  keeping rptr close to wptr and increasing read-write collision odds.

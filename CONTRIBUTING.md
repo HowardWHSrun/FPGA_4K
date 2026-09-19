@@ -1,11 +1,11 @@
 # Contributing shared sources
 
-Add material received from Gerald or another project collaborator, or the original public repository they shared. Keep independent personal studies and proposed designs outside this source collection.
+Add shared project material and the original files or public source code behind it. Keep independent personal studies and proposed designs outside this source collection.
 
 For a new source:
 
-1. Identify who supplied it, its date/revision and any known limitations. Use “unknown” rather than inventing provenance.
-2. Preserve the original file; label any text extraction or meeting summary as a derived representation.
+1. Record who supplied it, its date/revision and any known limitations in the source provenance. Use “unknown” rather than inventing provenance. Organize explanatory documentation by topic or workstream.
+2. Include the actual file, such as the PPTX, PDF, DOCX, native CAD project or source code. Preserve the original; label any text extraction or meeting summary as a derived representation. An external link can supplement the included material.
 3. Add its path, origin, status, transformation, byte count and SHA-256 to [the manifest](sources/manifest.json), then link it from [the library](docs/library.md).
 4. Check local links and file integrity:
 
