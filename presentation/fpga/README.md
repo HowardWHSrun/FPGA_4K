@@ -6,7 +6,7 @@ This is the second presentation level. Select FPGA in the system view, then **Op
 
 ## Slides and design inspection
 
-The five initial slides cover PCB layout, FPGA/interfaces, power, boot/clock and bring-up. `slides.js` holds source-grounded, editable content. Reference figures and completion counts retain their September 21 import context rather than being represented as live status.
+Eight slides cover PCB layout, FPGA/I/O, recording and stimulation data paths, the cable link, power, boot/memory/clock, open issues and proposed next decisions. `slides.js` holds source-grounded content; `refinements.css` reduces visual clutter. Additional detail is in each slide's source notes rather than crowding the main view.
 
 The front/back SVGs are the existing KiCad exports in `hardware/fpga-board/previews/`. Back is mirrored; both views omit inner layers. Pan, zoom and fit controls do not change the original export.
 
@@ -14,16 +14,18 @@ The front/back SVGs are the existing KiCad exports in `hardware/fpga-board/previ
 
 The module is requested on demand from `https://kicanvas.org/kicanvas/kicanvas.js`. It is an external, early-stage viewer, not desktop KiCad. The original files and independent front/back exports remain available if native rendering fails. Full KiCad feature parity, editing and DRC/ERC are not claimed.
 
-**KiCad files** provides the native PCB, project, root schematic, board guide and complete repository ZIP. For editing, keep the entire FPGA hardware folder, child sheets and custom libraries together, then open the `.kicad_pro` through KiCad Project Manager. The repository's handoff specifies KiCad 10.0.6.
+**KiCad files** provides the native PCB, project, root schematic, board guide and complete repository ZIP. For editing, keep the entire FPGA hardware folder, child sheets and custom libraries together, then open the `.kicad_pro` through KiCad Project Manager. The handoff specifies KiCad 10.0.6.
 
 ## Provenance
 
-Source revision: `46c3c6985bef1249170146dba927266443d8a1e8`. PCB blob: `ad4324809871fe300aee289dbb441b4fc6ff9dcc`. Root schematic blob: `7b013b342acbe10802a243148a1de90d852922d7`. Front export blob: `793c4f5c3439653a140552dfe4dbb43205dbe73d`.
+Source CAD revision: `46c3c6985bef1249170146dba927266443d8a1e8`. PCB blob: `ad4324809871fe300aee289dbb441b4fc6ff9dcc`. Root schematic: `7b013b342acbe10802a243148a1de90d852922d7`. Front export: `793c4f5c3439653a140552dfe4dbb43205dbe73d`.
 
-The native files are fetched from the presentation branch when inspected; the slide text remains a dated review baseline. Regenerate exports, reports and slide status after changing the actual CAD. See [manifest.json](manifest.json) for source scope.
+The native files are fetched from the presentation branch when inspected; slide counts, layout dimensions and DRC/ERC figures retain their September 21 import context. Regenerate exports and reports after changing CAD. The 270 unconnected PCB items, 661 unresolved schematic pins and 21 undriven power pins are not live results.
 
-No native CAD, compact assembly geometry or main-branch files are modified. The parent system layout, reported owners, merged routing/LDO workstream and KR260 stage are retained. No font files are added.
+The [September 21 meeting digest](meeting-2026-09-21.md) is a project-only paraphrase of the user-supplied transcript. Raw conversation is not published. Recording/stimulation separation, downstream waveform storage, cable/adapter proposals and programming through the cable are directions or open questions, not demonstrated implementations. Tentative rates, voltage remarks and AI suggestions are not presented as verified specifications. Next-step coordination and tests are proposals, not assigned or completed work.
+
+See [manifest.json](manifest.json) for scope. No native CAD, compact assembly geometry or main-branch files are modified. The parent system layout, reported owners, unified routing/LDO workstream, KR260 stage and concurrent native-viewer fixes are retained.
 
 ## Verification
 
-`scripts/check_fpga_presentation.mjs` and `.github/workflows/fpga-detail-check.yml` check published bytes, navigation, actual SVG loading, desktop/mobile layouts and native viewing. Workflow logs establish which checks passed for a given revision; this README does not independently claim a test result. Hardware operation is not tested.
+`scripts/check_fpga_presentation.mjs` and `.github/workflows/fpga-detail-check.yml` check published bytes, drill-down/back-navigation, actual SVG loading, eight slide states, desktop/mobile layouts and native viewing. Workflow logs establish which checks passed for a given revision. Hardware operation is not tested.
