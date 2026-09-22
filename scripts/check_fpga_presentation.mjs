@@ -15,15 +15,17 @@ try{
   await page.locator('.system-nav [data-slide="fpga"]').click();
   await page.locator('#open-fpga-design').waitFor({state:'visible'});
   assert(page.url().includes('#fpga'),'First FPGA selection stays in the system overview');
+  await page.screenshot({path:'fpga-browser-check/system-fpga.png',fullPage:true});
   await page.locator('#open-fpga-design').click();
   await page.waitForURL('**/presentation/fpga/');
   await page.waitForFunction(()=>window.FPGA_REVIEW&&document.querySelector('#board-image').naturalWidth>0);
-  assert(await page.locator('#chapters button').count()===5,'FPGA deck has five independent slides');
+  assert(await page.locator('#chapters button').count()===8,'FPGA deck has eight independent slides');
   assert(await page.evaluate(()=>document.querySelector('#board-image').dataset.loaded==='true'),'Actual KiCad front SVG loaded');
   await page.screenshot({path:'fpga-browser-check/layout.png',fullPage:true});
-  for(const id of ['interfaces','power','startup','bringup']){
+  for(const id of ['interfaces','recording','cable','power','startup','bringup','decisions']){
     await page.locator(`[data-chapter="${id}"]`).click();
     assert(await page.evaluate(id=>FPGA_REVIEW.getState().slideId===id,id),'Slide navigation: '+id);
+    if(['recording','cable','bringup'].includes(id))await page.screenshot({path:`fpga-browser-check/${id}.png`,fullPage:true});
   }
   await page.locator('[data-chapter="layout"]').click();
   await page.locator('#back').click();
