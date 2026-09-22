@@ -1,0 +1,30 @@
+{
+  "revision": "review-v2",
+  "date": "2026-09-22",
+  "review_date": "2026-09-23",
+  "branch": "presentation",
+  "entry": "index.html",
+  "source_revision": "58869f7a04c56d6d5ba1447ff8ac7f6fa0239294",
+  "source_stl": "hardware/assembly/stacked_headboard_compact_B_v1.stl",
+  "source_sha256": "1aa6547321ffec16be82f6e58fd27fd49825b74ba4f23b1c36394f7b9f2eac46",
+  "source_triangle_count": 650,
+  "source_geometry_modified": false,
+  "native_cad_modified": false,
+  "annotation_changes": {
+    "routing": "B and C are one routing/LDO subsystem per Howard's September 22 instruction; no separate bridge workstream",
+    "kr260": "separate schematic downstream system stage; not manufacturer CAD or a physical headstage layer; not to scale",
+    "animation": "camera-only transitions; no source-vertex motion",
+    "ownership": "reported workstream assignments, not accepted GitHub layout reservations"
+  },
+  "repository_sources": [
+    "docs/meetings/2026-09-18-follow-up.md",
+    "docs/meetings/2026-09-17.md",
+    "docs/team/owners-and-work.md",
+    "hardware/overview.md",
+    "hardware/fpga-board/README.md"
+  ],
+  "external_platform_source": "https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html",
+  "external_source_scope": "KR260 platform identity and capabilities, not project implementation status",
+  "owner_map": {"carriers":"Gerald","routing_ldo":"Zitong","fpga_pcb":"Howard","fpga_programming":"Jiaao","downstream_mcu":"David"},
+  "hardware_validation": "none"
+}
