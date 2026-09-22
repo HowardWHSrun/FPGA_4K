@@ -34,6 +34,7 @@ jobs:
           path = Path('sources/manifest.json')
           data = json.loads(path.read_text())
           data['presentation_derivation'] = {'manifest': 'presentation/compact/manifest.json', 'branch': 'presentation', 'source': 'hardware/assembly/stacked_headboard_compact_B_v1.stl', 'status': 'supplied compact assembly; exact source bytes preserved; no geometric changes'}
+          data['fpga_presentation'] = {'manifest': 'presentation/fpga/manifest.json', 'entry': 'presentation/fpga/index.html', 'source': 'hardware/fpga-board', 'status': 'read-only nested design review; native CAD unchanged'}
           path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
           PY
           git config user.name 'github-actions[bot]'
@@ -50,6 +51,9 @@ jobs:
           node --check presentation/compact/app.js
           node --check presentation/compact/slides.js
           node --check presentation/model-source.js
+          node --check presentation/fpga/app.js
+          node --check presentation/fpga/slides.js
+          node --check presentation/fpga/entry.js
           git diff --check
           python3 - <<'PY'
           from pathlib import Path
@@ -62,16 +66,19 @@ jobs:
           assert gzip.decompress(base64.b64decode(source['data'])) == raw
           html = Path('index.html').read_text()
           for asset in re.findall(r'(?:src|href)="(presentation/[^\"]+)"', html):
-              assert Path(urlsplit(asset).path).is_file(), asset
-          print('PASS: exact compact STL, source hash, and active local assets verified.')
+              target = Path(urlsplit(asset).path)
+              assert target.is_file() or (target.is_dir() and (target / 'index.html').is_file()), asset
+          print('PASS: exact compact STL, source hash, active assets, and nested index links verified.')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: compact-presentation-offline
+          name: compact-and-fpga-presentation-bundle
           path: |
             index.html
             .nojekyll
             presentation/compact/
             presentation/model-source.js
+            presentation/fpga/
+            hardware/fpga-board/
           include-hidden-files: true
