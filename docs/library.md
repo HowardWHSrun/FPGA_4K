@@ -2,6 +2,12 @@
 
 The original files are stored in this repository. Use the editable formats for further work and the PDFs or searchable notes for a quick review.
 
+## Team workflow and editable design
+
+- [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
+- [FPGA working draft](../hardware/fpga-board/README.md): complete editable KiCad project and local libraries; not for manufacture.
+- [Initial FPGA import evidence](../sources/fpga-draft-2026-09-21/README.md): provenance, original hashes and dated check reports.
+
 ## ASIC/interface slides
 
 - [Original 28-slide PowerPoint](../sources/slides/Chip_FPGA_Interface.pptx)
@@ -38,6 +44,6 @@ These are supplied examples. Their presence does not establish final mating comp
 - [Original-program and run guide](software.md)
 - [Upstream repository register](../references/README.md)
 
-The source files are included at a pinned upstream revision for repeatable reading and use. This is the earlier ECP5/FT600 project; it does not establish compatibility with the proposed Artix-7 path or complete 4K operation. Personal studies and independently developed board proposals are excluded.
+The source files are included at a pinned upstream revision for repeatable reading and use. This is the earlier ECP5/FT600 project; it does not establish compatibility with the proposed Artix-7 path or complete 4K operation. The separately labeled FPGA working draft is now included for team development; it does not change the status of this historical firmware.
 
 [Source provenance and checksums](../sources/README.md) describe what is original, what is a faithful representation and the one library-path adaptation.

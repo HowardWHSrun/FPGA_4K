@@ -1,0 +1,30 @@
+name: Interface or engineering decision
+description: Resolve a shared pinout, voltage, protocol, timing or mechanical requirement.
+title: "[Decision] "
+body:
+  - type: input
+    id: interface
+    attributes:
+      label: Interface or requirement
+      placeholder: "Example: routing board to FPGA connector pin map"
+    validations:
+      required: true
+  - type: textarea
+    id: owners
+    attributes:
+      label: Owners on both sides
+      description: Name responsible reviewers or use TBD. Do not assume agreement from silence.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Proposal and evidence
+      description: Include authoritative source links, units, pin tables, options and unresolved assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance and implementation
+      description: Record explicit approvals, affected CAD/firmware files and the implementing pull request. Until reviewed, label the proposal TBD.

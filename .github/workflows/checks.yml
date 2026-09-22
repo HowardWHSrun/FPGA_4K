@@ -1,4 +1,4 @@
-name: Shared-source documentation
+name: Repository checks
 
 on:
   push:
@@ -17,3 +17,7 @@ jobs:
           persist-credentials: false
       - name: Check source links and imported-file integrity
         run: python3 scripts/check_docs.py
+      - name: Check active CAD packaging
+        run: python3 scripts/check_hardware.py
+      - name: Check patch whitespace
+        run: git show --format= --check HEAD

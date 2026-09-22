@@ -18,7 +18,7 @@ The project files are stored in this repository. Attribution and copy details ar
 
 The LDO library table uses `${KIPRJMOD}/LDO_Board.pretty` in place of its original workstation path. `source_sha256` retains the original hash; the circuit files are unchanged. Included upstream program files retain their original bytes and notices. Upstream repository metadata and local caches are not part of the source copy.
 
-The collection covers shared project files and faithful representations, with minimal navigation/checking support. Independent personal studies and design proposals, private chat/audio, local caches and hidden histories remain outside it.
+The collection now also includes the [FPGA working draft](../hardware/fpga-board/README.md), imported at the user's request for team development. Its [baseline and snapshot evidence](fpga-draft-2026-09-21/README.md) distinguish the editable design from historical sources. Native CAD and local libraries were copied unchanged; Git tracks later edits. The immutable manifest covers the import record and selected evidence, not the evolving CAD files. Private chat/audio, unrelated personal material, experimental generators, rejected candidates, caches and hidden histories remain outside the shared package.
 
 The photograph in the [hardware overview](../hardware/overview.md) is the complete second slide of the included interface deck, rendered from its PDF. It shows a single-chip assembly; it is not labelled as the two-chip PCB-5 CAD revision. The system diagram summarizes the dated meeting record. The reference-board CAD views and the separately supplied overall arrangement STL are distinct sources; their inclusion does not establish that the reference boards mechanically mate.
 

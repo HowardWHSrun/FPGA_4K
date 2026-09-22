@@ -1,0 +1,35 @@
+name: PCB task or layout handoff
+description: Claim a scoped design task and identify its review and handoff.
+title: "[PCB] "
+body:
+  - type: dropdown
+    id: board
+    attributes:
+      label: Board or workstream
+      options:
+        - FPGA board
+        - ASIC carrier
+        - Routing / power board
+        - Receiver / interface
+        - Firmware / documentation
+    validations:
+      required: true
+  - type: textarea
+    id: ownership
+    attributes:
+      label: Owner, reviewer and editing scope
+      description: Give GitHub usernames, branch, starting commit, and files/sheets. Claim sole layout editing if applicable. Use TBD for unassigned roles.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Change and acceptance criteria
+      description: Explain the problem, proposed work, affected interfaces and checks needed to call it done.
+    validations:
+      required: true
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Handoff
+      description: Update with the merged commit, ERC/DRC results, remaining work and next owner.

@@ -1,6 +1,12 @@
 # Hardware design files
 
-This directory contains the supplied ASIC carrier and older LDO/routing references. These are source examples, not a completed new FPGA board or an approved fabrication package.
+This directory contains the editable [FPGA working draft](fpga-board/README.md), plus preserved ASIC-carrier and older LDO/routing references. No board in this collection is represented as an approved new-system fabrication package.
+
+## Active FPGA working draft
+
+Open [the project guide](fpga-board/README.md), then the [KiCad project](fpga-board/hardware/Howard_FPGA_Connected_42x40.kicad_pro). All child sheets and local libraries are included. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md). The draft's electrical and manufacturing work remains incomplete.
+
+## Supplied references
 
 Start with the **[visual hardware overview](overview.md)**: overall board views, front/back layouts, an original assembly photograph and the system signal path. [PNG and SVG files](previews/README.md) are included for viewing without KiCad.
 

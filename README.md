@@ -1,6 +1,20 @@
 # FPGA_4K
 
-Project materials for the 4K neural-recording system: interface slides, meeting records, hardware designs and acquisition software.
+Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
+
+## Start working with the team
+
+**[Team start page](docs/team/README.md)** · **[Setup and daily workflow](CONTRIBUTING.md)** · **[Owners and open work](docs/team/owners-and-work.md)**
+
+| Work | Start here | Status |
+|---|---|---|
+| FPGA design | [Open the working draft](hardware/fpga-board/README.md) | Imported September 21; incomplete electrical design; **not for manufacture** |
+| Carrier and routing boards | [Original reference projects](hardware/README.md) | Preserved references; active baselines and owners to confirm |
+| Tasks and layout ownership | [Create a PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) | One active layout editor per board |
+| Pinout / power / protocol decisions | [Create a decision](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) | Review with owners on both sides |
+| Proposed changes | [Pull requests](https://github.com/HowardWHSrun/FPGA_4K/pulls) | Branch → review → merge → pull |
+
+Use KiCad **10.0.6** for the FPGA handoff. Clone the repository, open the project from your clone, and keep its custom libraries alongside it. Follow [CONTRIBUTING.md](CONTRIBUTING.md) before editing; uploading a draft does not approve its circuit or make `main` fabrication-ready.
 
 ## Board overview
 
@@ -47,6 +61,7 @@ The included FPGA_512 code is an earlier **ECP5/FT600** implementation. It provi
 git clone https://github.com/HowardWHSrun/FPGA_4K.git
 cd FPGA_4K
 python3 scripts/check_docs.py
+python3 scripts/check_hardware.py
 ```
 
 The source files come with the clone—no separate source download is needed. The check requires Python 3.9+ and Git, and verifies local links and file hashes. See the [software guide](docs/software.md) for program entry points and the [hardware guide](hardware/README.md) for KiCad files.

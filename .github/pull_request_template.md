@@ -1,11 +1,25 @@
-## Shared source and provenance
+## Change and reason
 
-Identify the supplied document or original repository, who shared it, and its known date/revision.
+Describe the problem and resulting behavior. Link the task/decision issue. Identify the board, sheets and layout owner when applicable.
 
-## Changes
+## Review evidence
 
-Describe added originals, faithful representations or navigation updates. Keep personal study/design output outside the collection.
+- Before/after schematic or layout views:
+- Connector, pinout, voltage, timing, BOM or mechanical impacts:
+- Required reviewers (both sides for an interface change):
 
 ## Verification
 
-State link/hash checks run and any limitations. Update the source manifest and document library where affected.
+- [ ] `python3 scripts/check_docs.py`
+- [ ] `python3 scripts/check_hardware.py`
+- [ ] `git diff --check`
+- [ ] CAD changes: ERC/DRC with schematic parity inspected; remaining findings and changes reported below (or explain not applicable).
+- [ ] New supplied sources: provenance and immutable-source manifest updated (or not applicable).
+
+Results, known failures, disabled rules and limits:
+
+## Handoff
+
+Remaining work / next layout owner:
+
+A merged change is a working revision, not a fabrication release.

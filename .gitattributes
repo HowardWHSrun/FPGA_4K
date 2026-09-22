@@ -13,3 +13,11 @@
 hardware/** -text -whitespace
 sources/** -text -whitespace
 firmware/FPGA_512/** -text -whitespace
+
+# Require deliberate resolution when both branches change the same CAD file.
+# Different sheets and board projects can still merge as separate files.
+*.kicad_pcb -merge
+*.kicad_sch -merge
+*.kicad_pro -merge
+*.kicad_sym -merge
+*.kicad_mod -merge
