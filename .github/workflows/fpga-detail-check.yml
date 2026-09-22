@@ -1,0 +1,59 @@
+name: FPGA detail presentation check
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - index.html
+      - presentation/fpga/**
+      - scripts/check_fpga_presentation.mjs
+      - .github/workflows/fpga-detail-check.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fpga-detail-check
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate syntax and source integrity
+        run: |
+          node --check presentation/fpga/app.js
+          node --check presentation/fpga/slides.js
+          node --check presentation/fpga/entry.js
+          node --check scripts/check_fpga_presentation.mjs
+          python3 scripts/check_docs.py
+          python3 scripts/check_hardware.py
+          git diff --check
+      - name: Check published files match this commit
+        run: |
+          python3 - <<'PY'
+          import os,time,urllib.request
+          from pathlib import Path
+          paths=['index.html','presentation/fpga/index.html','presentation/fpga/app.js','presentation/fpga/slides.js','presentation/fpga/style.css','presentation/fpga/entry.js']
+          for attempt in range(18):
+              try:
+                  for p in paths:
+                      req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(req,timeout=20) as r:
+                          assert r.status==200 and r.read()==Path(p).read_bytes(), p+' not current'
+                  print('Live parent and FPGA detail assets verified.');break
+              except Exception as e:
+                  print(attempt+1,str(e),flush=True)
+                  if attempt==17: raise
+                  time.sleep(8)
+          PY
+      - name: Install browser test driver
+        run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
+      - name: Test drill-down, native CAD and dedicated slides
+        run: |
+          export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          node scripts/check_fpga_presentation.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpga-detail-browser-check
+          path: fpga-browser-check/
