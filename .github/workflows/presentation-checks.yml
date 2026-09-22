@@ -1,0 +1,107 @@
+name: Presentation checks
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - index.html
+      - presentation/**
+      - .github/workflows/presentation-checks.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: presentation-checks
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: presentation
+      - name: Index presentation without changing hardware sources
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          lib = Path('docs/library.md')
+          text = lib.read_text()
+          if '## Assembly-first presentation' not in text:
+              text += '\n## Assembly-first presentation\n\n[Open the browser presentation](../index.html) · [Presentation guide](../presentation/README.md) · [Model derivation](../presentation/manifest.json).\n\nThis branch-only starter uses the original assembly mesh and a separately labeled, new provisional compact connection study. It is not the unrecovered earlier shortened CAD revision or a fabrication release.\n'
+              lib.write_text(text)
+          path = Path('sources/manifest.json')
+          data = json.loads(path.read_text())
+          data['presentation_derivation'] = {'manifest': 'presentation/manifest.json', 'branch': 'presentation', 'source': 'hardware/assembly/stacked_headboard_original.stl', 'status': 'new provisional compact visualization; original source preserved'}
+          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/library.md sources/manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Index assembly presentation and derivation provenance'
+            git push origin HEAD:presentation
+          fi
+      - name: Check repository and JavaScript
+        run: |
+          python3 scripts/check_docs.py
+          python3 scripts/check_hardware.py
+          node --check presentation/app.js
+          node --check presentation/model-data.js
+          git diff --check
+      - name: Verify mesh source, manifest, and local assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          manifest = json.loads(Path('presentation/manifest.json').read_text())
+          source = Path(manifest['source_path']).read_bytes()
+          assert hashlib.sha256(source).hexdigest() == manifest['source_sha256']
+          js = Path('presentation/model-data.js').read_text()
+          mesh = json.loads(js.split('window.ASSEMBLY_MODEL = ', 1)[1].strip().rstrip(';'))
+          assert len(mesh['faces']) == 650 and len(mesh['vertices']) == 325
+          assert mesh['sha256'] == manifest['source_sha256']
+          html = Path('index.html').read_text()
+          for asset in re.findall(r'(?:src|href)="(presentation/[^\"]+)"', html):
+              assert Path(asset).is_file(), asset
+          print('PASS: 650 triangles, 325 indexed vertices; preserved source hash and local asset paths verified.')
+          PY
+      - name: Verify public preview responses
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import urllib.request, json, time
+          from pathlib import Path
+          base = 'https://raw.githack.com/HowardWHSrun/FPGA_4K/presentation/'
+          expected = {'index.html': '4K Recording System', 'presentation/style.css': ':root', 'presentation/app.js': 'PRESENTATION', 'presentation/model-data.js': 'ASSEMBLY_MODEL'}
+          report = {'preview_base': base, 'checks': []}
+          for path, marker in expected.items():
+              result = {'path': path}
+              for attempt in range(3):
+                  try:
+                      req = urllib.request.Request(base + path, headers={'User-Agent': 'FPGA-4K-Presentation-Check'})
+                      with urllib.request.urlopen(req, timeout=30) as response:
+                          content = response.read().decode('utf-8')
+                          result.update(status=response.status, content_type=response.headers.get('Content-Type'), marker_found=marker in content, final_url=response.url)
+                      if result['status'] == 200 and result['marker_found']:
+                          break
+                  except Exception as error:
+                      result['error'] = str(error)
+                  if attempt < 2:
+                      time.sleep(5)
+              report['checks'].append(result)
+          report['passed'] = all(x.get('status') == 200 and x.get('marker_found') for x in report['checks'])
+          Path('presentation-preview-check.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          if not report['passed']:
+              raise SystemExit('Public preview is not verified; use offline copy or enable GitHub Pages.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: assembly-presentation-starter
+          path: |
+            index.html
+            .nojekyll
+            presentation/
+            presentation-preview-check.json
+          include-hidden-files: true
