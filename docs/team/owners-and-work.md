@@ -1,10 +1,22 @@
 # Owners and open work
 
-Updated for the initial team handoff on 2026-09-21. Responsibilities below are roles to assign, not confirmed personal assignments. Record a GitHub username once the person accepts ownership.
+Updated 2026-09-22 for the personal-branch workflow. Personal draft ownership does not assign responsibility for the final team design.
+
+## Personal branch directory
+
+| Person | Branch | Project | KiCad version |
+|---|---|---|---|
+| Howard Wang | [Howard-Wang](https://github.com/HowardWHSrun/FPGA_4K/tree/Howard-Wang) | [FPGA PCB draft](https://github.com/HowardWHSrun/FPGA_4K/tree/Howard-Wang/hardware/fpga-board) | 10.0.6 |
+
+Please create your own `First-Last` branch and add a row here through a focused documentation pull request. Other teammates' names and branch choices have not yet been supplied; no personal branch has been created on their behalf.
+
+## Team workstreams
+
+Final engineering owners and reviewers remain to be confirmed.
 
 | Workstream | Working source | Owner / reviewer | Next step |
 |---|---|---|---|
-| FPGA schematic and layout | [Working draft](../../hardware/fpga-board/README.md) | TBD / TBD | Review the baseline; claim exclusive board editing in an issue |
+| FPGA schematic and layout | [Howard’s personal draft](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md) | Team owner TBD / reviewer TBD | Evaluate candidates; Howard’s branch is his independent draft |
 | ASIC carrier | [Preserved reference](../../hardware/references/asic-carrier/PCB.kicad_pro) | TBD / TBD | Confirm the authoritative editable project before creating a working copy |
 | Routing and power board | [Historical reference](../../hardware/references/ldo-routing/PCB.kicad_pro) | TBD / TBD | Confirm topology and baseline; do not assume this example mates with the carrier |
 | Receiver / KR260 interface | [Recorded context](../meetings/2026-09-18-follow-up.md) | TBD / TBD | Specify actual receiver hardware and electrical link |
@@ -23,11 +35,11 @@ Updated for the initial team handoff on 2026-09-21. Responsibilities below are r
 | BGA escape and stackup | Layout + fabricator | Approved layers, dielectric, impedance and trace/via/assembly capabilities |
 | FPGA unused/analog/transceiver/battery pins | FPGA | Manufacturer-grounded used/unused pin treatment and bank supplies |
 
-The micro-HDMI connector choice does not specify HDMI signaling or direct KR260 compatibility. The FPGA device direction is XC7A200T; package/speed/temperature fields in the draft still require procurement qualification.
+The micro-HDMI connector choice does not specify HDMI signaling or direct KR260 compatibility. Howard’s saved draft uses XC7A200T; this does not establish a final team device choice. Package/speed/temperature fields still require procurement qualification.
 
 ## Layout ownership record
 
-Before starting layout, open a PCB task and record:
+When multiple people collaborate on the same branch and board, open a PCB task and record:
 
 ```text
 Board:
@@ -40,4 +52,4 @@ Handoff commit and remaining work:
 Next owner:
 ```
 
-Use one open ownership task per board and close or hand it off explicitly. A separate branch alone does not reserve the layout. Until an owner accepts the task, layout ownership remains unassigned.
+Use one active layout editor per shared branch/board and hand it off explicitly. Independent personal branches can contain different layouts; their changes still require engineering review before integration.

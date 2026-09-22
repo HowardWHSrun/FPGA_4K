@@ -1,4 +1,4 @@
-# FPGA board — working draft
+# Howard Wang — personal FPGA working draft
 
 **PARTIAL DESIGN — NOT FOR MANUFACTURE.** This is the saved local FPGA draft imported for team collaboration on 2026-09-21, not an approved circuit or a fabrication release. Review and accept the baseline before extending it.
 
@@ -22,9 +22,11 @@ The September 21 source reports record **270 remaining PCB connection items**, *
 
 See the [snapshot evidence and disabled-rule list](../../sources/fpga-draft-2026-09-21/README.md), [draft BOM](../../sources/fpga-draft-2026-09-21/BOM_Draft.csv) and [unresolved pin ledger](../../sources/fpga-draft-2026-09-21/Unresolved_Pin_Ledger.csv). These are dated import artifacts. Regenerate reports and BOMs for later commits rather than treating them as live design outputs.
 
+This project belongs to the `Howard-Wang` branch. Howard can commit and push draft progress here without merging it into `main`. Teammates should create their own branches for independent designs; see the [personal-branch workflow](../../CONTRIBUTING.md).
+
 ## Before editing
 
-Claim layout ownership in a PCB task; see [owners and open work](../../docs/team/owners-and-work.md). Use a branch and review the change in a pull request. Edit these native files directly. Historical experimental generators and rejected routing candidates are deliberately not included: rerunning an old generator could overwrite reviewed CAD.
+Work on your own branch; coordinate a layout handoff if editing this branch with Howard. See [owners and open work](../../docs/team/owners-and-work.md). Use a pull request for selected changes intended for the team baseline. Edit these native files directly. Historical experimental generators and rejected routing candidates are deliberately not included: rerunning an old generator could overwrite reviewed CAD.
 
 Current unknowns include RAM/controller, connector pin maps and IO levels, receiver protocol, oscillator, rail budgets/compensation, remaining FPGA pin treatment, stackup, impedance, mechanical fit and assembly rules. Keep each as `TBD + owner` until a reviewed decision closes it.
 

@@ -14,6 +14,21 @@ def check(root):
     project_dir = board_dir / 'hardware'
     stem = project_dir / 'Howard_FPGA_Connected_42x40'
     errors = []
+    try:
+        scope = json.loads((root / 'hardware/project-scope.json').read_text())
+        required = scope['howard_fpga_draft']
+        if type(required) is not bool:
+            raise ValueError('howard_fpga_draft must be boolean')
+    except (OSError, ValueError, KeyError) as exc:
+        print('ERROR: invalid hardware/project-scope.json: ' + str(exc), file=sys.stderr)
+        return 1
+    if not required:
+        if board_dir.exists():
+            print('ERROR: Howard draft exists but is excluded by project-scope.json', file=sys.stderr)
+            return 1
+        print('PASS: branch intentionally excludes Howard personal CAD; shared references are checked by check_docs.py.')
+        print('Scope: no native CAD validation; other personal projects require their own checks.')
+        return 0
 
     @lru_cache(maxsize=None)
     def read(path):

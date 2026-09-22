@@ -1,10 +1,10 @@
 # Hardware design files
 
-This directory contains the editable [FPGA working draft](fpga-board/README.md), plus preserved ASIC-carrier and older LDO/routing references. No board in this collection is represented as an approved new-system fabrication package.
+Howard’s personal branch contains the editable [FPGA working draft](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md), plus preserved ASIC-carrier and older LDO/routing references. No board in this collection is represented as an approved new-system fabrication package.
 
-## Active FPGA working draft
+## Howard’s personal FPGA draft
 
-Open [the project guide](fpga-board/README.md), then the [KiCad project](fpga-board/hardware/Howard_FPGA_Connected_42x40.kicad_pro). All child sheets and local libraries are included. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md). The draft's electrical and manufacturing work remains incomplete.
+Open [the project guide](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md), then the [KiCad project](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/hardware/Howard_FPGA_Connected_42x40.kicad_pro). Switch to `Howard-Wang` first; all child sheets and local libraries are included on that branch. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md). The draft's electrical and manufacturing work remains incomplete.
 
 ## Supplied references
 
