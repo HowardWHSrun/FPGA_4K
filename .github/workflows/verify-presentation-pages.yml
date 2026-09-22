@@ -14,25 +14,31 @@ jobs:
       - name: Check live GitHub Pages document and assets
         run: |
           python3 - <<'PY'
-          import urllib.request, json, time
+          import urllib.request, json, time, re, hashlib
           from pathlib import Path
           base = 'https://howardwhsrun.github.io/FPGA_4K/'
           expected = {'index.html': '4K Recording System', 'presentation/style.css': ':root', 'presentation/app.js': 'PRESENTATION', 'presentation/model-data.js': 'ASSEMBLY_MODEL'}
           report = {'base': base, 'checks': []}
           for path, marker in expected.items():
               result = {'path': path}
-              for attempt in range(10):
+              for attempt in range(3):
                   try:
-                      req = urllib.request.Request(base + path, headers={'User-Agent': 'FPGA-4K-Presentation-Check', 'Cache-Control': 'no-cache'})
+                      url = base + path + '?v=assembly-20260922'
+                      req = urllib.request.Request(url, headers={'User-Agent': 'FPGA-4K-Presentation-Check', 'Cache-Control': 'no-cache'})
                       with urllib.request.urlopen(req, timeout=15) as response:
-                          content = response.read().decode('utf-8')
-                          result = {'path': path, 'status': response.status, 'content_type': response.headers.get('Content-Type'), 'marker_found': marker in content, 'final_url': response.url}
+                          raw = response.read()
+                          content = raw.decode('utf-8')
+                          result = {'path': path, 'status': response.status, 'content_type': response.headers.get('Content-Type'), 'marker_found': marker in content, 'final_url': response.url, 'sha256': hashlib.sha256(raw).hexdigest()}
+                      if path == 'index.html':
+                          result['titles'] = re.findall(r'<title[^>]*>(.*?)</title>', content, re.S | re.I)
+                          result['head_excerpt'] = content[:1500]
+                          Path('pages-served-index.html').write_text(content)
                       if result['status'] == 200 and result['marker_found']:
                           break
                   except Exception as error:
                       result['error'] = str(error)
-                  if attempt < 9:
-                      time.sleep(6)
+                  if attempt < 2:
+                      time.sleep(5)
               report['checks'].append(result)
           report['passed'] = all(x.get('status') == 200 and x.get('marker_found') for x in report['checks'])
           Path('pages-verification.json').write_text(json.dumps(report, indent=2) + '\n')
@@ -44,4 +50,6 @@ jobs:
         if: always()
         with:
           name: presentation-pages-verification
-          path: pages-verification.json
+          path: |
+            pages-verification.json
+            pages-served-index.html
