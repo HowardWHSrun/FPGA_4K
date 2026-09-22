@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b2a">
+<meta name="description" content="4K neural-recording system: an assembly-first, interactive PCB design-review presentation.">
+<title>4K Recording System | PI Design Review</title>
+<link rel="stylesheet" href="style.css">
+<script src="../model-data.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+<header class="masthead">
+<a class="brand" href="#assembly" aria-label="4K recording system home"><span class="brand-icon">4K</span><span>NEURAL RECORDING<span class="brand-sub">XIE–LUAN LABS · DESIGN REVIEW</span></span></a>
+<div class="meeting"><span class="status-dot"></span> WORKING PRESENTATION <span class="separator">/</span> 23 SEP 2026</div>
+<button class="icon-button" id="fullscreen" title="Fullscreen (F)" aria-label="Enter fullscreen">⛶</button>
+</header>
+<main>
+<div class="heading"><div><p class="eyebrow" id="eyebrow">01 / SYSTEM OVERVIEW</p><h1 id="page-title">Start with the whole assembly.</h1><p class="subtitle" id="subtitle">A common physical view for the ASIC, routing and FPGA workstreams.</p></div><div class="revision"><span>VIEWING</span><strong id="revision-name">Compact bridge study</strong><small>Presentation concept · not fabrication CAD</small></div></div>
+<div class="workspace">
+<section class="viewport" aria-label="Interactive 3D assembly">
+<div class="viewport-top"><span class="view-tag" id="model-label">SHORTENED BRIDGE · PROVISIONAL</span><button id="labels-toggle" class="light-button" aria-pressed="true">Labels on</button></div>
+<canvas id="assembly-canvas" aria-label="Rotatable 3D headboard assembly; use the region buttons for an accessible description." tabindex="0"></canvas>
+<div id="canvas-error" hidden>3D view could not load. Reload the page, or open the original model from Sources.</div>
+<div class="canvas-tools" role="group" aria-label="Model camera"><button data-view="iso" class="light-button active" aria-pressed="true">Isometric</button><button data-view="top" class="light-button" aria-pressed="false">Top</button><button data-view="side" class="light-button" aria-pressed="false">Side</button><span></span><button id="zoom-out" class="light-button" aria-label="Zoom out">−</button><button id="zoom-in" class="light-button" aria-label="Zoom in">+</button><button id="reset-view" class="light-button" title="Reset camera (R)">Reset</button></div>
+<div class="viewer-foot"><span>DRAG TO ROTATE <b>·</b> SCROLL TO ZOOM <b>·</b> CLICK A REGION</span><span>STL-derived geometry</span></div>
+</section>
+<aside class="panel">
+<div id="assembly-panel">
+<p class="eyebrow">THE ASSEMBLY MAP</p><h2>One model.<br>Three hardware workstreams.</h2><p class="panel-description">Follow the physical assembly first. Select a region to focus the discussion.</p>
+<div class="regions" role="group" aria-label="Assembly regions">
+<button class="region" data-region="A"><span class="letter a">A</span><span><strong>ASIC carrier stack</strong><small>Four boards in the concept</small></span><span class="region-arrow">↗</span></button>
+<button class="region" data-region="B"><span class="letter b">B</span><span><strong>Connecting bridge</strong><small>Shortening under discussion</small></span><span class="region-arrow">↗</span></button>
+<button class="region" data-region="C"><span class="letter c">C</span><span><strong>Routing &amp; power</strong><small>Lower board region</small></span><span class="region-arrow">↗</span></button>
+<button class="region" data-region="D"><span class="letter d">D</span><span><strong>FPGA PCB</strong><small>Upper board region</small></span><span class="region-arrow">↗</span></button>
+</div><div class="region-detail" id="region-detail" aria-live="polite"><span class="detail-kicker">READING THE MODEL</span><p>B + C belong to the routing-PCB workstream. The downstream receiver and PC are outside this assembly.</p></div>
+</div>
+<div id="connector-panel" hidden>
+<p class="eyebrow">MECHANICAL REFINEMENT</p><h2>Bring the boards<br>closer together.</h2><p class="panel-description">Explore the shorter connecting section requested for the next review, without rescaling the boards.</p>
+<div class="study-callout"><strong>Provisional reconstruction</strong><p>The earlier shortened STL is not in this repository. This is a new visualization derived from the preserved original, not the approved shortened CAD.</p></div>
+<label class="slider-label" for="bridge-ratio">Retained free bridge span <output id="ratio-output" for="bridge-ratio">50%</output></label><input id="bridge-ratio" type="range" min="25" max="100" step="5" value="50"><div class="range-labels"><span>More compact</span><span>Original span</span></div>
+<p class="small-note">The starting 50% is illustrative. Only the free span between x = 3 and x = 18 is compressed; the ASIC region stays fixed and the routing/FPGA block translates. Units are unspecified.</p>
+<button class="outline-button" id="ghost-toggle" aria-pressed="false">Show original envelope</button><div class="region-detail"><span class="detail-kicker">FOR THE REVIEW</span><p>Confirm the intended span, connector choice and clearances before replacing this with the final mechanical revision.</p></div>
+</div>
+<div id="discussion-panel" hidden>
+<p class="eyebrow">PRESENTATION BUILD-OUT</p><h2>Keep the assembly<br>as the reference.</h2><p class="panel-description">Detailed sections will be added after the team supplies the content. No device choice or implementation result is assumed here.</p>
+<div class="chapter"><span>01</span><div><strong>ASIC carrier stack</strong><small>Reserved for board and chip details</small></div><b>A</b></div>
+<div class="chapter"><span>02</span><div><strong>Routing, power &amp; connectors</strong><small>Reserved for interface decisions</small></div><b>B+C</b></div>
+<div class="chapter"><span>03</span><div><strong>FPGA hardware &amp; firmware</strong><small>Reserved for design progress</small></div><b>D</b></div>
+<div class="chapter"><span>04</span><div><strong>System integration</strong><small>Reserved for receiver/MCU and testing</small></div><b>→</b></div>
+<div class="region-detail"><span class="detail-kicker">NEXT EDIT</span><p>Each section can start by highlighting its region, then move into the team’s own schematic, layout or measurements.</p></div>
+</div>
+</aside>
+</div>
+<div class="underbar"><div class="variant-control" role="group" aria-label="Geometry variant"><button id="compact-button" class="selected" aria-pressed="true">Compact study</button><button id="original-button" aria-pressed="false">Original CAD</button></div><p id="variant-note">Derived shortened bridge · illustrative span · exact revised CAD pending</p><button id="sources-button" class="text-button">Sources &amp; limits ↗</button></div>
+</main>
+<footer><nav class="chapters" aria-label="Presentation slides"><button data-slide="0" class="selected" aria-current="step"><span>01</span> Assembly</button><button data-slide="1"><span>02</span> Connector study</button><button data-slide="2"><span>03</span> Next sections</button></nav><div class="navigation"><span class="key-hint">← → NAVIGATE <b>·</b> F FULLSCREEN</span><button id="previous" aria-label="Previous slide">←</button><span id="slide-counter">01 / 03</span><button id="next" aria-label="Next slide">→</button></div></footer>
+</div>
+<dialog id="sources-dialog"><div class="dialog-top"><p class="eyebrow">PROVENANCE &amp; SCOPE</p><button id="close-sources" class="icon-button" aria-label="Close sources">×</button></div><h2>What this view does—and does not—show.</h2><p>The preserved mesh is <code>hardware/assembly/stacked_headboard_original.stl</code>, indexed into <code>model-data.js</code>. The original has 650 triangles and an envelope of 65 × 24 × 15.75 <strong>model units</strong>. STL does not specify units.</p><p>The compact view is a new parametric presentation study: it shortens the free bridge interval [3, 18] in x, keeps the ASIC side unchanged, and translates the downstream block. The default retained span is 50%, chosen only to illustrate the request. It is <strong>not a recovered or approved shortened CAD revision</strong>. Connector footprints are not redesigned.</p><p>A–D labels follow the repository’s assembly guide; colors and highlighting are presentational. They do not establish component part numbers, pin mapping, mechanical fit, PCB dimensions or manufacturing readiness. The existing FPGA working draft is separately documented as incomplete.</p><div class="source-links"><a href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/assembly/README.md" target="_blank" rel="noopener noreferrer">Assembly guide ↗</a><a href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/assembly/stacked_headboard_original.stl" target="_blank" rel="noopener noreferrer">Original STL ↗</a><a href="https://github.com/HowardWHSrun/FPGA_4K/tree/presentation" target="_blank" rel="noopener noreferrer">Presentation branch ↗</a></div><p class="small-note">Presentation skeleton prepared 22 September 2026 for the 23 September PI review. No hardware CAD files are changed by this presentation.</p></dialog>
+<noscript><div class="noscript">Enable JavaScript to use the interactive view. <a href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/assembly/README.md">The original assembly guide is available here.</a></div></noscript>
+</body>
+</html>
