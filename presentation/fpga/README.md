@@ -2,34 +2,28 @@
 
 **[Open the FPGA slides](https://howardwhsrun.github.io/FPGA_4K/presentation/fpga/)** · [Return to the system FPGA section](../../index.html#fpga)
 
-This is the second level of the presentation, not a replacement for the system overview.
+This is the second presentation level. Select FPGA in the system view, then **Open KiCad design & FPGA slides**. Clicking the already-selected FPGA label/tab again, or double-clicking its selected canvas, also enters the board-level page. The return button restores the parent FPGA section.
 
-1. Select FPGA in the overall assembly.
-2. Select **Open KiCad design & FPGA slides**, or click the already-selected FPGA label/tab again. Double-clicking the selected FPGA canvas also enters this page.
-3. Use this page's own slide navigation. **System overview** returns to the parent FPGA section.
+## Slides and design inspection
 
-## Views and slides
+The five initial slides cover PCB layout, FPGA/interfaces, power, boot/clock and bring-up. `slides.js` holds source-grounded, editable content. Reference figures and completion counts retain their September 21 import context rather than being represented as live status.
 
-The five initial slides are PCB layout, FPGA/interfaces, power, boot/clock and bring-up. Each combines the actual KiCad export with a short, editable explanation grounded in dated repository sources. `slides.js` holds the content; `app.js` handles navigation, layout zoom/pan and read-only native-document inspection. Detailed presentation changes can be made independently of the parent deck.
+The front/back SVGs are the existing KiCad exports in `hardware/fpga-board/previews/`. Back is mirrored; both views omit inner layers. Pan, zoom and fit controls do not change the original export.
 
-Front/back SVGs come directly from `hardware/fpga-board/previews/` and are not altered. Back is mirrored. They show selected outer copper/fabrication layers, not every layer. Pan, wheel/pinch zoom and fit controls operate on the export without rewriting it.
+**Interactive KiCad** opens the native multilayer board in a read-only [KiCanvas](https://kicanvas.org/embedding/) viewer. The document selector discovers child sheets from the actual root schematic. **Inspect related schematic** opens the source associated with the current slide. Selecting the root schematic loads its children together.
 
-**Interactive KiCad** loads the native PCB into [KiCanvas](https://kicanvas.org/embedding/), with its full inspection controls. The document selector provides the PCB, root schematic and child sheets discovered from the actual root schematic. **Inspect related schematic** opens the relevant source for the current slide. Selecting the root loads its child sheets together for hierarchical inspection.
+The module is requested on demand from `https://kicanvas.org/kicanvas/kicanvas.js`. It is an external, early-stage viewer, not desktop KiCad. The original files and independent front/back exports remain available if native rendering fails. Full KiCad feature parity, editing and DRC/ERC are not claimed.
 
-The KiCanvas module is requested from `https://kicanvas.org/kicanvas.js` only when native inspection is opened. It is an external, early-stage, read-only viewer—not desktop KiCad. An explicit loading/failure notice and the independent front/back views remain available if the module or a native document fails. No editing, DRC, ERC, programming or acquisition is performed. Full KiCad 10 feature parity is not implied.
+**KiCad files** provides the native PCB, project, root schematic, board guide and complete repository ZIP. For editing, keep the entire FPGA hardware folder, child sheets and custom libraries together, then open the `.kicad_pro` through KiCad Project Manager. The repository's handoff specifies KiCad 10.0.6.
 
-**KiCad files** links to the actual PCB, project, root schematic, board guide and a repository ZIP containing the hierarchical sheets and custom libraries. For desktop editing use the complete project, not an isolated `.kicad_pro`. The repository's handoff specifies KiCad 10.0.6.
+## Provenance
 
-## Source and status
+Source revision: `46c3c6985bef1249170146dba927266443d8a1e8`. PCB blob: `ad4324809871fe300aee289dbb441b4fc6ff9dcc`. Root schematic blob: `7b013b342acbe10802a243148a1de90d852922d7`. Front export blob: `793c4f5c3439653a140552dfe4dbb43205dbe73d`.
 
-Source revision at preparation: `46c3c6985bef1249170146dba927266443d8a1e8`.
+The native files are fetched from the presentation branch when inspected; the slide text remains a dated review baseline. Regenerate exports, reports and slide status after changing the actual CAD. See [manifest.json](manifest.json) for source scope.
 
-The current editable PCB blob at this revision is `ad4324809871fe300aee289dbb441b4fc6ff9dcc`. The top-level schematic blob is `7b013b342acbe10802a243148a1de90d852922d7`. The front export is `793c4f5c3439653a140552dfe4dbb43205dbe73d`.
-
-Board descriptions, the 42 × 40 mm outline and all completion counts refer to the September 21 import. The 270 remaining PCB connection items, 661 unresolved schematic pins and 21 undriven power pins are not live analysis. The native files are fetched at page-load time from the presentation branch, while the text remains a dated review baseline. Regenerate exports and update the dated content when changing native CAD.
-
-See [manifest.json](manifest.json) for provenance. No native CAD or compact assembly geometry is changed by this addition. No font files are added. The original overview, reported owners, unified routing/LDO region and KR260 stage are retained.
+No native CAD, compact assembly geometry or main-branch files are modified. The parent system layout, reported owners, merged routing/LDO workstream and KR260 stage are retained. No font files are added.
 
 ## Verification
 
-`node --check presentation/fpga/app.js` and `node --check presentation/fpga/slides.js` check JavaScript syntax. `scripts/check_fpga_presentation.mjs` is the browser integration test used by `.github/workflows/fpga-detail-check.yml`; it checks publication, drill-down/back-navigation, native asset loading, slide states, layouts and native inspection. Workflow logs—not this document—are the evidence of a particular successful run.
+`scripts/check_fpga_presentation.mjs` and `.github/workflows/fpga-detail-check.yml` check published bytes, navigation, actual SVG loading, desktop/mobile layouts and native viewing. Workflow logs establish which checks passed for a given revision; this README does not independently claim a test result. Hardware operation is not tested.
