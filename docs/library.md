@@ -5,8 +5,8 @@ The original files are stored in this repository. Use the editable formats for f
 ## Team workflow and editable design
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
-- [FPGA working draft](../hardware/fpga-board/README.md): complete editable KiCad project and local libraries; not for manufacture.
-- [Initial FPGA import evidence](../sources/fpga-draft-2026-09-21/README.md): provenance, original hashes and dated check reports.
+- [FPGA working draft](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md): Howard-Wang branch only; complete editable KiCad project and local libraries; not for manufacture.
+- [Initial FPGA import evidence](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/sources/fpga-draft-2026-09-21/README.md): Howard-Wang branch only; provenance, original hashes and dated check reports.
 
 ## ASIC/interface slides
 

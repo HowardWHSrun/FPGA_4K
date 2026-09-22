@@ -2,19 +2,31 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
+## Personal design branches
+
+**Please create your own branch before editing PCB designs.** Use your name with hyphens, such as `First-Last`. Keep personal work on that branch; propose selected team changes to `main` through a pull request.
+
+| Branch | Purpose |
+|---|---|
+| `main` | Shared references, onboarding and reviewed team material |
+| [Howard-Wang](https://github.com/HowardWHSrun/FPGA_4K/tree/Howard-Wang) | Howard Wang's PCB draft, local libraries, draft BOM, previews and engineering reports |
+| Your `First-Last` branch | Your own PCB work; publish it and add it to the [branch directory](docs/team/owners-and-work.md) |
+
+Git branch names cannot contain spaces. Choose **Current Branch → New Branch** in GitHub Desktop, or follow the [copyable commands](CONTRIBUTING.md#create-your-personal-branch).
+
 ## Start working with the team
 
 **[Team start page](docs/team/README.md)** · **[Setup and daily workflow](CONTRIBUTING.md)** · **[Owners and open work](docs/team/owners-and-work.md)**
 
 | Work | Start here | Status |
 |---|---|---|
-| FPGA design | [Open the working draft](hardware/fpga-board/README.md) | Imported September 21; incomplete electrical design; **not for manufacture** |
+| Howard’s FPGA design | [Open Howard’s working draft](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md) | Imported September 21; incomplete electrical design; **not for manufacture** |
 | Carrier and routing boards | [Original reference projects](hardware/README.md) | Preserved references; active baselines and owners to confirm |
 | Tasks and layout ownership | [Create a PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) | One active layout editor per board |
 | Pinout / power / protocol decisions | [Create a decision](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) | Review with owners on both sides |
-| Proposed changes | [Pull requests](https://github.com/HowardWHSrun/FPGA_4K/pulls) | Branch → review → merge → pull |
+| Selected changes for the team | [Pull requests](https://github.com/HowardWHSrun/FPGA_4K/pulls) | Personal work stays on its branch; review before integration |
 
-Use KiCad **10.0.6** for the FPGA handoff. Clone the repository, open the project from your clone, and keep its custom libraries alongside it. Follow [CONTRIBUTING.md](CONTRIBUTING.md) before editing; uploading a draft does not approve its circuit or make `main` fabrication-ready.
+Use KiCad **10.0.6** for the FPGA handoff. Clone the repository, switch to `Howard-Wang` to open Howard’s project, and keep its custom libraries alongside it. Follow [CONTRIBUTING.md](CONTRIBUTING.md) before editing; uploading a draft does not approve its circuit or make `main` fabrication-ready.
 
 ## Board overview
 
