@@ -23,7 +23,9 @@ def check(root):
         print('ERROR: invalid hardware/project-scope.json: ' + str(exc), file=sys.stderr)
         return 1
     if not required:
-        if board_dir.exists():
+        # Ignored KiCad preferences can remain after switching branches.
+        native_suffixes = {'.kicad_pcb', '.kicad_pro', '.kicad_sch', '.kicad_sym', '.kicad_mod', '.kicad_dru'}
+        if any(path.suffix in native_suffixes for path in board_dir.rglob('*')):
             print('ERROR: Howard draft exists but is excluded by project-scope.json', file=sys.stderr)
             return 1
         print('PASS: branch intentionally excludes Howard personal CAD; shared references are checked by check_docs.py.')
