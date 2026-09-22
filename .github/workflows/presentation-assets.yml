@@ -1,0 +1,70 @@
+name: Presentation assets
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - .github/workflows/presentation-assets.yml
+      - hardware/assembly/stacked_headboard_original.stl
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: presentation-assets
+  cancel-in-progress: false
+jobs:
+  mesh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: presentation
+      - name: Extract preserved STL without changing geometry
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, json, hashlib
+          source = Path('hardware/assembly/stacked_headboard_original.stl')
+          raw = source.read_bytes()
+          count = struct.unpack_from('<I', raw, 80)[0]
+          assert len(raw) == 84 + 50 * count, 'Unexpected binary STL layout'
+          vertices, faces, lookup = [], [], {}
+          for i in range(count):
+              values = struct.unpack_from('<12fH', raw, 84 + i * 50)
+              face = []
+              for j in (3, 6, 9):
+                  vertex = tuple(round(v, 6) for v in values[j:j+3])
+                  if vertex not in lookup:
+                      lookup[vertex] = len(vertices)
+                      vertices.append(vertex)
+                  face.append(lookup[vertex])
+              faces.append(face)
+          data = {'source': str(source), 'sha256': hashlib.sha256(raw).hexdigest(), 'units': 'unspecified model units', 'vertices': vertices, 'faces': faces}
+          out = Path('presentation')
+          out.mkdir(exist_ok=True)
+          (out / 'model-data.js').write_text('/* Exact indexed geometry from the preserved STL. Units unspecified. */\nwindow.ASSEMBLY_MODEL = ' + json.dumps(data, separators=(',', ':')) + ';\n')
+          stats = {'triangles': count, 'vertices': len(vertices), 'axes': {axis: sorted(set(v[k] for v in vertices)) for k, axis in enumerate('xyz')}}
+          (out / 'model-stats.json').write_text(json.dumps(stats, indent=2) + '\n')
+          print(json.dumps(stats, indent=2))
+          PY
+      - name: Record generated mesh on presentation branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add presentation/model-data.js presentation/model-stats.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Generate indexed assembly mesh for presentation'
+            git push origin HEAD:presentation
+          fi
+      - name: Check repository source integrity
+        run: |
+          python3 scripts/check_docs.py
+          python3 scripts/check_hardware.py
+          git diff --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: presentation-model-source
+          path: |
+            presentation/model-data.js
+            presentation/model-stats.json
+            hardware/assembly/stacked_headboard_original.stl
+            hardware/assembly/stacked_headboard_labeled.png
