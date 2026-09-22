@@ -59,3 +59,9 @@ The active root presentation uses the compact B v1 STL supplied by Howard on Sep
 [Open the presentation](https://howardwhsrun.github.io/FPGA_4K/) · [Editing guide](../presentation/compact/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
 
 The presentation branch uses the compact B v1 assembly supplied on September 22. The opening view and region navigation are implemented; detailed slides are placeholders. The original STL is preserved separately.
+
+## FPGA board-level presentation
+
+[Open the FPGA slide deck](../presentation/fpga/index.html) · [Navigation and editing guide](../presentation/fpga/README.md) · [Source manifest](../presentation/fpga/manifest.json).
+
+Select FPGA in the system view, then open its KiCad design and dedicated slides. This nested page includes the existing front/back KiCad exports, optional read-only native PCB/schematic inspection, five source-grounded review slides and a return link to the parent FPGA view. The native CAD and compact assembly are unchanged. Board-completion figures retain their September 21 import date.
