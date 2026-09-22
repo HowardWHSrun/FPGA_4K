@@ -51,7 +51,7 @@
     if(customElements.get('kicanvas-embed'))return Promise.resolve();
     if(modulePromise)return modulePromise;
     modulePromise=new Promise((resolve,reject)=>{
-      const s=document.createElement('script');s.type='module';s.src='https://kicanvas.org/kicanvas.js';
+      const s=document.createElement('script');s.type='module';s.src='https://kicanvas.org/kicanvas/kicanvas.js';
       const timer=setTimeout(()=>reject(new Error('Native viewer did not initialize; front/back layouts remain available.')),20000);
       s.onload=()=>customElements.whenDefined('kicanvas-embed').then(()=>{clearTimeout(timer);resolve();});
       s.onerror=()=>{clearTimeout(timer);modulePromise=null;reject(new Error('KiCanvas could not load. Use the front/back layouts or open the native files in desktop KiCad.'));};
@@ -119,6 +119,6 @@
   $('fullscreen').onclick=fullscreen;$('previous').onclick=()=>setSlide(current.slide-1);$('next').onclick=()=>setSlide(current.slide+1);
   document.addEventListener('keydown',e=>{if(dialog.open||e.ctrlKey||e.metaKey||e.altKey||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.composedPath().some(n=>n.tagName==='KICANVAS-EMBED'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();setSlide(current.slide+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();setSlide(current.slide-1);}else if(e.key.toLowerCase()==='f')fullscreen();else if(e.key.toLowerCase()==='r')fit();else if(/^[1-5]$/.test(e.key))setSlide(Number(e.key)-1);});
   function fromHash(){const i=slides.findIndex(s=>'#'+s.id===location.hash);setSlide(i<0?0:i,false);}
-  addEventListener('popstate',fromHash);addEventListener('hashchange',fromHash);addEventListener('pagehide',()=>{disposed=true;});fromHash();
+  addEventListener('popstate',fromHash);addEventListener('hashchange',fromHash);addEventListener('pagehide',()=>{disposed=true;});addEventListener('pageshow',()=>{disposed=false;});fromHash();
   window.FPGA_REVIEW={getState:()=>({...current,slideId:c().id,sheets:files.length+1,document:$('document').value}),setSlide,openNative};
 })();
