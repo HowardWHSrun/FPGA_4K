@@ -1,0 +1,47 @@
+name: Verify presentation Pages
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - .github/workflows/verify-presentation-pages.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check live GitHub Pages document and assets
+        run: |
+          python3 - <<'PY'
+          import urllib.request, json, time
+          from pathlib import Path
+          base = 'https://howardwhsrun.github.io/FPGA_4K/'
+          expected = {'index.html': '4K Recording System', 'presentation/style.css': ':root', 'presentation/app.js': 'PRESENTATION', 'presentation/model-data.js': 'ASSEMBLY_MODEL'}
+          report = {'base': base, 'checks': []}
+          for path, marker in expected.items():
+              result = {'path': path}
+              for attempt in range(10):
+                  try:
+                      req = urllib.request.Request(base + path, headers={'User-Agent': 'FPGA-4K-Presentation-Check', 'Cache-Control': 'no-cache'})
+                      with urllib.request.urlopen(req, timeout=15) as response:
+                          content = response.read().decode('utf-8')
+                          result = {'path': path, 'status': response.status, 'content_type': response.headers.get('Content-Type'), 'marker_found': marker in content, 'final_url': response.url}
+                      if result['status'] == 200 and result['marker_found']:
+                          break
+                  except Exception as error:
+                      result['error'] = str(error)
+                  if attempt < 9:
+                      time.sleep(6)
+              report['checks'].append(result)
+          report['passed'] = all(x.get('status') == 200 and x.get('marker_found') for x in report['checks'])
+          Path('pages-verification.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          if not report['passed']:
+              raise SystemExit('GitHub Pages is not verified.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: presentation-pages-verification
+          path: pages-verification.json
