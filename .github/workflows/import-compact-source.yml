@@ -1,0 +1,43 @@
+name: Import compact presentation source
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - scripts/import_compact_presentation.py
+      - .github/workflows/import-compact-source.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-compact-presentation
+  cancel-in-progress: false
+jobs:
+  compact-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: presentation
+      - name: Import exact supplied compact model
+        run: python3 scripts/import_compact_presentation.py
+      - name: Validate repository files
+        run: |
+          git add hardware/assembly/stacked_headboard_compact_B_v1.stl presentation/model-source.js sources/manifest.json docs/library.md hardware/assembly/README.md
+          python3 scripts/check_docs.py
+          python3 scripts/check_hardware.py
+          git diff --check
+          git diff --cached --check
+      - name: Commit source to presentation branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --cached --quiet; then
+            git commit -m 'Import exact supplied compact assembly and presentation provenance'
+            git push origin HEAD:presentation
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compact-presentation-source
+          path: |
+            presentation/model-source.js
+            hardware/assembly/stacked_headboard_compact_B_v1.stl
