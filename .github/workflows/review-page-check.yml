@@ -1,0 +1,52 @@
+name: Review page checks
+on:
+  push:
+    branches: [presentation]
+    paths:
+      - presentation/review/**
+      - presentation/model-data.js
+      - .github/workflows/review-page-check.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate review JavaScript
+        run: node --check presentation/review/app.js
+      - name: Verify public presentation and assets
+        run: |
+          python3 - <<'PY'
+          import urllib.request, time, hashlib, json
+          from pathlib import Path
+          base = 'https://howardwhsrun.github.io/FPGA_4K/'
+          paths = ['presentation/review/index.html', 'presentation/review/style.css', 'presentation/review/app.js', 'presentation/model-data.js']
+          results = []
+          for attempt in range(12):
+              try:
+                  results = []
+                  for path in paths:
+                      req = urllib.request.Request(base + path, headers={'Cache-Control': 'no-cache', 'User-Agent': 'FPGA-4K-presentation-check'})
+                      with urllib.request.urlopen(req, timeout=15) as response:
+                          raw = response.read()
+                          assert response.status == 200, response.status
+                      expected = Path(path).read_bytes()
+                      assert raw == expected, f'Published bytes differ: {path}'
+                      result = {'url': base + path, 'status': 200, 'sha256': hashlib.sha256(raw).hexdigest(), 'matches_commit': True}
+                      results.append(result)
+                      print(json.dumps(result))
+                  break
+              except Exception as exc:
+                  print(f'Attempt {attempt + 1}: {exc}', flush=True)
+                  if attempt == 11:
+                      raise
+                  time.sleep(10)
+          Path('review-public-check.json').write_text(json.dumps(results, indent=2) + '\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-public-check
+          path: review-public-check.json
