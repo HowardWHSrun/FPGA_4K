@@ -50,12 +50,12 @@ The source files are included at a pinned upstream revision for repeatable readi
 
 ## Assembly-first presentation
 
-[Open the browser presentation](../index.html) · [Presentation guide](../presentation/README.md) · [Model derivation](../presentation/manifest.json).
+[Open the browser presentation](../index.html) · [Presentation guide](../presentation/compact/README.md) · [Model provenance](../presentation/compact/manifest.json).
 
-This branch-only starter uses the original assembly mesh and a separately labeled, new provisional compact connection study. It is not the unrecovered earlier shortened CAD revision or a fabrication release.
+The active root presentation uses the compact B v1 STL supplied by Howard on September 22, with unchanged geometry. Older original-based visualization studies remain separate and are not used by the root page. Detailed slides are placeholders; this is not a fabrication release.
 
 ## HTML presentation
 
-[Open the presentation](https://howardwhsrun.github.io/FPGA_4K/) · [Editing guide](../presentation/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
+[Open the presentation](https://howardwhsrun.github.io/FPGA_4K/) · [Editing guide](../presentation/compact/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
 
 The presentation branch uses the compact B v1 assembly supplied on September 22. The opening view and region navigation are implemented; detailed slides are placeholders. The original STL is preserved separately.
