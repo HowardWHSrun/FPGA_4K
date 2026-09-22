@@ -47,3 +47,9 @@ These are supplied examples. Their presence does not establish final mating comp
 The source files are included at a pinned upstream revision for repeatable reading and use. This is the earlier ECP5/FT600 project; it does not establish compatibility with the proposed Artix-7 path or complete 4K operation. The separately labeled FPGA working draft is now included for team development; it does not change the status of this historical firmware.
 
 [Source provenance and checksums](../sources/README.md) describe what is original, what is a faithful representation and the one library-path adaptation.
+
+## Assembly-first presentation
+
+[Open the browser presentation](../index.html) · [Presentation guide](../presentation/README.md) · [Model derivation](../presentation/manifest.json).
+
+This branch-only starter uses the original assembly mesh and a separately labeled, new provisional compact connection study. It is not the unrecovered earlier shortened CAD revision or a fabrication release.
