@@ -20,6 +20,8 @@ Use the original slide diagrams for timing relationships that text extraction ca
 
 - September 17: [searchable notes](meetings/2026-09-17.md), [Word](../sources/meetings/2026-09-17-notes.docx), [PDF](../sources/meetings/2026-09-17-notes.pdf).
 - [Team follow-up received September 18](meetings/2026-09-18-follow-up.md): workstream assignments, development sequence, voltage/clock clarification and unresolved behavior.
+- [September 21 FPGA digest](../presentation/fpga/meeting-2026-09-21.md): presentation-focused meeting summary, not an approved specification.
+- [September 22 FPGA direction](../presentation/fpga/direction-2026-09-22.md): Howard and Zitong's current work, CP SOM One reference, smaller-package evaluation and proposed prototyping approach.
 
 These records summarize team discussions. The September 17 [questions for the next review](meetings/2026-09-17.md#questions-to-resolve-in-the-next-review) retain their dated context; they are not a current approved specification.
 
@@ -52,16 +54,16 @@ The source files are included at a pinned upstream revision for repeatable readi
 
 [Open the browser presentation](../index.html) · [Presentation guide](../presentation/compact/README.md) · [Model provenance](../presentation/compact/manifest.json).
 
-The active root presentation uses the compact B v1 STL supplied by Howard on September 22, with unchanged geometry. Older original-based visualization studies remain separate and are not used by the root page. Detailed slides are placeholders; this is not a fabrication release.
+The active root presentation uses the compact B v1 STL supplied by Howard on September 22, with unchanged geometry. Older original-based visualization studies remain separate and are not used by the root page. This is not a fabrication release.
 
 ## HTML presentation
 
 [Open the presentation](https://howardwhsrun.github.io/FPGA_4K/) · [Editing guide](../presentation/compact/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
 
-The presentation branch uses the compact B v1 assembly supplied on September 22. The opening view and region navigation are implemented; detailed slides are placeholders. The original STL is preserved separately.
+The presentation branch uses the compact B v1 assembly supplied on September 22. The original STL is preserved separately.
 
 ## FPGA board-level presentation
 
 [Open the FPGA slide deck](../presentation/fpga/index.html) · [Navigation and editing guide](../presentation/fpga/README.md) · [Source manifest](../presentation/fpga/manifest.json).
 
-Select FPGA in the system view, then open its KiCad design and dedicated slides. This nested page includes the existing front/back KiCad exports, optional read-only native PCB/schematic inspection, five source-grounded review slides and a return link to the parent FPGA view. The native CAD and compact assembly are unchanged. Board-completion figures retain their September 21 import date.
+Select FPGA in the system view, then open its KiCad design and dedicated slides. Eight short slides cover the current draft/reference, smaller FPGA, functions, I/O/link, power, boot/clock, prototype and next steps. The original exports and read-only native PCB/schematic viewer remain available. The CAD still uses the 200T draft; the 10 × 10 mm 50T/CPG236 is an evaluation candidate, not an implemented replacement. Board-completion figures retain their September 21 import date.

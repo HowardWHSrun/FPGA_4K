@@ -2,11 +2,12 @@
   "kind": "nested-fpga-presentation",
   "created": "2026-09-22",
   "updated": "2026-09-22",
+  "revision": "50t-review-v1",
   "branch": "presentation",
   "entry": "presentation/fpga/index.html",
   "parent": "index.html#fpga",
   "source_revision": "46c3c6985bef1249170146dba927266443d8a1e8",
-  "integration_base": "253525fcaf3d7a796c770917db4689badf330b48",
+  "integration_base": "ee8b615ed2a4ced86b3f52f916daf5532249ca63",
   "cad_root": "hardware/fpga-board/hardware",
   "pcb_blob": "ad4324809871fe300aee289dbb441b4fc6ff9dcc",
   "schematic_blob": "7b013b342acbe10802a243148a1de90d852922d7",
@@ -14,9 +15,20 @@
   "native_cad_changed": false,
   "source_mesh_changed": false,
   "slides": 8,
-  "source_dates": {"board_status":"2026-09-21 import", "reported_owners":"2026-09-18 received follow-up", "meeting":"2026-09-21, identified by user"},
+  "current_hardware": "XC7A200T-1SBG484C saved draft",
+  "candidate": {"device":"XC7A50T", "package":"CPG236", "body_mm":[10,10], "pitch_mm":0.5, "user_io":106, "gtp_channels":2, "full_ordering_code":"TBD", "selected":false, "implemented":false, "source":"AMD XMP101 v1.8 page 3"},
+  "current_pcb_collaborators_reported_by_user": ["Howard", "Zitong"],
+  "source_dates": {"board_status":"2026-09-21 import", "reported_owners":"2026-09-18 received follow-up", "meeting":"2026-09-21, identified by user", "new_direction":"2026-09-22 user update"},
   "meeting_source": {"title":"Pasted text(20260922-020854).txt", "representation":"project-only paraphrased digest", "raw_transcript_published":false, "digest":"presentation/fpga/meeting-2026-09-21.md"},
-  "content_sources": ["hardware/fpga-board/README.md", "sources/fpga-draft-2026-09-21/BOM_Draft.csv", "sources/fpga-draft-2026-09-21/README.md", "docs/team/owners-and-work.md", "docs/meetings/2026-09-18-follow-up.md", "presentation/fpga/meeting-2026-09-21.md"],
+  "content_sources": ["hardware/fpga-board/README.md", "sources/fpga-draft-2026-09-21/BOM_Draft.csv", "sources/fpga-draft-2026-09-21/README.md", "docs/meetings/2026-09-18-follow-up.md", "presentation/fpga/meeting-2026-09-21.md", "presentation/fpga/direction-2026-09-22.md"],
+  "external_references": [
+    {"url":"https://github.com/controlpaths/cp_som_one/blob/main/README.md", "readme_blob":"3c38c165b5fd689ccfdced5d8875a71171f77f8a", "role":"power/schematic/layout reference identified by Howard; no identical-circuit claim"},
+    {"url":"https://www.controlpaths.com/2023/10/28/designing-a-fpga-som/", "role":"reference author’s design explanation"},
+    {"url":"https://docs.amd.com/v/u/en-US/7-series-product-selection-guide", "revision":"XMP101 v1.8", "page":3, "role":"package dimensions and available I/O/GTP; checked in table image"},
+    {"url":"https://docs.amd.com/v/u/en-US/ug475_7Series_Pkg_Pinout", "role":"package/pinout reference for design closure"},
+    {"url":"https://docs.amd.com/v/u/en-US/ug483_7Series_PCB", "role":"PCB design reference"},
+    {"url":"https://digilent.com/shop/cmod-a7-35t-breadboardable-artix-7-fpga-module/", "role":"limited-I/O prototyping example, not a full-system selection or purchase"}
+  ],
   "third_party_viewer": {"name":"KiCanvas", "url":"https://kicanvas.org/kicanvas/kicanvas.js", "docs":"https://kicanvas.org/embedding/", "loaded":"on demand", "mode":"read-only", "full_kicad_feature_parity_claimed":false},
-  "hardware_validation": "none; dated reports, meeting proposals and suggested actions are distinguished"
+  "hardware_validation": "none; dated reports, user direction, checked package facts and proposed prototype steps are distinguished"
 }
