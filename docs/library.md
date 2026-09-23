@@ -75,3 +75,7 @@ Select FPGA in the system view, then open its KiCad design and dedicated slides.
 ## Recurring PCB reviews
 
 [Meeting hub](../presentation/meetings/index.html) · [Review template](../presentation/meetings/template.html) · [Editing guide](../presentation/meetings/README.md). Fixed review order and dated records keep each meeting easy to find.
+
+## September 24 meeting preparation
+
+[Review page](../presentation/meetings/2026-09-24.html) · [Original choices PDF](../sources/meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf). Proposal dated September 23, supplied for the September 24 meeting; no outcomes recorded.

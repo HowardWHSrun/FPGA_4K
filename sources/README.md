@@ -27,3 +27,7 @@ Original ownership and applicable terms are retained. No repository-wide license
 ## September 23 meeting materials
 
 Howard supplied the [notes](meetings/2026-09-23-notes.txt) and [system-view screenshot](meetings/2026-09-23-system-view.png) on September 23, 2026. Both are preserved byte for byte; the screenshot’s original author is unknown. The [meeting page](../presentation/meetings/2026-09-23.html) is a derived summary. Discussion targets and reported activity are not approved specifications or test results.
+
+## September 24 preparation
+
+[FPGA meeting choices PDF](meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf), credited to Howard Wang and dated September 23, supplied for the September 24 meeting. Unchanged original including embedded links. [Online summary](../presentation/meetings/2026-09-24.html) distinguishes proposals from decisions and dated supplier figures from current stock.

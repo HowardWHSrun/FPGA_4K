@@ -13,3 +13,5 @@ Show explicit evidence dates and CAD revision. Distinguish discussion targets, p
 The site header links to this permanent hub, so it does not need a new date-specific link each meeting. Update the relevant system/FPGA slide copy only where new evidence changes it. Keep dated CAD previews clearly labeled.
 
 Validation: run `python3 scripts/check_docs.py`, `python3 scripts/check_hardware.py` and `git diff --check` from the repo root, verify local HTML assets, then confirm Pages deployment and published file bytes.
+
+Upcoming review: [September 24 preparation](2026-09-24.html), based on the supplied September 23 proposal PDF. Keep upcoming preparation distinct from completed meeting records; record outcomes only when supplied.
