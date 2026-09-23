@@ -23,6 +23,7 @@ jobs:
         run: |
           node --check presentation/compact/app.js
           node --check presentation/compact/slides.js
+          node --check presentation/compact/interaction.js
           node --check presentation/model-source.js
           python3 - <<'PY'
           import base64, gzip, hashlib, json
@@ -41,7 +42,7 @@ jobs:
           import hashlib, json, os, time, urllib.request
           from pathlib import Path
           base = 'https://howardwhsrun.github.io/FPGA_4K/'
-          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js']
+          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js', 'presentation/compact/refinements.css', 'presentation/compact/interaction.js']
           for attempt in range(18):
               try:
                   checked = []
@@ -69,7 +70,9 @@ jobs:
           grep -q 'data-rendered="true"' live-rendered.html
           grep -q 'data-model="compact_B_v1"' live-rendered.html
           grep -q 'data-triangles="650"' live-rendered.html
-          echo 'LIVE BROWSER VERIFIED: compact_B_v1 rendered with 650 triangles.'
+          grep -q 'data-presentation-revision="review-v2.1"' live-rendered.html
+          grep -q 'data-controller="KR260_schematic"' live-rendered.html
+          echo 'LIVE BROWSER VERIFIED: compact_B_v1, KR260 schematic, and review-v2.1 finishing layer rendered.'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
