@@ -23,3 +23,7 @@ The collection now also includes the [FPGA working draft](../hardware/fpga-board
 The photograph in the [hardware overview](../hardware/overview.md) is the complete second slide of the included interface deck, rendered from its PDF. It shows a single-chip assembly; it is not labelled as the two-chip PCB-5 CAD revision. The system diagram summarizes the dated meeting record. The reference-board CAD views and the separately supplied overall arrangement STL are distinct sources; their inclusion does not establish that the reference boards mechanically mate.
 
 Original ownership and applicable terms are retained. No repository-wide license was found in the pinned FPGA_512 tree; this collection adds no license grant to that code or the imported lab material.
+
+## September 23 meeting materials
+
+Howard supplied the [notes](meetings/2026-09-23-notes.txt) and [system-view screenshot](meetings/2026-09-23-system-view.png) on September 23, 2026. Both are preserved byte for byte; the screenshot’s original author is unknown. The [meeting page](../presentation/meetings/2026-09-23.html) is a derived summary. Discussion targets and reported activity are not approved specifications or test results.

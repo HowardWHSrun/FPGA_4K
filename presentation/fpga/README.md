@@ -29,3 +29,7 @@ CAD source revision: `46c3c6985bef1249170146dba927266443d8a1e8`. Integration bas
 Native files load from the presentation branch; visible board sizes and historical completion counts retain their September 21 import date. No native CAD, compact assembly geometry or main-branch files are modified. No electrical operation, synthesis, timing closure or fresh DRC/ERC is performed for this presentation update.
 
 `.github/workflows/fpga-detail-check.yml` and `scripts/check_fpga_presentation.mjs` check publication, drill-down/back navigation, eight slide states, actual board exports, desktop/mobile layouts and native viewing. A workflow's logs—not this README—establish a particular successful run.
+
+## September 23 update
+
+The [latest meeting](../meetings/2026-09-23.html) reopens FPGA/package selection: approximately 120 I/O are discussed and the 106-I/O 50T option was reported insufficient. Prioritize the complete pin map, minimum board components, procurement, USB 3.0/connector decision and EMI review. The native CAD remains the dated 200T draft.

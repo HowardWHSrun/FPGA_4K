@@ -67,3 +67,7 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 [Open the FPGA slide deck](../presentation/fpga/index.html) · [Navigation and editing guide](../presentation/fpga/README.md) · [Source manifest](../presentation/fpga/manifest.json).
 
 Select FPGA in the system view, then open its KiCad design and dedicated slides. Eight short slides cover the current draft/reference, smaller FPGA, functions, I/O/link, power, boot/clock, prototype and next steps. The original exports and read-only native PCB/schematic viewer remain available. The CAD still uses the 200T draft; the 10 × 10 mm 50T/CPG236 is an evaluation candidate, not an implemented replacement. Board-completion figures retain their September 21 import date.
+
+## September 23 meeting
+
+[Meeting page and actions](../presentation/meetings/2026-09-23.html) · [Unchanged notes](../sources/meetings/2026-09-23-notes.txt) · [Original diagram](../sources/meetings/2026-09-23-system-view.png). Includes current priorities and discrepancies needing confirmation.

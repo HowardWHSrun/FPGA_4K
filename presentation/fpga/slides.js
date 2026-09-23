@@ -23,7 +23,7 @@
       id:'layout',name:'Current draft',title:'Current FPGA PCB',subtitle:'Howard + Zitong',
       description:'Power and schematic/layout reference: Controlpaths’ CP SOM One.',
       side:'front',document:'Howard_FPGA_Connected_42x40.kicad_pcb',
-      facts:[['42 × 40','current board · mm'],['200T','saved draft'],['50T','next candidate']],
+      facts:[['42 × 40','current board · mm'],['200T','saved draft'],['TBD','FPGA selection']],
       points:[['Adapt the reference','Keep useful circuitry; revise it for our system.'],['Reduce board area','Evaluate the smaller FPGA before reworking placement.']],
       noteLabel:'Working proposal',note:'Board functions and component choices are still being finalized.',
       notes:[
@@ -35,12 +35,12 @@
       ],sources:[refs.update,refs.reference,refs.article,refs.board,refs.bom]
     },
     {
-      id:'interfaces',name:'Smaller FPGA',title:'Evaluate a 10 × 10 mm FPGA',subtitle:'XC7A50T · CPG236',
-      description:'A smaller package to evaluate—not yet an approved replacement.',
+      id:'interfaces',name:'Smaller FPGA',title:'Resolve the FPGA pin budget',subtitle:'23 Sep · device selection remains open',
+      description:'The meeting reports the 106-I/O option as insufficient for approximately 120 required I/O.',
       side:'front',document:'U1_unit_01.kicad_sch',
       facts:[['10 × 10','package body · mm'],['106','package user I/O'],['0.5 mm','BGA ball pitch']],
       points:[['Check fit','Map every pin; synthesize the planned logic for 50T.'],['Revise the design','Rework footprint, banks, power and routing—not a drop-in swap.']],
-      noteLabel:'Candidate only',note:'CPG236 provides 2 GTP channels. The viewer still shows the 200T draft.',
+      noteLabel:'Candidate only',note:'Confirm the complete pin map, resources, low power and stock before choosing the FPGA/package.',
       notes:[
         'AMD XMP101 v1.8, page 3, lists XC7A50T in CPG236: 10 × 10 mm, 0.5 mm ball pitch, 106 user I/O and 2 GTP transceivers. The 10 × 10 mm claim is package-specific, not true of every XC7A50T ordering code. Speed and temperature grade are not selected.',
         'The same package table lists the current 200T SBG484 package at 19 × 19 mm, 285 user I/O and 4 GTP transceivers. These are component body sizes, not complete PCB dimensions. The present PCB outline is 42 × 40 mm.',
@@ -127,11 +127,11 @@
     },
     {
       id:'decisions',name:'Next steps',title:'What we need to resolve next',subtitle:'Howard + Zitong · board design',
-      description:'Functions → FPGA/package → prototype → revised PCB.',
+      description:'Minimum board → FPGA/stock → controller/link → EMI and protection.',
       side:'front',document:'Howard_FPGA_Connected_42x40.kicad_sch',
-      facts:[['Define','functions + pins'],['Check','50T feasibility'],['Test','prototype route']],
+      facts:[['Define','functions + pins'],['Select','FPGA + package'],['Test','prototype route']],
       points:[['Before re-layout','Confirm the complete pin map, logic fit and cable interface.'],['Then revise','Update power, footprint and placement; finalize parts after review.']],
-      noteLabel:'Current status',note:'The schematic and parts are a rough working plan, not a final BOM.',
+      noteLabel:'Current status',note:'23 Sep: evaluate USB 3.0, Opal Kelly, USB-C vs micro-HDMI, SPI commands and shielding. Final BOM remains open.',
       notes:[
         'Howard explicitly reports current joint work with Zitong and asks to evaluate a smaller XC7A50T. This does not mean the 50T is already selected, the schematic is ported, or the new layout works.',
         'Suggested closure artifacts: a minimum function list; package-specific pin/bank table; candidate-device utilization/timing results; link/clock requirements; rail budget; prototype selection and measurable bench criteria.',
@@ -141,5 +141,9 @@
       ],sources:[refs.update,refs.meeting,refs.packages,refs.board,refs.team]
     }
   ];
+  for (const slide of window.FPGA_SLIDES) {
+    slide.sources.unshift(['../meetings/2026-09-23.html','23 Sep · current meeting and original sources']);
+    slide.notes.unshift('September 23 update: FPGA/package selection remains open. The meeting reports approximately 120 required I/O and says the 106-I/O 50T option is insufficient. The supplied diagram retains an older 100–110 total-pin estimate; reconcile the complete map. Approximately 30 × 30 mm is a size target to investigate, and procurement of at least 100 devices is a requested check, not confirmed stock. Earlier September 22 candidate details below remain dated context.');
+  }
   window.FPGA_REVIEW_COPY={revision:'50t-review-v1',currentHardware:'XC7A200T-1SBG484C',candidate:'XC7A50T / CPG236',candidateSelected:false,pcbCollaborators:['Howard','Zitong']};
 })();
