@@ -68,6 +68,10 @@ The source files come with the clone—no separate source download is needed. Th
 
 AI agents should start with [AGENTS.md](AGENTS.md). Source credits, versions and copy details are recorded in [provenance](sources/README.md).
 
-## Latest meeting — 23 September 2026
+## Meeting reviews
+
+**[Open the meeting hub](presentation/meetings/index.html)** for the latest review, action items and earlier records.
+
+### Latest meeting — 23 September 2026
 
 [Read the meeting, priorities and actions](presentation/meetings/2026-09-23.html) · [Original notes](sources/meetings/2026-09-23-notes.txt) · [System diagram](sources/meetings/2026-09-23-system-view.png). FPGA/package, USB 3.0, connector, exact pins and board size remain open.
