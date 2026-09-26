@@ -1,0 +1,461 @@
+{
+  "date_utc": "2026-09-26T15:50:49.747970+00:00",
+  "manufacturing_ready": false,
+  "projects": {
+    "minimal_core": {
+      "source": "minimal_core/hardware/FPGA100T_Minimal.kicad_pcb",
+      "sha256": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0",
+      "source_unchanged": true,
+      "components": 126,
+      "front": 50,
+      "back": 76,
+      "outline_mm": [
+        40.0,
+        36.0
+      ],
+      "outline_four_corners_correct": true,
+      "pad_records": 675,
+      "distinct_numbered_pad_endpoints": 636,
+      "FPGA_ball_count": 324,
+      "tracks": 1010,
+      "vias": 146,
+      "zones": 4,
+      "physical_DRC_violations": 0,
+      "unconnected_items": 139,
+      "schematic_parity_issues": 0,
+      "schematic_parity_checked": true,
+      "unconnected_by_net": {
+        "LINK_12V": 6,
+        "PGOOD_IO": 2,
+        "PG_AUX": 2,
+        "PG_CORE": 1,
+        "VCCAUX_1V8": 14,
+        "VCCINT_1V0": 34,
+        "VCC_ASIC_1V5": 37,
+        "VCC_CFG_3V3": 43
+      },
+      "ignored_DRC_checks": [],
+      "DRC_exclusions": [],
+      "ignored_DRC_rule_severities": [],
+      "deleted_refs_present": [],
+      "J4_MPN": "Molex46765 family; exact order code pending",
+      "J4_at": [
+        37.6,
+        6.0,
+        90.0
+      ],
+      "track_width_counts_mm": {
+        "0.1": 786,
+        "0.15": 21,
+        "0.2": 102,
+        "0.3": 12,
+        "0.35": 12,
+        "0.4": 8,
+        "0.5": 17,
+        "0.6": 26,
+        "0.8": 8,
+        "1.0": 4,
+        "1.2": 14
+      },
+      "via_geometries": [
+        {
+          "diameter_mm": 0.4,
+          "drill_mm": 0.2,
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "count": 127
+        },
+        {
+          "diameter_mm": 0.6,
+          "drill_mm": 0.3,
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "count": 19
+        }
+      ],
+      "board_thickness_mm": 1.6,
+      "explicit_stackup_present": false,
+      "rules": {
+        "max_error": 0.005,
+        "min_clearance": 0.15,
+        "min_connection": 0.0,
+        "min_copper_edge_clearance": 0.5,
+        "min_groove_width": 0.0,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_resolved_spokes": 2,
+        "min_silk_clearance": 0.0,
+        "min_text_height": 0.8,
+        "min_text_thickness": 0.08,
+        "min_through_hole_diameter": 0.2,
+        "min_track_width": 0.1,
+        "min_via_annular_width": 0.1,
+        "min_via_diameter": 0.4,
+        "solder_mask_to_copper_clearance": 0.0,
+        "use_height_for_length_calcs": true
+      },
+      "zones_summary": [
+        {
+          "net": "GND",
+          "layer": "F.Cu",
+          "solid_pad_connection": true,
+          "minimum_width_mm": 0.1,
+          "filled_polygon_count": 5
+        },
+        {
+          "net": "GND",
+          "layer": "B.Cu",
+          "solid_pad_connection": true,
+          "minimum_width_mm": 0.1,
+          "filled_polygon_count": 7
+        },
+        {
+          "net": "GND",
+          "layer": "In1.Cu",
+          "solid_pad_connection": true,
+          "minimum_width_mm": 0.1,
+          "filled_polygon_count": 1
+        },
+        {
+          "net": "GND",
+          "layer": "In4.Cu",
+          "solid_pad_connection": true,
+          "minimum_width_mm": 0.1,
+          "filled_polygon_count": 1
+        }
+      ],
+      "through_via_hole_BGA_land_intersections": [],
+      "fresh_netlist": {
+        "endpoints": 636,
+        "endpoint_sets_equal": true,
+        "mismatches": [],
+        "intended_connected_endpoints": 419,
+        "manifest_mismatches": [],
+        "component_refs_match_manifest": true
+      },
+      "all_enabled_ERC": {
+        "total": 221,
+        "by_type": {
+          "four_way_junction": 5,
+          "pin_not_connected": 211,
+          "pin_to_pin": 5
+        },
+        "ignored_checks": [],
+        "excluded_findings": 0,
+        "open_pin_refs": {
+          "U1": 203,
+          "J4": 8
+        }
+      }
+    },
+    "full_system": {
+      "source": "full_system/hardware/FPGA100T_Full_System.kicad_pcb",
+      "sha256": "c71578d3e72d22d84c3cf635c6935c736940c9ae5b3f8de2a5dd404a9f00a547",
+      "source_unchanged": true,
+      "components": 128,
+      "front": 50,
+      "back": 78,
+      "outline_mm": [
+        40.0,
+        36.0
+      ],
+      "outline_four_corners_correct": true,
+      "pad_records": 679,
+      "distinct_numbered_pad_endpoints": 640,
+      "FPGA_ball_count": 324,
+      "tracks": 360,
+      "vias": 25,
+      "zones": 0,
+      "physical_DRC_violations": 0,
+      "unconnected_items": 347,
+      "schematic_parity_issues": 0,
+      "schematic_parity_checked": true,
+      "unconnected_by_net": {
+        "FB_ASIC": 2,
+        "FB_AUX": 2,
+        "FB_CFG": 2,
+        "FB_CORE": 2,
+        "GND": 161,
+        "LINK_12V": 21,
+        "PGOOD_IO": 2,
+        "PG_AUX": 3,
+        "PG_CORE": 2,
+        "SS_ASIC": 1,
+        "SS_AUX": 1,
+        "SS_CFG": 1,
+        "SS_CORE": 1,
+        "SW_ASIC": 1,
+        "SW_AUX": 1,
+        "SW_CFG": 1,
+        "SW_CORE": 1,
+        "VAUX_REG_1V803": 4,
+        "VCCAUX_1V8": 49,
+        "VCCINT_1V0": 34,
+        "VCC_ASIC_1V5": 40,
+        "VCC_LINK_2V5": 11,
+        "VCORE_REG_1V025": 4
+      },
+      "ignored_DRC_checks": [],
+      "DRC_exclusions": [],
+      "ignored_DRC_rule_severities": [],
+      "deleted_refs_present": [],
+      "J4_MPN": "Molex46765 family; exact order code pending",
+      "J4_at": [
+        37.6,
+        6.0,
+        90.0
+      ],
+      "track_width_counts_mm": {
+        "0.1": 360
+      },
+      "via_geometries": [
+        {
+          "diameter_mm": 0.4,
+          "drill_mm": 0.2,
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "count": 25
+        }
+      ],
+      "board_thickness_mm": 1.6,
+      "explicit_stackup_present": false,
+      "rules": {
+        "max_error": 0.005,
+        "min_clearance": 0.15,
+        "min_connection": 0.0,
+        "min_copper_edge_clearance": 0.5,
+        "min_groove_width": 0.0,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_resolved_spokes": 2,
+        "min_silk_clearance": 0.0,
+        "min_text_height": 0.8,
+        "min_text_thickness": 0.08,
+        "min_through_hole_diameter": 0.2,
+        "min_track_width": 0.1,
+        "min_via_annular_width": 0.1,
+        "min_via_diameter": 0.4,
+        "solder_mask_to_copper_clearance": 0.0,
+        "use_height_for_length_calcs": true
+      },
+      "zones_summary": [],
+      "through_via_hole_BGA_land_intersections": [],
+      "fresh_netlist": {
+        "endpoints": 640,
+        "endpoint_sets_equal": true,
+        "mismatches": [],
+        "intended_connected_endpoints": 423,
+        "manifest_mismatches": [],
+        "component_refs_match_manifest": true
+      },
+      "all_enabled_ERC": {
+        "total": 221,
+        "by_type": {
+          "four_way_junction": 5,
+          "pin_not_connected": 211,
+          "pin_to_pin": 5
+        },
+        "ignored_checks": [],
+        "excluded_findings": 0,
+        "open_pin_refs": {
+          "U1": 203,
+          "J4": 8
+        }
+      }
+    },
+    "mezzanine": {
+      "source": "release_audit/mezzanine/FPGA100T_Mezzanine_Fit.kicad_pcb",
+      "sha256": "186018ad28d31eb3d8fee4193a32731632a9bf9cab2c4652414a9bad40169750",
+      "source_unchanged": true,
+      "components": 128,
+      "front": 52,
+      "back": 76,
+      "outline_mm": [
+        40.0,
+        36.0
+      ],
+      "outline_four_corners_correct": true,
+      "pad_records": 807,
+      "distinct_numbered_pad_endpoints": 758,
+      "FPGA_ball_count": 324,
+      "tracks": 0,
+      "vias": 0,
+      "zones": 0,
+      "physical_DRC_violations": 0,
+      "unconnected_items": 383,
+      "schematic_parity_issues": null,
+      "schematic_parity_checked": false,
+      "unconnected_by_net": {
+        "CFG_M0": 1,
+        "CFG_M1": 1,
+        "CFG_M2": 1,
+        "CFG_PUDC_B": 1,
+        "CLK_32MHZ": 1,
+        "FB_ASIC": 2,
+        "FB_AUX": 2,
+        "FB_CFG": 2,
+        "FB_CORE": 2,
+        "FLASH_CS_B": 2,
+        "FLASH_DQ0": 1,
+        "FLASH_DQ1": 1,
+        "FLASH_DQ2": 2,
+        "FLASH_DQ3": 2,
+        "FLASH_SCLK": 1,
+        "FPGA_CCLK": 1,
+        "FPGA_CFG_DQ0": 1,
+        "FPGA_CFG_DQ1": 1,
+        "FPGA_CFG_DQ2": 1,
+        "FPGA_CFG_DQ3": 1,
+        "FPGA_DONE": 1,
+        "FPGA_INIT_B": 1,
+        "FPGA_PROGRAM_B": 1,
+        "FPGA_TDO": 1,
+        "GND": 167,
+        "JTAG_TCK": 2,
+        "JTAG_TDI": 2,
+        "JTAG_TDO": 1,
+        "JTAG_TMS": 2,
+        "LINK_12V": 21,
+        "OSC_32M_RAW": 1,
+        "PGOOD_IO": 2,
+        "PG_AUX": 3,
+        "PG_CORE": 2,
+        "SS_ASIC": 1,
+        "SS_AUX": 1,
+        "SS_CFG": 1,
+        "SS_CORE": 1,
+        "SW_ASIC": 1,
+        "SW_AUX": 1,
+        "SW_CFG": 1,
+        "SW_CORE": 1,
+        "VCCAUX_1V8": 17,
+        "VCCINT_1V0": 34,
+        "VCC_ASIC_1V5": 40,
+        "VCC_CFG_3V3": 46,
+        "VCORE_REG_1V025": 4
+      },
+      "ignored_DRC_checks": [],
+      "DRC_exclusions": [],
+      "ignored_DRC_rule_severities": [],
+      "deleted_refs_present": [],
+      "J4_MPN": "Molex46765 family; exact order code pending",
+      "J4_at": [
+        37.6,
+        6.0,
+        90.0
+      ],
+      "track_width_counts_mm": {},
+      "via_geometries": [],
+      "board_thickness_mm": 1.6,
+      "explicit_stackup_present": false,
+      "rules": {
+        "max_error": 0.005,
+        "min_clearance": 0.15,
+        "min_connection": 0.0,
+        "min_copper_edge_clearance": 0.5,
+        "min_groove_width": 0.0,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_resolved_spokes": 2,
+        "min_silk_clearance": 0.0,
+        "min_text_height": 0.8,
+        "min_text_thickness": 0.08,
+        "min_through_hole_diameter": 0.2,
+        "min_track_width": 0.1,
+        "min_via_annular_width": 0.1,
+        "min_via_diameter": 0.4,
+        "solder_mask_to_copper_clearance": 0.0,
+        "use_height_for_length_calcs": true
+      },
+      "zones_summary": [],
+      "through_via_hole_BGA_land_intersections": []
+    }
+  },
+  "mezzanine_allocation": {
+    "accepted_ASIC_signals": 117,
+    "unique_signals": 117,
+    "reserved_contacts": 3,
+    "ground_blade_records": 2,
+    "native_unassigned_numbered_connector_pads": 120,
+    "native_ground_blade_lands": 8,
+    "native_alignment_holes": 4,
+    "all_FPGA_balls_TBD": true,
+    "embedded_pads_match_local_library": false,
+    "retained_core_padnets_unchanged": true,
+    "J5_J6_properties": {
+      "J5": {
+        "Reference": "J5",
+        "Value": "QSH-030-01-L-D-A",
+        "Datasheet": "",
+        "Description": ""
+      },
+      "J6": {
+        "Reference": "J6",
+        "Value": "QSH-030-01-L-D-A",
+        "Datasheet": "",
+        "Description": ""
+      }
+    }
+  },
+  "J4_mechanical_finding": {
+    "applies_to": [
+      "minimal_core",
+      "full_system",
+      "mezzanine"
+    ],
+    "actual_board_edge_x_mm": 40.0,
+    "actual_connector_origin_x_mm": 37.6,
+    "rotation_deg": 90,
+    "footprint_PCB_edge_datum_local_y_mm": 1.7,
+    "transformed_datum_x_mm": 39.3,
+    "connector_front_interface_x_mm": 40.0,
+    "placement_deviation_from_recommended_edge_mm": 0.7,
+    "move_outward_to_recommended_datum_mm": 0.7,
+    "resulting_nearest_shell_copper_edge_clearance_mm": 0.425,
+    "current_minimum_copper_edge_rule_mm": 0.5,
+    "classification": "Concrete mechanical placement deviation; resolve against selected order code/current drawing and plug/enclosure. No source correction or rule relaxation applied.",
+    "evidence": "Molex SD-46765-001 rev A3, sheet 5 left through-hole-shell layout and embedded footprint Dwgs.User datum; newer D1 family print identified but direct download timed out."
+  },
+  "BGA_DFM_geometry": {
+    "pitch_mm": 0.8,
+    "copper_pad_diameter_mm": 0.4,
+    "solder_mask_expansion_mm": 0.05,
+    "solder_mask_opening_diameter_mm": 0.5,
+    "interpad_mask_web_mm": 0.3,
+    "minimum_track_mm": 0.1,
+    "minimum_clearance_mm": 0.15,
+    "minimum_through_via_mm": 0.4,
+    "minimum_drill_mm": 0.2,
+    "minimum_annulus_mm": 0.1,
+    "nominal_small_through_via_aspect_ratio": 8.0,
+    "single_track_channel_budget_mm": 0.10000000000000003,
+    "minimum_width_track_channel_extra_margin_mm": 0,
+    "centered_interstitial_0_4_via_to_ball_copper_clearance_mm": 0.1656854249492381,
+    "interstitial_margin_above_rule_mm": 0.015685424949238108,
+    "conclusion": "Nominal geometry can accommodate a 0.10 mm track or 0.40/0.20 mm via. It does not prove complete 117-signal escape, process tolerance, or a fabricator-approved stackup. No through-via drill overlaps a BGA land in actual routed candidates."
+  },
+  "source_mezzanine_library_portability": {
+    "absolute_library_paths": true,
+    "sources": [
+      "minimal_core/libraries/FPGA100T.pretty",
+      "minimal_core/release_audit/regulator_routing/CoreSupport.pretty"
+    ],
+    "conclusion": "Original study fp-lib-table relies on workstation absolute paths. Package-relative mapping and all referenced dependencies are required; parent handles package-only correction."
+  },
+  "source_file_hashes_unchanged": true,
+  "source_files_checked": 110,
+  "source_files_changed": [],
+  "checks_failed": []
+}

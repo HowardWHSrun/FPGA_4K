@@ -7,7 +7,7 @@ const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
 const report = {base, checks: [], pageErrors: [], consoleErrors: [], failedResources: []};
 page.on('response', response => {if (response.status() >= 400) report.failedResources.push({url: response.url(), status: response.status()});});
 page.on('pageerror', e => report.pageErrors.push(e.message));
-page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push(e.text());});
+page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push({message: e.text(), location: e.location()});});
 const assert = (condition, label) => {if (!condition) throw new Error(label); report.checks.push(label);};
 try {
   await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
@@ -16,6 +16,8 @@ try {
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
+  assert(await page.locator('#revision-table tbody tr').count() === 3, 'Three native design revisions are distinguished');
+  assert(await page.locator('a[href$="Triple_Check_Review.md"]').count() >= 2, 'Third-pass findings are visible and downloadable');
   assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
   assert((await page.locator('[data-field="unconnectedItems"]').first().innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
   assert(!(await page.locator('#load-error').isVisible()), 'No stale-data load warning');
@@ -32,9 +34,12 @@ try {
     await page.screenshot({path: `fpga-browser-check/review-${width}.png`, fullPage: true});
   }
   await page.setViewportSize({width: 1440, height: 1000});
-  await page.locator('#board details summary').click();
-  assert(await page.locator('#board details').evaluate(e => e.open), 'Snapshot provenance expands');
+  await page.locator('#snapshot-details summary').click();
+  assert(await page.locator('#snapshot-details').evaluate(e => e.open), 'Snapshot provenance expands');
   assert((await page.locator('.hash').innerText()) === data.boardSha256, 'Visible board identity matches data');
+  await page.locator('#connector-edge summary').click();
+  await page.locator('#edge-review-image').evaluate(image => image.decode());
+  assert(await page.locator('#edge-review-image').evaluate(image => image.naturalWidth > 0), 'Connector-edge evidence graphic loads');
   await page.locator('#mezzanine-image').scrollIntoViewIfNeeded();
   await page.locator('#mezzanine-image').evaluate(image => image.decode());
   assert(await page.locator('#mezzanine-image').evaluate(image => image.naturalWidth > 0), 'Separate placement-study image loads');
@@ -59,6 +64,8 @@ try {
     report.checks.push('Root system view opens current review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
+  assert(report.consoleErrors.length === 0, 'No browser console errors');
+  assert(report.failedResources.length === 0, 'No failed page resource requests');
   report.snapshot = data;
   report.passed = true;
 } catch (error) {

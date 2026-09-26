@@ -1,5 +1,7 @@
 # Second independent check — 26 September 2026
 
+**Later review:** [The third independent audit](Triple_Check_Review.md) adds connector-edge and bring-up findings and qualifies the cable/JTAG and power-budget calculations below. This document remains dated development evidence; it is not a release or measured performance guarantee.
+
 **The check found an electrical margin gap and corrected an incomplete source review. The board remains unfinished and is not released for manufacture.** Three separate reviews rechecked native CAD, power/receiver limits, and original ASIC evidence. Source CAD was kept unchanged so the results refer to the same downloadable checkpoint.
 
 ## 1. Powered-cable interface needs correction

@@ -8,4 +8,8 @@ This folder supplements the current core snapshot; it does not replace its nativ
 
 [The second independent check](Double_Check_Review.md) corrects the historical FPGA-wiring evidence, identifies powered-cable LVDS/JTAG margin gaps and discloses all-category schematic checks. Direct DC coupling is not qualified; a carrier-side common-mode solution and startup interlock remain design work.
 
+[The third independent check](Triple_Check_Review.md) reconciles all 324 FPGA pins and the 117-signal count, identifies the J4 edge-placement discrepancy and obsolete bring-up instructions, and refines cable assumptions. It records fresh checks of all three distinct native designs. [Current bring-up status](research/Current_Design_Bringup_Status.md) replaces the historical procedure for these derivatives.
+
+Separate review-only downloads now include the [rail revision](review_projects/FPGA100T_Rail_Revision.zip) and [mezzanine placement](review_projects/FPGA100T_Mezzanine_Study.zip), with local libraries. The latter has a packaging-only relative footprint-table correction; native CAD bytes are unchanged. [Independent archive checks](triple_check/Package_Independent_Review.md) document source correspondence and scope. Neither archive is a fabrication release.
+
 Source: FPGA_100T_CSG324 local engineering development, 2026-09-26. Native files were inspected read-only; this web folder publishes selected evidence, not a fabrication package. Manufacturer PDFs remain linked at their primary sources. Private conversations/audio, experimental scripts and caches are excluded. The manifest records byte hashes; Markdown link destinations and generated-report workstation paths are adjusted for portability; source hashes are retained.

@@ -1,5 +1,7 @@
 # Power and electrical release audit — 26 September 2026
 
+**Later review:** [The third independent audit](Triple_Check_Review.md) adds connector-edge and bring-up findings and qualifies the cable/JTAG and power-budget calculations below. This document remains dated development evidence; it is not a release or measured performance guarantee.
+
 **The current board is a development design, not ready for manufacture.** One definite power-component error was found and corrected: the original four local converter input capacitors lose too much capacitance at 12 V. The separate `full_system` revision incorporates the corrected parts and supports the proposed LVDS bank voltage without adding a fifth regulator. The prototype power envelope below is a design requirement, not measured FPGA consumption.
 
 This audit read the native `minimal_core/hardware/FPGA100T_Minimal.kicad_pcb`, native schematic/netlist, component manifest and primary manufacturer documents. The reviewed board contains 126 physical components; the manifest also includes six nonphysical power flags. Routing work continues separately. This report does not certify any later copper revision.

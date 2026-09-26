@@ -1,0 +1,707 @@
+{
+  "review_date": "2026-09-26",
+  "package": {
+    "count": 324,
+    "csv_txt_all_fields_equal": true,
+    "inventory_count": 324,
+    "inventory_functions_equal": true,
+    "user_io_bank_counts": {
+      "14": 50,
+      "15": 50,
+      "16": 10,
+      "34": 50,
+      "35": 50
+    }
+  },
+  "projects": {
+    "minimal_core": {
+      "netlist_sha256": "38e91dac2a46ae55071ee7737c04dfbae874abcb5d42db03ed713406971d0215",
+      "symbol_pins": 324,
+      "symbol_function_mismatches": [],
+      "all_324_pin_net_records_present": true,
+      "used_user_io": {
+        "K17": "FPGA_CFG_DQ0",
+        "K18": "FPGA_CFG_DQ1",
+        "L14": "FPGA_CFG_DQ2",
+        "M14": "FPGA_CFG_DQ3",
+        "L15": "CFG_PUDC_B",
+        "L13": "FLASH_CS_B",
+        "P17": "CLK_32MHZ"
+      },
+      "unassigned_user_io": 203,
+      "supply_balls": {
+        "R9": "VCC_CFG_3V3",
+        "L17": "VCC_CFG_3V3",
+        "N13": "VCC_CFG_3V3",
+        "P16": "VCC_CFG_3V3",
+        "T12": "VCC_CFG_3V3",
+        "U15": "VCC_CFG_3V3",
+        "V18": "VCC_CFG_3V3",
+        "A17": "VCC_ASIC_1V5",
+        "C13": "VCC_ASIC_1V5",
+        "D16": "VCC_ASIC_1V5",
+        "G15": "VCC_ASIC_1V5",
+        "H18": "VCC_ASIC_1V5",
+        "K14": "VCC_ASIC_1V5",
+        "B10": "VCC_CFG_3V3",
+        "K4": "VCC_ASIC_1V5",
+        "N3": "VCC_ASIC_1V5",
+        "P6": "VCC_ASIC_1V5",
+        "T2": "VCC_ASIC_1V5",
+        "U5": "VCC_ASIC_1V5",
+        "V8": "VCC_ASIC_1V5",
+        "A7": "VCC_ASIC_1V5",
+        "C3": "VCC_ASIC_1V5",
+        "D6": "VCC_ASIC_1V5",
+        "F2": "VCC_ASIC_1V5",
+        "G5": "VCC_ASIC_1V5",
+        "J1": "VCC_ASIC_1V5"
+      },
+      "special_pins": {
+        "P10": {
+          "function": "DONE_0",
+          "net": "FPGA_DONE"
+        },
+        "E10": {
+          "function": "TCK_0",
+          "net": "JTAG_TCK"
+        },
+        "E8": {
+          "function": "VCCBATT_0",
+          "net": "GND"
+        },
+        "K9": {
+          "function": "VN_0",
+          "net": "GND"
+        },
+        "K10": {
+          "function": "VREFP_0",
+          "net": "GND"
+        },
+        "H9": {
+          "function": "GNDADC_0",
+          "net": "GND"
+        },
+        "H10": {
+          "function": "VCCADC_0",
+          "net": "VCCAUX_1V8"
+        },
+        "L10": {
+          "function": "DXP_0",
+          "net": "unconnected-(U1D-DXP_0-PadL10)"
+        },
+        "E9": {
+          "function": "CCLK_0",
+          "net": "FPGA_CCLK"
+        },
+        "J10": {
+          "function": "VP_0",
+          "net": "GND"
+        },
+        "J9": {
+          "function": "VREFN_0",
+          "net": "GND"
+        },
+        "L9": {
+          "function": "DXN_0",
+          "net": "unconnected-(U1D-DXN_0-PadL9)"
+        },
+        "E13": {
+          "function": "TDO_0",
+          "net": "FPGA_TDO"
+        },
+        "E11": {
+          "function": "TDI_0",
+          "net": "JTAG_TDI"
+        },
+        "P7": {
+          "function": "INIT_B_0",
+          "net": "FPGA_INIT_B"
+        },
+        "P13": {
+          "function": "M1_0",
+          "net": "CFG_M1"
+        },
+        "P12": {
+          "function": "M0_0",
+          "net": "CFG_M0"
+        },
+        "E12": {
+          "function": "TMS_0",
+          "net": "JTAG_TMS"
+        },
+        "P9": {
+          "function": "PROGRAM_B_0",
+          "net": "FPGA_PROGRAM_B"
+        },
+        "P8": {
+          "function": "CFGBVS_0",
+          "net": "VCC_CFG_3V3"
+        },
+        "P11": {
+          "function": "M2_0",
+          "net": "CFG_M2"
+        }
+      },
+      "J4_contacts": {
+        "10": "GND",
+        "13": "GND",
+        "16": "GND",
+        "4": "GND",
+        "7": "GND",
+        "SH": "GND",
+        "17": "JTAG_TCK",
+        "15": "JTAG_TDI",
+        "18": "JTAG_TDO",
+        "2": "JTAG_TMS",
+        "19": "LINK_12V",
+        "1": "VCC_CFG_3V3",
+        "5": "unconnected-(J4-PAIR0_N_RESERVED-Pad5)",
+        "3": "unconnected-(J4-PAIR0_P_RESERVED-Pad3)",
+        "8": "unconnected-(J4-PAIR1_N_RESERVED-Pad8)",
+        "6": "unconnected-(J4-PAIR1_P_RESERVED-Pad6)",
+        "11": "unconnected-(J4-PAIR2_N_RESERVED-Pad11)",
+        "9": "unconnected-(J4-PAIR2_P_RESERVED-Pad9)",
+        "14": "unconnected-(J4-PAIR3_N_RESERVED-Pad14)",
+        "12": "unconnected-(J4-PAIR3_P_RESERVED-Pad12)"
+      },
+      "parts": {
+        "U6": {
+          "value": "MX25L12833FM2I-10G",
+          "pins": {
+            "1": "FLASH_CS_B",
+            "5": "FLASH_DQ0",
+            "2": "FLASH_DQ1",
+            "3": "FLASH_DQ2",
+            "7": "FLASH_DQ3",
+            "6": "FLASH_SCLK",
+            "4": "GND",
+            "8": "VCC_CFG_3V3"
+          }
+        },
+        "Y1": {
+          "value": "ASE-32.000MHZ-L-C-T",
+          "pins": {
+            "2": "GND",
+            "3": "OSC_32M_RAW",
+            "1": "VCC_CFG_3V3",
+            "4": "VCC_CFG_3V3"
+          }
+        },
+        "R108": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_PROGRAM_B",
+            "1": "VCC_CFG_3V3"
+          }
+        },
+        "R109": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_INIT_B",
+            "1": "VCC_CFG_3V3"
+          }
+        },
+        "R110": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_DONE",
+            "1": "VCC_CFG_3V3"
+          }
+        },
+        "R111": {
+          "value": "1k",
+          "pins": {
+            "2": "CFG_M0",
+            "1": "VCC_CFG_3V3"
+          }
+        },
+        "R112": {
+          "value": "1k",
+          "pins": {
+            "1": "CFG_M1",
+            "2": "GND"
+          }
+        },
+        "R113": {
+          "value": "1k",
+          "pins": {
+            "1": "CFG_M2",
+            "2": "GND"
+          }
+        },
+        "R114": {
+          "value": "1k",
+          "pins": {
+            "2": "CFG_PUDC_B",
+            "1": "VCC_CFG_3V3"
+          }
+        }
+      },
+      "native_PCB": {
+        "sha256": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0",
+        "U1_pad_count": 324,
+        "U1_unique_pin_numbers": 324,
+        "all_324_netlist_assignments_match": true,
+        "mismatches": []
+      }
+    },
+    "full_system": {
+      "netlist_sha256": "b4dd0dacdf88e023288b878aec2e8cdb9388adbb4ad836dd4b22b416c26a6396",
+      "symbol_pins": 324,
+      "symbol_function_mismatches": [],
+      "all_324_pin_net_records_present": true,
+      "used_user_io": {
+        "K17": "FPGA_CFG_DQ0",
+        "K18": "FPGA_CFG_DQ1",
+        "L14": "FPGA_CFG_DQ2",
+        "M14": "FPGA_CFG_DQ3",
+        "L15": "CFG_PUDC_B",
+        "L13": "FLASH_CS_B",
+        "P17": "CLK_32MHZ"
+      },
+      "unassigned_user_io": 203,
+      "supply_balls": {
+        "R9": "VCCAUX_1V8",
+        "L17": "VCCAUX_1V8",
+        "N13": "VCCAUX_1V8",
+        "P16": "VCCAUX_1V8",
+        "T12": "VCCAUX_1V8",
+        "U15": "VCCAUX_1V8",
+        "V18": "VCCAUX_1V8",
+        "A17": "VCC_ASIC_1V5",
+        "C13": "VCC_ASIC_1V5",
+        "D16": "VCC_ASIC_1V5",
+        "G15": "VCC_ASIC_1V5",
+        "H18": "VCC_ASIC_1V5",
+        "K14": "VCC_ASIC_1V5",
+        "B10": "VCC_LINK_2V5",
+        "K4": "VCC_ASIC_1V5",
+        "N3": "VCC_ASIC_1V5",
+        "P6": "VCC_ASIC_1V5",
+        "T2": "VCC_ASIC_1V5",
+        "U5": "VCC_ASIC_1V5",
+        "V8": "VCC_ASIC_1V5",
+        "A7": "VCC_ASIC_1V5",
+        "C3": "VCC_ASIC_1V5",
+        "D6": "VCC_ASIC_1V5",
+        "F2": "VCC_ASIC_1V5",
+        "G5": "VCC_ASIC_1V5",
+        "J1": "VCC_ASIC_1V5"
+      },
+      "special_pins": {
+        "P10": {
+          "function": "DONE_0",
+          "net": "FPGA_DONE"
+        },
+        "E10": {
+          "function": "TCK_0",
+          "net": "JTAG_TCK"
+        },
+        "E8": {
+          "function": "VCCBATT_0",
+          "net": "GND"
+        },
+        "K9": {
+          "function": "VN_0",
+          "net": "GND"
+        },
+        "K10": {
+          "function": "VREFP_0",
+          "net": "GND"
+        },
+        "H9": {
+          "function": "GNDADC_0",
+          "net": "GND"
+        },
+        "H10": {
+          "function": "VCCADC_0",
+          "net": "VCCAUX_1V8"
+        },
+        "L10": {
+          "function": "DXP_0",
+          "net": "unconnected-(U1D-DXP_0-PadL10)"
+        },
+        "E9": {
+          "function": "CCLK_0",
+          "net": "FPGA_CCLK"
+        },
+        "J10": {
+          "function": "VP_0",
+          "net": "GND"
+        },
+        "J9": {
+          "function": "VREFN_0",
+          "net": "GND"
+        },
+        "L9": {
+          "function": "DXN_0",
+          "net": "unconnected-(U1D-DXN_0-PadL9)"
+        },
+        "E13": {
+          "function": "TDO_0",
+          "net": "FPGA_TDO"
+        },
+        "E11": {
+          "function": "TDI_0",
+          "net": "JTAG_TDI"
+        },
+        "P7": {
+          "function": "INIT_B_0",
+          "net": "FPGA_INIT_B"
+        },
+        "P13": {
+          "function": "M1_0",
+          "net": "CFG_M1"
+        },
+        "P12": {
+          "function": "M0_0",
+          "net": "CFG_M0"
+        },
+        "E12": {
+          "function": "TMS_0",
+          "net": "JTAG_TMS"
+        },
+        "P9": {
+          "function": "PROGRAM_B_0",
+          "net": "FPGA_PROGRAM_B"
+        },
+        "P8": {
+          "function": "CFGBVS_0",
+          "net": "GND"
+        },
+        "P11": {
+          "function": "M2_0",
+          "net": "CFG_M2"
+        }
+      },
+      "J4_contacts": {
+        "10": "GND",
+        "13": "GND",
+        "16": "GND",
+        "4": "GND",
+        "7": "GND",
+        "SH": "GND",
+        "17": "JTAG_TCK",
+        "15": "JTAG_TDI",
+        "18": "JTAG_TDO",
+        "2": "JTAG_TMS",
+        "19": "LINK_12V",
+        "1": "VCCAUX_1V8",
+        "5": "unconnected-(J4-PAIR0_N_RESERVED-Pad5)",
+        "3": "unconnected-(J4-PAIR0_P_RESERVED-Pad3)",
+        "8": "unconnected-(J4-PAIR1_N_RESERVED-Pad8)",
+        "6": "unconnected-(J4-PAIR1_P_RESERVED-Pad6)",
+        "11": "unconnected-(J4-PAIR2_N_RESERVED-Pad11)",
+        "9": "unconnected-(J4-PAIR2_P_RESERVED-Pad9)",
+        "14": "unconnected-(J4-PAIR3_N_RESERVED-Pad14)",
+        "12": "unconnected-(J4-PAIR3_P_RESERVED-Pad12)"
+      },
+      "parts": {
+        "U6": {
+          "value": "MX25U12835FM2I-10G",
+          "pins": {
+            "1": "FLASH_CS_B",
+            "5": "FLASH_DQ0",
+            "2": "FLASH_DQ1",
+            "3": "FLASH_DQ2",
+            "7": "FLASH_DQ3",
+            "6": "FLASH_SCLK",
+            "4": "GND",
+            "8": "VCCAUX_1V8"
+          }
+        },
+        "Y1": {
+          "value": "ASE3 32MHz 1.8V",
+          "pins": {
+            "2": "GND",
+            "3": "OSC_32M_RAW",
+            "1": "VCCAUX_1V8",
+            "4": "VCCAUX_1V8"
+          }
+        },
+        "R108": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_PROGRAM_B",
+            "1": "VCCAUX_1V8"
+          }
+        },
+        "R109": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_INIT_B",
+            "1": "VCCAUX_1V8"
+          }
+        },
+        "R110": {
+          "value": "4.7k",
+          "pins": {
+            "2": "FPGA_DONE",
+            "1": "VCCAUX_1V8"
+          }
+        },
+        "R111": {
+          "value": "1k",
+          "pins": {
+            "2": "CFG_M0",
+            "1": "VCCAUX_1V8"
+          }
+        },
+        "R112": {
+          "value": "1k",
+          "pins": {
+            "1": "CFG_M1",
+            "2": "GND"
+          }
+        },
+        "R113": {
+          "value": "1k",
+          "pins": {
+            "1": "CFG_M2",
+            "2": "GND"
+          }
+        },
+        "R114": {
+          "value": "1k",
+          "pins": {
+            "2": "CFG_PUDC_B",
+            "1": "VCCAUX_1V8"
+          }
+        }
+      },
+      "native_PCB": {
+        "sha256": "c71578d3e72d22d84c3cf635c6935c736940c9ae5b3f8de2a5dd404a9f00a547",
+        "U1_pad_count": 324,
+        "U1_unique_pin_numbers": 324,
+        "all_324_netlist_assignments_match": true,
+        "mismatches": []
+      }
+    }
+  },
+  "signal_budget": {
+    "baseline_rows": 117,
+    "unique_names": 117,
+    "group_counts": {
+      "Recording data": 64,
+      "Recording timing": 24,
+      "Shared control": 9,
+      "Board recording clock": 4,
+      "Stimulation-chip programming": 8,
+      "Non-stimulation-board programming": 4,
+      "Board SPI clock": 4
+    },
+    "direction_counts": {
+      "Input": 88,
+      "Output": 27,
+      "TBD: verify circuit role": 2
+    },
+    "identical_three_baselines": true,
+    "connector_rows": 122,
+    "numbered_contacts": 120,
+    "ground_blade_rows": 2,
+    "connector_unique_numbered_contacts": 120,
+    "assigned_signals_exact_baseline": true,
+    "reserved_contacts": 3,
+    "ASIC15V_bank_capacity": 150,
+    "headroom_after_117_at15V": 33,
+    "post_core_117_eight_link_pad_arithmetic": 78
+  },
+  "clock_capacity": {
+    "15": [
+      {
+        "ball": "E15",
+        "function": "IO_L11P_T1_SRCC_15"
+      },
+      {
+        "ball": "E16",
+        "function": "IO_L11N_T1_SRCC_15"
+      },
+      {
+        "ball": "D15",
+        "function": "IO_L12P_T1_MRCC_15"
+      },
+      {
+        "ball": "C15",
+        "function": "IO_L12N_T1_MRCC_15"
+      },
+      {
+        "ball": "H16",
+        "function": "IO_L13P_T2_MRCC_15"
+      },
+      {
+        "ball": "G16",
+        "function": "IO_L13N_T2_MRCC_15"
+      },
+      {
+        "ball": "F15",
+        "function": "IO_L14P_T2_SRCC_15"
+      },
+      {
+        "ball": "F16",
+        "function": "IO_L14N_T2_SRCC_15"
+      }
+    ],
+    "16": [
+      {
+        "ball": "C9",
+        "function": "IO_L11P_T1_SRCC_16"
+      },
+      {
+        "ball": "B9",
+        "function": "IO_L11N_T1_SRCC_16"
+      },
+      {
+        "ball": "B8",
+        "function": "IO_L12P_T1_MRCC_16"
+      },
+      {
+        "ball": "A8",
+        "function": "IO_L12N_T1_MRCC_16"
+      },
+      {
+        "ball": "C11",
+        "function": "IO_L13P_T2_MRCC_16"
+      },
+      {
+        "ball": "C10",
+        "function": "IO_L13N_T2_MRCC_16"
+      },
+      {
+        "ball": "A10",
+        "function": "IO_L14P_T2_SRCC_16"
+      },
+      {
+        "ball": "A9",
+        "function": "IO_L14N_T2_SRCC_16"
+      }
+    ],
+    "34": [
+      {
+        "ball": "R3",
+        "function": "IO_L11P_T1_SRCC_34"
+      },
+      {
+        "ball": "T3",
+        "function": "IO_L11N_T1_SRCC_34"
+      },
+      {
+        "ball": "T5",
+        "function": "IO_L12P_T1_MRCC_34"
+      },
+      {
+        "ball": "T4",
+        "function": "IO_L12N_T1_MRCC_34"
+      },
+      {
+        "ball": "N5",
+        "function": "IO_L13P_T2_MRCC_34"
+      },
+      {
+        "ball": "P5",
+        "function": "IO_L13N_T2_MRCC_34"
+      },
+      {
+        "ball": "P4",
+        "function": "IO_L14P_T2_SRCC_34"
+      },
+      {
+        "ball": "P3",
+        "function": "IO_L14N_T2_SRCC_34"
+      }
+    ],
+    "35": [
+      {
+        "ball": "D5",
+        "function": "IO_L11P_T1_SRCC_35"
+      },
+      {
+        "ball": "D4",
+        "function": "IO_L11N_T1_SRCC_35"
+      },
+      {
+        "ball": "E3",
+        "function": "IO_L12P_T1_MRCC_35"
+      },
+      {
+        "ball": "D3",
+        "function": "IO_L12N_T1_MRCC_35"
+      },
+      {
+        "ball": "F4",
+        "function": "IO_L13P_T2_MRCC_35"
+      },
+      {
+        "ball": "F3",
+        "function": "IO_L13N_T2_MRCC_35"
+      },
+      {
+        "ball": "E2",
+        "function": "IO_L14P_T2_SRCC_35"
+      },
+      {
+        "ball": "D2",
+        "function": "IO_L14N_T2_SRCC_35"
+      }
+    ],
+    "single_ended_valid_P_pins_15_34_35": 12,
+    "eight_input_capture_placement_or_timing_verified": false
+  },
+  "mezzanine_native": {
+    "J5": {
+      "numbered_contacts": 60,
+      "ground_blade_solder_lands": 4,
+      "ground_blade_nets": [
+        "GND"
+      ],
+      "assigned_application_pad_count": 0
+    },
+    "J6": {
+      "numbered_contacts": 60,
+      "ground_blade_solder_lands": 4,
+      "ground_blade_nets": [
+        "GND"
+      ],
+      "assigned_application_pad_count": 0
+    }
+  },
+  "findings": [
+    {
+      "id": "PB-01",
+      "finding": "Legacy 3.3V LED bring-up does not match current derivatives; full-system has only XDC fragment."
+    },
+    {
+      "id": "PB-02",
+      "finding": "117 logical slots match, physical ASIC/board identity and fanout mapping unresolved."
+    },
+    {
+      "id": "PB-03",
+      "finding": "PUDC high and unused-pin Pullnone do not establish ASIC startup idle states."
+    },
+    {
+      "id": "PB-04",
+      "finding": "Exact FPGA ordering code and application timing unqualified."
+    }
+  ],
+  "sources": {
+    "AMD_package": "https://www.amd.com/en/developer/resources/adaptive-socs-and-fpgas/package-pinout-files/artix-7-package-device-pinout-files.html",
+    "UG472": "https://docs.amd.com/api/khub/documents/1kFbRqzm2fhwGy~cLQG2yA/content",
+    "UG471": "https://docs.amd.com/api/khub/documents/IbGcnPFe6eF19RHma_Y~IA/content",
+    "UG470": "https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content",
+    "DS181": "https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content",
+    "Samtec": "https://suddendocs.samtec.com/catalog_english/qth.pdf",
+    "MX25U12835F": "https://www.macronix.com/Lists/Datasheet/Attachments/8704/MX25U12835F,%201.8V,%20128Mb,%20v1.9.pdf",
+    "ASE3": "https://abracon.com/Oscillators/ASE3series.pdf",
+    "UG908": "https://docs.amd.com/r/en-US/ug908-vivado-programming-debugging/Artix-7-Configuration-Memory-Devices"
+  },
+  "source_file_sha256": {
+    "sources/xc7a100tcsg324pkg.csv": "7256165af18dcb6007321309f5a1d08dfce32c33a802207f5f1f051520c0e702",
+    "sources/xc7a100tcsg324pkg.txt": "ee3a8ab8660fbc5faa779283346e98fd01310d0c24ca879851c392672bfd0b72",
+    "pinout/ASIC_117_Signal_Baseline.csv": "02621e55fe9ffcf9f2681d4e85485bb60a4b9a828f7834dab98fc94150ee642b",
+    "bringup/core.xdc": "f41c479c0ae03701273bb974c63f1a15010164201129bdabf4d957d3b89364ff",
+    "bringup/build.tcl": "10b36e78c00121795a7b765c859595fadff74cfa57df7c2dbd71367ad12d6519",
+    "bringup/README.md": "9ba52f02888a5e9ce686af4127c73fa2d1610ec03cad6814b84b7868d696d50b",
+    "full_system/bringup/core.xdc": "9ae99190cd3ae56a24ad0f8a2ae44027abada82813ff6bf823b04895400b08b3",
+    "release_audit/mezzanine/Mezzanine_Contact_Proposal.csv": "27c78873bf372a1988fe3002c61ae8d4ed4302c223ab816647bbb68ec9891b1e"
+  }
+}
