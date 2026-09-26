@@ -39,3 +39,7 @@ Howard supplied the [notes](meetings/2026-09-23-notes.txt) and [system-view scre
 The current full-board scope includes all 117 ASIC signals and the XEM8310 link. Core-only dimensions and passing geometric checks do not establish fabrication readiness. The existing 200T/50T page and its source material are preserved as history.
 
 The [separate interface-study package](../hardware/fpga-interface-study/README.md) preserves selected local engineering reports and placement views. Its [manifest](../hardware/fpga-interface-study/manifest.json) distinguishes original bytes from Markdown link-only adaptations. It is not the current core copper revision or a full-system release.
+
+## September 26 smaller placement and pin report
+
+The [dated 33 × 36 mm study](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/START_HERE.md) is newly generated engineering work from the preserved 37.5 × 36 mm placement. Its 66-file import manifest records byte correspondence and evidence-path normalization. Native CAD and local footprint library bytes are unchanged in the portable publication copy; workstation-specific automation scripts and editor state are omitted from its 49-file ZIP. The 31-page PDF and editable LaTeX source cover all 128 components and 758 electrical endpoints. These remain an unrouted, unqualified proposal; earlier source files and original slides are unchanged.

@@ -9,6 +9,7 @@ on:
       - scripts/check_fpga_presentation.mjs
       - scripts/check_fpga_viewer.mjs
       - scripts/check_fpga_review.py
+      - scripts/check_fpga_size_report.py
       - hardware/fpga-100t-review/**
       - hardware/fpga-interface-study/**
       - .github/workflows/fpga-detail-check.yml
@@ -33,6 +34,7 @@ jobs:
           node --check presentation/fpga/review-board.js
           node --check presentation/fpga/viewer/viewer.js
           python3 scripts/check_fpga_review.py
+          python3 scripts/check_fpga_size_report.py
           node --check scripts/check_fpga_presentation.mjs
           node --check scripts/check_fpga_viewer.mjs
           python3 scripts/check_docs.py

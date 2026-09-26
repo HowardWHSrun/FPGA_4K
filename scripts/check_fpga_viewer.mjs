@@ -68,15 +68,15 @@ try {
   const indexResponse = await page.request.get(new URL('boards.json', url).href);
   check('Board index available', indexResponse.ok());
   const {boards} = await indexResponse.json();
-  check('Four separate review variants', boards.map(b=>b.id).join(',') === 'core,rail,mezzanine,compact');
-  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36]};
+  check('Five separate review variants', boards.map(b=>b.id).join(',') === 'core,rail,mezzanine,compact,compact-v2');
+  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);
     check(`${board.id}: selector lists every separate checkpoint`, JSON.stringify(await page.locator('#board-choice option').evaluateAll(items=>items.map(item=>item.value)))===JSON.stringify(boards.map(item=>item.id)));
     const sourceResponse = await page.request.get(new URL(board.native, url).href);
     check(`${board.id}: original PCB available`, sourceResponse.ok());
-    for (const key of ['zip', 'svg']) if (board[key]) {
+    for (const key of ['zip', 'svg', 'project']) if (board[key]) {
       const linkResponse=await page.request.get(new URL(board[key],url).href);
       check(`${board.id}: ${key} fallback available`,linkResponse.ok());
     }

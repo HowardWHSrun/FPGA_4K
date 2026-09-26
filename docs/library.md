@@ -5,7 +5,7 @@ The original files are stored in this repository. Use the editable formats for f
 ## Team workflow and editable design
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
-- [Current 100T review and four native checkpoints](../presentation/fpga/index.html): core, rail revision, mezzanine fit and smaller placement remain separate. [Fourth-review uncertainty list](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md).
+- [Current 100T review and five native checkpoints](../presentation/fpga/index.html): core, rail revision, mezzanine fit and smaller placement remain separate. [Fourth-review uncertainty list](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md).
 - [September 21 FPGA import](../hardware/fpga-board/README.md): preserved earlier design and local libraries; not the current device/interface baseline.
 - [Initial FPGA import evidence](../sources/fpga-draft-2026-09-21/README.md): provenance, original hashes and dated check reports.
 
@@ -90,3 +90,7 @@ The release scope is the full FPGA board with all 117 ASIC signals and the XEM83
 ## Circled-space size follow-up
 
 [37.5 × 36 mm placement review](../hardware/fpga-interface-study/size_optimization/Size_Optimization_Review.md) retains all 128 existing mezzanine-study parts and both connectors, reducing area 6.25%. [Inspect its native PCB](../presentation/fpga/viewer/index.html?board=compact) or download the [portable smaller study](../hardware/fpga-interface-study/size_optimization/candidate/FPGA100T_Compact_Study.zip). The core and earlier studies are preserved. Full rail/protection integration, application assignment, routing, assembly and thermal checks remain required; this is not the final complete-board size.
+
+## 26 September: smaller placement and every pin
+
+[Latest 33 × 36 mm review](../presentation/fpga/index.html#size-study) · [Native viewer](../presentation/fpga/viewer/index.html?board=compact-v2) · [Complete KiCad ZIP](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/FPGA100T_33x36_Placement.zip) · [Component and pin report PDF](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/output/pdf/FPGA100T_Size_Components_Pinout.pdf) · [Editable LaTeX source ZIP](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/FPGA100T_LaTeX_Report_Source.zip). All 128 parts / 807 pad records are retained. Placement only: 0 tracks, vias or zones; 383 unconnected items; all 120 mezzanine signal contacts unassigned. The 0.010 mm courtyard minimum and J4 body overhang of 0.65 mm require assembly qualification; the drawn board-plus-body envelope is 33.65 × 36 mm. Earlier 37.5 × 36 and 40 × 36 mm studies remain separate.

@@ -1,5 +1,7 @@
 # Full-system interface studies — not a release
 
+**Latest dated revision:** [33 × 36 mm placement and 31-page complete pin report](dated/2026-09-26/size-and-pin-report/START_HERE.md), 12% smaller than the 37.5 mm study. [Inspect the native PCB](../../presentation/fpga/viewer/?board=compact-v2). All 128 parts remain; 0 tracks/vias/zones and 383 unconnected items. The prior studies below remain separate dated evidence.
+
 This folder supplements the current core snapshot; it does not replace its native CAD. [The full-system development proposal](Full_System_Interface_Proposal.md) describes the proposed receiver, cable and power contract.
 
 **Current action list:** [Fourth review](Fourth_Check_Review.md) · [18 uncertainties and closure criteria](fourth_check/Uncertainty_Register.md). Six known unfinished tasks are listed separately. The fourth pass rechecked source continuity and challenged requirements; it does not claim another native DRC/ERC run or measured operation. The third-pass pad-comparison flag was a numeric-formatting false mismatch, corrected in [the fourth mechanical review](fourth_check/CAD_Mechanical_Uncertainties.md).

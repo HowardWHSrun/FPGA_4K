@@ -16,7 +16,7 @@ try {
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
-  assert(await page.locator('#revision-table tbody tr').count() === 4, 'Four native design revisions are distinguished');
+  assert(await page.locator('#revision-table tbody tr').count() === 5, 'Five native design revisions are distinguished');
   assert(await page.locator('a[href$="Fourth_Check_Review.md"]').count() >= 2, 'Fourth-pass findings are visible and downloadable');
   const uncertaintyResponse = await page.request.get(base + 'hardware/fpga-interface-study/fourth_check/Uncertainty_Register.json');
   assert(uncertaintyResponse.ok(), 'Current uncertainty register is available');
@@ -83,8 +83,11 @@ try {
   await page.locator('#compact-image').scrollIntoViewIfNeeded();
   await page.locator('#compact-image').evaluate(image => image.decode());
   assert(await page.locator('#compact-image').evaluate(image => image.naturalWidth > 0), 'New smaller native placement image loads');
-  assert((await page.locator('#size-study').innerText()).includes('37.5 × 36 mm') && (await page.locator('#size-study').innerText()).includes('6.25%'), 'Smaller placement dimensions and area reduction shown separately');
+  assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('12%') && (await page.locator('#size-study').innerText()).includes('17.5%'), 'Smaller placement dimensions and area reduction shown separately');
   assert((await page.locator('#size-study').innerText()).includes('383') && (await page.locator('#size-study').innerText()).includes('117 ASIC signals'), 'Smaller placement retains open connectivity and assignment disclosure');
+  const sizeText = await page.locator('#size-study').innerText();
+  assert(['120 mezzanine signal contacts remain unassigned','0 tracks, 0 vias and 0 zones','0.010 mm','0.65 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Latest placement shows copper, assignment and mechanical limits');
+  assert(await page.locator('#size-study a[href="viewer/?board=compact-v2"]').count() > 0 && await page.locator('#size-study a[href="viewer/?board=compact"]').count() > 0 && await page.locator('#size-study a[href="viewer/?board=mezzanine"]').count() > 0, 'Latest and both legacy placements remain linked');
   await page.locator('#circled-explanation summary').click();
   await page.locator('#circled-image').evaluate(image => image.decode());
   assert(await page.locator('#circled-image').evaluate(image => image.naturalWidth > 0), 'Circled-space explanation opens and loads');

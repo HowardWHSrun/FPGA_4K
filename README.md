@@ -2,7 +2,7 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — September 26:** [100T / 117-signal / XEM8310 engineering review](presentation/fpga/index.html) · [current core KiCad review ZIP](hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [fourth review and uncertainties](hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) · [interface studies](hardware/fpga-interface-study/README.md). The core routing, bank-rail revision and mezzanine placements remain separate development work. The new [37.5 × 36 mm placement](presentation/fpga/index.html#size-study) retains both ASIC connectors and reduces study area 6.25%. **No complete or manufacturing-ready board is released.**
+**Current FPGA review — September 26:** [100T / 117-signal / XEM8310 engineering review](presentation/fpga/index.html) · [current core KiCad review ZIP](hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [fourth review and uncertainties](hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) · [interface studies](hardware/fpga-interface-study/README.md). The core routing, bank-rail revision and mezzanine placements remain separate development work. The latest [33 × 36 mm placement and complete pin report](presentation/fpga/index.html#size-study) retain all 128 parts and both ASIC connectors: 12% less area than 37.5 × 36 mm, 17.5% less than 40 × 36 mm. The earlier placement remains available. **No complete or manufacturing-ready board is released.**
 
 ## Start working with the team
 
