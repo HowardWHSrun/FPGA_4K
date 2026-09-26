@@ -14,6 +14,11 @@ hardware/** -text -whitespace
 sources/** -text -whitespace
 firmware/FPGA_512/** -text -whitespace
 
+# Preserve KiCad-generated SVG spacing and pinned third-party bundle/license bytes.
+# Their exact hashes are recorded in the export and vendor provenance manifests.
+presentation/fpga/assets/core-*.svg -text -whitespace
+presentation/fpga/viewer/vendor/** -text -whitespace
+
 # Require deliberate resolution when both branches change the same CAD file.
 # Different sheets and board projects can still merge as separate files.
 *.kicad_pcb -merge
