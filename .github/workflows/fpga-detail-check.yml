@@ -10,6 +10,7 @@ on:
       - scripts/check_fpga_viewer.mjs
       - scripts/check_fpga_review.py
       - scripts/check_fpga_size_report.py
+      - scripts/import_fpga_routing.py
       - hardware/fpga-100t-review/**
       - hardware/fpga-interface-study/**
       - .github/workflows/fpga-detail-check.yml
@@ -43,16 +44,23 @@ jobs:
       - name: Check published files match this commit
         run: |
           python3 - <<'PY'
-          import os,time,urllib.request
+          import concurrent.futures,json,os,time,urllib.request
           from pathlib import Path
           paths=['index.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review-board.js','presentation/fpga/review.css','presentation/fpga/review-data.json','presentation/fpga/assets/core-front.svg','presentation/fpga/assets/core-back.svg','presentation/fpga/viewer/index.html','presentation/fpga/viewer/viewer.js','presentation/fpga/viewer/boards.json','presentation/fpga/viewer/vendor/kicanvas.js','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
+          fpga=json.loads(Path('presentation/fpga/manifest.json').read_text())
+          current=json.loads(Path(fpga['artifact_manifest']).read_text())
+          paths += [fpga['artifact_manifest'],'presentation/fpga/manifest.json','presentation/fpga/assets/current-front.svg','presentation/fpga/assets/current-back.svg','presentation/fpga/assets/current-view-provenance.json']
+          paths += [fpga['source']+'/'+item['path'] for item in current['files']]
+          paths=list(dict.fromkeys(paths))
+          def verify(p):
+              req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  assert r.status==200 and r.read()==Path(p).read_bytes(), p+' not current'
           for attempt in range(18):
               try:
-                  for p in paths:
-                      req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})
-                      with urllib.request.urlopen(req,timeout=20) as r:
-                          assert r.status==200 and r.read()==Path(p).read_bytes(), p+' not current'
-                  print('Live parent and FPGA detail assets verified.');break
+                  with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+                      list(pool.map(verify,paths))
+                  print(f'Live parent, FPGA detail and {len(paths)} current/historical assets verified.');break
               except Exception as e:
                   print(attempt+1,str(e),flush=True)
                   if attempt==17: raise

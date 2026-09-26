@@ -10,8 +10,8 @@
   let previous = null;
   let imageRequest = 0;
   const views = {
-    front: {src: 'assets/core-front.svg', caption: 'KiCad export · front copper + fabrication · inner layers omitted', alt: 'Front of the actual current XC7A100T core PCB, with its existing copper and component geometry'},
-    back: {src: 'assets/core-back.svg', caption: 'KiCad export · mirrored back copper + fabrication · inner layers omitted', alt: 'Mirrored back of the actual current XC7A100T core PCB, with its existing copper and component geometry'}
+    front: {src: 'assets/current-front.svg', caption: 'KiCad export · front copper + fabrication · inner layers omitted', alt: 'Front of the current 33 × 36 mm XC7A100T PCB, with its existing copper and component geometry'},
+    back: {src: 'assets/current-back.svg', caption: 'KiCad export · mirrored back copper + fabrication · inner layers omitted', alt: 'Mirrored back of the current 33 × 36 mm XC7A100T PCB, with its existing copper and component geometry'}
   };
   function updateTransform() {
     transform.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.zoom})`;
@@ -48,8 +48,8 @@
     if (mode === 'native') {
       const frame = get('native-frame');
       if (!frame.src) frame.src = frame.dataset.src;
-      get('view-caption').textContent = 'Current core · read-only native KiCad board';
-      get('board-enlarge').href = 'viewer/?board=core';
+      get('view-caption').textContent = 'Current 33 × 36 mm board · read-only native KiCad';
+      get('board-enlarge').href = 'viewer/?board=compact-routed';
       get('board-enlarge').textContent = 'Full viewer ↗';
       return;
     }
@@ -57,7 +57,7 @@
     image.src = views[mode].src;
     image.alt = views[mode].alt;
     get('view-caption').textContent = views[mode].caption;
-    get('board-enlarge').href = '../../hardware/fpga-100t-review/output/FPGA100T_Minimal_PCB.svg';
+    get('board-enlarge').href = '../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing.svg';
     get('board-enlarge').textContent = 'Both sides ↗';
     get('image-state').textContent = 'Loading current KiCad layout…';
     get('image-state').hidden = false;
@@ -127,9 +127,9 @@
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
       else if (document.documentElement.requestFullscreen) await document.documentElement.requestFullscreen();
-      else window.open('viewer/?board=core', '_blank', 'noopener');
+      else window.open('viewer/?board=compact-routed', '_blank', 'noopener');
     } catch {
-      window.open('viewer/?board=core', '_blank', 'noopener');
+      window.open('viewer/?board=compact-routed', '_blank', 'noopener');
     }
   });
   document.addEventListener('fullscreenchange', () => {present.textContent = document.fullscreenElement ? 'Exit present ⛶' : 'Present ⛶';});

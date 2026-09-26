@@ -68,12 +68,14 @@ try {
   const indexResponse = await page.request.get(new URL('boards.json', url).href);
   check('Board index available', indexResponse.ok());
   const {boards} = await indexResponse.json();
-  check('Five separate review variants', boards.map(b=>b.id).join(',') === 'core,rail,mezzanine,compact,compact-v2');
-  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36]};
+  check('Current smallest board plus five historical variants', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
+  await page.goto(url,{waitUntil:'networkidle'});await ready('compact-routed');
+  check('Viewer defaults to current33×36 routing board',await page.locator('#board-choice').inputValue()==='compact-routed');
+  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);
-    check(`${board.id}: selector lists every separate checkpoint`, JSON.stringify(await page.locator('#board-choice option').evaluateAll(items=>items.map(item=>item.value)))===JSON.stringify(boards.map(item=>item.id)));
+    check(`${board.id}: selector lists every separate checkpoint`, JSON.stringify(await page.locator('#board-choice option').evaluateAll(items=>items.map(item=>item.value).sort()))===JSON.stringify(boards.map(item=>item.id).sort()));
     const sourceResponse = await page.request.get(new URL(board.native, url).href);
     check(`${board.id}: original PCB available`, sourceResponse.ok());
     for (const key of ['zip', 'svg', 'project']) if (board[key]) {
@@ -123,7 +125,7 @@ try {
     await page.screenshot({path:path.join(out,`${board.id}-desktop.png`),fullPage:true});
     report.boards[board.id]={sha256:board.sha256,nativeCounts:diag.nativeCounts,netItemsCompared:expected.length,outline:edges};
   }
-  await page.goto(`${url}?board=core&embed=1`,{waitUntil:'networkidle'});await ready('core');
+  await page.goto(`${url}?board=compact-routed&embed=1`,{waitUntil:'networkidle'});await ready('compact-routed');
   check('Embedded view fills viewport',await page.locator('#viewer-shell').evaluate(e=>Math.abs(e.getBoundingClientRect().height-innerHeight)<2));
   check('Embedded mode hides standalone text',!(await page.locator('.intro').isVisible()));
   const canvas=page.locator('canvas');let box=await canvas.boundingBox();const x=box.x+box.width*.4,y=box.y+box.height*.4;
@@ -131,23 +133,23 @@ try {
   const panBefore=await state();await page.mouse.move(x,y);await page.mouse.down({button:'middle'});await page.mouse.move(x+90,y+45,{steps:8});await page.mouse.up({button:'middle'});const panAfter=await state();check('Mouse drag pans native camera',panBefore.center.x!==panAfter.center.x||panBefore.center.y!==panAfter.center.y);
   await page.locator('#fit').click();
   if(await page.locator('#fullscreen').isVisible()){await page.locator('#fullscreen').click();await page.waitForTimeout(200);check('Full-screen control enters fullscreen',await page.evaluate(()=>!!document.fullscreenElement));await page.locator('#fullscreen').click();check('Full-screen control exits',await page.evaluate(()=>!document.fullscreenElement));}
-  await page.screenshot({path:path.join(out,'core-embedded.png')});
-  await page.setViewportSize({width:390,height:844});await page.goto(`${url}?board=core`,{waitUntil:'networkidle'});await ready('core');
+  await page.screenshot({path:path.join(out,'current-embedded.png')});
+  await page.setViewportSize({width:390,height:844});await page.goto(`${url}?board=compact-routed`,{waitUntil:'networkidle'});await ready('compact-routed');
   check('Mobile page has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.locator('#zoom-in').click();check('Mobile zoom control works',(await state()).zoom>0);
-  await page.screenshot({path:path.join(out,'core-mobile.png'),fullPage:true});
-  await page.goto(`${url}?board=core&embed=1`,{waitUntil:'networkidle'});await ready('core');
+  await page.screenshot({path:path.join(out,'current-mobile.png'),fullPage:true});
+  await page.goto(`${url}?board=compact-routed&embed=1`,{waitUntil:'networkidle'});await ready('compact-routed');
   check('Mobile embedded view has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   check('Mobile embedded native canvas visible',await page.locator('canvas').isVisible());
-  await page.screenshot({path:path.join(out,'core-mobile-embedded.png')});
+  await page.screenshot({path:path.join(out,'current-mobile-embedded.png')});
   check('No external runtime requests',report.externalRequests.length===0,report.externalRequests);
   check('No normal-load resource failures',report.failedResources.length===0,report.failedResources);
   check('No browser JavaScript exceptions',report.errors.length===0,report.errors);
   expectedFailure=true;
-  await page.route('**/FPGA100T_Minimal.kicad_pcb',route=>route.fulfill({status:404,body:'Not found'}));
-  await page.goto(`${url}?board=core`,{waitUntil:'networkidle'});await page.waitForFunction(()=>!!window.pcbViewerDiagnostics?.error);
+  await page.route('**/FPGA100T_33x36_Routing.kicad_pcb',route=>route.fulfill({status:404,body:'Not found'}));
+  await page.goto(`${url}?board=compact-routed`,{waitUntil:'networkidle'});await page.waitForFunction(()=>!!window.pcbViewerDiagnostics?.error);
   check('Missing-native-file fallback is visible',await page.locator('#load-error').isVisible());
-  check('Missing-file fallback links to real SVG', (await page.locator('#load-error a').getAttribute('href')).endsWith('FPGA100T_Minimal_PCB.svg'));
+  check('Missing-file fallback links to real SVG', (await page.locator('#load-error a').getAttribute('href')).endsWith('FPGA100T_33x36_Routing.svg'));
   check('Controls disabled after load failure',await page.locator('#fit').isDisabled());
   report.passed=true;
 } catch(error){report.passed=false;report.failure=error.stack;process.exitCode=1;}

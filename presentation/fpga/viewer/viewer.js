@@ -26,7 +26,7 @@ function showError(error) {
   const alert = $('#load-error');
   alert.replaceChildren(document.createTextNode('The interactive board could not load. '));
   const fallback = document.createElement('a');
-  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip';
+  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip';
   fallback.textContent = board?.svg ? 'Open the static vector view' : 'Download the complete KiCad project';
   alert.append(fallback, document.createTextNode(' or use the native files below. Reload this page to retry.'));
   alert.hidden = false;
@@ -147,7 +147,8 @@ try {
   const response = await fetch('./boards.json');
   if (!response.ok) throw new Error('Board index unavailable.');
   const {boards} = await response.json();
-  const selected = boards.find(item => item.id === params.get('board')) || boards[0];
+  const selected = boards.find(item => item.id === params.get('board')) || boards.find(item => item.id === 'compact-routed');
+  if (!selected) throw new Error('The current smallest-board index is unavailable.');
   $('#board-choice').addEventListener('change', () => {
     const choice = boards.find(item => item.id === $('#board-choice').value);
     const url = new URL(location.href);

@@ -2,9 +2,11 @@
 
 This directory contains the [current 100T review snapshots](../presentation/fpga/index.html), the [earlier FPGA import](fpga-board/README.md), and preserved ASIC-carrier/LDO references. No board in this collection is represented as an approved new-system fabrication package.
 
-## Current FPGA review checkpoints
+## Current FPGA routing
 
-Start with [the 100T review](../presentation/fpga/index.html) and [uncertainty list](fpga-interface-study/fourth_check/Uncertainty_Register.md). The most-routed core is [FPGA100T_Minimal](fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pro). The [rail revision](fpga-interface-study/review_projects/FPGA100T_Rail_Revision.zip) and [mezzanine study](fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip) are separate. The earlier [37.5 × 36 mm compact placement](fpga-interface-study/size_optimization/Size_Optimization_Review.md) retains all 128 mezzanine-study parts at 6.25% less area; its [native project ZIP](fpga-interface-study/size_optimization/candidate/FPGA100T_Compact_Study.zip) is also placement-only. The latest [33 × 36 mm placement](../presentation/fpga/index.html#size-study) is 12% smaller than that revision and 17.5% below the 40 × 36 mm baseline, retaining all 128 parts with no routed copper. [Its complete pin report](fpga-interface-study/dated/2026-09-26/size-and-pin-report/output/pdf/FPGA100T_Size_Components_Pinout.pdf) and [native project ZIP](fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/FPGA100T_33x36_Placement.zip) remain separate review artifacts. Keep each complete project folder together. There is no single integrated full-system board. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md) before choosing and editing a development baseline.
+Start with [the 33 × 36 mm board](../presentation/fpga/index.html) and [current routing review](fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md). The [complete current KiCad ZIP](fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) contains the 130-part native board, matching 21-sheet schematic and local libraries. All 25 boot/clock/JTAG and three sequencing nets are connected. Native DRC records 0 physical violations and 146 remaining assigned-net connections; the 117 ASIC signals and reserved cable contacts remain unassigned. No manufacturing release exists.
+
+The [earlier core, rail revision and placement checkpoints](../presentation/fpga/index.html#design-history) remain historical evidence. Keep each project with its libraries. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md) when coordinating edits.
 
 ## Supplied references
 

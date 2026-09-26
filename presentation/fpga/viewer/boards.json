@@ -1,10 +1,35 @@
 {
   "native_format": "KiCad 10",
-  "audit": "../../../hardware/fpga-interface-study/triple_check/CAD_Review.json",
+  "audit": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Snapshot.json",
   "boards": [
     {
+      "id": "compact-routed",
+      "title": "Current 33 × 36 mm · routing development",
+      "description": "130 parts; corrected 1.8 V boot and 2.5 V link-bank rails, both ASIC mezzanines and a matching schematic. 146 assigned-net connection items remain; 117 ASIC assignments and the data link are unfinished.",
+      "native": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pcb",
+      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip",
+      "svg": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing.svg",
+      "sha256": "ae601df3925e5ec5e90c8a2e747356e432d0558e820199cf7c01c6bf8a7fef96",
+      "expected": {
+        "footprints": 130,
+        "pads": 811,
+        "segments": 1139,
+        "vias": 164,
+        "zones": 4,
+        "fpgaPads": 324,
+        "copperLayers": 6,
+        "nets": 386
+      },
+      "unconnected_items": 146,
+      "manufacturing_ready": false,
+      "dimensions_mm": [
+        33.0,
+        36.0
+      ]
+    },
+    {
       "id": "core",
-      "title": "Current core \u00b7 most routed",
+      "title": "Earlier core · 40 × 36 mm",
       "description": "126 parts; partial core wiring. The 117 ASIC signals and data link are not assigned. 139 existing-net connections remain open.",
       "native": "../../../hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb",
       "zip": "../../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip",
@@ -29,7 +54,7 @@
     },
     {
       "id": "rail",
-      "title": "Rail revision \u00b7 separate proposal",
+      "title": "Rail revision · separate proposal",
       "description": "128 parts; separate 1.8 V configuration / 2.5 V link-bank revision. 347 existing-net connections remain open. Mezzanines and complete ASIC wiring are absent.",
       "native": "../../../hardware/fpga-interface-study/native/FPGA100T_Full_System.kicad_pcb",
       "zip": "../../../hardware/fpga-interface-study/review_projects/FPGA100T_Rail_Revision.zip",
@@ -54,7 +79,7 @@
     },
     {
       "id": "mezzanine",
-      "title": "Mezzanine fit \u00b7 placement only",
+      "title": "Mezzanine fit · placement only",
       "description": "128 parts; two 60-contact connectors as a placement study. No tracks, vias or filled zones; no integrated schematic. All 120 numbered connector contacts are unassigned.",
       "native": "../../../hardware/fpga-interface-study/native/FPGA100T_Mezzanine_Fit.kicad_pcb",
       "zip": "../../../hardware/fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip",
@@ -79,8 +104,8 @@
     },
     {
       "id": "compact",
-      "title": "Smaller fit \u00b7 37.5 \u00d7 36 mm \u00b7 placement only",
-      "description": "128 parts in a separate 37.5 \u00d7 36 mm placement study, including both 60-contact mezzanines. No tracks, vias, zones or integrated schematic; all 120 numbered connector contacts remain unassigned. C92/R122 rail additions and proposed input protection are absent. 383 existing-net connections remain open.",
+      "title": "Smaller fit · 37.5 × 36 mm · placement only",
+      "description": "128 parts in a separate 37.5 × 36 mm placement study, including both 60-contact mezzanines. No tracks, vias, zones or integrated schematic; all 120 numbered connector contacts remain unassigned. C92/R122 rail additions and proposed input protection are absent. 383 existing-net connections remain open.",
       "native": "../../../hardware/fpga-interface-study/size_optimization/candidate/hardware/FPGA100T_37p5x36_Placement.kicad_pcb",
       "zip": "../../../hardware/fpga-interface-study/size_optimization/candidate/FPGA100T_Compact_Study.zip",
       "svg": "../../../hardware/fpga-interface-study/size_optimization/candidate/output/Compact_Front.svg",
@@ -104,8 +129,8 @@
     },
     {
       "id": "compact-v2",
-      "title": "Latest fit \u00b7 33 \u00d7 36 mm \u00b7 placement only",
-      "description": "128 parts in the 26 September 33 \u00d7 36 mm placement, including both 60-contact mezzanines. 12% less area than 37.5 \u00d7 36 mm; 17.5% less than 40 \u00d7 36 mm. No tracks, vias, zones or integrated schematic; all 120 mezzanine signal contacts remain unassigned. Native DRC: 0 physical violations / 383 unconnected items. Minimum courtyard gap approximately 0.010 mm; assembly tolerances unqualified. J4 body overhang is 0.65 mm, giving a drawn 33.65 \u00d7 36 mm board-plus-body envelope; full mating/insertion clearance is unverified.",
+      "title": "Earlier 33 × 36 mm placement · 128 parts",
+      "description": "128 parts in the 26 September 33 × 36 mm placement, including both 60-contact mezzanines. 12% less area than 37.5 × 36 mm; 17.5% less than 40 × 36 mm. No tracks, vias, zones or integrated schematic; all 120 mezzanine signal contacts remain unassigned. Native DRC: 0 physical violations / 383 unconnected items. Minimum courtyard gap approximately 0.010 mm; assembly tolerances unqualified. J4 body overhang is 0.65 mm, giving a drawn 33.65 × 36 mm board-plus-body envelope; full mating/insertion clearance is unverified.",
       "native": "../../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/hardware/FPGA100T_33x36_Placement.kicad_pcb",
       "project": "../../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/hardware/FPGA100T_33x36_Placement.kicad_pro",
       "zip": "../../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/FPGA100T_33x36_Placement.zip",

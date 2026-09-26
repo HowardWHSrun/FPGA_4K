@@ -34,7 +34,7 @@ Howard supplied the [notes](meetings/2026-09-23-notes.txt) and [system-view scre
 
 ## September 26 100T review snapshot
 
-[Current engineering review](../presentation/fpga/index.html) publishes a curated, explicitly unqualified copy of the locally developed FPGA100T minimal core. [Its manifest](../hardware/fpga-100t-review/manifest.json) records the original and packaged hashes. Native KiCad and library files retain exact source bytes; only workstation paths in selected report representations are made portable. The ZIP includes the complete project hierarchy, local libraries, exported schematic PDF, PCB views, logical 117-signal CSV and selected validation evidence. Private messages/audio, caches, earlier rejected candidates and routing experiments are excluded. [Package notes](../hardware/fpga-100t-review/README.md) retain attribution and limits.
+The [earlier minimal-core checkpoint](../hardware/fpga-100t-review/README.md) is a curated, explicitly unqualified copy of the locally developed FPGA100T minimal core. [Its manifest](../hardware/fpga-100t-review/manifest.json) records the original and packaged hashes. Native KiCad and library files retain exact source bytes; only workstation paths in selected report representations are made portable. The ZIP includes the complete project hierarchy, local libraries, exported schematic PDF, PCB views, logical 117-signal CSV and selected validation evidence. Private messages/audio, caches, earlier rejected candidates and routing experiments are excluded. [Package notes](../hardware/fpga-100t-review/README.md) retain attribution and limits.
 
 The current full-board scope includes all 117 ASIC signals and the XEM8310 link. Core-only dimensions and passing geometric checks do not establish fabrication readiness. The existing 200T/50T page and its source material are preserved as history.
 
@@ -43,3 +43,7 @@ The [separate interface-study package](../hardware/fpga-interface-study/README.m
 ## September 26 smaller placement and pin report
 
 The [dated 33 × 36 mm study](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/START_HERE.md) is newly generated engineering work from the preserved 37.5 × 36 mm placement. Its 66-file import manifest records byte correspondence and evidence-path normalization. Native CAD and local footprint library bytes are unchanged in the portable publication copy; workstation-specific automation scripts and editor state are omitted from its 49-file ZIP. The 31-page PDF and editable LaTeX source cover all 128 components and 758 electrical endpoints. These remain an unrouted, unqualified proposal; earlier source files and original slides are unchanged.
+
+### Current 33 × 36 mm routing — 26 September 2026
+
+The [current review](../presentation/fpga/index.html) and [dated routing package](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/README.md) publish one 130-part board with matching 21-sheet schematic, corrected rails, native pin/component ledgers and unsuppressed checks. The [import manifest](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/manifest.json) binds exact CAD/library bytes to the frozen source. Experiments and failed candidate boards are excluded. Earlier source snapshots, ASIC slides and placement reports remain unchanged; routing progress is not a fabrication or functional qualification.

@@ -1,22 +1,23 @@
-# 100T FPGA engineering review
+# Current 33 × 36 mm FPGA review
 
-The opening board panel follows the earlier review layout: **Front layout**, **Back layout** and **Interactive KiCad** tabs, pan/zoom/fit controls, and a concise current-design sidebar. [Open the standalone native viewer](viewer/index.html) for layer, part and net inspection. It loads unchanged `.kicad_pcb` files from this repository; select the current core, separate rail revision, unrouted mezzanine study the earlier 37.5 × 36 mm placement or the latest 33 × 36 mm placement. Whole-project ZIPs remain the portable KiCad download. See [viewer provenance and limits](viewer/README.md).
+[Open the current page](index.html) or [inspect the native PCB](viewer/index.html?board=compact-routed). The front/back/interactive panel opens the **130-part routing revision**, the only active size. Earlier checkpoints are collapsed into history; their existing viewer URLs remain valid.
 
-The [complete 28-slide ASIC review](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents tutorial framing and SPI direction, and flags stimulation timing, channel-table and gain conflicts. The uncertainty register incorporates these refinements. Original slides and the three baseline native designs remain unchanged.
+The current project integrates 1.8 V configuration, a 2.5 V link bank, both mezzanines and 21 schematic sheets. Boot/clock/JTAG and sequencing nets have complete copper. Supply distribution, ground continuity, application assignments and qualification remain unfinished. The page deliberately does not claim a working or fabrication-ready board.
 
-**Fourth-review update:** [Uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the current closure list; owner roles are proposed, not accepted assignments. Native source hashes are checked against the third-pass reports, which retain their original test scope. The page distinguishes known implementation gaps from unknown requirements.
+[Complete current project ZIP](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) · [21-sheet native schematic PDF](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing_Schematic.pdf) · [Routing review](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md) · [Every component pin](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/All_Pin_Connections.csv) · [Artifact manifest](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/manifest.json).
 
-[Open the current page](index.html). It describes the full-board release scope: XC7A100T CSG324, all 117 ASIC signals and the XEM8310 receiver link. The 40 × 36 mm core snapshot is incomplete and not fabrication-ready.
+[Current LaTeX component and pin PDF](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/report/output/pdf/FPGA100T_33x36_Routing_Component_Pin_Report.pdf) · [Portable editable LaTeX source](../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/report/FPGA100T_33x36_Routing_Report_Source.zip). The report documents all 130 components, 762 numbered endpoints and 48 functional nets for this current board.
 
-The page loads current counts and board identity from [review-data.json](review-data.json). The [artifact manifest](../../hardware/fpga-100t-review/manifest.json) records every packaged file's SHA-256; [the full project ZIP](../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip) includes native CAD, all hierarchical sheets, local libraries, rendered views and selected evidence. The import preserves native CAD bytes. Workstation paths in reports are made portable, with original and transformed hashes retained.
+[review-data.json](review-data.json) supplies the measured counts and identity. [viewer/boards.json](viewer/boards.json) pins each unchanged native PCB by SHA-256 and expected renderer counts. Static views are exported from the same frozen board; only color, viewport and labeled overview composition change. KiCanvas is a review viewer; native KiCad remains authoritative. See [viewer provenance and limits](viewer/README.md).
 
-## Refresh after a verified CAD revision
+## Refresh the current design
 
-First regenerate the source's Wiring_Status, Final_Snapshot_Audit, Geometry, native DRC/ERC, schematic PDF and PCB SVG/PNG for the same revision. Do not reuse stale visual exports. Then, from this repository root:
+First freeze the canonical source `current/hardware/FPGA100T_33x36_Routing` project and all 21 sheets, local libraries and bring-up files together. Generate a fresh native DRC/ERC, `Routing_Snapshot.json`, readback, three CSV ledgers, placement-change log and routing/power/ground reviews for that exact board. Export front/back SVG and the schematic PDF without modifying the CAD; retain `Current_View_Provenance.json` with source and output hashes. Do not reuse older board views or reports.
+
+From the repository root:
 
 ```sh
-python3 scripts/import_fpga_review.py --source ../FPGA_100T_CSG324/minimal_core
-python3 scripts/import_fpga_interface_study.py --source ../FPGA_100T_CSG324
+python3 scripts/import_fpga_routing.py --source ../2026-09-26_FPGA_Work/06_33x36_Routing
 python3 scripts/check_fpga_review.py
 python3 scripts/check_docs.py
 python3 scripts/check_hardware.py
@@ -28,35 +29,29 @@ node --check scripts/check_fpga_viewer.mjs
 git diff --check
 ```
 
-The importer rejects disagreement between the native board, geometry, wiring status, snapshot file hashes and DRC counts. It makes a deterministic ZIP, updates the source manifest and produces the JSON used on the page. It deliberately refuses a fabrication-ready snapshot: an actual release needs a reviewed change to the page and its release gates. The package checker verifies coherence, not hardware correctness.
+The importer whitelists the canonical PCB/project, linked schematic sheets, library tables and local libraries. Candidate boards, scripts, caches, locks and editor state are excluded. It builds a deterministic ZIP and records unchanged CAD hashes; report paths are made portable with both source and published hashes. It refuses physical/parity errors or a manufacturing-ready claim. This is packaging verification, not electrical or manufacturing approval.
 
-Review `index.html` narrative after any scope, interface, rail or validation-category change. Dynamic numbers do not make old engineering conclusions current. In particular, the ERC explanation and power-routing text must be reconciled when those areas are completed. Confirm the two 60-pin mezzanine proposal and full-board outline once their exact mapping/mechanics are validated.
+The checker preserves historical hash checks and additionally verifies current native counts, all assigned PCB/schematic endpoints, the 762-pin CSV, component/net tables, local library resolution, ERC/DRC agreement, PDF/view hashes and ZIP contents. Reconcile the human narrative after every interface or status change; dynamic numbers cannot correct old engineering conclusions.
 
-## Local and published browser checks
+The older `import_fpga_review.py` and `import_fpga_interface_study.py` are historical importers. Running them can replace the current review data or regenerate obsolete narrative. Do not use them to refresh this current routing board.
 
-Serve the repository root with a local HTTP server. Run the browser check with `SITE_URL` set to its root, `CHROME_PATH` set to an installed Chrome/Chromium executable, and (if needed) `PLAYWRIGHT_MODULE` set to an installed Playwright module. It checks section navigation, native views, data display, project/PDF downloads, desktop/mobile overflow, historical-page access and the system-view entry.
+## Local and published browser verification
+
+Serve the repository root. Supply `SITE_URL`, an installed `CHROME_PATH` and, where necessary, `PLAYWRIGHT_MODULE`. Save generated browser evidence in the dated work folder.
 
 ```sh
 python3 -m http.server 8765
-# Separate shell; Chrome and Playwright must be installed:
-SITE_URL=http://127.0.0.1:8765/ node scripts/check_fpga_presentation.mjs
-SITE_URL=http://127.0.0.1:8765/ VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
+# Separate shell, from the dated evidence directory:
+SITE_URL=http://127.0.0.1:8765/ node /path/to/repository/scripts/check_fpga_presentation.mjs
+SITE_URL=http://127.0.0.1:8765/ node /path/to/repository/scripts/check_fpga_viewer.mjs
 ```
 
-`fpga-browser-check/` is ignored generated evidence. `SKIP_SYSTEM_CHECK=1` can isolate the new page when the older system view's external viewer dependencies are unavailable; report this limitation rather than claiming that entry path passed.
+The presentation check covers navigation, current SVG and embedded native views, downloads, mobile/desktop overflow, history and entry from the system view. The native-viewer check independently compares every pad/copper net and byte hash, outline and counts across current and historical boards, then exercises selection, layers, zoom, pan, flip, fullscreen and failure fallback.
 
-GitHub Pages is configured to serve the `presentation` branch at its root. The FPGA detail workflow waits for live files to match the pushed revision before testing the live page. A successful local build is not deployment verification.
+GitHub Pages serves the `presentation` branch at its root. Verify deployed file hashes and live browser checks after publishing; local checks alone do not confirm deployment. No manufacturing files are released by this workflow.
 
-## Preserved history
+## Sources and preserved history
 
-[The earlier eight-slide review](history-2026-09-24.html) and its [manifest](history-2026-09-24-manifest.json) preserve the 200T draft and 50T evaluation. Their original app, slide and style files remain alongside the new review. [September 21](meeting-2026-09-21.md), [September 22](direction-2026-09-22.md), and the [meeting hub](../meetings/) retain their dated context. These are not the current 100T pinout or release status.
+[Gerald's 28-slide review](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents framing and SPI direction while retaining timing/channel conflicts. The [fourth-review register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is dated evidence, supplemented by the current routing audit. ASIC electrical limits and the complete receiver/cable contract remain unresolved.
 
-The separate [mezzanine/interface study](../../hardware/fpga-interface-study/README.md) has its own importer and manifest. It must not be represented by the current core snapshot counters. After updating its SVG/PNG/contact CSV/reports, rerun `scripts/import_fpga_interface_study.py` with the FPGA_100T_CSG324 root, then the documentation and browser checks.
-
-## Smaller placement follow-up
-
-[The circled-space review](../../hardware/fpga-interface-study/size_optimization/Size_Optimization_Review.md) introduces a separate 128-component 37.5 × 36 mm native placement, preserving the original designs. It reduces area 6.25% while retaining both mezzanines. Native placement, saved-rule and independent geometry checks accompany it; all copper and the 117 application assignments remain unfinished. [Open the smaller variant](viewer/index.html?board=compact). Do not substitute the original core connectivity counters for this placement-only candidate.
-
-## Latest smaller placement and complete pin report — 26 September
-
-[33 × 36 mm native viewer](viewer/index.html?board=compact-v2) · [PDF report](../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/output/pdf/FPGA100T_Size_Components_Pinout.pdf) · [LaTeX source ZIP](../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/FPGA100T_LaTeX_Report_Source.zip). This fifth checkpoint retains all 128 parts and 807 physical pad records; 12% less area than 37.5 × 36 mm and 17.5% less than 40 × 36 mm. No copper routing or integrated schematic exists. Native DRC has 0 physical violations and 383 unconnected items; all 120 mezzanine signal contacts remain unassigned. Approximately 0.010 mm minimum courtyard spacing and a 0.65 mm J4 body overhang require assembly qualification. The drawn board-plus-body envelope is 33.65 × 36 mm; plug and mated-board clearances are unverified. Preserve every earlier checkpoint when importing this dated folder.
+The historical [33 × 36 mm, 128-part placement](viewer/index.html?board=compact-v2) and [31-page LaTeX report](../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/output/pdf/FPGA100T_Size_Components_Pinout.pdf) describe the unrouted placement. They are not the current 130-part circuit or pin report. The [37.5 × 36 mm placement](viewer/index.html?board=compact), [earlier 40 × 36 mm studies](index.html#design-history), [200T/50T slide deck](history-2026-09-24.html) and [meeting hub](../meetings/) retain their original context.

@@ -6,13 +6,16 @@ This page restores zoomable, selectable KiCad viewing on GitHub Pages. Each entr
 
 | View | Native file | Displayed design |
 |---|---|---|
-| [Current core](index.html?board=core) | [FPGA100T_Minimal.kicad_pcb](../../../hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb) | 126 parts, 1,010 tracks, 146 vias, 4 zones; incomplete core routing |
+| [Current smallest board](index.html?board=compact-routed) | [FPGA100T_33x36_Routing.kicad_pcb](../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pcb) | 33 × 36 mm; 130 parts, 1,139 tracks, 164 vias, 4 zones; 21 matching schematic sheets; 146 assigned-net connections remain open |
+| [Earlier core](index.html?board=core) | [FPGA100T_Minimal.kicad_pcb](../../../hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb) | 126 parts, 1,010 tracks, 146 vias, 4 zones; incomplete core routing |
 | [Rail revision](index.html?board=rail) | [FPGA100T_Full_System.kicad_pcb](../../../hardware/fpga-interface-study/native/FPGA100T_Full_System.kicad_pcb) | 128 parts, 360 tracks, 25 vias; separate voltage revision |
 | [Mezzanine fit](index.html?board=mezzanine) | [FPGA100T_Mezzanine_Fit.kicad_pcb](../../../hardware/fpga-interface-study/native/FPGA100T_Mezzanine_Fit.kicad_pcb) | 128 parts; unrouted placement study without an integrated schematic |
 | [Smaller fit](index.html?board=compact) | [FPGA100T_37p5x36_Placement.kicad_pcb](../../../hardware/fpga-interface-study/size_optimization/candidate/hardware/FPGA100T_37p5x36_Placement.kicad_pcb) | 37.5 × 36 mm; separate connector-inclusive placement candidate; no tracks, vias or zones |
-| [Latest fit](index.html?board=compact-v2) | [FPGA100T_33x36_Placement.kicad_pcb](../../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/hardware/FPGA100T_33x36_Placement.kicad_pcb) | 33 × 36 mm; all 128 parts retained; no tracks, vias or zones; 383 unconnected items |
+| [Earlier 33 × 36 mm fit](index.html?board=compact-v2) | [FPGA100T_33x36_Placement.kicad_pcb](../../../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/hardware/FPGA100T_33x36_Placement.kicad_pcb) | 33 × 36 mm; all 128 parts retained; no tracks, vias or zones; 383 unconnected items |
 
-The core, rail revision and original mezzanine fit are 40 × 36 mm. The earlier smaller fit is 37.5 × 36 mm (6.25% below the 40 × 36 mm baseline). The latest is 33 × 36 mm: 12% smaller than 37.5 × 36 mm and 17.5% below the baseline. Both retain 128 parts. Neither has an integrated schematic or completed routing, and neither includes the rail revision's C92/R122 additions or proposed input protection. All 120 numbered mezzanine contacts remain unassigned in both placements. The latest native DRC has 0 physical violations and 383 unconnected items. Its minimum courtyard gap is approximately 0.010 mm; assembly tolerances are unqualified. J4 body overhang is 0.65 mm, giving a drawn 33.65 × 36 mm board-plus-body envelope; plug insertion and full mating clearances remain unverified. The complete functional board size remains unproven.
+The current 33 × 36 mm routing board opens by default. It integrates C92/R122, revised 1.8 V flash/clock/configuration and the 2.5 V link bank, and both mezzanines. All 25 boot/configuration/clock/JTAG nets and three sequencing/status nets have complete copper; supply and ground distribution remain incomplete. See the [current routing review](../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md). All 120 numbered mezzanine contacts and eight J4 data contacts remain unassigned. No FPGA-to-ASIC application or complete XEM8310 link is established.
+
+The five earlier snapshots are preserved in the history menu: three 40 × 36 mm studies and the 37.5 × 36 mm and 33 × 36 mm placements. Their 128-part placement counts, reports and independent checks remain historical. The current drawn body envelope is about 33.65 × 36 mm because J4 overhangs the outline; the inherited 0.010 mm courtyard minimum, plug access and mating clearance require assembly qualification. No global minimum or manufacturing release is claimed.
 
 Keep each project's ZIP together when opening KiCad; the placement-only ZIP has its PCB, project and local footprint libraries, while the core and rail projects also include hierarchical schematic sheets. The native KiCad project and its separate validation report define the scope of each snapshot.
 
@@ -23,7 +26,7 @@ Keep each project's ZIP together when opening KiCad; the placement-only ZIP has 
 - **Layers** shows visibility controls and front/back/all-layer presets. The initial view shows front copper and silkscreen.
 - **Parts** selects a footprint; **Nets** highlights an existing named net. The displayed net index is an internal viewer index, not a physical pin number.
 - **Flip board** mirrors the view. Use the Layers presets to change the displayed board side.
-- **Full screen** enlarges the viewer. `?board=core&embed=1` provides the compact version used by the main review page.
+- **Full screen** enlarges the viewer. `?board=compact-routed&embed=1` provides the compact version used by the main review page.
 
 The static vector view and complete native ZIP stay available when JavaScript, WebGL or an embedded browser cannot run the interactive viewer. A missing or hash-mismatched board produces a visible fallback instead of a success message.
 
@@ -57,4 +60,4 @@ Run from the repository root with Playwright and Chromium available:
 SITE_URL=http://127.0.0.1:8765/ node scripts/check_fpga_viewer.mjs
 ```
 
-Optional environment variables: `PLAYWRIGHT_MODULE`, `CHROME_PATH`, and `VIEWER_OUTPUT_DIR`. The checker writes a JSON report and screenshots. It verifies all five variants, each expected outline size, native hashes/counts, each net assignment, real view controls, desktop/mobile embedding, runtime resource availability and missing-file fallback. Browser verification does not replace KiCad checks or hardware measurements.
+Optional environment variables: `PLAYWRIGHT_MODULE`, `CHROME_PATH`, and `VIEWER_OUTPUT_DIR`. The checker writes a JSON report and screenshots. It verifies the current board and five historical variants, each expected outline size, native hashes/counts, each net assignment, real view controls, desktop/mobile embedding, runtime resource availability and missing-file fallback. Browser verification does not replace KiCad checks or hardware measurements.

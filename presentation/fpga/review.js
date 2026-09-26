@@ -1,5 +1,12 @@
 (async () => {
   'use strict';
+  // Open preserved history only when an explicit historical anchor is followed.
+  function revealAnchor() {
+    const target = document.getElementById(location.hash.slice(1));
+    for (let parent = target?.parentElement; parent; parent = parent.parentElement) if (parent.tagName === 'DETAILS') parent.open = true;
+  }
+  revealAnchor();
+  window.addEventListener('hashchange', revealAnchor);
   const uncertaintyItems = [...document.querySelectorAll('[data-uncertainty-step]')];
   const filterButtons = [...document.querySelectorAll('[data-uncertainty-filter]')];
   for (const button of filterButtons) button.addEventListener('click', () => {
@@ -20,7 +27,7 @@
       node.textContent = values[node.dataset.field];
     }
     document.querySelector('#routed-signals').textContent = data.routedSignals.join(', ');
-    document.querySelector('#remaining-nets').textContent = Object.entries(data.remainingByNet).map(([name, count]) => `${name}: ${count}`).join(' · ');
+    document.querySelector('#remaining-nets').textContent = Object.entries(data.remainingByNet).map(([name, count]) => `${name}: ${count}`).join(' · ') || 'None on assigned nets. Unassigned application contacts are excluded.';
     window.FPGA_REVIEW = Object.freeze({data, getState: () => ({loaded: true, boardSha256: data.boardSha256, fabricationReady: false})});
     document.documentElement.dataset.reviewReady = 'true';
   } catch (error) {

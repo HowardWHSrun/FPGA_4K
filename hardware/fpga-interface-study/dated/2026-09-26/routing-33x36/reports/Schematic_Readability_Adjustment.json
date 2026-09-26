@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-26",
+  "board_sha256": "eb2990ac856d0bf3ef116a7ecd07204fff7ecd96779fb108c14b55ef7d72e09a",
+  "board_unchanged": true,
+  "changes": [
+    {
+      "path": "libraries/Mezzanine.kicad_sym",
+      "before_sha256": "278625142793670141db646077547fca67798b0be77b65b1f93381c61d9bb274",
+      "after_sha256": "45a5b49e3867942df873b187c773dd4ae7f9c85b3bdbcf55c8fc98210b9097c8",
+      "only_change": "Set QSH_60_GND pin_names hide=yes; all pin numbers, names, electrical types, coordinates, fields, wires and labels unchanged."
+    },
+    {
+      "path": "hardware/mezzanine_01.kicad_sch",
+      "before_sha256": "e08ed516bea7fe99e2f5d849769ef2cff9514d5a0e6c9172a9ad135a7e4ec232",
+      "after_sha256": "5967326e586f028fdb9a141f2f6ce67f9016e822ff8a86ed6e25b19e1698ef5f",
+      "only_change": "Set QSH_60_GND pin_names hide=yes; all pin numbers, names, electrical types, coordinates, fields, wires and labels unchanged."
+    }
+  ],
+  "netlist_before_sha256": "8f5828ad62d40b31dccf6345b9f4565c4d5ce5dc1919cf0f06af00aba93d2688",
+  "netlist_after_sha256": "904a97d3f1fc74f3af42640e7d23d81d64aa42afa08f16e425548e8f7d72bd2a",
+  "netlist_electrically_and_property_identical": true,
+  "netlist_xml_comparison": "All exported XML equal after normalizing only design/date export timestamp. No nodes, pins, functions, component fields or library pin definitions differ.",
+  "canonical_netlist_sha256": "05e783e9ef56a31dfdb23b266c2687a7ab050c46f447c7b1c7ccf6e687b63847",
+  "reason": "Avoid duplicate CONTACT_n names touching across the narrow connector body and GND_BLADE text crossing bottom contact labels. Pin numbers and GND wire/label remain visible."
+}

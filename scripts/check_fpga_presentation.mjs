@@ -16,8 +16,8 @@ try {
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
-  assert(await page.locator('#revision-table tbody tr').count() === 5, 'Five native design revisions are distinguished');
-  assert(await page.locator('a[href$="Fourth_Check_Review.md"]').count() >= 2, 'Fourth-pass findings are visible and downloadable');
+  assert(await page.locator('#revision-table tbody tr').count() === 5, 'Five historical design revisions are preserved');
+  assert(await page.locator('a[href$="Fourth_Check_Review.md"]').count() >= 1, 'Historical fourth-pass findings remain downloadable');
   const uncertaintyResponse = await page.request.get(base + 'hardware/fpga-interface-study/fourth_check/Uncertainty_Register.json');
   assert(uncertaintyResponse.ok(), 'Current uncertainty register is available');
   const register = await uncertaintyResponse.json();
@@ -34,7 +34,7 @@ try {
   assert(await page.locator('#U01').evaluate(e => e.open) && (await page.locator('#U01').innerText()).includes(register.items[0].closure), 'Uncertainty expands to its exact closure criterion');
   await page.locator('#U01 summary').click();
   assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
-  assert(await page.locator('#title').innerText() === 'Current FPGA PCB', 'Current board uses the requested review layout');
+  assert(await page.locator('#title').innerText() === '33 × 36 mm FPGA PCB', 'Current board uses the requested review layout');
   await page.locator('#zoom-in').click();
   assert(await page.evaluate(() => FPGA_BOARD.getState().zoom > 1), 'PCB zoom-in control changes scale');
   const viewport = await page.locator('#viewport').boundingBox();
@@ -47,11 +47,11 @@ try {
   assert(await page.evaluate(() => {const s = FPGA_BOARD.getState(); return s.zoom === 1 && s.x === 0 && s.y === 0;}), 'Fit board restores scale and position');
   await page.locator('#back').click();
   await page.locator('#board-image').evaluate(image => image.decode());
-  assert((await page.locator('#board-image').getAttribute('src')).endsWith('core-back.svg') && await page.locator('#back').getAttribute('aria-pressed') === 'true', 'Back layout loads a distinct current-board view');
+  assert((await page.locator('#board-image').getAttribute('src')).endsWith('current-back.svg') && await page.locator('#back').getAttribute('aria-pressed') === 'true', 'Back layout loads a distinct current-board view');
   await page.locator('#native').click();
   const nativeFrame = await (await page.locator('#native-frame').elementHandle()).contentFrame();
   await nativeFrame.waitForFunction(() => window.pcbViewerDiagnostics?.ready === true, null, {timeout: 60000});
-  assert(await nativeFrame.evaluate(() => pcbViewerDiagnostics.nativeCounts.footprints === 126), 'Embedded native viewer parses current 126-part board');
+  assert(await nativeFrame.evaluate(() => pcbViewerDiagnostics.nativeCounts.footprints === 130), 'Embedded native viewer parses current 130-part board');
   await page.locator('#front').click();
   await page.locator('#board-image').evaluate(image => image.decode());
   assert(await page.locator('#viewport').isVisible(), 'Front layout returns after interactive inspection');
@@ -74,6 +74,8 @@ try {
   await page.locator('#snapshot-details summary').click();
   assert(await page.locator('#snapshot-details').evaluate(e => e.open), 'Snapshot provenance expands');
   assert((await page.locator('.hash').innerText()) === data.boardSha256, 'Visible board identity matches data');
+  assert(await page.locator('#design-history').evaluate(e => !e.open), 'Historical studies are collapsed by default');
+  await page.locator('#design-history > summary').click();
   await page.locator('#connector-edge summary').click();
   await page.locator('#edge-review-image').evaluate(image => image.decode());
   assert(await page.locator('#edge-review-image').evaluate(image => image.naturalWidth > 0), 'Connector-edge evidence graphic loads');
@@ -83,11 +85,11 @@ try {
   await page.locator('#compact-image').scrollIntoViewIfNeeded();
   await page.locator('#compact-image').evaluate(image => image.decode());
   assert(await page.locator('#compact-image').evaluate(image => image.naturalWidth > 0), 'New smaller native placement image loads');
-  assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('12%') && (await page.locator('#size-study').innerText()).includes('17.5%'), 'Smaller placement dimensions and area reduction shown separately');
-  assert((await page.locator('#size-study').innerText()).includes('383') && (await page.locator('#size-study').innerText()).includes('117 ASIC signals'), 'Smaller placement retains open connectivity and assignment disclosure');
+  assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('130 parts'), 'Current smallest board integrates130 parts without enlarging the outline');
+  assert((await page.locator('#size-study').innerText()).includes(String(data.unconnectedItems)) && (await page.locator('#size-study').innerText()).includes('117 ASIC signals'), 'Current board reports measured connectivity and open application assignment');
   const sizeText = await page.locator('#size-study').innerText();
-  assert(['120 mezzanine signal contacts remain unassigned','0 tracks, 0 vias and 0 zones','0.010 mm','0.65 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Latest placement shows copper, assignment and mechanical limits');
-  assert(await page.locator('#size-study a[href="viewer/?board=compact-v2"]').count() > 0 && await page.locator('#size-study a[href="viewer/?board=compact"]').count() > 0 && await page.locator('#size-study a[href="viewer/?board=mezzanine"]').count() > 0, 'Latest and both legacy placements remain linked');
+  assert(['120 mezzanine signal contacts remain unassigned','1.8 V','2.5 V','0.010 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Current board shows corrected rail voltages, assignment and mechanical limits');
+  assert(await page.locator('#size-study a[href="viewer/?board=compact-routed"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact-v2"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact"]').count() > 0, 'Current routing and historical placements remain correctly linked');
   await page.locator('#circled-explanation summary').click();
   await page.locator('#circled-image').evaluate(image => image.decode());
   assert(await page.locator('#circled-image').evaluate(image => image.naturalWidth > 0), 'Circled-space explanation opens and loads');

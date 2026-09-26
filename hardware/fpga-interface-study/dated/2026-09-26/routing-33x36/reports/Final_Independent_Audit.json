@@ -1,0 +1,178 @@
+{
+  "status": "Independent verification passed for a routing checkpoint; board electrically incomplete and not fabrication-ready.",
+  "board_sha256": "ae601df3925e5ec5e90c8a2e747356e432d0558e820199cf7c01c6bf8a7fef96",
+  "board_path": "hardware/FPGA100T_33x36_Routing.kicad_pcb",
+  "board_file_unchanged_by_audit": true,
+  "method": "Fresh pcbnew load plus independent native KiCad DRC with all severities, all track errors, zone refill in memory and schematic parity; no --save-board.",
+  "outline_size_mm": [
+    33.0,
+    36.0
+  ],
+  "copper_layers": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "In3.Cu",
+    "In4.Cu",
+    "B.Cu"
+  ],
+  "components": 130,
+  "front_components": 39,
+  "back_components": 91,
+  "physical_pad_records": 811,
+  "numbered_pad_records": 771,
+  "unique_numbered_endpoints": 762,
+  "all_numbered_pad_nets_match_manifest_and_exported_schematic": true,
+  "manifest_mismatches": [],
+  "schematic_net_mismatches": [],
+  "only_placement_delta_from_corrected_base": {
+    "reference": "C30",
+    "x_mm": [
+      21.45,
+      21.6
+    ],
+    "y_mm": 22.95,
+    "translation_mm": [
+      0.15,
+      0
+    ]
+  },
+  "other_footprint_pad_UUIDs_values_geometry_and_nets_preserved": true,
+  "tracks": 1139,
+  "through_vias": 164,
+  "zones": [
+    {
+      "net": "GND",
+      "name": "Local BGA ground F.Cu",
+      "layer": "F.Cu",
+      "filled_polygons": 14,
+      "area_mm2": 112.086103
+    },
+    {
+      "net": "GND",
+      "name": "Local BGA ground B.Cu",
+      "layer": "B.Cu",
+      "filled_polygons": 3,
+      "area_mm2": 177.531618
+    },
+    {
+      "net": "GND",
+      "name": "GND reference In1.Cu",
+      "layer": "In1.Cu",
+      "filled_polygons": 1,
+      "area_mm2": 1098.731403
+    },
+    {
+      "net": "GND",
+      "name": "GND reference In4.Cu",
+      "layer": "In4.Cu",
+      "filled_polygons": 1,
+      "area_mm2": 1098.731403
+    }
+  ],
+  "native_physical_violations": 0,
+  "native_schematic_parity_issues": 0,
+  "native_unconnected_items": 146,
+  "remaining_by_net": {
+    "GND": 8,
+    "LINK_12V": 9,
+    "VAUX_REG_1V803": 1,
+    "VCCAUX_1V8": 49,
+    "VCCINT_1V0": 34,
+    "VCC_ASIC_1V5": 37,
+    "VCC_LINK_2V5": 8
+  },
+  "all_25_boot_configuration_clock_JTAG_nets_complete": true,
+  "all_three_PG_sequencing_status_nets_complete": true,
+  "boot_signal_net_names": [
+    "CFG_M0",
+    "CFG_M1",
+    "CFG_M2",
+    "CFG_PUDC_B",
+    "CLK_32MHZ",
+    "FLASH_CS_B",
+    "FLASH_DQ0",
+    "FLASH_DQ1",
+    "FLASH_DQ2",
+    "FLASH_DQ3",
+    "FLASH_SCLK",
+    "FPGA_CCLK",
+    "FPGA_CFG_DQ0",
+    "FPGA_CFG_DQ1",
+    "FPGA_CFG_DQ2",
+    "FPGA_CFG_DQ3",
+    "FPGA_DONE",
+    "FPGA_INIT_B",
+    "FPGA_PROGRAM_B",
+    "FPGA_TDO",
+    "JTAG_TCK",
+    "JTAG_TDI",
+    "JTAG_TDO",
+    "JTAG_TMS",
+    "OSC_32M_RAW"
+  ],
+  "PG_net_names": [
+    "PGOOD_IO",
+    "PG_AUX",
+    "PG_CORE"
+  ],
+  "rules_netclasses_and_severities_unchanged": true,
+  "DRC_exclusions": [],
+  "ignored_rule_severities": [],
+  "unassigned_mezzanine_numbered_contacts": 120,
+  "BGA_ground_problem_groups": [
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.N12"
+      ]
+    },
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.M11"
+      ]
+    },
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.K10"
+      ]
+    },
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.J9"
+      ]
+    },
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.F11"
+      ]
+    },
+    {
+      "layer": "F.Cu",
+      "pads": [
+        "U1.A2"
+      ]
+    },
+    {
+      "layer": "B.Cu",
+      "pads": [
+        "C79.2",
+        "C33.2",
+        "C91.2"
+      ]
+    }
+  ],
+  "additional_ground_open": "U4.11 (VSEL strap assigned to GND) is not physically connected. U4.3 is the regulator ground pin.",
+  "limits": [
+    "146 missing connections remain on ground and power distribution.",
+    "The 120 numbered mezzanine contacts remain unassigned; this is separate from native missing-connection counts.",
+    "Clock/return-path, stackup, impedance, thermal, power integrity and assembly/fabrication qualification are not established.",
+    "Two bounded ground-first trials were rejected because they reopened previously complete configuration/flash nets; neither is included in this board."
+  ],
+  "annotation_only_revision_independently_confirmed": true,
+  "annotation_revision_evidence": "Annotation_Independent_Confirmation.json"
+}
