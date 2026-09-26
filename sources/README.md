@@ -47,3 +47,7 @@ The [dated 33 × 36 mm study](../hardware/fpga-interface-study/dated/2026-09-26/
 ### Current 33 × 36 mm routing — 26 September 2026
 
 The [current review](../presentation/fpga/index.html) and [dated routing package](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/README.md) publish one 130-part board with matching 21-sheet schematic, corrected rails, native pin/component ledgers and unsuppressed checks. The [import manifest](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/manifest.json) binds exact CAD/library bytes to the frozen source. Experiments and failed candidate boards are excluded. Earlier source snapshots, ASIC slides and placement reports remain unchanged; routing progress is not a fabrication or functional qualification.
+
+## 26 September: component necessity and pin labels
+
+[The dated audit](../hardware/fpga-interface-study/dated/2026-09-26/presentation-and-pin-labels/README.md) derives all 130 component explanations and 762 endpoint labels from the frozen 33 × 36 mm native snapshot. Manufacturer requirements are linked individually in the audit, including AMD UG475 for U1.L9/L10 ground ties and TI TPS62135 for the FB2 review. The interactive maps use actual native pad centers viewed from the front; they are not mating-face drawings. Native CAD and earlier PDF bytes are unchanged. The new audit explicitly corrects the interpretation of six saved NC markers and documents the R12 removal candidate.

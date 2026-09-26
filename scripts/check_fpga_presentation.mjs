@@ -1,8 +1,9 @@
 import {writeFile, mkdir} from 'node:fs/promises';
 const {chromium} = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = (process.env.SITE_URL || 'https://howardwhsrun.github.io/FPGA_4K/').replace(/\/?$/, '/');
+const out = process.env.FPGA_PRESENTATION_OUTPUT_DIR || 'fpga-browser-check';
 const browser = await chromium.launch({executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader']});
-await mkdir('fpga-browser-check', {recursive: true});
+await mkdir(out, {recursive: true});
 const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
 const report = {base, checks: [], pageErrors: [], consoleErrors: [], failedResources: []};
 page.on('response', response => {if (response.status() >= 400) report.failedResources.push({url: response.url(), status: response.status()});});
@@ -12,8 +13,52 @@ const assert = (condition, label) => {if (!condition) throw new Error(label); re
 try {
   await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
   await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
+  await page.waitForFunction(() => window.FPGA_TEACHING?.getState().components === 130);
   await page.locator('#board-image').evaluate(image => image.decode());
   const data = await page.evaluate(() => FPGA_REVIEW.data);
+  const teaching = await page.evaluate(() => FPGA_TEACHING.data);
+  assert(teaching.boardSha256 === data.boardSha256 && teaching.cadModified === false, 'Component explanations identify the unchanged current native board');
+  const defaultWords = await page.evaluate(() => document.body.innerText.split(/\s+/).filter(Boolean).length);
+  report.defaultVisibleWords = defaultWords;
+  assert(defaultWords < 1100, 'Default view contains fewer than 1,100 words (previously 2,287)');
+  for (const id of ['board-evidence','architecture-reference','interface-reference','validation-reference','engineering-questions','all-downloads','presenter-notes']) {
+    assert(await page.locator('#' + id).evaluate(e => !e.open), 'Detailed evidence collapsed initially: ' + id);
+  }
+  assert(await page.locator('#component-depth').evaluate(e => !e.open), 'Every-pin component details are optional initially');
+  await page.locator('[data-component-group="all"]').click();
+  assert(await page.locator('#component-count').innerText() === '130 of 130 components', 'All current components available through the component browser');
+  const seenParts = [];
+  for (let pageIndex = 0; pageIndex < 13; pageIndex++) {
+    seenParts.push(...await page.locator('#component-list [data-part]').evaluateAll(items => items.map(item => item.dataset.part)));
+    if (pageIndex < 12) await page.locator('#parts-next').click();
+  }
+  assert(JSON.stringify(seenParts.slice().sort()) === JSON.stringify(teaching.components.map(c => c.reference).sort()) && new Set(seenParts).size === 130, 'Pagination exposes every one of 130 component references exactly once');
+  await page.locator('#component-necessity').selectOption('nonessential');
+  assert(await page.locator('#component-count').innerText() === '1 of 130 components' && await page.locator('#component-list [data-part="R12"]').count() === 1, 'Necessity filter isolates the documented R12 removal candidate');
+  await page.locator('#component-depth summary').click();
+  assert((await page.locator('#component-depth').innerText()).includes('PGOOD_IO'), 'Removal explanation preserves the affected power-good connection');
+  await page.locator('#component-necessity').selectOption('all');
+  await page.locator('#component-search').fill('R122');
+  assert(await page.locator('#component-count').innerText() === '1 of 130 components', 'Exact-reference search returns one component');
+  await page.locator('#component-depth summary').click();
+  assert(await page.locator('#component-depth tbody tr').count() === 2 && (await page.locator('#component-depth').innerText()).includes('VAUX_REG_1V803'), 'Component detail exposes its real source pin connections');
+  await page.locator('[data-component-group="fpga"]').click();
+  assert(await page.locator('#component-list [data-part="U1"]').count() === 1 && !(await page.locator('#component-depth').evaluate(e => e.open)), 'Family selection restores concise FPGA explanation');
+  assert((await page.locator('#interfaces .correction-callout').innerText()).includes('U1.L9 / L10') && (await page.locator('#interfaces .correction-callout').innerText()).includes('FB2'), 'New ground correction and regulator-pin review remain visible');
+  await page.locator('#pin-frame').scrollIntoViewIfNeeded();
+  const pinFrame = await (await page.locator('#pin-frame').elementHandle()).contentFrame();
+  await pinFrame.waitForFunction(() => window.PinMap?.data.pins.length === 762);
+  const pinCounts = await pinFrame.evaluate(() => PinMap.data.counts);
+  assert(pinCounts.unassigned === 331 && pinCounts.cadNoConnect === 6 && pinCounts.groundRequired === 2 && pinCounts.groundingReview === 4 && pinCounts.missingAssignedConnections === 146, 'Pin explorer keeps unassigned, saved-CAD NC, review findings and missing copper counts distinct');
+  assert(await pinFrame.locator('[data-pin-id]').count() === 324 && await pinFrame.locator('[data-status="unassigned"]').count() === 203, 'Embedded FPGA map visibly labels every ball and all 203 unassigned balls');
+  await pinFrame.locator('[data-pin-id="U1.L9"]').click();
+  assert((await pinFrame.locator('#detail').innerText()).includes('GND required') && (await pinFrame.locator('#detail').innerText()).includes('UG475'), 'Saved NC diode pin shows the required-ground correction');
+  await pinFrame.locator('[data-ref="NC"]').click();
+  assert(await pinFrame.locator('.nc-list button').count() === 6 && (await pinFrame.locator('#map-meta').innerText()).includes('grounding review'), 'All saved NC pins remain reviewable without endorsing the current wiring');
+  await pinFrame.locator('.nc-list [data-id="U5.4"]').click();
+  assert((await pinFrame.locator('#detail').innerText()).includes('grounding review') && (await pinFrame.locator('#detail').innerText()).includes('FB2'), 'Converter NC detail identifies the unresolved grounding review');
+  await pinFrame.locator('[data-ref="U1"]').click();
+  assert(await page.locator('#interfaces a[href="pins/"]').count() === 1 && await page.locator('#interfaces a[href="pins/All_Pin_Labels.csv"]').count() === 1, 'Full pin map and complete labeled CSV remain directly linked');
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
   assert(await page.locator('#revision-table tbody tr').count() === 5, 'Five historical design revisions are preserved');
@@ -24,6 +69,7 @@ try {
   assert(register.review_pass === 4 && register.fabrication_ready === false, 'Register identifies fourth review and unreleased status');
   assert(await page.locator('.uncertainty-item').count() === register.items.length, 'All uncertainty records are displayed');
   assert(await page.locator('.known-gaps li').count() === register.known_gaps.length, 'Known unfinished tasks are separate');
+  await page.locator('#engineering-questions > summary').click();
   for (const filter of ['lab', 'engineering', 'bench', 'all']) {
     await page.locator(`[data-uncertainty-filter="${filter}"]`).click();
     const expected = filter === 'all' ? register.items.length : register.items.filter(item => item.first_step === filter).length;
@@ -33,6 +79,7 @@ try {
   await page.locator('#U01 summary').click();
   assert(await page.locator('#U01').evaluate(e => e.open) && (await page.locator('#U01').innerText()).includes(register.items[0].closure), 'Uncertainty expands to its exact closure criterion');
   await page.locator('#U01 summary').click();
+  await page.locator('#engineering-questions > summary').click();
   assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
   assert(await page.locator('#title').innerText() === '33 × 36 mm FPGA PCB', 'Current board uses the requested review layout');
   await page.locator('#zoom-in').click();
@@ -55,8 +102,12 @@ try {
   await page.locator('#front').click();
   await page.locator('#board-image').evaluate(image => image.decode());
   assert(await page.locator('#viewport').isVisible(), 'Front layout returns after interactive inspection');
+  await page.locator('a[href="#interface-reference"]').click();
+  await page.waitForFunction(() => document.getElementById('interface-reference').open);
+  assert(await page.locator('#interface-reference').evaluate(e => e.open), 'Explicit source anchor opens the relevant evidence drawer');
   assert((await page.locator('#gerald-slides').innerText()).includes('48 clocks') && (await page.locator('#gerald-slides').innerText()).includes('60 kHz'), 'Gerald slide evidence distinguishes known framing from timing conflict');
-  assert((await page.locator('[data-field="unconnectedItems"]').first().innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
+  await page.locator('#interface-reference > summary').click();
+  assert((await page.locator('#validation .check-strip [data-field="unconnectedItems"]').innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
   assert(!(await page.locator('#load-error').isVisible()), 'No stale-data load warning');
   for (const anchor of ['architecture', 'interfaces', 'validation', 'release', 'files']) {
     await page.locator(`.section-nav a[href="#${anchor}"]`).click();
@@ -68,9 +119,13 @@ try {
     await page.waitForTimeout(150);
     const size = await page.evaluate(() => ({width: innerWidth, document: document.documentElement.scrollWidth}));
     assert(size.document <= size.width, 'No page overflow at ' + width);
-    await page.screenshot({path: `fpga-browser-check/review-${width}.png`, fullPage: true});
+    await page.screenshot({path: `${out}/review-${width}.png`, fullPage: true});
+    if (width !== 1920) for (const section of ['architecture','interfaces']) {
+      await page.locator('#' + section).screenshot({path: `${out}/${section}-${width}.png`});
+    }
   }
   await page.setViewportSize({width: 1440, height: 1000});
+  await page.locator('#board-evidence > summary').click();
   await page.locator('#snapshot-details summary').click();
   assert(await page.locator('#snapshot-details').evaluate(e => e.open), 'Snapshot provenance expands');
   assert((await page.locator('.hash').innerText()) === data.boardSha256, 'Visible board identity matches data');
@@ -122,9 +177,9 @@ try {
 } catch (error) {
   report.passed = false;
   report.failure = error.stack;
-  await page.screenshot({path: 'fpga-browser-check/failure.png', fullPage: true});
+  await page.screenshot({path: `${out}/failure.png`, fullPage: true});
 }
-await writeFile('fpga-browser-check/report.json', JSON.stringify(report, null, 2));
+await writeFile(`${out}/report.json`, JSON.stringify(report, null, 2));
 console.log(JSON.stringify({passed: report.passed, checks: report.checks, pageErrors: report.pageErrors, consoleErrors: report.consoleErrors, failedResources: report.failedResources, failure: report.failure}, null, 2));
 await browser.close();
 if (!report.passed) process.exitCode = 1;

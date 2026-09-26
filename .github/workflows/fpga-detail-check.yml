@@ -9,6 +9,7 @@ on:
       - scripts/check_fpga_presentation.mjs
       - scripts/check_fpga_viewer.mjs
       - scripts/check_fpga_review.py
+      - scripts/check_fpga_teaching.py
       - scripts/check_fpga_size_report.py
       - scripts/import_fpga_routing.py
       - hardware/fpga-100t-review/**
@@ -33,8 +34,11 @@ jobs:
           node --check presentation/fpga/entry.js
           node --check presentation/fpga/review.js
           node --check presentation/fpga/review-board.js
+          node --check presentation/fpga/presenter.js
+          node --check presentation/fpga/pins/pin_map.js
           node --check presentation/fpga/viewer/viewer.js
           python3 scripts/check_fpga_review.py
+          python3 scripts/check_fpga_teaching.py
           python3 scripts/check_fpga_size_report.py
           node --check scripts/check_fpga_presentation.mjs
           node --check scripts/check_fpga_viewer.mjs
@@ -51,6 +55,9 @@ jobs:
           current=json.loads(Path(fpga['artifact_manifest']).read_text())
           paths += [fpga['artifact_manifest'],'presentation/fpga/manifest.json','presentation/fpga/assets/current-front.svg','presentation/fpga/assets/current-back.svg','presentation/fpga/assets/current-view-provenance.json']
           paths += [fpga['source']+'/'+item['path'] for item in current['files']]
+          paths += [str(p) for p in Path('presentation/fpga/pins').iterdir() if p.is_file()]
+          paths += [str(p) for p in Path('presentation/fpga/data').iterdir() if p.is_file()]
+          paths += ['presentation/fpga/presenter.js','presentation/fpga/presenter.css']
           paths=list(dict.fromkeys(paths))
           def verify(p):
               req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})

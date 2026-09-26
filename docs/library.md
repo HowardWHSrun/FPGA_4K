@@ -69,6 +69,8 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 ## FPGA board-level presentation
 
+[Component explanations](../presentation/fpga/index.html#architecture) · [every labeled pin](../presentation/fpga/pins/) · [detailed presenter notes and 130-part appendix](../presentation/fpga/data/Presenter_Notes.md) · [dated audit](../hardware/fpga-interface-study/dated/2026-09-26/presentation-and-pin-labels/README.md). This review identifies two required diode-pin ground corrections and four FB2 grounding reviews; the saved CAD and earlier PDF remain unchanged.
+
 [Current 33 × 36 mm engineering review](../presentation/fpga/index.html) · [Interactive native board](../presentation/fpga/viewer/index.html?board=compact-routed) · [Complete current KiCad ZIP](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) · [21-sheet schematic PDF](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing_Schematic.pdf) · [Routing audit](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md) · [Refresh guide](../presentation/fpga/README.md).
 
 [Current component and pin PDF](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/report/output/pdf/FPGA100T_33x36_Routing_Component_Pin_Report.pdf) · [Editable LaTeX source](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/report/FPGA100T_33x36_Routing_Report_Source.zip). All 130 components and 762 numbered endpoints are documented.

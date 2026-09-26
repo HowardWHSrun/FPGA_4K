@@ -1,8 +1,10 @@
 # FPGA_4K
 
+**Latest component audit:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). All 130 parts and 762 endpoints are explained. U1.L9/L10 require GND; four FB2 outputs need grounding review. These findings are **not yet corrected in CAD**. R12 is the clearest removal candidate.
+
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — September 26:** [33 × 36 mm routed board](presentation/fpga/index.html) · [complete KiCad ZIP](hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) · [routing review and remaining work](hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md). This is the only active size: 130 components, corrected bank rails, both mezzanines and a matching 21-sheet schematic. All 25 boot/clock/JTAG and three sequencing nets are routed; native checks report zero physical/parity findings and 146 remaining assigned-net connections. The 117 ASIC signals and cable data contacts are still unassigned. Earlier checkpoints are under history. **Not ready for manufacture.**
+**Current FPGA review — September 26:** [33 × 36 mm routed board](presentation/fpga/index.html) · [complete KiCad ZIP](hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) · [routing review and remaining work](hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md). This is the only active size: 130 components, corrected bank rails, both mezzanines and a matching 21-sheet schematic. All 25 boot/clock/JTAG and two sequencing nets plus the unused status net are routed; native checks report zero physical/parity findings and 146 remaining assigned-net connections. The 117 ASIC signals and cable data contacts are still unassigned. Earlier checkpoints are under history. **Not ready for manufacture.**
 
 ## Start working with the team
 

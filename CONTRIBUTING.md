@@ -7,7 +7,7 @@ Start with [team setup](docs/team/README.md), [owners and open work](docs/team/o
 1. Accept the repository collaborator invitation and sign in to GitHub Desktop. Reading/cloning this public repository does not give write access.
 2. Install KiCad **10.0.6**, including its standard symbol, footprint and optional 3D libraries. Coordinate any version upgrade in a separate pull request. The historical routing reference remains in its original KiCad 9 format.
 3. Clone `https://github.com/HowardWHSrun/FPGA_4K.git` with GitHub Desktop into a normal local folder outside iCloud/Dropbox/OneDrive synchronization. Do not use downloaded ZIPs as working copies.
-4. For the most-routed current core, open `hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pro`. The rail revision and mezzanine fit are separate downloads on the review page. Keep the complete project folder and its libraries. These are review snapshots, not one integrated design.
+4. For the current smallest board, open `hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pro`. Keep the complete project folder and libraries. Read the latest component audit on the review page: this is an incomplete routing snapshot with known pin-grounding corrections, not a fabrication release.
 5. Run the checks below. Verify the schematic hierarchy and board open on your computer. Standard 3D assets are installed with KiCad; absent custom models do not establish mechanical clearance.
 
 ## Every change
@@ -38,8 +38,8 @@ Optional terminal equivalents, once `kicad-cli` is on PATH:
 
 ```sh
 mkdir -p build/review
-kicad-cli sch erc --format json --output build/review/erc.json hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_sch
-kicad-cli pcb drc --schematic-parity --format json --output build/review/drc.json hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb
+kicad-cli sch erc --format json --output build/review/erc.json hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_sch
+kicad-cli pcb drc --schematic-parity --format json --output build/review/drc.json hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pcb
 ```
 
 These commands export findings; their default exit code does not mean the design is error-free. Review the reports. For a release gate, use `--exit-code-violations` and review disabled rules and exclusions as well.
@@ -54,7 +54,7 @@ Finish a handoff by recording the merged commit, remaining work, affected interf
 
 Commit the native project, every child sheet, custom rules, project library tables and required custom libraries. Use project-relative paths. Keep editor preferences, locks, automatic backups and scratch outputs out of Git. Do not add credentials, private chat/audio or unrelated personal material.
 
-The `hardware/fpga-board/` September 21 import is historical. The current core, rail revision and fit study are review snapshots, not an integrated development baseline. Before integration, record the chosen revision and copy its complete project into a named development folder with provenance. Preserve original references and frozen reports; regenerate new evidence after CAD changes.
+The `hardware/fpga-board/` September 21 import is historical. The current 33 × 36 mm routing snapshot integrates rail and connector work; the older core, rail and fit studies are historical. Before further CAD editing, record the chosen revision and copy its complete project into a named development folder with provenance. Preserve original references and frozen reports; regenerate new evidence after CAD changes.
 
 `sources/manifest.json` protects immutable supplied files and snapshot evidence. The FPGA import baseline records the initial CAD hashes; it does not freeze the editable working design. Git history records subsequent engineering changes. Update the status and ownership documents when a decision changes.
 

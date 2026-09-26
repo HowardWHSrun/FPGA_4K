@@ -3,7 +3,7 @@
   // Open preserved history only when an explicit historical anchor is followed.
   function revealAnchor() {
     const target = document.getElementById(location.hash.slice(1));
-    for (let parent = target?.parentElement; parent; parent = parent.parentElement) if (parent.tagName === 'DETAILS') parent.open = true;
+    for (let parent = target; parent; parent = parent.parentElement) if (parent.tagName === 'DETAILS') parent.open = true;
   }
   revealAnchor();
   window.addEventListener('hashchange', revealAnchor);

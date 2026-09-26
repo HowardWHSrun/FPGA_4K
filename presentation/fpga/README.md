@@ -10,6 +10,14 @@ The current project integrates 1.8 V configuration, a 2.5 V link bank, both mezz
 
 [review-data.json](review-data.json) supplies the measured counts and identity. [viewer/boards.json](viewer/boards.json) pins each unchanged native PCB by SHA-256 and expected renderer counts. Static views are exported from the same frozen board; only color, viewport and labeled overview composition change. KiCanvas is a review viewer; native KiCad remains authoritative. See [viewer provenance and limits](viewer/README.md).
 
+## Component explanations and labeled pins
+
+[Presenter notes](data/Presenter_Notes.md) explain all 130 components; [the pin map](pins/) labels all 762 electrical endpoints using native pad positions. The default page keeps seven functional groups and short summaries visible. Detailed pin tables, sources and historical evidence open on demand.
+
+The audit identifies **U1.L9/L10 requiring ground** and **U2–U5.4 FB2 requiring a grounding review**. The native board and the earlier PDF are unchanged; six saved NC markers must not be presented as six approved unused pins. R12 is the clearest current removal candidate.
+
+`data/Component_Necessity.json` and `pins/pin_status.json` are pinned to the current board hash. Any electrical revision requires regenerated explanations, pad maps, counts, CSVs and audit findings from that same revision. Update both the standalone JSON and the embedded dataset in `pins/pin_map.js`; do not carry forward stale pin labels. `scripts/check_fpga_teaching.py` compares every component/pin against the frozen native evidence. The UI refuses component data with a different board hash.
+
 ## Refresh the current design
 
 First freeze the canonical source `current/hardware/FPGA100T_33x36_Routing` project and all 21 sheets, local libraries and bring-up files together. Generate a fresh native DRC/ERC, `Routing_Snapshot.json`, readback, three CSV ledgers, placement-change log and routing/power/ground reviews for that exact board. Export front/back SVG and the schematic PDF without modifying the CAD; retain `Current_View_Provenance.json` with source and output hashes. Do not reuse older board views or reports.
@@ -19,10 +27,13 @@ From the repository root:
 ```sh
 python3 scripts/import_fpga_routing.py --source ../2026-09-26_FPGA_Work/06_33x36_Routing
 python3 scripts/check_fpga_review.py
+python3 scripts/check_fpga_teaching.py
 python3 scripts/check_docs.py
 python3 scripts/check_hardware.py
 node --check presentation/fpga/review.js
 node --check presentation/fpga/review-board.js
+node --check presentation/fpga/presenter.js
+node --check presentation/fpga/pins/pin_map.js
 node --check presentation/fpga/viewer/viewer.js
 node --check scripts/check_fpga_presentation.mjs
 node --check scripts/check_fpga_viewer.mjs
