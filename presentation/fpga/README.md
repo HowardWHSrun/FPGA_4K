@@ -1,35 +1,44 @@
-# FPGA board-level review
+# 100T FPGA engineering review
 
-**[Open the FPGA slides](https://howardwhsrun.github.io/FPGA_4K/presentation/fpga/)** · [Return to the system FPGA section](../../index.html#fpga)
+[Open the current page](index.html). It describes the full-board release scope: XC7A100T CSG324, all 117 ASIC signals and the XEM8310 receiver link. The 40 × 36 mm core snapshot is incomplete and not fabrication-ready.
 
-Select FPGA in the system, then **Open KiCad design & FPGA slides**. A second click on its selected label/tab also enters this page. System overview returns to the parent selection.
+The page loads current counts and board identity from [review-data.json](review-data.json). The [artifact manifest](../../hardware/fpga-100t-review/manifest.json) records every packaged file's SHA-256; [the full project ZIP](../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip) includes native CAD, all hierarchical sheets, local libraries, rendered views and selected evidence. The import preserves native CAD bytes. Workstation paths in reports are made portable, with original and transformed hashes retained.
 
-## Eight short slides
+## Refresh after a verified CAD revision
 
-Current draft → Smaller FPGA → Functions → I/O + link → Power → Boot + clock → Prototype → Next steps.
+First regenerate the source's Wiring_Status, Final_Snapshot_Audit, Geometry, native DRC/ERC, schematic PDF and PCB SVG/PNG for the same revision. Do not reuse stale visual exports. Then, from this repository root:
 
-Each main slide has a short explanation, three compact facts and two discussion points. Longer qualifications and dated evidence are behind **Slide notes & sources**. The [September 22 direction update](direction-2026-09-22.md) records Howard and Zitong's current work, CP SOM One attribution, the package-specific 50T candidate and the open prototyping question. The [September 21 digest](meeting-2026-09-21.md) remains a separate historical record.
+```sh
+python3 scripts/import_fpga_review.py --source ../FPGA_100T_CSG324/minimal_core
+python3 scripts/import_fpga_interface_study.py --source ../FPGA_100T_CSG324
+python3 scripts/check_fpga_review.py
+python3 scripts/check_docs.py
+python3 scripts/check_hardware.py
+node --check presentation/fpga/review.js
+node --check scripts/check_fpga_presentation.mjs
+git diff --check
+```
 
-**Important:** the displayed KiCad files are still the 200T working draft. The 10 × 10 mm XC7A50T / CPG236 is being evaluated; it has not been substituted into the CAD or verified for this system. Functions and components are not final.
+The importer rejects disagreement between the native board, geometry, wiring status, snapshot file hashes and DRC counts. It makes a deterministic ZIP, updates the source manifest and produces the JSON used on the page. It deliberately refuses a fabrication-ready snapshot: an actual release needs a reviewed change to the page and its release gates. The package checker verifies coherence, not hardware correctness.
 
-## Inspection and editing
+Review `index.html` narrative after any scope, interface, rail or validation-category change. Dynamic numbers do not make old engineering conclusions current. In particular, the ERC explanation and power-routing text must be reconciled when those areas are completed. Confirm the two 60-pin mezzanine proposal and full-board outline once their exact mapping/mechanics are validated.
 
-Front/back SVGs are the original September 21 KiCad exports; back is mirrored and inner layers are omitted. Pan, zoom and fit do not modify the source.
+## Local and published browser checks
 
-**Interactive KiCad** loads the native PCB or schematics using read-only [KiCanvas](https://kicanvas.org/embedding/). Its module is requested on demand from `https://kicanvas.org/kicanvas/kicanvas.js`. The document selector discovers the child sheets; **Inspect related schematic** opens the source associated with the current slide. Full desktop KiCad feature parity is not claimed. Original exports remain available if native rendering fails.
+Serve the repository root with a local HTTP server. Run the browser check with `SITE_URL` set to its root, `CHROME_PATH` set to an installed Chrome/Chromium executable, and (if needed) `PLAYWRIGHT_MODULE` set to an installed Playwright module. It checks section navigation, native views, data display, project/PDF downloads, desktop/mobile overflow, historical-page access and the system-view entry.
 
-**KiCad files** links to the native PCB, project, root schematic, guide and full repository ZIP. For editing, retain all child sheets and local libraries and open the `.kicad_pro` through KiCad Project Manager. The handoff specifies KiCad 10.0.6.
+```sh
+python3 -m http.server 8765
+# Separate shell; Chrome and Playwright must be installed:
+SITE_URL=http://127.0.0.1:8765/ node scripts/check_fpga_presentation.mjs
+```
 
-Edit `slides.js` for slide content. `concise.css` changes only the board-level deck's typography. `app.js` and the native renderer are unchanged in this revision. Existing slide IDs are retained so previously shared deep links and navigation tests continue to work.
+`fpga-browser-check/` is ignored generated evidence. `SKIP_SYSTEM_CHECK=1` can isolate the new page when the older system view's external viewer dependencies are unavailable; report this limitation rather than claiming that entry path passed.
 
-## Provenance and validation
+GitHub Pages is configured to serve the `presentation` branch at its root. The FPGA detail workflow waits for live files to match the pushed revision before testing the live page. A successful local build is not deployment verification.
 
-CAD source revision: `46c3c6985bef1249170146dba927266443d8a1e8`. Integration base for this copy revision: `ee8b615ed2a4ced86b3f52f916daf5532249ca63`. See [manifest.json](manifest.json).
+## Preserved history
 
-Native files load from the presentation branch; visible board sizes and historical completion counts retain their September 21 import date. No native CAD, compact assembly geometry or main-branch files are modified. No electrical operation, synthesis, timing closure or fresh DRC/ERC is performed for this presentation update.
+[The earlier eight-slide review](history-2026-09-24.html) and its [manifest](history-2026-09-24-manifest.json) preserve the 200T draft and 50T evaluation. Their original app, slide and style files remain alongside the new review. [September 21](meeting-2026-09-21.md), [September 22](direction-2026-09-22.md), and the [meeting hub](../meetings/) retain their dated context. These are not the current 100T pinout or release status.
 
-`.github/workflows/fpga-detail-check.yml` and `scripts/check_fpga_presentation.mjs` check publication, drill-down/back navigation, eight slide states, actual board exports, desktop/mobile layouts and native viewing. A workflow's logs—not this README—establish a particular successful run.
-
-## September 23 update
-
-The [latest meeting](../meetings/2026-09-23.html) reopens FPGA/package selection: approximately 120 I/O are discussed and the 106-I/O 50T option was reported insufficient. Prioritize the complete pin map, minimum board components, procurement, USB 3.0/connector decision and EMI review. The native CAD remains the dated 200T draft.
+The separate [mezzanine/interface study](../../hardware/fpga-interface-study/README.md) has its own importer and manifest. It must not be represented by the current core snapshot counters. After updating its SVG/PNG/contact CSV/reports, rerun `scripts/import_fpga_interface_study.py` with the FPGA_100T_CSG324 root, then the documentation and browser checks.

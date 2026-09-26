@@ -1,0 +1,2530 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 81b02261-c249-50dd-912b-801044c55dea)
+  (paper "A3")
+  (title_block
+    (title "Decoupling / core and BRAM / 1.0 V")
+    (date "2026-09-26")
+    (rev "MINIMAL 0.3")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:Device__C_Polarized"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C_Polarized"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Polarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_Tantalum_SMD__CP_EIA-7343-20_Kemet-V"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_Polarized_0_1"
+        (rectangle
+          (start -2.286 0.508)
+          (end 2.286 1.016)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.778 2.286)
+            (xy -0.762 2.286))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.27 2.794)
+            (xy -1.27 1.778))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (rectangle
+          (start 2.286 -0.508)
+          (end -2.286 -1.016)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type outline))))
+      (symbol "Device__C_Polarized_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1206_3216Metric Capacitor_SMD__C_1210_3225Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (text "Decoupling / core and BRAM / 1.0 V"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid c45f5e78-2a65-59b5-a9df-89e3b0844a88))
+  (text "Connected core draft. Matching global labels are electrical connections. Component status fields retain unresolved selections and requirements."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 511974f8-e364-50a4-9cbb-6d088a172588))
+  (symbol
+    (lib_id "CoreSupport:Device__C_Polarized")
+    (at 38.1 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid aeb73c4a-9c8b-5fc8-a1d3-e2b61a806168)
+    (property "Reference" "C20"
+      (at 44.196 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "330u 2.5V polymer ESR25m"
+      (at 44.196 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_Tantalum_SMD__CP_EIA-7343-20_Kemet-V"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "T520V337M2R5ATE025"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C_Polarized"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 4319d9b0-2aec-5860-b078-663c79d16ca6))
+    (pin "2"
+      (uuid 7285c625-7782-57aa-9017-bb1acf3a1290))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C20")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 64.77)
+      (xy 38.1 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a750d350-d31b-5243-8865-647038ffcbda))
+  (wire
+    (pts
+      (xy 38.1 59.69)
+      (xy 33.02 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5aa7fa46-239a-5a6a-8f86-9e2b497b6565))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 33.02 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 40055dc2-d72d-5966-85c3-61d4ff83c2a2)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 72.39)
+      (xy 38.1 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9ef0afd1-781b-5eea-b5cf-a3a1e53a2550))
+  (wire
+    (pts
+      (xy 38.1 77.47)
+      (xy 33.02 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e124aa0c-2ba4-5988-bf81-d60619b315e1))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d4c10d93-cacd-5ef3-b5b0-6a626e4ebd7b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 8bc1eabc-58f7-5acd-b71d-1a5b0dcee0fa)
+    (property "Reference" "C21"
+      (at 109.982 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100u 6.3V X5R"
+      (at 109.982 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1210_3225Metric"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM32ER60J107ME20L"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bram"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Lifecycle review: manufacturer family listed NRND; confirm availability or qualify an alternate before release."
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 7d1ba059-171b-53b3-86d1-52bf006ba274))
+    (pin "2"
+      (uuid 39d25014-11f0-5afc-a854-f2e2146f724c))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C21")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 64.77)
+      (xy 104.14 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 398ad55e-cc61-5264-bfc5-5c7d167203c1))
+  (wire
+    (pts
+      (xy 104.14 59.69)
+      (xy 99.06 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ec492be8-11c3-5ebf-8eae-8ded201663a7))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 99.06 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 4bb66ac8-7980-5969-9357-dde2a859e5db)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 72.39)
+      (xy 104.14 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b5924e87-c39c-5bc6-8cbe-8948774035f8))
+  (wire
+    (pts
+      (xy 104.14 77.47)
+      (xy 99.06 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fc01fcf4-9dfb-573e-a682-d7f2dbc889d3))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 830f4627-8fb5-5ba1-abd7-8b53b09c0472)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 80c47bd6-7e94-573c-9cb8-a884c0562261)
+    (property "Reference" "C22"
+      (at 176.022 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 176.022 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 1594fa8c-c411-57f4-aac9-bf3ec0c51b84))
+    (pin "2"
+      (uuid ca453d3e-f3ce-5952-8b7f-a12ffb05fe97))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C22")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 64.77)
+      (xy 170.18 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid af027cd1-6211-51a7-aa9f-9a810c43fbb4))
+  (wire
+    (pts
+      (xy 170.18 59.69)
+      (xy 165.1 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid db2e38ad-88ff-548d-b9a6-28ddb7e2bf2d))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 165.1 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 2d6e6e85-3580-53de-ab1d-12cc1c44f83d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 72.39)
+      (xy 170.18 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 301f75ad-72bb-5073-b4fb-cc8e78345dc1))
+  (wire
+    (pts
+      (xy 170.18 77.47)
+      (xy 165.1 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid aa668e56-99c3-59de-9c55-fc612056b32f))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 02792305-db4e-5bc1-8465-8d6af6033ff7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 57557af9-40f2-5ebd-b500-cdaf5193f100)
+    (property "Reference" "C23"
+      (at 242.062 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 242.062 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 0cabaefd-bedc-5c68-a38c-21c39a48f318))
+    (pin "2"
+      (uuid 921ef129-8f1e-5718-9269-4a890064d303))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C23")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 64.77)
+      (xy 236.22 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 04b4a226-2935-57ba-9e3e-604ed622ce3d))
+  (wire
+    (pts
+      (xy 236.22 59.69)
+      (xy 231.14 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ec3d1161-bb74-5696-9f6f-078040668fb2))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 231.14 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 3a2720b8-1428-5833-9e37-1a8182e74d31)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 72.39)
+      (xy 236.22 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ef546b6c-74ac-562e-a68f-b336ac256511))
+  (wire
+    (pts
+      (xy 236.22 77.47)
+      (xy 231.14 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 13874130-f729-5bb5-bf0d-95fc6b248e63))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 231.14 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e61730a5-9c7a-534b-9e99-0a7934510e77)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 302.26 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f98c7dd9-35c7-5f1e-8213-c59605742d83)
+    (property "Reference" "C24"
+      (at 308.102 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 308.102 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 11e4d490-51e4-5685-9e2f-27508225e477))
+    (pin "2"
+      (uuid 95dd0672-58fc-53df-ba90-80b65b9fa8d6))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C24")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 302.26 64.77)
+      (xy 302.26 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ea0c3a27-2da5-5430-917b-f2b0dce13991))
+  (wire
+    (pts
+      (xy 302.26 59.69)
+      (xy 297.18 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a88d7f58-1f37-513d-b9f6-677840f03c05))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 297.18 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e3b6f4b0-8eca-5702-8ba2-35572748ec73)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 302.26 72.39)
+      (xy 302.26 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 39c9573b-dbda-5abe-a054-eeb9e282492f))
+  (wire
+    (pts
+      (xy 302.26 77.47)
+      (xy 297.18 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7e42e111-f01b-5f03-ac32-6d6dfaa3f126))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 297.18 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d298018f-fa4a-5377-9c26-278bb2102f1a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 36bbae04-2c57-5862-bb5e-1b49d372f03b)
+    (property "Reference" "C25"
+      (at 43.942 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 43.942 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid b7e6d07d-3b04-5843-bd69-c405f6fba607))
+    (pin "2"
+      (uuid 7198c15f-ba1b-56c0-89c9-93809a97b498))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C25")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 114.3)
+      (xy 38.1 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b4864fbe-8763-5d5e-8da8-b42d6729a5fc))
+  (wire
+    (pts
+      (xy 38.1 109.22)
+      (xy 33.02 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d6b2ad26-438b-5635-a3ca-fed6eb0eec9b))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 33.02 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid cfc72fea-523f-5ee3-9315-377630abf4a4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 121.92)
+      (xy 38.1 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d9454510-71a4-56d8-b6bb-03e817ab5492))
+  (wire
+    (pts
+      (xy 38.1 127.0)
+      (xy 33.02 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 32979dcc-fe6b-5cc9-bdf7-e214e0084325))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 28f206c2-dcaa-5bda-99a3-0479166cb1db)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f90ad382-d33e-5c28-b837-1c9804dc682e)
+    (property "Reference" "C26"
+      (at 109.982 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 109.982 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 7a63430c-1aa1-5700-885b-ef6ba5f2680a))
+    (pin "2"
+      (uuid c1f126b5-8a9c-52ac-87ae-d4ecba75eb90))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C26")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 114.3)
+      (xy 104.14 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ec6c6d8c-2c15-5891-b515-4bfd3143fe39))
+  (wire
+    (pts
+      (xy 104.14 109.22)
+      (xy 99.06 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9a491fca-825f-5fab-a67a-c759c1bec8ad))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 99.06 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 2fe10f91-ba11-52aa-95bb-f56ac875e7a0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 121.92)
+      (xy 104.14 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c978b24a-2cf2-59e2-9d43-7a145641df3b))
+  (wire
+    (pts
+      (xy 104.14 127.0)
+      (xy 99.06 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1144c4f2-557b-5da5-9145-8dda302193a2))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 24485d4a-5e7b-5234-8a52-2d56fad9e010)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 8e477f84-18e0-5e3a-baaa-4f23a8797328)
+    (property "Reference" "C27"
+      (at 176.022 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 176.022 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e21aa933-8a36-56c0-8477-30c5de4b9b3e))
+    (pin "2"
+      (uuid 143ebe26-9123-554c-88c2-1b6f290ab3c8))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C27")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 114.3)
+      (xy 170.18 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1cc5dbb9-622b-594e-9417-3545e9391ecf))
+  (wire
+    (pts
+      (xy 170.18 109.22)
+      (xy 165.1 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2c585a47-2358-5019-8c84-e81dc49d5a98))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 165.1 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 8f46894a-21ad-5e89-9771-d910b122f8e5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 121.92)
+      (xy 170.18 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 04c0200c-92cc-5b75-bc02-692f5df2ca8c))
+  (wire
+    (pts
+      (xy 170.18 127.0)
+      (xy 165.1 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 73edc469-18dc-5774-88fc-e93c7003680e))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 85ea29d8-d3f8-51ff-969d-942adea982b0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 90eaf888-8bc5-5129-88b3-391ecf522b48)
+    (property "Reference" "C28"
+      (at 242.062 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 242.062 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 125b851f-2342-58c8-ac02-29c1273bbd76))
+    (pin "2"
+      (uuid 0c0f6b9c-7ab1-599e-8ab0-b281f9def1cc))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C28")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 114.3)
+      (xy 236.22 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8bebe3d4-113d-5949-bd65-94cd3773a54b))
+  (wire
+    (pts
+      (xy 236.22 109.22)
+      (xy 231.14 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3200e897-88e6-57c3-8812-7d2bf69d591f))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 231.14 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 42c9ce39-a41b-57ab-a139-89cc483cf78c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 121.92)
+      (xy 236.22 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6ca34de9-3d50-5bd8-975f-934d5dc53080))
+  (wire
+    (pts
+      (xy 236.22 127.0)
+      (xy 231.14 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 38b2de73-5b26-519c-a9a3-a22e5f7904a2))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 231.14 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid bcd12792-a89f-5edf-b830-84e8ecba57a0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 302.26 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 6f1d7a81-52af-5c02-8560-0533aea85483)
+    (property "Reference" "C29"
+      (at 308.102 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 308.102 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 302.26 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 59eac13a-2a35-543c-916e-80434a612dbb))
+    (pin "2"
+      (uuid e7a09cd5-175a-5cd8-90d9-0507b0a3580e))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C29")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 302.26 114.3)
+      (xy 302.26 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ff99cc39-f32f-577a-b725-c7472958fead))
+  (wire
+    (pts
+      (xy 302.26 109.22)
+      (xy 297.18 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e1244f33-273f-52cb-ab93-29b87f48a23d))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 297.18 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 97f10edb-e07a-5cd3-91e4-da96bab2db60)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 302.26 121.92)
+      (xy 302.26 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4af48314-0de9-5007-998b-5d3b2b1b378d))
+  (wire
+    (pts
+      (xy 302.26 127.0)
+      (xy 297.18 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0160c2bd-be2e-5a38-b45e-71e8f9520355))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 297.18 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e3afa598-8d2d-57bf-b06c-c52837eecbcf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 893c3f7f-9b24-5141-b543-b726464ab95b)
+    (property "Reference" "C30"
+      (at 43.942 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 43.942 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 0a60af38-72d3-5548-9169-dd45a5ef27e1))
+    (pin "2"
+      (uuid 6411e3a7-ab2b-54b4-a9e5-cf9c2a2b4235))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C30")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 163.83)
+      (xy 38.1 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid df2ceff1-4b81-5c31-83e5-653daf12ac88))
+  (wire
+    (pts
+      (xy 38.1 158.75)
+      (xy 33.02 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 81a085a0-0518-502b-b158-4f38bdde25e7))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 33.02 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e6ebed53-9e8c-5b55-97ad-60c855768a90)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 171.45)
+      (xy 38.1 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 066d9bd2-016a-5c9a-9f9b-543838a6e335))
+  (wire
+    (pts
+      (xy 38.1 176.53)
+      (xy 33.02 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e62e3ee9-a23e-5165-8ef3-4086f441843c))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 538855f8-eb26-54fd-ac17-84b1ae04a7c4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2b2ec846-699e-5259-837f-f2073c2d72e7)
+    (property "Reference" "C31"
+      (at 109.982 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 109.982 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 17a71a46-d1d9-507d-a402-0380331689ff))
+    (pin "2"
+      (uuid 48f1889e-2e6d-5cd9-b1e9-8a9a345d8f54))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C31")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 163.83)
+      (xy 104.14 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c130b945-c089-5078-8c8a-adeec6966167))
+  (wire
+    (pts
+      (xy 104.14 158.75)
+      (xy 99.06 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 89f5cc5f-c051-559d-a68d-c0bb740b670c))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 99.06 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 88a89e23-753b-5be5-aeab-5c6c71881594)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 171.45)
+      (xy 104.14 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8cfbf819-03c9-5098-80f5-bf1bc744bb04))
+  (wire
+    (pts
+      (xy 104.14 176.53)
+      (xy 99.06 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8b4e0df8-0351-5422-ba94-0b815be3b696))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 538acbfa-a186-5e89-96ec-533e42873a16)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 41b3b7b0-e65d-594e-8d53-656ca4a5f310)
+    (property "Reference" "C32"
+      (at 176.022 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 176.022 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 46e8b6bd-a53f-56c8-a01f-33547df2e72a))
+    (pin "2"
+      (uuid 6d73fe47-770e-5a1c-83be-361b2c96a6e2))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C32")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 163.83)
+      (xy 170.18 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 12f65329-3ee4-5728-b2ff-c695d958b62e))
+  (wire
+    (pts
+      (xy 170.18 158.75)
+      (xy 165.1 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6b93bd1a-5077-5fb8-8c1a-024e8920eab3))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 165.1 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid bee29343-311b-52aa-ac03-c3b9a16e99cf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 171.45)
+      (xy 170.18 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 71573bd5-8b64-58c1-9fdd-ca32863361db))
+  (wire
+    (pts
+      (xy 170.18 176.53)
+      (xy 165.1 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6f2a92fc-6fed-570d-939e-7c5b3ca2d19f))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d0046a98-9240-5a6b-b748-0e399e010939)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 63b30c79-76c8-55a4-b6af-d77ea1b01a74)
+    (property "Reference" "C33"
+      (at 242.062 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 242.062 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a7b846c6-2588-5004-818e-29a0c43195f8))
+    (pin "2"
+      (uuid 2c3a2bf4-ee3f-5244-9e11-1a4093b94a2d))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C33")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 163.83)
+      (xy 236.22 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 13162dec-d818-54dd-8fdd-14ae1ef80850))
+  (wire
+    (pts
+      (xy 236.22 158.75)
+      (xy 231.14 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 95ff443a-8329-517a-be1e-369ad5ece9e5))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 231.14 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 9f29b989-fa3a-5934-ad41-ff0e48697bdc)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 171.45)
+      (xy 236.22 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2f405397-0c7d-557d-b87b-d515483980b4))
+  (wire
+    (pts
+      (xy 236.22 176.53)
+      (xy 231.14 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ddbd33bb-dfac-5846-b5ae-e91c02759912))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 231.14 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid ec504bf0-a403-54de-97fd-9454344835db)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 302.26 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b571fe14-ba46-50af-83f9-8187f9735f4c)
+    (property "Reference" "C34"
+      (at 308.102 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 308.102 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 302.26 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 3eb3ac43-dea9-564c-ab9a-ce2bdece23ef))
+    (pin "2"
+      (uuid cd783a6f-631c-56cd-b632-d8e29be77150))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C34")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 302.26 163.83)
+      (xy 302.26 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a500bd52-fd53-5075-9986-f616b7fd0100))
+  (wire
+    (pts
+      (xy 302.26 158.75)
+      (xy 297.18 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6fad91d3-f206-5060-ba81-74f540f3a7d3))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 297.18 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid bc1ea4bf-ffc2-5915-a2cf-e33362af6357)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 302.26 171.45)
+      (xy 302.26 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3fe5b74e-fcc3-5005-80da-230f983364c7))
+  (wire
+    (pts
+      (xy 302.26 176.53)
+      (xy 297.18 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c362f6c4-3a03-5e83-b7b7-e73aaf491aed))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 297.18 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid aafdee53-14fe-5edd-9189-e462408f0859)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 297.18 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 217.17000000000002 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 39717229-5fd2-5058-8577-aefc947b5c44)
+    (property "Reference" "C35"
+      (at 43.942 214.63 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 43.942 219.71 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_core"
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 76efa420-a631-5ee4-a305-428b80c18b1f))
+    (pin "2"
+      (uuid 99501882-0f3d-59b6-aa8d-e07836607668))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C35")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 213.36)
+      (xy 38.1 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dcf3e5d8-1904-515d-abe2-c6d2655b56e3))
+  (wire
+    (pts
+      (xy 38.1 208.28)
+      (xy 33.02 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4b7f2afe-6873-5850-b02b-8718228df309))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 33.02 208.28 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b50f2bd9-3522-5849-8905-36c44c3ba0f9)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 208.28 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 220.98)
+      (xy 38.1 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9239ffbb-d4b1-5988-8fef-206e60f0ef9e))
+  (wire
+    (pts
+      (xy 38.1 226.06)
+      (xy 33.02 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2d70a904-eb89-5cfa-be7c-3df76487a667))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 226.06 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 96124991-4182-51ea-846c-f44963507225)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 226.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 217.17000000000002 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 54fdbc9e-8aaf-59ca-95bc-0e51babd8596)
+    (property "Reference" "C36"
+      (at 109.982 214.63 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 109.982 219.71 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bram"
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d596356b-c108-54f1-8c84-da3ac812522b))
+    (pin "2"
+      (uuid 0effe29b-b229-5371-87ea-611137144583))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C36")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 213.36)
+      (xy 104.14 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6b61f315-dea3-5625-979a-bd7049a0de74))
+  (wire
+    (pts
+      (xy 104.14 208.28)
+      (xy 99.06 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c33ed16f-10b9-5083-832e-b20f181ebf44))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 99.06 208.28 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 194337f5-2899-5e02-b54a-3b08109b3c97)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 208.28 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 220.98)
+      (xy 104.14 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c961fcbc-8f16-5730-acfc-f8e9f9dd997e))
+  (wire
+    (pts
+      (xy 104.14 226.06)
+      (xy 99.06 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 323420ef-3d53-5ce1-9604-f50f84f4232d))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 226.06 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1973a404-8661-57ca-93f4-837fc0cbd410)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 226.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 217.17000000000002 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f81d82b4-ed46-5eaf-a360-3469a1df07f4)
+    (property "Reference" "C37"
+      (at 176.022 214.63 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "470n 6.3V X7R"
+      (at 176.022 219.71 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R70J474KA01D"
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bram"
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 217.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 5195bab9-fa25-53d9-8e7d-8e459c364224))
+    (pin "2"
+      (uuid cad0f6a5-3b08-5275-806e-c583e205fa20))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea"
+          (reference "C37")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 213.36)
+      (xy 170.18 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c36aa4ca-cda7-5f48-8299-73b63dbd255d))
+  (wire
+    (pts
+      (xy 170.18 208.28)
+      (xy 165.1 208.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d19375d9-74b5-5107-a65d-db858d9e12e9))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 165.1 208.28 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid c1138af1-7dcb-5f1b-bb3c-9968f467686e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 208.28 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 220.98)
+      (xy 170.18 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 55397b38-ce0f-5c65-b3fd-c84580cc8b3c))
+  (wire
+    (pts
+      (xy 170.18 226.06)
+      (xy 165.1 226.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dc9eb00f-8279-5bf9-b113-1fce398beeb6))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 226.06 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 792f6980-cfdd-5d24-96f9-54dc0f9c18db)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 226.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no))

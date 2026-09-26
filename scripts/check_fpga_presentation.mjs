@@ -1,50 +1,71 @@
-import { chromium } from 'playwright';
-import { writeFile, mkdir } from 'node:fs/promises';
-const base=process.env.SITE_URL||'https://howardwhsrun.github.io/FPGA_4K/';
-const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-await mkdir('fpga-browser-check',{recursive:true});
-const page=await browser.newPage({viewport:{width:1440,height:900}});
-const report={base,checks:[],pageErrors:[],consoleErrors:[]};
-page.on('response',r=>{if(r.status()>=400)report.consoleErrors.push(r.status()+' '+r.url());});
-page.on('pageerror',e=>report.pageErrors.push(e.message));
-page.on('console',e=>{if(e.type()==='error')report.consoleErrors.push(e.text());});
-const assert=(x,message)=>{if(!x)throw new Error(message);report.checks.push(message);};
-try{
-  await page.goto(base+'?fpga-check='+Date.now(),{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>window.PRESENTATION?.getState().loaded);
-  await page.locator('.system-nav [data-slide="fpga"]').click();
-  await page.locator('#open-fpga-design').waitFor({state:'visible'});
-  assert(page.url().includes('#fpga'),'First FPGA selection stays in the system overview');
-  await page.screenshot({path:'fpga-browser-check/system-fpga.png',fullPage:true});
-  await page.locator('#open-fpga-design').click();await page.waitForURL('**/presentation/fpga/');
-  await page.waitForFunction(()=>window.FPGA_REVIEW&&document.querySelector('#board-image').naturalWidth>0);
-  assert(await page.locator('#chapters button').count()===8,'Eight independent FPGA slides');
-  assert(await page.evaluate(()=>document.querySelector('#board-image').dataset.loaded==='true'),'Actual KiCad front SVG loaded');
-  await page.screenshot({path:'fpga-browser-check/layout.png',fullPage:true});
-  for(const id of ['interfaces','recording','cable','power','startup','bringup','decisions']){await page.locator(`[data-chapter="${id}"]`).click();assert(await page.evaluate(id=>FPGA_REVIEW.getState().slideId===id,id),'Slide navigation: '+id);if(['recording','cable','bringup'].includes(id))await page.screenshot({path:`fpga-browser-check/${id}.png`,fullPage:true});}
-  await page.locator('[data-chapter="layout"]').click();await page.locator('#back').click();
-  await page.waitForFunction(()=>document.querySelector('#board-image').complete&&document.querySelector('#board-image').naturalWidth>0);
-  assert((await page.locator('#board-image').getAttribute('src')).includes('back.svg'),'Actual mirrored back SVG loaded');
-  await page.locator('#zoom-in').click();assert(await page.evaluate(()=>FPGA_REVIEW.getState().zoom>1),'Layout zoom operates');await page.locator('#fit').click();
-  await page.locator('#evidence').click();assert(await page.locator('#details').evaluate(e=>e.open),'Slide evidence dialog opens');await page.locator('#close-dialog').click();
-  await page.locator('#files-button').click();assert(await page.locator('#dialog-content a').count()===5,'Native project and complete ZIP links available');await page.locator('#close-dialog').click();
-  for(const [w,h] of [[1280,720],[1920,1080],[390,844]]){
-    await page.setViewportSize({width:w,height:h});await page.waitForTimeout(250);
-    const metrics=await page.evaluate(()=>({width:innerWidth,doc:document.documentElement.scrollWidth,height:innerHeight,docHeight:document.documentElement.scrollHeight}));
-    report.checks.push({viewport:[w,h],metrics});assert(metrics.doc<=metrics.width,'No horizontal overflow at '+w);
-    await page.screenshot({path:`fpga-browser-check/layout-${w}.png`,fullPage:true});
+import {writeFile, mkdir} from 'node:fs/promises';
+const {chromium} = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const base = (process.env.SITE_URL || 'https://howardwhsrun.github.io/FPGA_4K/').replace(/\/?$/, '/');
+const browser = await chromium.launch({executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader']});
+await mkdir('fpga-browser-check', {recursive: true});
+const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
+const report = {base, checks: [], pageErrors: [], consoleErrors: []};
+page.on('pageerror', e => report.pageErrors.push(e.message));
+page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push(e.text());});
+const assert = (condition, label) => {if (!condition) throw new Error(label); report.checks.push(label);};
+try {
+  await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
+  await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
+  await page.locator('#board-image').evaluate(image => image.decode());
+  const data = await page.evaluate(() => FPGA_REVIEW.data);
+  assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
+  assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
+  assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
+  assert((await page.locator('[data-field="unconnectedItems"]').first().innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
+  assert(!(await page.locator('#load-error').isVisible()), 'No stale-data load warning');
+  for (const anchor of ['architecture', 'interfaces', 'validation', 'release', 'files']) {
+    await page.locator(`.section-nav a[href="#${anchor}"]`).click();
+    assert(new URL(page.url()).hash === '#' + anchor, 'Section navigation: ' + anchor);
   }
-  await page.setViewportSize({width:1440,height:900});await page.locator('#native').click();
-  await page.waitForFunction(()=>FPGA_REVIEW.getState().nativeReady,{},{timeout:60000});await page.waitForTimeout(5000);
-  report.nativeState=await page.evaluate(()=>FPGA_REVIEW.getState());report.nativeText=await page.locator('kicanvas-embed').innerText();
-  assert(await page.locator('kicanvas-embed').locator('canvas').count()>0,'Native PCB viewer has a canvas');await page.screenshot({path:'fpga-browser-check/native-pcb.png',fullPage:true});
-  await page.locator('[data-chapter="startup"]').click();await page.locator('#inspect').click();
-  await page.waitForFunction(()=>FPGA_REVIEW.getState().nativeReady,{},{timeout:60000});await page.waitForTimeout(3500);
-  assert(await page.locator('#document').inputValue()==='device_U2.kicad_sch','Related boot-flash schematic opens');await page.screenshot({path:'fpga-browser-check/native-schematic.png',fullPage:true});
-  assert(await page.evaluate(()=>FPGA_REVIEW.getState().sheets===41),'Selector discovers all 41 actual schematic sheets');
-  await page.locator('header .header-tools a[href="../../#fpga"]').click();await page.waitForFunction(()=>window.PRESENTATION?.getState().slideId==='fpga');
-  assert(await page.locator('#open-fpga-design').isVisible(),'Return restores parent FPGA selection');
-  await page.locator('.system-nav [data-slide="fpga"]').click();await page.waitForURL('**/presentation/fpga/');report.checks.push('Second FPGA click opens the board-level deck');
-  assert(report.pageErrors.length===0,'No JavaScript page errors');report.passed=true;
-}catch(error){report.passed=false;report.failure=error.stack;report.visibleStatus=await page.locator('body').innerText();await page.screenshot({path:'fpga-browser-check/failure.png',fullPage:true});console.error(error);}
-await writeFile('fpga-browser-check/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser.close();if(!report.passed)process.exitCode=1;
+  for (const [width, height] of [[1440, 1000], [1920, 1080], [390, 844]]) {
+    await page.setViewportSize({width, height});
+    await page.evaluate(() => scrollTo({top: 0, behavior: 'instant'}));
+    await page.waitForTimeout(150);
+    const size = await page.evaluate(() => ({width: innerWidth, document: document.documentElement.scrollWidth}));
+    assert(size.document <= size.width, 'No page overflow at ' + width);
+    await page.screenshot({path: `fpga-browser-check/review-${width}.png`, fullPage: true});
+  }
+  await page.setViewportSize({width: 1440, height: 1000});
+  await page.locator('#board details summary').click();
+  assert(await page.locator('#board details').evaluate(e => e.open), 'Snapshot provenance expands');
+  assert((await page.locator('.hash').innerText()) === data.boardSha256, 'Visible board identity matches data');
+  await page.locator('#mezzanine-image').scrollIntoViewIfNeeded();
+  await page.locator('#mezzanine-image').evaluate(image => image.decode());
+  assert(await page.locator('#mezzanine-image').evaluate(image => image.naturalWidth > 0), 'Separate placement-study image loads');
+  const links = await page.locator('#files a, #mezzanine-study a, #interfaces a').evaluateAll(anchors => anchors.map(a => a.href).filter(url => !url.includes('#') && (/\/hardware\/fpga-(100t-review|interface-study)\//).test(url)));
+  for (const url of [...new Set(links)]) {
+    const response = await page.request.get(url);
+    assert(response.ok(), 'Download available: ' + new URL(url).pathname.split('/').pop());
+    const body = await response.body();
+    if (url.endsWith('.zip')) assert(body.subarray(0, 2).toString() === 'PK', 'Project download is a real ZIP');
+    if (url.endsWith('.pdf')) assert(body.subarray(0, 4).toString() === '%PDF', 'Schematic download is a real PDF');
+  }
+  await page.goto(base + 'presentation/fpga/history-2026-09-24.html', {waitUntil: 'domcontentloaded'});
+  assert((await page.title()).includes('FPGA'), 'Earlier review remains accessible');
+  assert(await page.locator('#chapters button').count() === 8, 'Earlier eight-slide deck preserved');
+  if (!process.env.SKIP_SYSTEM_CHECK) {
+    await page.goto(base + '#fpga', {waitUntil: 'networkidle'});
+    await page.waitForFunction(() => window.PRESENTATION?.getState().loaded);
+    await page.locator('#open-fpga-design').waitFor({state: 'visible'});
+    await page.locator('#open-fpga-design').click();
+    await page.waitForURL('**/presentation/fpga/');
+    await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
+    report.checks.push('Root system view opens current review');
+  }
+  assert(report.pageErrors.length === 0, 'No JavaScript page errors');
+  report.snapshot = data;
+  report.passed = true;
+} catch (error) {
+  report.passed = false;
+  report.failure = error.stack;
+  await page.screenshot({path: 'fpga-browser-check/failure.png', fullPage: true});
+}
+await writeFile('fpga-browser-check/report.json', JSON.stringify(report, null, 2));
+console.log(JSON.stringify({passed: report.passed, checks: report.checks, pageErrors: report.pageErrors, consoleErrors: report.consoleErrors, failure: report.failure}, null, 2));
+await browser.close();
+if (!report.passed) process.exitCode = 1;

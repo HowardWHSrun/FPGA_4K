@@ -1,0 +1,936 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 72ba830b-be20-59e3-9190-f9c26f5097b9)
+  (paper "A3")
+  (title_block
+    (title "Reference clock")
+    (date "2026-09-26")
+    (rev "MINIMAL 0.3")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:Oscillator__ASE-xxxMHz"
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "Y"
+        (at -5.08 6.35 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "ASE-xxxMHz"
+        (at 1.27 -6.35 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" "Oscillator:Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm"
+        (at 17.78 -8.89 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" "http://www.abracon.com/Oscillators/ASV.pdf"
+        (at -2.54 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "3.3V CMOS SMD Crystal Clock Oscillator, Abracon"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "3.3V CMOS SMD Crystal Clock Oscillator"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Oscillator__Oscillator_SMD_Abracon_ASE-4Pin_3_2x2_5mm"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Oscillator__ASE-xxxMHz_0_1"
+        (rectangle
+          (start -5.08 5.08)
+          (end 5.08 -5.08)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (polyline
+          (pts
+            (xy -1.27 -0.762)
+            (xy -1.016 -0.762)
+            (xy -1.016 0.762)
+            (xy -0.508 0.762)
+            (xy -0.508 -0.762)
+            (xy 0 -0.762)
+            (xy 0 0.762)
+            (xy 0.508 0.762)
+            (xy 0.508 -0.762)
+            (xy 0.762 -0.762))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Oscillator__ASE-xxxMHz_1_1"
+        (pin input line
+          (at -7.62 0 0)
+          (length 2.54)
+          (name "EN"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at 0 -7.62 90)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin output line
+          (at 7.62 0 180)
+          (length 2.54)
+          (name "OUT"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at 0 7.62 270)
+          (length 2.54)
+          (name "Vdd"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1206_3216Metric Capacitor_SMD__C_1210_3225Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (text "Reference clock"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid 4b21d6b1-f88e-5224-9bd3-c229bcda0fc3))
+  (text "Connected core draft. Matching global labels are electrical connections. Component status fields retain unresolved selections and requirements."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid a38c0cb1-401f-5911-9705-d624383d8e76))
+  (symbol
+    (lib_id "CoreSupport:Oscillator__ASE-xxxMHz")
+    (at 43.18 72.39 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f9f049c5-e535-55e0-aa2a-dcb03d17d5be)
+    (property "Reference" "Y1"
+      (at 43.18 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "ASE-32.000MHZ-L-C-T"
+      (at 43.18 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:Oscillator__Oscillator_SMD_Abracon_ASE-4Pin_3_2x2_5mm"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://abracon.com/Oscillators/ASEseries.pdf"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "ASE-32.000MHZ-L-C-T"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Reference clock"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "3.3V 32MHz 50ppm -40..85C; manufacturer pinout and footprint dimensions reviewed"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Oscillator:ASE-xxxMHz"
+      (at 43.18 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid ef6e0c58-f2a9-5c80-81f0-a6c5ff220f4e))
+    (pin "2"
+      (uuid 2110b8cd-abc3-5dd6-9ccb-8432c0eca453))
+    (pin "3"
+      (uuid 1eba7e0f-d842-5767-a057-17312ddc8f13))
+    (pin "4"
+      (uuid 2357ca1e-10b6-57a5-ba96-77cb35c7a5eb))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/72ba830b-be20-59e3-9190-f9c26f5097b9"
+          (reference "Y1")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 35.56 72.39)
+      (xy 30.48 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d007dfb9-8b88-515e-8ca6-200ccdb4e81d))
+  (wire
+    (pts
+      (xy 30.48 72.39)
+      (xy 25.4 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a130b0e2-6315-5975-be9f-f72005d1ca28))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 25.4 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid c33a2d29-7566-5c6d-b73c-bf3af20ee121)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 43.18 80.01)
+      (xy 43.18 85.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 99f70fff-2d3b-5d3c-8159-2f25e5faa5c0))
+  (wire
+    (pts
+      (xy 43.18 85.09)
+      (xy 38.1 85.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e858fc0a-1319-5194-903f-ae2d1d36f1a2))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 38.1 85.09 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 2f5e8786-d49e-52bd-afdb-26516c32e2a6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 38.1 85.09 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 50.8 72.39)
+      (xy 55.88 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 652090fa-0d05-50b1-8634-74224e94fdfc))
+  (wire
+    (pts
+      (xy 55.88 72.39)
+      (xy 60.96 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ee7610ba-78b4-5f9b-974e-61ed4f94a671))
+  (global_label "OSC_32M_RAW"
+    (shape bidirectional)
+    (at 60.96 72.39 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid e7082183-f94f-5876-81d5-68da4bede4be)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 60.96 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 43.18 64.77)
+      (xy 43.18 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 300fc4ba-b955-534d-832e-f0c0028c2974))
+  (wire
+    (pts
+      (xy 43.18 59.69)
+      (xy 38.1 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9424d6d3-f298-5e25-850d-94e860c6d993))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 38.1 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e9aeb07a-e29b-56c3-841d-655ff5610d55)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 38.1 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 105.41 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 551759a6-9c5f-52a7-90bc-48d29745787f)
+    (property "Reference" "C102"
+      (at 111.252 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10n"
+      (at 111.252 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_X7R_16V_10n"
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Reference clock"
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified capacitance/package; final vendor MPN pending; Abracon recommended bypass at Y1 pins4/2"
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 105.41 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 30a57041-4668-592e-a776-f01bd6e5723f))
+    (pin "2"
+      (uuid a41377f2-617d-5848-91eb-69c1702d8f4c))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/72ba830b-be20-59e3-9190-f9c26f5097b9"
+          (reference "C102")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 105.41 64.77)
+      (xy 105.41 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 92554d91-2a48-55cd-96b8-5e8767d9bc7d))
+  (wire
+    (pts
+      (xy 105.41 59.69)
+      (xy 100.33 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5e9f6605-5a94-524e-9775-defb785085c2))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 100.33 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e9d18844-a9f5-508c-abb1-0664812cac03)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 100.33 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 105.41 72.39)
+      (xy 105.41 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 51b63852-4f40-5815-adcb-161c50d78ef4))
+  (wire
+    (pts
+      (xy 105.41 77.47)
+      (xy 100.33 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 41b9642a-1091-5a3d-af44-137dfbc04c3b))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 100.33 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d848248c-0c23-58e9-9355-3fb9c3a6fcc1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 100.33 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 171.45 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid ca63e824-ba9b-5394-825c-14a0a82ec853)
+    (property "Reference" "C103"
+      (at 177.292 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100n"
+      (at 177.292 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_X7R_16V_100n"
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Reference clock"
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified capacitance/package; final vendor MPN pending; Additional local oscillator bypass"
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 171.45 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e540860b-800e-522a-8426-d8681e167f28))
+    (pin "2"
+      (uuid 19194a53-c95b-5dad-a29c-7d34453e7ed2))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/72ba830b-be20-59e3-9190-f9c26f5097b9"
+          (reference "C103")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 64.77)
+      (xy 171.45 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7d669828-1b48-53e8-bba8-e188b0472b6e))
+  (wire
+    (pts
+      (xy 171.45 59.69)
+      (xy 166.37 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c7ab2a07-bcdc-59e8-9f6c-cec6e6886d96))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 166.37 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 0dfa3ca4-d601-50cc-be6c-208b21e9e0b8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 166.37 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 171.45 72.39)
+      (xy 171.45 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 25674ee1-4b55-55cf-8713-fd132dd5f2ed))
+  (wire
+    (pts
+      (xy 171.45 77.47)
+      (xy 166.37 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 648138c3-e8c9-5008-bf6a-7406fe680064))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 166.37 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1f4c9801-5760-5802-9f95-4b0dc3daf96e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 166.37 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 236.22 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid e6e14ab6-502c-5206-91f3-a1c82b49a86f)
+    (property "Reference" "R119"
+      (at 241.046 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "33"
+      (at 241.046 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_33"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Reference clock"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending; Place next to Y1 OUT; tune after SI review"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 35ba0109-163a-5ab3-8915-a91992478a7e))
+    (pin "2"
+      (uuid 3d6e4502-f20a-5df5-9429-52fe43807ca6))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/72ba830b-be20-59e3-9190-f9c26f5097b9"
+          (reference "R119")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 64.77)
+      (xy 236.22 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4e266eda-fd63-5d8f-9808-a353e65582c1))
+  (wire
+    (pts
+      (xy 236.22 59.69)
+      (xy 231.14 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 171d304c-869e-552d-94e1-5a754168d0f0))
+  (global_label "OSC_32M_RAW"
+    (shape bidirectional)
+    (at 231.14 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 29f89998-009e-5107-90c1-67268dc9d4a8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 72.39)
+      (xy 236.22 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 76b812e3-75cd-5b5b-805b-c98c0f84e55a))
+  (wire
+    (pts
+      (xy 236.22 77.47)
+      (xy 231.14 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e2de42ba-479c-5f5e-81e1-147fe74970ac))
+  (global_label "CLK_32MHZ"
+    (shape bidirectional)
+    (at 231.14 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid f211369d-88fe-52d3-8a6f-2ed77a238915)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no))

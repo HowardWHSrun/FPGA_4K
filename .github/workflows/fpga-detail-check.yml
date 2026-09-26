@@ -6,6 +6,9 @@ on:
       - index.html
       - presentation/fpga/**
       - scripts/check_fpga_presentation.mjs
+      - scripts/check_fpga_review.py
+      - hardware/fpga-100t-review/**
+      - hardware/fpga-interface-study/**
       - .github/workflows/fpga-detail-check.yml
   workflow_dispatch:
 permissions:
@@ -24,6 +27,8 @@ jobs:
           node --check presentation/fpga/app.js
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
+          node --check presentation/fpga/review.js
+          python3 scripts/check_fpga_review.py
           node --check scripts/check_fpga_presentation.mjs
           python3 scripts/check_docs.py
           python3 scripts/check_hardware.py
@@ -33,7 +38,7 @@ jobs:
           python3 - <<'PY'
           import os,time,urllib.request
           from pathlib import Path
-          paths=['index.html','presentation/fpga/index.html','presentation/fpga/app.js','presentation/fpga/slides.js','presentation/fpga/style.css','presentation/fpga/entry.js']
+          paths=['index.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review.css','presentation/fpga/review-data.json','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
           for attempt in range(18):
               try:
                   for p in paths:
@@ -48,7 +53,7 @@ jobs:
           PY
       - name: Install browser test driver
         run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
-      - name: Test drill-down, native CAD and dedicated slides
+      - name: Test review, downloads, history and system entry
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           node scripts/check_fpga_presentation.mjs

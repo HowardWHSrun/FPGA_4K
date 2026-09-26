@@ -1,0 +1,77 @@
+# Power and electrical release audit — 26 September 2026
+
+**The current board is a development design, not ready for manufacture.** One definite power-component error was found and corrected: the original four local converter input capacitors lose too much capacitance at 12 V. The separate `full_system` revision incorporates the corrected parts and supports the proposed LVDS bank voltage without adding a fifth regulator. The prototype power envelope below is a design requirement, not measured FPGA consumption.
+
+This audit read the native `minimal_core/hardware/FPGA100T_Minimal.kicad_pcb`, native schematic/netlist, component manifest and primary manufacturer documents. The reviewed board contains 126 physical components; the manifest also includes six nonphysical power flags. Routing work continues separately. This report does not certify any later copper revision.
+
+## Concrete findings
+
+| Priority | Finding | Required resolution |
+|---|---|---|
+| Blocking component error | C3/C7/C11/C15 are 10 µF/25 V X5R 0805, but their manufacturer's typical curve gives only **2.526 µF at 12 V** and **2.368 µF at 12.6 V**, already below the converter's 3 µF effective minimum before tolerance. | Replace each with **MSAST31LBB5226MTNA01**, 22 µF/25 V X5R, **1206**. Changes are in `Input_Capacitor_Correction.json`. Applied in both `minimal_core` and `full_system`; each now uses the 1206 replacement and its checked local placement. |
+| Blocking interface choice | Bank16 at 3.3 V cannot transmit the proposed `LVDS_25` link. | Use 2.5 V for bank16. Only four complete differential pairs are bonded out; the two other pins do not make a fifth pair. |
+| Blocking completeness | The 117 ASIC signals still lack an approved contact/ball/direction/timing map. The cable link and receiver logic remain proposals. | Complete that interface contract and its Vivado implementation before claiming a full-system pinout or release. |
+| Blocking release evidence | No application-specific power estimate, mounted thermal result, rail transient result or actual qualified cable is available. | Enforce the limits below and demonstrate the complete application fits them. A 4 A regulator rating is not a 4 A FPGA-board guarantee. |
+| Correctable procurement | Exact FPGA speed/temperature grade and multiple passive order codes remain unresolved. | Freeze a normal 1.0 V core FPGA variant and complete the BOM; do not substitute a low-voltage grade without recomputing the rail design. |
+
+The input-capacitor facts come from the manufacturer’s actual DC-bias chart responses, saved in `sources/ty_cin_bias.json` and `sources/ty_MSAST31LBB5226MTNA01_bias.json`. The replacement retains 6.623 µF typically at 12.6 V. Applying illustrative −20% initial tolerance and −15% temperature factors gives 4.504 µF, with further aging still to account for. This is a useful screening margin, not a guaranteed vendor minimum. The 0805 22 µF alternative was rejected: the same calculation gives only 2.643 µF. [Current capacitor](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST21GBB5106MTNA01&u=M), [replacement](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST31LBB5226MTNA01&u=M).
+
+## Core rail, converter network and startup
+
+The native topology retains local C5 on U2's output and R9 between that node and the FPGA's 462.9 µF nominal core/BRAM bypass network. Feedback/VOS sense the upstream node. **Keep R9 = 15 mΩ** unless the regulator/PDN design is recalculated. The current divider values produce:
+
+| Converter | Divider, top/bottom | Nominal output |
+|---|---|---:|
+| U2 core, upstream of R9 | 32.4 kΩ / 69.8 kΩ | 1.02493 V |
+| U3 AUX | 110 kΩ / 69.8 kΩ | 1.80315 V |
+| U4 current configuration | 261 kΩ / 69.8 kΩ | 3.31748 V |
+| U5 ASIC bank supply | 80.6 kΩ / 69.8 kΩ | 1.50831 V |
+| U4 proposed bank16 revision | **180 kΩ / 69.8 kΩ** | **2.50516 V** |
+
+The independently calculated core DC envelope is **0.9663–1.0381 V over 0–3 A**, including ±1% reference, ±0.1% divider resistors, ±70 nA conservative feedback leakage and ±1% R9. It excludes copper resistance, resistor temperature drift, ripple and load transients. At 3 A only about 16 mV remains above the 0.95 V minimum, equivalent to about 5.4 mΩ of additional distribution resistance with no remaining transient allowance. R9 dissipates 0.135 W nominal. Therefore routing must use broad core/return copper, and the final peak load may need a lower limit.
+
+TI specifies 3–17 V input, ≥3 µF effective local input capacitance, 6–200 µF effective direct output capacitance and a distributed-capacitance circuit with ≥10 mΩ series resistance. The present 15 mΩ minimum is 14.85 mΩ. Ten-nanofarad soft-start capacitors imply about 2.8 ms nominal ramp; assuming ±10% capacitance and 2.3–2.7 µA charging current gives 2.33–3.35 ms before load effects. PG chaining implements core→AUX→other banks while VIN is present; it does not guarantee reverse sequencing after abrupt unplug. [TPS62135 §§7.3, 7.5, 9.3, 9.4.7, 10.3.2](https://www.ti.com/lit/ds/symlink/tps62135.pdf).
+
+The XFL4020-102MEC inductor is a TI-listed family, so its selection is not itself an error. Its 25°C saturation figures are 4.5 A at 10% inductance drop and 5.4 A at 30%; the converter's maximum static current limit reaches 6.5 A plus propagation overshoot. Fault-current inductance and heating need checking independently of normal 3 A operation. [Coilcraft XFL4020](https://www.coilcraft.com/getmedia/50632d43-da1b-4cdb-8ab4-3029cab51df3/xfl4020.pdf).
+
+## Minimum legal rail revision
+
+**Recommended development architecture:** retain four converters, move configuration and bank14 to 1.8 V, and change U4 to 2.5 V for bank16. This avoids a fifth LDO and also gives the receiver a 1.8 V JTAG reference.
+
+| Domain | Revision |
+|---|---|
+| Core/BRAM | Keep U2/R9, nominal 1.0 V at FPGA. |
+| AUX, configuration bank0, bank14, flash, oscillator, JTAG reference/pullups | Share U3's 1.803 V rail. Tie **CFGBVS P8 to GND**, not this rail. |
+| Bank16 | U4 at 2.505 V; only this bank and its local bypass are on this rail. |
+| Banks15/34/35 | Keep U5 at 1.508 V for proposed 117 ASIC signals. Actual ASIC voltage compatibility remains to be confirmed. |
+
+UG470 Table2-6 permits SPI banks0/14 at 1.8 V with CFGBVS grounded and bank15 independently supplied. JTAG follows bank0 voltage. UG471 requires 2.5 V for HR-bank `LVDS_25` outputs. [UG470 pp28–30](https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content), [UG471 p91](https://docs.amd.com/api/khub/documents/IbGcnPFe6eF19RHma_Y~IA/content).
+
+AMD explicitly permits AUX and VCCO to share a supply and ramp together when their nominal voltages match. Standard 1.0 V core operation requires 0.95–1.05 V; AUX requires 1.71–1.89 V. Configuration POR timing must still be checked against the actual rail ramps, flash readiness and remaining bank startup. [DS181 Table2, p8 and Table66](https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet).
+
+Exact candidate replacements are **MX25U12835FM2I-10G**, 128 Mbit, 1.65–2.0 V, industrial 200 mil 8-SOP, and **ASE3-32.000MHZ-L-C-T**, 1.8 V CMOS oscillator in the same 3.2×2.5 mm four-pad package. Flash pin7 is RESET#/SIO3 and must remain pulled up for single-bit boot. Verify the programmer's selected device, quad-enable/read command and power-cycle behavior; its readiness delay is 800 µs after minimum VCC. The oscillator supply tolerance is ±5%. [Macronix PM1728 v1.9 pp7, 88–90](https://www.macronix.com/Lists/Datasheet/Attachments/8704/MX25U12835F,%201.8V,%20128Mb,%20v1.9.pdf), [Abracon ASE3 pp1–2](https://abracon.com/Oscillators/ASE3series.pdf).
+
+Move bank0 C50, bank14 C51–C56 and flash/oscillator bypass to AUX; retain bank16 C57–C63 and local C13 on U4. The voltage split requires a separate 47 µF group bulk capacitor for bank14: C50 belongs to bank0 and C63 remains on bank16. Added **C92**, 47 µF/6.3 V X7R 1210, **GRM32ER70J476ME20L**. Shared AUX/config capacitance is 187.87 µF nominal; +20% alone would reach 225.44 µF, so direct connection cannot be justified merely by comparing the nominal sum with TI's 200 µF effective maximum. Added **R122 = 15 mΩ, 1%, WSLP1206R0150FEA**, the same 1 W 1206 part as R9. U3 VOS/FB, L2 and local C9 remain on `VAUX_REG_1V803`; R122 feeds the downstream `VCCAUX_1V8` bulk and loads. This leaves local C9 = 22 µF directly connected and 165.87 µF nominal distributed capacitance behind the isolation resistor. It follows TI's ≥10 mΩ distributed-capacitance topology; it does not claim measured loop stability. Bank16 remains 80.28 µF nominal and the ASIC supply 102.84 µF. Do not remove bypass merely because application pins are presently unassigned. The populated FPGA ledger follows the XC7A100T/CSG324 nominal recommendations, including the grounded unused ADC inputs and powered VCCADC. [UG483 Table2-2 and unused-I/O discussion](https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content).
+
+With the proposed shared AUX/config current ceiling of 0.50 A, the calculated voltage after R122 is **1.7677–1.8311 V**, including ±1% reference, ±0.1% divider resistors, ±70 nA conservative feedback leakage and ±1% R122, before copper, temperature drift, ripple and load transients. The minimum retains about 57.7 mV above AMD's 1.71 V limit. R122 drops 7.5 mV and dissipates 3.75 mW nominal at 0.50 A. C9 and R122 must be routed as the indicated two distinct nodes; do not join the downstream bulk directly back to VOS. [TPS62135 §10.3.2, pp32–33](https://www.ti.com/lit/ds/symlink/tps62135.pdf), [Vishay WSLP](https://www.vishay.com/docs/30122/wslp.pdf).
+
+Feedback passive candidates, using the manufacturer's documented 0603/0.1%/25 ppm ordering scheme, are `TNPW060332K4BEEA`, `TNPW060369K8BEEA`, `TNPW0603110KBEEA`, `TNPW0603180KBEEA` and `TNPW060380K6BEEA`. These preserve the required tolerances and package. Procurement availability and the other outstanding passives are not declared released. [Vishay TNPW e3 pp3–4](https://www.vishay.com/docs/28758/tnpw_e3.pdf).
+
+## Chosen prototype power contract
+
+Use a **regulated 12.0 V ±5% carrier supply**, with a separately protected branch to the headboard. Split this branch before the XEM8310 input. The module accepts 7.5–15 V; its 5 A barrel/8 A mezzanine input ratings do not establish any spare exported power. [Opal Kelly power documentation](https://docs.opalkelly.com/xem8310/powering-the-xem8310/).
+
+- Carrier branch: **TPS259540DSGR** latch-off eFuse, nominal 13.7 V clamp; initial R_ILM = **3.16 kΩ, 1%**, giving approximately **0.673 A nominal** by the data-sheet equation. Final assembly acceptance requires current-limit bounds that allow 0.60 A continuous load and never exceed 0.75 A steady limiting. Fault-response pulses require separate verification. Add its required input bypass, UVLO divider and slew-rate capacitor on the carrier; do not directly connect its EN pin to 12 V. This is a carrier circuit proposal, not present headboard hardware. [TPS2595 §§5–8.3.3](https://www.ti.com/lit/ds/symlink/tps2595.pdf).
+- Cable: custom passive assembly, **≤0.30 m**, four controlled-impedance pairs plus five ground/shield contacts, four JTAG conductors, one VTREF and one power conductor. D19 is power; D16 is the dedicated DC return. Require finished power-loop resistance **≤0.30 Ω**, loop inductance **≤1 µH**, and supplier/test evidence for at least **0.8 A at 25°C**. Ground/shield conductors do not create another free power contact.
+- Initial prototype: **≤0.60 A continuous at the link**, ambient **≤25°C**, cable identified and electrically checked. Molex's published 0.8 A rating explicitly applies at 25°C; its separate all-19-contact test is not an all-temperature 0.8 A cable rating. [Molex PS-46765-003 §§4.2, 5.1](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/467/46765/PS-46765-003-001.pdf?inline=).
+- Smallest proposed headboard damping addition: **0.47 Ω, 1%, ≥0.5 W series resistor before C1 and all converter inputs**, candidate **WSL2010R4700FEA**. At 0.60 A its loss is 0.169 W. With measured loop L≤1 µH and aggregate effective input C≥20 µF, the lumped critical-damping value is at most 0.447 Ω; this candidate's minimum is 0.4653 Ω. Check the actual pulse-energy curve, source output capacitance and measured plug/bounce waveform. Until verified, **power off before mating**. No blanket hot-plug or reverse-polarity tolerance is claimed. [Vishay WSL pp1–3](https://www.vishay.com/docs/30100/wsl.pdf), [ADI explanation of series-input damping](https://www.analog.com/cn/resources/technical-articles/micropower-sot23-buck-regulator-accepts-inputs-34v.html), [TI hot-plug pulse-energy warning](https://www.ti.com/document-viewer/lit/html/SSZTDA5/GUID-A708FC6E-38D2-4FCF-BEB3-0E9E75E1FCEC).
+
+At 11.4 V, 0.60 A, 0.30 Ω cable loop, 0.47 Ω damping and assumed 80% conversion efficiency, approximately **5.25 W** reaches the regulated outputs before other small losses. Adopt **5.2 W total** as the design ceiling and verify efficiency. A consistent proposed allocation is core upstream≤3.0 A, shared AUX/config≤0.50 A, bank16≤0.10 A and ASIC banks≤0.50 A: **4.981 W total**. These are acceptance limits on the eventual application, not a claim that the FPGA consumes these currents. The earlier 6.389 W allowance does not fit this conservative power contract.
+
+The 19-contact assignment is proprietary and must never be connected to ordinary HDMI equipment. No cable was purchased or qualified, no hardware was powered, and no fabrication release is issued by this audit.
+
+## Separate development revision verification
+
+`full_system/hardware/FPGA100T_Full_System.kicad_pro` contains **128 physical components**: the 126-part core plus essential C92 bank14 bulk and R122 AUX bulk isolation. It retains all 385 copper objects from the checked 25-signal corridor revision; it has not imported the later regulator/ground routing. The accepted four 1206 input capacitors and all 11 associated placement changes are incorporated. Native KiCad reports **0 DRC violations, 0 schematic-parity issues, 347 unrouted connections**. ERC remains the inherited 216 findings: 211 unassigned/unused pins and 5 pin-type warnings. These are reported openly, not suppressed as a release workaround.
+
+The rail revision keeps the 40 × 36 mm outline. C92 is at (31.6, 30.5) mm on the back, and R122 at (5.1, 29.5) mm on the back; native courtyard and clearance checks pass. Manifest, schematic netlist and PCB agree on 423 connected endpoints and 217 intentionally unassigned or no-connect endpoints. No extra connectors or input-damping resistor have been added to this rail-only copy. The proprietary cable, carrier protection circuit, complete application pin map, bulk power routing and physical qualification remain development work.

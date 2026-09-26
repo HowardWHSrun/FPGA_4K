@@ -64,9 +64,11 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 ## FPGA board-level presentation
 
-[Open the FPGA slide deck](../presentation/fpga/index.html) · [Navigation and editing guide](../presentation/fpga/README.md) · [Source manifest](../presentation/fpga/manifest.json).
+[Current 100T engineering review](../presentation/fpga/index.html) · [Complete native project ZIP](../hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [Schematic PDF](../hardware/fpga-100t-review/output/FPGA100T_Minimal_Schematic.pdf) · [Validation / artifact manifest](../hardware/fpga-100t-review/manifest.json) · [Refresh guide](../presentation/fpga/README.md).
 
-Select FPGA in the system view, then open its KiCad design and dedicated slides. Eight short slides cover the current draft/reference, smaller FPGA, functions, I/O/link, power, boot/clock, prototype and next steps. The original exports and read-only native PCB/schematic viewer remain available. The CAD still uses the 200T draft; the 10 × 10 mm 50T/CPG236 is an evaluation candidate, not an implemented replacement. Board-completion figures retain their September 21 import date.
+The release scope is the full FPGA board with all 117 ASIC signals and the XEM8310 link. The published 40 × 36 mm design is a core snapshot with incomplete copper, not a fabrication release or demonstrated system. Two 60-pin mezzanines are the current connector direction; the proposed Samtec implementation and final connector-inclusive outline require validation. Native checks and remaining work are shown separately. [The interface-study package](../hardware/fpga-interface-study/README.md) adds an unrouted two-mezzanine placement candidate, proposed contact CSV, manufacturer footprint review, AC_IN/IMP_TST research and the full-system link/power proposal.
+
+[The earlier eight-slide 200T / 50T review](../presentation/fpga/history-2026-09-24.html) remains available as dated history, with its original CAD and assets. Earlier KR260 and 132-signal proposals do not supersede the current 100T / 117 / XEM8310 direction.
 
 ## September 23 meeting
 

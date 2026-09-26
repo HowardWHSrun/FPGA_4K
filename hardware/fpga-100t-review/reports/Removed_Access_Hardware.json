@@ -1,0 +1,106 @@
+{
+  "removed_refs": [
+    "D1",
+    "J1",
+    "J2",
+    "J3",
+    "R120",
+    "SW1",
+    "TP1",
+    "TP10",
+    "TP2",
+    "TP20",
+    "TP21",
+    "TP22",
+    "TP23",
+    "TP24",
+    "TP3",
+    "TP4",
+    "TP5",
+    "TP6",
+    "TP7",
+    "TP8",
+    "TP9"
+  ],
+  "baseline_components": 146,
+  "new_physical_components": 126,
+  "power_change": {
+    "review_date": "2026-09-26",
+    "scope": "Target input capacitor changes for source-protected nominal 12V custom micro-HDMI candidate; CAD changes performed by parent agent.",
+    "input_net": "LINK_12V",
+    "source_contract": "Upstream source current limiting and surge/ramp control are REQUIRED. Exact cable/source current limit and full-load/temperature capability remain unqualified. No hot-plug qualification is claimed.",
+    "components": {
+      "C1": {
+        "value": "47u 25V X5R",
+        "mpn": "MSAST32MAB5476MPNDT1",
+        "footprint": "Capacitor_SMD:C_1210_3225Metric",
+        "datasheet": "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST32MAB5476MPNDT1&u=M",
+        "status": "12V candidate: manufacturer confirms 47uF +/-20%, 25V X5R, 1210, -55 to +85C, preferred part; effective capacitance at 12V, aging, temperature, inrush and power-entry transient performance remain unqualified. Replaces incompatible 10V input capacitor."
+      },
+      "C2": {
+        "value": "100n 100V X7R",
+        "mpn": "GRM188R72A104KA35D",
+        "footprint": "Capacitor_SMD:C_0603_1608Metric",
+        "datasheet": "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23",
+        "status": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      },
+      "C4": {
+        "value": "100n 100V X7R",
+        "mpn": "GRM188R72A104KA35D",
+        "footprint": "Capacitor_SMD:C_0603_1608Metric",
+        "datasheet": "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23",
+        "status": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      },
+      "C8": {
+        "value": "100n 100V X7R",
+        "mpn": "GRM188R72A104KA35D",
+        "footprint": "Capacitor_SMD:C_0603_1608Metric",
+        "datasheet": "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23",
+        "status": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      },
+      "C12": {
+        "value": "100n 100V X7R",
+        "mpn": "GRM188R72A104KA35D",
+        "footprint": "Capacitor_SMD:C_0603_1608Metric",
+        "datasheet": "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23",
+        "status": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      },
+      "C16": {
+        "value": "100n 100V X7R",
+        "mpn": "GRM188R72A104KA35D",
+        "footprint": "Capacitor_SMD:C_0603_1608Metric",
+        "datasheet": "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23",
+        "status": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      },
+      "C3": {
+        "value": "10u 25V X5R",
+        "mpn": "TMK212BBJ106MG-T",
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "datasheet": "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSAST21GBB5106MTNA01&u=M",
+        "status": "12V candidate: retained 10uF 25V X5R 0805; manufacturer alias MSAST21GBB5106MTNA01. TPS62135 requires at least 3uF effective local input capacitance: this minimum at 12V including DC bias, tolerance, temperature and aging is NOT yet qualified. Replace or parallel locally if that check fails; nominal 10uF alone is not proof."
+      },
+      "C7": {
+        "value": "10u 25V X5R",
+        "mpn": "TMK212BBJ106MG-T",
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "datasheet": "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSAST21GBB5106MTNA01&u=M",
+        "status": "12V candidate: retained 10uF 25V X5R 0805; manufacturer alias MSAST21GBB5106MTNA01. TPS62135 requires at least 3uF effective local input capacitance: this minimum at 12V including DC bias, tolerance, temperature and aging is NOT yet qualified. Replace or parallel locally if that check fails; nominal 10uF alone is not proof."
+      },
+      "C11": {
+        "value": "10u 25V X5R",
+        "mpn": "TMK212BBJ106MG-T",
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "datasheet": "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSAST21GBB5106MTNA01&u=M",
+        "status": "12V candidate: retained 10uF 25V X5R 0805; manufacturer alias MSAST21GBB5106MTNA01. TPS62135 requires at least 3uF effective local input capacitance: this minimum at 12V including DC bias, tolerance, temperature and aging is NOT yet qualified. Replace or parallel locally if that check fails; nominal 10uF alone is not proof."
+      },
+      "C15": {
+        "value": "10u 25V X5R",
+        "mpn": "TMK212BBJ106MG-T",
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "datasheet": "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSAST21GBB5106MTNA01&u=M",
+        "status": "12V candidate: retained 10uF 25V X5R 0805; manufacturer alias MSAST21GBB5106MTNA01. TPS62135 requires at least 3uF effective local input capacitance: this minimum at 12V including DC bias, tolerance, temperature and aging is NOT yet qualified. Replace or parallel locally if that check fails; nominal 10uF alone is not proof."
+      }
+    }
+  },
+  "source": "Main reviewed core circuit plus checked40x36 placement"
+}

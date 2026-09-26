@@ -34,7 +34,7 @@ jobs:
           path = Path('sources/manifest.json')
           data = json.loads(path.read_text())
           data['presentation_derivation'] = {'manifest': 'presentation/compact/manifest.json', 'branch': 'presentation', 'source': 'hardware/assembly/stacked_headboard_compact_B_v1.stl', 'status': 'supplied compact assembly; exact source bytes preserved; no geometric changes'}
-          data['fpga_presentation'] = {'manifest': 'presentation/fpga/manifest.json', 'entry': 'presentation/fpga/index.html', 'source': 'hardware/fpga-board', 'status': 'read-only nested design review; native CAD unchanged'}
+          data['fpga_presentation'] = {'manifest': 'presentation/fpga/manifest.json', 'entry': 'presentation/fpga/index.html', 'source': 'hardware/fpga-100t-review', 'status': 'full-board engineering review; core snapshot only; not fabrication-ready'}
           path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
           PY
           git config user.name 'github-actions[bot]'
@@ -54,6 +54,8 @@ jobs:
           node --check presentation/fpga/app.js
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
+          node --check presentation/fpga/review.js
+          python3 scripts/check_fpga_review.py
           git diff --check
           python3 - <<'PY'
           from pathlib import Path
@@ -81,4 +83,6 @@ jobs:
             presentation/model-source.js
             presentation/fpga/
             hardware/fpga-board/
+            hardware/fpga-100t-review/
+            hardware/fpga-interface-study/
           include-hidden-files: true

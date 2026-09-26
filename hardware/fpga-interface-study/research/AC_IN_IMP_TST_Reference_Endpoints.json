@@ -1,0 +1,72 @@
+{
+  "asic-carrier": {
+    "source": "hardware/references/asic-carrier/PCB.kicad_pcb",
+    "sha256": "e01ee641cc00da3444fd627c6c97862ffc8918c8b2c98165f73696500e251757",
+    "endpoints": {
+      "/AC_IN": [
+        {
+          "reference": "U01_BCD2",
+          "value": "*",
+          "pad": "AC_IN"
+        },
+        {
+          "reference": "U01_BCD1",
+          "value": "*",
+          "pad": "AC_IN"
+        },
+        {
+          "reference": "J3",
+          "value": "Conn_02x40_Odd_Even",
+          "pad": "69"
+        }
+      ],
+      "/IMP_TEST": [
+        {
+          "reference": "U01_BCD2",
+          "value": "*",
+          "pad": "IMP_TST"
+        },
+        {
+          "reference": "U01_BCD1",
+          "value": "*",
+          "pad": "IMP_TST"
+        },
+        {
+          "reference": "J3",
+          "value": "Conn_02x40_Odd_Even",
+          "pad": "67"
+        }
+      ]
+    }
+  },
+  "ldo-routing": {
+    "source": "hardware/references/ldo-routing/PCB.kicad_pcb",
+    "sha256": "ddb07a7515722154dc27957fa23d9df0fb34bdb626202f9311674ed93a050721",
+    "endpoints": {
+      "/AC_IN": [
+        {
+          "reference": "J18",
+          "value": "Conn_01x01_Pin",
+          "pad": "1"
+        },
+        {
+          "reference": "J2",
+          "value": "Conn_02x25_Odd_Even",
+          "pad": "39"
+        }
+      ],
+      "/IMP_TEST": [
+        {
+          "reference": "J2",
+          "value": "Conn_02x25_Odd_Even",
+          "pad": "37"
+        },
+        {
+          "reference": "J1",
+          "value": "Conn_02x25_Odd_Even",
+          "pad": "18"
+        }
+      ]
+    }
+  }
+}

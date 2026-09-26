@@ -1,0 +1,41 @@
+{
+  "status": "Engineering candidate; no production contact map frozen",
+  "user_direction": "Two 60-pin mezzanine connectors",
+  "FPGA_side": "2 x QSH-030-01-L-D-A",
+  "routing_board_side": "2 x QTH-030-01-L-D-A",
+  "proposed_stack_height_mm": 5,
+  "signal_contacts": 120,
+  "ASIC_signals": 117,
+  "reserved_signal_contacts": 3,
+  "ground_blade_lands_each": 4,
+  "footprint_mm": {
+    "assembly_envelope": [
+      21.31,
+      7.24
+    ],
+    "signal_land_extent_y": 8.0,
+    "courtyard": [
+      21.81,
+      8.5
+    ],
+    "signal_pitch": 0.5001,
+    "signal_land": [
+      0.279,
+      2.27
+    ],
+    "signal_row_center_spacing": 5.73,
+    "alignment_hole_diameter": 1.02,
+    "alignment_hole_x_spacing": 20.13,
+    "alignment_hole_y": -2.67
+  },
+  "source": "https://suddendocs.samtec.com/prints/qsh-xxx-01-x-d-xx-footprint.pdf",
+  "source_revision": "M, 2020-06-02, sheet1",
+  "mating_pin_orientation": "Match named contact numbers; do not mirror by visual assumption. Routing-board footprint and mated drawing still require separate validation.",
+  "power_between_boards": "Three spare signal contacts remain unassigned. ASIC/routing-board supply distribution has not been defined. Ground blades are GND, not power.",
+  "mechanical_release_gates": [
+    "Full assembly 3D clearance at 5mm stack",
+    "Dual connector alignment and retention",
+    "Native footprint review and mating map readback",
+    "117 routes and return path integrity"
+  ]
+}

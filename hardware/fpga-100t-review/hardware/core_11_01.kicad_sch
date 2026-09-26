@@ -1,0 +1,1511 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 0846b1d9-c893-50b2-9e60-1da326a99abf)
+  (paper "A3")
+  (title_block
+    (title "Programming JTAG")
+    (date "2026-09-26")
+    (rev "MINIMAL 0.3")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (text "Programming JTAG"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid c8e9555b-eda1-5eb7-82e8-2dbc135e3415))
+  (text "Connected core draft. Matching global labels are electrical connections. Component status fields retain unresolved selections and requirements."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 4b29ec41-f21e-573e-904e-4e2700041e21))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 38.1 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 366f673a-5c9b-585f-a0f8-bc8add4654eb)
+    (property "Reference" "R108"
+      (at 42.926 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7k"
+      (at 42.926 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_4.7k"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a94d2b4a-0c01-595e-b67e-c432609f9be7))
+    (pin "2"
+      (uuid 9c7ae7f1-545a-5adb-80c0-fd8361420d6d))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R108")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 64.77)
+      (xy 38.1 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c52a6b9e-671c-503b-83bb-28493bb07fa0))
+  (wire
+    (pts
+      (xy 38.1 59.69)
+      (xy 33.02 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2f33d074-45ab-59b6-9923-11d166af4ceb))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 33.02 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e0336dfc-1eb4-5c60-83c3-ffade584c7cb)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 72.39)
+      (xy 38.1 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 24513e05-9a1f-53c8-b7a4-7aae5ecbc2e5))
+  (wire
+    (pts
+      (xy 38.1 77.47)
+      (xy 33.02 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5170d4a0-ab2e-540b-9567-3ebd8f19afa4))
+  (global_label "FPGA_PROGRAM_B"
+    (shape bidirectional)
+    (at 33.02 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 56186227-5e8c-50bf-8991-3100fb792ea0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 102.87 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 8502418a-2af9-51eb-b358-6bf55abd3949)
+    (property "Reference" "R109"
+      (at 107.696 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7k"
+      (at 107.696 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_4.7k"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 102.87 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 58292e1c-2749-59bd-82c0-799bdad9f51a))
+    (pin "2"
+      (uuid 24e2f71b-9457-5b74-be32-5fb86f559607))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R109")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 102.87 64.77)
+      (xy 102.87 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4d80171e-e7fe-5f29-a113-2fa083b5964c))
+  (wire
+    (pts
+      (xy 102.87 59.69)
+      (xy 97.79 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid cfccae67-33f3-53e6-9f85-a262b7e53ea8))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 97.79 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 251bac1d-084d-5af1-8e84-36642738e750)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 97.79 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 102.87 72.39)
+      (xy 102.87 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ab40779a-c187-5e72-b2c4-0242cfb71dfe))
+  (wire
+    (pts
+      (xy 102.87 77.47)
+      (xy 97.79 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f50369be-7a30-5426-b26b-96118d0664da))
+  (global_label "FPGA_INIT_B"
+    (shape bidirectional)
+    (at 97.79 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 9500e262-e17d-5fa8-8501-6f9a5d082a3a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 97.79 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 168.91 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 86719066-8689-5020-9ccf-3c2f361d1371)
+    (property "Reference" "R110"
+      (at 173.736 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7k"
+      (at 173.736 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_4.7k"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending; DONE open-drain and DonePipe enabled; no LED directly loads DONE"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 16b4fcd1-152e-5605-a176-2acafe901b54))
+    (pin "2"
+      (uuid 706f03ca-6b24-5011-9b92-7e11b8442ea9))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R110")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 64.77)
+      (xy 168.91 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c724be14-56d0-5672-bc81-305fc41c7c67))
+  (wire
+    (pts
+      (xy 168.91 59.69)
+      (xy 163.83 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8aab7374-40e4-53eb-882f-43565c208829))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 163.83 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid f4dea28d-827a-53f7-8b88-4e6e19510b57)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 168.91 72.39)
+      (xy 168.91 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 51426384-dd10-5cd7-9020-f8c96c5381d5))
+  (wire
+    (pts
+      (xy 168.91 77.47)
+      (xy 163.83 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e441d101-4cf4-55c3-9706-1ada4a513c48))
+  (global_label "FPGA_DONE"
+    (shape bidirectional)
+    (at 163.83 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid dfe24ba0-1cf4-5617-ab0f-ffdaac5e7435)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 234.95000000000002 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1ddaf37e-f46a-5188-ad65-890155ff45e8)
+    (property "Reference" "R111"
+      (at 239.776 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1k"
+      (at 239.776 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_1k"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 92e09acf-fa4a-5620-bbf3-a07bac77c433))
+    (pin "2"
+      (uuid 3e755609-4243-598e-8898-ad71f6542c11))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R111")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 234.95 64.77)
+      (xy 234.95 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 47e61dd9-af92-50df-8b02-f0967caa5253))
+  (wire
+    (pts
+      (xy 234.95 59.69)
+      (xy 229.87 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 042a8a7e-7729-5484-96d6-f8e19f6adf96))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 229.87 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 8a35bda1-8e6d-59fc-9f54-8a7a59d48084)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 234.95 72.39)
+      (xy 234.95 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e47744ed-e0f6-51d9-8c80-7a0357609457))
+  (wire
+    (pts
+      (xy 234.95 77.47)
+      (xy 229.87 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8355416b-b5d7-5e11-851d-88fe20a60f9e))
+  (global_label "CFG_M0"
+    (shape bidirectional)
+    (at 229.87 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 6349150c-e0e6-55e9-8a0a-560981c6c2b8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 300.99 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid a8ebce22-e17a-5ded-bdc9-3269a1d33992)
+    (property "Reference" "R112"
+      (at 305.816 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1k"
+      (at 305.816 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_1k"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid b1102d85-7b4f-5ed2-9188-79acbb5c8afc))
+    (pin "2"
+      (uuid 67fcc975-ffaa-5ab0-b818-ef050e73d790))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R112")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 300.99 64.77)
+      (xy 300.99 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 475f8207-6369-5743-b864-43e039c67292))
+  (wire
+    (pts
+      (xy 300.99 59.69)
+      (xy 295.91 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7928a991-cb16-5c1f-87ea-7855958b6550))
+  (global_label "CFG_M1"
+    (shape bidirectional)
+    (at 295.91 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 9ea19040-41d6-523e-b45c-f475ff12abc8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 300.99 72.39)
+      (xy 300.99 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a36a86b4-4551-595d-812a-fd532906cc89))
+  (wire
+    (pts
+      (xy 300.99 77.47)
+      (xy 295.91 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 34e87e32-de37-53ef-b1f4-5a4b04af2901))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 295.91 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 3cf319f6-1014-585b-99a3-53c8299aac7f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 36.83 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid d80a6395-fd58-5909-a1dd-18f3927f519a)
+    (property "Reference" "R113"
+      (at 41.656 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1k"
+      (at 41.656 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_1k"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending; fixed SPI001 strap; no mode jumper"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid fccc9816-d8d7-5b38-8611-9e2f747cfaf3))
+    (pin "2"
+      (uuid f806b45b-51d3-5a6a-99b0-03e7421dbb43))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R113")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 114.3)
+      (xy 36.83 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e8173161-5e4e-5df0-93fd-803917791ccf))
+  (wire
+    (pts
+      (xy 36.83 109.22)
+      (xy 31.75 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7524e3ce-9922-57a3-8f49-ca6fdceeb5cd))
+  (global_label "CFG_M2"
+    (shape bidirectional)
+    (at 31.75 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid ea4439d6-bc55-5f9c-8dbf-378fc16e05ca)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 121.92)
+      (xy 36.83 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1cad2380-6932-5616-bbfb-7858a491d60e))
+  (wire
+    (pts
+      (xy 36.83 127.0)
+      (xy 31.75 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 384e4d7b-a338-59ee-8eec-9eabf482f973))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 31.75 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 5fce54eb-3cc1-539d-b6fb-6df5faef299b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 102.87 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 98d8c57f-3c84-5f0f-b235-9d4c4ffeb19a)
+    (property "Reference" "R114"
+      (at 107.696 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1k"
+      (at 107.696 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_1k"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending; Disable configuration-time user-I/O pull-ups; ball reserved"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 102.87 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid bc241d26-3943-5728-b1b5-cb5105f1838f))
+    (pin "2"
+      (uuid b4b72488-1308-5391-b73b-cf8b1228dfbe))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R114")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 102.87 114.3)
+      (xy 102.87 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 455c66aa-be51-5b49-ac84-a03425c3608b))
+  (wire
+    (pts
+      (xy 102.87 109.22)
+      (xy 97.79 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6df37d80-609f-5e9c-8775-beb7fe71190e))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 97.79 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid ce85e61d-1c6e-5654-aea5-d93eed39f3d3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 97.79 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 102.87 121.92)
+      (xy 102.87 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 28dfa7ed-1ecd-56fe-aab0-40607ff174af))
+  (wire
+    (pts
+      (xy 102.87 127.0)
+      (xy 97.79 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 629b4b4c-e6cc-5f9a-a8a9-f74790aaf88c))
+  (global_label "CFG_PUDC_B"
+    (shape bidirectional)
+    (at 97.79 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 3966c27a-c3c0-50f9-8054-b169b79072d4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 97.79 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 168.91 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 48c884af-f2fa-56fe-ae93-27ea7245d968)
+    (property "Reference" "R115"
+      (at 173.736 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k"
+      (at 173.736 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_10k"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 168.91 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 38c86ecb-1c3d-536d-94d1-e0d62224288f))
+    (pin "2"
+      (uuid ca598180-d177-5d7b-b9cc-9c7a41767b5a))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R115")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 114.3)
+      (xy 168.91 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2557efad-3e96-51a1-a445-ffbc7329ee4c))
+  (wire
+    (pts
+      (xy 168.91 109.22)
+      (xy 163.83 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 17c8b5d4-21c2-57a0-a54d-8de9a1de12c5))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 163.83 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid dc40ba72-b395-511a-8979-10bd39646260)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 168.91 121.92)
+      (xy 168.91 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fb177659-0685-5741-8198-5d01e3d8239b))
+  (wire
+    (pts
+      (xy 168.91 127.0)
+      (xy 163.83 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 01e6f3bf-bc80-51ec-baff-4f81df587201))
+  (global_label "JTAG_TMS"
+    (shape bidirectional)
+    (at 163.83 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 9e98a274-8279-5edc-9071-47f585c83b38)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 234.95000000000002 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 42fb252b-9cf4-54f4-bf40-b6dab788767a)
+    (property "Reference" "R116"
+      (at 239.776 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k"
+      (at 239.776 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_10k"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 51432c57-d663-5ea7-9f32-3c3f7a3d40a6))
+    (pin "2"
+      (uuid 09c540f9-76e9-5d51-a538-462f59eff378))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R116")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 234.95 114.3)
+      (xy 234.95 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d4290775-30fb-5ee3-8b63-61715efd83af))
+  (wire
+    (pts
+      (xy 234.95 109.22)
+      (xy 229.87 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 91ef9189-914d-508a-8eed-464bd03322b1))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 229.87 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a093d39e-a0c1-5911-85d1-51330802cab5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 234.95 121.92)
+      (xy 234.95 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8dad006c-21bc-59b3-b26e-7de729ef1efa))
+  (wire
+    (pts
+      (xy 234.95 127.0)
+      (xy 229.87 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e12fda1c-fa1f-53d1-9fc1-3fd9bee9cd69))
+  (global_label "JTAG_TDI"
+    (shape bidirectional)
+    (at 229.87 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 558685ec-480a-59a0-921a-54a1abb6e449)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 300.99 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2253bf7b-4072-5ffe-8932-473a037202e9)
+    (property "Reference" "R117"
+      (at 305.816 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k"
+      (at 305.816 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_10k"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 300.99 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 61f0206c-b626-5e3b-880c-14335b27e637))
+    (pin "2"
+      (uuid 97a0dbd0-3420-5cef-8871-8854f12aa370))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R117")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 300.99 114.3)
+      (xy 300.99 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8d48408b-f7ec-5e1d-b959-eb7685fca7ba))
+  (wire
+    (pts
+      (xy 300.99 109.22)
+      (xy 295.91 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4312e142-3bfd-5190-afe7-c71fbc743edd))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 295.91 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 09d46d3d-1079-5b4e-a58a-43b60fdccef3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 300.99 121.92)
+      (xy 300.99 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f5f676a6-b722-510a-a1ef-68f499c9bfba))
+  (wire
+    (pts
+      (xy 300.99 127.0)
+      (xy 295.91 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 13042094-e056-5150-b063-71e1c642438f))
+  (global_label "JTAG_TCK"
+    (shape bidirectional)
+    (at 295.91 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid ddeaa361-29f0-5fbd-a769-6bfba97121c7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 36.83 167.64000000000001 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 189f826a-4abd-59df-9faf-6ac9097196a1)
+    (property "Reference" "R118"
+      (at 41.656 165.1 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "33"
+      (at 41.656 170.18 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/v/u/en-US/ug470_7Series_Config"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD_0402_1pct_33"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Programming JTAG"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Specified resistance/package; final vendor MPN pending; Near FPGA; additional JTAG series value below Digilent100ohm recommendation"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 36.83 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 6759678a-6cc8-5c98-ba06-34269edd467f))
+    (pin "2"
+      (uuid cec700cb-1c19-5289-9eb3-401aa877a49b))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf"
+          (reference "R118")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 163.83)
+      (xy 36.83 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b942a3c1-2d93-50b7-9900-4b539cc52434))
+  (wire
+    (pts
+      (xy 36.83 158.75)
+      (xy 31.75 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 446fedcb-e2bc-5f55-83b8-c4a5b3872859))
+  (global_label "FPGA_TDO"
+    (shape bidirectional)
+    (at 31.75 158.75 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 26f9354a-dcff-5d10-b19d-0dcb73fc7f75)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 171.45)
+      (xy 36.83 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8828af96-9acd-5c7a-87e0-53ff860b5528))
+  (wire
+    (pts
+      (xy 36.83 176.53)
+      (xy 31.75 176.53))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid edd0166e-7781-5ad5-a703-63bacb51ae65))
+  (global_label "JTAG_TDO"
+    (shape bidirectional)
+    (at 31.75 176.53 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 8549fb0a-f672-500b-97c9-39f14b96d391)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 176.53 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no))

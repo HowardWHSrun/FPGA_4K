@@ -1,0 +1,666 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 936894af-ae03-5453-9841-61d0c12b8f1d)
+  (paper "A3")
+  (title_block
+    (title "Power source assertions")
+    (date "2026-09-26")
+    (rev "MINIMAL 0.3")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:power__PWR_FLAG"
+      (power global)
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "#FLG"
+        (at 0 1.905 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "PWR_FLAG"
+        (at 0 3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Special symbol for telling ERC where power comes from"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "flag power"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "power__PWR_FLAG_0_0"
+        (pin power_out line
+          (at 0 0 90)
+          (length 0)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (symbol "power__PWR_FLAG_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 1.27)
+            (xy -1.016 1.905)
+            (xy 0 2.54)
+            (xy 1.016 1.905)
+            (xy 0 1.27))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (embedded_fonts no)))
+  (text "Power source assertions"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid bb540190-b78e-50ed-bfc0-bcdf0f9f713b))
+  (text "Connected core draft. Matching global labels are electrical connections. Component status fields retain unresolved selections and requirements."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 577e347a-c0f2-55d1-8fa2-8e4db8de7d37))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 36.83 67.31 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid 58397ea8-0798-53f8-ad7d-878e1f2ad746)
+    (property "Reference" "#FLG001"
+      (at 36.83 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 36.83 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 36.83 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 4e4f18d7-bfb1-5f38-b17c-e67cc4ea9438))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG001")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 67.31)
+      (xy 36.83 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a185cfdb-859b-52a7-83fe-15364ee64a03))
+  (wire
+    (pts
+      (xy 36.83 72.39)
+      (xy 31.75 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 784b969c-e433-5fa7-8d2a-e46a98da059a))
+  (global_label "LINK_12V"
+    (shape bidirectional)
+    (at 31.75 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1406afe7-7b39-59de-ae07-2d1c17b2b588)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 102.87 67.31 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid fce3c2ef-bf0d-5e79-b395-0be238ba5bad)
+    (property "Reference" "#FLG002"
+      (at 102.87 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 102.87 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 102.87 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid f29eb4c3-80ef-5688-8613-eadf59727f5c))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG002")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 102.87 67.31)
+      (xy 102.87 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 74cc3362-36b3-5357-8c01-ce379aa4d188))
+  (wire
+    (pts
+      (xy 102.87 72.39)
+      (xy 97.79 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fb6f5341-5fea-50c2-ac56-4e5d2c064e25))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 97.79 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid f28f504c-a777-509f-9c96-a18ecc9850e4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 97.79 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 168.91 67.31 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid b5ae1a20-86bc-5f8a-9772-45b4d90bd8de)
+    (property "Reference" "#FLG003"
+      (at 168.91 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 168.91 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 168.91 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a886338f-7a21-59c6-89ff-8e3a617a0c05))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG003")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 67.31)
+      (xy 168.91 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ddf07e28-d99e-5fa8-a3b0-9f91758f5e61))
+  (wire
+    (pts
+      (xy 168.91 72.39)
+      (xy 163.83 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ae74e08e-a928-5652-8aee-0eca01b2b8c3))
+  (global_label "VCCINT_1V0"
+    (shape bidirectional)
+    (at 163.83 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e1ae8d71-7ee8-54ff-9c63-88920aeff7de)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 234.95000000000002 67.31 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid 524eb200-939e-5c14-9824-2d05aaacbe12)
+    (property "Reference" "#FLG004"
+      (at 234.95 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 234.95 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 234.95 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 70aeb6cb-b7b5-54b4-82cd-b73c60676cfb))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG004")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 234.95 67.31)
+      (xy 234.95 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0963b2a8-eac0-5a28-b9c8-b2d705441203))
+  (wire
+    (pts
+      (xy 234.95 72.39)
+      (xy 229.87 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c92b3f1e-16ce-5834-8cc2-89d60e051e51))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 229.87 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 424e67c6-151a-5b84-98df-aa32fcb48983)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 300.99 67.31 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid db36234d-8fcd-54d1-a69d-848e7a2a9e50)
+    (property "Reference" "#FLG005"
+      (at 300.99 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 300.99 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 300.99 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 76a41905-9715-5dd7-921f-0d3f96b679bb))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG005")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 300.99 67.31)
+      (xy 300.99 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3726997c-43b4-5c49-9463-02f4a9a6cb9d))
+  (wire
+    (pts
+      (xy 300.99 72.39)
+      (xy 295.91 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c5843a49-4562-5917-b31d-8540e44b1fbb))
+  (global_label "VCC_CFG_3V3"
+    (shape bidirectional)
+    (at 295.91 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 02c1b1eb-8580-5585-bffa-0004cf4ddc6a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:power__PWR_FLAG")
+    (at 36.83 113.03 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid a93403f3-1f3b-5596-b8d3-acf0a3a13fb8)
+    (property "Reference" "#FLG006"
+      (at 36.83 97.79 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "PWR_FLAG"
+      (at 36.83 101.6 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" ""
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "Virtual ERC power-source assertion"
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "Power source assertions"
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof."
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "power:PWR_FLAG"
+      (at 36.83 113.03 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 219acefa-41dd-519c-b1c2-e8c4f53b7138))
+    (instances
+      (project "FPGA100T_Minimal"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d"
+          (reference "#FLG006")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 113.03)
+      (xy 36.83 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 779faea8-84b1-5292-beb9-fba68e5e92fd))
+  (wire
+    (pts
+      (xy 36.83 118.11)
+      (xy 31.75 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7ab02ce9-5a54-5f11-9521-ab639772715d))
+  (global_label "VCC_ASIC_1V5"
+    (shape bidirectional)
+    (at 31.75 118.11 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 89d0724f-1ee3-5217-b457-8e42a2684998)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no))

@@ -31,3 +31,11 @@ Howard supplied the [notes](meetings/2026-09-23-notes.txt) and [system-view scre
 ## September 24 preparation
 
 [FPGA meeting choices PDF](meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf), credited to Howard Wang and dated September 23, supplied for the September 24 meeting. Unchanged original including embedded links. [Online summary](../presentation/meetings/2026-09-24.html) distinguishes proposals from decisions and dated supplier figures from current stock.
+
+## September 26 100T review snapshot
+
+[Current engineering review](../presentation/fpga/index.html) publishes a curated, explicitly unqualified copy of the locally developed FPGA100T minimal core. [Its manifest](../hardware/fpga-100t-review/manifest.json) records the original and packaged hashes. Native KiCad and library files retain exact source bytes; only workstation paths in selected report representations are made portable. The ZIP includes the complete project hierarchy, local libraries, exported schematic PDF, PCB views, logical 117-signal CSV and selected validation evidence. Private messages/audio, caches, earlier rejected candidates and routing experiments are excluded. [Package notes](../hardware/fpga-100t-review/README.md) retain attribution and limits.
+
+The current full-board scope includes all 117 ASIC signals and the XEM8310 link. Core-only dimensions and passing geometric checks do not establish fabrication readiness. The existing 200T/50T page and its source material are preserved as history.
+
+The [separate interface-study package](../hardware/fpga-interface-study/README.md) preserves selected local engineering reports and placement views. Its [manifest](../hardware/fpga-interface-study/manifest.json) distinguishes original bytes from Markdown link-only adaptations. It is not the current core copper revision or a full-system release.
