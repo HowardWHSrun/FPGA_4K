@@ -39,10 +39,15 @@ def main():
  selected += ['release_audit/Fourth_Check_Review.md']
  selected += ['release_audit/fourth_check/'+name for name in ['Uncertainty_Register.md','Uncertainty_Register.json','ASIC_Boot_Uncertainties.md','ASIC_Boot_Uncertainties.json','Power_Link_Uncertainties.md','Power_Link_Uncertainties.json','CAD_Mechanical_Uncertainties.md','CAD_Mechanical_Uncertainties.json','Source_Continuity.json']]
  selected += ['release_audit/slide_review/'+name for name in ['Gerald_ASIC_Slide_Review.md','Gerald_ASIC_Slide_Review.json','Independent_Timing_Read.md']]
+ selected += ['release_audit/size_optimization/'+name for name in ['Size_Optimization_Review.md','area_audit/Circled_Area_Audit.md','area_audit/Circled_Area_Measurements.json','area_audit/Circled_Spaces_Explained.svg','area_audit/Circled_Spaces_Explained.png','area_audit/native_geometry.json','power_audit/Power_Minimization_Review.md','power_audit/power_geometry.json','connector_audit/Connector_Size_Constraints.md','connector_audit/Connector_Size_Constraints.json','connector_audit/Placement_37p5x36_Plan.json','connector_audit/Placement_37p5x36_Screen.json','independent_candidate/Independent_Candidate_Review.md','independent_candidate/Independent_Candidate_Review.json']]
+ candidate=source/'release_audit/size_optimization/candidate'
+ for sub,extensions in [('hardware',{'.kicad_pcb','.kicad_pro',''}),('libraries',{'.kicad_mod'}),('output',{'.svg','.png'}),('reports',{'.json','.md'})]:
+  selected += [f.relative_to(source).as_posix() for f in sorted((candidate/sub).rglob('*')) if f.is_file() and f.suffix in extensions]
+ selected += ['release_audit/size_optimization/candidate/'+name for name in ['README.md','Mezzanine_Contact_Proposal.csv','FPGA100T_Compact_Study.zip']]
  destinations={'full_system/hardware/FPGA100T_Full_System.kicad_pcb':'native/FPGA100T_Full_System.kicad_pcb','release_audit/mezzanine/FPGA100T_Mezzanine_Fit.kicad_pcb':'native/FPGA100T_Mezzanine_Fit.kicad_pcb'}
  selected += list(destinations)
  for rel in selected:
-  src=source/rel;outrel=destinations.get(rel,rel.removeprefix('release_audit/').replace('reports/','research/'));out=DEST/outrel;out.parent.mkdir(parents=True,exist_ok=True);content=src.read_bytes();sourcehash=sha(src)
+  src=source/rel;outrel=destinations.get(rel,('research/'+rel.removeprefix('reports/') if rel.startswith('reports/') else rel.removeprefix('release_audit/')));out=DEST/outrel;out.parent.mkdir(parents=True,exist_ok=True);content=src.read_bytes();sourcehash=sha(src)
   if src.suffix=='.md':
    text=content.decode().replace('../reports/AC_IN_IMP_TST_Primary_Source_Review.md','research/AC_IN_IMP_TST_Primary_Source_Review.md')
    text=text.replace('../../Original%20Sources/09_Manufacturer_Documentation/Datasheets/AMD/DS181_Power_and_Electrical_Limits.pdf','https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet')
@@ -50,6 +55,10 @@ def main():
    text=text.replace('../../bringup/README.md','../research/Current_Design_Bringup_Status.md')
    text=text.replace('../double_check/ASIC_Review.md','../research/AC_IN_IMP_TST_Primary_Source_Review.md')
    if '/fourth_check/' in rel:text=text.replace('../../reports/','../research/')
+   if '/size_optimization/' in rel:
+    text=text.replace('[Read-only inspection script](inspect_power.py)','Read-only inspection script `inspect_power.py` (retained in the local engineering evidence)')
+    text=text.replace('[search_placement.py](search_placement.py)','`search_placement.py` (retained in the local engineering evidence)')
+    text=text.replace(str(source)+'/', 'FPGA_100T_CSG324/')
    content=text.encode()
   if src.suffix=='.json':
    content=content.decode().replace(str(source)+'/', 'FPGA_100T_CSG324/').encode()
@@ -64,7 +73,9 @@ This folder supplements the current core snapshot; it does not replace its nativ
 
 **Slide follow-up:** [Gerald's 28-slide ASIC review](slide_review/Gerald_ASIC_Slide_Review.md) and [independent waveform read](slide_review/Independent_Timing_Read.md) establish tutorial recording format and configuration direction, while documenting contradictory stimulation timing and duplicated channel labels. The uncertainty register incorporates these findings; the original deck is unchanged.
 
-[Open the interactive native KiCad viewer](../../presentation/fpga/viewer/index.html) to zoom, pan and inspect layers in the current core, separate rail revision or mezzanine placement. The raw [rail PCB](native/FPGA100T_Full_System.kicad_pcb) and [mezzanine PCB](native/FPGA100T_Mezzanine_Fit.kicad_pcb) are exact source copies. Browser rendering is for review; native KiCad and engineering verification remain authoritative.
+**Smaller placement follow-up:** [The circled-space review](size_optimization/Size_Optimization_Review.md) adds a separate **37.5 × 36 mm**, 128-part candidate, **6.25% less area** than the original studies. Both mezzanines and all study components are retained. [Native checks](size_optimization/candidate/reports/Candidate_Validation.md), [independent review](size_optimization/independent_candidate/Independent_Candidate_Review.md) and the [portable KiCad project](size_optimization/candidate/FPGA100T_Compact_Study.zip) accompany the new placement. It has no copper routing or integrated schematic; C92/R122, protection and full application wiring remain absent. The original three CAD files are preserved; final size remains open.
+
+[Open the interactive native KiCad viewer](../../presentation/fpga/viewer/index.html) to zoom, pan and inspect layers in the current core, separate rail revision, mezzanine placement or smaller candidate. The raw [rail PCB](native/FPGA100T_Full_System.kicad_pcb) and [mezzanine PCB](native/FPGA100T_Mezzanine_Fit.kicad_pcb) are exact source copies. Browser rendering is for review; native KiCad and engineering verification remain authoritative.
 
 [The mezzanine view](mezzanine/Mezzanine_Fit.svg) depicts an intentionally unrouted 128-part placement study within 40 × 36 mm. The current core and this layout are different native revisions. All 120 new signal pads are unassigned. [The contact CSV](mezzanine/Mezzanine_Contact_Proposal.csv) proposes 117 named signals and three reserved contacts; all FPGA balls are TBD. [The independent review](mezzanine/Independent_Mezzanine_Review.md) records geometry, source-drawing ambiguity and mating-orientation limits. C92/R122, cable damping/protection and the full-system routing are not included in this fit study.
 
@@ -76,7 +87,7 @@ This folder supplements the current core snapshot; it does not replace its nativ
 
 Separate review-only downloads now include the [rail revision](review_projects/FPGA100T_Rail_Revision.zip) and [mezzanine placement](review_projects/FPGA100T_Mezzanine_Study.zip), with local libraries. The latter has a packaging-only relative footprint-table correction; native CAD bytes are unchanged. [Independent archive checks](triple_check/Package_Independent_Review.md) document source correspondence and scope. Neither archive is a fabrication release.
 
-Source: FPGA_100T_CSG324 local engineering development, 2026-09-26. Native files were inspected read-only; this web folder publishes selected evidence, not a fabrication package. Manufacturer PDFs remain linked at their primary sources. Private conversations/audio, experimental scripts and caches are excluded. The manifest records byte hashes; Markdown link destinations and generated-report workstation paths are adjusted for portability; source hashes are retained.
+Source: FPGA_100T_CSG324 local engineering development, 2026-09-26. The three baseline native files were preserved; a new isolated smaller placement was created. This web folder publishes selected evidence and review projects, not a fabrication package. Manufacturer PDFs remain linked at their primary sources. Private conversations/audio, experimental scripts and caches are excluded. The manifest records byte hashes; Markdown link destinations and generated-report workstation paths are adjusted for portability; source hashes are retained.
 ''')
  f=DEST/'README.md';records.append({'path':'README.md','sha256':sha(f),'bytes':f.stat().st_size,'transformation':'generated packaging notes'})
  manifest={'date':'2026-09-26','scope':'Separate unqualified interface proposals and placement study','board_sha256':review['board_sha256'],'not_current_core_CAD':True,'fabrication_ready':False,'files':records};(DEST/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

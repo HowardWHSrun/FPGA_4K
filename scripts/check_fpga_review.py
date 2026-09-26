@@ -62,7 +62,40 @@ def main():
     for link in re.findall(r'(?:href|src)="([^"]+)"', html):
         if not link.startswith(('https:', '#')):
             assert (ROOT / 'presentation/fpga' / unquote(urlsplit(link).path)).resolve().exists(), link
+    compact = ROOT / 'hardware/fpga-interface-study/size_optimization/candidate'
+    result = json.loads((compact / 'reports/Candidate_Validation.json').read_text())
+    independent = json.loads((compact.parent / 'independent_candidate/Independent_Candidate_Review.json').read_text())
+    placed = compact / 'hardware/FPGA100T_37p5x36_Placement.kicad_pcb'
+    view = next(b for b in json.loads((ROOT / 'presentation/fpga/viewer/boards.json').read_text())['boards'] if b['id'] == 'compact')
+    assert sha(placed) == result['candidate_sha256'] == independent['candidate_sha256'] == view['sha256']
+    assert result['board_mm'] == view['dimensions_mm'] == [37.5, 36]
+    assert not result['fabrication_ready'] and independent['passed'] and not independent['failures']
+    assert result['footprints'] == independent['footprints'] == 128
+    assert result['checked_pad_records'] == independent['pad_count'] == 807
+    assert result['tracks'] == result['vias'] == result['zones'] == 0
+    drc = json.loads((compact / 'reports/Candidate_DRC.json').read_text())
+    assert not drc['violations'] and not drc['ignored_checks'] and len(drc['unconnected_items']) == 383
+    for rel in ['Compact_Front.svg', 'Compact_Back.svg', 'Compact_Placement.svg']:
+        ET.parse(compact / 'output' / rel)
+    with zipfile.ZipFile(compact / 'FPGA100T_Compact_Study.zip') as archive:
+        assert archive.testzip() is None
+        matches = [n for n in archive.namelist() if n.endswith('/hardware/FPGA100T_37p5x36_Placement.kicad_pcb')]
+        assert len(matches) == 1
+        prefix = matches[0].split('/hardware/')[0] + '/'
+        for folder in ['hardware', 'libraries']:
+            for f in (compact / folder).rglob('*'):
+                if f.is_file():
+                    assert archive.read(prefix + f.relative_to(compact).as_posix()) == f.read_bytes(), str(f)
+        for name in archive.namelist():
+            assert not name.startswith('/') and '..' not in Path(name).parts
+    with zipfile.ZipFile(ROOT / 'hardware/fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip') as archive:
+        names = [n for n in archive.namelist() if n.endswith('.kicad_pro')]
+        assert len(names) == 1
+        source_rules = json.loads(archive.read(names[0]))['board']['design_settings']
+    rules = json.loads((compact / 'hardware/FPGA100T_37p5x36_Placement.kicad_pro').read_text())['board']['design_settings']
+    assert rules == source_rules, 'Smaller placement changed saved design rules'
     print(f'PASS: {len(manifest["files"])} artifact hashes, exact ZIP contents, {data["schematicPages"]} sheets, local libraries, report/data/PCB snapshot agreement and local links.')
+    print('PASS: smaller candidate hash/geometry/report agreement, complete native ZIP and unchanged baseline design rules.')
     print('Limit: package coherence only; not ERC/DRC rerun, electrical operation, timing or fabrication approval.')
 
 if __name__ == '__main__':

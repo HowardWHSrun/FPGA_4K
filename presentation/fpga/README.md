@@ -1,8 +1,8 @@
 # 100T FPGA engineering review
 
-The opening board panel follows the earlier review layout: **Front layout**, **Back layout** and **Interactive KiCad** tabs, pan/zoom/fit controls, and a concise current-design sidebar. [Open the standalone native viewer](viewer/index.html) for layer, part and net inspection. It loads unchanged `.kicad_pcb` files from this repository; select the current core, separate rail revision or unrouted mezzanine study. Whole-project ZIPs remain the portable KiCad download. See [viewer provenance and limits](viewer/README.md).
+The opening board panel follows the earlier review layout: **Front layout**, **Back layout** and **Interactive KiCad** tabs, pan/zoom/fit controls, and a concise current-design sidebar. [Open the standalone native viewer](viewer/index.html) for layer, part and net inspection. It loads unchanged `.kicad_pcb` files from this repository; select the current core, separate rail revision, unrouted mezzanine study or smaller 37.5 × 36 mm placement. Whole-project ZIPs remain the portable KiCad download. See [viewer provenance and limits](viewer/README.md).
 
-The [complete 28-slide ASIC review](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents tutorial framing and SPI direction, and flags stimulation timing, channel-table and gain conflicts. The uncertainty register incorporates these refinements. Original slides and native CAD remain unchanged.
+The [complete 28-slide ASIC review](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents tutorial framing and SPI direction, and flags stimulation timing, channel-table and gain conflicts. The uncertainty register incorporates these refinements. Original slides and the three baseline native designs remain unchanged.
 
 **Fourth-review update:** [Uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the current closure list; owner roles are proposed, not accepted assignments. Native source hashes are checked against the third-pass reports, which retain their original test scope. The page distinguishes known implementation gaps from unknown requirements.
 
@@ -52,3 +52,7 @@ GitHub Pages is configured to serve the `presentation` branch at its root. The F
 [The earlier eight-slide review](history-2026-09-24.html) and its [manifest](history-2026-09-24-manifest.json) preserve the 200T draft and 50T evaluation. Their original app, slide and style files remain alongside the new review. [September 21](meeting-2026-09-21.md), [September 22](direction-2026-09-22.md), and the [meeting hub](../meetings/) retain their dated context. These are not the current 100T pinout or release status.
 
 The separate [mezzanine/interface study](../../hardware/fpga-interface-study/README.md) has its own importer and manifest. It must not be represented by the current core snapshot counters. After updating its SVG/PNG/contact CSV/reports, rerun `scripts/import_fpga_interface_study.py` with the FPGA_100T_CSG324 root, then the documentation and browser checks.
+
+## Smaller placement follow-up
+
+[The circled-space review](../../hardware/fpga-interface-study/size_optimization/Size_Optimization_Review.md) introduces a separate 128-component 37.5 × 36 mm native placement, preserving the original designs. It reduces area 6.25% while retaining both mezzanines. Native placement, saved-rule and independent geometry checks accompany it; all copper and the 117 application assignments remain unfinished. [Open the smaller variant](viewer/index.html?board=compact). Do not substitute the original core connectivity counters for this placement-only candidate.

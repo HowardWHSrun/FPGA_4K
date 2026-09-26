@@ -2,15 +2,18 @@
 
 [Open the viewer](index.html) · [Return to the current FPGA review](../index.html) · [Source identities](boards.json)
 
-This page restores zoomable, selectable KiCad viewing on GitHub Pages. All three board files are the unchanged native KiCad 10 checkpoints. The page is a design inspection tool; it does not run KiCad DRC/ERC or establish electrical operation.
+This page restores zoomable, selectable KiCad viewing on GitHub Pages. Each entry loads a separate native KiCad 10 snapshot with a recorded file hash. The page is a design inspection tool; it does not run KiCad DRC/ERC or establish electrical operation.
 
 | View | Native file | Displayed design |
 |---|---|---|
 | [Current core](index.html?board=core) | [FPGA100T_Minimal.kicad_pcb](../../../hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb) | 126 parts, 1,010 tracks, 146 vias, 4 zones; incomplete core routing |
 | [Rail revision](index.html?board=rail) | [FPGA100T_Full_System.kicad_pcb](../../../hardware/fpga-interface-study/native/FPGA100T_Full_System.kicad_pcb) | 128 parts, 360 tracks, 25 vias; separate voltage revision |
 | [Mezzanine fit](index.html?board=mezzanine) | [FPGA100T_Mezzanine_Fit.kicad_pcb](../../../hardware/fpga-interface-study/native/FPGA100T_Mezzanine_Fit.kicad_pcb) | 128 parts; unrouted placement study without an integrated schematic |
+| [Smaller fit](index.html?board=compact) | [FPGA100T_37p5x36_Placement.kicad_pcb](../../../hardware/fpga-interface-study/size_optimization/candidate/hardware/FPGA100T_37p5x36_Placement.kicad_pcb) | 37.5 × 36 mm; separate connector-inclusive placement candidate; no tracks, vias or zones |
 
-These are separate 40 × 36 mm development checkpoints, not three finished board options. Keep the complete project ZIP when opening KiCad so the hierarchical sheets and libraries stay together.
+The core, rail revision and original mezzanine fit are 40 × 36 mm. The smaller fit is a separate 37.5 × 36 mm placement candidate, a 6.25% outline-area reduction. It has no integrated schematic or completed routing, and does not include the rail revision's C92/R122 additions or proposed input protection. Its 120 numbered mezzanine contacts remain unassigned. The complete functional board size remains unproven.
+
+Keep each project's ZIP together when opening KiCad; the placement-only ZIP has its PCB, project and local footprint libraries, while the core and rail projects also include hierarchical schematic sheets. The native KiCad project and its separate validation report define the scope of each snapshot.
 
 ## Controls
 
@@ -53,4 +56,4 @@ Run from the repository root with Playwright and Chromium available:
 SITE_URL=http://127.0.0.1:8765/ node scripts/check_fpga_viewer.mjs
 ```
 
-Optional environment variables: `PLAYWRIGHT_MODULE`, `CHROME_PATH`, and `VIEWER_OUTPUT_DIR`. The checker writes a JSON report and screenshots. It verifies native hashes/counts, each net assignment, real view controls, desktop/mobile embedding, runtime resource availability and missing-file fallback. Browser verification does not replace KiCad checks or hardware measurements.
+Optional environment variables: `PLAYWRIGHT_MODULE`, `CHROME_PATH`, and `VIEWER_OUTPUT_DIR`. The checker writes a JSON report and screenshots. It verifies all four variants, each expected outline size, native hashes/counts, each net assignment, real view controls, desktop/mobile embedding, runtime resource availability and missing-file fallback. Browser verification does not replace KiCad checks or hardware measurements.

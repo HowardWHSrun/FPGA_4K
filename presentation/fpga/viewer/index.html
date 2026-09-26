@@ -19,9 +19,9 @@
   <main>
     <section class="intro" aria-labelledby="page-title">
       <div class="heading"><h1 id="page-title">Explore the PCB</h1><span class="badge">Engineering review only</span></div>
-      <p>Zoom into the actual KiCad board, select components, and turn layers on or off. These are three separate design checkpoints.</p>
+      <p>Zoom into the actual KiCad board, select components, and turn layers on or off. These are four separate design checkpoints, including a smaller placement candidate.</p>
       <label class="board-label" for="board-choice">Board to view</label>
-      <select id="board-choice"><option value="core">Current core · most routed</option><option value="rail">Rail revision · separate proposal</option><option value="mezzanine">Mezzanine fit · placement only</option></select>
+      <select id="board-choice"><option value="core">Current core · most routed</option><option value="rail">Rail revision · separate proposal</option><option value="mezzanine">Mezzanine fit · placement only</option><option value="compact">Smaller fit · 37.5 × 36 mm · placement only</option></select>
       <p id="board-description" class="description">Loading the current board details…</p>
     </section>
     <section id="viewer-shell" aria-label="Interactive PCB">

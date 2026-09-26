@@ -1,0 +1,256 @@
+{
+  "method": "Approximate rectangular review windows inferred from screenshot circles; not traced circle areas. X/Y are native PCB coordinates in mm, origin upper left of nominal 40 by 36 mm outline. Back display x = 40 - native x. Courtyard rectangles include drawing stroke. Courtyard area only; tracks, vias, internal planes and routing headroom are not considered available placement area.",
+  "source_sha256": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0",
+  "windows": [
+    {
+      "id": "A",
+      "description": "front upper center",
+      "viewed_side": "front",
+      "native_bbox_mm": [
+        10.5,
+        0,
+        35.5,
+        8.5
+      ],
+      "window_area_mm2": 212.5,
+      "same_side_refs": [
+        "R109",
+        "R117",
+        "J4",
+        "R112",
+        "R116",
+        "C2",
+        "R113"
+      ],
+      "opposite_side_refs": [
+        "C57",
+        "R104",
+        "C100",
+        "R102",
+        "C21",
+        "R100",
+        "C58",
+        "R105",
+        "U6",
+        "C101",
+        "R101",
+        "R107",
+        "R106"
+      ],
+      "same_side_courtyard_union_mm2": 38.67,
+      "largest_courtyard_clear_rectangle": {
+        "area_mm2": 147.66,
+        "bbox_mm": [
+          10.5,
+          0,
+          30.045,
+          7.555
+        ]
+      },
+      "vias_intersecting_window": 16,
+      "track_segments_with_bounding_boxes_intersecting_window": 142,
+      "track_nets": [
+        "CFG_M1",
+        "CFG_M2",
+        "FLASH_CS_B",
+        "FLASH_DQ0",
+        "FLASH_DQ1",
+        "FLASH_DQ2",
+        "FLASH_DQ3",
+        "FLASH_SCLK",
+        "FPGA_CFG_DQ1",
+        "FPGA_CFG_DQ2",
+        "FPGA_CFG_DQ3",
+        "FPGA_INIT_B",
+        "GND",
+        "JTAG_TCK",
+        "JTAG_TDI",
+        "JTAG_TDO",
+        "JTAG_TMS"
+      ]
+    },
+    {
+      "id": "B",
+      "description": "front lower center",
+      "viewed_side": "front",
+      "native_bbox_mm": [
+        12.5,
+        26,
+        34.5,
+        36
+      ],
+      "window_area_mm2": 220.0,
+      "same_side_refs": [
+        "R114",
+        "U1",
+        "R111",
+        "R110",
+        "R108",
+        "R115",
+        "C3",
+        "C4"
+      ],
+      "opposite_side_refs": [
+        "C25",
+        "C23",
+        "C27",
+        "C63",
+        "C51",
+        "C50",
+        "C53",
+        "C52",
+        "C74",
+        "C20",
+        "C72",
+        "C41",
+        "C71"
+      ],
+      "same_side_courtyard_union_mm2": 33.57,
+      "largest_courtyard_clear_rectangle": {
+        "area_mm2": 147.51,
+        "bbox_mm": [
+          12.5,
+          29.295,
+          34.5,
+          36
+        ]
+      },
+      "vias_intersecting_window": 8,
+      "track_segments_with_bounding_boxes_intersecting_window": 48,
+      "track_nets": [
+        "CFG_M0",
+        "CFG_PUDC_B",
+        "FPGA_DONE",
+        "FPGA_PROGRAM_B",
+        "GND",
+        "JTAG_TMS",
+        "LINK_12V"
+      ]
+    },
+    {
+      "id": "C",
+      "description": "mirrored-back right strip",
+      "viewed_side": "back",
+      "native_bbox_mm": [
+        0,
+        0,
+        8.75,
+        31.8
+      ],
+      "window_area_mm2": 278.25,
+      "same_side_refs": [
+        "C82"
+      ],
+      "opposite_side_refs": [
+        "C16",
+        "C14",
+        "U5",
+        "L3",
+        "R12",
+        "R3",
+        "R5",
+        "R7",
+        "C12",
+        "U3",
+        "L2",
+        "C17",
+        "U4",
+        "C15",
+        "R4",
+        "C18",
+        "C9",
+        "C10",
+        "L4",
+        "R6",
+        "R8",
+        "C13",
+        "C11"
+      ],
+      "same_side_courtyard_union_mm2": 7.56,
+      "largest_courtyard_clear_rectangle": {
+        "area_mm2": 226.58,
+        "bbox_mm": [
+          0,
+          0,
+          7.125,
+          31.8
+        ]
+      },
+      "vias_intersecting_window": 19,
+      "track_segments_with_bounding_boxes_intersecting_window": 121,
+      "track_nets": [
+        "FB_ASIC",
+        "FB_AUX",
+        "FB_CFG",
+        "GND",
+        "LINK_12V",
+        "PG_AUX",
+        "SS_ASIC",
+        "SS_AUX",
+        "SS_CFG",
+        "SW_ASIC",
+        "SW_AUX",
+        "SW_CFG",
+        "VCCAUX_1V8",
+        "VCC_ASIC_1V5",
+        "VCC_CFG_3V3"
+      ]
+    },
+    {
+      "id": "D",
+      "description": "mirrored-back lower left",
+      "viewed_side": "back",
+      "native_bbox_mm": [
+        21.25,
+        24,
+        39.5,
+        35
+      ],
+      "window_area_mm2": 200.75,
+      "same_side_refs": [
+        "C25",
+        "C27",
+        "C63",
+        "C51",
+        "C50",
+        "C53",
+        "C52",
+        "C55",
+        "C41"
+      ],
+      "opposite_side_refs": [
+        "R2",
+        "U1",
+        "R111",
+        "R115",
+        "C6",
+        "R1",
+        "C3",
+        "C4",
+        "U2",
+        "R10"
+      ],
+      "same_side_courtyard_union_mm2": 51.2,
+      "largest_courtyard_clear_rectangle": {
+        "area_mm2": 94.6,
+        "bbox_mm": [
+          23.175,
+          29.205,
+          39.5,
+          35
+        ]
+      },
+      "vias_intersecting_window": 15,
+      "track_segments_with_bounding_boxes_intersecting_window": 73,
+      "track_nets": [
+        "CFG_M0",
+        "CFG_PUDC_B",
+        "FB_CORE",
+        "GND",
+        "JTAG_TMS",
+        "LINK_12V",
+        "PG_CORE"
+      ]
+    }
+  ]
+}

@@ -4,6 +4,8 @@
 
 **Slide follow-up:** [Review of Gerald’s complete deck](../slide_review/Gerald_ASIC_Slide_Review.md) refines framing, bit order, SPI direction and normal stimulation sequence. It identifies conflicting timing and channel labels. No complete uncertainty is closed.
 
+**Size follow-up:** [Circled-space review](../size_optimization/Size_Optimization_Review.md) adds a separate 37.5 × 36 mm placement study while preserving the three baseline boards. Full circuit integration and final size remain open.
+
 Power setup, exact pin choices, cable/component selection, receiver circuitry and firmware remain engineering tasks; the user is not being asked to design them.
 
 ## Information to obtain from the lab/system owner
@@ -198,13 +200,13 @@ Evidence: [Power Link Uncertainties](Power_Link_Uncertainties.md) · [Gerald ASI
 
 **First step:** Engineering design/verification first. **Proposed owner:** PCB layout + fabricator/assembler.
 
-**Known:** All three studies have 40 × 36 mm outlines and six copper layers; existing physical checks pass their configured rules.
+**Known:** The three baseline studies retain 40 × 36 mm outlines and six copper layers. A separate 128-part 37.5 × 36 mm placement candidate retains both mezzanines and reduces area 6.25%; it has no routed copper or integrated schematic. Final minimum size remains unverified.
 
 **Uncertain:** No approved dielectric stackup, impedance, full BGA escape, fabrication/assembly process, final BOM or integrated smallest board exists.
 
 **Close when:** Select an achievable fabricator stackup/process, integrate all required circuits/connectors, route and review SI/PI/DFM and assembly tolerances; derive the final outline from that completed design.
 
-Evidence: [CAD Mechanical Uncertainties](CAD_Mechanical_Uncertainties.md).
+Evidence: [CAD Mechanical Uncertainties](CAD_Mechanical_Uncertainties.md) · [Size review](../size_optimization/Size_Optimization_Review.md).
 
 ### U17 — Boot recovery and test access without headers
 

@@ -224,11 +224,12 @@
       "status": "open",
       "first_step": "engineering",
       "proposed_owner": "PCB layout + fabricator/assembler",
-      "known": "All three studies have 40 × 36 mm outlines and six copper layers; existing physical checks pass their configured rules.",
+      "known": "The three baseline studies retain 40 × 36 mm outlines and six copper layers. A separate 128-part 37.5 × 36 mm placement candidate retains both mezzanines and reduces area 6.25%; it has no routed copper or integrated schematic. Final minimum size remains unverified.",
       "uncertainty": "No approved dielectric stackup, impedance, full BGA escape, fabrication/assembly process, final BOM or integrated smallest board exists.",
       "closure": "Select an achievable fabricator stackup/process, integrate all required circuits/connectors, route and review SI/PI/DFM and assembly tolerances; derive the final outline from that completed design.",
       "evidence": [
-        "CAD_Mechanical_Uncertainties.md"
+        "CAD_Mechanical_Uncertainties.md",
+        "../size_optimization/Size_Optimization_Review.md"
       ]
     },
     {

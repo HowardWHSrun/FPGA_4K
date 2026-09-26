@@ -16,7 +16,7 @@ try {
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
-  assert(await page.locator('#revision-table tbody tr').count() === 3, 'Three native design revisions are distinguished');
+  assert(await page.locator('#revision-table tbody tr').count() === 4, 'Four native design revisions are distinguished');
   assert(await page.locator('a[href$="Fourth_Check_Review.md"]').count() >= 2, 'Fourth-pass findings are visible and downloadable');
   const uncertaintyResponse = await page.request.get(base + 'hardware/fpga-interface-study/fourth_check/Uncertainty_Register.json');
   assert(uncertaintyResponse.ok(), 'Current uncertainty register is available');
@@ -80,7 +80,16 @@ try {
   await page.locator('#mezzanine-image').scrollIntoViewIfNeeded();
   await page.locator('#mezzanine-image').evaluate(image => image.decode());
   assert(await page.locator('#mezzanine-image').evaluate(image => image.naturalWidth > 0), 'Separate placement-study image loads');
-  const links = await page.locator('#files a, #mezzanine-study a, #interfaces a, #validation a').evaluateAll(anchors => anchors.map(a => a.href).filter(url => !url.includes('#') && (/\/hardware\/fpga-(100t-review|interface-study)\//).test(url)));
+  await page.locator('#compact-image').scrollIntoViewIfNeeded();
+  await page.locator('#compact-image').evaluate(image => image.decode());
+  assert(await page.locator('#compact-image').evaluate(image => image.naturalWidth > 0), 'New smaller native placement image loads');
+  assert((await page.locator('#size-study').innerText()).includes('37.5 × 36 mm') && (await page.locator('#size-study').innerText()).includes('6.25%'), 'Smaller placement dimensions and area reduction shown separately');
+  assert((await page.locator('#size-study').innerText()).includes('383') && (await page.locator('#size-study').innerText()).includes('117 ASIC signals'), 'Smaller placement retains open connectivity and assignment disclosure');
+  await page.locator('#circled-explanation summary').click();
+  await page.locator('#circled-image').evaluate(image => image.decode());
+  assert(await page.locator('#circled-image').evaluate(image => image.naturalWidth > 0), 'Circled-space explanation opens and loads');
+  await page.locator('#circled-explanation summary').click();
+  const links = await page.locator('#files a, #mezzanine-study a, #interfaces a, #validation a, #size-study a').evaluateAll(anchors => anchors.map(a => a.href).filter(url => !url.includes('#') && (/\/hardware\/fpga-(100t-review|interface-study)\//).test(url)));
   for (const url of [...new Set(links)]) {
     const response = await page.request.get(url);
     assert(response.ok(), 'Download available: ' + new URL(url).pathname.split('/').pop());

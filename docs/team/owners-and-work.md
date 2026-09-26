@@ -2,7 +2,7 @@
 
 Updated 2026-09-26 for **XC7A100T CSG324 / 117 ASIC signals / XEM8310**. Roles below are proposed; no personal ownership or review approval is implied. The earlier 200T/KR260 direction remains in dated historical records.
 
-The [fourth-review uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the detailed current action list, with closure criteria and evidence. There are three separate [native review checkpoints](../../presentation/fpga/index.html); no integrated full-system board or fabrication release exists.
+The [fourth-review uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the detailed current action list, with closure criteria and evidence. There are four separate [native review checkpoints](../../presentation/fpga/index.html); no integrated full-system board or fabrication release exists.
 
 | Workstream | Current work | Owner / reviewer |
 | --- | --- | --- |

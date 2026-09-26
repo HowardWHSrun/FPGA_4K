@@ -68,10 +68,12 @@ try {
   const indexResponse = await page.request.get(new URL('boards.json', url).href);
   check('Board index available', indexResponse.ok());
   const {boards} = await indexResponse.json();
-  check('Three separate review variants', boards.map(b=>b.id).join(',') === 'core,rail,mezzanine');
+  check('Four separate review variants', boards.map(b=>b.id).join(',') === 'core,rail,mezzanine,compact');
+  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);
+    check(`${board.id}: selector lists every separate checkpoint`, JSON.stringify(await page.locator('#board-choice option').evaluateAll(items=>items.map(item=>item.value)))===JSON.stringify(boards.map(item=>item.id)));
     const sourceResponse = await page.request.get(new URL(board.native, url).href);
     check(`${board.id}: original PCB available`, sourceResponse.ok());
     for (const key of ['zip', 'svg']) if (board[key]) {
@@ -93,7 +95,9 @@ try {
     check(`${board.id}: native board is visible`, await page.locator('canvas').isVisible());
     check(`${board.id}: standalone canvas height is bounded`, await page.locator('#viewer-shell').evaluate(e=>e.getBoundingClientRect().height<innerHeight+100));
     const edges=await page.locator('kc-board-viewer').evaluate(e=>({w:e.viewer.document.edge_cuts_bbox.w,h:e.viewer.document.edge_cuts_bbox.h}));
-    check(`${board.id}: native 40 × 36 mm outline`, edges.w===40 && edges.h===36);
+    const [width,height] = expectedDimensions[board.id];
+    check(`${board.id}: indexed dimensions match its checkpoint`, JSON.stringify(board.dimensions_mm)===JSON.stringify([width,height]));
+    check(`${board.id}: native ${width} × ${height} mm outline`, Math.abs(edges.w-width)<1e-6 && Math.abs(edges.h-height)<1e-6);
     check(`${board.id}: review-only description`, await page.locator('#board-description').innerText()===board.description);
     const before=await state();
     await page.locator('#zoom-in').click();const zoomed=await state();check(`${board.id}: zoom-in button moves camera`,zoomed.zoom>before.zoom);

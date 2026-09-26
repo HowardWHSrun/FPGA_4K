@@ -21,7 +21,11 @@
         "nets": 265
       },
       "unconnected_items": 139,
-      "manufacturing_ready": false
+      "manufacturing_ready": false,
+      "dimensions_mm": [
+        40,
+        36
+      ]
     },
     {
       "id": "rail",
@@ -42,7 +46,11 @@
         "nets": 266
       },
       "unconnected_items": 347,
-      "manufacturing_ready": false
+      "manufacturing_ready": false,
+      "dimensions_mm": [
+        40,
+        36
+      ]
     },
     {
       "id": "mezzanine",
@@ -52,6 +60,35 @@
       "zip": "../../../hardware/fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip",
       "svg": "../../../hardware/fpga-interface-study/mezzanine/Mezzanine_Fit.svg",
       "sha256": "186018ad28d31eb3d8fee4193a32731632a9bf9cab2c4652414a9bad40169750",
+      "expected": {
+        "footprints": 128,
+        "pads": 807,
+        "segments": 0,
+        "vias": 0,
+        "zones": 0,
+        "fpgaPads": 324,
+        "copperLayers": 6,
+        "nets": 265
+      },
+      "unconnected_items": 383,
+      "manufacturing_ready": false,
+      "dimensions_mm": [
+        40,
+        36
+      ]
+    },
+    {
+      "id": "compact",
+      "title": "Smaller fit \u00b7 37.5 \u00d7 36 mm \u00b7 placement only",
+      "description": "128 parts in a separate 37.5 \u00d7 36 mm placement study, including both 60-contact mezzanines. No tracks, vias, zones or integrated schematic; all 120 numbered connector contacts remain unassigned. C92/R122 rail additions and proposed input protection are absent. 383 existing-net connections remain open.",
+      "native": "../../../hardware/fpga-interface-study/size_optimization/candidate/hardware/FPGA100T_37p5x36_Placement.kicad_pcb",
+      "zip": "../../../hardware/fpga-interface-study/size_optimization/candidate/FPGA100T_Compact_Study.zip",
+      "svg": "../../../hardware/fpga-interface-study/size_optimization/candidate/output/Compact_Front.svg",
+      "sha256": "2487779b7b0b612c0452388cd41be21a51cf6b1594e8a389b0c38f23de733865",
+      "dimensions_mm": [
+        37.5,
+        36
+      ],
       "expected": {
         "footprints": 128,
         "pads": 807,

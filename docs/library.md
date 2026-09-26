@@ -5,7 +5,7 @@ The original files are stored in this repository. Use the editable formats for f
 ## Team workflow and editable design
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
-- [Current 100T review and three native checkpoints](../presentation/fpga/index.html): core, rail revision and mezzanine fit remain separate. [Fourth-review uncertainty list](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md).
+- [Current 100T review and four native checkpoints](../presentation/fpga/index.html): core, rail revision, mezzanine fit and smaller placement remain separate. [Fourth-review uncertainty list](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md).
 - [September 21 FPGA import](../hardware/fpga-board/README.md): preserved earlier design and local libraries; not the current device/interface baseline.
 - [Initial FPGA import evidence](../sources/fpga-draft-2026-09-21/README.md): provenance, original hashes and dated check reports.
 
@@ -86,3 +86,7 @@ The release scope is the full FPGA board with all 117 ASIC signals and the XEM83
 ## September 24 meeting preparation
 
 [Review page](../presentation/meetings/2026-09-24.html) · [Original choices PDF](../sources/meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf). Proposal dated September 23, supplied for the September 24 meeting; no outcomes recorded.
+
+## Circled-space size follow-up
+
+[37.5 × 36 mm placement review](../hardware/fpga-interface-study/size_optimization/Size_Optimization_Review.md) retains all 128 existing mezzanine-study parts and both connectors, reducing area 6.25%. [Inspect its native PCB](../presentation/fpga/viewer/index.html?board=compact) or download the [portable smaller study](../hardware/fpga-interface-study/size_optimization/candidate/FPGA100T_Compact_Study.zip). The core and earlier studies are preserved. Full rail/protection integration, application assignment, routing, assembly and thermal checks remain required; this is not the final complete-board size.
