@@ -68,6 +68,8 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 The release scope is the full FPGA board with all 117 ASIC signals and the XEM8310 link. The published 40 × 36 mm design is a core snapshot with incomplete copper, not a fabrication release or demonstrated system. Two 60-pin mezzanines are the current connector direction; the proposed Samtec implementation and final connector-inclusive outline require validation. Native checks and remaining work are shown separately. [The interface-study package](../hardware/fpga-interface-study/README.md) adds an unrouted two-mezzanine placement candidate, proposed contact CSV, manufacturer footprint review, AC_IN/IMP_TST research and the full-system link/power proposal.
 
+[The second independent check](../hardware/fpga-interface-study/Double_Check_Review.md) records the powered-cable signal-margin gap, corrected historical FPGA-wiring evidence and fresh native checks with all ERC categories enabled. The native core/placement files remain unchanged; the receiver interface still requires correction.
+
 [The earlier eight-slide 200T / 50T review](../presentation/fpga/history-2026-09-24.html) remains available as dated history, with its original CAD and assets. Earlier KR260 and 132-signal proposals do not supersede the current 100T / 117 / XEM8310 direction.
 
 ## September 23 meeting

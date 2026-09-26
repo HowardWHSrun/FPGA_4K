@@ -1,0 +1,954 @@
+{
+  "core": {
+    "source": "FPGA_100T_CSG324/minimal_core/hardware/FPGA100T_Minimal.kicad_pcb",
+    "sha256": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0",
+    "board_mm": [
+      40,
+      36
+    ],
+    "footprints": 126,
+    "front": 50,
+    "back": 76,
+    "pad_records": 675,
+    "unique_numbered_pad_endpoints": 636,
+    "tracks": 1010,
+    "vias": 146,
+    "zones": 4,
+    "FPGA_balls": 324,
+    "copper_layers": [
+      "F.Cu",
+      "In1.Cu",
+      "In2.Cu",
+      "In3.Cu",
+      "In4.Cu",
+      "B.Cu"
+    ],
+    "physical_DRC_violations": 0,
+    "unconnected_items": 139,
+    "schematic_parity_issues": 0,
+    "schematic_parity_checked": true,
+    "unconnected_by_net": {
+      "LINK_12V": 6,
+      "PGOOD_IO": 2,
+      "PG_AUX": 2,
+      "PG_CORE": 1,
+      "VCCAUX_1V8": 14,
+      "VCCINT_1V0": 34,
+      "VCC_ASIC_1V5": 37,
+      "VCC_CFG_3V3": 43
+    },
+    "ignored_DRC_checks": [],
+    "included_severities": [
+      "error",
+      "warning",
+      "exclusion"
+    ],
+    "DRC_exclusions": [],
+    "ignored_project_DRC_severities": [],
+    "rules": {
+      "max_error": 0.005,
+      "min_clearance": 0.15,
+      "min_connection": 0.0,
+      "min_copper_edge_clearance": 0.5,
+      "min_groove_width": 0.0,
+      "min_hole_clearance": 0.25,
+      "min_hole_to_hole": 0.25,
+      "min_microvia_diameter": 0.2,
+      "min_microvia_drill": 0.1,
+      "min_resolved_spokes": 2,
+      "min_silk_clearance": 0.0,
+      "min_text_height": 0.8,
+      "min_text_thickness": 0.08,
+      "min_through_hole_diameter": 0.2,
+      "min_track_width": 0.1,
+      "min_via_annular_width": 0.1,
+      "min_via_diameter": 0.4,
+      "solder_mask_to_copper_clearance": 0.0,
+      "use_height_for_length_calcs": true
+    },
+    "forbidden_refs_found": []
+  },
+  "mezzanine": {
+    "source": "FPGA_100T_CSG324/release_audit/mezzanine/FPGA100T_Mezzanine_Fit.kicad_pcb",
+    "sha256": "186018ad28d31eb3d8fee4193a32731632a9bf9cab2c4652414a9bad40169750",
+    "board_mm": [
+      40,
+      36
+    ],
+    "footprints": 128,
+    "front": 52,
+    "back": 76,
+    "pad_records": 807,
+    "unique_numbered_pad_endpoints": 758,
+    "tracks": 0,
+    "vias": 0,
+    "zones": 0,
+    "FPGA_balls": 324,
+    "copper_layers": [
+      "F.Cu",
+      "In1.Cu",
+      "In2.Cu",
+      "In3.Cu",
+      "In4.Cu",
+      "B.Cu"
+    ],
+    "physical_DRC_violations": 0,
+    "unconnected_items": 383,
+    "schematic_parity_issues": null,
+    "schematic_parity_checked": false,
+    "unconnected_by_net": {
+      "CFG_M0": 1,
+      "CFG_M1": 1,
+      "CFG_M2": 1,
+      "CFG_PUDC_B": 1,
+      "CLK_32MHZ": 1,
+      "FB_ASIC": 2,
+      "FB_AUX": 2,
+      "FB_CFG": 2,
+      "FB_CORE": 2,
+      "FLASH_CS_B": 2,
+      "FLASH_DQ0": 1,
+      "FLASH_DQ1": 1,
+      "FLASH_DQ2": 2,
+      "FLASH_DQ3": 2,
+      "FLASH_SCLK": 1,
+      "FPGA_CCLK": 1,
+      "FPGA_CFG_DQ0": 1,
+      "FPGA_CFG_DQ1": 1,
+      "FPGA_CFG_DQ2": 1,
+      "FPGA_CFG_DQ3": 1,
+      "FPGA_DONE": 1,
+      "FPGA_INIT_B": 1,
+      "FPGA_PROGRAM_B": 1,
+      "FPGA_TDO": 1,
+      "GND": 167,
+      "JTAG_TCK": 2,
+      "JTAG_TDI": 2,
+      "JTAG_TDO": 1,
+      "JTAG_TMS": 2,
+      "LINK_12V": 21,
+      "OSC_32M_RAW": 1,
+      "PGOOD_IO": 2,
+      "PG_AUX": 3,
+      "PG_CORE": 2,
+      "SS_ASIC": 1,
+      "SS_AUX": 1,
+      "SS_CFG": 1,
+      "SS_CORE": 1,
+      "SW_ASIC": 1,
+      "SW_AUX": 1,
+      "SW_CFG": 1,
+      "SW_CORE": 1,
+      "VCCAUX_1V8": 17,
+      "VCCINT_1V0": 34,
+      "VCC_ASIC_1V5": 40,
+      "VCC_CFG_3V3": 46,
+      "VCORE_REG_1V025": 4
+    },
+    "ignored_DRC_checks": [],
+    "included_severities": [
+      "error",
+      "warning",
+      "exclusion"
+    ],
+    "DRC_exclusions": [],
+    "ignored_project_DRC_severities": [],
+    "rules": {
+      "max_error": 0.005,
+      "min_clearance": 0.15,
+      "min_connection": 0.0,
+      "min_copper_edge_clearance": 0.5,
+      "min_groove_width": 0.0,
+      "min_hole_clearance": 0.25,
+      "min_hole_to_hole": 0.25,
+      "min_microvia_diameter": 0.2,
+      "min_microvia_drill": 0.1,
+      "min_resolved_spokes": 2,
+      "min_silk_clearance": 0.0,
+      "min_text_height": 0.8,
+      "min_text_thickness": 0.08,
+      "min_through_hole_diameter": 0.2,
+      "min_track_width": 0.1,
+      "min_via_annular_width": 0.1,
+      "min_via_diameter": 0.4,
+      "solder_mask_to_copper_clearance": 0.0,
+      "use_height_for_length_calcs": true
+    },
+    "forbidden_refs_found": []
+  },
+  "fresh_native_netlist": {
+    "components": 126,
+    "nets": 264,
+    "endpoints": 636,
+    "intended_endpoints": 419,
+    "mismatches": []
+  },
+  "ERC": {
+    "saved_project": {
+      "total": 216,
+      "by_type": {
+        "pin_not_connected": 211,
+        "pin_to_pin": 5
+      },
+      "by_severity": {
+        "error": 211,
+        "warning": 5
+      },
+      "ignored_checks": [
+        {
+          "description": "Global label only appears once in the schematic",
+          "key": "single_global_label"
+        },
+        {
+          "description": "Four connection points are joined together",
+          "key": "four_way_junction"
+        },
+        {
+          "description": "SPICE model issue",
+          "key": "simulation_model_issue"
+        },
+        {
+          "description": "Assigned footprint doesn't match footprint filters",
+          "key": "footprint_filter"
+        }
+      ],
+      "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+      ],
+      "excluded_findings": [],
+      "open_pin_refs": {
+        "U1": 203,
+        "J4": 8
+      }
+    },
+    "all_categories_enabled_in_scratch": {
+      "total": 221,
+      "by_type": {
+        "four_way_junction": 5,
+        "pin_not_connected": 211,
+        "pin_to_pin": 5
+      },
+      "by_severity": {
+        "warning": 10,
+        "error": 211
+      },
+      "ignored_checks": [],
+      "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+      ],
+      "excluded_findings": []
+    },
+    "newly_exposed_junctions": [
+      {
+        "sheet": "fpga_unit_04.kicad_sch",
+        "wire_uuids": [
+          "21f64d99-7545-5c3f-9f48-9cc90e49aac3",
+          "a6bd7221-03d8-57b3-87ab-6b54bb4f184f"
+        ],
+        "connected_labels": [
+          "GND"
+        ],
+        "classification": "Intended rail/ground bus intersection; drawing clarity warning, no fresh netlist mismatch"
+      },
+      {
+        "sheet": "fpga_unit_05.kicad_sch",
+        "wire_uuids": [
+          "4be3d128-2bc1-5b7b-8fbd-7765036bb9de",
+          "b19229e3-e5e2-5c64-9adf-19c6e1c4cc3f"
+        ],
+        "connected_labels": [
+          "VCCAUX_1V8"
+        ],
+        "classification": "Intended rail/ground bus intersection; drawing clarity warning, no fresh netlist mismatch"
+      },
+      {
+        "sheet": "fpga_unit_05.kicad_sch",
+        "wire_uuids": [
+          "5a60b16e-4323-5f6e-8c62-19f5dfd1abf9",
+          "9f039815-a20e-5b09-b27f-f1af99a8e942"
+        ],
+        "connected_labels": [
+          "GND"
+        ],
+        "classification": "Intended rail/ground bus intersection; drawing clarity warning, no fresh netlist mismatch"
+      },
+      {
+        "sheet": "fpga_unit_05.kicad_sch",
+        "wire_uuids": [
+          "1d8deb93-91e9-5b30-aaaf-02d15d59df53",
+          "b9a29173-2874-5561-afa4-d10cf8d39b3a"
+        ],
+        "connected_labels": [
+          "VCCINT_1V0"
+        ],
+        "classification": "Intended rail/ground bus intersection; drawing clarity warning, no fresh netlist mismatch"
+      },
+      {
+        "sheet": "fpga_unit_05.kicad_sch",
+        "wire_uuids": [
+          "2404b6c5-4185-5ff8-bb31-0ac7a45aef4b",
+          "c6de9092-64af-581e-adfa-09b4d9fc736f"
+        ],
+        "connected_labels": [
+          "GND"
+        ],
+        "classification": "Intended rail/ground bus intersection; drawing clarity warning, no fresh netlist mismatch"
+      }
+    ]
+  },
+  "contact_proposal": {
+    "numbered_contacts": 120,
+    "ASIC_signals": 117,
+    "reserved": 3,
+    "ground_blade_records": 2,
+    "FPGA_ball_assignment": "All 120 numbered contacts TBD; CSV is not native CAD connectivity"
+  },
+  "manufacturer_footprint": {
+    "local_footprint_sha256": "3ef6bd78877855d6d0f5de32395f8b6c01367e6839d2f04881ff9fe96d1e0953",
+    "primary_url": "https://suddendocs.samtec.com/prints/qsh-xxx-01-x-d-xx-footprint.pdf",
+    "primary_revision": "M, page 1, -030 row and -A alignment option",
+    "primary_local_pdf": "FPGA_100T_CSG324/release_audit/QSH_Manufacturer_Footprint.pdf",
+    "reviewed_signal_pitch_mm": 0.5001,
+    "signal_land_mm": [
+      0.279,
+      2.27
+    ],
+    "signal_row_y_mm": [
+      -2.865,
+      2.865
+    ],
+    "body_mm": [
+      21.31,
+      7.24
+    ],
+    "project_courtyard_mm": [
+      21.81,
+      8.5
+    ],
+    "unresolved_drawing_H_mm": 2.84,
+    "centered_geometry_H_mm": 2.8135499999999993,
+    "H_discrepancy_mm": 0.02645000000000053,
+    "limitation": "Core pad geometry agrees with principal print dimensions, but the 0.02645 mm dimension-chain discrepancy remains unresolved. QTH is a different mating footprint with opposite pin-1 row view; actual mating-board CAD, stack height and tolerance closure remain required."
+  },
+  "changes_since_published_checkpoint": {
+    "CAD_changed": false,
+    "changed_files": [],
+    "core_SHA_matches_published": true,
+    "mezzanine_SHA_matches_published": true,
+    "new_information": "Enabled all four default-ignored ERC categories; discovered five four-way power/ground junction warnings. No added pin-open, footprint-filter, singleton-label or SPICE-model findings."
+  },
+  "checked_at_utc": "2026-09-26T15:31:56.563411+00:00",
+  "checks": [
+    {
+      "check": "core source PCB unchanged since this review began",
+      "pass": true
+    },
+    {
+      "check": "core actual outline exactly 40 x 36 mm",
+      "pass": true
+    },
+    {
+      "check": "core deleted headers/testpoints/reset/LED absent",
+      "pass": true
+    },
+    {
+      "check": "core fresh DRC has no physical violations, hidden checks or exclusions",
+      "pass": true
+    },
+    {
+      "check": "mezzanine source PCB unchanged since this review began",
+      "pass": true
+    },
+    {
+      "check": "mezzanine actual outline exactly 40 x 36 mm",
+      "pass": true
+    },
+    {
+      "check": "mezzanine deleted headers/testpoints/reset/LED absent",
+      "pass": true
+    },
+    {
+      "check": "mezzanine fresh DRC has no physical violations, hidden checks or exclusions",
+      "pass": true
+    },
+    {
+      "check": "All fresh native XML endpoints, including unconnected nets, match actual PCB",
+      "pass": true
+    },
+    {
+      "check": "All intended manifest endpoints match actual PCB",
+      "pass": true
+    },
+    {
+      "check": "Core component refs match resolved manifest",
+      "pass": true
+    },
+    {
+      "check": "All-category ERC genuinely has no ignored checks",
+      "pass": true
+    },
+    {
+      "check": "CSV allocates exactly 117 unique signals plus three reserved contacts",
+      "pass": true
+    },
+    {
+      "check": "CSV signals equal the accepted 117-signal baseline",
+      "pass": true
+    },
+    {
+      "check": "120 contacts and two ground-blade records have unique keys",
+      "pass": true
+    },
+    {
+      "check": "Proposal explicitly leaves every numbered FPGA ball TBD",
+      "pass": true
+    },
+    {
+      "check": "F.Fab body/courtyard extents match reviewed dimensions",
+      "pass": true
+    },
+    {
+      "check": "F.CrtYd body/courtyard extents match reviewed dimensions",
+      "pass": true
+    },
+    {
+      "check": "J5 embedded pad geometry matches local footprint",
+      "pass": true
+    },
+    {
+      "check": "J5 all 60 numbered contacts exist and are unassigned",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 1",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 2",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 3",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 4",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 5",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 6",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 7",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 8",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 9",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 10",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 11",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 12",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 13",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 14",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 15",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 16",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 17",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 18",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 19",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 20",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 21",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 22",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 23",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 24",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 25",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 26",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 27",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 28",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 29",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 30",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 31",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 32",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 33",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 34",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 35",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 36",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 37",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 38",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 39",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 40",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 41",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 42",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 43",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 44",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 45",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 46",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 47",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 48",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 49",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 50",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 51",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 52",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 53",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 54",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 55",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 56",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 57",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 58",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 59",
+      "pass": true
+    },
+    {
+      "check": "J5 primary-print signal land 60",
+      "pass": true
+    },
+    {
+      "check": "J5 four ground-blade lands connected to GND",
+      "pass": true
+    },
+    {
+      "check": "J5 ground blade dimensions match primary print",
+      "pass": true
+    },
+    {
+      "check": "J5 alignment holes match primary print -A option",
+      "pass": true
+    },
+    {
+      "check": "J6 embedded pad geometry matches local footprint",
+      "pass": true
+    },
+    {
+      "check": "J6 all 60 numbered contacts exist and are unassigned",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 1",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 2",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 3",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 4",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 5",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 6",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 7",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 8",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 9",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 10",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 11",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 12",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 13",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 14",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 15",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 16",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 17",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 18",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 19",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 20",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 21",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 22",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 23",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 24",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 25",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 26",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 27",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 28",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 29",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 30",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 31",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 32",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 33",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 34",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 35",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 36",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 37",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 38",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 39",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 40",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 41",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 42",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 43",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 44",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 45",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 46",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 47",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 48",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 49",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 50",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 51",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 52",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 53",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 54",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 55",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 56",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 57",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 58",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 59",
+      "pass": true
+    },
+    {
+      "check": "J6 primary-print signal land 60",
+      "pass": true
+    },
+    {
+      "check": "J6 four ground-blade lands connected to GND",
+      "pass": true
+    },
+    {
+      "check": "J6 ground blade dimensions match primary print",
+      "pass": true
+    },
+    {
+      "check": "J6 alignment holes match primary print -A option",
+      "pass": true
+    },
+    {
+      "check": "Study contains all core refs plus J5/J6",
+      "pass": true
+    },
+    {
+      "check": "Study retained pad net assignments match current core",
+      "pass": true
+    },
+    {
+      "check": "All saved snapshot CAD/library hashes unchanged since publication",
+      "pass": true
+    }
+  ],
+  "checks_passed": 151,
+  "checks_failed": [],
+  "hardware_ready": false
+}

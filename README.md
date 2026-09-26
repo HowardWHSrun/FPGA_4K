@@ -2,13 +2,16 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
+**Current FPGA review — September 26:** [100T / 117-signal / XEM8310 engineering review](presentation/fpga/index.html) · [complete KiCad review ZIP](hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [interface studies](hardware/fpga-interface-study/README.md). The core routing, bank-rail revision and mezzanine placement remain separate development work. **No complete or manufacturing-ready board is released.**
+
 ## Start working with the team
 
 **[Team start page](docs/team/README.md)** · **[Setup and daily workflow](CONTRIBUTING.md)** · **[Owners and open work](docs/team/owners-and-work.md)**
 
 | Work | Start here | Status |
 |---|---|---|
-| FPGA design | [Open the working draft](hardware/fpga-board/README.md) | Imported September 21; incomplete electrical design; **not for manufacture** |
+| Current FPGA review | [Open the 100T review](presentation/fpga/index.html) | 117 ASIC signals and XEM8310 required; partial core routing; **not for manufacture** |
+| Earlier FPGA team draft | [September 21 import](hardware/fpga-board/README.md) | Preserved earlier electrical draft; superseded device/interface choices; **not for manufacture** |
 | Carrier and routing boards | [Original reference projects](hardware/README.md) | Preserved references; active baselines and owners to confirm |
 | Tasks and layout ownership | [Create a PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) | One active layout editor per board |
 | Pinout / power / protocol decisions | [Create a decision](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) | Review with owners on both sides |
@@ -51,7 +54,7 @@ For the full folder, use GitHub's **Code → Download ZIP** or clone the reposit
 
 ## Project context
 
-The recorded system path is **recording chips → routing board → FPGA board → KR260 → PC**. The meeting identifies the FPGA-to-receiver interface, complete signal map, power handoff and startup behavior as open requirements. Dates and uncertainty are retained in the meeting records.
+The current direction is **recording chips → routing board → XC7A100T board → XEM8310 receiver → PC**. Complete electrical pin assignments, the powered cable and receiver implementation remain unfinished. Earlier meeting records retain their original **KR260** direction as dated history; they do not override the current review.
 
 The included FPGA_512 code is an earlier **ECP5/FT600** implementation. It provides acquisition RTL, host software and testbenches; it is not a completed 4K Artix-7 implementation.
 

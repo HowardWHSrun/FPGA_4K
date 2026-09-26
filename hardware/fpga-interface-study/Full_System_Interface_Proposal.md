@@ -16,7 +16,13 @@ XEM8310 is the FPGA/USB receiver. It needs a carrier to expose the custom micro-
 
 The candidate data link uses the four physical cable pairs as three FPGA-to-receiver LVDS data lanes and one forwarded clock. The 100T CSG324 bank16 has four complete differential pairs. Its proposed bank voltage is 2.5 V for LVDS_25 outputs. The receiver candidate is XEM8310 bank64 at 1.8 V, using its HP differential inputs and suitable termination; final MC1 contact selection must be checked in the Opal Kelly pin map and implemented constraints. Do not use bank67's fixed 1.2 V as though it offered the same LVDS termination capability. [Opal Kelly expansion connector specification](https://docs.opalkelly.com/xem8310/expansion-connectors/).
 
+**Second-pass finding: direct DC coupling is not qualified by these bank voltages.** The Artix-7 transmitter's maximum output common-mode voltage is 1.425 V, equal to the receiver's maximum DC input common mode. Positive headboard ground offset therefore has no guaranteed margin at that output corner. For example, 0.60 A through a 0.15 Ω effective return adds 90 mV; the existing 0.30 Ω total-loop bound does not prevent this. This is a missing worst-case guarantee, not evidence that every physical unit would fail. [DS181 Table 11, page 11](https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content), [DS931 LVDS limits and footnotes](https://docs.amd.com/r/en-US/ds931-artix-ultrascale-plus/LVDS-DC-Specifications-LVDS).
+
+The link needs an explicit common-mode solution. A candidate is carrier-side AC coupling of all four pairs with defined receiver bias and termination, continuous balanced data/clock activity, and receiver reset during startup or clock loss. This could retain a small headboard, but capacitor values, bias/equalization settings, signal amplitude, baseline wander, startup transients and timing still need design and verification. Adding capacitors alone is not a completed fix. [AMD UG571](https://docs.amd.com/api/khub/documents/kFbaUC5HGcXyGNauhgU6Gw/content).
+
 Runtime commands could use a BSCAN user chain over the already-present JTAG wires. XEM8310 user GPIO would implement the remote JTAG master; its own configuration JTAG pins do not provide that function. This requires new receiver/head FPGA firmware and host command handling and remains a proposal.
+
+Receiver startup must be explicit: XEM8310 VIO1 defaults to 1.0 V. The proposed 1.8 V bank64 operation requires the `XEM8310_VIO1_VOLTAGE` setting of `180`, a power cycle, and rail verification. Firmware must respect `BOARD_READY`, establish a receiver-ready/training handshake and disable drive toward an unpowered target. Neither these interlocks nor the receiver firmware is implemented here. JTAG needs its own guaranteed logic-level/return-drop budget; it cannot use AC coupling. [Device settings](https://docs.opalkelly.com/xem8310/device-settings/), [BOARD_READY](https://docs.opalkelly.com/xem8310/usb-3-0-host-interface/).
 
 At a candidate 800 Mbit/s per data lane with 8b/10b coding, three lanes provide 1.92 Gbit/s payload capacity before framing. The ASIC tutorial's 4096 channels × 31,250 samples/s × 12 bits is 1.536 Gbit/s (192 MB/s). A 6144-byte packed-sample frame plus 20 bytes of metadata/CRC and one byte of three-lane alignment padding would use 192.65625 MB/s, about 80.3% of the 240 MB/s coding-limited link capacity. This is arithmetic, not achieved throughput.
 
@@ -34,7 +40,7 @@ Proposed qualification limits: 0.60 A continuous cable load, maximum 0.30 m cust
 
 - Actual ASIC electrical definitions for AC_IN/IMP_TST and input/output limits, clock relationships and reset/test behavior.
 - Complete 117-signal schematic/netlist and FPGA bank/clock allocation, with constraints checked by Vivado.
-- Receiver carrier, custom cable drawing and contact continuity map; power protection and termination circuit.
+- Receiver carrier, custom cable drawing and contact continuity map; power protection, common-mode treatment, receiver bias and termination circuit.
 - Full-board copper, ground-return and power-distribution checks; connector alignment, stack clearance and final manufacturer stackup/impedance rules.
 - Synthesis/timing, boot/programming and end-to-end acquisition firmware; electrical, thermal, throughput and recovery tests.
 - Exact orderable BOM, assembly orientation, paste/gerber/drill/job outputs, supplier DFM and release archive. No fabrication-ready package is issued by this proposal.

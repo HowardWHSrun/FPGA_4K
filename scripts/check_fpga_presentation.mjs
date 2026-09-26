@@ -4,7 +4,8 @@ const base = (process.env.SITE_URL || 'https://howardwhsrun.github.io/FPGA_4K/')
 const browser = await chromium.launch({executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader']});
 await mkdir('fpga-browser-check', {recursive: true});
 const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
-const report = {base, checks: [], pageErrors: [], consoleErrors: []};
+const report = {base, checks: [], pageErrors: [], consoleErrors: [], failedResources: []};
+page.on('response', response => {if (response.status() >= 400) report.failedResources.push({url: response.url(), status: response.status()});});
 page.on('pageerror', e => report.pageErrors.push(e.message));
 page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push(e.text());});
 const assert = (condition, label) => {if (!condition) throw new Error(label); report.checks.push(label);};
@@ -37,7 +38,7 @@ try {
   await page.locator('#mezzanine-image').scrollIntoViewIfNeeded();
   await page.locator('#mezzanine-image').evaluate(image => image.decode());
   assert(await page.locator('#mezzanine-image').evaluate(image => image.naturalWidth > 0), 'Separate placement-study image loads');
-  const links = await page.locator('#files a, #mezzanine-study a, #interfaces a').evaluateAll(anchors => anchors.map(a => a.href).filter(url => !url.includes('#') && (/\/hardware\/fpga-(100t-review|interface-study)\//).test(url)));
+  const links = await page.locator('#files a, #mezzanine-study a, #interfaces a, #validation a').evaluateAll(anchors => anchors.map(a => a.href).filter(url => !url.includes('#') && (/\/hardware\/fpga-(100t-review|interface-study)\//).test(url)));
   for (const url of [...new Set(links)]) {
     const response = await page.request.get(url);
     assert(response.ok(), 'Download available: ' + new URL(url).pathname.split('/').pop());
@@ -66,6 +67,6 @@ try {
   await page.screenshot({path: 'fpga-browser-check/failure.png', fullPage: true});
 }
 await writeFile('fpga-browser-check/report.json', JSON.stringify(report, null, 2));
-console.log(JSON.stringify({passed: report.passed, checks: report.checks, pageErrors: report.pageErrors, consoleErrors: report.consoleErrors, failure: report.failure}, null, 2));
+console.log(JSON.stringify({passed: report.passed, checks: report.checks, pageErrors: report.pageErrors, consoleErrors: report.consoleErrors, failedResources: report.failedResources, failure: report.failure}, null, 2));
 await browser.close();
 if (!report.passed) process.exitCode = 1;
