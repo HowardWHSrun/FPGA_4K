@@ -58,6 +58,8 @@ jobs:
           paths += [str(p) for p in Path('presentation/fpga/pins').iterdir() if p.is_file()]
           paths += [str(p) for p in Path('presentation/fpga/data').iterdir() if p.is_file()]
           paths += ['presentation/fpga/presenter.js','presentation/fpga/presenter.css']
+          learning=fpga['learning_report']['manifest']
+          paths += [learning]+[str(Path(learning).parent/item['path']) for item in json.loads(Path(learning).read_text())['files']]
           paths=list(dict.fromkeys(paths))
           def verify(p):
               req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})

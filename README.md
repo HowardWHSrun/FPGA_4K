@@ -1,6 +1,8 @@
 # FPGA_4K
 
-**Latest component audit:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). All 130 parts and 762 endpoints are explained. U1.L9/L10 require GND; four FB2 outputs need grounding review. These findings are **not yet corrected in CAD**. R12 is the clearest removal candidate.
+**Learning report:** [Visual explanations and professor briefing · 33-page PDF](hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_And_Professor_Review.pdf). Includes every component and pin, with open corrections clearly labeled.
+
+**Latest component audit:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). All 130 parts and 762 endpoints are explained. U1.L9/L10 require GND; four FB2 inputs need grounding review. These findings are **not yet corrected in CAD**. R12 is the clearest removal candidate.
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 

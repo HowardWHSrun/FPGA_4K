@@ -51,3 +51,7 @@ The [current review](../presentation/fpga/index.html) and [dated routing package
 ## 26 September: component necessity and pin labels
 
 [The dated audit](../hardware/fpga-interface-study/dated/2026-09-26/presentation-and-pin-labels/README.md) derives all 130 component explanations and 762 endpoint labels from the frozen 33 × 36 mm native snapshot. Manufacturer requirements are linked individually in the audit, including AMD UG475 for U1.L9/L10 ground ties and TI TPS62135 for the FB2 review. The interactive maps use actual native pad centers viewed from the front; they are not mating-face drawings. Native CAD and earlier PDF bytes are unchanged. The new audit explicitly corrects the interpretation of six saved NC markers and documents the R12 removal candidate.
+
+## 26 September learning and professor report
+
+The [33-page learning report](../hardware/fpga-interface-study/dated/2026-09-26/learning-report/README.md) is a new, self-contained LaTeX explanation of the frozen 130-part, 33 × 36 mm board. It combines native-derived component/pin ledgers with the later manufacturer-grounded NC review, visual maps and presentation notes. All 762 numbered endpoints are covered. Native CAD and all earlier reports retain their original bytes; this document records corrections and unfinished work rather than implementing them. The dated manifest records the PDF, source and coverage hashes.

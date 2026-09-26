@@ -1,0 +1,97 @@
+{
+  "date": "2026-09-26",
+  "scope": "Independent report fidelity and rendered-page review; not PCB sign-off",
+  "pdfSha256": "6e500365b7e2bec12c190a9d0692716a0685a6a76b38f351f79443bf7e616ddc",
+  "pages": 33,
+  "allSourceAndPDFChecksPassed": true,
+  "automatedChecks": 21,
+  "componentReferencesCovered": 130,
+  "canonicalEndpointIDsCovered": 762,
+  "sameRowSavedEndpointStatesVerified": 762,
+  "visualReview": {
+    "allPagesInspectedAsContactSheets": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "finalChangedPagesInspectedAtFullSize": [
+      10,
+      11,
+      33
+    ],
+    "earlierDraftFullSizeAppendixPagesInspected": [
+      15,
+      22,
+      24,
+      27,
+      30,
+      31,
+      32
+    ],
+    "latestRenderPrefix": "tmp/pdfs/final-",
+    "contactSheets": [
+      "tmp/pdfs/qa-final-contact-01.png",
+      "tmp/pdfs/qa-final-contact-10.png",
+      "tmp/pdfs/qa-final-contact-19.png",
+      "tmp/pdfs/qa-final-contact-28.png"
+    ],
+    "noVisibleClippingOrOverlap": true,
+    "repeatedTableHeadersReadable": true,
+    "oldFinalPageSpillResolved": true,
+    "minimumExtractedFontPt": 5.977583999999979,
+    "smallestTypeUse": "Graphical pin ID labels; larger appendix rows provide full textual lookup."
+  },
+  "criticalInterpretationsConfirmed": [
+    "425 assigned + 331 awaiting assignment + 6 saved-CAD NC = 762 canonical endpoints",
+    "U1.L9/L10 remain NC in saved CAD but are labeled ground-required (G)",
+    "U2-U5 pin 4 remain NC in saved CAD but are labeled grounding-review (R)",
+    "146 missing assigned-net connections are separate from 331 unassigned endpoints",
+    "The 117 logical ASIC interface proposal is not represented as completed native allocation",
+    "XEM8310 is described as an FPGA module, and custom micro-HDMI is not standard HDMI",
+    "Component function necessity is separated from proven minimum part count",
+    "No native CAD modification or new hardware functional sign-off is claimed"
+  ],
+  "outstandingDocumentDefects": [],
+  "limitations": [
+    "Source consistency is not an electrical validation.",
+    "Pin diagrams should be zoomed or read alongside appendices; they are not a mating-face wiring approval."
+  ],
+  "j4Page11ColumnCheck": {
+    "endpointXpt": 62.45,
+    "netXpt": 164.41,
+    "codeXpt": 490.3,
+    "rows": 20,
+    "sameRowAlignment": true,
+    "statusCodeIntrusion": false
+  }
+}
