@@ -1,6 +1,6 @@
 # Full-system interface proposal — engineering development
 
-**Later review:** [The third independent audit](Triple_Check_Review.md) adds connector-edge and bring-up findings and qualifies the cable/JTAG and power-budget calculations below. This document remains dated development evidence; it is not a release or measured performance guarantee.
+**Current review:** [The fourth uncertainty register](fourth_check/Uncertainty_Register.md) tracks the open requirements and closure evidence. [The third independent audit](Triple_Check_Review.md) adds connector-edge and bring-up findings and qualifies the cable/JTAG and power-budget calculations below. This document remains dated development evidence; it is not a release or measured performance guarantee.
 
 2026-09-26. The release scope is all 117 ASIC signals and an XEM8310 receiver link. This document chooses a development architecture; it does not assert implemented firmware, measured bandwidth or a manufacturing release.
 

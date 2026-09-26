@@ -2,6 +2,8 @@
 
 This folder supplements the current core snapshot; it does not replace its native CAD. [The full-system development proposal](Full_System_Interface_Proposal.md) describes the proposed receiver, cable and power contract.
 
+**Current action list:** [Fourth review](Fourth_Check_Review.md) · [18 uncertainties and closure criteria](fourth_check/Uncertainty_Register.md). Six known unfinished tasks are listed separately. The fourth pass rechecked source continuity and challenged requirements; it does not claim another native DRC/ERC run or measured operation. The third-pass pad-comparison flag was a numeric-formatting false mismatch, corrected in [the fourth mechanical review](fourth_check/CAD_Mechanical_Uncertainties.md).
+
 [The mezzanine view](mezzanine/Mezzanine_Fit.svg) depicts an intentionally unrouted 128-part placement study within 40 × 36 mm. The current core and this layout are different native revisions. All 120 new signal pads are unassigned. [The contact CSV](mezzanine/Mezzanine_Contact_Proposal.csv) proposes 117 named signals and three reserved contacts; all FPGA balls are TBD. [The independent review](mezzanine/Independent_Mezzanine_Review.md) records geometry, source-drawing ambiguity and mating-orientation limits. C92/R122, cable damping/protection and the full-system routing are not included in this fit study.
 
 [AC_IN / IMP_TST source research](research/AC_IN_IMP_TST_Primary_Source_Review.md) explains why their electrical classification remains unresolved. [The power audit](Power_Electrical_Release_Audit.md) is dated design-review evidence: it identified the input-capacitor deficiency. The current core and fit study have adopted the corrected 1206 capacitors; later bank-rail and protection changes remain separate work.

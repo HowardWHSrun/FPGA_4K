@@ -17,7 +17,22 @@ try {
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
   assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
   assert(await page.locator('#revision-table tbody tr').count() === 3, 'Three native design revisions are distinguished');
-  assert(await page.locator('a[href$="Triple_Check_Review.md"]').count() >= 2, 'Third-pass findings are visible and downloadable');
+  assert(await page.locator('a[href$="Fourth_Check_Review.md"]').count() >= 2, 'Fourth-pass findings are visible and downloadable');
+  const uncertaintyResponse = await page.request.get(base + 'hardware/fpga-interface-study/fourth_check/Uncertainty_Register.json');
+  assert(uncertaintyResponse.ok(), 'Current uncertainty register is available');
+  const register = await uncertaintyResponse.json();
+  assert(register.review_pass === 4 && register.fabrication_ready === false, 'Register identifies fourth review and unreleased status');
+  assert(await page.locator('.uncertainty-item').count() === register.items.length, 'All uncertainty records are displayed');
+  assert(await page.locator('.known-gaps li').count() === register.known_gaps.length, 'Known unfinished tasks are separate');
+  for (const filter of ['lab', 'engineering', 'bench', 'all']) {
+    await page.locator(`[data-uncertainty-filter="${filter}"]`).click();
+    const expected = filter === 'all' ? register.items.length : register.items.filter(item => item.first_step === filter).length;
+    assert(await page.locator('.uncertainty-item:not([hidden])').count() === expected, 'Uncertainty filter: ' + filter);
+    assert(await page.locator('#uncertainty-count').innerText() === `Showing ${expected} of ${register.items.length} uncertainties.`, 'Filter count: ' + filter);
+  }
+  await page.locator('#U01 summary').click();
+  assert(await page.locator('#U01').evaluate(e => e.open) && (await page.locator('#U01').innerText()).includes(register.items[0].closure), 'Uncertainty expands to its exact closure criterion');
+  await page.locator('#U01 summary').click();
   assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
   assert((await page.locator('[data-field="unconnectedItems"]').first().innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
   assert(!(await page.locator('#load-error').isVisible()), 'No stale-data load warning');

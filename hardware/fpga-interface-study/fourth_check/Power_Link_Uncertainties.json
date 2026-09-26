@@ -1,0 +1,360 @@
+{
+  "review": "Fourth independent power, cable, receiver and transport review",
+  "date": "2026-09-26",
+  "scope": "Requirements and implementation-status audit; no CAD mutation, no new DRC run, no hardware powered or tested.",
+  "hardware_tested": false,
+  "manufacturing_ready": false,
+  "records": [
+    {
+      "id": "PL-01",
+      "title": "Actual power demand and thermal limit",
+      "status": "unverified qualification",
+      "evidence": "The 4.981 W nominal allocation and 0.60 A cable ceiling are design assumptions. The preceding corner analysis leaves only 16.32 mV core margin at 3 A before copper, ripple and transients. No application estimate or powered measurement exists.",
+      "closure_criterion": "Freeze the FPGA order code and implemented utilization/activity; run power estimation, PDN/DC-drop and thermal analysis; then record worst-case rail/load-step/temperature measurements in the actual mated assembly.",
+      "proposed_owner": "FPGA designer and power/layout engineer; lab for final measurement",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "Actual acquisition/stimulation modes, enclosure/airflow and maximum ambient must come from the system owner; estimates/design can continue now.",
+      "source_ids": [
+        "DS181",
+        "TPS62135"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-02",
+      "title": "Cable source protection and input transients",
+      "status": "known incomplete implementation",
+      "evidence": "Both native manifests connect J4.19 directly to LINK_12V and converter inputs. Carrier eFuse, UVLO and proposed headboard damping are absent. TPS259540/3.16 k\u03a9 is a candidate, not a demonstrated 0.60\u20130.75 A limit.",
+      "closure_criterion": "Build the protection/UVLO/slew circuit into the carrier and final headboard; calculate tolerance/fault pulses and minimum input capacitance, then validate startup, brownout, short circuit and permitted mating procedure.",
+      "proposed_owner": "Power/carrier engineer",
+      "user_or_lab_information_needed": false,
+      "external_dependency": "No new user decision needed for design; selected components and a physical cable/source are needed to qualify it.",
+      "source_ids": [
+        "TPS2595",
+        "TPS62135"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-03",
+      "title": "Exact cable, connector and shared return path",
+      "status": "unresolved component and wiring contract",
+      "evidence": "J4 is still a Molex family placeholder. Contacts 4/7/10/13/16 and shell are all GND. Parallel ground/shield paths make a single-return 90 mV example non-predictive; loop resistance does not by itself set common-mode ground shift.",
+      "closure_criterion": "Freeze both connector order codes and a contact-by-contact cable drawing; verify pair topology, polarity, impedance/skew, current/temperature rating and measured feed/return resistance/inductance, including shield and ASIC-board return paths.",
+      "proposed_owner": "Cable/carrier and mechanical engineer",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "Supplier cable data and the complete grounded assembly are required; the short custom cable remains a proposal.",
+      "source_ids": [
+        "MOLEX",
+        "XEM_LENGTH"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-04",
+      "title": "LVDS receiver bias and termination",
+      "status": "unresolved electrical design",
+      "evidence": "Maximum Artix-7 LVDS_25 output common mode equals the AU25P HP DC input limit at 1.425 V; positive remote ground offset has no guaranteed allowance at this corner. Failure of a real unit has not been demonstrated. AC coupling is only a candidate.",
+      "closure_criterion": "Select and implement a qualified common-mode solution. For AC coupling, cover all four pairs with bias/termination values, attributes, leakage, high-pass/baseline-wander, startup/clock-loss and powered/unpowered voltage checks; validate signal integrity.",
+      "proposed_owner": "Receiver analog/interface and FPGA engineer",
+      "user_or_lab_information_needed": false,
+      "external_dependency": "Design work is internal; cable and hardware measurements are later closure evidence.",
+      "source_ids": [
+        "DS181",
+        "DS931_LVDS",
+        "UG571"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-05",
+      "title": "Exact XEM contact map and clock resources",
+      "status": "known incomplete implementation",
+      "evidence": "Bank64/VIO1 is only a bank-level proposal. The official map provides GC P/N choices MC1 25/27 (AD20/AE20), 37/39 (AD21/AE21), 41/43 (AB21/AC21), 45/47 (AC19/AD19). No lane/contact/polarity XDC or timing result is committed.",
+      "closure_criterion": "Choose clock/data pins and receive architecture; add module PCB plus package delay to carrier/cable/headboard budgets; implement XDC and pass placement, clocking, CDC and timing in both FPGAs.",
+      "proposed_owner": "FPGA and receiver-carrier engineer",
+      "user_or_lab_information_needed": false,
+      "external_dependency": "No user pin-selection question is necessary; an engineering choice and tool verification are needed.",
+      "source_ids": [
+        "XEM_PINS",
+        "XEM_LENGTH",
+        "XEM_EXPANSION"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-06",
+      "title": "VIO configuration, power-loss and startup interlock",
+      "status": "known incomplete implementation",
+      "evidence": "Bank64 defaults to 1.0 V; setting 180 and a power cycle are required for proposed 1.8 V. BOARD_READY remains asserted after initialization and is not a continuous rail monitor. PWR GOOD excludes VIOx. No receiver interlock is implemented.",
+      "closure_criterion": "Provide measured/verified target power and expected VIO settings, startup/train enable, clock-loss recovery and fail-safe state for every source-on/destination-off case; include reconfiguration and USB disconnect.",
+      "proposed_owner": "Carrier/FPGA engineer",
+      "user_or_lab_information_needed": false,
+      "external_dependency": "Device firmware/settings and bench power-sequencing tests are required; do not infer them from the indicator LEDs.",
+      "source_ids": [
+        "XEM_SETTINGS",
+        "XEM_USB",
+        "XEM_POWER"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-07",
+      "title": "ASIC power distribution and cross-board signal safety",
+      "status": "unresolved system contract",
+      "evidence": "The proposed mezzanines have 117 signals, three reserved contacts and ground blades; no ASIC supply contacts. VCC_ASIC_1V5 names FPGA I/O-bank power and does not establish that the ASICs are powered from it. Independently powered ASIC outputs can drive an unpowered FPGA and vice versa.",
+      "closure_criterion": "Define ASIC/routing-board supply source, voltage tolerances, peak currents and ground bonds; verify simultaneous and independent shutdown/startup, input clamps and default reset/stimulation states; add isolation or sequencing where required.",
+      "proposed_owner": "ASIC/routing-board owner with power/FPGA designer",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "Actual ASIC power/IO limits and intended routing-board power source are external inputs. Existing 1.5 V historical wiring is not a substitute.",
+      "source_ids": [
+        "DS181"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-08",
+      "title": "Remote JTAG and runtime command contract",
+      "status": "known incomplete implementation",
+      "evidence": "Existing JTAG wires reach the target, but XEM fabric GPIO master, BSCAN command endpoint, arbitration and recovery are not implemented. The 1.8 V rail revision and 3.3 V core need different voltage handling; static JTAG needs its own margin budget.",
+      "closure_criterion": "Implement boot/programming path plus command framing, acknowledgment, error/retry, timestamp/latency and reset/watchdog behavior. Demonstrate programming and acquisition can coexist or define allowed interruption. Choose drive/level handling and a verified return/noise budget.",
+      "proposed_owner": "FPGA/host-control and carrier engineer",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "ASIC owner must specify command functions and any bounded stimulation latency; HDL/protocol design does not require the user to select pins.",
+      "source_ids": [
+        "XEM_EXPANSION",
+        "XEM_SETTINGS",
+        "DS181"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-09",
+      "title": "Wire protocol and per-lane encoding",
+      "status": "known incomplete implementation",
+      "evidence": "The 3\u00d7800 Mbit/s, 8b/10b, 400 MHz DDR-clock scheme is arithmetic, not HDL. Byte striping must preserve each lane's running disparity. The 20-byte metadata allocation, synchronization and CRC are not frozen. Raw 16-bit-per-sample forwarding exceeds the 240 MB/s encoded capacity.",
+      "closure_criterion": "Specify bit/sample order, 12-bit extraction, lane order/polarity, comma/training/idle, lane deskew, timestamp/CRC and loss recovery; simulate corrupted/lost/restarted data, then close timing and measure eye/BER for the final assembly.",
+      "proposed_owner": "FPGA protocol engineer",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "ASIC frame/clock behavior is required from its owner. The remaining packet design is an internal engineering task.",
+      "source_ids": [
+        "DS181",
+        "UG571"
+      ],
+      "newly_explicit_in_fourth_pass": false,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-10",
+      "title": "USB frame packing and clock crossing",
+      "status": "known incomplete implementation",
+      "evidence": "The proposed 6,165-byte link frame is 1 mod 4 and 5 mod 16. XEM USB3 pipes use 32-bit FPGA words and host lengths divisible by 16; a frame cannot be passed as one 6,165-byte Pipe read. okHost uses 100.8 MHz, separate from link clocks.",
+      "closure_criterion": "Implement a documented continuous-byte repacker/aggregation or receiver-side padding, asynchronous FIFO and parser. Test frames crossing every word/USB block boundary, resets and short/error returns; pin the SDK/HDL versions and use supported Classic endpoints.",
+      "proposed_owner": "Receiver FPGA and host-software engineer",
+      "user_or_lab_information_needed": false,
+      "external_dependency": "No user decision is needed; choose and verify the transport contract. Padding at the receiver does not need to change the physical link.",
+      "source_ids": [
+        "PIPE_API",
+        "XEM_USB"
+      ],
+      "newly_explicit_in_fourth_pass": true,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-11",
+      "title": "Backpressure, bounded buffering and overflow",
+      "status": "unresolved system requirement and absent implementation",
+      "evidence": "All four fast pairs run headboard\u2192XEM. USB block throttling does not stop incoming ASIC samples. At 192.65625 MB/s, a 100 ms no-drain interval needs 19.265625 MB; 2 GiB is only 11.1467 s as an ideal all-memory upper bound before reserves. No bounded-stall/overflow policy is present.",
+      "closure_criterion": "Choose a maximum supported stall and usable DDR ring size; implement watermark, loss counters and explicit stop/drop behavior. Prove host stalls, USB disconnect and disk-full never silently corrupt or relabel data. Do not assume ASIC clocks can be paused safely.",
+      "proposed_owner": "System owner sets behavior; receiver/host engineer implements it",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "Whether acquisition may pause or must report dropped samples and the required uninterrupted recording window are system requirements; actual ASIC pause behavior belongs to ASIC owner.",
+      "source_ids": [
+        "PIPE_PERFORMANCE",
+        "XEM_DDR",
+        "PIPE_API"
+      ],
+      "newly_explicit_in_fourth_pass": true,
+      "release_blocking": true
+    },
+    {
+      "id": "PL-12",
+      "title": "Actual PC-to-disk throughput and recording size",
+      "status": "unverified qualification",
+      "evidence": "The link arithmetic does not validate the chosen computer, USB hub/controller, SDK version or storage. Compact framing is 192.65625 MB/s and 693.5625 GB per hour, before filesystem/container overhead; 16-bit sample storage is larger.",
+      "closure_criterion": "Run continuous patterned acquisition on the intended PC/port/disk for the required duration with CRC, sequence/overrun counters and simultaneous commands; document negotiated USB speed and measured margin, latency, disk-full/disconnect recovery.",
+      "proposed_owner": "Host-software engineer and lab operator",
+      "user_or_lab_information_needed": true,
+      "external_dependency": "The intended recording computer/disk and required duration must eventually be identified. Synthetic software/FPGA validation can proceed meanwhile.",
+      "source_ids": [
+        "PIPE_PERFORMANCE"
+      ],
+      "newly_explicit_in_fourth_pass": true,
+      "release_blocking": true
+    }
+  ],
+  "sources": {
+    "XEM_PINS": "https://pins.opalkelly.com/pin_list/XEM8310",
+    "XEM_EXPANSION": "https://docs.opalkelly.com/xem8310/expansion-connectors/",
+    "XEM_SETTINGS": "https://docs.opalkelly.com/xem8310/device-settings/",
+    "XEM_USB": "https://docs.opalkelly.com/xem8310/usb-3-0-host-interface/",
+    "XEM_POWER": "https://docs.opalkelly.com/xem8310/powering-the-xem8310/",
+    "XEM_DDR": "https://docs.opalkelly.com/xem8310/ddr4-memory/",
+    "XEM_LENGTH": "https://docs.opalkelly.com/length-matching-carrier-boards/",
+    "PIPE_API": "https://docs.opalkelly.com/fpsdk/frontpanel-api/fpga-communication/",
+    "PIPE_PERFORMANCE": "https://docs.opalkelly.com/fpsdk/performance/",
+    "DS181": "https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content",
+    "DS931_LVDS": "https://docs.amd.com/r/en-US/ds931-artix-ultrascale-plus/LVDS-DC-Specifications-LVDS",
+    "UG571": "https://docs.amd.com/api/khub/documents/kFbaUC5HGcXyGNauhgU6Gw/content",
+    "TPS62135": "https://www.ti.com/lit/ds/symlink/tps62135.pdf",
+    "TPS2595": "https://www.ti.com/lit/ds/symlink/tps2595.pdf",
+    "MOLEX": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/467/46765/PS-46765-003-001.pdf?inline="
+  },
+  "source_snapshot": [
+    {
+      "path": "release_audit/triple_check/Electrical_Review.md",
+      "sha256": "fafe1043d7df4fb8f9b5ee7f4ac232b7016ef9ed5cf57bba6cf3fd1a6fcb9a65"
+    },
+    {
+      "path": "release_audit/triple_check/Electrical_Review.json",
+      "sha256": "aa32cb7089fc6114997037d42811c48781fcca2e7cd1b9024bf718f2dad3c074"
+    },
+    {
+      "path": "release_audit/Full_System_Interface_Proposal.md",
+      "sha256": "ab38f8ff8658ed01dc6556cbd2cf93acaa1a79df82cbda06f372978c74f0a14f"
+    },
+    {
+      "path": "release_audit/Power_Electrical_Release_Audit.md",
+      "sha256": "b2e0fba8cc06e5cc4a6c3b6e6465a5c11f9ce05f33f08cfe63d3bf4c367b2a1e"
+    },
+    {
+      "path": "release_audit/mezzanine/Mezzanine_Proposal.json",
+      "sha256": "9e430a248f4f841cda02570d7cfb7853d5627f5501ccf680d9e07761f00dedb5"
+    },
+    {
+      "path": "reports/Current_Design_Bringup_Status.md",
+      "sha256": "ba78584118357282654e9d5456ed72baf0e7fb900d691e568f00a8d9408ba409"
+    },
+    {
+      "path": "minimal_core/hardware/FPGA100T_Minimal.kicad_pcb",
+      "sha256": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0"
+    },
+    {
+      "path": "full_system/hardware/FPGA100T_Full_System.kicad_pcb",
+      "sha256": "c71578d3e72d22d84c3cf635c6935c736940c9ae5b3f8de2a5dd404a9f00a547"
+    },
+    {
+      "path": "minimal_core/reports/component_manifest_resolved.json",
+      "sha256": "cf4e49e791c2a41b140d25bd341336b8c6624d939594606b14a104bdee548820"
+    },
+    {
+      "path": "full_system/reports/component_manifest_resolved.json",
+      "sha256": "125d4f91d0973e7e68809aff9f7e3dd354cda1167fb45370bb21b888f10018a4"
+    },
+    {
+      "path": "full_system/bringup/core.xdc",
+      "sha256": "9ae99190cd3ae56a24ad0f8a2ae44027abada82813ff6bf823b04895400b08b3"
+    }
+  ],
+  "native_manifest_readback": {
+    "minimal_core": {
+      "lib_id": "CoreSupport:LinkPort__Custom_MicroHDMI_D",
+      "value": "CUSTOM POWER + JTAG / DATA TBD",
+      "mpn": "Molex46765 family; exact order code pending",
+      "footprint": "CoreSupport:LinkPort__MicroHDMI_46765_1xxx",
+      "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/467/46765/PS-46765-003-001.pdf",
+      "group": "Custom shared cable / power and JTAG",
+      "status": "CustomType-D wiring;12V input proposal requires qualified source/cable. Four differential pairs left open; not HDMI compatible. No local debug connector.",
+      "pins": {
+        "1": "VCC_CFG_3V3",
+        "2": "JTAG_TMS",
+        "3": null,
+        "4": "GND",
+        "5": null,
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": null,
+        "10": "GND",
+        "11": null,
+        "12": null,
+        "13": "GND",
+        "14": null,
+        "15": "JTAG_TDI",
+        "16": "GND",
+        "17": "JTAG_TCK",
+        "18": "JTAG_TDO",
+        "19": "LINK_12V",
+        "SH": "GND"
+      },
+      "no_connect": [],
+      "dnp": false,
+      "ref": "J4",
+      "source_lib_id": "LinkPort:Custom_MicroHDMI_D",
+      "source_footprint": "LinkPort:MicroHDMI_46765_1xxx"
+    },
+    "full_system": {
+      "lib_id": "CoreSupport:LinkPort__Custom_MicroHDMI_D",
+      "value": "CUSTOM POWER + JTAG / DATA TBD",
+      "mpn": "Molex46765 family; exact order code pending",
+      "footprint": "CoreSupport:LinkPort__MicroHDMI_46765_1xxx",
+      "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/467/46765/PS-46765-003-001.pdf",
+      "group": "Custom shared cable / power and JTAG",
+      "status": "CustomType-D wiring;12V input proposal requires qualified source/cable. Four differential pairs left open; not HDMI compatible. No local debug connector.",
+      "pins": {
+        "1": "VCCAUX_1V8",
+        "2": "JTAG_TMS",
+        "3": null,
+        "4": "GND",
+        "5": null,
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": null,
+        "10": "GND",
+        "11": null,
+        "12": null,
+        "13": "GND",
+        "14": null,
+        "15": "JTAG_TDI",
+        "16": "GND",
+        "17": "JTAG_TCK",
+        "18": "JTAG_TDO",
+        "19": "LINK_12V",
+        "SH": "GND"
+      },
+      "no_connect": [],
+      "dnp": false,
+      "ref": "J4",
+      "source_lib_id": "LinkPort:Custom_MicroHDMI_D",
+      "source_footprint": "LinkPort:MicroHDMI_46765_1xxx"
+    }
+  },
+  "firmware_inventory_current_variants": [
+    "full_system/bringup/core.xdc"
+  ],
+  "arithmetic": {
+    "sample_payload_bytes_per_second": 192000000,
+    "proposed_frame_bytes": 6165,
+    "frames_per_second": 31250,
+    "framed_bytes_per_second": 192656250,
+    "three_lane_8b10b_payload_capacity_Bps": 240000000.0,
+    "frame_mod4": 1,
+    "frame_mod16": 5,
+    "one_frame_receiver_padding_to16_bytes": 6176,
+    "padded_receiver_bytes_per_second": 193000000,
+    "stall_100ms_bytes": 19265625.0,
+    "stall_1second_bytes": 192656250,
+    "total_2GiB_upper_bound_seconds": 11.146711554906732,
+    "packed_frame_bytes_per_hour": 693562500000,
+    "raw_16bit_samples_bytes_per_second": 256000000
+  }
+}

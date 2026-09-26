@@ -1,10 +1,10 @@
 # Hardware design files
 
-This directory contains the editable [FPGA working draft](fpga-board/README.md), plus preserved ASIC-carrier and older LDO/routing references. No board in this collection is represented as an approved new-system fabrication package.
+This directory contains the [current 100T review snapshots](../presentation/fpga/index.html), the [earlier FPGA import](fpga-board/README.md), and preserved ASIC-carrier/LDO references. No board in this collection is represented as an approved new-system fabrication package.
 
-## Active FPGA working draft
+## Current FPGA review checkpoints
 
-Open [the project guide](fpga-board/README.md), then the [KiCad project](fpga-board/hardware/Howard_FPGA_Connected_42x40.kicad_pro). All child sheets and local libraries are included. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md). The draft's electrical and manufacturing work remains incomplete.
+Start with [the 100T review](../presentation/fpga/index.html) and [uncertainty list](fpga-interface-study/fourth_check/Uncertainty_Register.md). The most-routed core is [FPGA100T_Minimal](fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pro). The [rail revision](fpga-interface-study/review_projects/FPGA100T_Rail_Revision.zip) and [mezzanine study](fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip) are separate. Keep each complete project folder together. There is no single integrated full-system board. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md) before choosing and editing a development baseline.
 
 ## Supplied references
 

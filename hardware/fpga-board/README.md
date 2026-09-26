@@ -1,5 +1,7 @@
 # FPGA board — working draft
 
+**Historical September 21 import.** Its device/interface choices and opening instructions are not the current 100T/XEM8310 baseline. Use [the current review](../../presentation/fpga/index.html) and [uncertainty register](../fpga-interface-study/fourth_check/Uncertainty_Register.md). Native files and dated evidence below are preserved.
+
 **PARTIAL DESIGN — NOT FOR MANUFACTURE.** This is the saved local FPGA draft imported for team collaboration on 2026-09-21, not an approved circuit or a fabrication release. Review and accept the baseline before extending it.
 
 **[Open the KiCad project](hardware/Howard_FPGA_Connected_42x40.kicad_pro)** · [Main schematic](hardware/Howard_FPGA_Connected_42x40.kicad_sch) · [PCB layout](hardware/Howard_FPGA_Connected_42x40.kicad_pcb) · [Team workflow](../../CONTRIBUTING.md)

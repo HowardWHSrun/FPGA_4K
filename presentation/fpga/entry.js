@@ -5,7 +5,7 @@
   if(!link)return;
   const details=document.getElementById('detail-button');
   const selected=()=>window.PRESENTATION?.getState().slideId==='fpga';
-  function sync(){const on=selected();link.hidden=!on;if(details)details.hidden=on;if(on){const note=document.getElementById('slide-note');if(note)note.textContent='The September 21 draft is partial. Open the board-level review for actual KiCad views, recording/stimulation paths, power/startup decisions and unresolved issues.';}}
+  function sync(){const on=selected();link.hidden=!on;if(details)details.hidden=on;if(on){const note=document.getElementById('slide-note');if(note)note.textContent='The current 100T design remains incomplete. Open the fourth review for the three native CAD checkpoints, 18 uncertainties and the evidence needed to resolve them.';}}
   new MutationObserver(sync).observe(document.getElementById('slide-title'),{childList:true,subtree:true});
   sync();
   document.addEventListener('click',e=>{

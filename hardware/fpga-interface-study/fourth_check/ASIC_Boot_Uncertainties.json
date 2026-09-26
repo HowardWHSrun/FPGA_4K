@@ -1,0 +1,189 @@
+{
+  "review_date": "2026-09-26",
+  "scope": "Fourth-pass ASIC/pin/boot uncertainties. No CAD edits, unchanged native-test reruns, hardware operation or Vivado execution.",
+  "source_hashes_sha256": {
+    "full_system/pinout/ASIC_117_Signal_Baseline.csv": "02621e55fe9ffcf9f2681d4e85485bb60a4b9a828f7834dab98fc94150ee642b",
+    "minimal_core/hardware/FPGA100T_Minimal.kicad_pcb": "3844c24f88697bec091e872c117a7889586df9be4053b912ec79253738d337c0",
+    "full_system/hardware/FPGA100T_Full_System.kicad_pcb": "c71578d3e72d22d84c3cf635c6935c736940c9ae5b3f8de2a5dd404a9f00a547",
+    "full_system/bringup/core.xdc": "9ae99190cd3ae56a24ad0f8a2ae44027abada82813ff6bf823b04895400b08b3",
+    "full_system/reports/BOM_Development.csv": "14bd41d162316975ab1ba982978d68242e56d0ba0a7d3127bcf565d32a271d02",
+    "reports/Current_Design_Bringup_Status.md": "ba78584118357282654e9d5456ed72baf0e7fb900d691e568f00a8d9408ba409",
+    "bringup/README.md": "9ba52f02888a5e9ce686af4127c73fa2d1610ec03cad6814b84b7868d696d50b",
+    "bringup/build.tcl": "10b36e78c00121795a7b765c859595fadff74cfa57df7c2dbd71367ad12d6519",
+    "release_audit/triple_check/Pin_Boot_Review.json": "03ababb2c9a73dc279b9b113b2a956aba8f23133d132912ef4dc70992be91c17"
+  },
+  "entries": [
+    {
+      "id": "ASIC-01",
+      "title": "ASIC electrical limits for all 117 lines",
+      "status": "unresolved_requirement",
+      "known_fact": "The accepted inventory is 117 logical lines. The tutorial gives a nominal 1.5 V ASIC supply, and a historical netlist wires AC_IN/IMP_TST directly to an ECP5 bank powered at 1.5 V. Custom ASIC symbol pins are passive; ERC cannot check thresholds or direction.",
+      "unknown_or_missing": "ASIC VIH/VIL, VOH/VOL at stated load, absolute limits, leakage/clamp current, powered-off tolerance and capacitive loading. AC_IN/IMP_TST also lack an established function, direction and permitted waveform. Supply voltage alone does not establish compatibility.",
+      "failure_consequence": "Wrong thresholds can corrupt data; an incorrectly driven pin or active signal into an unpowered chip can cause excess current or damage.",
+      "closure_criterion": "Identify the ASIC revision and obtain a designer-approved pin electrical table or pad schematic. Calculate both directions against DS181 and actual rail/ground tolerances; resolve AC_IN/IMP_TST direction and waveform before assigning I/O standards.",
+      "suggested_owner": "ASIC designer with FPGA hardware engineer",
+      "user_input_needed": {
+        "required": true,
+        "request": "Provide the actual ASIC pad/interface specification or identify the ASIC designer who can approve one. A generic 512-channel paper cannot close this."
+      },
+      "evidence": [
+        "reports/AC_IN_IMP_TST_Primary_Source_Review.md",
+        "full_system/pinout/ASIC_117_Signal_Baseline.csv",
+        "https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "ASIC-02",
+      "title": "Map logical slots to the physical eight ASICs and shared loads",
+      "status": "unresolved_requirement",
+      "known_fact": "88 returned wires expand into eight groups of eight DATA plus CLK/READ/SYNC. Other names include four recording clocks, four SPI clocks, four chip-specific L/R programming pairs and two board-shared L/R pairs.",
+      "unknown_or_missing": "No authoritative matrix identifies each physical ASIC/carrier/channel order, which chips each clock drives, the four stimulation-chip slots, or every receiver on a shared control. Four clocks and eight ASICs do not prove physical pairing.",
+      "failure_consequence": "Correct contact counts can still control the wrong chip, merge independent signals, overload a shared control or mislabel channels.",
+      "closure_criterion": "A reviewed routing-board schematic/table maps every logical name to physical ASIC/pad/carrier, enumerates shared loads and matches both mezzanine sides contact by contact.",
+      "suggested_owner": "ASIC/routing-board designer with FPGA hardware engineer",
+      "user_input_needed": {
+        "required": true,
+        "request": "Provide or confirm the eight-ASIC placement/group map and which chips/boards use stimulation. A marked-up routing schematic is sufficient."
+      },
+      "evidence": [
+        "full_system/pinout/ASIC_117_Signal_Baseline.csv",
+        "release_audit/mezzanine/Mezzanine_Contact_Proposal.csv",
+        "release_audit/triple_check/Pin_Boot_Review.md"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "ASIC-03",
+      "title": "Define inactive states and power/reset transitions",
+      "status": "unresolved_requirement",
+      "known_fact": "PUDC_B is pulled high and the constraint fragment requests UNUSEDPIN Pullnone. Application nets have no completed external inactive-state network. The tutorial describes sequences but not a complete startup electrical contract.",
+      "unknown_or_missing": "Reset polarity/pulse timing, inactive levels, latch behavior, stimulation inhibit and clock start/stop rules during ramp, failed configuration, reprogramming, power loss and partial-board power.",
+      "failure_consequence": "ASICs can start in an unknown state or see unintended reset/programming/stimulation edges before valid firmware owns the pins.",
+      "closure_criterion": "An ASIC-approved power/configuration state and timing table; necessary external pulls/interlocks calculated from leakage/load bounds; verify transitions with missing clocks and either board independently powered.",
+      "suggested_owner": "ASIC designer and FPGA hardware/firmware engineers",
+      "user_input_needed": {
+        "required": true,
+        "request": "Confirm reset/stimulation inactive states through the same ASIC interface specification requested in ASIC-01; this is not a separate user engineering task."
+      },
+      "evidence": [
+        "release_audit/triple_check/Pin_Boot_Review.md",
+        "full_system/bringup/core.xdc",
+        "https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "ASIC-04",
+      "title": "Assign and constrain the application pins and eight returned clocks",
+      "status": "known_unfinished",
+      "known_fact": "Prior package evidence found 150 positions on 1.5 V banks and 12 P-side clock groups for eight returned clocks. All 117 FPGA balls remain TBD. The full-system XDC constrains only local P17 at 32 MHz.",
+      "unknown_or_missing": "No complete ball allocation, clock-region/tree plan, source-synchronous input delays, routing skew budget, output drive/slew/fanout analysis or CDC/reset-crossing implementation.",
+      "failure_consequence": "A sufficient raw pin count can still fail placement, setup/hold timing or reliable sampling.",
+      "closure_criterion": "Using actual ASIC timing, implement one complete schematic/ball/XDC contract on the selected Vivado part. Review DRC, timing, clock-use and CDC reports with no unjustified dedicated-route overrides or unconstrained external paths.",
+      "suggested_owner": "FPGA implementation engineer with PCB engineer",
+      "user_input_needed": {
+        "required": false,
+        "request": "Engineering work; the ASIC electrical/timing source above is the external dependency."
+      },
+      "evidence": [
+        "release_audit/triple_check/Pin_Boot_Review.json",
+        "full_system/pinout/ASIC_117_Signal_Baseline.csv",
+        "full_system/bringup/core.xdc"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "ASIC-05",
+      "title": "Select the exact FPGA ordering grade",
+      "status": "unresolved_design_choice",
+      "known_fact": "U1 speed/temperature grade remains TBD. Present core power assumes a standard 1.0 V grade. DS181 specifies 0.92-0.98 V for -1LI.",
+      "unknown_or_missing": "No exact orderable speed/temperature code, operating-temperature envelope or matching implemented Vivado target is frozen.",
+      "failure_consequence": "Procurement could substitute an incompatible voltage variant, or the application could exceed the selected grade's timing/temperature limits.",
+      "closure_criterion": "Freeze a traceable standard-voltage part, confirm package/temperature/availability, use its exact tool part and close timing/power/thermal checks for that grade.",
+      "suggested_owner": "Hardware/FPGA engineer and procurement",
+      "user_input_needed": {
+        "required": false,
+        "request": "Provide the marking/order code only if already purchased or mandated; otherwise engineering can propose and qualify a part."
+      },
+      "evidence": [
+        "full_system/reports/BOM_Development.csv",
+        "https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "BOOT-01",
+      "title": "Prove flash cold boot and recovery on the selected revision",
+      "status": "unverified_behavior",
+      "known_fact": "Minimal core uses 3.3 V configuration; rail revision uses 1.8 V equivalents and CFGBVS=GND. Saved boot nets passed the prior file audit. Current AMD Artix-7 programming documentation includes MX25U12835F under the mx25u12872f alias.",
+      "unknown_or_missing": "Installed Vivado cfgmem selection/read-ID, programming through custom JTAG, flash startup versus rail ramp, brownout/QPI recovery and repeated cold boot are unverified.",
+      "failure_consequence": "A consistent schematic may still fail to load its image or lack recovery through the intended external port after interruption.",
+      "closure_criterion": "Board-hash-specific build/bridge; verify exact flash ID/algorithm; measure rails, INIT_B, DONE and CCLK against flash startup/reset limits; record cold/warm/brownout/reprogramming recovery and the fallback path.",
+      "suggested_owner": "FPGA boot/firmware engineer with hardware engineer",
+      "user_input_needed": {
+        "required": false,
+        "request": "No separate user answer; implementation and hardware qualification remain."
+      },
+      "evidence": [
+        "reports/Current_Design_Bringup_Status.md",
+        "release_audit/triple_check/Pin_Boot_Review.md",
+        "https://docs.amd.com/r/en-US/ug908-vivado-programming-debugging/Artix-7-Configuration-Memory-Devices"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "BOOT-02",
+      "title": "Create a current firmware and bring-up target",
+      "status": "known_unfinished",
+      "known_fact": "The root blink build now warns it belongs to a legacy board with the removed LED and 3.3 V constraints. minimal_core has no matching bring-up target; full_system contains only core.xdc.",
+      "unknown_or_missing": "No current HDL/build, observable self-test using existing access, acceptance procedure or proven XEM GPIO remote-JTAG bridge. Target voltage must match the selected board.",
+      "failure_consequence": "The old build cannot validate these boards; the intended connector may not provide a working programming/debug path on first assembly.",
+      "closure_criterion": "Reproducible current-board HDL/XDC/part/flash build and readable test result through existing access; a reviewed power-on/recovery procedure naming board/firmware hashes and actual JTAG electrical interface.",
+      "suggested_owner": "FPGA firmware engineer with bring-up/test engineer",
+      "user_input_needed": {
+        "required": false,
+        "request": "Engineering can implement this; extra LEDs, headers and test points are not assumed mandatory."
+      },
+      "evidence": [
+        "reports/Current_Design_Bringup_Status.md",
+        "bringup/README.md",
+        "bringup/build.tcl",
+        "full_system/bringup/core.xdc"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    },
+    {
+      "id": "ASIC-06",
+      "title": "Prove sample identity, frame alignment and control behavior",
+      "status": "unverified_behavior",
+      "known_fact": "The tutorial describes 1024 clocks/frame, one SYNC and 16 READ events; each data wire multiplexes four ADC groups. Link arithmetic depends on extracting/packing 12-bit samples rather than forwarding 16 bits/sample.",
+      "unknown_or_missing": "No eight-ASIC implementation proves sample bit/order mapping, frame alignment across returned clocks, missing/extra edge detection, restart, gain/stimulation command semantics or channel identity at the PC.",
+      "failure_consequence": "A link can move the expected byte rate while silently mislabeling channels, losing samples or applying commands incorrectly.",
+      "closure_criterion": "ASIC-referenced golden vectors/channel map and timing contract; simulate edge cases, implement loss flags/counters/recovery, then compare controlled ASIC inputs/readback with recorded PC output for every channel and intended control.",
+      "suggested_owner": "ASIC/FPGA firmware engineers with acquisition software engineer",
+      "user_input_needed": {
+        "required": false,
+        "request": "Engineering validation using the same ASIC protocol source/designer confirmation requested above."
+      },
+      "evidence": [
+        "release_audit/double_check/Original_Interface_Extract.txt",
+        "release_audit/triple_check/Electrical_Review.md",
+        "release_audit/Full_System_Interface_Proposal.md"
+      ],
+      "release_blocking": true,
+      "owner_status": "Suggested role only; not an assigned commitment"
+    }
+  ],
+  "unchanged_PCB_hashes_vs_third_pass": {
+    "minimal_core": true,
+    "full_system": true
+  }
+}

@@ -8,21 +8,21 @@ Use these views to recognize the supplied boards, locate the main components and
 
 **[Open the 3D STL](assembly/stacked_headboard_original.stl)** · [Download STL](assembly/stacked_headboard_original.stl?raw=true) · [Assembly guide and source details](assembly/README.md)
 
-The earlier model discussion identified **A** as four ASIC-carrier boards with two ASICs each, **B + C** as the routing PCB, and **D** as the FPGA PCB. This is the original supplied arrangement model, with provisional dimensions and no encoded physical units. It covers the headboard assembly; the downstream KR260 and PC are shown in the functional diagram below. Its original author is unverified.
+The earlier model discussion identified **A** as four ASIC-carrier boards with two ASICs each, **B + C** as the routing PCB, and **D** as the FPGA PCB. This is the original supplied arrangement model, with provisional dimensions and no encoded physical units. It covers the headboard assembly; the current downstream receiver and PC are shown in the functional diagram below. Its original author is unverified.
 
 ## Where the boards fit
 
-The [September 17 meeting](../docs/meetings/2026-09-17.md#system-and-responsibilities) records this functional path:
+The current [100T review](../presentation/fpga/index.html) uses the following path. The [September 17 meeting](../docs/meetings/2026-09-17.md#system-and-responsibilities) used KR260; that receiver choice is historical:
 
 ```mermaid
 flowchart LR
     A[Recording chips] --> B[Routing board]
-    B --> C[FPGA board]
-    C --> D[KR260]
+    B --> C[XC7A100T board]
+    C --> D[XEM8310 receiver]
     D --> E[PC]
 ```
 
-The chip carrier supports the recording chips and their connections. Routing brings chip signals toward the FPGA, which receives and organizes data for the downstream platform. The diagram shows the intended data path, not a mechanical stack or final connector map. The [interface, power and startup questions](../docs/meetings/2026-09-17.md#questions-to-resolve-in-the-next-review) remain part of the design work.
+The chip carrier supports the recording chips and their connections. Routing brings chip signals toward the FPGA, which receives and organizes data for the downstream platform. The diagram shows the intended data path, not a mechanical stack or final connector map. The [current uncertainty register](fpga-interface-study/fourth_check/Uncertainty_Register.md) covers the unresolved electrical, power, timing and mechanical contract.
 
 ## Original assembled-board photograph
 

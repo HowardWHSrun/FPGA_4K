@@ -1,0 +1,86 @@
+{
+  "date": "2026-09-26",
+  "fabrication_ready": false,
+  "scope": "CAD/mechanical subset for the consolidated uncertainty register; no native CAD edits.",
+  "entries": [
+    {
+      "id": "M01",
+      "title": "J4 placement and exact order code",
+      "classification": "known_discrepancy_and_missing_selection",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "PCB designer; connector supplier; fabricator",
+      "evidence": "J4 recommended edge is 0.70 mm inside actual board edge; outward shift conflicts with current copper-edge rule.",
+      "closure_evidence": "Exact receptacle/plug MPN and current drawing; corrected geometry; agreed edge clearances; mated plug check."
+    },
+    {
+      "id": "M02",
+      "title": "Two-board mating and retention",
+      "classification": "unverified_assembly",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "Routing-board owner; PCB designer",
+      "evidence": "No actual routing-board mate/contact-to-contact/3D review; J5/J6 offset is +0.7,+27.0 mm.",
+      "closure_evidence": "Two-board assembly drawing, contact map, component/standoff/retention and power-path review."
+    },
+    {
+      "id": "M03",
+      "title": "QSH -030 H dimension",
+      "classification": "unresolved_manufacturer_geometry",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "Connector supplier; PCB designer",
+      "evidence": "H table 2.84 mm versus centered chain 2.81355 mm; difference 0.02645 mm.",
+      "closure_evidence": "Manufacturer-approved interpretation and part-specific footprint/tolerance record."
+    },
+    {
+      "id": "M04",
+      "title": "Fabricator stackup and process",
+      "classification": "unselected_manufacturing_constraints",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "PCB designer; fabricator",
+      "evidence": "Six layers/1.6 mm saved without dielectric/copper stackup; tight track/via geometries not production-qualified.",
+      "closure_evidence": "Approved stackup, impedance and drill/plating/registration rules; final layout DFM."
+    },
+    {
+      "id": "M05",
+      "title": "Assembly BOM and process",
+      "classification": "missing_release_definition",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "PCB designer; assembler",
+      "evidence": "FPGA complete ordering code/J4 MPN/J5-J6 metadata and height/stencil/reflow process incomplete.",
+      "closure_evidence": "Exact BOM, approved footprints/heights, stencil/paste/reflow review and assembly/inspection package."
+    },
+    {
+      "id": "M06",
+      "title": "Minimum final board size",
+      "classification": "unproved_optimization",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "PCB/layout designer",
+      "evidence": "40x36 mm checkpoint is not a fully routed board or proven minimum.",
+      "closure_evidence": "Integrated routed layout and assembly envelope; feasible smaller alternatives under same constraints."
+    },
+    {
+      "id": "M07",
+      "title": "One integrated finished board",
+      "classification": "known_unfinished_implementation",
+      "priority": "release_blocker",
+      "status": "open",
+      "owner": "FPGA/PCB designer; receiver/carrier owner",
+      "evidence": "Rail revision, 117 ASIC mappings, two mezzanines and cable data path not integrated.",
+      "closure_evidence": "One schematic/PCB with complete copper, reviewed unused pins, scoped ERC/DRC and firmware/hardware acceptance."
+    }
+  ],
+  "resolved_audit_artifacts": [
+    {
+      "id": "A01",
+      "title": "J5/J6 JSON false mismatch",
+      "status": "resolved_checking_artifact",
+      "evidence": "132 pad records numerically equal; false was caused by .279 versus 0.279 and .43 versus 0.43 text comparison.",
+      "source": "Source_Continuity.json"
+    }
+  ]
+}

@@ -1,29 +1,21 @@
 # Owners and open work
 
-Updated for the initial team handoff on 2026-09-21. Responsibilities below are roles to assign, not confirmed personal assignments. Record a GitHub username once the person accepts ownership.
+Updated 2026-09-26 for **XC7A100T CSG324 / 117 ASIC signals / XEM8310**. Roles below are proposed; no personal ownership or review approval is implied. The earlier 200T/KR260 direction remains in dated historical records.
 
-| Workstream | Working source | Owner / reviewer | Next step |
-|---|---|---|---|
-| FPGA schematic and layout | [Working draft](../../hardware/fpga-board/README.md) | TBD / TBD | Review the baseline; claim exclusive board editing in an issue |
-| ASIC carrier | [Preserved reference](../../hardware/references/asic-carrier/PCB.kicad_pro) | TBD / TBD | Confirm the authoritative editable project before creating a working copy |
-| Routing and power board | [Historical reference](../../hardware/references/ldo-routing/PCB.kicad_pro) | TBD / TBD | Confirm topology and baseline; do not assume this example mates with the carrier |
-| Receiver / KR260 interface | [Recorded context](../meetings/2026-09-18-follow-up.md) | TBD / TBD | Specify actual receiver hardware and electrical link |
-| FPGA firmware / host software | [Earlier ECP5/FT600 code](../../firmware/README.md) | TBD / TBD | Identify reusable pieces and new Artix-7 work |
+The [fourth-review uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the detailed current action list, with closure criteria and evidence. There are three separate [native review checkpoints](../../presentation/fpga/index.html); no integrated full-system board or fabrication release exists.
 
-## Decisions blocking electrical completion
+| Workstream | Current work | Owner / reviewer |
+| --- | --- | --- |
+| ASIC electrical/timing and physical mapping | Obtain authoritative pad limits, startup/control rules and eight-chip/group map (U01–U05) | ASIC/carrier/routing + FPGA, TBD |
+| FPGA part, pins and clocks | Exact standard-voltage order code, legal ball/clock allocation, XDC/CDC/timing (U06–U07) | FPGA hardware/implementation, TBD |
+| Connector and assembly | Mezzanine mating, J4 part/edge/cable, mechanical tolerances (U08–U09) | Mechanical/routing/FPGA, TBD |
+| Power and protection | Actual load/thermal budget, protected source, sequencing and shared returns (U10–U11) | Power/carrier/FPGA, TBD |
+| XEM8310 receiver and cable | Module contacts, VIO/interlocks, LVDS/JTAG margins (U12–U13) | Receiver carrier/FPGA, TBD |
+| Firmware, buffering and host | Packet/USB packing, commands, DDR buffering and explicit overflow policy (U14–U15) | FPGA/receiver/host; system owner for required behavior, TBD |
+| Layout and manufacturing | One integrated schematic/PCB, all copper, stackup, exact BOM and DFM (U16) | Layout + fabricator/assembler, TBD |
+| Boot and acceptance | Revision-specific bring-up, recovery, known-channel capture and sustained disk recording (U17–U18) | Bring-up + lab integration, TBD |
 
-| Decision | Required owners | Evidence to close it |
-|---|---|---|
-| Carrier → routing → FPGA connector map | Carrier + routing + FPGA | Matching pin tables, directions, IO voltages, grounds, mating parts and mechanics |
-| ASIC timing and startup | ASIC + FPGA | Reviewed timing diagrams, voltage limits and reset/startup behavior |
-| Rail currents, compensation and sequencing | Power + FPGA | Reviewed power budget, regulator calculations and startup requirements |
-| RAM part/controller and bank assignments | FPGA + firmware | Chosen part, ballout, VCCO/VREF/VTT and timing constraints |
-| FPGA oscillator and clock architecture | FPGA + receiver | Frequency, jitter, voltage and acquisition/link clock plan |
-| Custom micro-HDMI link and receiver | FPGA + receiver | Protocol, signaling, pin map, termination/protection and end-to-end receiver path |
-| BGA escape and stackup | Layout + fabricator | Approved layers, dielectric, impedance and trace/via/assembly capabilities |
-| FPGA unused/analog/transceiver/battery pins | FPGA | Manufacturer-grounded used/unused pin treatment and bank supplies |
-
-The micro-HDMI connector choice does not specify HDMI signaling or direct KR260 compatibility. The FPGA device direction is XC7A200T; package/speed/temperature fields in the draft still require procurement qualification.
+The user has delegated power setup and wants optional headers/test points removed. Circuit design, pin selection and firmware are engineering tasks. External inputs are the actual ASIC/mating-board specification and system operating/recording requirements; ask for a purchased FPGA code only if one is already mandated. XEM8310 is an FPGA/USB receiver module, not a conventional MCU or an automatic target-JTAG programmer.
 
 ## Layout ownership record
 

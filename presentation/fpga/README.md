@@ -1,5 +1,7 @@
 # 100T FPGA engineering review
 
+**Fourth-review update:** [Uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the current closure list; owner roles are proposed, not accepted assignments. Native source hashes are checked against the third-pass reports, which retain their original test scope. The page distinguishes known implementation gaps from unknown requirements.
+
 [Open the current page](index.html). It describes the full-board release scope: XC7A100T CSG324, all 117 ASIC signals and the XEM8310 receiver link. The 40 × 36 mm core snapshot is incomplete and not fabrication-ready.
 
 The page loads current counts and board identity from [review-data.json](review-data.json). The [artifact manifest](../../hardware/fpga-100t-review/manifest.json) records every packaged file's SHA-256; [the full project ZIP](../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip) includes native CAD, all hierarchical sheets, local libraries, rendered views and selected evidence. The import preserves native CAD bytes. Workstation paths in reports are made portable, with original and transformed hashes retained.

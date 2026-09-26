@@ -1,5 +1,7 @@
 # Third independent CAD review — 26 September 2026
 
+**Fourth-pass erratum:** The historical JSON pad-match flag compared numeric strings and reported a false mismatch. [Fresh numeric comparison](../fourth_check/CAD_Mechanical_Uncertainties.md) confirms all 132 J5/J6 records match. Native CAD is unchanged; the original JSON is retained as dated evidence.
+
 **All three files pass their configured physical checks; none is a manufacturing release.** This pass found a concrete micro-HDMI placement discrepancy, confirmed incomplete order-code/library metadata, and separately measured the remaining electrical work. Zero physical violations does not mean zero missing connections, complete application wiring, or approved fabrication geometry.
 
 No source CAD or public file was changed. Native KiCad 10.0.6 ran sequentially on isolated copies, with zone refill in memory, all physical-rule severities including exclusions, schematic parity where a schematic exists, fresh XML netlist export, and all ERC categories enabled. All **110 source CAD/library/table hashes** remained unchanged.

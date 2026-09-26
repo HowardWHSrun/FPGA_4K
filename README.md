@@ -2,7 +2,7 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — September 26:** [100T / 117-signal / XEM8310 engineering review](presentation/fpga/index.html) · [complete KiCad review ZIP](hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [interface studies](hardware/fpga-interface-study/README.md). The core routing, bank-rail revision and mezzanine placement remain separate development work. **No complete or manufacturing-ready board is released.**
+**Current FPGA review — September 26:** [100T / 117-signal / XEM8310 engineering review](presentation/fpga/index.html) · [current core KiCad review ZIP](hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [fourth review and uncertainties](hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) · [interface studies](hardware/fpga-interface-study/README.md). The core routing, bank-rail revision and mezzanine placement remain separate development work. **No complete or manufacturing-ready board is released.**
 
 ## Start working with the team
 
@@ -75,10 +75,10 @@ AI agents should start with [AGENTS.md](AGENTS.md). Source credits, versions and
 
 **[Open the meeting hub](presentation/meetings/index.html)** for the latest review, action items and earlier records.
 
-### Upcoming meeting — 24 September 2026
+### Meeting preparation — 24 September 2026 (historical)
 
 [Preparation and review questions](presentation/meetings/2026-09-24.html) · [Original proposal PDF](sources/meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf). Proposed choices; no outcomes recorded.
 
 ### Latest meeting record — 23 September 2026
 
-[Read the meeting, priorities and actions](presentation/meetings/2026-09-23.html) · [Original notes](sources/meetings/2026-09-23-notes.txt) · [System diagram](sources/meetings/2026-09-23-system-view.png). FPGA/package, USB 3.0, connector, exact pins and board size remain open.
+[Read the dated meeting and actions](presentation/meetings/2026-09-23.html) · [Original notes](sources/meetings/2026-09-23-notes.txt) · [System diagram](sources/meetings/2026-09-23-system-view.png). These are the questions recorded at that meeting; the current 100T/XEM8310 uncertainty list above supersedes them as the active status.

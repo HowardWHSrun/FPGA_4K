@@ -5,7 +5,8 @@ The original files are stored in this repository. Use the editable formats for f
 ## Team workflow and editable design
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
-- [FPGA working draft](../hardware/fpga-board/README.md): complete editable KiCad project and local libraries; not for manufacture.
+- [Current 100T review and three native checkpoints](../presentation/fpga/index.html): core, rail revision and mezzanine fit remain separate. [Fourth-review uncertainty list](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md).
+- [September 21 FPGA import](../hardware/fpga-board/README.md): preserved earlier design and local libraries; not the current device/interface baseline.
 - [Initial FPGA import evidence](../sources/fpga-draft-2026-09-21/README.md): provenance, original hashes and dated check reports.
 
 ## ASIC/interface slides
@@ -68,7 +69,7 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 The release scope is the full FPGA board with all 117 ASIC signals and the XEM8310 link. The published 40 × 36 mm design is a core snapshot with incomplete copper, not a fabrication release or demonstrated system. Two 60-pin mezzanines are the current connector direction; the proposed Samtec implementation and final connector-inclusive outline require validation. Native checks and remaining work are shown separately. [The interface-study package](../hardware/fpga-interface-study/README.md) adds an unrouted two-mezzanine placement candidate, proposed contact CSV, manufacturer footprint review, AC_IN/IMP_TST research and the full-system link/power proposal.
 
-[The second independent check](../hardware/fpga-interface-study/Double_Check_Review.md) records the powered-cable signal-margin gap, corrected historical FPGA-wiring evidence and fresh native checks with all ERC categories enabled. The native core/placement files remain unchanged; the receiver interface still requires correction.
+[The fourth review](../hardware/fpga-interface-study/Fourth_Check_Review.md) and [uncertainty register](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) are the current action list. [Third-pass native checks](../hardware/fpga-interface-study/Triple_Check_Review.md) remain applicable only to the unchanged CAD hashes. The [second pass](../hardware/fpga-interface-study/Double_Check_Review.md) remains dated evidence. [Rail revision](../hardware/fpga-interface-study/review_projects/FPGA100T_Rail_Revision.zip) and [mezzanine study](../hardware/fpga-interface-study/review_projects/FPGA100T_Mezzanine_Study.zip) are separate review-only downloads.
 
 [The earlier eight-slide 200T / 50T review](../presentation/fpga/history-2026-09-24.html) remains available as dated history, with its original CAD and assets. Earlier KR260 and 132-signal proposals do not supersede the current 100T / 117 / XEM8310 direction.
 

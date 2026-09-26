@@ -1,0 +1,298 @@
+{
+  "date": "2026-09-26",
+  "review_pass": 4,
+  "fabrication_ready": false,
+  "scope": "Full 117-signal ASIC to XC7A100T CSG324 to XEM8310 board",
+  "status_definition": "Open means not resolved by accepted design evidence. Known implementation gaps are recorded separately; owner roles are proposed, not accepted assignments.",
+  "items": [
+    {
+      "id": "U01",
+      "title": "ASIC electrical limits",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "ASIC designer + FPGA electrical design",
+      "known": "The intended nominal interface supply is 1.5 V; the accepted count is 117.",
+      "uncertainty": "Pin direction, guaranteed logic thresholds, output drive, load/leakage, absolute limits and behavior when either board is off are not established for the full interface. AC_IN and IMP_TST also lack confirmed functions.",
+      "closure": "Obtain a versioned ASIC pad specification or designer-approved table for all signal classes; compare limits against the selected FPGA standard and power states.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md",
+        "../research/AC_IN_IMP_TST_Primary_Source_Review.md"
+      ]
+    },
+    {
+      "id": "U02",
+      "title": "ASIC timing and sample format",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "ASIC designer + acquisition firmware",
+      "known": "The tutorial describes 64 DATA lines and eight each of returned CLK, READ and SYNC; intended recording clock is 32 MHz.",
+      "uncertainty": "Guaranteed setup/hold, clock/data skew, sampling edge, jitter, serial bit/channel order, framing, and whether acquisition can pause are not closed by the tutorial.",
+      "closure": "Approve timing diagrams and sample/frame definitions, then demonstrate input-delay constraints and capture against a verified model and measured ASIC waveforms.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U03",
+      "title": "Which physical chip uses each signal",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "ASIC/carrier and routing designers + FPGA design",
+      "known": "The 117 names have proposed contacts across two 60-contact connectors.",
+      "uncertainty": "ASIC1–8 and BOARD1–4 are logical slots; the actual stimulation-chip, non-stimulation board, clock and SPI-sharing groups are not mapped end to end.",
+      "closure": "Produce matching ASIC pad → carrier → routing board → mezzanine → FPGA tables, with direction and shared-net loading; review both mating sides.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U04",
+      "title": "Inactive states during startup and faults",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "ASIC designer + power/FPGA design",
+      "known": "PUDC_B is pulled high; the templates disable bias on unused pins after configuration.",
+      "uncertainty": "Required reset/stimulation levels, drive ownership and safe behavior before configuration, on brownout and during reprogramming are unspecified.",
+      "closure": "Approve a state table for every shared control and power state, implement required bias/interlocks, and test power-order and configuration-failure cases.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md",
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U05",
+      "title": "ASIC-board power and return paths",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "ASIC/routing power designer + system power design",
+      "known": "The 120 numbered mezzanine contacts contain 117 signals plus three reserves; ground blades are separate.",
+      "uncertainty": "ASIC analog/digital/stimulation supplies, their source, return currents and any separate power connector are not allocated in this interface. The FPGA 1.5 V I/O rail is not an approved ASIC power supply.",
+      "closure": "Define the complete assembly power tree and current budget; specify which board supplies every ASIC rail and its return, including powered-off cases.",
+      "evidence": [
+        "Power_Link_Uncertainties.md",
+        "CAD_Mechanical_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U06",
+      "title": "Exact FPGA ordering code",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA electrical design + procurement",
+      "known": "XC7A100T in 15 × 15 mm CSG324 is selected; the proposed core supply is approximately 1.0 V.",
+      "uncertainty": "Speed and temperature grades are unselected. A low-voltage -1LI device is not interchangeable with the present core supply, and link timing depends on grade.",
+      "closure": "Freeze the full purchasable order code, check every supply limit and timing target, and use that exact part in the Vivado project and BOM.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U07",
+      "title": "Legal FPGA pin and clock allocation",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA hardware + timing design",
+      "known": "The 324-pin inventory matches AMD; 150 pads are in the 1.5 V banks, with 12 P-side clock groups and four complete bank-16 differential pairs.",
+      "uncertainty": "Capacity does not prove placement legality. The 117 application nets, eight link pads and eight returned-clock domains have no implemented pin/timing allocation.",
+      "closure": "Create complete XDC and HDL, check bank voltages and clock regions, constrain all interfaces and CDC, and obtain clean implementation/timing reports for the selected device.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U08",
+      "title": "Mezzanine mating and complete assembly fit",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "Routing/FPGA mechanical design + connector manufacturer",
+      "known": "Two QSH-030-01-L-D-A candidates fit the 40 × 36 mm 2D study; QTH mates use a different land pattern.",
+      "uncertainty": "Mating-board orientation, contact numbering, tolerance, board separation, component heights and support/fastening are unqualified. The documented H-dimension ambiguity remains open.",
+      "closure": "Resolve the manufacturer drawing ambiguity; build both mating PCB footprints with exact order codes, check pin-1 continuity and full 3D/tolerance/assembly clearance.",
+      "evidence": [
+        "CAD_Mechanical_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U09",
+      "title": "Micro-HDMI part, edge and cable construction",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "Connector/cable + PCB mechanical design",
+      "known": "J4 carries a custom non-HDMI interface. Its saved edge datum is 0.70 mm inside the actual board edge.",
+      "uncertainty": "Exact order code, plug fit, approved copper-edge clearance, wire mapping, shield/return construction, current rating and cable length qualification are not frozen.",
+      "closure": "Choose a specific connector and custom cable; reconcile its current drawing with the PCB edge, verify continuity/orientation, mating access and loaded cable behavior.",
+      "evidence": [
+        "CAD_Mechanical_Uncertainties.md",
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "Actual FPGA power and temperature",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA power/thermal design",
+      "known": "The rail allocations and tolerance calculations are provisional; no workload-based power estimate or assembled-board measurement exists.",
+      "uncertainty": "Worst-case rail current, converter efficiency/stability, voltage droop and device/inductor temperature are unknown at the real acquisition workload and operating environment.",
+      "closure": "Complete a workload/activity-based power model, allocate rail margins and capacitor bias/temperature effects, then test load steps, rails and thermal rise on the completed assembly.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "Power-entry protection and power ordering",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "Carrier and FPGA power design",
+      "known": "Protected 12 V, 0.60 A continuous and a cable up to 0.30 m are design proposals; the proposed protection and damping are not installed.",
+      "uncertainty": "Source tolerances, inrush, current limiting, hot-plug overshoot, ESD, shutdown order and back-powering across independently powered boards are unqualified.",
+      "closure": "Implement a complete protected source/entry and power-state design with actual cable/load values, then verify startup, faults, cable events and power loss against component limits.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "XEM8310 contacts and voltage/ready contract",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "Receiver carrier + receiver firmware",
+      "known": "XEM8310 is an FPGA/USB receiver module. Bank64 VIO1 defaults to 1.0 V; BOARD_READY is initialization status, not continuous rail monitoring.",
+      "uncertainty": "Exact module contacts, bank selection, stored VIO settings, target-JTAG GPIOs and startup/loss-of-power interlock are not implemented.",
+      "closure": "Freeze the carrier schematic and pin map; verify stored voltages and compatible I/O standards, explicit training/readiness and behavior through reconfiguration and power loss.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "LVDS and JTAG electrical margins",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA/receiver signal-integrity design",
+      "known": "A direct DC LVDS connection lacks guaranteed positive ground-offset allowance at published corners; this is not proof every cable fails.",
+      "uncertainty": "Receiver bias/termination or AC coupling, per-lane balance, return-path offset, jitter/skew and static JTAG levels/timing are not qualified.",
+      "closure": "Choose and implement the receiver network and JTAG voltage scheme; analyze worst-case levels and transients, then measure link eye/error margin and JTAG over the actual cable.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "Data packing, USB boundaries and control protocol",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA/receiver/host firmware",
+      "known": "Three proposed 800 Mbit/s lanes provide 240 MB/s after 8b/10b; packed 12-bit samples fit the arithmetic budget, 16-bit sample padding does not.",
+      "uncertainty": "Lane alignment, independently balanced encoding, complete frame/CRC metadata, USB word/transfer boundaries, commands and remote-programming behavior have no implemented contract. The proposed 6,165-byte frame does not meet the 32-bit word / 16-byte USB transfer boundaries by itself.",
+      "closure": "Specify continuous repacking or padding/aggregation, byte/channel order, lane training and command handling; simulate and verify the exact wire-to-USB-to-file format.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "Buffering and data loss during host stalls",
+      "status": "open",
+      "first_step": "lab",
+      "proposed_owner": "Receiver memory + host acquisition design",
+      "known": "The proposed four LVDS pairs all travel toward the receiver. USB throttling alone does not stop incoming ASIC data. At the proposed framed rate, a 100 ms no-drain interval needs about 19.27 MB; this is arithmetic, not tested buffering.",
+      "uncertainty": "Allowed host stall, usable buffer depth/bandwidth, any reverse flow control, permission to stop acquisition, and explicit overrun/recovery policy are undefined.",
+      "closure": "Set a bounded stall requirement; size and implement buffering with sustained read/write bandwidth, define loss/backpressure policy, and stress-test a stalled host with sequence/error counters.",
+      "evidence": [
+        "Power_Link_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U16",
+      "title": "Manufacturing process and final minimum size",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "PCB layout + fabricator/assembler",
+      "known": "All three studies have 40 × 36 mm outlines and six copper layers; existing physical checks pass their configured rules.",
+      "uncertainty": "No approved dielectric stackup, impedance, full BGA escape, fabrication/assembly process, final BOM or integrated smallest board exists.",
+      "closure": "Select an achievable fabricator stackup/process, integrate all required circuits/connectors, route and review SI/PI/DFM and assembly tolerances; derive the final outline from that completed design.",
+      "evidence": [
+        "CAD_Mechanical_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U17",
+      "title": "Boot recovery and test access without headers",
+      "status": "open",
+      "first_step": "engineering",
+      "proposed_owner": "FPGA bring-up + test fixture design",
+      "known": "Optional LED, debug headers and test points are removed. The older blink procedure is legacy-only; compact revisions have different configuration voltages.",
+      "uncertainty": "No matching validated build, power-on procedure, fixture access plan or demonstrated flash brownout/reset/recovery exists for either compact revision.",
+      "closure": "Create a revision-specific HDL/XDC/build and test procedure, select supported flash programming, identify accessible existing pads/J4, and verify JTAG, rail ramps, clock and cold-boot recovery.",
+      "evidence": [
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    },
+    {
+      "id": "U18",
+      "title": "Measured full-system operation",
+      "status": "open",
+      "first_step": "bench",
+      "proposed_owner": "System integration + lab validation",
+      "known": "No assembled instance of this design has demonstrated power-up or acquisition; earlier ECP5 tests concern another system.",
+      "uncertainty": "Functional correctness, all-channel mapping, sustained throughput to disk, error rate, thermal margin and repeatable recovery remain unmeasured. The intended PC/storage and required recording duration are not fixed; compact framing produces about 693.56 GB/hour before storage overhead.",
+      "closure": "After engineering closure, run a documented prototype acceptance plan with known channel patterns and real ASIC data, power cycling, fault recovery and sustained disk capture with error counters.",
+      "evidence": [
+        "Power_Link_Uncertainties.md",
+        "ASIC_Boot_Uncertainties.md"
+      ]
+    }
+  ],
+  "known_gaps": [
+    {
+      "id": "G01",
+      "title": "No single integrated full-board design",
+      "detail": "The core, rail revision and mezzanine fit are separate. Integrate the selected rails, both mezzanines and required headboard circuitry into one complete headboard schematic/PCB; provide a matching separate carrier/cable interface design."
+    },
+    {
+      "id": "G02",
+      "title": "Application pins are unassigned",
+      "detail": "Both schematics have 203 unassigned FPGA user I/O and eight unassigned J4 data contacts. The mezzanine study has 120 unassigned numbered contacts; the 117 signal CSV is only a proposal."
+    },
+    {
+      "id": "G03",
+      "title": "Assigned copper is unfinished",
+      "detail": "Third-pass native DRC records 139 missing items in the core, 347 in the rail revision and 383 in the placement study. These counts exclude unassigned application signals."
+    },
+    {
+      "id": "G04",
+      "title": "Full firmware and receiver are not implemented",
+      "detail": "No complete application HDL/XDC, carrier, packet/USB path or matched compact-board build has been validated."
+    },
+    {
+      "id": "G05",
+      "title": "Manufacturing outputs are not released",
+      "detail": "The exact BOM, stackup, Gerbers, drills and assembly files have not been released from one completed reviewed design."
+    },
+    {
+      "id": "G06",
+      "title": "Prototype acceptance has not happened",
+      "detail": "No operating hardware evidence exists for these compact revisions. File checks and repeated reviews cannot replace measured acceptance."
+    }
+  ],
+  "external_inputs": [
+    {
+      "title": "Actual ASIC and mating-board specification",
+      "needed": "ASIC revision and pad limits, timing/sample/control protocol and inactive states; physical eight-chip/group map; actual routing-board power and mating CAD. A designer-approved document or marked-up schematic can supply these together.",
+      "owner": "ASIC/carrier/routing designers"
+    },
+    {
+      "title": "Operating and recording requirements",
+      "needed": "Required acquisition/stimulation modes and command latency, maximum ambient/enclosure, intended recording duration, and permitted behavior when the PC stalls or disconnects. The actual PC/USB/storage is needed for final qualification.",
+      "owner": "System/lab owner; engineering can continue with explicit provisional targets"
+    },
+    {
+      "title": "Already-purchased parts, only if applicable",
+      "needed": "Exact FPGA marking/order code if already purchased or mandated; otherwise engineering can select and qualify the standard-voltage part.",
+      "owner": "Procurement / Howard if already purchased"
+    }
+  ],
+  "engineering_delegated": "Power setup, exact pin choices, cable/component selection, receiver circuitry and firmware remain engineering tasks; the user is not being asked to design them."
+}

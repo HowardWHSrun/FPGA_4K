@@ -1,5 +1,14 @@
 (async () => {
   'use strict';
+  const uncertaintyItems = [...document.querySelectorAll('[data-uncertainty-step]')];
+  const filterButtons = [...document.querySelectorAll('[data-uncertainty-filter]')];
+  for (const button of filterButtons) button.addEventListener('click', () => {
+    const filter = button.dataset.uncertaintyFilter;
+    for (const item of uncertaintyItems) item.hidden = filter !== 'all' && item.dataset.uncertaintyStep !== filter;
+    for (const candidate of filterButtons) candidate.setAttribute('aria-pressed', String(candidate === button));
+    const shown = uncertaintyItems.filter(item => !item.hidden).length;
+    document.querySelector('#uncertainty-count').textContent = `Showing ${shown} of ${uncertaintyItems.length} uncertainties.`;
+  });
   try {
     const response = await fetch('review-data.json', {cache: 'no-cache'});
     if (!response.ok) throw new Error('Snapshot data HTTP ' + response.status);

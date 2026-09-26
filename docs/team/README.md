@@ -5,7 +5,8 @@ This repository is the shared working location for PCB design, interface decisio
 | I want to… | Open |
 |---|---|
 | Get the files and make a change | [Setup and daily workflow](../../CONTRIBUTING.md) |
-| Open the active FPGA CAD | [FPGA working draft](../../hardware/fpga-board/README.md) |
+| Compare the current FPGA CAD checkpoints | [100T core, rail revision and mezzanine fit](../../presentation/fpga/index.html) |
+| See what must be resolved | [Fourth-review uncertainties](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) |
 | Find who owns a board or a decision | [Owners and open work](owners-and-work.md) |
 | Propose a task or claim layout work | [New PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) |
 | Record a pinout, power or protocol decision | [Interface decision template](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) |
@@ -25,4 +26,4 @@ Use one approving review and the `documentation` repository check for `main`; bl
 3. Each teammate clones and opens the project successfully with the agreed KiCad version.
 4. Put the next concrete task in an issue. Run one small change through branch, pull request, review and handoff.
 
-There is one integrated FPGA working copy here. The earlier local study is the import source; edits to that external folder will not automatically appear in GitHub. New team work should use the cloned repository project.
+There is no single integrated full-system 100T board yet. The published core, rail revision and mezzanine fit are separate review snapshots. Record the chosen starting revision and source hashes before integrating changes into a named development folder; do not combine their BOMs or copper by filename alone. The current website is published from `presentation`; the September 21 import under `hardware/fpga-board/` remains historical.

@@ -1,5 +1,7 @@
 # Third independent review — 100T FPGA board
 
+**Current action list:** [Fourth review](Fourth_Check_Review.md) and [uncertainty register](fourth_check/Uncertainty_Register.md). This third-pass record retains the original native-check scope; later source continuity and the pad-flag correction are documented separately.
+
 2026-09-26. **Review completed; manufacturing release remains closed.** Three independent review tracks checked package/boot, electrical assumptions, and native CAD. This is an audit of design files and public component specifications, not measured hardware operation. No source PCB, schematic, footprint geometry or fabrication rule was changed during this pass.
 
 ## What passed

@@ -16,7 +16,7 @@ Run from the repository root with Python 3.9+ and Git. This offline check verifi
 
 ## Scope and writing
 
-- Keep the collection focused on shared project materials. The user has expanded scope to team PCB development: the active FPGA working draft is in `hardware/fpga-board/`. Follow `CONTRIBUTING.md` and `docs/team/owners-and-work.md`. Unrelated personal studies and discarded experiments remain outside it.
+- Keep the collection focused on shared project materials. The user has expanded scope to team PCB development: the current 100T review is in `presentation/fpga/`, with separate snapshots in `hardware/fpga-100t-review/` and `hardware/fpga-interface-study/`; `hardware/fpga-board/` is the historical September 21 import. Follow `CONTRIBUTING.md` and `docs/team/owners-and-work.md`. Unrelated personal studies and discarded experiments remain outside it.
 - Include actual source files when available; summaries and outside links supplement them. Preserve originals and label faithful representations such as PDF renders and extracted text.
 - Write explanations around the project, interfaces and workstreams. Put source credits in `sources/README.md` and the manifest instead of repeatedly narrating who said each point. Keep names where they identify participants or task owners.
 - Do not invent a finalized device, connector protocol, board size, BOM or implementation status. Dated meeting content remains dated; reported activity is not a measurement.
