@@ -4,6 +4,8 @@
 
 28 slides. Text is extracted from each original slide and its matching PDF page. Image-only labels, equations, waveforms and graphical relationships may be absent or reordered: inspect the original slide/PDF for timing and pin interpretation. Slide number means the presentation page, not a new specification revision. The 4,096-channel system is the later eight-chip plan.
 
+**Visual review, 26 September:** [Gerald ASIC slide findings](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) document the interleaved recording format, SPI suffix and stimulation sequence, plus conflicting stimulation timing and duplicated channel labels. The nominal 1.5 V supply rows extracted from slides 3/4 are hidden by an overlay in the visible slide. Extracted text is not a guaranteed pad specification. The original slide text below is preserved.
+
 ## Slide 1
 
 ### PowerPoint text

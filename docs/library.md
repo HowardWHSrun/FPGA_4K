@@ -65,6 +65,8 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 ## FPGA board-level presentation
 
+[Zoomable native KiCad viewer](../presentation/fpga/viewer/index.html) includes the current core, separate rail revision and mezzanine placement. Front/back views and the interactive viewer are also available in the current review's main PCB panel. [Gerald's complete slide review](../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) narrows the protocol questions and records contradictory stimulation timing and channel labels; all 18 full-scope uncertainties remain open.
+
 [Current 100T engineering review](../presentation/fpga/index.html) · [Complete native project ZIP](../hardware/fpga-100t-review/FPGA100T_Review_Project.zip) · [Schematic PDF](../hardware/fpga-100t-review/output/FPGA100T_Minimal_Schematic.pdf) · [Validation / artifact manifest](../hardware/fpga-100t-review/manifest.json) · [Refresh guide](../presentation/fpga/README.md).
 
 The release scope is the full FPGA board with all 117 ASIC signals and the XEM8310 link. The published 40 × 36 mm design is a core snapshot with incomplete copper, not a fabrication release or demonstrated system. Two 60-pin mezzanines are the current connector direction; the proposed Samtec implementation and final connector-inclusive outline require validation. Native checks and remaining work are shown separately. [The interface-study package](../hardware/fpga-interface-study/README.md) adds an unrouted two-mezzanine placement candidate, proposed contact CSV, manufacturer footprint review, AC_IN/IMP_TST research and the full-system link/power proposal.

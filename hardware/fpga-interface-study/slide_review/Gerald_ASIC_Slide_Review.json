@@ -1,0 +1,702 @@
+{
+  "date": "2026-09-26",
+  "review_scope": "Read-only full visual and text review of Gerald original 28-slide ASIC interface tutorial; no native CAD changes.",
+  "originals_preserved": true,
+  "source_pdf": "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf",
+  "source_pptx": "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pptx",
+  "source_sha256": {
+    "Chip_FPGA_Interface.pdf": "a8f6088e6d41f1e45fdae16e927656a5af1924d467fa9c2cf128d5bb4750320c",
+    "Chip_FPGA_Interface.pptx": "7f2d6f16144337c9972da8db767505a0fbe06a94ea55ae1a7402121205dd0420"
+  },
+  "coverage": {
+    "rendered_pdf_pages_visually_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "original_pptx_media_inspected": [
+      3,
+      4,
+      15,
+      26,
+      27,
+      28
+    ],
+    "notes": "Original notes contain only slide numbers on four slides, with no supplementary engineering specification. Visible overlays on 3/4 obscure underlying table rows.",
+    "native_cad_changed": false
+  },
+  "facts": [
+    {
+      "id": "S01",
+      "title": "Chip and recording scale",
+      "statement": "The visible deck describes 512 recording channels and 128 stimulation channels per ASIC, with 32 modules of 16 amplifiers and four stimulators, a 12-bit ADC per module, and eight recording DATA outputs per chip.",
+      "slides": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=1",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=5"
+      ],
+      "evidence_kind": "visible text and diagram",
+      "limits": "The deck is about one ASIC and an older acquisition setup; it does not define the later eight-chip board grouping or 117-contact plan.",
+      "uncertainty_ids": [
+        "U02",
+        "U03"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "Recording speed",
+      "statement": "The tutorial states 31.25 kS/s per channel and a 32 MHz clock input. It describes a frame of 1024 returned-clock cycles with one SYNC and 16 READ intervals.",
+      "slides": [
+        3,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=13",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "evidence_kind": "visible text",
+      "limits": "These are nominal functional values, without jitter, duty-cycle, propagation-delay or corner limits.",
+      "uncertainty_ids": [
+        "U02",
+        "U07",
+        "U14"
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "Recording signal directions",
+      "statement": "The FPGA sends CLK32MHz_In, Chip_Reset and FE_RESET to the ASIC. The ASIC transmits CLK32MHz_Out, DATA[1:8], READ and SYNC to the FPGA.",
+      "slides": [
+        13,
+        14
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=13",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14"
+      ],
+      "evidence_kind": "visible text",
+      "limits": "Direction is established functionally for these named classes; it does not establish pad electrical limits or AC_IN/IMP_TST direction.",
+      "uncertainty_ids": [
+        "U01",
+        "U02"
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "Recording multiplexing",
+      "statement": "Each DATA output carries four ADCs, each of which serves 16 amplifiers, giving 64 amplifier channels per serial output. A READ interval carries one amplifier position from each of its four ADCs.",
+      "slides": [
+        5,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=5",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "evidence_kind": "visible text and diagram",
+      "limits": "A complete accepted ASIC-to-electrode/physical-chip map is absent.",
+      "uncertainty_ids": [
+        "U02",
+        "U03"
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "Padding and bit order shown",
+      "statement": "The waveform labels each READ interval as 16 clock cycles of zeros followed by 48 payload cycles. It shows A1<0>, A2<0>, A3<0>, A4<0> through A1<11>, A2<11>, A3<11>, A4<11>, and the final interval A61 through A64. This establishes a diagrammed bit-interleaved, least-significant-index-first candidate stream, not four contiguous 12-bit words.",
+      "slides": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "evidence_kind": "direct diagram read",
+      "limits": "Obtain confirmation of ADC numeric coding, exact frame start, middle-interval order, actual first valid cycle and the interpretation of index 0 as LSB. The matrix contains label defects.",
+      "uncertainty_ids": [
+        "U02",
+        "U03",
+        "U14"
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "Possible capture edge",
+      "statement": "DATA transitions are drawn near rising CLK32MHz_Out edges, with falling edges near the middle of the data cells. Falling-edge capture is therefore suggested by the drawing.",
+      "slides": [
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "evidence_kind": "diagram-derived inference",
+      "limits": "The schematic waveform is not a setup/hold specification and cannot determine final input-delay constraints or guaranteed sampling phase.",
+      "uncertainty_ids": [
+        "U02",
+        "U07"
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "Clock and payload arithmetic",
+      "statement": "At 32 MHz, 1024 clocks are 32 microseconds and 64 clocks are 2 microseconds. Four 12-bit samples occupy 48 of 64 clocks. Across eight ASICs the raw 64 DATA wires carry 2.048 Gbit/s, while packed 12-bit sample payload is 1.536 Gbit/s (192 MB/s).",
+      "slides": [
+        3,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "evidence_kind": "arithmetic from tutorial and later eight-ASIC requirement",
+      "limits": "These are decimal rates before downstream metadata/encoding and require removal of the tutorial padding. They do not prove FPGA/link/USB performance.",
+      "uncertainty_ids": [
+        "U02",
+        "U14",
+        "U18"
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "Reset functions",
+      "statement": "Chip_Reset resets the chip to a known state; FE_RESET resets the front-end amplifiers. The recording table lists reset time below 1.5 ms.",
+      "slides": [
+        3,
+        4,
+        11,
+        13,
+        14
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=11",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=13",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14"
+      ],
+      "evidence_kind": "visible text",
+      "limits": "The deck does not specify reset assertion polarity, minimum pulse width, relationship to clocks/rails, or what the table reset-time measurement covers. Do not convert <1.5 ms into a required digital pulse width.",
+      "uncertainty_ids": [
+        "U04",
+        "U17"
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "SPI wires and destination",
+      "statement": "The FPGA sends programming information over SPI CLK, L, R and LATCH. L and R program stimulators and amplifier gains. The diagram shows clock idle low and a positive LATCH pulse after the transfer.",
+      "slides": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=25",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=26",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=27",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=28"
+      ],
+      "evidence_kind": "visible text and diagram",
+      "limits": "The name SPI does not prove a standard SPI mode. No CPOL/CPHA, maximum frequency, setup/hold, latch width or inactive power-state contract is specified. The drawing changes data and clock together and cannot qualify the sampling edge.",
+      "uncertainty_ids": [
+        "U02",
+        "U04",
+        "U14"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "Chip configuration suffix",
+      "statement": "The slide 26 spreadsheet screenshot states that 12 chip-configuration bits are appended to the DR stream. It gives four 3-bit fields in transmission order DR_DAC[3:1], AR_DAC[3:1], Gain_Right[3:1], Gain_Left[3:1], with bit 3 as MSB, bit 1 as LSB, and DR_DAC bit 3 sent first.",
+      "slides": [
+        26
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=26"
+      ],
+      "evidence_kind": "direct embedded screenshot read",
+      "limits": "This supports the shown chip suffix, not an approved complete serializer. AR_DAC/DR_DAC electrical functions and allowed settings are not described. It does not specify how DL is padded during the DR-only suffix.",
+      "uncertainty_ids": [
+        "U02",
+        "U14"
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "SPI length evidence",
+      "statement": "The visible stream screenshot reaches final bit_index 2124, with blank rows below it. The stimulus configuration screenshot has separate DL_Config and DR_Config tabs, 64-channel configuration, ENABLED, four EDGE fields, CATHODIC_AMP, ANODIC_AMP and POLARITY.",
+      "slides": [
+        26
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=26"
+      ],
+      "evidence_kind": "direct embedded screenshot read",
+      "limits": "2124 = 64 × 33 + 12 is consistent with four 6-bit edges, two 4-bit amplitudes, one polarity bit and a 12-bit suffix, but the complete stimulus packing order, enabled treatment, left/right lengths and compatibility with the present ASIC revision are not proven. The actual workbook/generator is needed.",
+      "uncertainty_ids": [
+        "U02",
+        "U04",
+        "U14"
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "Stimulation capability",
+      "statement": "The tutorial describes biphasic monopolar/bipolar stimulation, passive charge balancing, 128 stimulators (64 left and 64 right), four-bit current magnitude up to approximately 22.5 microamps in approximately 1.5-microamp steps, and ±10 V compliance.",
+      "slides": [
+        4,
+        18,
+        19,
+        20
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=18",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=19",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=20"
+      ],
+      "evidence_kind": "visible text and diagrams",
+      "limits": "Compliance voltage is not a logic-pin voltage rating or a power-rail wiring prescription. The plot is an example, not a guaranteed current-versus-code corner specification.",
+      "uncertainty_ids": [
+        "U01",
+        "U05"
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Stimulation waveform fields",
+      "statement": "The waveform diagram labels four EDGE[6:1] times and ANODIC[4:1]/CATHODIC[4:1] magnitudes. GUI screenshots permit either initial polarity and multiple stimulator selections. The tutorial GUI permits pulse counts 1–254.",
+      "slides": [
+        18,
+        21,
+        22,
+        23,
+        24
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=18",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=21",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=22",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=23",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=24"
+      ],
+      "evidence_kind": "visible text and screenshots",
+      "limits": "GUI limits do not establish hardware counter capacity, a clinical safety envelope, or behavior outside the shown sequence.",
+      "uncertainty_ids": [
+        "U02",
+        "U04",
+        "U14"
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "Stimulation sequencing",
+      "statement": "After loading SPI, the tutorial asserts STIM_EN, sends a short STIM_START pulse, and asserts STIM_CHB after 64 STIM_CLK cycles. Diagrams draw STIM_EN, STIM_START and STIM_CHB as positive-going controls; STIM_CHB is shown for 1 ms.",
+      "slides": [
+        27,
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=27",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=28"
+      ],
+      "evidence_kind": "visible text and diagrams",
+      "limits": "These are operating-sequence examples. They do not establish default/fail-safe states, exact pulse widths, minimum charge-balancing time, interaction with resets, or what is safe when either board is off. Timing values conflict elsewhere in the deck.",
+      "uncertainty_ids": [
+        "U02",
+        "U04",
+        "U14"
+      ]
+    },
+    {
+      "id": "S15",
+      "title": "Changing stimulation patterns",
+      "statement": "Slide 28 describes loading different SPI sequences for successive stimulation cycles while showing a 5 ms interval between starts.",
+      "slides": [
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=28"
+      ],
+      "evidence_kind": "visible text and diagram",
+      "limits": "Exact transfer/latch deadline, update atomicity, control-command latency and allowed interaction with ongoing stimulation are unspecified.",
+      "uncertainty_ids": [
+        "U02",
+        "U04",
+        "U14"
+      ]
+    },
+    {
+      "id": "S16",
+      "title": "Recording power estimate",
+      "statement": "Slide 7 reports approximately 17.24 microwatts per recording channel, excluding external LDOs. For 512 channels this is approximately 8.827 mW; for 4096 channels approximately 70.615 mW. The recording table also states less than 20 microwatts per channel.",
+      "slides": [
+        3,
+        4,
+        7
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=7"
+      ],
+      "evidence_kind": "visible text plus arithmetic",
+      "limits": "This is an ASIC recording estimate only. It does not size FPGA rails, high-voltage stimulation power, board losses, clock/line loads, worst-case current, current transients or complete eight-chip system power.",
+      "uncertainty_ids": [
+        "U05",
+        "U10"
+      ]
+    },
+    {
+      "id": "S17",
+      "title": "Embedded nominal supply value",
+      "statement": "The underlying specification table preserved in the original PPTX/PDF text includes 1.5 V supply, TSMC 180 nm BCD process and 8.1 × 7 mm die. The die size is also visible on slide 1. White overlays hide the supply/process rows in the normal slide 3/4 render.",
+      "slides": [
+        1,
+        3,
+        4
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=1",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4"
+      ],
+      "evidence_kind": "underlying embedded table text; partly covered in rendered slide",
+      "limits": "The nominal 1.5 V value is not a guaranteed VIH/VIL/VOH/VOL or absolute-maximum table, and does not establish analog/stimulation rail details. This row should not be presented as if visibly stated on slide 4.",
+      "uncertainty_ids": [
+        "U01",
+        "U05"
+      ]
+    },
+    {
+      "id": "S18",
+      "title": "AC_IN and IMP_TST coverage",
+      "statement": "Neither AC_IN nor IMP_TST is defined in the 28 slides, visible diagrams, extracted text or speaker notes. The deck gives no electrical specification or test sequence for these two signals.",
+      "slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=1",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=2",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=5",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=6",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=7",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=8",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=9",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=10",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=11",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=12",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=13",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=14",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=18",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=19",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=20",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=21",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=22",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=23",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=24",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=25",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=26",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=27",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=28"
+      ],
+      "evidence_kind": "negative result from full-deck visual/text review",
+      "limits": "Keep the earlier carrier/legacy FPGA netlist evidence separate; it cannot fill the absent ASIC pin-function specification.",
+      "uncertainty_ids": [
+        "U01",
+        "U04"
+      ]
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "C01",
+      "title": "Stimulation clock/time values disagree",
+      "slides": [
+        4,
+        18,
+        21,
+        22,
+        23,
+        24,
+        27,
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=18",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=21",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=27"
+      ],
+      "details": [
+        "Slide 4 says 31.25 microseconds temporal resolution, corresponding to 32 kHz.",
+        "Slide 18 says 64 clock cycles = 2 ms, also corresponding to 32 kHz.",
+        "The GUI in slides 21–24 computes each edge step as 32 microseconds, corresponding to 31.25 kHz and 2.048 ms for 64 steps.",
+        "Slides 27–28 label STIM_CLK as 60 kHz, for which 64 clocks last approximately 1.067 ms."
+      ],
+      "impact": "Do not select a stimulation clock or pulse duration from these inconsistent values. Ask for the current intended STIM_CLK and event timing."
+    },
+    {
+      "id": "C02",
+      "title": "Frequency boundary differs from example",
+      "slides": [
+        4,
+        27,
+        28
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=4",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=27",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=28"
+      ],
+      "details": [
+        "Slide 4 gives stimulation frequency <200 Hz.",
+        "Slides 27–28 show 5 ms between starts, which equals 200 Hz."
+      ],
+      "impact": "The accepted repetition-rate limit and boundary conditions need confirmation."
+    },
+    {
+      "id": "C03",
+      "title": "Channel matrix has duplicated and missing labels",
+      "slides": [
+        15,
+        16,
+        17
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=15",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=16",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=17"
+      ],
+      "details": [
+        "In the DATA1 matrix, ADC2 top row repeats A57 and A49 from ADC1.",
+        "ADC3 top-left cell reads A58.",
+        "Across the displayed 64 entries, A49 and A57 occur twice, and A50 and A59 are absent.",
+        "Regular numbering suggests ADC2 top-left values A58/A50 and ADC3 top-left A59, but these are inferred corrections, not accepted channel mapping."
+      ],
+      "impact": "Use the first/last interval waveform to build a proposed decoder, but obtain a corrected complete channel/electrode map before claiming channel identity."
+    },
+    {
+      "id": "C04",
+      "title": "Gain range differs slightly",
+      "slides": [
+        3,
+        4,
+        6,
+        7
+      ],
+      "source_links": [
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=3",
+        "https://howardwhsrun.github.io/FPGA_4K/sources/slides/Chip_FPGA_Interface.pdf#page=6"
+      ],
+      "details": [
+        "Slides 3–4 show gain 110–700 V/V.",
+        "Slides 6–7 show gain 100–700 V/V."
+      ],
+      "impact": "Request the gain-code calibration table if conversion to input volts is required; do not treat either lower endpoint as an exact code map."
+    }
+  ],
+  "proposed_uncertainty_updates": {
+    "U01": {
+      "known": "Functional directions are shown for recording clocks, DATA/READ/SYNC and the named reset/SPI/stimulation controls. Underlying table reports a nominal 1.5 V supply.",
+      "uncertainty": "Guaranteed electrical limits and all power-state behavior remain absent. AC_IN/IMP_TST functions/directions remain unknown.",
+      "status": "open"
+    },
+    "U02": {
+      "known": "32 MHz recording, 1024 clocks/frame, 16 READ intervals, 16 zero clocks + 48 payload clocks/interval, and bit-interleaved A1–A4, bit 0 through bit 11 order are shown. A 12-bit DR configuration suffix and screenshot ending at 2124 bits are available.",
+      "uncertainty": "Need actual timing limits/capture phase/ADC coding, complete corrected channel map, full SPI serialization/workbook and stimulation timing correction. Pause/restart behavior remains unknown.",
+      "status": "open"
+    },
+    "U03": {
+      "known": "The tutorial describes one ASIC as 32 modules with 8 serial outputs. A DATA1 map is illustrated.",
+      "uncertainty": "The matrix contains duplicate/missing channel labels; physical eight-chip/board/shared-clock/shared-SPI grouping remains unspecified.",
+      "status": "open"
+    },
+    "U04": {
+      "known": "Tutorial sequence is SPI load, assert STIM_EN, pulse STIM_START, then STIM_CHB after 64 STIM_CLK cycles; diagrams show positive-going controls. Reset functions are described.",
+      "uncertainty": "Reset polarity/width and power-on/fault states remain unprovided. Tutorial low levels between pulses do not approve power-on pulls or brownout behavior.",
+      "status": "open"
+    },
+    "U05": {
+      "known": "Recording ASIC estimate 17.24 µW/channel excludes LDOs; stimulation compliance is ±10 V; underlying table lists 1.5 V nominal.",
+      "uncertainty": "No complete analog/digital/stimulation supply tree, per-rail currents or board return allocation.",
+      "status": "open"
+    },
+    "U07": {
+      "known": "Eight ASIC returned clock domains correspond to the tutorial output clock; 32 MHz nominal is source-supported.",
+      "uncertainty": "No guaranteed input timing or complete XDC/pin allocation. Diagram-suggested falling-edge capture needs confirmation and implementation timing.",
+      "status": "open"
+    },
+    "U10": {
+      "known": "ASIC recording-only estimate can inform the assembly budget; 4096 × 17.24 µW ≈ 70.615 mW.",
+      "uncertainty": "This does not change unqualified FPGA workload power, FPGA converter margins or complete assembly thermal budget.",
+      "status": "open"
+    },
+    "U14": {
+      "known": "ASIC wire stream includes 25 percent padding clocks. Its shown 12-bit payload needs deinterleaving, then downstream packing. SPI suffix field order is available.",
+      "uncertainty": "ADC numeric coding, full SPI packing, stimulation timing and the complete command/USB/frame contract remain open. No firmware implementation is established.",
+      "status": "open"
+    },
+    "U15": {
+      "known": "The deck associates start-recording with the FPGA clock sent to ASIC.",
+      "uncertainty": "It does not specify whether stopping that clock is permitted as lossless backpressure or how to resume channel alignment.",
+      "status": "open"
+    },
+    "U17": {
+      "known": "Chip_Reset and FE_RESET functions are explained; a <1.5 ms reset-time entry is present.",
+      "uncertainty": "No reset pulse/sequence or compact-board bring-up is defined by the deck.",
+      "status": "open"
+    },
+    "U18": {
+      "known": "The deck shows earlier ASIC/GUI examples and nominal data/power performance.",
+      "uncertainty": "This supplies no operating evidence for the compact Artix-7 board, eight-chip capture, XEM8310 link or sustained disk recording.",
+      "status": "open"
+    }
+  },
+  "uncertainties_unaffected": [
+    "U06",
+    "U08",
+    "U09",
+    "U11",
+    "U12",
+    "U13",
+    "U16"
+  ],
+  "uncertainties_closed": [],
+  "team_questions": [
+    {
+      "owner": "Gerald / ASIC designer",
+      "question": "Please confirm the current STIM_CLK frequency and edge-time unit: the deck gives 31.25 µs, 32 µs, and 60 kHz. Is 200 Hz permitted, and what STIM_START/CHB timing is required?",
+      "refs": [
+        "C01",
+        "C02",
+        "S14"
+      ]
+    },
+    {
+      "owner": "Gerald / acquisition firmware",
+      "question": "Please share the current SPI workbook/generator and corrected full channel map. Slide 26 gives the 12-bit DR suffix and 2124-bit example; we still need the 33-bit stimulus packing, ENABLED treatment, left/right suffix behavior, ADC numeric coding and corrected A49/A57 duplicates.",
+      "refs": [
+        "S05",
+        "S10",
+        "S11",
+        "C03"
+      ]
+    },
+    {
+      "owner": "ASIC designer / carrier designer",
+      "question": "Please provide a versioned pad/timing table, including AC_IN and IMP_TST, reset polarity/width, input/output limits, clock/data delay and power-on/off states. Can acquisition clocking pause and restart without losing framing?",
+      "refs": [
+        "S03",
+        "S06",
+        "S08",
+        "S18"
+      ]
+    },
+    {
+      "owner": "ASIC/routing designer",
+      "question": "Please map the actual eight chips and shared clock/SPI/reset groups to the routing-board contacts, and identify who supplies every ASIC analog/digital/stimulation rail and its return.",
+      "refs": [
+        "S01",
+        "S04",
+        "S12",
+        "S16",
+        "S17"
+      ]
+    }
+  ]
+}

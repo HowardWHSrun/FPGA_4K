@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zoom, pan, select parts and inspect layers in the original KiCad 100T PCB files. Separate engineering checkpoints, not fabrication releases.">
+  <title>Interactive PCB · FPGA 4K</title>
+  <link rel="icon" href="../review-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="viewer.css">
+  <link rel="stylesheet" href="vendor/fonts.css">
+  <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <a class="brand" href="../">FPGA 4K <span>/ native PCB viewer</span></a>
+    <a href="../#uncertainties">Review &amp; open questions</a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="heading"><h1 id="page-title">Explore the PCB</h1><span class="badge">Engineering review only</span></div>
+      <p>Zoom into the actual KiCad board, select components, and turn layers on or off. These are three separate design checkpoints.</p>
+      <label class="board-label" for="board-choice">Board to view</label>
+      <select id="board-choice"><option value="core">Current core · most routed</option><option value="rail">Rail revision · separate proposal</option><option value="mezzanine">Mezzanine fit · placement only</option></select>
+      <p id="board-description" class="description">Loading the current board details…</p>
+    </section>
+    <section id="viewer-shell" aria-label="Interactive PCB">
+      <div class="toolbar" role="toolbar" aria-label="PCB view controls">
+        <button id="fit" type="button" data-needs-board disabled>Fit board</button>
+        <button id="zoom-in" type="button" data-needs-board disabled aria-label="Zoom in">+</button>
+        <button id="zoom-out" type="button" data-needs-board disabled aria-label="Zoom out">−</button>
+        <button id="flip" type="button" data-needs-board disabled>Flip board</button>
+        <button id="layers" type="button" data-needs-board disabled>Layers</button>
+        <button id="parts" type="button" data-needs-board disabled>Parts</button>
+        <button id="nets" type="button" data-needs-board disabled>Nets</button>
+        <button id="fullscreen" type="button">Full screen</button>
+        <a id="standalone" href="./" target="_blank" rel="noopener">Open full viewer ↗</a>
+      </div>
+      <div id="canvas-host" aria-busy="true"><p class="waiting">Loading the native KiCad board…</p></div>
+      <div class="status-row"><span id="load-status" role="status" aria-live="polite">Starting viewer…</span><span class="review-label">Not for manufacture</span></div>
+    </section>
+    <div id="load-error" role="alert" hidden></div>
+    <nav class="downloads" aria-label="Board files">
+      <a id="native-file" href="../../../hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb" download>Download native PCB</a>
+      <a id="project-zip" href="../../../hardware/fpga-100t-review/FPGA100T_Review_Project.zip">Complete KiCad project ZIP</a>
+      <a id="github-file" href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb">View source on GitHub</a>
+      <a id="static-view" href="../../../hardware/fpga-100t-review/output/FPGA100T_Minimal_PCB.svg">Static vector view</a>
+    </nav>
+    <section class="help" aria-label="Viewer help">
+      <p><strong>Move around:</strong> Ctrl + scroll to zoom; drag with the middle or right mouse button to pan. Use the + / − buttons on touch screens. <strong>Inspect:</strong> click a part, then use Parts, Nets or Layers. The initial view shows front copper and silkscreen; Layers includes front, back and all-layer presets. “Flip board” mirrors the view; “Fit board” returns to the whole outline.</p>
+      <p>This browser view reads unchanged native PCB files. KiCanvas is an alpha viewer and does not implement every KiCad 10 feature; the original KiCad project remains the authority for dimensions, connectivity and manufacturing checks. The viewer does not display missing connections as a fabrication verdict.</p>
+      <details><summary>File identity and viewer provenance</summary><p id="identity"></p><p><a href="boards.json">Board hashes and expected native counts</a> · <a href="README.md">Viewer notes and known limitations</a> · <a href="vendor/manifest.json">Bundled viewer version and hashes</a> · <a href="vendor/LICENSE.md">KiCanvas license and credits</a></p></details>
+    </section>
+    <noscript><p class="no-js">Enable JavaScript to inspect layers interactively. You can still use the native PCB, project ZIP and static vector links above.</p></noscript>
+  </main>
+  <footer>Powered by <a href="https://kicanvas.org/">KiCanvas</a> by Thea Flowers. Viewer assets are served from this repository.</footer>
+</body>
+</html>

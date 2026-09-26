@@ -6,6 +6,7 @@ on:
       - index.html
       - presentation/fpga/**
       - scripts/check_fpga_presentation.mjs
+      - scripts/check_fpga_viewer.mjs
       - scripts/check_fpga_review.py
       - hardware/fpga-100t-review/**
       - hardware/fpga-interface-study/**
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v6
       - name: Validate syntax and source integrity
@@ -28,8 +29,11 @@ jobs:
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
           node --check presentation/fpga/review.js
+          node --check presentation/fpga/review-board.js
+          node --check presentation/fpga/viewer/viewer.js
           python3 scripts/check_fpga_review.py
           node --check scripts/check_fpga_presentation.mjs
+          node --check scripts/check_fpga_viewer.mjs
           python3 scripts/check_docs.py
           python3 scripts/check_hardware.py
           git diff --check
@@ -38,7 +42,7 @@ jobs:
           python3 - <<'PY'
           import os,time,urllib.request
           from pathlib import Path
-          paths=['index.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review.css','presentation/fpga/review-data.json','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
+          paths=['index.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review-board.js','presentation/fpga/review.css','presentation/fpga/review-data.json','presentation/fpga/assets/core-front.svg','presentation/fpga/assets/core-back.svg','presentation/fpga/viewer/index.html','presentation/fpga/viewer/viewer.js','presentation/fpga/viewer/boards.json','presentation/fpga/viewer/vendor/kicanvas.js','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
           for attempt in range(18):
               try:
                   for p in paths:
@@ -57,6 +61,7 @@ jobs:
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           node scripts/check_fpga_presentation.mjs
+          VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

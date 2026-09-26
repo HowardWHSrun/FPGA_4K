@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
 import zipfile
+from urllib.parse import urlsplit, unquote
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / 'hardware/fpga-100t-review'
 
@@ -41,6 +42,13 @@ def main():
     for name in re.findall(r'\(property "Sheetfile" "([^"]+)"', root):
         assert (PACKAGE / 'hardware' / name).exists(), name
     ET.parse(PACKAGE / 'reports/FPGA100T_Minimal.net')
+    views = ROOT / 'presentation/fpga/assets'
+    provenance = json.loads((views / 'core-view-provenance.json').read_text())
+    assert provenance['source_sha256'] == sha(board) and provenance['source_unchanged']
+    for side in ['front', 'back']:
+        exported = views / f'core-{side}.svg'
+        assert sha(exported) == provenance['sides'][side]['styled_sha256'], side
+        ET.parse(exported)
     with zipfile.ZipFile(PACKAGE / 'FPGA100T_Review_Project.zip') as archive:
         assert archive.testzip() is None
         names = set(archive.namelist())
@@ -53,7 +61,7 @@ def main():
         assert field in data or field in ['dimensions', 'ignoredCount', 'exclusionCount'], field
     for link in re.findall(r'(?:href|src)="([^"]+)"', html):
         if not link.startswith(('https:', '#')):
-            assert (ROOT / 'presentation/fpga' / link.split('#')[0]).resolve().exists(), link
+            assert (ROOT / 'presentation/fpga' / unquote(urlsplit(link).path)).resolve().exists(), link
     print(f'PASS: {len(manifest["files"])} artifact hashes, exact ZIP contents, {data["schematicPages"]} sheets, local libraries, report/data/PCB snapshot agreement and local links.')
     print('Limit: package coherence only; not ERC/DRC rerun, electrical operation, timing or fabrication approval.')
 

@@ -1,0 +1,106 @@
+{
+  "project": "KiCanvas",
+  "website": "https://kicanvas.org/",
+  "embedding_api": "https://kicanvas.org/embedding/",
+  "retrieved_utc": "2026-09-26",
+  "bundle_source": "https://kicanvas.org/kicanvas/kicanvas.js",
+  "upstream_bundle_sha256": "ca910f25276c3efb9aacb3a5d6341d4d9af4736d4c875fb0440d2cc856865ab7",
+  "upstream_bundle_bytes": 477451,
+  "published_bundle_sha256": "69292f6b07d6d834b7af9424f54423525ce70bb376c39f504ace9ba78eab3440",
+  "published_bundle_bytes": 479109,
+  "upstream_source_snapshot_observed": "b031159eb74aaa7eef2b026fd85d35bc05ff2095",
+  "version_note": "Official unversioned deployed alpha bundle, pinned by SHA-256; source commit is provenance for supplemental assets and is not claimed as the bundle build revision.",
+  "adaptations": [
+    "Removed final Google Fonts link injection; exact equivalent fonts.css and font files are hosted locally.",
+    "Create the sole SVG use icon element with createElementNS and explicit href instead of the upstream template binding, which left a literal $$:0:$$ URL in Chrome; icon geometry is unchanged.",
+    "Added KiCad 10 named-net parser support: quoted pad nets and copper-item net values are indexed in memory before painting; original source PCB bytes remain unchanged. See kicad10-net-compat.js and the reproducible patch script.",
+    "viewer.js points icon sprites_url to the included upstream sprites.svg via the registered custom element.",
+    "No KiCad source file is rewritten or converted."
+  ],
+  "supplemental_files": [
+    {
+      "file": "earcut-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/third_party/earcut/LICENSE",
+      "sha256": "cd661c432ea8243974e6fde6fc433ebee3e96525ca8b66321b9d9971674ede60",
+      "bytes": 738
+    },
+    {
+      "file": "newstroke-AUTHOR.txt",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/third_party/newstroke/AUTHOR.txt",
+      "sha256": "8b6afe4423e76c97b817817e3e0b2b266f496ca7696e71e18c456f0a90e383bb",
+      "bytes": 95
+    },
+    {
+      "file": "newstroke-README.txt",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/third_party/newstroke/README.txt",
+      "sha256": "770c672d06cd7ef1024b8bfbda52d559c4d10edcf9541f2a44042707193ecfcb",
+      "bytes": 957
+    },
+    {
+      "file": "newstroke-THIRD_PARTY_README.md",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/third_party/newstroke/THIRD_PARTY_README.md",
+      "sha256": "3dc143941e615d4d7d2afaab39b27f97627a691aa3a93ca90b1af56340a2ed75",
+      "bytes": 311
+    },
+    {
+      "file": "newstroke-font-header.txt",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/third_party/newstroke/newstroke_font.cpp",
+      "sha256": "006aace776e95a326b84e9422a0c4415dba79c9e5920452a1aeb73b74c0eddf0",
+      "bytes": 7262
+    },
+    {
+      "file": "sprites.svg",
+      "source_url": "https://raw.githubusercontent.com/theacodes/kicanvas/b031159eb74aaa7eef2b026fd85d35bc05ff2095/src/kicanvas/icons/sprites.svg",
+      "sha256": "fba31ccae94104d9222648add9b852ade95c7b3e779d730d67922e7b734f2a53",
+      "bytes": 5741
+    },
+    {
+      "file": "Material-Symbols-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/google/material-design-icons/master/LICENSE",
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "bytes": 11357
+    },
+    {
+      "file": "Nunito-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nunito/OFL.txt",
+      "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "bytes": 4385
+    },
+    {
+      "file": "material-symbols.ttf",
+      "source_url": "https://fonts.gstatic.com/s/materialsymbolsoutlined/v374/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOem.ttf",
+      "sha256": "9fa039fa173f2c2011cf4dc871af4deb6ae76d375fc6238cffcfa618140e5c44",
+      "bytes": 974100
+    },
+    {
+      "file": "nunito-300.ttf",
+      "source_url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDOUhRTM.ttf",
+      "sha256": "3760b7585b52d4beda5f161d0a86050b82e24428fec40f36edd7b872d0ee35b0",
+      "bytes": 125564
+    },
+    {
+      "file": "nunito-400.ttf",
+      "source_url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf",
+      "sha256": "9ecbdba35fa74f10a1a916c31649b802a12deb9e66c7b1fe4650afcfd4d16971",
+      "bytes": 125528
+    },
+    {
+      "file": "nunito-500.ttf",
+      "source_url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhRTM.ttf",
+      "sha256": "ceb6eec0a584cae83e8f3ab868e2f03977b38ff6e78632bc8a7ec69dcf9f7c18",
+      "bytes": 125652
+    },
+    {
+      "file": "nunito-600.ttf",
+      "source_url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDGUmRTM.ttf",
+      "sha256": "1506fc96971e84d1a4ca89f0d1157a881b9ce217bbfa05d2b3c9e3c8f6723091",
+      "bytes": 125536
+    },
+    {
+      "file": "nunito-700.ttf",
+      "source_url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf",
+      "sha256": "1a025dfce6e6e03bbe31ba82277ec5ed96df8b8dd58b3df6267269490b90b1dc",
+      "bytes": 125464
+    }
+  ]
+}

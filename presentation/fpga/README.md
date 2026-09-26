@@ -1,5 +1,9 @@
 # 100T FPGA engineering review
 
+The opening board panel follows the earlier review layout: **Front layout**, **Back layout** and **Interactive KiCad** tabs, pan/zoom/fit controls, and a concise current-design sidebar. [Open the standalone native viewer](viewer/index.html) for layer, part and net inspection. It loads unchanged `.kicad_pcb` files from this repository; select the current core, separate rail revision or unrouted mezzanine study. Whole-project ZIPs remain the portable KiCad download. See [viewer provenance and limits](viewer/README.md).
+
+The [complete 28-slide ASIC review](../../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents tutorial framing and SPI direction, and flags stimulation timing, channel-table and gain conflicts. The uncertainty register incorporates these refinements. Original slides and native CAD remain unchanged.
+
 **Fourth-review update:** [Uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the current closure list; owner roles are proposed, not accepted assignments. Native source hashes are checked against the third-pass reports, which retain their original test scope. The page distinguishes known implementation gaps from unknown requirements.
 
 [Open the current page](index.html). It describes the full-board release scope: XC7A100T CSG324, all 117 ASIC signals and the XEM8310 receiver link. The 40 × 36 mm core snapshot is incomplete and not fabrication-ready.
@@ -17,7 +21,10 @@ python3 scripts/check_fpga_review.py
 python3 scripts/check_docs.py
 python3 scripts/check_hardware.py
 node --check presentation/fpga/review.js
+node --check presentation/fpga/review-board.js
+node --check presentation/fpga/viewer/viewer.js
 node --check scripts/check_fpga_presentation.mjs
+node --check scripts/check_fpga_viewer.mjs
 git diff --check
 ```
 
@@ -33,6 +40,7 @@ Serve the repository root with a local HTTP server. Run the browser check with `
 python3 -m http.server 8765
 # Separate shell; Chrome and Playwright must be installed:
 SITE_URL=http://127.0.0.1:8765/ node scripts/check_fpga_presentation.mjs
+SITE_URL=http://127.0.0.1:8765/ VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
 ```
 
 `fpga-browser-check/` is ignored generated evidence. `SKIP_SYSTEM_CHECK=1` can isolate the new page when the older system view's external viewer dependencies are unavailable; report this limitation rather than claiming that entry path passed.

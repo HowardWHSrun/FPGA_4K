@@ -11,12 +11,14 @@
       "status": "open",
       "first_step": "lab",
       "proposed_owner": "ASIC designer + FPGA electrical design",
-      "known": "The intended nominal interface supply is 1.5 V; the accepted count is 117.",
-      "uncertainty": "Pin direction, guaranteed logic thresholds, output drive, load/leakage, absolute limits and behavior when either board is off are not established for the full interface. AC_IN and IMP_TST also lack confirmed functions.",
+      "known": "The accepted count is 117. Slides 13–14 and 25–28 show recording/control directions: CLK_IN, resets, SPI L/R/CLK/LATCH and stimulation controls go FPGA to ASIC; CLK_OUT, DATA, READ and SYNC return to FPGA. The underlying table lists 1.5 V nominal supply; that row is hidden by an overlay in the visible slides.",
+      "uncertainty": "Guaranteed logic thresholds, output drive, load/leakage, absolute limits and powered-off behavior are absent for the full interface. AC_IN and IMP_TST still lack confirmed functions and directions. A nominal supply is not a guaranteed I/O specification.",
       "closure": "Obtain a versioned ASIC pad specification or designer-approved table for all signal classes; compare limits against the selected FPGA standard and power states.",
       "evidence": [
         "ASIC_Boot_Uncertainties.md",
-        "../research/AC_IN_IMP_TST_Primary_Source_Review.md"
+        "../research/AC_IN_IMP_TST_Primary_Source_Review.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -25,11 +27,13 @@
       "status": "open",
       "first_step": "lab",
       "proposed_owner": "ASIC designer + acquisition firmware",
-      "known": "The tutorial describes 64 DATA lines and eight each of returned CLK, READ and SYNC; intended recording clock is 32 MHz.",
-      "uncertainty": "Guaranteed setup/hold, clock/data skew, sampling edge, jitter, serial bit/channel order, framing, and whether acquisition can pause are not closed by the tutorial.",
-      "closure": "Approve timing diagrams and sample/frame definitions, then demonstrate input-delay constraints and capture against a verified model and measured ASIC waveforms.",
+      "known": "Slides 15–17 show 32 MHz recording, 1,024 clocks/frame, 16 READ groups, and 16 zero clocks plus 48 payload clocks/group. Samples are bit-interleaved A1 bit 0, A2 bit 0, A3 bit 0, A4 bit 0 through bit 11. Slide 26 specifies four 3-bit DR suffix fields and shows a stream ending at bit 2124.",
+      "uncertainty": "Capture edge, setup/hold, delay/skew/jitter limits, ADC numeric coding and pause/restart behavior remain unqualified. The channel table duplicates A49/A57 and omits A50/A59. Full SPI packing is missing. Stimulation timing conflicts: 31.25 us, 32 us/step and 60 kHz; the <200 Hz limit also conflicts with a 5 ms example.",
+      "closure": "Obtain a corrected versioned channel map, ADC coding, full SPI serializer/workbook and stimulation timing; approve guaranteed pad timing, then constrain and verify capture against an accepted model and measured waveforms.",
       "evidence": [
-        "ASIC_Boot_Uncertainties.md"
+        "ASIC_Boot_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -38,11 +42,13 @@
       "status": "open",
       "first_step": "lab",
       "proposed_owner": "ASIC/carrier and routing designers + FPGA design",
-      "known": "The 117 names have proposed contacts across two 60-contact connectors.",
+      "known": "The 117 names have proposed contacts across two 60-contact connectors. The tutorial describes eight serial DATA outputs per ASIC and an illustrative DATA1 channel map with duplicate/missing labels.",
       "uncertainty": "ASIC1–8 and BOARD1–4 are logical slots; the actual stimulation-chip, non-stimulation board, clock and SPI-sharing groups are not mapped end to end.",
       "closure": "Produce matching ASIC pad → carrier → routing board → mezzanine → FPGA tables, with direction and shared-net loading; review both mating sides.",
       "evidence": [
-        "ASIC_Boot_Uncertainties.md"
+        "ASIC_Boot_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -51,12 +57,14 @@
       "status": "open",
       "first_step": "lab",
       "proposed_owner": "ASIC designer + power/FPGA design",
-      "known": "PUDC_B is pulled high; the templates disable bias on unused pins after configuration.",
-      "uncertainty": "Required reset/stimulation levels, drive ownership and safe behavior before configuration, on brownout and during reprogramming are unspecified.",
+      "known": "Slides 27–28 depict SPI load, assert STIM_EN, pulse STIM_START, then STIM_CHB after 64 STIM_CLK cycles. Chip_Reset and FE_RESET functions are described. PUDC_B is pulled high; the templates disable bias on unused pins after configuration.",
+      "uncertainty": "Asserted reset polarity, pulse width/settling, drive ownership and safe preconfiguration, brownout and reprogramming states remain unspecified. Positive-going normal-operation drawings do not approve default bias or fault interlocks; the listed <1.5 ms reset time is not a digital pulse-width specification.",
       "closure": "Approve a state table for every shared control and power state, implement required bias/interlocks, and test power-order and configuration-failure cases.",
       "evidence": [
         "ASIC_Boot_Uncertainties.md",
-        "Power_Link_Uncertainties.md"
+        "Power_Link_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -65,12 +73,14 @@
       "status": "open",
       "first_step": "lab",
       "proposed_owner": "ASIC/routing power designer + system power design",
-      "known": "The 120 numbered mezzanine contacts contain 117 signals plus three reserves; ground blades are separate.",
+      "known": "The 120 numbered mezzanine contacts contain 117 signals plus three reserves; ground blades are separate. The tutorial gives about 17.24 uW/channel for recording, excluding LDOs, and ±10 V stimulation compliance; neither defines the assembly power tree.",
       "uncertainty": "ASIC analog/digital/stimulation supplies, their source, return currents and any separate power connector are not allocated in this interface. The FPGA 1.5 V I/O rail is not an approved ASIC power supply.",
       "closure": "Define the complete assembly power tree and current budget; specify which board supplies every ASIC rail and its return, including powered-off cases.",
       "evidence": [
         "Power_Link_Uncertainties.md",
-        "CAD_Mechanical_Uncertainties.md"
+        "CAD_Mechanical_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -184,11 +194,13 @@
       "status": "open",
       "first_step": "engineering",
       "proposed_owner": "FPGA/receiver/host firmware",
-      "known": "Three proposed 800 Mbit/s lanes provide 240 MB/s after 8b/10b; packed 12-bit samples fit the arithmetic budget, 16-bit sample padding does not.",
-      "uncertainty": "Lane alignment, independently balanced encoding, complete frame/CRC metadata, USB word/transfer boundaries, commands and remote-programming behavior have no implemented contract. The proposed 6,165-byte frame does not meet the 32-bit word / 16-byte USB transfer boundaries by itself.",
+      "known": "Each READ group has 16 zero clocks followed by 48 payload clocks (25% padding), carrying interleaved 12-bit samples needing deinterleaving. Three proposed 800 Mbit/s lanes provide 240 MB/s after 8b/10b; packed 12-bit samples fit the arithmetic budget, 16-bit sample padding does not.",
+      "uncertainty": "ADC coding, complete SPI serialization and corrected stimulation timing remain unapproved. Lane alignment, encoding, frame/CRC metadata, USB boundaries, commands and remote programming have no implemented contract. The proposed 6,165-byte frame does not itself meet 32-bit word / 16-byte USB boundaries.",
       "closure": "Specify continuous repacking or padding/aggregation, byte/channel order, lane training and command handling; simulate and verify the exact wire-to-USB-to-file format.",
       "evidence": [
-        "Power_Link_Uncertainties.md"
+        "Power_Link_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -198,10 +210,12 @@
       "first_step": "lab",
       "proposed_owner": "Receiver memory + host acquisition design",
       "known": "The proposed four LVDS pairs all travel toward the receiver. USB throttling alone does not stop incoming ASIC data. At the proposed framed rate, a 100 ms no-drain interval needs about 19.27 MB; this is arithmetic, not tested buffering.",
-      "uncertainty": "Allowed host stall, usable buffer depth/bandwidth, any reverse flow control, permission to stop acquisition, and explicit overrun/recovery policy are undefined.",
+      "uncertainty": "Allowed host stall, usable buffer depth/bandwidth, reverse flow control, and overrun/recovery policy are undefined. The tutorial starts recording with CLK_IN but does not authorize stopping or restarting it as lossless backpressure.",
       "closure": "Set a bounded stall requirement; size and implement buffering with sustained read/write bandwidth, define loss/backpressure policy, and stress-test a stalled host with sequence/error counters.",
       "evidence": [
-        "Power_Link_Uncertainties.md"
+        "Power_Link_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -223,11 +237,13 @@
       "status": "open",
       "first_step": "engineering",
       "proposed_owner": "FPGA bring-up + test fixture design",
-      "known": "Optional LED, debug headers and test points are removed. The older blink procedure is legacy-only; compact revisions have different configuration voltages.",
+      "known": "Optional LED, debug headers and test points are removed. The older blink procedure is legacy-only; compact revisions have different configuration voltages. Tutorial ASIC reset functions do not define this compact FPGA board’s bring-up sequence.",
       "uncertainty": "No matching validated build, power-on procedure, fixture access plan or demonstrated flash brownout/reset/recovery exists for either compact revision.",
       "closure": "Create a revision-specific HDL/XDC/build and test procedure, select supported flash programming, identify accessible existing pads/J4, and verify JTAG, rail ramps, clock and cold-boot recovery.",
       "evidence": [
-        "ASIC_Boot_Uncertainties.md"
+        "ASIC_Boot_Uncertainties.md",
+        "../slide_review/Gerald_ASIC_Slide_Review.md",
+        "../slide_review/Independent_Timing_Read.md"
       ]
     },
     {
@@ -280,7 +296,7 @@
   "external_inputs": [
     {
       "title": "Actual ASIC and mating-board specification",
-      "needed": "ASIC revision and pad limits, timing/sample/control protocol and inactive states; physical eight-chip/group map; actual routing-board power and mating CAD. A designer-approved document or marked-up schematic can supply these together.",
+      "needed": "ASIC revision and pad limits, corrected channel map and stimulation timing, complete SPI workbook/serializer and inactive states; physical eight-chip/group map; actual routing-board power and mating CAD. Tutorial framing and functional directions are now documented. A designer-approved specification or marked-up schematic can resolve the remaining points.",
       "owner": "ASIC/carrier/routing designers"
     },
     {
@@ -294,5 +310,20 @@
       "owner": "Procurement / Howard if already purchased"
     }
   ],
-  "engineering_delegated": "Power setup, exact pin choices, cable/component selection, receiver circuitry and firmware remain engineering tasks; the user is not being asked to design them."
+  "engineering_delegated": "Power setup, exact pin choices, cable/component selection, receiver circuitry and firmware remain engineering tasks; the user is not being asked to design them.",
+  "slide_followup": {
+    "date": "2026-09-26",
+    "scope": "All 28 original slides, visual and embedded-media review; no native CAD changes or uncertainty closures",
+    "report": "../slide_review/Gerald_ASIC_Slide_Review.md",
+    "refined_items": [
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U05",
+      "U14",
+      "U15",
+      "U17"
+    ]
+  }
 }
