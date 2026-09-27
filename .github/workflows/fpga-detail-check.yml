@@ -33,6 +33,7 @@ jobs:
           node --check presentation/fpga/app.js
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
+          node --check scripts/check_fpga_3d.mjs
           node --check presentation/fpga/usb-c.js
           node --check presentation/fpga/review.js
           node --check presentation/fpga/review-board.js
@@ -65,6 +66,8 @@ jobs:
           paths += [learning]+[str(Path(learning).parent/item['path']) for item in json.loads(Path(learning).read_text())['files']]
           paths += ['presentation/fpga/usb-c.html','presentation/fpga/usb-c.js','presentation/fpga/micro-hdmi.html']
           paths += [str(p) for p in Path('hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision').rglob('*') if p.is_file()]
+          paths += [str(p) for p in Path('presentation/fpga/3d').rglob('*') if p.is_file()]
+          paths += ['presentation/compact/slides.js','presentation/fpga/entry.js']
           paths=list(dict.fromkeys(paths))
           def verify(p):
               req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})
@@ -85,6 +88,7 @@ jobs:
       - name: Test review, downloads, history and system entry
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          node scripts/check_fpga_3d.mjs
           node scripts/check_fpga_presentation.mjs
           VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
       - uses: actions/upload-artifact@v4
