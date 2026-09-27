@@ -1,58 +1,40 @@
 {
   "result": "PASS",
   "date": "2026-09-26",
-  "boardSha256": "ae601df3925e5ec5e90c8a2e747356e432d0558e820199cf7c01c6bf8a7fef96",
-  "checks": {
-    "all762CanonicalEndpointsUnique": true,
-    "csvEqualsNativeReadback": true,
-    "all762SchematicNetsMatch": true,
-    "all762CanonicalEndpointsHavePhysicalCoordinates": true,
-    "771NumberedPadRecordsCovered": true,
-    "all324FpgaBallsCovered": true,
-    "fpgaA1IsNativeTopLeft": true,
-    "fpgaV18IsNativeBottomRight": true,
-    "all331UnassignedPinsLabeled": true,
-    "allSixSavedCADNCPinsLabeled": true,
-    "twoDiodePinsFlaggedGroundRequired": true,
-    "fourFB2PinsFlaggedGroundingReview": true,
-    "noCADFilesModified": true,
-    "proposedSignalsNotPromotedToNativeNets": true
-  },
+  "boardSha256": "c5a312d1224f90a454a1ee3275dc211f7994f1c69d441472131f55b363e7cd03",
   "counts": {
-    "canonicalPins": 762,
-    "numberedPhysicalPads": 771,
-    "allPhysicalPads": 811,
-    "assigned": 425,
-    "unassigned": 331,
-    "cadNoConnect": 6,
-    "groundRequired": 2,
-    "groundingReview": 4,
-    "fpgaUnassigned": 203,
-    "mezzanineUnassigned": 120,
+    "canonicalPins": 760,
+    "numberedPhysicalPads": 769,
+    "allPhysicalPads": 809,
+    "assigned": 662,
+    "unassigned": 98,
+    "cadNoConnect": 1,
+    "groundRequired": 0,
+    "groundingReview": 0,
+    "groundCorrectionsAssigned": 6,
+    "asicNetsAssigned": 116,
+    "analogReservedContacts": 1,
+    "fpgaUnassigned": 87,
+    "mezzanineUnassigned": 3,
     "cableUnassigned": 8,
-    "assignedNetOpenEndpoints": 326,
-    "assignedNetConnectedEndpoints": 99,
-    "missingAssignedConnections": 146
+    "assignedNetOpenEndpoints": 466,
+    "assignedNetConnectedEndpoints": 195,
+    "missingAssignedConnections": 179
   },
-  "unassignedByComponent": {
-    "J4": 8,
-    "J5": 60,
-    "J6": 60,
-    "U1": 203
+  "checks": {
+    "allNativeAndSchematicEndpointsAgree": true,
+    "all116CandidateFPGAAssignmentsMatchCSV": true,
+    "analogContactSeparatedFromFPGA": true,
+    "allSixGroundPinsAssignedGND": true,
+    "allNativeUnassignedEndpointsExplicitlyLabeled": true,
+    "intentionalA13NCIdentified": true,
+    "allNumberedPhysicalPadCoordinatesReadNatively": true,
+    "noCADFilesModified": true
   },
-  "savedCADNoConnects": [
-    "U1.L10",
-    "U1.L9",
-    "U2.4",
-    "U3.4",
-    "U4.4",
-    "U5.4"
-  ],
-  "schematicNetlistSha256": "20ad98554b73785bc1b537b0a0f42aa97a3a24269acbedcbac76c7e53dd5a4c1",
-  "nativeReadbackSha256": "1fa179e40832f7a3c7d02e89ecad42665aa616c3415c746732ea92366052158e",
+  "routingAuditPending": false,
   "limitations": [
-    "Assigned-open is a net-level status, not proof that every pad on that net is individually disconnected.",
-    "Physical maps show PCB top view, not a connector mating-face pinout.",
-    "Pin labels are presentation annotations only; native no-connect flags and electrical assignments are unchanged."
+    "Assignments do not prove electrical compatibility, timing or hardware operation.",
+    "Assigned-open is a net-level status; the selected pad may be locally connected.",
+    "Physical maps show PCB top view, not mating-face numbering."
   ]
 }

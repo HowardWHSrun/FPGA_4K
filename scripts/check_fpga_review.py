@@ -31,7 +31,7 @@ def nodes(tree,key):return [a for a in tree if isinstance(a,list) and a and a[0]
 def first(tree,key):return next(iter(nodes(tree,key)),None)
 
 def check_current(data):
-    package=ROOT/'hardware/fpga-interface-study/dated/2026-09-26/routing-33x36'
+    package=(ROOT/'presentation/fpga'/data['artifactRoot']).resolve()
     name='FPGA100T_33x36_Routing'; board=package/'hardware'/(name+'.kicad_pcb')
     meta=json.loads((package/'manifest.json').read_text());snapshot=json.loads((package/'reports/Routing_Snapshot.json').read_text())
     assert sha(board)==data['boardSha256']==snapshot['boardSha256']==meta['board_sha256']
@@ -43,7 +43,7 @@ def check_current(data):
     tree=native_tree(board.read_text());fps=nodes(tree,'footprint')
     counts={'footprints':len(fps),'pads':sum(len(nodes(f,'pad')) for f in fps),'segments':len(nodes(tree,'segment'))+len(nodes(tree,'arc')),'vias':len(nodes(tree,'via')),'zones':len(nodes(tree,'zone'))}
     for raw,field in [('footprints','components'),('pads','padRecords'),('segments','tracks'),('vias','vias'),('zones','zones')]:assert counts[raw]==data[field],field
-    assert counts['footprints']==130 and counts['pads']==811 and data['boardMm']==[33,36] and data['schematicPages']==21
+    assert data['boardMm']==[33,36] and data['schematicPages']==21
     expected=json.loads((package/'reports/component_manifest_resolved.json').read_text())['components']; refs=set();assigned=0;pinmap={}
     xml=ET.parse(package/'reports'/(name+'.net')).getroot();xmlnets={(n.get('ref'),n.get('pin')):net.get('name') for net in xml.findall('./nets/net') for n in net.findall('node')}
     for f in fps:
@@ -60,15 +60,15 @@ def check_current(data):
     assert drc['ignored_checks']==data['ignoredChecks']
     assert sha(package/'reports/Native_DRC.json')==data['snapshotSha256']
     erc=json.loads((package/'reports/Native_ERC.json').read_text());issues=[v for sheet in erc['sheets'] for v in sheet['violations']]
-    assert sum(v['type']=='pin_not_connected' for v in issues)==data['ercOpenPins']==331
-    assert sum(v['severity']=='warning' for v in issues)==data['ercWarnings']==5
+    assert sum(v['type']=='pin_not_connected' for v in issues)==data['ercOpenPins']
+    assert sum(v['severity']=='warning' for v in issues)==data['ercWarnings']
     with (package/'reports/All_Pin_Connections.csv').open() as f:pinrows=list(csv.DictReader(f))
-    assert len(pinrows)==762 and {(r['reference'],r['pin']):r['net'] for r in pinrows}==pinmap
+    assert len(pinrows)==data['canonicalPins'] and {(r['reference'],r['pin']):r['net'] for r in pinrows}==pinmap
     with (package/'reports/Component_List.csv').open() as f:components=list(csv.DictReader(f))
-    assert len(components)==130 and {r['reference'] for r in components}==refs
+    assert len(components)==data['components'] and {r['reference'] for r in components}==refs
     for c in components:assert c['value']==expected[c['reference']]['value']
     with (package/'reports/Net_Endpoints.csv').open() as f:netrows=list(csv.DictReader(f))
-    assert len(netrows)==data['functionalNets']==48
+    assert len(netrows)==data['functionalNets']
     for n in netrows:
         assert set(n['endpoints'].split('; '))=={ref+'.'+pin for (ref,pin),name in pinmap.items() if name==n['net']}
         assert int(n['unconnected_items'])==data['remainingByNet'].get(n['net'],0)
@@ -102,8 +102,9 @@ def check_current(data):
         assert sha(views/f'current-{side}.svg')==v['sides'][side]['styled_sha256'];ET.parse(views/f'current-{side}.svg')
     assert v['schematic_pdf']['pages_verified']==21 and sha(package/'output'/(name+'_Schematic.pdf'))==v['schematic_pdf']['sha256']
     ET.parse(package/'output'/(name+'.svg'))
-    report=package/'report';verification=json.loads((report/'Report_Verification.json').read_text());stem='FPGA100T_33x36_Routing_Component_Pin_Report'
-    assert verification['board_sha256']==sha(board)
+    historical=ROOT/'hardware/fpga-interface-study/dated/2026-09-26/routing-33x36'
+    report=historical/'report';verification=json.loads((report/'Report_Verification.json').read_text());stem='FPGA100T_33x36_Routing_Component_Pin_Report'
+    assert verification['board_sha256']==sha(historical/'hardware/FPGA100T_33x36_Routing.kicad_pcb')
     assert verification['report_tex_sha256']==sha(report/(stem+'.tex')) and verification['report_pdf_sha256']==sha(report/'output/pdf'/(stem+'.pdf'))
     assert verification['components_searchable']==130 and verification['canonical_endpoints_searchable']==762 and verification['functional_nets_searchable']==48
     assert not any(verification['missing_identifiers'].values()) and not verification['duplicate_endpoint_rows_in_primary_tables']
@@ -114,7 +115,20 @@ def check_current(data):
     assert viewer['sha256']==sha(board) and viewer['dimensions_mm']==[33,36] and not viewer['manufacturing_ready']
     for key,value in counts.items():assert viewer['expected'][key]==value,key
     assert viewer['unconnected_items']==data['unconnectedItems']
-    print('PASS: current 130-part 33x36 snapshot/native counts, 425 assigned endpoints, 762-pin CSV, 21 schematic pages/PDF, portable ZIP, current viewer and native-derived SVG hashes.')
+    with (package/'bringup/ASIC_Interface_Assignment.csv').open() as f:assignments=list(csv.DictReader(f))
+    assert len(assignments)==117
+    for row in assignments:
+        if row['interface_kind']=='analog_external_reserved':
+            assert not row['fpga_endpoint'] and pinmap['J5','46']=='AC_IN_ANALOG_RESERVED'
+            continue
+        for key in ['fpga_endpoint','connector_endpoint']:
+            ref,pin=row[key].split('.',1);assert pinmap[ref,pin]==row['signal']
+    done={r['signal'] for r in assignments if r['interface_kind']=='fpga_candidate' and r['signal'] not in data['remainingByNet']}
+    assert len(done)==data['asicNetsRouted'] and done==set(data['asicRoutedSignals'])
+    assert data['asicNetsAssigned']==116 and data['asicAnalogReservedContacts']==1 and data['unassignedEndpoints']==98
+    assert sum(v['severity']=='error' and v['type']!='pin_not_connected' for v in issues)==data['ercOtherErrors']
+    assert erc['ignored_checks']==data['ercIgnoredChecks']
+    print(f"PASS: current {data['components']}-part snapshot, {data['canonicalPins']} native endpoints, 116 candidate FPGA assignments + one analog reservation / {data['asicNetsRouted']} copper-connected nets, 21-sheet PDF, portable ZIP and matched viewer/SVG hashes.")
 
 def main():
     manifest = json.loads((PACKAGE / 'manifest.json').read_text())

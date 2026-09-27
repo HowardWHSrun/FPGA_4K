@@ -57,7 +57,7 @@
     image.src = views[mode].src;
     image.alt = views[mode].alt;
     get('view-caption').textContent = views[mode].caption;
-    get('board-enlarge').href = '../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing.svg';
+    get('board-enlarge').href = '../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/output/FPGA100T_33x36_Routing.svg';
     get('board-enlarge').textContent = 'Both sides ↗';
     get('image-state').textContent = 'Loading current KiCad layout…';
     get('image-state').hidden = false;

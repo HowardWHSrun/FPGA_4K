@@ -26,7 +26,7 @@ function showError(error) {
   const alert = $('#load-error');
   alert.replaceChildren(document.createTextNode('The interactive board could not load. '));
   const fallback = document.createElement('a');
-  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip';
+  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/FPGA100T_33x36_Routing.zip';
   fallback.textContent = board?.svg ? 'Open the static vector view' : 'Download the complete KiCad project';
   alert.append(fallback, document.createTextNode(' or use the native files below. Reload this page to retry.'));
   alert.hidden = false;

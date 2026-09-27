@@ -1,31 +1,32 @@
 {
   "native_format": "KiCad 10",
-  "audit": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Snapshot.json",
+  "audit": "../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/reports/Routing_Snapshot.json",
   "boards": [
     {
       "id": "compact-routed",
-      "title": "Current 33 × 36 mm · routing development",
-      "description": "130 parts; corrected 1.8 V boot and 2.5 V link-bank rails, both ASIC mezzanines and a matching schematic. 146 assigned-net connection items remain; 117 ASIC assignments and the data link are unfinished.",
-      "native": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pcb",
-      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip",
-      "svg": "../../../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/output/FPGA100T_33x36_Routing.svg",
-      "sha256": "ae601df3925e5ec5e90c8a2e747356e432d0558e820199cf7c01c6bf8a7fef96",
+      "title": "Current 33 × 36 mm · partial ASIC routing",
+      "description": "129 parts; 116 candidate FPGA nets plus one analog reservation; 49/116 candidate nets copper-connected. 179 total assigned-net gaps remain. Power/ground completion, ASIC electrical limits and timing remain unverified; receiver deferred.",
+      "native": "../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/hardware/FPGA100T_33x36_Routing.kicad_pcb",
+      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/FPGA100T_33x36_Routing.zip",
+      "svg": "../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/output/FPGA100T_33x36_Routing.svg",
+      "sha256": "c5a312d1224f90a454a1ee3275dc211f7994f1c69d441472131f55b363e7cd03",
       "expected": {
-        "footprints": 130,
-        "pads": 811,
-        "segments": 1139,
-        "vias": 164,
-        "zones": 4,
+        "footprints": 129,
+        "pads": 809,
+        "segments": 1842,
+        "vias": 307,
+        "zones": 9,
         "fpgaPads": 324,
-        "copperLayers": 6,
-        "nets": 386
+        "copperLayers": 8,
+        "nets": 263
       },
-      "unconnected_items": 146,
+      "unconnected_items": 179,
       "manufacturing_ready": false,
       "dimensions_mm": [
         33.0,
         36.0
-      ]
+      ],
+      "project": "../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/hardware/FPGA100T_33x36_Routing.kicad_pro"
     },
     {
       "id": "core",

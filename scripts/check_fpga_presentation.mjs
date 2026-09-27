@@ -13,7 +13,7 @@ const assert = (condition, label) => {if (!condition) throw new Error(label); re
 try {
   await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
   await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
-  await page.waitForFunction(() => window.FPGA_TEACHING?.getState().components === 130);
+  await page.waitForFunction(() => window.FPGA_TEACHING?.getState().components === window.FPGA_REVIEW?.data.components);
   await page.locator('#board-image').evaluate(image => image.decode());
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   const teaching = await page.evaluate(() => FPGA_TEACHING.data);
@@ -26,37 +26,40 @@ try {
   }
   assert(await page.locator('#component-depth').evaluate(e => !e.open), 'Every-pin component details are optional initially');
   await page.locator('[data-component-group="all"]').click();
-  assert(await page.locator('#component-count').innerText() === '130 of 130 components', 'All current components available through the component browser');
+  assert(await page.locator('#component-count').innerText() === `${data.components} of ${data.components} components`, 'All current components available through the component browser');
   const seenParts = [];
-  for (let pageIndex = 0; pageIndex < 13; pageIndex++) {
+  for (let pageIndex = 0; pageIndex < Math.ceil(data.components / 10); pageIndex++) {
     seenParts.push(...await page.locator('#component-list [data-part]').evaluateAll(items => items.map(item => item.dataset.part)));
-    if (pageIndex < 12) await page.locator('#parts-next').click();
+    if (pageIndex < Math.ceil(data.components / 10) - 1) await page.locator('#parts-next').click();
   }
-  assert(JSON.stringify(seenParts.slice().sort()) === JSON.stringify(teaching.components.map(c => c.reference).sort()) && new Set(seenParts).size === 130, 'Pagination exposes every one of 130 component references exactly once');
+  assert(JSON.stringify(seenParts.slice().sort()) === JSON.stringify(teaching.components.map(c => c.reference).sort()) && new Set(seenParts).size === data.components, 'Pagination exposes every current component reference exactly once');
   await page.locator('#component-necessity').selectOption('nonessential');
-  assert(await page.locator('#component-count').innerText() === '1 of 130 components' && await page.locator('#component-list [data-part="R12"]').count() === 1, 'Necessity filter isolates the documented R12 removal candidate');
+  assert(await page.locator('#component-count').innerText() === `1 of ${data.components} components` && await page.locator('#component-list [data-part="R12"]').count() === 1, 'Necessity filter isolates the documented R12 removal candidate');
   await page.locator('#component-depth summary').click();
   assert((await page.locator('#component-depth').innerText()).includes('PGOOD_IO'), 'Removal explanation preserves the affected power-good connection');
   await page.locator('#component-necessity').selectOption('all');
   await page.locator('#component-search').fill('R122');
-  assert(await page.locator('#component-count').innerText() === '1 of 130 components', 'Exact-reference search returns one component');
+  assert(await page.locator('#component-count').innerText() === `1 of ${data.components} components`, 'Exact-reference search returns one component');
   await page.locator('#component-depth summary').click();
   assert(await page.locator('#component-depth tbody tr').count() === 2 && (await page.locator('#component-depth').innerText()).includes('VAUX_REG_1V803'), 'Component detail exposes its real source pin connections');
   await page.locator('[data-component-group="fpga"]').click();
   assert(await page.locator('#component-list [data-part="U1"]').count() === 1 && !(await page.locator('#component-depth').evaluate(e => e.open)), 'Family selection restores concise FPGA explanation');
-  assert((await page.locator('#interfaces .correction-callout').innerText()).includes('U1.L9 / L10') && (await page.locator('#interfaces .correction-callout').innerText()).includes('FB2'), 'New ground correction and regulator-pin review remain visible');
+  assert((await page.locator('#interfaces .correction-callout').innerText()).includes('U1.L9/L10') && (await page.locator('#interfaces .correction-callout').innerText()).includes('FB2'), 'New ground correction and regulator-pin review remain visible');
   await page.locator('#pin-frame').scrollIntoViewIfNeeded();
   const pinFrame = await (await page.locator('#pin-frame').elementHandle()).contentFrame();
-  await pinFrame.waitForFunction(() => window.PinMap?.data.pins.length === 762);
+  await pinFrame.waitForFunction(count => window.PinMap?.data.pins.length === count, data.canonicalPins);
   const pinCounts = await pinFrame.evaluate(() => PinMap.data.counts);
-  assert(pinCounts.unassigned === 331 && pinCounts.cadNoConnect === 6 && pinCounts.groundRequired === 2 && pinCounts.groundingReview === 4 && pinCounts.missingAssignedConnections === 146, 'Pin explorer keeps unassigned, saved-CAD NC, review findings and missing copper counts distinct');
-  assert(await pinFrame.locator('[data-pin-id]').count() === 324 && await pinFrame.locator('[data-status="unassigned"]').count() === 203, 'Embedded FPGA map visibly labels every ball and all 203 unassigned balls');
+  assert(pinCounts.unassigned === 98 && pinCounts.cadNoConnect === 1 && pinCounts.groundCorrectionsAssigned === 6 && pinCounts.asicNetsAssigned === 116 && pinCounts.analogReservedContacts === 1 && pinCounts.missingAssignedConnections === data.unconnectedItems, 'Pin explorer keeps unassigned endpoints, six GND corrections, ASIC assignments and missing copper counts distinct');
+  assert(await pinFrame.locator('[data-pin-id]').count() === 324 && await pinFrame.locator('[data-status="unassigned"]').count() === 87, 'Embedded FPGA map visibly labels every ball and all 87 unassigned balls');
   await pinFrame.locator('[data-pin-id="U1.L9"]').click();
-  assert((await pinFrame.locator('#detail').innerText()).includes('GND required') && (await pinFrame.locator('#detail').innerText()).includes('UG475'), 'Saved NC diode pin shows the required-ground correction');
+  assert((await pinFrame.locator('#detail').innerText()).includes('GND') && (await pinFrame.locator('#detail').innerText()).includes('native pin is now GND'), 'Former NC diode pin shows its native GND assignment');
+  const mapFrameHeight = await page.locator('#pin-frame').evaluate(e => e.getBoundingClientRect().height);
   await pinFrame.locator('[data-ref="NC"]').click();
-  assert(await pinFrame.locator('.nc-list button').count() === 6 && (await pinFrame.locator('#map-meta').innerText()).includes('grounding review'), 'All saved NC pins remain reviewable without endorsing the current wiring');
+  await page.waitForFunction(previous => document.querySelector('#pin-frame').getBoundingClientRect().height < previous - 80, mapFrameHeight);
+  assert(await page.locator('#pin-frame').evaluate(e => e.getBoundingClientRect().height) < mapFrameHeight - 80, 'Embedded pin frame shrinks when switching from FPGA grid to six-item list');
+  assert(await pinFrame.locator('.nc-list button').count() === 6 && (await pinFrame.locator('#map-meta').innerText()).includes('GND'), 'All six ground corrections remain inspectable');
   await pinFrame.locator('.nc-list [data-id="U5.4"]').click();
-  assert((await pinFrame.locator('#detail').innerText()).includes('grounding review') && (await pinFrame.locator('#detail').innerText()).includes('FB2'), 'Converter NC detail identifies the unresolved grounding review');
+  assert((await pinFrame.locator('#detail').innerText()).includes('GND') && (await pinFrame.locator('#detail').innerText()).includes('FB2'), 'Converter FB2 detail shows the ground correction with copper status');
   await pinFrame.locator('[data-ref="U1"]').click();
   assert(await page.locator('#interfaces a[href="pins/"]').count() === 1 && await page.locator('#interfaces a[href="pins/All_Pin_Labels.csv"]').count() === 1, 'Full pin map and complete labeled CSV remain directly linked');
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
@@ -98,7 +101,7 @@ try {
   await page.locator('#native').click();
   const nativeFrame = await (await page.locator('#native-frame').elementHandle()).contentFrame();
   await nativeFrame.waitForFunction(() => window.pcbViewerDiagnostics?.ready === true, null, {timeout: 60000});
-  assert(await nativeFrame.evaluate(() => pcbViewerDiagnostics.nativeCounts.footprints === 130), 'Embedded native viewer parses current 130-part board');
+  assert(await nativeFrame.evaluate(count => pcbViewerDiagnostics.nativeCounts.footprints === count, data.components), 'Embedded native viewer parses current measured board');
   await page.locator('#front').click();
   await page.locator('#board-image').evaluate(image => image.decode());
   assert(await page.locator('#viewport').isVisible(), 'Front layout returns after interactive inspection');
@@ -140,10 +143,10 @@ try {
   await page.locator('#compact-image').scrollIntoViewIfNeeded();
   await page.locator('#compact-image').evaluate(image => image.decode());
   assert(await page.locator('#compact-image').evaluate(image => image.naturalWidth > 0), 'New smaller native placement image loads');
-  assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('130 parts'), 'Current smallest board integrates130 parts without enlarging the outline');
-  assert((await page.locator('#size-study').innerText()).includes(String(data.unconnectedItems)) && (await page.locator('#size-study').innerText()).includes('117 ASIC signals'), 'Current board reports measured connectivity and open application assignment');
+  assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('current audit records its component count'), 'Current smallest board keeps the current component population without enlarging the outline');
+  assert((await page.locator('#size-study').innerText()).includes(String(data.unconnectedItems)) && (await page.locator('#size-study').innerText()).includes('116 mezzanine contacts'), 'Current board reports measured connectivity and provisional application assignment');
   const sizeText = await page.locator('#size-study').innerText();
-  assert(['120 mezzanine signal contacts remain unassigned','1.8 V','2.5 V','0.010 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Current board shows corrected rail voltages, assignment and mechanical limits');
+  assert(['Three contacts remain reserved','1.8 V','2.5 V','0.010 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Current board shows corrected rail voltages, assignment and mechanical limits');
   assert(await page.locator('#size-study a[href="viewer/?board=compact-routed"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact-v2"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact"]').count() > 0, 'Current routing and historical placements remain correctly linked');
   await page.locator('#circled-explanation summary').click();
   await page.locator('#circled-image').evaluate(image => image.decode());

@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / 'presentation/fpga'
-CURRENT = ROOT / 'hardware/fpga-interface-study/dated/2026-09-26/routing-33x36'
+CURRENT = (PAGE / json.loads((PAGE / 'review-data.json').read_text())['artifactRoot']).resolve()
 
 
 def load(path):
@@ -45,7 +45,7 @@ def main():
     assert labels['source']['allPinCsvSha256'] == sha(CURRENT / 'reports/All_Pin_Connections.csv')
 
     parts = {part['reference']: part for part in audit['components']}
-    assert len(parts) == len(audit['components']) == len(source_parts) == 130
+    assert len(parts) == len(audit['components']) == len(source_parts) == snapshot['components']
     assert set(parts) == {row['reference'] for row in source_parts}
     groups = audit['groups']
     memberships = [ref for group in groups for ref in group['references']]
@@ -53,7 +53,6 @@ def main():
     assert all(group['count'] == len(group['references']) for group in groups)
     assert audit['counts']['byStatus'] == dict(Counter(part['status'] for part in parts.values()))
     assert audit['counts']['byPrefix'] == dict(Counter(row['reference'][0] for row in source_parts))
-    assert audit['counts']['byPrefix'] == {'C': 83, 'R': 33, 'U': 6, 'L': 4, 'J': 3, 'Y': 1}
     source_ids = {source['id'] for source in audit['sources']}
     for source in source_parts:
         part = parts[source['reference']]
@@ -68,13 +67,14 @@ def main():
     assert {part['reference'] for part in parts.values() if part['status'] == 'nonessential'} == {'R12'}
 
     pins = {row['id']: row for row in labels['pins']}
-    assert len(pins) == len(labels['pins']) == len(source_pins) == 762
+    assert len(pins) == len(labels['pins']) == len(source_pins) == snapshot['canonicalPins']
     assert set(pins) == {row['reference'] + '.' + row['pin'] for row in source_pins}
     status_map = {
         'unassigned — interface decision required': 'unassigned',
         'assigned, routing incomplete on net': 'assigned-open',
         'assigned net connected in native DRC': 'assigned-connected',
-        'intentional no-connect': 'nc',
+        'intentional no-connect': 'unassigned',
+        'analog reserved — external source required; no FPGA connection': 'analog-reserved',
     }
     for source in source_pins:
         key = source['reference'] + '.' + source['pin']
@@ -86,32 +86,29 @@ def main():
         assert pin['schematicNet'] == source['schematic_net']
         assert len(pin['physicalPads']) == int(source['physical_pad_records'])
         assert all(isinstance(position[field], (int, float)) for position in pin['physicalPads'] for field in ['x_mm', 'y_mm'])
-    assert Counter(pin['statusCode'] for pin in pins.values()) == {'unassigned': 331, 'assigned-open': 326, 'assigned-connected': 99, 'nc': 6}
-    assert Counter(pin['reference'] for pin in pins.values() if pin['statusCode'] == 'unassigned') == {'U1': 203, 'J4': 8, 'J5': 60, 'J6': 60}
-    assert sum(len(pin['physicalPads']) for pin in pins.values()) == 771
-    assert labels['counts']['missingAssignedConnections'] == snapshot['unconnectedItems'] == 146
-    assert labels['counts']['assigned'] == 425
-
-    # Saved NC flags describe source bytes, not approved electrical treatment.
-    nc = {pin['id']: pin for pin in pins.values() if pin['statusCode'] == 'nc'}
-    assert set(nc) == {'U1.L9', 'U1.L10', 'U2.4', 'U3.4', 'U4.4', 'U5.4'}
-    for key in ['U1.L9', 'U1.L10']:
-        assert nc[key]['validationStatus'] == 'ground_required'
-        assert nc[key]['visualStatusCode'] == 'ground-required'
-        assert nc[key]['rawStatusLabel'] == 'NC in saved CAD'
-        assert 'GND' in nc[key]['statusLabel'] and 'UG475' in nc[key]['note']
-    for key in ['U2.4', 'U3.4', 'U4.4', 'U5.4']:
-        assert nc[key]['validationStatus'] == 'grounding_review'
-        assert nc[key]['visualStatusCode'] == 'ground-review'
-        assert 'review' in nc[key]['statusLabel'].lower()
-    nc_audit = {item['reference'] + '.' + item['pin']: item for item in audit['intentionalNoConnects']}
-    assert set(nc_audit) == set(nc)
-    assert {key for key, item in nc_audit.items() if item['reviewState'] == 'ground-required'} == {'U1.L9', 'U1.L10'}
-    assert {key for key, item in nc_audit.items() if item['reviewState'] == 'unused-output-review'} == {'U2.4', 'U3.4', 'U4.4', 'U5.4'}
+    assert Counter(pin['reference'] for pin in pins.values() if pin['statusCode'] == 'unassigned') == {'U1': 87, 'J4': 8, 'J6': 3}
+    assert sum(len(pin['physicalPads']) for pin in pins.values()) == snapshot['numberedPhysicalPads']
+    assert labels['counts']['missingAssignedConnections'] == snapshot['unconnectedItems']
+    assert labels['counts']['assigned'] == snapshot['endpointsVerified']
+    assert labels['counts']['unassigned'] == snapshot['unassignedEndpoints'] == 98
+    assert labels['counts']['cadNoConnect'] == 1
+    assert {r['reference']+'.'+r['pin'] for r in audit['intentionalNoConnects']} == {'U1.A13'}
+    assert pins['U1.A13']['cadNoConnect'] and pins['U1.A13']['statusCode']=='unassigned'
+    grounds = {'U1.L9','U1.L10','U2.4','U3.4','U4.4','U5.4'}
+    assert set(labels['groundCorrectionEndpoints']) == grounds
+    assert all(pins[key]['net'] == 'GND' and pins[key]['groundCorrectionApplied'] for key in grounds)
+    assigned = [pin for pin in pins.values() if pin.get('nativeAssignmentProvisional')]
+    assert len(assigned) == 232 and len({pin['net'] for pin in assigned}) == 116
+    assert len({pin['net'] for pin in assigned if pin['statusCode'] == 'assigned-connected'}) == snapshot['asicNetsRouted']
+    assert pins['J5.46']['statusCode']=='analog-reserved' and pins['J5.46']['net']=='AC_IN_ANALOG_RESERVED'
+    assert pins['J5.46']['validationStatus']=='analog_external_source_required'
+    assert all(pin['validationStatus']=='provisional_digital_1v5_polarity_unverified' for pin in assigned if pin['net']=='IMP_TST_SHARED')
+    if 'R112' not in parts:
+        assert pins['U1.P13']['net'] == 'GND' and 'R112' in audit['removedFromPreviousAudit']
     assert (PAGE / 'data/Presenter_Notes.md').is_file()
     assert (PAGE / 'pins/index.html').is_file()
     assert sha(native) == expected_hash
-    print('PASS: 130 component explanations and all 762 pin labels match frozen source; 331 unassigned, 6 saved-CAD NC, 2 required ground corrections, 4 FB2 reviews; no native CAD mutation.')
+    print(f"PASS: {len(parts)} component explanations and {len(pins)} pin labels match native evidence; 116 candidate FPGA nets + one analog reservation, {snapshot['asicNetsRouted']} copper-connected, 98 unassigned endpoints (one NC subset), six GND corrections; no native CAD mutation.")
 
 
 if __name__ == '__main__':
