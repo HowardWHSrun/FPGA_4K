@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-27",
+  "status": "Incomplete USB-C power routing; not a fabrication or power-up release",
+  "board": "hardware/FPGA100T_33x36_Routing.kicad_pcb",
+  "board_sha256": "c2bb9d1de754b65ebb3076b0b2c97529bc77afb4e5efad52e5762c3a9af2ac76",
+  "parts": 179,
+  "logical_endpoints": 993,
+  "physical_pad_occurrences": 1010,
+  "copper_layers": 12,
+  "native_errors": 0,
+  "native_warnings": 394,
+  "native_unconnected_items": 268,
+  "native_report": "reports/USB_C_DRC.json",
+  "native_report_sha256": "22c706bf5c33ccf11e8f449ef197fa9f31171e1b96a36b9e6e7105ac1898d4d9",
+  "native_report_binding": "Integration owner supplies the native report for this board; this helper does not rerun native DRC.",
+  "rail_reference_pad_gaps": {
+    "GND": 34,
+    "VCCINT_1V0": 4,
+    "VCCAUX_1V8": 23,
+    "VCC_ASIC_1V5": 15,
+    "VCC_LINK_2V5": 2,
+    "USB_MAIN_VIN": 2,
+    "VBUS_PROTECTED": 7,
+    "USB_VBUS_RAW": 12,
+    "USB_AON_3V3": 23
+  },
+  "pad_gap_meaning": "Actual physical pad occurrences outside the chosen same-net reference-connected group; not independent missing wires and not proof that the group is powered.",
+  "same_net_smd_via_overlap_count": 0,
+  "new_copper_intent_pass": true,
+  "new_copper_intent_checks": 13,
+  "new_copper_intent_mismatches": 0,
+  "duplicate_new_geometry_matches": 0,
+  "rejected_mux_stitch_absent": true,
+  "remaining": [
+    "Complete raw VBUS contacts, TVS return, MOSFET current path and protected bus to the eFuse and always-on LDO.",
+    "Restore AON distribution, MCU/mux/JTAG local supplies and returns, flash power, and moved FPGA bypass pickups.",
+    "Complete threshold, enable, power-good and sense routing, then recheck every physical pad and filled plane group.",
+    "Qualify PD/Type-C firmware, attach inrush, detach/brownout, protection transients, thermal load and the mounted power-distribution network."
+  ],
+  "source_conditions": "Negotiated 9 V preferred; 5 V fallback only after explicit 3 A source authorization and verified load budget. No 12 V assumption or 15 V contract.",
+  "main_protection": "TPS259474 latched circuit breaker with controlled slew, not continuous current regulation.",
+  "excluded_trials": [
+    "Protected feeder studies v47-v60 are not adopted: plane-group splits or excessive detour.",
+    "Rejected GND stitch at32.225,28.05 was relabelled USB_MUX_EN by fill; explicitly removed and checked absent.",
+    "C232/MCU USB2 alternative placement remains a separate joint study unless adopted by the integration owner."
+  ],
+  "evidence": {
+    "physical_pads": "USB_C_Power_Pad_Readback.json",
+    "intended_new_copper": "USB_C_New_Power_Copper_Intent_Audit.json"
+  }
+}

@@ -67,11 +67,11 @@ const state = () => page.locator('kc-board-viewer').evaluate(e => ({zoom:e.viewe
 try {
   const indexResponse = await page.request.get(new URL('boards.json', url).href);
   check('Board index available', indexResponse.ok());
-  const {boards} = await indexResponse.json();
-  check('Current smallest board plus five historical variants', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
-  await page.goto(url,{waitUntil:'networkidle'});await ready('compact-routed');
-  check('Viewer defaults to current33×36 routing board',await page.locator('#board-choice').inputValue()==='compact-routed');
-  const expectedDimensions = {core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
+  const {boards, default_board} = await indexResponse.json();
+  check('USB-C board plus six historical variants', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['usb-c','compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
+  await page.goto(url,{waitUntil:'networkidle'});await ready(default_board);
+  check('Viewer defaults to current USB-C board', default_board==='usb-c' && await page.locator('#board-choice').inputValue()===default_board);
+  const expectedDimensions = {'usb-c':[33,36],core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);

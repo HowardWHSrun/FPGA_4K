@@ -2,11 +2,9 @@
 
 ## Current FPGA design
 
-Only the **33 × 36 mm** board is active. Open the [native KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pro) with its complete folder, or download the [portable ZIP](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip). It contains 125 components, 21 schematic sheets and local libraries.
+The active design is the [USB-C revision](../presentation/fpga/index.html). Open its [native KiCad project](fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pro) from the extracted [complete ZIP](fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip). The 100T and two ASIC mezzanines are retained. The [native audit](fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) reports actual component/pin counts, routing gaps and checks for this exact USB-C PCB.
 
-The [current audit](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md) reports **116/116 assigned ASIC digital nets connected** and **0 assigned-net gaps**, with 0 physical DRC findings and 0 schematic-parity findings. AC_IN is separately reserved for an external analog source. The [pin map](../presentation/fpga/pins/) distinguishes 83 intentional NCs from 19 interface reservations. See the [qualification summary](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Qualification_Summary.md) for parts, stackup and open engineering requirements. No manufacturing release or demonstrated hardware operation is claimed.
-
-Earlier revisions remain [historical checkpoints](../presentation/fpga/index.html#design-history).
+The [earlier micro-HDMI review](../presentation/fpga/micro-hdmi.html) and 125-component learning report remain history. Neither certifies the new circuitry. Firmware, receiver, ASIC timing, power/cable/thermal verification and manufacturing/assembly acceptance remain open. **Not released for manufacture.**
 
 ## Supplied references
 

@@ -1,10 +1,10 @@
 # Full-system interface studies — not a release
 
-**Current compact design:** [zoomable PCB](../../presentation/fpga/viewer/?board=compact-routed) · [complete native project](dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) · [measured routing audit](dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md). The board is 33 × 36 mm with 125 components and 21 schematic sheets. The audit finds 116/116 assigned ASIC digital nets connected and 0 assigned-net gaps. The analog AC_IN contact has no FPGA GPIO path. **Not released for manufacture.**
+**Current design: USB-C development.** [Presentation](../../presentation/fpga/index.html) · [native zoomable PCB](../../presentation/fpga/viewer/?board=usb-c) · [complete project](dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) · [native audit](dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) · [all pins](dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv).
 
-**Learn and inspect:** [component explanations](../../presentation/fpga/index.html#architecture) · [every labeled pin](../../presentation/fpga/pins/) · [current qualification notes](dated/2026-09-27/completion-checkpoint/reports/Qualification_Summary.md). Required GND corrections are integrated. R12 and its unused status branch are removed. The pin map identifies 81 unused FPGA balls, two unused regulator PG outputs and 19 future-interface reservations; missing assigned copper is counted separately.
+This revision preserves the 100T and 116 digital ASIC assignments, plus external analog AC_IN. USB-C adds negotiated/protected power, USB2 control/JTAG, orientation switching and data-pin protection. The current audit reports actual copper and native findings. No manufacture-ready or working-firmware claim is made.
 
-The [full-system proposal](Full_System_Interface_Proposal.md) supplies design context. Use the current routing review above for current completion status. The prior source reviews and CAD packages below are historical evidence, not separate active designs.
+**Previous micro-HDMI baseline:** [125-component checkpoint](../../presentation/fpga/micro-hdmi.html) and [its qualification notes](dated/2026-09-27/completion-checkpoint/reports/Qualification_Summary.md). Its zero-copper-gap result does not apply automatically to USB-C. All source studies below retain their dated context.
 
 **Earlier placement:** [128-part 33 × 36 mm placement and 31-page LaTeX report](dated/2026-09-26/size-and-pin-report/START_HERE.md). This preserved checkpoint has no routed copper; its component/pin counts are superseded by the current native ledgers.
 

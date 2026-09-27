@@ -1,0 +1,77 @@
+{
+  "scope": "Descriptions only, no component/endpoint change",
+  "changes": {
+    "C1": {
+      "before": "12V candidate: manufacturer confirms 47uF +/-20%, 25V X5R, 1210, -55 to +85C, preferred part; effective capacitance at 12V, aging, temperature, inrush and power-entry transient performance remain unqualified. Replaces incompatible 10V input capacitor.",
+      "after": "Retained 47uF +/-20%, 25V X5R, 1210 input bulk for the protected USB main rail. Preferred input is 9V PD; DC bias, aging, temperature, startup and transient qualification remain open."
+    },
+    "C2": {
+      "before": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients.",
+      "after": "Retained 100nF +/-10%, 100V X7R, 0603 input bypass for the protected USB main rail. The capacitor voltage rating is not a converter or cable-transient protection rating."
+    },
+    "C3": {
+      "before": "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima.",
+      "after": "Retained 22uF 25V X5R 1206 input bypass. The earlier 12.6V typical-bias study screened about4.50uF with tolerance/temperature factors before aging; that historical calculation is not qualification at the new9V PD operating point. Confirm effective capacitance and load transients."
+    },
+    "C4": {
+      "before": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients.",
+      "after": "Retained 100nF +/-10%, 100V X7R, 0603 input bypass for the protected USB main rail. The capacitor voltage rating is not a converter or cable-transient protection rating."
+    },
+    "C7": {
+      "before": "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima.",
+      "after": "Retained 22uF 25V X5R 1206 input bypass. The earlier 12.6V typical-bias study screened about4.50uF with tolerance/temperature factors before aging; that historical calculation is not qualification at the new9V PD operating point. Confirm effective capacitance and load transients."
+    },
+    "C8": {
+      "before": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients.",
+      "after": "Retained 100nF +/-10%, 100V X7R, 0603 input bypass for the protected USB main rail. The capacitor voltage rating is not a converter or cable-transient protection rating."
+    },
+    "C11": {
+      "before": "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima.",
+      "after": "Retained 22uF 25V X5R 1206 input bypass. The earlier 12.6V typical-bias study screened about4.50uF with tolerance/temperature factors before aging; that historical calculation is not qualification at the new9V PD operating point. Confirm effective capacitance and load transients."
+    },
+    "C12": {
+      "before": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients.",
+      "after": "Retained 100nF +/-10%, 100V X7R, 0603 input bypass for the protected USB main rail. The capacitor voltage rating is not a converter or cable-transient protection rating."
+    },
+    "C15": {
+      "before": "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima.",
+      "after": "Retained 22uF 25V X5R 1206 input bypass. The earlier 12.6V typical-bias study screened about4.50uF with tolerance/temperature factors before aging; that historical calculation is not qualification at the new9V PD operating point. Confirm effective capacitance and load transients."
+    },
+    "C16": {
+      "before": "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients.",
+      "after": "Retained 100nF +/-10%, 100V X7R, 0603 input bypass for the protected USB main rail. The capacitor voltage rating is not a converter or cable-transient protection rating."
+    },
+    "#FLG001": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG002": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG003": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG004": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG005": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG006": {
+      "before": "External protected LINK_12V source assumption or local regulator output; flag is not a power-capacity proof.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG200": {
+      "before": "FET/diode-conducted source path; assertion is not proof of startup, protection, current capacity or firmware.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    },
+    "#FLG201": {
+      "before": "FET/diode-conducted source path; assertion is not proof of startup, protection, current capacity or firmware.",
+      "after": "USB-C source or local-regulator assertion; flag is not a power-capacity or startup proof."
+    }
+  }
+}

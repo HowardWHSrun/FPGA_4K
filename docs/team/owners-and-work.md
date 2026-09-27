@@ -2,18 +2,18 @@
 
 Updated 2026-09-27 for **XC7A100T-1CSG324I / 116 digital ASIC nets + one analog contact / XEM8310**. Roles are proposed; no personal acceptance or review approval is implied.
 
-The [current board review](../../presentation/fpga/index.html) and [six work areas](../../presentation/fpga/index.html#uncertainties) are the active status. The fourth-review register and previous native checkpoints remain dated history. The smallest board has 125 parts, with 116/116 assigned ASIC nets connected and 0 assigned-net gaps in its native audit. GND corrections, exact part selections and the R12 removal are integrated.
+The [current USB-C review](../../presentation/fpga/index.html) and [remaining work](../../presentation/fpga/index.html#release) are the active status. The new revision preserves the ASIC assignment and adds negotiated/protected power, USB2 control/JTAG and a reversible four-pair custom link. Its own native audit reports actual copper and findings. The earlier micro-HDMI zero-gap result and all older checkpoints remain historical.
 
 | Workstream | Remaining result | Proposed owner / reviewer |
 |---|---|---|
 | ASIC and carrier | Current payload/generator, chip/contact map, guaranteed pad timing/levels, ASIC supplies and analog AC_IN source | ASIC + carrier/routing designers; Howard coordinates |
 | FPGA firmware | Local-clock startup, bounded SPI commands, JTAG capture transport, Vivado pin/CDC/timing proof | Jiaao / FPGA implementation, subject to agreement |
-| Power | Workload estimate, final copper/return review, PDN and thermal margin, controlled-rise protected cable source | FPGA power + source/carrier design |
+| Power | PD source/sink contract, workload estimate, final copper/return review, PDN, startup/fault and thermal margin | FPGA power + source/carrier design |
 | Mechanical and manufacturing | Mating connectors and orientation, precision J4 slots, assembled clearances, stackup/process acceptance | Mechanical/layout + fabricator/assembler |
-| XEM8310 and host | Carrier contacts/voltages, electrical receiver network, target JTAG, data format and bounded host-stall behavior | Receiver carrier / FPGA / host software |
+| XEM8310 and host | Matching USB-C source/USB2-host adapter, lane orientation/training, receiver contacts/voltages, data format and bounded host-stall behavior | Receiver carrier / FPGA / host software |
 | Prototype acceptance | Rail/JTAG/boot checks, known-pattern capture, eight-ASIC mapping, sustained acquisition and recovery | Lab integration after design release and assembly |
 
-Finite raw capture has simulation/synthesis evidence; startup, JTAG transport and a complete bitstream are unfinished. The XEM8310 is an FPGA/USB module, not a conventional MCU or an automatic 12 V output/target programmer. The detailed [power ownership page](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/bringup/Power_Status_And_Owners.md) separates engineering work from the few external specifications needed. No order or supplier submission has been made.
+Finite raw capture has simulation/synthesis evidence; startup, JTAG transport and a complete bitstream are unfinished. The XEM8310 is an FPGA/USB module, not a conventional MCU or an automatic PD source/USB host. The [USB-C circuit explanation](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/USB_C_Design_Explanation.md) separates the headboard revision from required receiver and firmware work. No order or supplier submission has been made.
 
 ## Layout ownership record
 

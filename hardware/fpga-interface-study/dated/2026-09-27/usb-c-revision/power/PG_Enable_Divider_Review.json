@@ -1,0 +1,98 @@
+{
+  "status": "Source-backed divider accepted for root integration after root conditional approval and independent MCU pin review",
+  "limits": {
+    "AON_screening_range_V": [
+      3.2,
+      3.4
+    ],
+    "resistor_tolerance_fraction": 0.01,
+    "PG_leakage_max_A": 3e-06,
+    "PB7_input_leakage_bound_A": 7e-08,
+    "buck_EN_leakage_bound_A": 1e-07,
+    "PG_unpowered_max_V": 1.0,
+    "buck_EN_rising_max_V": 0.83,
+    "buck_EN_falling_min_V": 0.67,
+    "MCU_VIH_multiplier": 0.7,
+    "MCU_VIL_multiplier": 0.3
+  },
+  "results": {
+    "PG_high_min_V": 2.4617058410396377,
+    "EN_high_min_V": 1.2159154236877197,
+    "PG_high_margin_min_V": 0.22170584103963797,
+    "EN_low_max_V": 0.5099995
+  },
+  "source_evidence": {
+    "efuse": "TI TPS25947 RevC, Electrical Characteristics PG VPGD and Section7.3.11; https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+    "buck": "TI TPS62135 Electrical Characteristics EN: 0.77..0.83V rising,0.67..0.73V falling,100nA leakage; https://www.ti.com/lit/ds/symlink/tps62135.pdf",
+    "MCU": "ST DS13560 Rev6 Table12 PB7 FT_fa; Table55 FT_xx leakage70nA, VIH0.7VDD/VIL0.3VDD; https://www.st.com/resource/en/datasheet/stm32g0b1me.pdf"
+  },
+  "boundary": "Hardware divider guarantees core EN low for the specified1V unpowered PG condition under stated component corners. MCU PG low can be indeterminate at the lowest AON voltage; firmware must also require valid PD/source capability and VBUS sense, disable internal pulls, and fail closed on reset or contract loss. Transient timing and PCB leakage require test.",
+  "component_changes": {
+    "R209": {
+      "mpn": "RC0402FR-0747KL",
+      "value": "47k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "FPGA_PWR_GOOD"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R212": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "FPGA_PWR_GOOD",
+        "2": "FPGA_CORE_EN"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R213": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "FPGA_CORE_EN",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    }
+  },
+  "integration_change": {
+    "endpoint": "U2.8",
+    "from": "FPGA_PWR_GOOD",
+    "to": "FPGA_CORE_EN",
+    "MCU_PB7": "remains FPGA_PWR_GOOD"
+  }
+}

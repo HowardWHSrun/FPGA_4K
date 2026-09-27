@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-27",
+  "status": "Adopted in development schematic; layout routing and assembly qualification pending",
+  "reference": "U6",
+  "before": {
+    "lib_id": "CoreSupport:Memory_Flash__MX25R3235FM2xx0",
+    "value": "MX25U12835FM2I-10G",
+    "mpn": "MX25U12835FM2I-10G",
+    "footprint": "CoreSupport:Package_SO__SOIC-8_5_3x5_3mm_P1_27mm",
+    "datasheet": "https://www.macronix.com/Lists/Datasheet/Attachments/8704/MX25U12835F,%201.8V,%20128Mb,%20v1.9.pdf",
+    "group": "Boot flash",
+    "status": "1.8V128Mbit SPI NOR;200mil8-SOP,pin7RESET#/SIO3. x1 initial boot; programmer/QE/power-cycle qualification pending.",
+    "pins": {
+      "1": "FLASH_CS_B",
+      "2": "FLASH_DQ1",
+      "3": "FLASH_DQ2",
+      "4": "GND",
+      "5": "FLASH_DQ0",
+      "6": "FLASH_SCLK",
+      "7": "FLASH_DQ3",
+      "8": "VCCAUX_1V8"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "U6",
+    "source_lib_id": "Memory_Flash:MX25R3235FM2xx0",
+    "source_footprint": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm"
+  },
+  "after": {
+    "lib_id": "CoreSupport:Memory_Flash__MX25R3235FM2xx0",
+    "value": "MX25U12835FZNI-10G",
+    "mpn": "MX25U12835FZNI-10G",
+    "footprint": "CoreSupport:Macronix_WSON8_6x5_Floating_EP",
+    "datasheet": "https://www.macronix.com/Lists/Datasheet/Attachments/8704/MX25U12835F,%201.8V,%20128Mb,%20v1.9.pdf",
+    "group": "Boot flash",
+    "status": "USB-C development WSON revision: unchanged1.8V128Mbit SPI family/pins1-8; exposed metal left unsoldered with central surface/via keepout. 33x36 placement fits; routing, assembly process, effective keepout tolerance and boot/programming qualification still required.",
+    "pins": {
+      "1": "FLASH_CS_B",
+      "2": "FLASH_DQ1",
+      "3": "FLASH_DQ2",
+      "4": "GND",
+      "5": "FLASH_DQ0",
+      "6": "FLASH_SCLK",
+      "7": "FLASH_DQ3",
+      "8": "VCCAUX_1V8"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "U6",
+    "source_lib_id": "Memory_Flash:MX25R3235FM2xx0",
+    "source_footprint": "CoreSupport:Macronix_WSON8_6x5_Floating_EP"
+  },
+  "pin_nets_unchanged": true,
+  "source_placement_board_sha256": "545eed49dce4baa80437060bcdc666a794319d082b9ffbe538104ed27a01fad4",
+  "pose": {
+    "side": "B",
+    "x_mm": 15.0,
+    "y_mm": 4.15,
+    "degrees": 0
+  },
+  "footprint_sha256": "3c71531deaf1e876d22d96747556de6d743813fddb76280f8673aea250d773da",
+  "source_review": "../interface/wson_candidate/U6_WSON_Candidate_Review.md",
+  "boundary": "Native placement clearance is not proof of routed keepout clearance, manufacturability, procurement availability or working configuration. Original candidate review remains historical."
+}

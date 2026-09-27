@@ -1,0 +1,85 @@
+[
+  {
+    "title": "STM32G0B1 datasheet Rev6",
+    "url": "https://www.st.com/resource/en/datasheet/stm32g0b1me.pdf",
+    "sections": "Figure4/Table12; supplyFigure15; Tables21,28,36; packageA0B8; USB/UCPD sections"
+  },
+  {
+    "title": "STM32 dead-battery application note",
+    "url": "https://www.st.com/resource/en/application_note/an5225-introduction-to-usb-typec-power-delivery-for-stm32-mcus-and-mpus-stmicroelectronics.pdf",
+    "sections": "Standalone MCU DBCC background only; TCPP-protected circuit instead follows DS12900 Rev7 Figure 4 and section 6.5."
+  },
+  {
+    "title": "HD3SS460 RevD",
+    "url": "https://www.ti.com/lit/ds/symlink/hd3ss460.pdf",
+    "local_file": "evidence/hd3ss460.pdf",
+    "sections": "pin table, electricalcharacteristics, Table1 p12, genericpassiveswitch \u00a79.1",
+    "sha256": "ac2a6dc2c5d69ec20fd4403331cc1c05ea66523ffa92b0a2810acf742a729c46"
+  },
+  {
+    "title": "TXU0304 RevA",
+    "url": "https://www.ti.com/lit/ds/symlink/txu0304.pdf",
+    "local_file": "evidence/txu0304.pdf",
+    "sections": "Table6-1, supplyisolation, RUT0012Alandpatternp33",
+    "sha256": "f6f6178296b8d497d3706ea7766633b62f799cfe830659a2dcfd09c79bfa71dc"
+  },
+  {
+    "title": "AMDDS1811.27.1",
+    "url": "https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content",
+    "sections": "Tables11,15",
+    "existing_local_source": "Original Sources/09_Manufacturer_Documentation/Datasheets/AMD/DS181_Power_and_Electrical_Limits.pdf",
+    "sha256": "3f0cb482d645e217ae834e9370c1320300abb85a8046287250f9a48856aed070"
+  },
+  {
+    "title": "TI TPD4E05U06",
+    "url": "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf",
+    "sections": "Table4-2,capacitance,ordering"
+  },
+  {
+    "title": "TI TPD2EUSB30",
+    "url": "https://www.ti.com/lit/ds/symlink/tpd2eusb30.pdf",
+    "sections": "Table5-1,DRTordering"
+  },
+  {
+    "title": "OpalKellyXEM8310 expansion",
+    "url": "https://docs.opalkelly.com/xem8310/expansion-connectors/",
+    "sections": "bank64VIO1,HP1.8LVDStermination,MC3fixed1.2"
+  },
+  {
+    "title": "USB-IF functionaltest",
+    "url": "https://www.usb.org/sites/default/files/USB%20Type%20C%20Functional%20Test%20Specification%202024%2003%2003.pdf",
+    "sections": "AlternateModeDiscoveryandentryrequirements"
+  },
+  {
+    "title": "ST TCPP01 DS12900 Rev7",
+    "url": "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf",
+    "local_file": "../power/evidence/tcpp01-m12_primarycopy.pdf",
+    "sha256": "3f140a395f5c909cd14a27af19700afe054dca5b4a5fefaabd0e26f7b87f69d2",
+    "retrieval_note": "Manufacturer-authored Rev7 document retrieved by power owner via Oneyac mirror after ST direct download failed; page4 image visually checked against official indexed source.",
+    "sections": "Figure4 DBCC grounds and bootstrap diode; section6.5 dead-battery handoff; section6.6 bypass and CC capacitance."
+  },
+  {
+    "title": "ST UM2773 Rev5",
+    "url": "https://www.stmcu.jp/wp/wp-content/uploads/2021/05/UM2773_Rev5.pdf",
+    "local_file": "evidence/UM2773_Rev5.pdf",
+    "sha256": "05df946debe1f7611d15caf18287bdace8dce957895456d0fbda2589bce28a83",
+    "sections": "Page5 Figure5 BAT54K anode/cathode and100nF IN_GD capacitor; Table1 supported power MOSFET examples; historical reference revision."
+  },
+  {
+    "title": "TDK C1608X7R1C105K080AC",
+    "url": "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1c105k080ac.pdf",
+    "sections": "1uF16V X7R0603 part characteristics; selected C235 replacement."
+  },
+  {
+    "title": "ST STM32G0 low-level system driver",
+    "url": "https://github.com/STMicroelectronics/stm32g0xx-hal-driver/blob/master/Inc/stm32g0xx_ll_system.h",
+    "sections": "UCPD1_STROBE definition for G0; use with configured sink analog state before external TCPP handoff."
+  },
+  {
+    "title": "TMUXHS4446 SLASF51 February2024",
+    "url": "https://www.ti.com/lit/ds/symlink/tmuxhs4446.pdf",
+    "local_file": "evidence/tmuxhs4446.pdf",
+    "sha256": "1c29a1bfb009543da0a0af722ed45512bf318d9ccfbcc69be3532db6c060aa8c",
+    "sections": "Table4-1 all40pins plus EP41; \u00a7\u00a75.3/5.5 power-off I/O and nominal voltage limits; Table6-3 GPIO orientation; \u00a77.3/7.4 supply/thermal land; RET0040A landpattern"
+  }
+]

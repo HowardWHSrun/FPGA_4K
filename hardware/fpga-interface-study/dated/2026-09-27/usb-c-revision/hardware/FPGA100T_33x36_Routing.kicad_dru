@@ -1,0 +1,6 @@
+(version 1)
+# GCT USB4081 proposed datum; assembly retention and actual board thickness need review.
+# Explicitly scoped to J4 shield pads; global0.50mm remains elsewhere.
+(rule "J4_SH_manufacturer_edge_geometry"
+  (condition "(A.Type == 'Pad' && A.Reference == 'J4' && A.Pad_Number == 'SH') || (B.Type == 'Pad' && B.Reference == 'J4' && B.Pad_Number == 'SH')")
+  (constraint edge_clearance (min 0.40mm)))

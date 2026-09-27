@@ -1,0 +1,370 @@
+{
+  "status": "PASS",
+  "scope": "Native schematic XML pin/net/MPN/footprint audit; not PCB connectivity, firmware or physical qualification",
+  "source_sha256": {
+    "interface/USB_C_Interface_Components.json": "3f01531bfaa5316951c09ea003987ee33f1615f43b1e88f3b810452ffa697b6f",
+    "power/USB_C_Power_Components.json": "4f26ae22b247f96ee7d9fcfd7bdedfd4756398edada039b50c157b03882792e3",
+    "mechanical/J4_Components.json": "b1206acc418c97d2ee1d74be6226e5e0659facdf33c01dc28407cb6b42c642f8",
+    "project/reports/USB_C_Revision.net": "82b7b1d35e3dbf3e499da440f9f34e5053176042df4ee05b969e58617c45d052",
+    "project/reports/USB_C_ERC.json": "9abcade6a5483f2b60cce974cbb08baff0b0845f929701948b548020bd2eb441",
+    "history/baseline-reports/All_Pin_Connections.csv": "17c496fc929ef3c6f1282b3d0c26ff54ca9e3273d2dc1c0ec9a3acf032fce2c2",
+    "project/assignment/ASIC_Interface_Assignment.csv": "51e1685a9cdd65170d6ce7682f20ffad2e5640abc78cf1ea1fc6b26a3cb2a521"
+  },
+  "schematic_source_sha256": {
+    "project/hardware/FPGA100T_33x36_Routing.kicad_sch": "cab31b38c415d380c6b546690b0c27ccb0245e491d8604712969dc181e92bf0a",
+    "project/hardware/core_01_01.kicad_sch": "86936dbda5461391ce817b4dd91aa4dbed7a9f80f35e9705fb6f121ce9c8f29a",
+    "project/hardware/core_02_01.kicad_sch": "299558e723ca1fac34c164591c8223fcdc7f55a4837dc4bed9727a0d32145ba3",
+    "project/hardware/core_03_01.kicad_sch": "70ce18c199ada320681494976c2eb4aee58723c61e783f142d4e6c9190009917",
+    "project/hardware/core_04_01.kicad_sch": "148f53ee9d2fa3077b6ef298a326ee70f9e33a4714c449ad775a8efbb5fc3c12",
+    "project/hardware/core_05_01.kicad_sch": "4aaf6ab03f4a1bfaeec7aa18962ad8a2080c70f33507d2db9335d7d7900fcdce",
+    "project/hardware/core_06_01.kicad_sch": "0ae3b28dd0d663d82c5d248255723fd30a010260f0011405af7125ddd224d4d8",
+    "project/hardware/core_07_01.kicad_sch": "e2f99b17061e6812b2901fbd31a076f4a8002bdd185e903ce65a44e911e68fff",
+    "project/hardware/core_08_01.kicad_sch": "5ee5d1a1ef9c6166a72c2d146067e035191cb2442b664758751b07bf18218b3c",
+    "project/hardware/core_09_01.kicad_sch": "c85c29e43b59fd6308263faf67592f683fb955c575e211257a116a98a0acf285",
+    "project/hardware/core_10_01.kicad_sch": "5a3a95213df8854e0d9db2c8afec282bb98a526bd1a21b36507ca1d572a5dc30",
+    "project/hardware/core_11_01.kicad_sch": "042d9d328f1418e47247dee5e8801ee18eec10bca255d42c34c8b835e83571f9",
+    "project/hardware/core_12_01.kicad_sch": "05bf8f85d92d92fea2f165cfc2562b2f5ea9a972dd1adab24a79a1c328a1de05",
+    "project/hardware/core_13_01.kicad_sch": "3510fc5b30b5bc7945f34976aa39f1641891b7490e078fc4ae1a1fbe0b4dfeb6",
+    "project/hardware/fpga_unit_01.kicad_sch": "97c11b7c974a7794c22b64c2c14eaa6d7750cbc196877245e61134234cc6da95",
+    "project/hardware/fpga_unit_02.kicad_sch": "f8a04c9d8af70b526b6ba399d676b118e572c43e65d0cf7c393159beed191448",
+    "project/hardware/fpga_unit_03.kicad_sch": "704d837dad37a7fea8a8048984946a20099ddae1f39891bd46260d69fb0a649d",
+    "project/hardware/fpga_unit_04.kicad_sch": "b453a5622e97716adc260ef2df33de917ac5afe1d40c78549271a8c960f3c352",
+    "project/hardware/fpga_unit_05.kicad_sch": "13e2c5e9dd748bcc9774ecc0551d5c801b91a259365fabe7d5c66146044ab738",
+    "project/hardware/mezzanine_01.kicad_sch": "f67c8184b2a55deff3f5281d1e6b569935d64d3953a861b425f80d0bfd709547",
+    "project/hardware/usb_core_01_01.kicad_sch": "5e46f655d094eac3622951359762af4379036b22f71f175ac5a1165750c3730f",
+    "project/hardware/usb_core_01_02.kicad_sch": "75e5d260ba3303b5779871450d5c8ba2a84dda15263b4fd1d744aed83f6a755b",
+    "project/hardware/usb_core_02_01.kicad_sch": "2d773aa94a6740d1eb458b9bbb2017a3005e9d37fd90ab6d3a485c17cad9149c",
+    "project/hardware/usb_core_03_01.kicad_sch": "fcc53a9e5323d65e71b43e2b66c2c53df44eccf13858e54026700b48db7e9b19",
+    "project/hardware/usb_core_04_01.kicad_sch": "27f0814c9cc7c6c48b6cc96e0e8e16f2f024781dcdd94bb26be456d99f052c4d",
+    "project/hardware/usb_core_05_01.kicad_sch": "9e63773e71ea5ae6fab074bb33292a4b6b9b66735373603f221dfc60c5e79598"
+  },
+  "native_components": 176,
+  "footprint_aliases_verified": {
+    "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm": {
+      "source_sha256": "33c22382f224a9eb823bd99b8cf2c0bc75a2fa3588609586bdfe240986cb7125",
+      "cache_sha256": "9d3de3152d7594e7018521c38f050b4c23ff7221ca4aaf4d788292a90a8be417",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Package_DFN_QFN__UFQFPN-32-1EP_5x5mm_P0_5mm_EP3_5x3_5mm"
+    },
+    "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm": {
+      "source_sha256": "9b1c081e3bd7f8a0fc5c9febf8ed311a8297ec6f3fc7d9bbb2d3c9048aed2615",
+      "cache_sha256": "077e27c97b82b100f80fbe5bac799efe0e70baeca69f5b59a1622242c3a8e966",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Package_DFN_QFN__Texas_RNH0030A_WQFN-30-1EP_2_5x4_5mm_P0_4mm_EP1_2x3_2mm"
+    },
+    "USB_C_Interface:Texas_RUT0012A_UQFN-12_2x1.7mm_P0.4mm": {
+      "source_sha256": "d44539d37b0f2fc485dfb5842b574f70e9c41df426d05b04aa54e30699717ede",
+      "cache_sha256": "fbc97fb069dc9cd4b5c6e42f8b03714762d39a2481d80beaeeec76c273e656c9",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USB_C_Interface__Texas_RUT0012A_UQFN-12_2x1_7mm_P0_4mm"
+    },
+    "Package_SON:USON-10_2.5x1.0mm_P0.5mm": {
+      "source_sha256": "08915959f022db57e477d1091632f6cb10a7fa605f4af70a53199462e6f21e2f",
+      "cache_sha256": "2a9dac757c87aff0df994fad7a229cedac6c86cb8e3fc744a2cf02229544cbce",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Package_SON__USON-10_2_5x1_0mm_P0_5mm"
+    },
+    "Package_TO_SOT_SMD:Texas_DRT-3": {
+      "source_sha256": "15cde3ee13da0e0426038a0a17ee16c50edc6d100b64582166b4263d4e7cae17",
+      "cache_sha256": "12d792180fca69394b5ed9d1dca9f328e89e70f42ad12b0369df4aa1d411686c",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Package_TO_SOT_SMD__Texas_DRT-3"
+    },
+    "Resistor_SMD:R_0402_1005Metric": {
+      "source_sha256": "e05c7605248c220836f642ed1f526133edf0374acdfd5bb2631e58b4e377acfb",
+      "cache_sha256": "3992d1edfbbd2e75a832578f60fd5b9d6cb33e19b3b506a6bbc3fdd5cbc5127d",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+    },
+    "Capacitor_SMD:C_0402_1005Metric": {
+      "source_sha256": "0403382fc4583ed510b461b1fa4a36dfaec6f4c0d9b1a67e6b0027837a54e1b5",
+      "cache_sha256": "339a5633867092245db2024991d5d28b3b8da42d59b93ebf48b9a9ba43835749",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+    },
+    "Capacitor_SMD:C_0805_2012Metric": {
+      "source_sha256": "62775a51fe74ba7f1b572de327bdbd3fc92582721b2abcaa47787865590d89cb",
+      "cache_sha256": "1f58029fad823f4d5e7ce39852e1cf4975d934e56e06a7669790cad15ace8537",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+    },
+    "Capacitor_SMD:C_0603_1608Metric": {
+      "source_sha256": "fe0dbfefbb181a0466f93a8de52d84ba7b00fcd9acdbb69575f4128a0af4e405",
+      "cache_sha256": "54e2c36f84c13c22e1a5a083ea736aa69fa353091ff4682d0e58ac7ecd4332f6",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+    },
+    "USB_C_Interface:SWD_Fixture_5Pads_P1.27mm": {
+      "source_sha256": "92a4b3025d9f6f52c02e71328b8e73387b2e834a938150262aa4455339319642",
+      "cache_sha256": "b3dcfff0acd05eb00ee483368638bbc09cbf4531ccbe34f217f11798d858c89e",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USB_C_Interface__SWD_Fixture_5Pads_P1_27mm"
+    },
+    "USBPower:ST_TCPP01_QFN12_3x3": {
+      "source_sha256": "441c6b36f72f87274de7a1f12524876d71d6c1038ddedb19c204ecbf4e0994cc",
+      "cache_sha256": "20bfd73b0652ad090c105c8907c4f816b19f927720b2371cc64ba43f60e17b76",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USBPower__ST_TCPP01_QFN12_3x3"
+    },
+    "USBPower:ST_PowerFLAT_2x2_STL6N3LLH6": {
+      "source_sha256": "1402386996471e36dd2e28db095fe71f6f12998eb03db4a0633b858e0e8ac135",
+      "cache_sha256": "e8b9b1f77ea76ccaa9c2b7ce474c6b7af4107d434755900a8c23cbfaf69c7111",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USBPower__ST_PowerFLAT_2x2_STL6N3LLH6"
+    },
+    "Diode_SMD:D_SOD-523": {
+      "source_sha256": "0ccbea121afcb4fdc50836ac0020ab8f2a6d958cc722d7179f7079ae38be5825",
+      "cache_sha256": "778fb0c3e1f7355d92d32419dff10ad10e9f3209f3ffee38e283ddc79519bb47",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Diode_SMD__D_SOD-523"
+    },
+    "Diode_SMD:ST_QFN-2L_1.6x1.0mm": {
+      "source_sha256": "47f49627c39712d809f23d71a80c54f28604dd179f19b5d798523708fb12bec9",
+      "cache_sha256": "4ea193ee46ed0505d7dbaa5cc671702d9a2eba8c95ba594e997e7a172585cd5f",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Diode_SMD__ST_QFN-2L_1_6x1_0mm"
+    },
+    "Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm": {
+      "source_sha256": "5b7efafe23ba0a80faf2aa5786e7ceed526eb3802b254bc28577f1fc06abb633",
+      "cache_sha256": "006e1e201a4e645751db93573c18c6e44185481213003fd7f2b00e7e682de032",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:Package_SON__WSON-6-1EP_2x2mm_P0_65mm_EP1x1_6mm"
+    },
+    "USBPower:TI_RPW0010A_TPS25947": {
+      "source_sha256": "7913a318c8c0626fe107b0faf875811c71a9186db64f5299f904c966a28e80b4",
+      "cache_sha256": "eb68b30c56dd0bc0a8ba21207fff9affa66a3981d79f5a8b4abebaa7ce29b1c9",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USBPower__TI_RPW0010A_TPS25947"
+    },
+    "USB_C_Revision:USB_C_GCT_USB4081_03_A": {
+      "source_sha256": "b64ff67d749911df447a18fffa694194f62aa96ca3d8ca18817759e4aebf83be",
+      "cache_sha256": "ef7eb63fd777572d506bf36633d40ae872736b2b493ccfc93c561de8c280c76a",
+      "exact_structural_equality_except_name": true,
+      "alias": "CoreSupport:USB_C_Revision__USB_C_GCT_USB4081_03_A"
+    }
+  },
+  "input_components_checked": 52,
+  "input_numbered_pins_checked": 245,
+  "asic_signals_checked": 116,
+  "fpga_bank16_pairs_checked": 4,
+  "critical_pin_checks": {
+    "U210.19": "GND",
+    "U210.21": "GND",
+    "U210.22": "USB_DM",
+    "U210.23": "USB_DP",
+    "U210.4": "USB_AON_3V3",
+    "U210.20": "USB_AON_3V3",
+    "U210.31": "FPGA_PWR_GOOD",
+    "U210.32": "CC_FAULT_N",
+    "U211.8": "USB_AON_3V3",
+    "U211.18": "USB_MUX_EN",
+    "U211.3": "USB_MUX_POL",
+    "U212.1": "USB_AON_3V3",
+    "U212.11": "VCCAUX_1V8",
+    "U212.12": "JTAG_OE",
+    "U212.5": "MCU_JTAG_TDO",
+    "U212.7": "JTAG_TDO",
+    "U200.7": "USB_CC1_RAW",
+    "U200.9": "USB_CC2_RAW",
+    "U200.3": "USB_CC1",
+    "U200.1": "USB_CC2",
+    "U200.10": "TCPP_DB_N",
+    "U202.3": "FPGA_PWR_GOOD",
+    "U202.4": "EFUSE_PGTH",
+    "U202.5": "VBUS_PROTECTED",
+    "U202.6": "USB_MAIN_VIN",
+    "U2.8": "FPGA_PWR_GOOD",
+    "D200.1": "TCPP_GD_BIAS",
+    "D200.2": "USB_VBUS_RAW"
+  },
+  "intentional_nc_endpoints": 115,
+  "endpoint_changes_from_baseline": [
+    {
+      "endpoint": "C1.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C2.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C3.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C4.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C7.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C8.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C11.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C12.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C15.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "C16.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "R10.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "R11.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U1.A8",
+      "before": "unconnected-(U1B-IO_L12N_T1_MRCC_16-PadA8)",
+      "after": "LINK_D1_N",
+      "expected": "LINK_D1_N"
+    },
+    {
+      "endpoint": "U1.A9",
+      "before": "unconnected-(U1B-IO_L14N_T2_SRCC_16-PadA9)",
+      "after": "LINK_CLK_N",
+      "expected": "LINK_CLK_N"
+    },
+    {
+      "endpoint": "U1.A10",
+      "before": "unconnected-(U1B-IO_L14P_T2_SRCC_16-PadA10)",
+      "after": "LINK_CLK_P",
+      "expected": "LINK_CLK_P"
+    },
+    {
+      "endpoint": "U1.B8",
+      "before": "unconnected-(U1B-IO_L12P_T1_MRCC_16-PadB8)",
+      "after": "LINK_D1_P",
+      "expected": "LINK_D1_P"
+    },
+    {
+      "endpoint": "U1.B9",
+      "before": "unconnected-(U1B-IO_L11N_T1_SRCC_16-PadB9)",
+      "after": "LINK_D0_N",
+      "expected": "LINK_D0_N"
+    },
+    {
+      "endpoint": "U1.C9",
+      "before": "unconnected-(U1B-IO_L11P_T1_SRCC_16-PadC9)",
+      "after": "LINK_D0_P",
+      "expected": "LINK_D0_P"
+    },
+    {
+      "endpoint": "U1.C10",
+      "before": "unconnected-(U1B-IO_L13N_T2_MRCC_16-PadC10)",
+      "after": "LINK_D2_N",
+      "expected": "LINK_D2_N"
+    },
+    {
+      "endpoint": "U1.C11",
+      "before": "unconnected-(U1B-IO_L13P_T2_MRCC_16-PadC11)",
+      "after": "LINK_D2_P",
+      "expected": "LINK_D2_P"
+    },
+    {
+      "endpoint": "U2.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U2.8",
+      "before": "LINK_12V",
+      "after": "FPGA_PWR_GOOD",
+      "expected": "FPGA_PWR_GOOD"
+    },
+    {
+      "endpoint": "U2.10",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U3.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U3.10",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U4.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U4.10",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U5.1",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    },
+    {
+      "endpoint": "U5.10",
+      "before": "LINK_12V",
+      "after": "USB_MAIN_VIN",
+      "expected": "USB_MAIN_VIN"
+    }
+  ],
+  "unexpected_endpoint_changes": [],
+  "mismatches": [],
+  "duplicate_logical_endpoints": [],
+  "native_erc_counts": {
+    "isolated_pin_label": 1,
+    "pin_not_connected": 3
+  },
+  "firmware_requirements": [
+    "Keep grounded PA9/PA10 analog/high impedance; do not enable GPIO alternate output on them.",
+    "Leave SYSCFG PA11_RMP/PA12_RMP disabled: package PA11/PA12 are USB_DM/DP, not a remap to grounded PA9/PA10.",
+    "Program UCPD sink normal Rd before G0 UCPD1_STROBE then TCPP_DB_N high.",
+    "Factory SWD loads MCU before USB bridge recovery is available; main power/mux/JTAG default off."
+  ]
+}

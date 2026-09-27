@@ -1,0 +1,75 @@
+{
+  "status": "PASS independent visual transcription of manufacturer Figure1 and Table9 footprint",
+  "part": "STL6N3LLH6",
+  "source_url": "https://www.st.com/resource/en/datasheet/stl6n3llh6.pdf",
+  "source_pdf_sha256": "1614aca78607e9445e41b29f4eb716dc6d328b73aaf92ca8878795564e4c83b1",
+  "footprint_sha256": "1402386996471e36dd2e28db095fe71f6f12998eb03db4a0633b858e0e8ac135",
+  "electrical_pin_map": {
+    "1": "USB_VBUS_RAW",
+    "2": "USB_VBUS_RAW",
+    "3": "VBUS_GATE",
+    "4": "VBUS_PROTECTED",
+    "5": "USB_VBUS_RAW",
+    "6": "USB_VBUS_RAW"
+  },
+  "physical_lands": [
+    [
+      "1",
+      -0.65,
+      0.8625,
+      0.35,
+      0.3
+    ],
+    [
+      "2",
+      0.0,
+      0.8625,
+      0.35,
+      0.3
+    ],
+    [
+      "3",
+      0.65,
+      0.8625,
+      0.35,
+      0.3
+    ],
+    [
+      "4",
+      0.65,
+      -0.8875,
+      0.35,
+      0.3
+    ],
+    [
+      "5",
+      0.0,
+      -0.8875,
+      0.35,
+      0.3
+    ],
+    [
+      "6",
+      -0.65,
+      -0.8875,
+      0.35,
+      0.3
+    ],
+    [
+      "1",
+      -0.3,
+      0.0,
+      1.05,
+      1.125
+    ],
+    [
+      "4",
+      0.65,
+      -0.0625,
+      0.35,
+      0.95
+    ]
+  ],
+  "interpretation": "Manufacturer recommended footprint is component-side view with PIN1 at lower left. Upper and lower row centres are intentionally asymmetric (-0.8875/+0.8625) relative to drain exposed-land centre; source exposed land is y=-0.0625. Both exposed metal lands are electrically connected (D1 and S4), not isolated NC thermal pads.",
+  "qualification_boundary": "Transcription and exact electrical mapping pass; paste/assembly recipe, thermal spreading, and actual TCPP gate response/SOA still require final layout and hardware validation."
+}

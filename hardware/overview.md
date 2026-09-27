@@ -22,7 +22,7 @@ flowchart LR
     D --> E[PC]
 ```
 
-The chip carrier supports the recording chips and their connections. Routing brings chip signals toward the FPGA, which receives and organizes data for the downstream platform. The diagram shows the intended data path, not a mechanical stack or final connector map. The [current remaining work](../presentation/fpga/index.html#uncertainties) covers the unresolved electrical, power, timing and mechanical contract.
+The chip carrier supports the recording chips and their connections. Routing brings chip signals toward the FPGA, which receives and organizes data for the downstream platform. The diagram shows the intended data path, not a mechanical stack or final connector map. The [current remaining work](../presentation/fpga/index.html#release) covers the unresolved electrical, power, timing and mechanical contract.
 
 ## Original assembled-board photograph
 
