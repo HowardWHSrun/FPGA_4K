@@ -1,5 +1,9 @@
 # Project files and documents
 
+## 27 September · PCB 3D review
+
+[Rotate and inspect both revisions](../presentation/fpga/3d/index.html) · [Geometry sources and limitations](../presentation/fpga/3d/README.md). Also available in the overall FPGA section and the new 3D board tab. The 33 × 36 mm geometry comes from unchanged native CAD; missing component models are explicitly identified as simplified bodies.
+
 <!-- CURRENT_FPGA_LEARNING_REPORT -->
 **Preserved micro-HDMI learning report:** [PDF · 45 pages](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the earlier 125-component / 752-endpoint checkpoint. It does not cover the USB-C additions.
 <!-- /CURRENT_FPGA_LEARNING_REPORT -->

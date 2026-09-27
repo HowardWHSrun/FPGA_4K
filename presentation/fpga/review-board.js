@@ -48,12 +48,20 @@
     updateTransform();
   }
   async function selectView(mode) {
-    if (!['front', 'back', 'native'].includes(mode)) return;
+    if (!['front', 'back', 'native', 'three'].includes(mode)) return;
     state.mode = mode;
-    for (const name of ['front', 'back', 'native']) get(name).setAttribute('aria-pressed', String(name === mode));
-    viewport.hidden = mode === 'native';
+    for (const name of ['front', 'back', 'native', 'three']) get(name).setAttribute('aria-pressed', String(name === mode));
+    viewport.hidden = mode === 'native' || mode === 'three';
+    get('three-panel').hidden = mode !== 'three';
     get('native-panel').hidden = mode !== 'native';
     get('view-help').textContent = mode === 'native' ? 'Layers · components · nets' : 'Drag to pan · scroll to zoom';
+    if (mode === 'three') {
+      const frame=get('three-frame'); if (!frame.src) frame.src=frame.dataset.src;
+      get('view-caption').textContent='Native PCB geometry · simplified bodies identified in model details';
+      const help=get('view-help'); if(help) help.textContent='Drag to rotate · scroll to zoom';
+      const enlarge=get('board-enlarge'); if(enlarge){enlarge.href=frame.dataset.src;enlarge.textContent='Full 3D viewer ↗';}
+      return;
+    }
     if (mode === 'native') {
       const frame = get('native-frame');
       if (!frame.src) frame.src = frame.dataset.src;
@@ -78,7 +86,7 @@
       if (requested === imageRequest) get('image-state').textContent = 'The layout could not be loaded. Open the native KiCad viewer or download the complete project.';
     }
   }
-  for (const mode of ['front', 'back', 'native']) get(mode).addEventListener('click', () => selectView(mode));
+  for (const mode of ['front', 'back', 'native', 'three']) get(mode).addEventListener('click', () => selectView(mode));
   get('zoom-in').addEventListener('click', () => zoom(1.25));
   get('zoom-out').addEventListener('click', () => zoom(0.8));
   get('fit').addEventListener('click', fit);
