@@ -41,7 +41,7 @@ function addSimple(p){
 }
 function dispose(group){group.traverse(o=>{if(o.isMesh){o.geometry.dispose();if(!Object.values(materials).includes(o.material)){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}}});scene.remove(group);}
 function setView(view){
- const portrait=stage.clientWidth/stage.clientHeight<1;const k=portrait?1.2:1;
+ const aspect=stage.clientWidth/Math.max(1,stage.clientHeight);const k=Math.max(1,1/aspect);
  const poses={iso:[46,60,62],top:[0,95,.01],bottom:[0,-95,.01],side:[95,3,0]};if(!poses[view])return;
  camera.up.set(0,1,0);camera.position.fromArray(poses[view]).multiplyScalar(k);controls.target.set(0,0,0);controls.update();state.view=view;
  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));

@@ -20,6 +20,6 @@ Exports: KiCad 10.0.6 `pcb export glb`, with `--include-pads --include-soldermas
 Geometry comes from the [USB-C PCB](../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pcb) and [micro-HDMI PCB](../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pcb). The source paths and SHA-256 values are in the provenance file and per-board JSON metadata.
 
 - [KiCad official 3D library](https://gitlab.com/kicad/libraries/kicad-packages3D), with its [license and design exception](assets/KiCad-LICENSE.md). Download URLs and individual SHA-256 values are recorded. Only generated board geometry is published, not a redistributed standalone model collection.
-- [Three.js 0.180.0](https://www.npmjs.com/package/three/v/0.180.0), locally bundled with its [MIT license](vendor/LICENSE). Uses the official [GLTFLoader](https://threejs.org/docs/pages/GLTFLoader.html) and [OrbitControls](https://threejs.org/docs/pages/OrbitControls.html). No external runtime CDN is needed.
+- [Three.js 0.180.0](https://www.npmjs.com/package/three/v/0.180.0), locally bundled with its [MIT license](vendor/LICENSE). Uses the official [GLTFLoader](https://threejs.org/docs/pages/GLTFLoader.html) and [OrbitControls](https://threejs.org/docs/pages/OrbitControls.html). No external runtime CDN is needed. One upstream indentation-only whitespace correction is applied in three.core.js for repository checks.
 
 This is a visual design review. Neither revision is released for manufacture.
