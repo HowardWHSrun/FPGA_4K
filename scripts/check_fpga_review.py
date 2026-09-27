@@ -4,6 +4,7 @@ import hashlib
 import csv
 import json
 from collections import Counter
+from html.parser import HTMLParser
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -14,6 +15,60 @@ PACKAGE = ROOT / 'hardware/fpga-100t-review'
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def check_viewer_fallback(html, registry):
+    """Keep usable no-JavaScript downloads on the same board as the registry."""
+    current = [board for board in registry['boards'] if board['id'] == 'compact-routed']
+    assert len(current) == 1, 'Viewer registry must contain one current board'
+    current = current[0]
+
+    class FallbackParser(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.links = {}
+            self.options = []
+            self.in_choice = False
+            self.option = None
+
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            if tag == 'a' and attrs.get('id'):
+                self.links.setdefault(attrs['id'], []).append(attrs.get('href'))
+            if tag == 'select' and attrs.get('id') == 'board-choice':
+                self.in_choice = True
+            if tag == 'option' and self.in_choice:
+                self.option = {'value': attrs.get('value'), 'text': '',
+                               'selected': 'selected' in attrs, 'disabled': 'disabled' in attrs}
+                self.options.append(self.option)
+
+        def handle_data(self, data):
+            if self.option is not None:
+                self.option['text'] += data
+
+        def handle_endtag(self, tag):
+            if tag == 'option':
+                self.option = None
+            if tag == 'select':
+                self.in_choice = False
+
+    parsed = FallbackParser()
+    parsed.feed(html)
+    options = [option for option in parsed.options if option['value'] == current['id']]
+    assert len(options) == 1, 'Missing or duplicate current-board fallback option'
+    assert ' '.join(options[0]['text'].split()) == current['title'], 'Stale current-board fallback title'
+    selected = [option for option in parsed.options if option['selected']]
+    assert len(selected) <= 1, 'Ambiguous default fallback board'
+    enabled = [option for option in parsed.options if not option['disabled']]
+    assert enabled and (selected or enabled)[0] == options[0] and not options[0]['disabled'], 'Fallback must default to the current board'
+
+    viewer_dir = ROOT / 'presentation/fpga/viewer'
+    for element, key in [('native-file', 'native'), ('project-zip', 'zip'), ('static-view', 'svg')]:
+        assert parsed.links.get(element) == [current[key]], 'Stale or missing viewer fallback: ' + element
+        target = (viewer_dir / unquote(urlsplit(current[key]).path)).resolve()
+        assert target.is_relative_to(ROOT) and target.is_file(), 'Missing fallback file: ' + current[key]
+    native = (viewer_dir / unquote(urlsplit(current['native']).path)).resolve().relative_to(ROOT).as_posix()
+    github = 'https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/' + native
+    assert parsed.links.get('github-file') == [github], 'GitHub fallback must identify the registry native PCB'
 
 def check_report_input_binding(coverage, data):
     package = (ROOT / 'presentation/fpga' / data['artifactRoot']).resolve()
@@ -207,7 +262,9 @@ def check_current(data):
     with zipfile.ZipFile(report/'FPGA100T_33x36_Routing_Report_Source.zip') as archive:
         assert archive.testzip() is None and not any(n.endswith(('.py','.aux','.log','.out')) for n in archive.namelist())
     for name_,hash_ in v['schematic_pdf']['native_sources'].items():assert sha(package/'hardware'/name_)==hash_
-    viewer=next(b for b in json.loads((ROOT/'presentation/fpga/viewer/boards.json').read_text())['boards'] if b['id']=='compact-routed')
+    viewer_registry=json.loads((ROOT/'presentation/fpga/viewer/boards.json').read_text())
+    check_viewer_fallback((ROOT/'presentation/fpga/viewer/index.html').read_text(), viewer_registry)
+    viewer=next(b for b in viewer_registry['boards'] if b['id']=='compact-routed')
     assert viewer['sha256']==sha(board) and viewer['dimensions_mm']==[33,36] and not viewer['manufacturing_ready']
     for key,value in counts.items():assert viewer['expected'][key]==value,key
     assert viewer['unconnected_items']==data['unconnectedItems']
