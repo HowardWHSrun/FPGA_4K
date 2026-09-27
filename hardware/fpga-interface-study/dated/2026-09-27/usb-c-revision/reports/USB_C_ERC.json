@@ -1,0 +1,177 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-27T16:41:00",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c",
+            "violations": [
+                {
+                    "description": "Label connected to only one pin",
+                    "items": [
+                        {
+                            "description": "Global Label 'AC_IN_ANALOG_RESERVED'",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 1.4605
+                            },
+                            "uuid": "f3ac33bc-78d2-5ff5-a47e-3f909f810d5f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "isolated_pin_label"
+                }
+            ]
+        },
+        {
+            "path": "/U1 banks 14 and 15/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/f30188ed-2a41-5fff-9670-8f4ba036f589",
+            "violations": []
+        },
+        {
+            "path": "/U1 banks 16 and 34/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/4f39d697-e080-5066-9b90-0334308d6605",
+            "violations": []
+        },
+        {
+            "path": "/U1 bank 35/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/c0ad4672-27d7-51ba-bcd4-50376fd0544d",
+            "violations": []
+        },
+        {
+            "path": "/U1 configuration, JTAG and analog/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/43b7fa45-c830-5235-a334-2e4d08b67d8c",
+            "violations": []
+        },
+        {
+            "path": "/U1 core, auxiliary and ground/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/fae5e6f1-f47b-5bea-8262-fe719393473a",
+            "violations": []
+        },
+        {
+            "path": "/Cable input capacitors/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/c4b11421-e401-5780-8d5b-aba6c63cb5f4",
+            "violations": []
+        },
+        {
+            "path": "/Core regulator / 1.0 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/45764e5c-6c55-5373-b1c5-66be3f4d8979",
+            "violations": []
+        },
+        {
+            "path": "/Auxiliary regulator / 1.8 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/d60dd5fd-b990-5bdb-a64e-613696c11cbf",
+            "violations": []
+        },
+        {
+            "path": "/Bank16 link regulator / 2.5 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/c0ca3947-dacb-5886-b377-61f549120acc",
+            "violations": []
+        },
+        {
+            "path": "/ASIC bank regulator / 1.5 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/5ffea211-e6a6-5691-914b-08a770cd8b52",
+            "violations": []
+        },
+        {
+            "path": "/Decoupling / core and BRAM / 1.0 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/81b02261-c249-50dd-912b-801044c55dea",
+            "violations": []
+        },
+        {
+            "path": "/Decoupling / auxiliary and XADC / 1.8 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/11a521d2-e024-57ed-915a-1751201c8b17",
+            "violations": []
+        },
+        {
+            "path": "/Decoupling / config1.8V and link2.5V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8c4d04b2-a2a0-5633-a91d-12d4b16d22b9",
+            "violations": []
+        },
+        {
+            "path": "/Decoupling / ASIC-facing banks / 1.5 V/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0b1e665f-468e-5d2e-8df3-46bd542ca3f7",
+            "violations": []
+        },
+        {
+            "path": "/Boot flash/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/a9c23e7e-2cd2-57b7-bbed-967c829ad524",
+            "violations": []
+        },
+        {
+            "path": "/Programming JTAG/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/0846b1d9-c893-50b2-9e60-1da326a99abf",
+            "violations": []
+        },
+        {
+            "path": "/Reference clock/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/72ba830b-be20-59e3-9190-f9c26f5097b9",
+            "violations": []
+        },
+        {
+            "path": "/Power source assertions/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/936894af-ae03-5453-9841-61d0c12b8f1d",
+            "violations": []
+        },
+        {
+            "path": "/J5/J6 /116 FPGA signals +1 analog/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/469e99d4-7682-5b89-8b46-fd4fcddeb193",
+            "violations": []
+        },
+        {
+            "path": "/USB-C power and protection/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86",
+            "violations": []
+        },
+        {
+            "path": "/USB-C power and protection / 2/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a",
+            "violations": []
+        },
+        {
+            "path": "/USB-C controller and recovery fixture/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/55bba911-7e2a-54c7-8c77-103b45827a09",
+            "violations": []
+        },
+        {
+            "path": "/USB-C reversible data and ESD/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ddb11047-56ad-5d20-98ae-3a64be6daa40",
+            "violations": []
+        },
+        {
+            "path": "/USB-C to 1.8V FPGA JTAG/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/18ea5d6f-80cb-5101-8474-f2b5ce1e2ad6",
+            "violations": []
+        },
+        {
+            "path": "/USB-C cable connector/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/aaa57fb0-f759-5259-adff-f6b692b4d58f",
+            "violations": []
+        }
+    ],
+    "source": "FPGA100T_33x36_Routing.kicad_sch"
+}

@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-27",
+  "before": {
+    "mpn": "PCB_FIXTURE_CONTACTS",
+    "value": "SWD_FACTORY_PADS_NO_HEADER",
+    "footprint": "CoreSupport:USB_C_Interface__SWD_Fixture_5Pads_P1_27mm",
+    "pins": {
+      "1": "USB_AON_3V3",
+      "2": "GND",
+      "3": "MCU_SWDIO",
+      "4": "MCU_SWCLK",
+      "5": "MCU_NRST"
+    },
+    "no_connect": [],
+    "pin_names": {
+      "1": "VTREF_3V3",
+      "2": "GND",
+      "3": "SWDIO",
+      "4": "SWCLK",
+      "5": "NRST"
+    },
+    "pin_types": {
+      "1": "passive",
+      "2": "passive",
+      "3": "passive",
+      "4": "passive",
+      "5": "passive"
+    },
+    "datasheet": "",
+    "status": "PCB copper only; required initial MCU programming and recovery; not a fitted connector; external programmer VTREF input only, do not back-power",
+    "exclude_from_bom": true,
+    "exclude_from_position_files": true,
+    "group": "USB-C controller and recovery fixture",
+    "lib_id": "CoreSupport:USBRevision__PCB_FIXTURE_CONTACTS",
+    "ref": "J210",
+    "source_lib_id": "USBRevision:PCB_FIXTURE_CONTACTS",
+    "source_footprint": "USB_C_Interface:SWD_Fixture_5Pads_P1.27mm"
+  },
+  "after": {
+    "mpn": "PCB_FIXTURE_CONTACTS",
+    "value": "SWD_FACTORY_PADS_NO_HEADER",
+    "footprint": "CoreSupport:SWD_Fixture_5Pads_Staggered_1mm",
+    "pins": {
+      "1": "USB_AON_3V3",
+      "2": "GND",
+      "3": "MCU_SWDIO",
+      "4": "MCU_SWCLK",
+      "5": "MCU_NRST"
+    },
+    "no_connect": [],
+    "pin_names": {
+      "1": "VTREF_3V3",
+      "2": "GND",
+      "3": "SWDIO",
+      "4": "SWCLK",
+      "5": "NRST"
+    },
+    "pin_types": {
+      "1": "passive",
+      "2": "passive",
+      "3": "passive",
+      "4": "passive",
+      "5": "passive"
+    },
+    "datasheet": "",
+    "status": "PCB copper only; same five numbered SWD/VTREF/GND/NRST contacts, staggered physical jig. Required initial MCU programming/recovery. No fitted connector, VTREF input only; do not back-power. Jig mating and programming clock remain unqualified.",
+    "exclude_from_bom": true,
+    "exclude_from_position_files": true,
+    "group": "USB-C controller and recovery fixture",
+    "lib_id": "CoreSupport:USBRevision__PCB_FIXTURE_CONTACTS",
+    "ref": "J210",
+    "source_lib_id": "USBRevision:PCB_FIXTURE_CONTACTS",
+    "source_footprint": "CoreSupport:SWD_Fixture_5Pads_Staggered_1mm"
+  },
+  "pin_nets_unchanged": true,
+  "source_footprint_sha256": "2e18db0cb7d4bb8df4288f13a8386aafb3908fa999ad616186f47170fd7c7a39",
+  "source_delta": "../interface/swd_routing/SWD_Reviewed_Delta.json",
+  "boundary": "Isolated native continuity proof must be rerun on merged board; no programming or jig operation demonstrated."
+}

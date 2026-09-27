@@ -1,17 +1,17 @@
 # FPGA_4K
 
 <!-- CURRENT_FPGA_LEARNING_REPORT -->
-**Current learning report:** [PDF · 45 pages](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the current 125 components and all 752 numbered endpoints; matches the current board audit.
+**Preserved micro-HDMI learning report:** [PDF · 45 pages](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the earlier 125-component / 752-endpoint checkpoint. It does not cover the USB-C additions.
 <!-- /CURRENT_FPGA_LEARNING_REPORT -->
 
 
 **Earlier learning report:** [Visual explanations and professor briefing · 33-page PDF](hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_And_Professor_Review.pdf). Explains the earlier snapshot; use the current native audit and pin map for the updated design.
 
-**Current component and pin review:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). 116 candidate digital ASIC nets have native assignments plus one external analog reservation; 83 pins are intentionally unused and 19 endpoints reserve future interfaces. Six former NC pins are assigned GND. The pin map separates assignments from current copper status.
+**Earlier micro-HDMI component and pin review:** [Earlier presentation](presentation/fpga/micro-hdmi.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). 116 candidate digital ASIC nets have native assignments plus one external analog reservation; 83 pins are intentionally unused and 19 endpoints reserve future interfaces. Six former NC pins are assigned GND. The pin map separates assignments from current copper status.
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — 2026-09-27:** [33 × 36 mm design checkpoint](presentation/fpga/index.html) · [complete KiCad ZIP](hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) · [measured routing audit](hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md). The smallest board integrates revised rails, both mezzanines and 21 schematic sheets. The audit reports the current native component count, completed ASIC routes and remaining assigned-net connections. Electrical limits, capture timing and bench operation remain unverified. **Not ready for manufacture.**
+**Current FPGA review — USB-C, 2026-09-27:** [Concise presentation](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=usb-c) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) · [exact revision audit](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json). Power negotiation, USB2 control/JTAG, cable-orientation switching and protection are added around the retained 100T and ASIC mezzanines. The page reports actual routing gaps and findings. Firmware, receiver adapter and electrical/manufacturing qualification remain unfinished. **Not for manufacture.**
 
 ## Start working with the team
 

@@ -1,0 +1,51 @@
+{
+  "adopted": false,
+  "status": "Electrical and footprint screening candidate only; no canonical CAD substitution",
+  "mpn": "MX25U6432FZBI02",
+  "datasheet": "https://www.mxic.com.tw/Lists/Datasheet/Attachments/9209/MX25U6432F,%201.8V,%2064Mb,%20v1.2.pdf",
+  "datasheet_sha256": "a7321dae35deef08cc59e7d870b222da74e9936c9ed83ab6a1a3611102fbcd2a",
+  "footprint_sha256": "ef7103d5522c1e9053501f297ac33d73b3fe615bafb7f6ae8f97d228a92e9460",
+  "land_source": "Macronix AN0159 v4 p2",
+  "body_local_mm": [
+    3,
+    4
+  ],
+  "court_mm": [
+    3.6,
+    4.6
+  ],
+  "pins": {
+    "1": "FLASH_CS_B",
+    "2": "FLASH_DQ1",
+    "3": "FLASH_DQ2",
+    "4": "GND",
+    "5": "FLASH_DQ0",
+    "6": "FLASH_SCLK",
+    "7": "FLASH_DQ3",
+    "8": "VCCAUX_1V8"
+  },
+  "nominal_lands_mm": [
+    0.6,
+    0.3
+  ],
+  "pitch_mm": 0.8,
+  "center_keepout_mm": [
+    0.5,
+    4.3
+  ],
+  "keepout_basis": "Conservative entire body-height strip covers the two floating central bars, maximum0.30mm width plus0.10mm per-side margin. No central copper/paste. Internal buried copper not prohibited; component surface and through-vias prohibited. Assembly/placement tolerance review required.",
+  "capacity_bits": 67108864,
+  "a100t_config_bits": 30606304,
+  "voltage_V": [
+    1.65,
+    2.0
+  ],
+  "notes": [
+    "Different flash generation and half original capacity; not package-equivalent substitution.",
+    "PM2643 p6 pins1-8 unchanged, p29 QE default0, p37 FAST_READ0Bh three address bytes and8dummy clocks.",
+    "Retain existing Master SPI x1 boot: quad FPGA links are absent and flash WP#/RESET# remain pulled high. Programmer ID/algorithm, startup timing, exact image partition, sourcing and assembly remain unverified.",
+    "Root schematic/manifest remain128MbitWSON until joint layout proof supports a deliberate adoption."
+  ],
+  "default_spi_fast_read_limit_MHz": 104,
+  "extended_dummy_fast_read_limit_MHz": 133
+}

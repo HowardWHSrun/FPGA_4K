@@ -18,7 +18,7 @@ def sha(path):
 
 def check_viewer_fallback(html, registry):
     """Keep usable no-JavaScript downloads on the same board as the registry."""
-    current = [board for board in registry['boards'] if board['id'] == 'compact-routed']
+    current = [board for board in registry['boards'] if board['id'] == registry.get('default_board', 'compact-routed')]
     assert len(current) == 1, 'Viewer registry must contain one current board'
     current = current[0]
 
@@ -329,7 +329,7 @@ def main():
             if path.is_file() and path.name not in ['manifest.json', 'FPGA100T_Review_Project.zip']:
                 name = 'FPGA100T_Review/' + path.relative_to(PACKAGE).as_posix()
                 assert name in names and archive.read(name) == path.read_bytes(), name
-    html = (ROOT / 'presentation/fpga/index.html').read_text()
+    html = (ROOT / 'presentation/fpga/micro-hdmi.html').read_text()
     for field in re.findall(r'data-field="([^"]+)"', html):
         assert field in data or field in ['dimensions', 'ignoredCount', 'exclusionCount'], field
     for link in re.findall(r'(?:href|src)="([^"]+)"', html):

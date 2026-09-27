@@ -1,0 +1,4111 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 532d0e4d-3ed2-5108-a9c4-7df23477fd86)
+  (paper "A3")
+  (title_block
+    (title "USB-C power and protection")
+    (date "2026-09-27")
+    (rev "USB-C DEV 0.1")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:USBRevision__TCPP01-M12"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0.0 15.24 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "TCPP01-M12"
+        (at 0.0 12.7 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "USBPower:ST_TCPP01_QFN12_3x3"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__TCPP01-M12_0_1"
+        (rectangle
+          (start -15.24 10.16)
+          (end 15.24 -10.16)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__TCPP01-M12_1_1"
+        (pin bidirectional line
+          (at -17.78 7.62 0)
+          (length 2.54)
+          (name "CC2"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at -17.78 5.08 0)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin bidirectional line
+          (at -17.78 2.54 0)
+          (length 2.54)
+          (name "CC1"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at -17.78 0.0 0)
+          (length 2.54)
+          (name "SOURCE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin output line
+          (at -17.78 -2.539999999999999 0)
+          (length 2.54)
+          (name "GATE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -17.78 -5.08 0)
+          (length 2.54)
+          (name "VBUS_CTRL"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin bidirectional line
+          (at -17.78 -7.620000000000001 0)
+          (length 2.54)
+          (name "CC1c"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 7.62 180)
+          (length 2.54)
+          (name "IN_GD"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin bidirectional line
+          (at 17.78 5.08 180)
+          (length 2.54)
+          (name "CC2c"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at 17.78 2.54 180)
+          (length 2.54)
+          (name "DB_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at 17.78 0.0 180)
+          (length 2.54)
+          (name "FLT_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "11"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 -2.539999999999999 180)
+          (length 2.54)
+          (name "VCC"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "12"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 -5.08 180)
+          (length 2.54)
+          (name "EP_GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "13"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:USBRevision__TPS70933DRVR"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0.0 11.43 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "TPS70933DRVR"
+        (at 0.0 8.89 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps709.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__TPS70933DRVR_0_1"
+        (rectangle
+          (start -15.24 6.35)
+          (end 15.24 -6.35)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__TPS70933DRVR_1_1"
+        (pin power_out line
+          (at -17.78 3.8099999999999996 0)
+          (length 2.54)
+          (name "OUT"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin no_connect line
+          (at -17.78 1.2699999999999996 0)
+          (length 2.54)
+          (name "NC"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at -17.78 -1.2700000000000005 0)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -17.78 -3.8100000000000005 0)
+          (length 2.54)
+          (name "EN"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin no_connect line
+          (at 17.78 3.8099999999999996 180)
+          (length 2.54)
+          (name "NC"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 1.2699999999999996 180)
+          (length 2.54)
+          (name "IN"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 -1.2700000000000005 180)
+          (length 2.54)
+          (name "EP_GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:USBRevision__TPS259474LRPWR"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0.0 12.7 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "TPS259474LRPWR"
+        (at 0.0 10.16 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "USBPower:TI_RPW0010A_TPS25947"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps25947.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__TPS259474LRPWR_0_1"
+        (rectangle
+          (start -15.24 7.62)
+          (end 15.24 -7.62)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__TPS259474LRPWR_1_1"
+        (pin input line
+          (at -17.78 5.08 0)
+          (length 2.54)
+          (name "EN_UVLO"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -17.78 2.54 0)
+          (length 2.54)
+          (name "OVLO"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at -17.78 0.0 0)
+          (length 2.54)
+          (name "PG"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -17.78 -2.54 0)
+          (length 2.54)
+          (name "PGTH"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at -17.78 -5.079999999999999 0)
+          (length 2.54)
+          (name "IN"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_out line
+          (at 17.78 5.08 180)
+          (length 2.54)
+          (name "OUT"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 2.54 180)
+          (length 2.54)
+          (name "DVDT"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 17.78 0.0 180)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -2.54 180)
+          (length 2.54)
+          (name "ILM"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -5.079999999999999 180)
+          (length 2.54)
+          (name "ITIMER"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1210_3225Metric Capacitor_SMD__C_1206_3216Metric Murata_GRT15_0402_Recommended TDK_C1608_Reflow_0p7"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__D_Schottky"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "D"
+        (at 0 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "D_Schottky"
+        (at 0 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Schottky diode"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "diode Schottky"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_* Diode_SMD__D_SOD-523"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__D_Schottky_0_1"
+        (polyline
+          (pts
+            (xy -1.905 0.635)
+            (xy -1.905 1.27)
+            (xy -1.27 1.27)
+            (xy -1.27 -1.27)
+            (xy -0.635 -1.27)
+            (xy -0.635 -0.635))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 1.27)
+            (xy 1.27 -1.27)
+            (xy -1.27 0)
+            (xy 1.27 1.27))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 0)
+            (xy -1.27 0))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__D_Schottky_1_1"
+        (pin passive line
+          (at -3.81 0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 3.81 0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:USBRevision__ESDA25P35-1U1M"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 0.0 7.62 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "ESDA25P35-1U1M"
+        (at 0.0 5.08 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "Diode_SMD:ST_QFN-2L_1.6x1.0mm"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/esda15p60-1u1m.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__ESDA25P35-1U1M_0_1"
+        (rectangle
+          (start -15.24 2.54)
+          (end 15.24 -2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__ESDA25P35-1U1M_1_1"
+        (pin passive line
+          (at -17.78 0.0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 0.0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:USBRevision__STL6N3LLH6"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 0.0 10.16 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "STL6N3LLH6"
+        (at 0.0 7.62 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "USBPower:ST_PowerFLAT_2x2_STL6N3LLH6"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stl6n3llh6.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__STL6N3LLH6_0_1"
+        (rectangle
+          (start -15.24 5.08)
+          (end 15.24 -5.08)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__STL6N3LLH6_1_1"
+        (pin passive line
+          (at -17.78 2.54 0)
+          (length 2.54)
+          (name "D"
+            (effects
+              (font
+                (size 1 1))))
+          (number "1"
+            (effects
+              (font
+                (size 1 1)))))
+        (pin passive line
+          (at -17.78 0.0 0)
+          (length 2.54)
+          (name "D"
+            (effects
+              (font
+                (size 1 1))))
+          (number "2"
+            (effects
+              (font
+                (size 1 1)))))
+        (pin input line
+          (at -17.78 -2.54 0)
+          (length 2.54)
+          (name "G"
+            (effects
+              (font
+                (size 1 1))))
+          (number "3"
+            (effects
+              (font
+                (size 1 1)))))
+        (pin passive line
+          (at 17.78 2.54 180)
+          (length 2.54)
+          (name "S"
+            (effects
+              (font
+                (size 1 1))))
+          (number "4"
+            (effects
+              (font
+                (size 1 1)))))
+        (pin passive line
+          (at 17.78 0.0 180)
+          (length 2.54)
+          (name "D"
+            (effects
+              (font
+                (size 1 1))))
+          (number "5"
+            (effects
+              (font
+                (size 1 1)))))
+        (pin passive line
+          (at 17.78 -2.54 180)
+          (length 2.54)
+          (name "D"
+            (effects
+              (font
+                (size 1 1))))
+          (number "6"
+            (effects
+              (font
+                (size 1 1))))))))
+  (text "USB-C power and protection"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid 441032b0-ba63-51f7-988e-5d00b3a8a2a8))
+  (text "USB-C engineering revision. Matching labels are electrical connections. Controller firmware and receiver adapter are required; not a manufacturing release."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 71fcb87f-b572-58eb-88dc-66452951f53a))
+  (symbol
+    (lib_id "CoreSupport:USBRevision__TCPP01-M12")
+    (at 54.61 74.93 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 37553409-3c60-5143-9b82-ede864ba14f9)
+    (property "Reference" "U200"
+      (at 54.61 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "TCPP01-M12"
+      (at 54.61 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:USBPower__ST_TCPP01_QFN12_3x3"
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf"
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TCPP01-M12"
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "IN_GD bootstrap verified visually against ST DS12900 Rev7 Figure4; rawCC330pF capacitors and MCU DBCC grounding follow that figure."
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:TCPP01-M12"
+      (at 54.61 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 1a8e5cc1-c47e-550d-aee9-e57d0056acbb))
+    (pin "2"
+      (uuid 1109e37a-5a42-5776-8372-847d305b7cc5))
+    (pin "3"
+      (uuid 41e7ec63-bf80-5c27-a950-8e8561273685))
+    (pin "4"
+      (uuid 6e0bb2a1-bd6f-5702-8f08-65f6c72b239a))
+    (pin "5"
+      (uuid f38989d4-0edd-5e16-85a9-a1a49fa9ffa3))
+    (pin "6"
+      (uuid d833b915-c666-522b-aa39-748cb5e69c10))
+    (pin "7"
+      (uuid 38b1444b-e538-50b5-bfc8-e25a8416aad3))
+    (pin "8"
+      (uuid a3e8d394-7bc0-5dec-b971-d0cc1fb6da80))
+    (pin "9"
+      (uuid a242eb5f-23ab-5270-8bf1-2915e4896029))
+    (pin "10"
+      (uuid 7785e50d-b941-5db7-8fca-f070b0ab3820))
+    (pin "11"
+      (uuid 9e15dde0-0d32-572e-a2b9-856189cc692d))
+    (pin "12"
+      (uuid 93f178ae-b0c6-587d-9a69-3e3cd314dd80))
+    (pin "13"
+      (uuid 4d1a643f-6855-502c-9077-6601f0dd3f3a))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "U200")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 67.31)
+      (xy 31.75 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3e6b2bdd-e539-543f-af4b-3a6e6ff6ddd1))
+  (wire
+    (pts
+      (xy 31.75 67.31)
+      (xy 26.67 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6c2863d1-a390-5098-8b23-6b6fd7d8055a))
+  (global_label "USB_CC2"
+    (shape bidirectional)
+    (at 26.67 67.31 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 827a010b-c160-5029-a5bd-c91bc5539467)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 69.85)
+      (xy 31.75 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4b7cbb46-f556-5d51-b5c1-2e9e5ec2d5b9))
+  (wire
+    (pts
+      (xy 31.75 69.85)
+      (xy 26.67 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d8b5f5f6-a6b3-5f1c-ab07-7f5a185c6a2b))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 26.67 69.85 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid dd75728a-0c62-5df2-9c36-fb2ae73dcb5c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 72.39)
+      (xy 31.75 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4e947314-f07a-58ef-be4f-9dd7ad0d736b))
+  (wire
+    (pts
+      (xy 31.75 72.39)
+      (xy 26.67 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3e438d75-7d01-581b-9740-b2c900bf8e2f))
+  (global_label "USB_CC1"
+    (shape bidirectional)
+    (at 26.67 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1794416b-d34b-5d9c-9ee4-d52afb0e1b88)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 74.93)
+      (xy 31.75 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9e2a6ced-4390-5833-bd32-a46809a653db))
+  (wire
+    (pts
+      (xy 31.75 74.93)
+      (xy 26.67 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 54a8190f-f359-513d-a349-fb0c52afef10))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 26.67 74.93 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a8c6294f-853c-5eb4-84c1-b876c5810bb6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 77.47)
+      (xy 31.75 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e55b813c-08bf-55c4-826e-76ec10bef951))
+  (wire
+    (pts
+      (xy 31.75 77.47)
+      (xy 26.67 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fcdafbd5-65a8-57aa-bc65-5241ddb66aaf))
+  (global_label "VBUS_GATE"
+    (shape bidirectional)
+    (at 26.67 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid aa74a9c1-af5a-51da-ad59-62b831e4bb16)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 80.01)
+      (xy 31.75 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 82f8f825-c136-5f0c-b5a9-ab52201bd33f))
+  (wire
+    (pts
+      (xy 31.75 80.01)
+      (xy 26.67 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4a48d8e1-3d00-577c-a950-1a5874814237))
+  (global_label "TCPP_OVP"
+    (shape bidirectional)
+    (at 26.67 80.01 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b1380f16-54a9-5d8b-8a92-509a87bc20f8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 80.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 82.55)
+      (xy 31.75 82.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 82b5420b-712a-5154-9177-5d297702334f))
+  (wire
+    (pts
+      (xy 31.75 82.55)
+      (xy 26.67 82.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8c589a1e-36a1-553b-beec-cca612c73e16))
+  (global_label "USB_CC1_RAW"
+    (shape bidirectional)
+    (at 26.67 82.55 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 8797920c-6545-530a-a04d-5ad6212aa365)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 26.67 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 67.31)
+      (xy 77.47 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 61e40897-b218-5b44-9133-d25cff38a99e))
+  (wire
+    (pts
+      (xy 77.47 67.31)
+      (xy 82.55 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fa24e85f-7121-53f6-aa0e-305e6b52e689))
+  (global_label "TCPP_GD_BIAS"
+    (shape bidirectional)
+    (at 82.55 67.31 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid d2f63951-f4bf-5f43-8304-681d2e83d4da)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 69.85)
+      (xy 77.47 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2ab5242c-c8be-5db1-9338-8f4bd5b22041))
+  (wire
+    (pts
+      (xy 77.47 69.85)
+      (xy 82.55 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0d8570aa-a5f3-522c-81ca-71883f85aa49))
+  (global_label "USB_CC2_RAW"
+    (shape bidirectional)
+    (at 82.55 69.85 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 4fe7131f-819b-5406-bd81-5dd0bb4e4961)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 72.39)
+      (xy 77.47 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1bf3b512-9772-59bb-b792-21ad91652140))
+  (wire
+    (pts
+      (xy 77.47 72.39)
+      (xy 82.55 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b89c5692-0501-5343-b94b-fc5bbc216130))
+  (global_label "TCPP_DB_N"
+    (shape bidirectional)
+    (at 82.55 72.39 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid cd5cb1e1-f41f-5c73-a3b6-cbdf7b927017)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 74.93)
+      (xy 77.47 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4d1c26a4-e2d4-5157-a889-03363d4b951b))
+  (wire
+    (pts
+      (xy 77.47 74.93)
+      (xy 82.55 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 557c38a5-80ac-59ef-8376-dfeed66d37b1))
+  (global_label "CC_FAULT_N"
+    (shape bidirectional)
+    (at 82.55 74.93 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 216e69fe-26a3-52c8-aacd-f8a0a69fa011)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 77.47)
+      (xy 77.47 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 22fc62b9-eba7-56c7-8ef1-0c321b2d830c))
+  (wire
+    (pts
+      (xy 77.47 77.47)
+      (xy 82.55 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 903a3e06-ec5a-5591-8c70-a9fda5bc4708))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 82.55 77.47 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 323c3ac5-9ade-562f-a7eb-124982833e18)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 72.39 80.01)
+      (xy 77.47 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ebaf4bbb-8cc1-5886-9bc6-4e8776c1205d))
+  (wire
+    (pts
+      (xy 77.47 80.01)
+      (xy 82.55 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c5caaaec-5889-59d9-8d19-85e66732d5e1))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 82.55 80.01 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 2a3543b1-2e7b-5671-9915-5b1a9693ebcd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 82.55 80.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:USBRevision__TPS70933DRVR")
+    (at 144.78 71.12 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 213f1368-11fe-5eb2-ac6f-a4f271b578b1)
+    (property "Reference" "U201"
+      (at 144.78 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "TPS70933DRVR 3.3V AON"
+      (at 144.78 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:Package_SON__WSON-6-1EP_2x2mm_P0_65mm_EP1x1_6mm"
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps709.pdf"
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TPS70933DRVR"
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "EN intentionally open: datasheet allows always-on open EN; never tie this6.5V-limited pin to9V input. Min1.5uF effective outputC."
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:TPS70933DRVR"
+      (at 144.78 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid bc9a1b48-1f0d-524c-9356-c0704bfa6963))
+    (pin "2"
+      (uuid 442c68c4-2da5-53c8-923b-80b02d974113))
+    (pin "3"
+      (uuid e8ab1c7a-1d5a-5e85-ad8b-5011bf50a28e))
+    (pin "4"
+      (uuid cba3abf3-1836-555b-8ca0-455fa16cb4e5))
+    (pin "5"
+      (uuid 930c112d-2b2e-5751-9241-53f271362137))
+    (pin "6"
+      (uuid 0a3574cb-7a2a-5e50-a435-1098e6901240))
+    (pin "7"
+      (uuid d5688120-5e61-5f10-a7f5-dc622db55af4))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "U201")
+          (unit 1)))))
+  (no_connect
+    (at 127.0 69.85)
+    (uuid f28339c8-8e0c-5831-88f1-261d096e7eb5))
+  (no_connect
+    (at 127.0 74.93)
+    (uuid bbe11a6a-6abb-50ae-8fc7-be5d5cc2e44c))
+  (no_connect
+    (at 162.56 67.31)
+    (uuid cb5bc2ba-8cbb-55d1-b8ed-0136fefafe87))
+  (wire
+    (pts
+      (xy 127.0 67.31)
+      (xy 121.92 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid eedde711-ceaf-59dd-818f-9efab1fc9a4f))
+  (wire
+    (pts
+      (xy 121.92 67.31)
+      (xy 116.84 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 59f7969c-7fdb-5d4b-a739-d01d88dbd66f))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 116.84 67.31 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 5f53dbd9-cc26-5199-acd8-d2657b05e9e5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 116.84 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 127.0 72.39)
+      (xy 121.92 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3d182fd0-1a53-5536-9867-7568c4bb8386))
+  (wire
+    (pts
+      (xy 121.92 72.39)
+      (xy 116.84 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 41f8b4ab-58b8-54cf-8589-aa170b7d79df))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 116.84 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 79f2e960-a1da-5049-9e45-9c39b25faad4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 116.84 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 162.56 69.85)
+      (xy 167.64 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid cc55e5a1-dc89-57a3-824e-afd98fc6581a))
+  (wire
+    (pts
+      (xy 167.64 69.85)
+      (xy 172.72 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3a80b8fd-8d1c-5ad7-b201-9e00e9699160))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 172.72 69.85 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 75b769c6-f1ab-5424-9626-7cd8ac88fa64)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 172.72 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 162.56 72.39)
+      (xy 167.64 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 98918186-ca35-5147-bd12-f605be930ccc))
+  (wire
+    (pts
+      (xy 167.64 72.39)
+      (xy 172.72 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ab6c7f8d-c663-5c9b-9a31-eeb15a8f5114))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 172.72 72.39 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 246c19b4-cdc4-55d5-bd1c-84badf4b3d59)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 172.72 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:USBRevision__TPS259474LRPWR")
+    (at 234.95000000000002 72.39 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid aa0226db-c7a1-5e2d-893e-04d37f15826c)
+    (property "Reference" "U202"
+      (at 234.95 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "TPS259474LRPWR main eFuse"
+      (at 234.95 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:USBPower__TI_RPW0010A_TPS25947"
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps25947.pdf"
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TPS259474LRPWR"
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "474L is circuit-breaker + latch-off, true PG. No FLT pin. ITIMER open gives fastest overload response; check load pulses against threshold."
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:TPS259474LRPWR"
+      (at 234.95 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 2faa990c-1927-5fc7-a60a-ac1d9b0b026e))
+    (pin "2"
+      (uuid 6e577d68-69fd-52cd-a62b-ff7a6ed67b0f))
+    (pin "3"
+      (uuid 70b2b774-829c-52c4-8172-f45a0a2c4c63))
+    (pin "4"
+      (uuid 3ca74aec-293f-592c-941a-99fea673f66c))
+    (pin "5"
+      (uuid bb9e0b78-967f-594a-b0c7-d254f9a1c6e5))
+    (pin "6"
+      (uuid dc5ec4e2-d874-5382-8bee-a58b33517f5e))
+    (pin "7"
+      (uuid 2e2ce0c6-9ec2-5c6b-a1f1-ebcf3a400e2c))
+    (pin "8"
+      (uuid 83b62315-a298-53f2-b357-1d4fdc377cb5))
+    (pin "9"
+      (uuid a9a7a58d-5585-528e-aa4e-e399d061427e))
+    (pin "10"
+      (uuid 0866d9cd-f810-5253-b57f-8f5a37913ac9))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "U202")
+          (unit 1)))))
+  (no_connect
+    (at 252.73 77.47)
+    (uuid 149d177d-a22f-5011-bcf4-eaf14938d339))
+  (wire
+    (pts
+      (xy 217.17 67.31)
+      (xy 212.09 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a210bf83-afc7-5bdf-8816-ee44c7835440))
+  (wire
+    (pts
+      (xy 212.09 67.31)
+      (xy 207.01 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f866628f-5e20-55a6-b4c2-57cd904aed17))
+  (global_label "FPGA_PWR_EN"
+    (shape bidirectional)
+    (at 207.01 67.31 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 868b0e40-fd44-5889-984d-1fc9b743e2ba)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 207.01 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 217.17 69.85)
+      (xy 212.09 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2a2945a7-8648-5d0e-9870-73de06579800))
+  (wire
+    (pts
+      (xy 212.09 69.85)
+      (xy 207.01 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ab292973-0647-57ab-b8e8-45dc5ea9593b))
+  (global_label "EFUSE_OVP"
+    (shape bidirectional)
+    (at 207.01 69.85 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid c5d78a32-d88c-5420-9f09-44091b91015c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 207.01 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 217.17 72.39)
+      (xy 212.09 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 802cf34f-9f54-58d8-8619-7eef530b8ea9))
+  (wire
+    (pts
+      (xy 212.09 72.39)
+      (xy 207.01 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ce03dcf5-f8ff-54fd-9914-c3e81da2429f))
+  (global_label "FPGA_PWR_GOOD"
+    (shape bidirectional)
+    (at 207.01 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid cff83baf-178f-5af1-a46d-b79dc6f268a8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 207.01 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 217.17 74.93)
+      (xy 212.09 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7c164a35-da77-539a-a1fc-90d6e379e9f1))
+  (wire
+    (pts
+      (xy 212.09 74.93)
+      (xy 207.01 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4a340d44-c1f5-57cf-85fa-62758e6a4124))
+  (global_label "EFUSE_PGTH"
+    (shape bidirectional)
+    (at 207.01 74.93 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 037822ad-12b8-5ad5-bf56-64fd3c6fdf30)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 207.01 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 217.17 77.47)
+      (xy 212.09 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e5ce0049-da9d-5b7d-9cb3-cf5a2df04b7c))
+  (wire
+    (pts
+      (xy 212.09 77.47)
+      (xy 207.01 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2cef7ddb-5877-5994-bd73-706422ad7161))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 207.01 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid edc1ef1c-8645-5890-92cd-dfbf290c5a14)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 207.01 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 252.73 67.31)
+      (xy 257.81 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5b3fcdae-bd20-5da3-8f65-2df27edc8d1d))
+  (wire
+    (pts
+      (xy 257.81 67.31)
+      (xy 262.89 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7b1f8785-bfda-5189-a99b-16a1b0abd4cf))
+  (global_label "USB_MAIN_VIN"
+    (shape bidirectional)
+    (at 262.89 67.31 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 53e05548-8ff5-59ce-90d4-a402b0654232)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 262.89 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 252.73 69.85)
+      (xy 257.81 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b113db4c-490f-5886-bec3-0c2cc1c305c1))
+  (wire
+    (pts
+      (xy 257.81 69.85)
+      (xy 262.89 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d17e59a0-993d-5854-92fb-2ccee216f6df))
+  (global_label "EFUSE_DVDT"
+    (shape bidirectional)
+    (at 262.89 69.85 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 81105f2b-94d6-50fb-b96e-6bc8d4ec5f9e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 262.89 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 252.73 72.39)
+      (xy 257.81 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f8ccf72f-cad1-58b3-bad4-4fbad608947d))
+  (wire
+    (pts
+      (xy 257.81 72.39)
+      (xy 262.89 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d1047399-d2b4-547f-a117-3ae02bc5f598))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 262.89 72.39 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid be3ffdc9-9204-5eb2-ad4a-a5446369d374)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 262.89 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 252.73 74.93)
+      (xy 257.81 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c5fc06f2-740a-566a-8399-8789291cb2b2))
+  (wire
+    (pts
+      (xy 257.81 74.93)
+      (xy 262.89 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dff7b876-311a-5b7f-918c-9247d16f8441))
+  (global_label "EFUSE_ILM"
+    (shape bidirectional)
+    (at 262.89 74.93 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 34fa89fd-609c-518a-9fc3-6c2f2abe3b8d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 262.89 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 308.61 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 377ea2f8-203f-58a0-8202-2dd2b03a1154)
+    (property "Reference" "C200"
+      (at 314.452 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "2.2uF 50V X7R 10%"
+      (at 314.452 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "C2012X7R1H225K125AC"
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 308.61 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 6d06246c-f50f-5f4e-81bd-a511d54a0e11))
+    (pin "2"
+      (uuid b4800b66-f5d4-53e0-8b0a-ea031dcb0441))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C200")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 308.61 64.77)
+      (xy 308.61 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9582f58c-ed5d-5dff-afa3-ccedab321d21))
+  (wire
+    (pts
+      (xy 308.61 59.69)
+      (xy 303.53 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e7b7bdd1-3d86-503b-bc7a-70359a50c6bd))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 303.53 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 96cc3dd9-ff23-5331-8840-0804c8de2fbd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 303.53 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 308.61 72.39)
+      (xy 308.61 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1bd6f3d5-b493-5f75-8400-8b7e54e3358e))
+  (wire
+    (pts
+      (xy 308.61 77.47)
+      (xy 303.53 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3cb37362-3a52-5521-b8b6-d760472a119f))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 303.53 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 704b05ad-4bdc-54db-a8f3-b62a1c178004)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 303.53 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 62b3e095-1ba1-5ac6-bc6c-81be8acbf960)
+    (property "Reference" "C201"
+      (at 43.942 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100nF 50V X7R 10%"
+      (at 43.942 133.35 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://yageogroup.com/download/specsheet/CC0402KRX7R9BB104"
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "CC0402KRX7R9BB104"
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Exact Yageo charge-pump capacitor named in ST TCPP01-M12 DS12900 section6.6.1/Table11; vendor dimensions confirm0402. Nominal100nF/50V/X7R/10% retained, original0603 replaced to free bank16 conventional vias. Source-bound package choice; charge-pump behavior, assembly and final PCB validation remain required."
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 34073320-971a-5bd4-a922-d5e251f7bea4))
+    (pin "2"
+      (uuid 50ce0b3b-2eb4-5707-a278-b733b5d517ee))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C201")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 127.0)
+      (xy 38.1 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1342bf3c-430d-50a2-9c32-7c5afc4d3571))
+  (wire
+    (pts
+      (xy 38.1 121.92)
+      (xy 33.02 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b70fde15-044a-5347-a770-969ee3953a21))
+  (global_label "TCPP_GD_BIAS"
+    (shape bidirectional)
+    (at 33.02 121.92 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid f8018fd4-e868-565e-adf1-c2eea7109481)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 134.62)
+      (xy 38.1 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dcb45d77-bf7f-5eed-b440-f57ab17e54e8))
+  (wire
+    (pts
+      (xy 38.1 139.7)
+      (xy 33.02 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 23ad1932-7fdb-5fbe-80a6-efc2dffa2424))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 139.7 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 58e3b8d1-64b0-590c-acfb-f01073a007fc)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid fea97bb0-5759-562a-bed8-b064fc9c4566)
+    (property "Reference" "C202"
+      (at 109.982 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "330pF 50V C0G 5%"
+      (at 109.982 133.35 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "CGA2B2C0G1H331J050BA"
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 2a9a78e6-0244-51b2-81f9-01327dc8cc44))
+    (pin "2"
+      (uuid 8834b365-51ae-5b44-8577-b03f81c07d13))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C202")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 127.0)
+      (xy 104.14 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 12962e6a-7caa-5afc-87fb-77957e4430d2))
+  (wire
+    (pts
+      (xy 104.14 121.92)
+      (xy 99.06 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 05a24163-f760-5a30-8110-31e1478fbdad))
+  (global_label "USB_CC1_RAW"
+    (shape bidirectional)
+    (at 99.06 121.92 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid fb0da86e-537c-59d5-aa5c-54d9ba7ed937)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 134.62)
+      (xy 104.14 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5d1c4968-4172-5a4c-971d-6520903ba379))
+  (wire
+    (pts
+      (xy 104.14 139.7)
+      (xy 99.06 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4f76e6e3-b41e-5ae8-ad10-0d65fc5db32d))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 139.7 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 97c75ac9-c44f-5745-b507-740ae9922ced)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1d45f7dc-f2f8-5d10-86db-dc33229b83e9)
+    (property "Reference" "C203"
+      (at 176.022 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "330pF 50V C0G 5%"
+      (at 176.022 133.35 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "CGA2B2C0G1H331J050BA"
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 99670f22-6f17-541d-9ae2-8a5cbd7a81be))
+    (pin "2"
+      (uuid 9f19085d-5b98-563c-86e6-4954bd055a70))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C203")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 127.0)
+      (xy 170.18 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a59490a3-c262-51cc-a516-37108aa35d90))
+  (wire
+    (pts
+      (xy 170.18 121.92)
+      (xy 165.1 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 62ce96a2-46b0-5a4d-b9e2-190c0e193864))
+  (global_label "USB_CC2_RAW"
+    (shape bidirectional)
+    (at 165.1 121.92 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid f142a44e-4ca6-595c-a144-a7c5d7f3e79c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 134.62)
+      (xy 170.18 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1b768ccd-f2b3-5b60-b115-3197a05b8d02))
+  (wire
+    (pts
+      (xy 170.18 139.7)
+      (xy 165.1 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8b17b826-e7e4-510a-9f78-4f2fe43e2e50))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 139.7 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a532452b-4c1b-5621-adce-f137de0dc593)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 292d5866-073d-5e39-bcd9-09d7de37431c)
+    (property "Reference" "C204"
+      (at 242.062 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100nF 16V X7R 10%"
+      (at 242.062 133.35 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Unchanged100nF16VMPN; exact-part manufacturer GRT15 reflow lands a=.40,b=.45,c=.55mm. Effective capacitance and assembled supply impedance remain unqualified."
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 4951acbf-33d3-5553-ad2a-4393f445706f))
+    (pin "2"
+      (uuid 8089cfd2-c989-56c0-b7f7-6c82bd2ee8b7))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C204")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 127.0)
+      (xy 236.22 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c2b17a77-2a59-5a29-9191-9176060d02c2))
+  (wire
+    (pts
+      (xy 236.22 121.92)
+      (xy 231.14 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 659891a2-2b0a-5d59-890f-72ed3fe70617))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 231.14 121.92 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b70265b2-a7bd-5a83-b9af-ea93a73d0c78)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 134.62)
+      (xy 236.22 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 96b9113c-f820-583b-b2cf-4d06893e3cff))
+  (wire
+    (pts
+      (xy 236.22 139.7)
+      (xy 231.14 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0e9a901c-50cf-542e-8c0a-d6d1d205f9c6))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 231.14 139.7 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 217f98eb-183e-5694-aa75-46b18452d306)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 231.14 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 303.53000000000003 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0f24e4bd-221a-53b1-a257-d2b5e3e0d161)
+    (property "Reference" "C205"
+      (at 309.372 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100nF 50V X7R 10%"
+      (at 309.372 133.35 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R71H104KA93D"
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 303.53 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d028b5a5-b753-5108-bdad-a9353516565d))
+    (pin "2"
+      (uuid 52be06a4-77b2-5033-a521-5e6709b31200))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C205")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 303.53 127.0)
+      (xy 303.53 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f0dc660e-4fbc-5a94-bcee-6b2cafcdd4f3))
+  (wire
+    (pts
+      (xy 303.53 121.92)
+      (xy 298.45 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2ece1d91-ba04-5a49-9f97-fc24188c164f))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 298.45 121.92 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 5e716dc7-8bc4-5550-95e7-f6756579739d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 298.45 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 303.53 134.62)
+      (xy 303.53 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b87689b5-1196-527b-ba47-dbc78c086e6a))
+  (wire
+    (pts
+      (xy 303.53 139.7)
+      (xy 298.45 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fd1a98b2-ac30-5526-9883-69668394a9ab))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 298.45 139.7 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 92a4f175-2cf1-5f17-a9bb-be448e8729eb)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 298.45 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 180.34 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b7fd223e-817d-5e87-9fd6-d5ea4a4e4b9b)
+    (property "Reference" "C206"
+      (at 43.942 177.8 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "4.7uF 16V X7R 10%"
+      (at 43.942 182.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71C475KE51L"
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 8ef6c2a3-6b5c-5275-9838-56e838f8f951))
+    (pin "2"
+      (uuid 4df56e94-bfe6-57cf-bc97-0e900088d9c7))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C206")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 176.53)
+      (xy 38.1 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 60ff279f-8c75-545e-b1fa-cf88fc1ae05a))
+  (wire
+    (pts
+      (xy 38.1 171.45)
+      (xy 33.02 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e19cc052-43da-54c5-915e-f60c4fea15ca))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 33.02 171.45 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 7e9d625f-9206-5ee3-9110-a03c85b5d2e7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 171.45 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 184.15)
+      (xy 38.1 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3b7bca84-f759-585a-be40-1fafee677c03))
+  (wire
+    (pts
+      (xy 38.1 189.23)
+      (xy 33.02 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8a7aff4c-7018-59cf-bd4e-d61a2fab48ac))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 33.02 189.23 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 475b027f-e5c2-5cc9-982e-c887f13b84eb)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 33.02 189.23 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 180.34 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 98f36905-7d2f-504a-b499-21a50ed7cf86)
+    (property "Reference" "C207"
+      (at 109.982 177.8 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "3.3nF 50V C0G 5%"
+      (at 109.982 182.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "C1608C0G1H332J080AA"
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d4d134c7-9e8f-5fb3-85fb-49ba11e61e05))
+    (pin "2"
+      (uuid 4dc1929f-8aa9-5053-96a9-96daf15fe865))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C207")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 176.53)
+      (xy 104.14 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d069827a-9519-5775-b447-e8f85086426c))
+  (wire
+    (pts
+      (xy 104.14 171.45)
+      (xy 99.06 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 62992a35-1c1c-58fd-9e6a-5fd111116bdb))
+  (global_label "EFUSE_DVDT"
+    (shape bidirectional)
+    (at 99.06 171.45 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d3310f45-299b-526f-a00c-b86a1aedcab1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 171.45 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 184.15)
+      (xy 104.14 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2a3439ae-ae8e-5a74-aa3f-5895ebac629f))
+  (wire
+    (pts
+      (xy 104.14 189.23)
+      (xy 99.06 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 642c9b45-d715-5b85-bc16-e96974573109))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 99.06 189.23 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 4341e8d5-f043-5d17-b4db-9374d6ad266c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 189.23 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 180.34 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b5203a2e-4645-56fe-8e59-8a9634b0d0b7)
+    (property "Reference" "C208"
+      (at 176.022 177.8 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1nF 50V C0G 5%"
+      (at 176.022 182.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "C1608C0G1H102J080AA"
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a30c8861-26b3-5f9a-8528-9666248dbca9))
+    (pin "2"
+      (uuid 8a3e7222-c25a-5305-bf74-91f3021f9e99))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C208")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 176.53)
+      (xy 170.18 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid bc99c0e8-720f-57bb-bde8-1565bc2bee21))
+  (wire
+    (pts
+      (xy 170.18 171.45)
+      (xy 165.1 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 571d87f5-e9c9-567f-9ac1-d47d5484598d))
+  (global_label "VBUS_SENSE"
+    (shape bidirectional)
+    (at 165.1 171.45 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d9426f77-943e-569c-9bc1-445b63ddfe7c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 171.45 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 184.15)
+      (xy 170.18 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 568ec053-c196-5eed-92a6-1f8217b92d08))
+  (wire
+    (pts
+      (xy 170.18 189.23)
+      (xy 165.1 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid da31d672-7ad2-59f4-9044-55ea9be95386))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 165.1 189.23 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid db9406d0-e4b1-5fc2-9984-98bcbb6a25b8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 189.23 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 237.49 180.34 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 16cfe310-5bea-57da-8785-c69f14c0665c)
+    (property "Reference" "C209"
+      (at 243.332 177.8 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "2.2uF 50V X7R 10%"
+      (at 243.332 182.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "C2012X7R1H225K125AC"
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 237.49 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid eab45cd5-54c9-5b38-b8e9-cd256985c4f3))
+    (pin "2"
+      (uuid a90b206a-781f-5cf6-ab99-10219490e861))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "C209")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 237.49 176.53)
+      (xy 237.49 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7329fa50-be4a-582b-bea4-fc8afd261fdc))
+  (wire
+    (pts
+      (xy 237.49 171.45)
+      (xy 232.41 171.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 29ed3a9d-e12b-5795-9996-ae6ec234b566))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 232.41 171.45 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 7682214a-2e9f-540e-b983-b5b9281190e7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 232.41 171.45 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 237.49 184.15)
+      (xy 237.49 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e0896fec-c152-5ee9-b275-8bb4dc265447))
+  (wire
+    (pts
+      (xy 237.49 189.23)
+      (xy 232.41 189.23))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ceda424f-c7f2-52b2-a3ea-229468c72d82))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 232.41 189.23 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1f0168e3-69e2-5ff2-bdfd-bc400311c986)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 232.41 189.23 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__D_Schottky")
+    (at 303.53000000000003 177.8 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 3f2925e6-2495-58e3-8fac-5e250217c2af)
+    (property "Reference" "D200"
+      (at 311.15 175.26 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "BAT54KFILM 40V Schottky"
+      (at 311.15 180.34 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Diode_SMD__D_SOD-523"
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.st.com/resource/en/schematic_pack/x-nucleo-snk1m1_schematic.pdf"
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "BAT54KFILM"
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Anode at rawVBUS, cathode at IN_GD hold-up/ESD capacitor node; visually verified ST DS12900 Rev7 Figure4."
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:D_Schottky"
+      (at 303.53 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 7b66b92a-83bd-5e21-9bd5-9988aca2bb47))
+    (pin "2"
+      (uuid 09567578-56ac-5606-a62a-67d206501a57))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "D200")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 299.72 177.8)
+      (xy 294.64 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e230f98e-7760-5ede-a71d-f1f79cfe95a3))
+  (wire
+    (pts
+      (xy 294.64 177.8)
+      (xy 289.56 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d7ac4925-9d21-510e-863d-12ee26d0bd15))
+  (global_label "TCPP_GD_BIAS"
+    (shape bidirectional)
+    (at 289.56 177.8 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b5262568-80e4-51e3-9ba8-5c275f6ee66e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 307.34 177.8)
+      (xy 312.42 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 19aa4fd7-ac02-5555-8b70-0edd14d2f43a))
+  (wire
+    (pts
+      (xy 312.42 177.8)
+      (xy 317.5 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 23473870-daa1-51dd-8df7-a17647aca9b5))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 317.5 177.8 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 25dff1fd-3b8c-5fa5-b4d7-9b141f0efc3a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 317.5 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:USBRevision__ESDA25P35-1U1M")
+    (at 53.34 228.6 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid d0f02b74-7cdc-5031-bffe-6f54af216e58)
+    (property "Reference" "D201"
+      (at 74.93 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "ESDA25P35-1U1M"
+      (at 74.93 231.14 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Diode_SMD__ST_QFN-2L_1_6x1_0mm"
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/esda15p60-1u1m.pdf"
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "ESDA25P35-1U1M"
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "22V reverse standoff. Raw-port ESD component, not a clamp guaranteed below30V FET absolute maximum; coordinate actual transient waveform."
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:ESDA25P35-1U1M"
+      (at 53.34 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 1a58e45e-6e6a-535d-aba9-c98ea36f44a8))
+    (pin "2"
+      (uuid ab6cfce8-af50-555d-97d1-f6807e980e2d))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "D201")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 35.56 228.6)
+      (xy 30.48 228.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 96430234-807f-5030-ba61-44f848a51ab4))
+  (wire
+    (pts
+      (xy 30.48 228.6)
+      (xy 25.4 228.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 48e6bb85-c639-5094-8233-7a1b41af6f3c))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 25.4 228.6 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1159e11d-0c1e-52a4-8139-ad0e389717f0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 228.6)
+      (xy 76.2 228.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4fe67d0c-3b8d-5f7f-98cf-a09f90e97437))
+  (wire
+    (pts
+      (xy 76.2 228.6)
+      (xy 81.28 228.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f99237c7-390c-56ca-baee-4be646df3fea))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 81.28 228.6 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid c011c559-9e1d-5d78-a1f8-ae8317a6e26e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 228.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 214.63 229.87 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 3ce1061d-5ba9-566c-96a9-955062a4d165)
+    (property "Reference" "R200"
+      (at 219.456 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100k 1%"
+      (at 219.456 232.41 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-07100KL"
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 214.63 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 51c000c4-6a81-5462-9e55-f47556f73929))
+    (pin "2"
+      (uuid cc5f01d6-2ddb-55f2-a7cf-376c62e98780))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "R200")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 214.63 226.06)
+      (xy 214.63 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5eef5ae0-f77a-567f-863b-22049ff8f5ec))
+  (wire
+    (pts
+      (xy 214.63 220.98)
+      (xy 209.55 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 433bdf8a-3238-5201-9a3f-b60026fac5bf))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 209.55 220.98 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d0c5e134-f4bb-5231-8ab3-aa81806f926e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 209.55 220.98 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 214.63 233.68)
+      (xy 214.63 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a1daacd0-4a49-51de-9a91-f6b0ecbfbb5d))
+  (wire
+    (pts
+      (xy 214.63 238.76)
+      (xy 209.55 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9ec369bd-c6a2-5db8-9015-06e21233e0f6))
+  (global_label "TCPP_OVP"
+    (shape bidirectional)
+    (at 209.55 238.76 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e284bb15-fcf6-5b3d-b813-2ba8fb17aae6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 209.55 238.76 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 280.67 229.87 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f08cdd68-afd0-5ffb-a11c-7969eb845c3d)
+    (property "Reference" "R201"
+      (at 285.496 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "13.7k 1%"
+      (at 285.496 232.41 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0713K7L"
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 280.67 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 15afe718-ccdb-5194-a892-b5573811799e))
+    (pin "2"
+      (uuid 2035d921-b859-5a08-a4db-90115ed3eb64))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "R201")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 280.67 226.06)
+      (xy 280.67 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8a6aa8a0-1ce7-596b-8b27-ec0d537242d7))
+  (wire
+    (pts
+      (xy 280.67 220.98)
+      (xy 275.59 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b3e13e17-65b2-5319-b280-5be6d44269f9))
+  (global_label "TCPP_OVP"
+    (shape bidirectional)
+    (at 275.59 220.98 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b387f02d-602d-5316-ad4d-cafec1b45944)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 275.59 220.98 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 280.67 233.68)
+      (xy 280.67 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 50386e53-a2d2-5593-b7c0-1a24b63860da))
+  (wire
+    (pts
+      (xy 280.67 238.76)
+      (xy 275.59 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1b7d266c-7658-5792-8d37-d8b1e4897fba))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 275.59 238.76 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 137ed7de-5ff3-5fa3-b2f4-2b6006be6911)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 275.59 238.76 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 346.71 229.87 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 7c91b39e-4296-57a9-bce8-1c756fce7169)
+    (property "Reference" "R202"
+      (at 351.536 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k 1%"
+      (at 351.536 232.41 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0710KL"
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 346.71 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 726eab3a-50b6-5add-b2da-6e2c374cd498))
+    (pin "2"
+      (uuid 16f6f136-9eaf-5573-848e-697b5b5e7502))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "R202")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 346.71 226.06)
+      (xy 346.71 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7a450b81-9c63-55f8-aba8-08a094a778c1))
+  (wire
+    (pts
+      (xy 346.71 220.98)
+      (xy 341.63 220.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid da971e2f-c712-543e-a17d-4b71d3d9f0f3))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 341.63 220.98 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e77147aa-f9cc-5621-9b21-9d74907e5016)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 341.63 220.98 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 346.71 233.68)
+      (xy 346.71 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 559a0cb3-7472-5965-8365-bd246eb27227))
+  (wire
+    (pts
+      (xy 346.71 238.76)
+      (xy 341.63 238.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fe092cc2-85ee-546f-90e5-f65bb5a9eb44))
+  (global_label "CC_FAULT_N"
+    (shape bidirectional)
+    (at 341.63 238.76 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b2eadcde-e0ed-5df4-b28b-3cfa5c15c3d1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 341.63 238.76 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no)
+  (symbol
+    (lib_id "CoreSupport:USBRevision__STL6N3LLH6")
+    (at 142.24 229.87 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1b1a18d4-a9f7-5265-929d-9ad337458ae4)
+    (property "Reference" "Q200"
+      (at 142.24 212.09 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "STL6N3LLH6 30V N-MOS"
+      (at 142.24 215.9 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:USBPower__ST_PowerFLAT_2x2_STL6N3LLH6"
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stl6n3llh6.pdf"
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "STL6N3LLH6"
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "ST UM2773Rev5 Table1 explicitly names this smaller TCPP external FET. Active ST product status checked2026-09-27.30VDS,+/-20VGS,40mohm max@4.5VGS. Manufacturer two exposed D/S lands represented by repeated pads1/4. Temperature/transient/SOA qualification still needed."
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:STL6N3LLH6"
+      (at 142.24 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d4c63b7f-3425-55e2-9c8f-72041a8f51d1))
+    (pin "2"
+      (uuid cc2b6fab-944f-53ec-8b30-7e14cd2bd03e))
+    (pin "3"
+      (uuid 5cc0f451-dbb5-5ba6-a2ee-3ccd3103acfd))
+    (pin "4"
+      (uuid 0db39e2b-8162-5ba7-8177-d438155982cb))
+    (pin "5"
+      (uuid 2fb69162-a717-5d41-8336-372321b8703c))
+    (pin "6"
+      (uuid 721ab9ea-29e4-5604-8e4f-92cd28d415b3))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/532d0e4d-3ed2-5108-a9c4-7df23477fd86"
+          (reference "Q200")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 124.46 227.33)
+      (xy 119.38 227.33))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a230cdc4-23f6-588a-9987-045707f04342))
+  (wire
+    (pts
+      (xy 124.46 229.87)
+      (xy 119.38 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 70118da7-a2e9-57fb-900f-c48cc207b57d))
+  (wire
+    (pts
+      (xy 119.38 227.33)
+      (xy 119.38 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4c7094af-b8a4-50ea-b352-3375ad7ad13f))
+  (wire
+    (pts
+      (xy 119.38 229.87)
+      (xy 114.3 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 67dfdfaa-3f39-5713-b84d-7d978f512c4c))
+  (junction
+    (at 119.38 229.87)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 0d42eb9e-7938-5143-a7d7-a772fb6444ff))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 114.3 229.87 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 9181f473-6577-5b03-8f78-36b12fac5a1d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 114.3 229.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 124.46 232.41)
+      (xy 119.38 232.41))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0ae2bb24-6af4-50ab-b8cf-c03f275e6a3a))
+  (wire
+    (pts
+      (xy 119.38 232.41)
+      (xy 114.3 232.41))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2d9f8a9b-8a9e-5713-90a5-45f7c1fd35b9))
+  (global_label "VBUS_GATE"
+    (shape bidirectional)
+    (at 114.3 232.41 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid e3390c2e-86fe-558e-b266-65a00f03b085)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 114.3 232.41 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 160.02 227.33)
+      (xy 165.1 227.33))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2c1a2b03-f550-5349-ae21-f4d285e9cedc))
+  (wire
+    (pts
+      (xy 165.1 227.33)
+      (xy 170.18 227.33))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4e7be0c6-7f17-564b-a49d-ef37fce11a4b))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 170.18 227.33 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid b2434245-a0fd-5696-9643-4e3d23c8fd07)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 170.18 227.33 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 160.02 229.87)
+      (xy 165.1 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7afad45f-a7d5-5f89-9b22-712cd644c0b1))
+  (wire
+    (pts
+      (xy 160.02 232.41)
+      (xy 165.1 232.41))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9c890fbb-dd7b-50a3-84f5-c82c188fe49f))
+  (wire
+    (pts
+      (xy 165.1 229.87)
+      (xy 165.1 232.41))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 64b3ea47-aa62-5b66-a456-c3d68caa8967))
+  (wire
+    (pts
+      (xy 165.1 232.41)
+      (xy 170.18 232.41))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f048b13e-1a1d-51bd-8a72-142dacf46116))
+  (junction
+    (at 165.1 232.41)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 623c0ee7-da20-5ee8-aca1-1addbb2d6c85))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 170.18 232.41 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid ca7ba19d-474d-59e8-bda3-2e6f21f3cff5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 170.18 232.41 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))))

@@ -8,11 +8,12 @@ import re
 import sys
 
 
-def check(root):
+def check(root, project_stem=None):
     root = root.resolve()
     board_dir = root / 'hardware/fpga-board'
     project_dir = board_dir / 'hardware'
-    stem = project_dir / 'Howard_FPGA_Connected_42x40'
+    stem = Path(project_stem).resolve() if project_stem else project_dir / 'Howard_FPGA_Connected_42x40'
+    project_dir = stem.parent
     errors = []
 
     @lru_cache(maxsize=None)
@@ -88,12 +89,13 @@ def check(root):
     print('Scope: project dependencies, local libraries and merge/path hazards; no electrical checks or 3D model validation.')
     if errors:
         return 1
-    print('PASS: active FPGA CAD packaging.')
+    print('PASS: FPGA CAD packaging for ' + str(stem.relative_to(root)))
     return 0
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument('--project-stem', type=Path, help='Optional complete project path without a file extension')
     args = parser.parse_args()
-    sys.exit(check(args.root))
+    sys.exit(check(args.root, args.project_stem))

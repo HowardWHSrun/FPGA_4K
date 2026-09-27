@@ -1,0 +1,1518 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid ca935a0e-4d0e-5f4d-9005-a6bb2e48163a)
+  (paper "A3")
+  (title_block
+    (title "USB-C power and protection / 2")
+    (date "2026-09-27")
+    (rev "USB-C DEV 0.1")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (text "USB-C power and protection / 2"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid b6cf1c1e-5761-5aef-95c5-20c6deb864d2))
+  (text "USB-C engineering revision. Matching labels are electrical connections. Controller firmware and receiver adapter are required; not a manufacturing release."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 4d00ca88-be5c-53c9-9ef0-71d25edca337))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 36.83 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid be49cd75-4a2b-5857-887a-e93dfdaf81c6)
+    (property "Reference" "R203"
+      (at 41.656 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100k 1%"
+      (at 41.656 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-07100KL"
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 36.83 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 9808f036-82d6-5d99-a1f4-2c16b10cf325))
+    (pin "2"
+      (uuid cd6a9f3c-0f59-560f-a859-f6eda8207533))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R203")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 64.77)
+      (xy 36.83 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ad68335f-4764-51c5-b2ee-615327afc919))
+  (wire
+    (pts
+      (xy 36.83 59.69)
+      (xy 31.75 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c8af74b4-1a18-5695-a980-b6f786dc09a7))
+  (global_label "FPGA_PWR_EN"
+    (shape bidirectional)
+    (at 31.75 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 71af4650-d8fc-512f-98f4-972bf791d541)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 72.39)
+      (xy 36.83 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a73d2e64-983a-5405-acf7-b217a68e1b1e))
+  (wire
+    (pts
+      (xy 36.83 77.47)
+      (xy 31.75 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ade2ee01-8020-5335-be65-3e4772b02cd4))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 31.75 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 969ecd31-b5dc-5ff9-aedd-028fa70c9994)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 104.14 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b7bb8122-d835-5fe1-97c4-203f2ffdc7e4)
+    (property "Reference" "R204"
+      (at 108.966 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "82.5k 1%"
+      (at 108.966 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0782K5L"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a5f04e16-c489-5ac5-8684-064a8ebe222a))
+    (pin "2"
+      (uuid 00ab287a-a824-514f-b6d9-e9364a3550f7))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R204")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 64.77)
+      (xy 104.14 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 917e35b7-4932-5bbb-9dda-f32163a15ba6))
+  (wire
+    (pts
+      (xy 104.14 59.69)
+      (xy 99.06 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c4ef4d62-1e79-5e39-b360-1bd113e21ca7))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 99.06 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 6b77b9ef-b690-54f8-824f-a98c6087e690)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 72.39)
+      (xy 104.14 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5d715015-51b7-589d-8c97-433695050750))
+  (wire
+    (pts
+      (xy 104.14 77.47)
+      (xy 99.06 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fbc4fae9-cad3-54cf-8d53-db556079def9))
+  (global_label "EFUSE_OVP"
+    (shape bidirectional)
+    (at 99.06 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid fb0d252e-79c5-51c1-8f12-b67345721085)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 168.91 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 98ec9c2f-1995-5a2a-9feb-fc68b7a68a97)
+    (property "Reference" "R205"
+      (at 173.736 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k 1%"
+      (at 173.736 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0710KL"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 168.91 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 4ed54e00-d881-5d8d-8fe9-06d30da79b4d))
+    (pin "2"
+      (uuid d63e5be0-2e2f-5b9d-bebe-d478b813c757))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R205")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 64.77)
+      (xy 168.91 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c3184e15-bb5c-5079-8ff8-5445da33408e))
+  (wire
+    (pts
+      (xy 168.91 59.69)
+      (xy 163.83 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f2ae8556-8801-5fe4-897d-ccc7d70c4876))
+  (global_label "EFUSE_OVP"
+    (shape bidirectional)
+    (at 163.83 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid ed2710e0-4c64-5669-8301-1cac2f86fab1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 168.91 72.39)
+      (xy 168.91 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 68ba0082-2c77-545e-a49c-87e015bd1f36))
+  (wire
+    (pts
+      (xy 168.91 77.47)
+      (xy 163.83 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 84188d83-eb0f-5d67-a402-4c604eab4195))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 163.83 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1a67c056-a5e9-5cb8-b766-70dbc1ecffe9)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 163.83 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 234.95000000000002 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid dada3663-188f-5bca-85e1-e699a3786578)
+    (property "Reference" "R206"
+      (at 239.776 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "1.65k 1%"
+      (at 239.776 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-071K65L"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 234.95 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 21b1cf7d-c77f-53dd-8f53-e812ba20d2ef))
+    (pin "2"
+      (uuid 8228cee6-8a7b-5e74-86ec-6039d708bae1))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R206")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 234.95 64.77)
+      (xy 234.95 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 839dd23b-a3ec-50b7-bffc-ba509846f521))
+  (wire
+    (pts
+      (xy 234.95 59.69)
+      (xy 229.87 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2b3fbce7-8bfa-5b5d-a311-3ef7525ce9f1))
+  (global_label "EFUSE_ILM"
+    (shape bidirectional)
+    (at 229.87 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a48f1e84-21d9-580e-9a2b-2f1e2389cc19)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 234.95 72.39)
+      (xy 234.95 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7c4a1187-023c-5b0a-a297-f4c68886d2d6))
+  (wire
+    (pts
+      (xy 234.95 77.47)
+      (xy 229.87 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2f13de0a-de0d-561f-8337-481acd8858b7))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 229.87 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 934d38f3-ac17-5ace-b778-37be01dba107)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 300.99 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 49c3c789-82ee-5533-b102-fb69f6da8fbc)
+    (property "Reference" "R207"
+      (at 305.816 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "24.9k 1%"
+      (at 305.816 71.12 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0724K9L"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 300.99 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid fe828127-28bc-5158-887c-7763eb261e04))
+    (pin "2"
+      (uuid 2f9728cf-287d-5b74-9048-6e4832b15346))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R207")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 300.99 64.77)
+      (xy 300.99 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c81d0b61-284d-5e30-8088-c20808de5bc4))
+  (wire
+    (pts
+      (xy 300.99 59.69)
+      (xy 295.91 59.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c0cd0c1c-c13f-577e-b963-de30084d4024))
+  (global_label "USB_MAIN_VIN"
+    (shape bidirectional)
+    (at 295.91 59.69 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1e3223c4-a183-5172-bd76-234aa23131ae)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 59.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 300.99 72.39)
+      (xy 300.99 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f75c149c-983c-5dee-87ee-6509adac3b94))
+  (wire
+    (pts
+      (xy 300.99 77.47)
+      (xy 295.91 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 63762dde-dcd1-5a12-b4e5-6088ca8aab08))
+  (global_label "EFUSE_PGTH"
+    (shape bidirectional)
+    (at 295.91 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 6d39b8af-fbfe-55a1-849d-67bc1316741e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 295.91 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 36.83 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid c4bbfc79-55f1-5ed1-a781-ecfb18c71a6e)
+    (property "Reference" "R208"
+      (at 41.656 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "10k 1%"
+      (at 41.656 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0710KL"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 36.83 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid c705c1df-43a6-50b4-908f-4955b536732d))
+    (pin "2"
+      (uuid 245cb96b-e912-5352-9d67-0d26f1acb50f))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R208")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 36.83 114.3)
+      (xy 36.83 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 54873261-51d3-5f90-8672-8e7daafbaca3))
+  (wire
+    (pts
+      (xy 36.83 109.22)
+      (xy 31.75 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1205d564-4ceb-5c91-a161-0389ea4b2ccd))
+  (global_label "EFUSE_PGTH"
+    (shape bidirectional)
+    (at 31.75 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 2fd6e8d9-cd18-5101-94aa-a6ab1f555597)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 36.83 121.92)
+      (xy 36.83 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 84ceb701-d302-59bf-b34b-4a83f9b38812))
+  (wire
+    (pts
+      (xy 36.83 127.0)
+      (xy 31.75 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4ed279ef-8435-5c64-9c3a-484fed5828c6))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 31.75 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 1fdc459e-372d-5b10-829d-fb96102c5d85)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 31.75 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 104.14 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 9093db42-74ea-5029-bcbc-603b5ab8f4fc)
+    (property "Reference" "R209"
+      (at 108.966 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "47k 1%"
+      (at 108.966 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0747KL"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 56f50d75-a090-5c0c-9b26-bb97f258baa4))
+    (pin "2"
+      (uuid 3cd0ad3c-bbd0-53f8-8520-6a08b1bc648c))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R209")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 114.3)
+      (xy 104.14 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 305254b9-c465-5816-a038-d4e8b006e8a0))
+  (wire
+    (pts
+      (xy 104.14 109.22)
+      (xy 99.06 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 16c0e155-af75-5a21-9a99-37debdf8145f))
+  (global_label "USB_AON_3V3"
+    (shape bidirectional)
+    (at 99.06 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid d91a9318-c26c-5b06-87e2-57fbb4d9aec3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 121.92)
+      (xy 104.14 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6353066b-d762-50d2-ba7a-a277d26c1c74))
+  (wire
+    (pts
+      (xy 104.14 127.0)
+      (xy 99.06 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6e7f6026-ca34-58cd-90d5-170c299c4a12))
+  (global_label "FPGA_PWR_GOOD"
+    (shape bidirectional)
+    (at 99.06 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 0e5fdb28-3419-5f59-9096-d140309c7732)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 99.06 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 170.18 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b7c8723a-7823-5e97-9540-94bf110a6c69)
+    (property "Reference" "R210"
+      (at 175.006 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "220k 1%"
+      (at 175.006 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-07220KL"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 7841cc2b-4508-5fcc-bf3c-5c3d3227349b))
+    (pin "2"
+      (uuid 1d4c4f9b-e5f2-5ec3-a5e9-40c104318622))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R210")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 114.3)
+      (xy 170.18 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5f12fb4a-085d-59cb-993a-a925ac23fdb0))
+  (wire
+    (pts
+      (xy 170.18 109.22)
+      (xy 165.1 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5961de02-d253-5f66-8b1e-5e0fd1701574))
+  (global_label "VBUS_PROTECTED"
+    (shape bidirectional)
+    (at 165.1 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 33f8c88d-59ff-5556-af59-58645600d1f1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 121.92)
+      (xy 170.18 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 78e0bc02-dcf0-5785-bcbd-b9056cb962a6))
+  (wire
+    (pts
+      (xy 170.18 127.0)
+      (xy 165.1 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8db899a5-7546-518e-a893-7c0b652ef4d6))
+  (global_label "VBUS_SENSE"
+    (shape bidirectional)
+    (at 165.1 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid de716115-dbe0-555e-86f6-53f34365b1bd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 165.1 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 234.95000000000002 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b5e4791f-6b19-507b-8c9d-a71d6b87c647)
+    (property "Reference" "R211"
+      (at 239.776 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "27.4k 1%"
+      (at 239.776 120.65 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-0727K4L"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 234.95 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 88389cf6-f69a-533a-8e25-cc8d9199b0be))
+    (pin "2"
+      (uuid 6910d37e-b1d9-553b-96d4-d6e3bcc19829))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R211")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 234.95 114.3)
+      (xy 234.95 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e01f8672-6ae6-554e-8767-6ed3e34bcb84))
+  (wire
+    (pts
+      (xy 234.95 109.22)
+      (xy 229.87 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2927899b-662d-570c-87b5-b2e39db70770))
+  (global_label "VBUS_SENSE"
+    (shape bidirectional)
+    (at 229.87 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 736e7ef1-ed37-540d-93e7-d130d1685af0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 234.95 121.92)
+      (xy 234.95 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid abe0b0ce-cfa0-5fb2-a3ba-5b065d61fd9d))
+  (wire
+    (pts
+      (xy 234.95 127.0)
+      (xy 229.87 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 63483480-5405-5388-b594-fdde40df4349))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 229.87 127.0 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 07bc6ba1-59d9-51a6-b837-8392dad70629)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 229.87 127.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no)
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 50.8 170.18 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid cc5ecbe3-73c0-585f-be13-b631b78f8c05)
+    (property "Reference" "R212"
+      (at 55.626 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100k 1%"
+      (at 55.626 172.72 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-07100KL"
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 50.8 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid ecf148e9-3a17-58b4-9473-3d78404d05e0))
+    (pin "2"
+      (uuid 418ed78c-1050-55f0-a98a-a27205072923))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R212")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 50.8 166.37)
+      (xy 50.8 161.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2d0ab0c1-d06f-54f8-8648-23b012c5298f))
+  (wire
+    (pts
+      (xy 50.8 161.29)
+      (xy 45.72 161.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6eed9ba4-7d5b-51ae-9ce7-15a5bd0f14bb))
+  (global_label "FPGA_PWR_GOOD"
+    (shape bidirectional)
+    (at 45.72 161.29 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 60a94516-0f33-535f-930f-ee0c6f56b834)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 45.72 161.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 50.8 173.99)
+      (xy 50.8 179.07))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f97ec930-c404-5264-829f-4991ee0033ee))
+  (wire
+    (pts
+      (xy 50.8 179.07)
+      (xy 45.72 179.07))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e7e0133f-3cc8-5880-80e8-5582f91fd88f))
+  (global_label "FPGA_CORE_EN"
+    (shape bidirectional)
+    (at 45.72 179.07 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 6a3f5aea-57f2-5fbe-91c6-f27b43cbd91b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 45.72 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 116.84 170.18 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0b9c5e1e-dfdb-5501-b2e5-9d55af4e92ea)
+    (property "Reference" "R213"
+      (at 121.666 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100k 1%"
+      (at 121.666 172.72 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0402_1005Metric"
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf"
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "RC0402FR-07100KL"
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C power and protection"
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" ""
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 116.84 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 17e1a08e-9d75-5d03-a757-43b976a278fb))
+    (pin "2"
+      (uuid 06bf9626-c5c0-5c2f-85bd-7b6f79c44c74))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/ca935a0e-4d0e-5f4d-9005-a6bb2e48163a"
+          (reference "R213")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 116.84 166.37)
+      (xy 116.84 161.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a59a3317-b599-59d2-93d0-923d7249d236))
+  (wire
+    (pts
+      (xy 116.84 161.29)
+      (xy 111.76 161.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ac0d2c5f-7077-57db-8bad-ca489dc50f7a))
+  (global_label "FPGA_CORE_EN"
+    (shape bidirectional)
+    (at 111.76 161.29 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 7f6c522e-f497-5729-8ae2-2940a2dbac95)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 111.76 161.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 116.84 173.99)
+      (xy 116.84 179.07))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid de01a302-c76c-599c-87c0-fa2caca7f5d6))
+  (wire
+    (pts
+      (xy 116.84 179.07)
+      (xy 111.76 179.07))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d3a8034f-d7c5-54c0-8ec4-5a36b0ceb0aa))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 111.76 179.07 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid fa61526f-be98-5fa6-a204-4f4a40096bcd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 111.76 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (text "R212/R213 divide the worst-case 1.0 V unpowered PG level below the core EN off threshold. PB7 reads undivided PG."
+    (at 15.24 203.2 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 5efed677-937b-5924-8c66-0c5c30b98257)))

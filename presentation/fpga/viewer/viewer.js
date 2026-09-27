@@ -65,6 +65,9 @@ async function loadBoard(selected) {
   $('#load-error').hidden = true;
   $('#board-choice').value = board.id;
   $('#board-description').textContent = board.description;
+  $('#pin-guide').href = board.id === 'usb-c' ? '../#validation' : '../pins/';
+  $('#pin-guide').textContent = board.id === 'usb-c' ? 'USB-C pin status' : 'Historical pin labels';
+  $('#component-guide').href = board.id === 'usb-c' ? '../#architecture' : '../micro-hdmi.html#architecture';
   $('#native-file').href = board.native;
   $('#project-zip').href = board.zip;
   const pathname = new URL(board.native, location.href).pathname;
@@ -146,11 +149,12 @@ if (!document.fullscreenEnabled) $('#fullscreen').hidden = true;
 try {
   const response = await fetch('./boards.json');
   if (!response.ok) throw new Error('Board index unavailable.');
-  const {boards} = await response.json();
-  const current = boards.find(item => item.id === 'compact-routed');
-  const currentOption = $('#board-choice option[value="compact-routed"]');
-  if (current && currentOption) currentOption.textContent = current.title;
-  const selected = boards.find(item => item.id === params.get('board')) || boards.find(item => item.id === 'compact-routed');
+  const {boards, default_board = 'compact-routed'} = await response.json();
+  for (const item of boards) {
+    const option = [...$('#board-choice').options].find(option => option.value === item.id);
+    if (option) option.textContent = item.title;
+  }
+  const selected = boards.find(item => item.id === params.get('board')) || boards.find(item => item.id === default_board);
   if (!selected) throw new Error('The current smallest-board index is unavailable.');
   $('#board-choice').addEventListener('change', () => {
     const choice = boards.find(item => item.id === $('#board-choice').value);

@@ -1,0 +1,1127 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid aaa57fb0-f759-5259-adff-f6b692b4d58f)
+  (paper "A3")
+  (title_block
+    (title "USB-C cable connector")
+    (date "2026-09-27")
+    (rev "USB-C DEV 0.1")
+    (company "Howard Wang / XC7A100T CSG324")
+    (comment 1 "ENGINEERING DRAFT - NOT FOR FABRICATION"))
+  (lib_symbols
+    (symbol "CoreSupport:USBRevision__USB4081-03-A"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0.0 22.86 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "USB4081-03-A"
+        (at 0.0 20.32 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" "USB_C_Revision:USB_C_GCT_USB4081_03_A"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Datasheet" "https://gct.co/files/drawings/usb4081.pdf"
+        (at 0.0 0.0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (symbol "USBRevision__USB4081-03-A_0_1"
+        (rectangle
+          (start -15.24 17.78)
+          (end 15.24 -17.78)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "USBRevision__USB4081-03-A_1_1"
+        (pin passive line
+          (at -17.78 15.240000000000002 0)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 12.700000000000001 0)
+          (length 2.54)
+          (name "TX1_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 10.16 0)
+          (length 2.54)
+          (name "TX1_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 7.620000000000001 0)
+          (length 2.54)
+          (name "VBUS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 5.080000000000002 0)
+          (length 2.54)
+          (name "CC1"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 2.540000000000001 0)
+          (length 2.54)
+          (name "DP"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 0.0 0)
+          (length 2.54)
+          (name "DM"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -2.539999999999999 0)
+          (length 2.54)
+          (name "SBU1_UNUSED"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -5.079999999999998 0)
+          (length 2.54)
+          (name "VBUS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -7.619999999999997 0)
+          (length 2.54)
+          (name "RX2_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A10"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -10.16 0)
+          (length 2.54)
+          (name "RX2_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A11"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -12.7 0)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "A12"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at -17.78 -15.240000000000002 0)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 15.240000000000002 180)
+          (length 2.54)
+          (name "TX2_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 12.700000000000001 180)
+          (length 2.54)
+          (name "TX2_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 10.16 180)
+          (length 2.54)
+          (name "VBUS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 7.620000000000001 180)
+          (length 2.54)
+          (name "CC2"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 5.080000000000002 180)
+          (length 2.54)
+          (name "DP"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 2.540000000000001 180)
+          (length 2.54)
+          (name "DM"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 0.0 180)
+          (length 2.54)
+          (name "SBU2_UNUSED"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -2.539999999999999 180)
+          (length 2.54)
+          (name "VBUS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -5.079999999999998 180)
+          (length 2.54)
+          (name "RX1_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B10"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -7.619999999999997 180)
+          (length 2.54)
+          (name "RX1_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B11"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -10.16 180)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "B12"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin passive line
+          (at 17.78 -12.7 180)
+          (length 2.54)
+          (name "SHIELD"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "SH"
+            (effects
+              (font
+                (size 1.0 1.0))))))))
+  (text "USB-C cable connector"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 2.54 2.54))
+      (justify left))
+    (uuid 013520b2-a970-5722-b3df-4b47c23923e5))
+  (text "USB-C engineering revision. Matching labels are electrical connections. Controller firmware and receiver adapter are required; not a manufacturing release."
+    (at 15.24 26.67 0)
+    (effects
+      (font
+        (size 1.143 1.143))
+      (justify left))
+    (uuid 298ee62d-e35e-5b59-8c61-66523f811efe))
+  (symbol
+    (lib_id "CoreSupport:USBRevision__USB4081-03-A")
+    (at 53.34 82.55 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 91ebf51b-cd49-51b0-b159-233e559fbc4c)
+    (property "Reference" "J4"
+      (at 53.34 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "USB-C POWER / DATA / RECOVERY"
+      (at 53.34 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "CoreSupport:USB_C_Revision__USB_C_GCT_USB4081_03_A"
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://gct.co/files/drawings/usb4081.pdf"
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "USB4081-03-A"
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "USB-C cable connector"
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Proposed full24contact port; USB2 control plus negotiated custom high-speed mode. Mechanical retention, signal integrity and firmware qualification remain open."
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "USBRevision:USB4081-03-A"
+      (at 53.34 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "A1"
+      (uuid 9e1057ee-27fa-585d-91df-531df9003dc5))
+    (pin "A2"
+      (uuid 766bb004-7afe-5899-8f73-c92217dc4c08))
+    (pin "A3"
+      (uuid 4484468b-95ae-5ebd-bdad-8e1395e937fd))
+    (pin "A4"
+      (uuid d59d6ea8-8224-53a6-a231-72d3101a20c9))
+    (pin "A5"
+      (uuid d9755b77-b4c0-5968-9fb0-bcc3704bcba6))
+    (pin "A6"
+      (uuid b2c67cff-5d88-5933-a0ac-8095441089d9))
+    (pin "A7"
+      (uuid 24d79604-03a1-5446-9ce5-20f64c3a68b1))
+    (pin "A8"
+      (uuid 5cd2b713-b60c-5b36-aa9d-a83d31d25268))
+    (pin "A9"
+      (uuid 8442981c-a2c0-5e1e-84b3-3b44fdee2b57))
+    (pin "A10"
+      (uuid 27df615b-3bca-5222-be20-fd5079f4ef8c))
+    (pin "A11"
+      (uuid e56e47d5-4a29-5a40-99ec-d55c1f354718))
+    (pin "A12"
+      (uuid 7534db2b-0f0b-51f8-9e27-879f4b9ec6fd))
+    (pin "B1"
+      (uuid f432780b-f408-55b5-b795-e461c3ff308c))
+    (pin "B2"
+      (uuid 482d9457-742f-50d4-a9d8-27d47fd4fb1b))
+    (pin "B3"
+      (uuid 4df7817e-ee83-5b98-bf34-58c77f80d25d))
+    (pin "B4"
+      (uuid 4eb34768-38d4-5793-91c2-2230db0ecc5d))
+    (pin "B5"
+      (uuid 8d3bac59-fed1-5de1-bea7-a31bbcde1db3))
+    (pin "B6"
+      (uuid 60393541-9e0f-5f71-b50f-a2d0915eb3a6))
+    (pin "B7"
+      (uuid 886729ca-8506-5570-b56e-3805da694447))
+    (pin "B8"
+      (uuid b8175514-e192-507d-95ac-4e5895155d46))
+    (pin "B9"
+      (uuid c35dc4ee-e0b1-5ae9-9ec9-043843d69eac))
+    (pin "B10"
+      (uuid 0e761b5c-9227-515f-9725-ed5214aece73))
+    (pin "B11"
+      (uuid b43c08be-1775-5ea3-94c6-0c0c04dd0b6d))
+    (pin "B12"
+      (uuid 6ab3e9c9-1158-568d-a84e-a1bc95855670))
+    (pin "SH"
+      (uuid 3a726391-71e1-51ed-a64a-f89306fa3ce9))
+    (instances
+      (project "FPGA100T_33x36_Routing"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/aaa57fb0-f759-5259-adff-f6b692b4d58f"
+          (reference "J4")
+          (unit 1)))))
+  (no_connect
+    (at 35.56 85.09)
+    (uuid 196fb77d-f2e5-59db-9edf-748eafcdc3fc))
+  (no_connect
+    (at 71.12 82.55)
+    (uuid e2bf411f-3a3d-5509-a837-43aaac863e63))
+  (wire
+    (pts
+      (xy 35.56 67.31)
+      (xy 30.48 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0c09ecc6-41ef-5509-a3d8-6a8bb114e78a))
+  (wire
+    (pts
+      (xy 30.48 67.31)
+      (xy 25.4 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 37e31833-7b41-50e5-9774-49b4177c0237))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 67.31 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 7f60f68a-1b0b-5646-802b-5fa77485303f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 69.85)
+      (xy 30.48 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 555a4c13-3491-56cd-ae54-8fe0f38163ae))
+  (wire
+    (pts
+      (xy 30.48 69.85)
+      (xy 25.4 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid cda5b228-eacb-5b8c-a231-69eceff21093))
+  (global_label "USB_TX1_P"
+    (shape bidirectional)
+    (at 25.4 69.85 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 45c63e7a-dda0-5789-be8d-d27e7fc4c857)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 72.39)
+      (xy 30.48 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid afaf104e-3f24-5528-bb85-8211f7671d90))
+  (wire
+    (pts
+      (xy 30.48 72.39)
+      (xy 25.4 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f167c15f-9e18-5ab1-8466-18141a8f34c2))
+  (global_label "USB_TX1_N"
+    (shape bidirectional)
+    (at 25.4 72.39 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid bb28d237-fb91-577a-8ee9-d498303527de)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 74.93)
+      (xy 30.48 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5c551b07-4c50-590e-b920-f9d0f03c5897))
+  (wire
+    (pts
+      (xy 30.48 74.93)
+      (xy 25.4 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1a269fdc-6e48-547e-8568-72ca2fc77c85))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 25.4 74.93 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 546f52e4-b521-51e7-969d-60d60a795725)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 77.47)
+      (xy 30.48 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 687d38c8-47d2-5f3a-9dac-468105b20290))
+  (wire
+    (pts
+      (xy 30.48 77.47)
+      (xy 25.4 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7f6620b4-9bf4-5482-9cd8-ec9f40acfb5d))
+  (global_label "USB_CC1_RAW"
+    (shape bidirectional)
+    (at 25.4 77.47 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 926c637c-c697-5a37-a4f7-d5e83f484acf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 80.01)
+      (xy 30.48 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 50541454-f76f-53cb-90ce-89b4a879a230))
+  (wire
+    (pts
+      (xy 30.48 80.01)
+      (xy 25.4 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9d02f019-7227-5efc-bf2e-a7d2c48edfb8))
+  (global_label "USB_DP"
+    (shape bidirectional)
+    (at 25.4 80.01 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a547875e-6379-53b4-bd30-80963115e27a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 80.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 82.55)
+      (xy 30.48 82.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f21eeeb6-82ac-5b7b-b35f-fa94e6741a3e))
+  (wire
+    (pts
+      (xy 30.48 82.55)
+      (xy 25.4 82.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 944495a8-f7ec-5f25-bfe0-150d17c0061e))
+  (global_label "USB_DM"
+    (shape bidirectional)
+    (at 25.4 82.55 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid b506ba06-f9cc-5454-b987-f544a0c786a2)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 82.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 87.63)
+      (xy 30.48 87.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1f49631e-2785-50aa-a72e-2499096cfca4))
+  (wire
+    (pts
+      (xy 30.48 87.63)
+      (xy 25.4 87.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 331bc469-078d-5b14-8ea7-c1d3de81e103))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 25.4 87.63 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 694a4262-3af6-56c2-8179-167e6aa11c7d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 87.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 90.17)
+      (xy 30.48 90.17))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c9500cd0-3a8e-5ba6-9e27-becfa450193f))
+  (wire
+    (pts
+      (xy 30.48 90.17)
+      (xy 25.4 90.17))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8d6d1920-b692-5aeb-b89b-7a66ad118f5a))
+  (global_label "USB_RX2_N"
+    (shape bidirectional)
+    (at 25.4 90.17 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid a4e2e4d4-16f9-56f3-bb34-4de8d25c381c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 90.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 92.71)
+      (xy 30.48 92.71))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 90a44c47-ebf4-5aba-b0f7-51f631649419))
+  (wire
+    (pts
+      (xy 30.48 92.71)
+      (xy 25.4 92.71))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c092e8e7-395f-580b-b087-4aca14558851))
+  (global_label "USB_RX2_P"
+    (shape bidirectional)
+    (at 25.4 92.71 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 2b0c8308-8055-5399-a603-f7a61bf6187e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 92.71 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 35.56 95.25)
+      (xy 30.48 95.25))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 48f40d3f-11cc-5706-bbca-67d987c87a79))
+  (wire
+    (pts
+      (xy 35.56 97.79)
+      (xy 30.48 97.79))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 837f9f82-2428-5e55-9ca5-d3cb5eecc085))
+  (wire
+    (pts
+      (xy 30.48 95.25)
+      (xy 30.48 97.79))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f36e745e-5504-5214-beac-8cf62f29e0f0))
+  (wire
+    (pts
+      (xy 30.48 97.79)
+      (xy 25.4 97.79))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 88eeea14-b2d4-5e68-a677-39fdbef2cfcb))
+  (junction
+    (at 30.48 97.79)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 3d0e0e1b-dac0-5d86-9306-b118ef37a477))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 97.79 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid 4577e169-2597-5c96-b4b1-746d11d6d872)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 97.79 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 67.31)
+      (xy 76.2 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 00134f70-f8f1-59d1-8cb9-52769982f583))
+  (wire
+    (pts
+      (xy 76.2 67.31)
+      (xy 81.28 67.31))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a5233809-4794-5ceb-a4ef-ce11dd2e70c0))
+  (global_label "USB_TX2_P"
+    (shape bidirectional)
+    (at 81.28 67.31 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid e870e238-3032-5f00-8fde-6a450c1d9399)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 67.31 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 69.85)
+      (xy 76.2 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fa7dd843-d334-5510-b16f-cd2faa00e659))
+  (wire
+    (pts
+      (xy 76.2 69.85)
+      (xy 81.28 69.85))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 05dff482-ea06-5398-bf88-9ea9a49d761f))
+  (global_label "USB_TX2_N"
+    (shape bidirectional)
+    (at 81.28 69.85 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 9248b308-8293-508b-a973-36d06a0f57f6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 69.85 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 72.39)
+      (xy 76.2 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c2fe42c4-b5f6-58b7-9754-de98e4e50b26))
+  (wire
+    (pts
+      (xy 76.2 72.39)
+      (xy 81.28 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 37a59535-d149-5005-836c-f694e79a8af5))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 81.28 72.39 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 095c4206-d87b-52eb-a13c-959cd912508f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 74.93)
+      (xy 76.2 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c1f6a251-7f50-50fa-a62f-43a7ab9192a7))
+  (wire
+    (pts
+      (xy 76.2 74.93)
+      (xy 81.28 74.93))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid da8047a2-771d-5165-b8a7-f0202f05b3d5))
+  (global_label "USB_CC2_RAW"
+    (shape bidirectional)
+    (at 81.28 74.93 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid c04d5319-6547-59d4-8fee-0464cd51bb18)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 74.93 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 77.47)
+      (xy 76.2 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 27ea218e-39fa-5eaf-b5fd-7207c388b924))
+  (wire
+    (pts
+      (xy 76.2 77.47)
+      (xy 81.28 77.47))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9ac46273-f5cc-55f3-9fe2-255b467879be))
+  (global_label "USB_DP"
+    (shape bidirectional)
+    (at 81.28 77.47 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid b4bdb8c7-d1d7-5aa2-9230-7db97f9e201d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 77.47 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 80.01)
+      (xy 76.2 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c46a9ea9-16d9-50c1-9d78-97db6a00d414))
+  (wire
+    (pts
+      (xy 76.2 80.01)
+      (xy 81.28 80.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7c9fa2b2-445d-5b9f-b33c-c413ef64fd9a))
+  (global_label "USB_DM"
+    (shape bidirectional)
+    (at 81.28 80.01 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 60add757-53dd-5e92-b687-d6928ea9f847)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 80.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 85.09)
+      (xy 76.2 85.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2cd01fe2-b920-51fa-b649-7d2ce444b159))
+  (wire
+    (pts
+      (xy 76.2 85.09)
+      (xy 81.28 85.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid eca1dda3-27b2-5ccf-ac3e-2efe47560b59))
+  (global_label "USB_VBUS_RAW"
+    (shape bidirectional)
+    (at 81.28 85.09 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid aeb341cc-d7fa-56eb-a899-b50bad01bf19)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 85.09 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 87.63)
+      (xy 76.2 87.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 152a7774-97a3-58cf-b3b1-2a7ffc844639))
+  (wire
+    (pts
+      (xy 76.2 87.63)
+      (xy 81.28 87.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5afd92c8-3513-5f1b-8656-db25183bfaff))
+  (global_label "USB_RX1_N"
+    (shape bidirectional)
+    (at 81.28 87.63 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 371bf9e2-277d-57e6-92d7-41ca14a7cb38)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 87.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 90.17)
+      (xy 76.2 90.17))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 00f14973-8935-5ea7-8108-4d8d61f4975b))
+  (wire
+    (pts
+      (xy 76.2 90.17)
+      (xy 81.28 90.17))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d390561e-1212-597f-bdd4-183560c7db61))
+  (global_label "USB_RX1_P"
+    (shape bidirectional)
+    (at 81.28 90.17 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 772d72b9-eb9d-5a64-8543-4dd784fd203e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 90.17 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 71.12 92.71)
+      (xy 76.2 92.71))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fbe075dd-4704-5e4c-bc4e-a8dc41d0ae28))
+  (wire
+    (pts
+      (xy 71.12 95.25)
+      (xy 76.2 95.25))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 36f61cec-ff39-5d0d-b9e6-88d6bc856533))
+  (wire
+    (pts
+      (xy 76.2 92.71)
+      (xy 76.2 95.25))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 22cad73f-119a-52fb-87e4-82dab7c72da3))
+  (wire
+    (pts
+      (xy 76.2 95.25)
+      (xy 81.28 95.25))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e7a883eb-06e6-536a-a063-75d4e7e18bf8))
+  (junction
+    (at 76.2 95.25)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 3691332d-1f70-51a7-8787-7515de70d5c7))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 81.28 95.25 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid 4aaca5f9-c24c-5862-bf6f-63a631c0c841)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 81.28 95.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (embedded_fonts no))

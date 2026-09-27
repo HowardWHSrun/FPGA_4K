@@ -1,0 +1,859 @@
+{
+  "schema": 1,
+  "status": "Pin-level architecture handoff; requires integration ERC/DRC, firmware and signal/power qualification",
+  "components": {
+    "U210": {
+      "mpn": "STM32G0B1KEU6N",
+      "value": "STM32G0B1KEU6N",
+      "footprint": "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm",
+      "pins": {
+        "1": "TCPP_DB_N",
+        "4": "USB_AON_3V3",
+        "5": "GND",
+        "6": "MCU_NRST",
+        "7": "VBUS_SENSE",
+        "8": "VCCAUX_1V8_SENSE",
+        "9": "MCU_JTAG_TCK",
+        "10": "MCU_JTAG_TMS",
+        "11": "MCU_JTAG_TDI",
+        "12": "MCU_JTAG_TDO",
+        "13": "USB_MUX_POL",
+        "14": "USB_MUX_EN",
+        "15": "FPGA_PWR_EN",
+        "17": "USB_CC2",
+        "18": "USB_CC1",
+        "19": "GND",
+        "20": "USB_AON_3V3",
+        "21": "GND",
+        "22": "USB_DM",
+        "23": "USB_DP",
+        "24": "MCU_SWDIO",
+        "25": "MCU_SWCLK",
+        "30": "JTAG_OE",
+        "31": "FPGA_PWR_GOOD",
+        "32": "CC_FAULT_N",
+        "33": "GND",
+        "2": null,
+        "3": null,
+        "16": null,
+        "26": null,
+        "27": null,
+        "28": null,
+        "29": null
+      },
+      "no_connect": [
+        "2",
+        "3",
+        "16",
+        "26",
+        "27",
+        "28",
+        "29"
+      ],
+      "pin_names": {
+        "1": "PB9",
+        "2": "PC14",
+        "3": "PC15",
+        "4": "VDD/VDDA",
+        "5": "VSS/VSSA",
+        "6": "PF2_NRST",
+        "7": "PA0_ADC_IN0",
+        "8": "PA1_ADC_IN1",
+        "9": "PA2",
+        "10": "PA3",
+        "11": "PA4",
+        "12": "PA5",
+        "13": "PA6",
+        "14": "PA7",
+        "15": "PB0",
+        "16": "PB1",
+        "17": "PB15_UCPD1_CC2",
+        "18": "PA8_UCPD1_CC1",
+        "19": "PA9_UCPD1_DBCC1",
+        "20": "VDDIO2",
+        "21": "PA10_UCPD1_DBCC2",
+        "22": "PA11_USB_DM",
+        "23": "PA12_USB_DP",
+        "24": "PA13_SWDIO",
+        "25": "PA14_SWCLK_BOOT0",
+        "26": "PD0",
+        "27": "PD1",
+        "28": "PD2",
+        "29": "PD3",
+        "30": "PB6",
+        "31": "PB7",
+        "32": "PB8",
+        "33": "EP_VSS"
+      },
+      "pin_types": {
+        "1": "output",
+        "2": "bidirectional",
+        "3": "bidirectional",
+        "4": "power_in",
+        "5": "power_in",
+        "6": "bidirectional",
+        "7": "input",
+        "8": "input",
+        "9": "output",
+        "10": "output",
+        "11": "output",
+        "12": "input",
+        "13": "output",
+        "14": "output",
+        "15": "output",
+        "16": "input",
+        "17": "bidirectional",
+        "18": "bidirectional",
+        "19": "passive",
+        "20": "power_in",
+        "21": "passive",
+        "22": "bidirectional",
+        "23": "bidirectional",
+        "24": "bidirectional",
+        "25": "input",
+        "26": "bidirectional",
+        "27": "bidirectional",
+        "28": "bidirectional",
+        "29": "bidirectional",
+        "30": "output",
+        "31": "input",
+        "32": "input",
+        "33": "power_in"
+      },
+      "datasheet": "https://www.st.com/resource/en/datasheet/stm32g0b1me.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification; choose N variant; EP3.5 stock footprint matches Rev6 A0B8 example rather than older symbol default EP3.45; DBCC1/2 pins 19/21 tied GND because TCPP owns unpowered dead-battery termination; never configure PA9/PA10 as driven outputs; USB device uses HSI48/CRS; program firmware through J210",
+      "stock_symbol": "MCU_ST_STM32G0:STM32G0B1KEUxN"
+    },
+    "U211": {
+      "mpn": "TMUXHS4446RETR",
+      "value": "TMUXHS4446RETR",
+      "footprint": "Package_DFN_QFN:Texas_WQFN-40-1EP_3x6mm_P0.4mm_EP1.7x4.5mm",
+      "pins": {
+        "1": "GND",
+        "2": "LINK_D1_P",
+        "3": "LINK_D1_N",
+        "4": "USB_AON_3V3",
+        "5": "LINK_D2_P",
+        "6": "LINK_D2_N",
+        "7": "USB_AON_3V3",
+        "8": "LINK_CLK_P",
+        "9": "LINK_CLK_N",
+        "10": "USB_AON_3V3",
+        "13": "GND",
+        "14": "GND",
+        "15": "GND",
+        "18": "GND",
+        "23": "USB_AON_3V3",
+        "24": "USB_RX1_N",
+        "25": "USB_RX1_P",
+        "26": "USB_AON_3V3",
+        "27": "USB_TX1_N",
+        "28": "USB_TX1_P",
+        "29": "USB_AON_3V3",
+        "30": "USB_TX2_N",
+        "31": "USB_TX2_P",
+        "32": "USB_AON_3V3",
+        "33": "USB_RX2_N",
+        "34": "USB_RX2_P",
+        "35": "USB_MUX_POL",
+        "36": "USB_MUX_EN",
+        "37": "GND",
+        "38": "GND",
+        "39": "LINK_D0_P",
+        "40": "LINK_D0_N",
+        "41": "GND",
+        "11": null,
+        "12": null,
+        "16": null,
+        "17": null,
+        "19": null,
+        "20": null,
+        "21": null,
+        "22": null
+      },
+      "no_connect": [
+        "11",
+        "12",
+        "16",
+        "17",
+        "19",
+        "20",
+        "21",
+        "22"
+      ],
+      "pin_names": {
+        "1": "MODE0",
+        "2": "DP1+",
+        "3": "DP1-",
+        "4": "VCC",
+        "5": "DP2+",
+        "6": "DP2-",
+        "7": "VCC",
+        "8": "DP3+",
+        "9": "DP3-",
+        "10": "VCC",
+        "11": "SSTX+",
+        "12": "SSTX-",
+        "13": "MODE1",
+        "14": "A0",
+        "15": "GND",
+        "16": "SSRX+",
+        "17": "SSRX-",
+        "18": "GND",
+        "19": "AUX+",
+        "20": "AUX-",
+        "21": "SBU2",
+        "22": "SBU1",
+        "23": "VCC",
+        "24": "CRX1-",
+        "25": "CRX1+",
+        "26": "VCC",
+        "27": "CTX1-",
+        "28": "CTX1+",
+        "29": "VCC",
+        "30": "CTX2-",
+        "31": "CTX2+",
+        "32": "VCC",
+        "33": "CRX2-",
+        "34": "CRX2+",
+        "35": "CONF0",
+        "36": "CONF1",
+        "37": "GND",
+        "38": "CONF2",
+        "39": "DP0+",
+        "40": "DP0-",
+        "41": "EP_GND"
+      },
+      "pin_types": {
+        "1": "input",
+        "2": "passive",
+        "3": "passive",
+        "4": "power_in",
+        "5": "passive",
+        "6": "passive",
+        "7": "power_in",
+        "8": "passive",
+        "9": "passive",
+        "10": "power_in",
+        "11": "passive",
+        "12": "passive",
+        "13": "input",
+        "14": "input",
+        "15": "power_in",
+        "16": "passive",
+        "17": "passive",
+        "18": "power_in",
+        "19": "passive",
+        "20": "passive",
+        "21": "passive",
+        "22": "passive",
+        "23": "power_in",
+        "24": "passive",
+        "25": "passive",
+        "26": "power_in",
+        "27": "passive",
+        "28": "passive",
+        "29": "power_in",
+        "30": "passive",
+        "31": "passive",
+        "32": "power_in",
+        "33": "passive",
+        "34": "passive",
+        "35": "input",
+        "36": "input",
+        "37": "power_in",
+        "38": "input",
+        "39": "passive",
+        "40": "passive",
+        "41": "power_in"
+      },
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tmuxhs4446.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification; selected powered-off I/O improvement: high-speed failsafe leakage max10uA atVCC=0/datapin1.8V; MODE0=0 GPIO, CONF2=0, CONF1=EN, CONF0=POL; 00x open,010/011 four lanes; shared MCU/mux AON supply; DC-LVDS compatibility inferred from specified voltage/current ranges, cable/SI/brownout validation pending"
+    },
+    "U212": {
+      "mpn": "TXU0304RUTR",
+      "value": "TXU0304RUTR",
+      "footprint": "USB_C_Interface:Texas_RUT0012A_UQFN-12_2x1.7mm_P0.4mm",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "MCU_JTAG_TCK",
+        "3": "MCU_JTAG_TMS",
+        "4": "MCU_JTAG_TDI",
+        "5": "MCU_JTAG_TDO",
+        "6": "GND",
+        "7": "JTAG_TDO",
+        "8": "JTAG_TDI_DRV",
+        "9": "JTAG_TMS_DRV",
+        "10": "JTAG_TCK_DRV",
+        "11": "VCCAUX_1V8",
+        "12": "JTAG_OE"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "VCCA",
+        "2": "A1",
+        "3": "A2",
+        "4": "A3",
+        "5": "A4Y",
+        "6": "GND",
+        "7": "B4",
+        "8": "B3Y",
+        "9": "B2Y",
+        "10": "B1Y",
+        "11": "VCCB",
+        "12": "OE"
+      },
+      "pin_types": {
+        "1": "power_in",
+        "2": "input",
+        "3": "input",
+        "4": "input",
+        "5": "output",
+        "6": "power_in",
+        "7": "input",
+        "8": "output",
+        "9": "output",
+        "10": "output",
+        "11": "power_in",
+        "12": "input"
+      },
+      "datasheet": "https://www.ti.com/lit/ds/symlink/txu0304.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "U213": {
+      "mpn": "TPD4E05U06DQAR",
+      "value": "TPD4E05U06DQAR",
+      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+      "pins": {
+        "1": "USB_TX1_P",
+        "2": "USB_TX1_N",
+        "3": "GND",
+        "4": "USB_RX1_P",
+        "5": "USB_RX1_N",
+        "8": "GND",
+        "6": null,
+        "7": null,
+        "9": null,
+        "10": null
+      },
+      "no_connect": [
+        "6",
+        "7",
+        "9",
+        "10"
+      ],
+      "pin_names": {
+        "1": "D1+",
+        "2": "D1-",
+        "3": "GND",
+        "4": "D2+",
+        "5": "D2-",
+        "6": "NC",
+        "7": "NC",
+        "8": "GND",
+        "9": "NC",
+        "10": "NC"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive",
+        "3": "passive",
+        "4": "passive",
+        "5": "passive",
+        "6": "passive",
+        "7": "passive",
+        "8": "passive",
+        "9": "passive",
+        "10": "passive"
+      },
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "U214": {
+      "mpn": "TPD4E05U06DQAR",
+      "value": "TPD4E05U06DQAR",
+      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+      "pins": {
+        "1": "USB_TX2_P",
+        "2": "USB_TX2_N",
+        "3": "GND",
+        "4": "USB_RX2_P",
+        "5": "USB_RX2_N",
+        "8": "GND",
+        "6": null,
+        "7": null,
+        "9": null,
+        "10": null
+      },
+      "no_connect": [
+        "6",
+        "7",
+        "9",
+        "10"
+      ],
+      "pin_names": {
+        "1": "D1+",
+        "2": "D1-",
+        "3": "GND",
+        "4": "D2+",
+        "5": "D2-",
+        "6": "NC",
+        "7": "NC",
+        "8": "GND",
+        "9": "NC",
+        "10": "NC"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive",
+        "3": "passive",
+        "4": "passive",
+        "5": "passive",
+        "6": "passive",
+        "7": "passive",
+        "8": "passive",
+        "9": "passive",
+        "10": "passive"
+      },
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "U215": {
+      "mpn": "TPD2EUSB30DRTR",
+      "value": "TPD2EUSB30DRTR",
+      "footprint": "Package_TO_SOT_SMD:Texas_DRT-3",
+      "pins": {
+        "1": "USB_DP",
+        "2": "USB_DM",
+        "3": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "D+",
+        "2": "D-",
+        "3": "GND"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive",
+        "3": "passive"
+      },
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tpd2eusb30.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R230": {
+      "mpn": "CRCW0402100KFKED",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_MUX_EN",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R231": {
+      "mpn": "CRCW0402100KFKED",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_MUX_POL",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R232": {
+      "mpn": "CRCW0402100KFKED",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "JTAG_OE",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R233": {
+      "mpn": "CRCW040210K0FKED",
+      "value": "10k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "VCCAUX_1V8",
+        "2": "VCCAUX_1V8_SENSE"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R234": {
+      "mpn": "CRCW040233R0FKED",
+      "value": "33R 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "JTAG_TCK_DRV",
+        "2": "JTAG_TCK"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R235": {
+      "mpn": "CRCW040233R0FKED",
+      "value": "33R 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "JTAG_TMS_DRV",
+        "2": "JTAG_TMS"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "R236": {
+      "mpn": "CRCW040233R0FKED",
+      "value": "33R 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "JTAG_TDI_DRV",
+        "2": "JTAG_TDI"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "C230": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U210.4"
+    },
+    "C232": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U210.20"
+    },
+    "C234": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U211 left VCC pins 4/7/10"
+    },
+    "C239": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U211 right VCC pins 23/26/29/32"
+    },
+    "C236": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U212.1"
+    },
+    "C237": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "VCCAUX_1V8",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U212.11"
+    },
+    "C238": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "MCU_NRST",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRT155R71C104KE01%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "reset filter"
+    },
+    "C231": {
+      "mpn": "GRM21BR71A475KA73L",
+      "value": "4.7uF 10V X7R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRM21BR71A475KA73%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U210 VDD local bulk"
+    },
+    "C233": {
+      "mpn": "GRM21BR71A475KA73L",
+      "value": "4.7uF 10V X7R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://www.murata.com/en-us/products/productdetail?partno=GRM21BR71A475KA73%23",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification",
+      "purpose": "U210 VDDIO2 local bulk"
+    },
+    "C235": {
+      "mpn": "C1608X7R1C105K080AC",
+      "value": "1uF 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "datasheet": "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1c105k080ac.pdf",
+      "status": "Source-checked circuit proposal; no routed/firmware/hardware qualification"
+    },
+    "J210": {
+      "mpn": null,
+      "value": "SWD_FACTORY_PADS_NO_HEADER",
+      "footprint": "USB_C_Interface:SWD_Fixture_5Pads_P1.27mm",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND",
+        "3": "MCU_SWDIO",
+        "4": "MCU_SWCLK",
+        "5": "MCU_NRST"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "VTREF_3V3",
+        "2": "GND",
+        "3": "SWDIO",
+        "4": "SWCLK",
+        "5": "NRST"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive",
+        "3": "passive",
+        "4": "passive",
+        "5": "passive"
+      },
+      "datasheet": "",
+      "status": "PCB copper only; required initial MCU programming and recovery; not a fitted connector; external programmer VTREF input only, do not back-power",
+      "exclude_from_bom": true,
+      "exclude_from_position_files": true
+    }
+  },
+  "fpga_additions": {
+    "C9": "LINK_D0_P",
+    "B9": "LINK_D0_N",
+    "B8": "LINK_D1_P",
+    "A8": "LINK_D1_N",
+    "C11": "LINK_D2_P",
+    "C10": "LINK_D2_N",
+    "A10": "LINK_CLK_P",
+    "A9": "LINK_CLK_N"
+  },
+  "required_existing_nets": [
+    "JTAG_TCK",
+    "JTAG_TMS",
+    "JTAG_TDI",
+    "JTAG_TDO",
+    "VCCAUX_1V8",
+    "GND"
+  ],
+  "power_interface_nets": [
+    "USB_AON_3V3",
+    "USB_CC1",
+    "USB_CC2",
+    "TCPP_DB_N",
+    "VBUS_SENSE",
+    "FPGA_PWR_EN",
+    "FPGA_PWR_GOOD",
+    "CC_FAULT_N"
+  ],
+  "connector_unused": [
+    "A8",
+    "B8"
+  ],
+  "default_state": "MUX_EN and JTAG_OE low; main FPGA_PWR_EN default-low resistor owned by power sheet; all SS disconnected until negotiated custom mode",
+  "protocol_status": "3 data + forwarded clock proposed; no guaranteed rate/bitstream; USB2 reverse commands use custom JTAG/BSCAN mailbox after FPGA configuration"
+}

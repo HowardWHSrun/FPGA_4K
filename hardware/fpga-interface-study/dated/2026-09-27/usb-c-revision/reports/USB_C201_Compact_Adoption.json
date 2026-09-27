@@ -1,0 +1,80 @@
+{
+  "date": "2026-09-27",
+  "status": "Adopted USB-C schematic/manifest; final integrated geometry and charge-pump validation required",
+  "reference": "C201",
+  "before": {
+    "mpn": "GRM188R71H104KA93D",
+    "value": "100nF 50V X7R 10%",
+    "footprint": "CoreSupport:Capacitor_SMD__C_0603_1608Metric",
+    "pins": {
+      "1": "TCPP_GD_BIAS",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "pin_names": {
+      "1": "1",
+      "2": "2"
+    },
+    "pin_types": {
+      "1": "passive",
+      "2": "passive"
+    },
+    "source": "",
+    "notes": "",
+    "datasheet": "",
+    "status": "",
+    "lib_id": "CoreSupport:Device__C",
+    "group": "USB-C power and protection",
+    "ref": "C201",
+    "source_lib_id": "Device:C",
+    "source_footprint": "Capacitor_SMD:C_0603_1608Metric"
+  },
+  "after": {
+    "mpn": "CC0402KRX7R9BB104",
+    "value": "100nF 50V X7R 10%",
+    "footprint": "CoreSupport:Capacitor_SMD__C_0402_1005Metric",
+    "pins": {
+      "1": "TCPP_GD_BIAS",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "pin_names": {
+      "1": "1",
+      "2": "2"
+    },
+    "pin_types": {
+      "1": "passive",
+      "2": "passive"
+    },
+    "source": "",
+    "notes": "",
+    "datasheet": "https://yageogroup.com/download/specsheet/CC0402KRX7R9BB104",
+    "status": "Exact Yageo charge-pump capacitor named in ST TCPP01-M12 DS12900 section6.6.1/Table11; vendor dimensions confirm0402. Nominal100nF/50V/X7R/10% retained, original0603 replaced to free bank16 conventional vias. Source-bound package choice; charge-pump behavior, assembly and final PCB validation remain required.",
+    "lib_id": "CoreSupport:Device__C",
+    "group": "USB-C power and protection",
+    "ref": "C201",
+    "source_lib_id": "Device:C",
+    "source_footprint": "Capacitor_SMD:C_0402_1005Metric"
+  },
+  "pin_nets_unchanged": true,
+  "schematic_sheet": "usb_core_01_01.kicad_sch",
+  "pose": {
+    "side": "B",
+    "x_mm": 22.25,
+    "y_mm": 12.1,
+    "degrees": 0
+  },
+  "source_board_sha256": "0659863baaeafefd430b739ca4842fbd3f0cb8ceb2b2e87594cbc474c5834d9b",
+  "source_drc_sha256": "b7469687f81b0954031989633b53c27c10fb0580d3beb44a188c63814a6b6d6d",
+  "vendor_pdf_sha256": "3bf19c01627300e5cdb9b04fa5be30b8f80d1d8dda87ee922f165b672d1026fa",
+  "footprint_sha256": "339a5633867092245db2024991d5d28b3b8da42d59b93ebf48b9a9ba43835749",
+  "sources": [
+    "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf",
+    "https://yageogroup.com/download/specsheet/CC0402KRX7R9BB104"
+  ],
+  "limitations": [
+    "Vendor dimensions used for package identification; ST table package column appears transposed.",
+    "Native-clear local placement is not a charge-pump or manufacturing qualification.",
+    "Micro-HDMI archived design remains unchanged."
+  ]
+}

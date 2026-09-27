@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-27",
+  "status": "Adopted USB-C schematic part metadata; final integrated PCB/PDN validation remains required",
+  "reference": "C26",
+  "before": {
+    "lib_id": "CoreSupport:Device__C",
+    "value": "4.7u 10V X7R",
+    "mpn": "GRM21BR71A475KA73L",
+    "footprint": "CoreSupport:Capacitor_SMD__C_0805_2012Metric",
+    "datasheet": "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content",
+    "group": "decoupling_core",
+    "status": "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified.",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "C26",
+    "source_lib_id": "Device:C",
+    "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
+  },
+  "after": {
+    "lib_id": "CoreSupport:Device__C",
+    "value": "4.7uF 16V X5R",
+    "mpn": "C1608X5R1C475K080AC",
+    "footprint": "CoreSupport:TDK_C1608_Reflow_0p7",
+    "datasheet": "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C1608X5R1C475K080AC",
+    "group": "decoupling_core",
+    "status": "USB-C compact local core bypass: nominal4.7uF retained; exact TDK0603 16V X5R and0.70mm recommended reflow lands. TypicalDC-bias curve gives4.45043uF at1.0V, not a guaranteed minimum. Original0805 10V X7R replaced; <=85C X5R temperature class, PDN/transient and assembly qualification remain open. This is not a converter output-capacitor substitution.",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "C26",
+    "source_lib_id": "Device:C",
+    "source_footprint": "CoreSupport:TDK_C1608_Reflow_0p7"
+  },
+  "pin_nets_unchanged": true,
+  "source_board_sha256": "ca2c48ee80049d2ae6dc30751a5c7c1b6b89a1494b083f3a041ac339ea49c64f",
+  "source_geometry_proof_sha256": "4e9358a739afeb76eff790180469d45e394d01945eb1a5db2b45931419ab8b7e",
+  "footprint_sha256": "a9a3f13d5bcacdf39b8ba0de7cedd5057720951d3cc7281700445219d3f0b084",
+  "source_dc_bias_csv_sha256": "95ebf65be5fd7537c245663d7e8b3358fa48c29c16ac661d14b8dc335eac0de5",
+  "typical_capacitance_at_1V_uF": 4.45043,
+  "schematic_sheet": "core_06_01.kicad_sch",
+  "pose": {
+    "side": "B",
+    "x_mm": 13.8,
+    "y_mm": 11.15,
+    "degrees": 0
+  },
+  "limitations": [
+    "Typical capacitor curve is not guaranteed minimum effective capacitance.",
+    "X5R is rated through85C; FPGA PDN/transients and actual capacitor temperature must be checked.",
+    "This frees two legal conventional BGA vias; three displaced ASIC trunks still require restoration.",
+    "Previous micro-HDMI CAD and component choice remain untouched."
+  ]
+}

@@ -6,7 +6,7 @@ This repository is the shared working location for PCB design, interface decisio
 |---|---|
 | Get the files and make a change | [Setup and daily workflow](../../CONTRIBUTING.md) |
 | Compare the current FPGA CAD checkpoints | [Current smallest 100T board and preserved history](../../presentation/fpga/index.html) |
-| See what must be resolved | [Current work areas](../../presentation/fpga/index.html#uncertainties) |
+| See what must be resolved | [Current work areas](../../presentation/fpga/index.html#release) |
 | Find who owns a board or a decision | [Owners and open work](owners-and-work.md) |
 | Propose a task or claim layout work | [New PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) |
 | Record a pinout, power or protocol decision | [Interface decision template](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) |

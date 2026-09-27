@@ -9,19 +9,19 @@
   <link rel="stylesheet" href="viewer.css">
   <link rel="stylesheet" href="vendor/fonts.css">
   <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
-  <script type="module" src="viewer.js?v=20260927-2975050c"></script>
+  <script type="module" src="viewer.js?v=20260927-usbc-c2bb9d1d"></script>
 </head>
 <body>
   <header class="page-header">
     <a class="brand" href="../">FPGA 4K <span>/ native PCB viewer</span></a>
-    <a href="../pins/">Current pin labels</a><a href="../#architecture">Explain the components</a>
+    <a id="pin-guide" href="../#validation">Current pin status</a><a id="component-guide" href="../#architecture">Explain the components</a>
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
       <div class="heading"><h1 id="page-title">Explore the PCB</h1><span class="badge">Engineering review only</span></div>
-      <p>Zoom into the actual KiCad board, select components, and turn layers on or off. The smallest 33 × 36 mm routing development board opens by default. Earlier checkpoints remain available in the history menu.</p>
+      <p>Zoom into the actual KiCad board, select components, and turn layers on or off. The current USB-C development board opens by default. Earlier checkpoints remain available in the history menu.</p>
       <label class="board-label" for="board-choice">Board to view</label>
-      <select id="board-choice"><option value="compact-routed">Current 33 × 36 mm · assigned copper connected</option><optgroup label="Earlier checkpoints"><option value="core">Earlier core · 40 × 36 mm</option><option value="rail">Rail revision · separate proposal</option><option value="mezzanine">Mezzanine fit · placement only</option><option value="compact">Smaller fit · 37.5 × 36 mm · placement only</option><option value="compact-v2">Earlier 33 × 36 mm placement · 128 parts</option></optgroup></select>
+      <select id="board-choice"><option value="usb-c">USB-C revision · 33 × 36 mm · development</option><optgroup label="Earlier checkpoints"><option value="compact-routed">Preserved micro-HDMI · 33 × 36 mm · 125 parts</option><option value="core">Earlier core · 40 × 36 mm</option><option value="rail">Rail revision · separate proposal</option><option value="mezzanine">Mezzanine fit · placement only</option><option value="compact">Smaller fit · 37.5 × 36 mm · placement only</option><option value="compact-v2">Earlier 33 × 36 mm placement · 128 parts</option></optgroup></select>
       <p id="board-description" class="description">Loading the current board details…</p>
     </section>
     <section id="viewer-shell" aria-label="Interactive PCB">
@@ -41,10 +41,10 @@
     </section>
     <div id="load-error" role="alert" hidden></div>
     <nav class="downloads" aria-label="Board files">
-      <a id="native-file" href="../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pcb" download>Download native PCB</a>
-      <a id="project-zip" href="../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip">Complete KiCad project ZIP</a>
-      <a id="github-file" href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pcb">View source on GitHub</a>
-      <a id="static-view" href="../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/output/FPGA100T_33x36_Routing.svg">Static vector view</a>
+      <a id="native-file" href="../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pcb" download>Download native PCB</a>
+      <a id="project-zip" href="../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip">Complete KiCad project ZIP</a>
+      <a id="github-file" href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pcb">View source on GitHub</a>
+      <a id="static-view" href="../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/output/FPGA100T_33x36_Routing.svg">Static vector view</a>
     </nav>
     <section class="help" aria-label="Viewer help">
       <p><strong>Move around:</strong> Ctrl + scroll to zoom; drag with the middle or right mouse button to pan. Use the + / − buttons on touch screens. <strong>Inspect:</strong> click a part, then use Parts, Nets or Layers. The initial view shows front copper and silkscreen; Layers includes front, back and all-layer presets. “Flip board” mirrors the view; “Fit board” returns to the whole outline.</p>

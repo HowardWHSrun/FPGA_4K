@@ -12,6 +12,38 @@ page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push({me
 const assert = (condition, label) => {if (!condition) throw new Error(label); report.checks.push(label);};
 try {
   await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
+  await page.waitForFunction(() => document.documentElement.dataset.usbReady === 'true');
+  const usbResponse = await page.request.get(base + 'hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json');
+  assert(usbResponse.ok(), 'USB-C audit available');
+  const usbAudit = await usbResponse.json();
+  assert((await page.locator('#board-hash').innerText()).includes(usbAudit.board_sha256), 'USB-C visible identity matches native audit');
+  assert((await page.locator('#status-summary').innerText()).includes(String(usbAudit.assigned_net_open_count)), 'USB-C page reports its own open-copper count');
+  assert(usbAudit.fabrication_ready === false && (await page.locator('.status').innerText()).includes('not for manufacture'), 'USB-C manufacturing gate remains explicit');
+  await page.locator('#board-image').evaluate(image => image.decode());
+  await page.locator('#zoom-in').click();
+  assert(await page.evaluate(() => FPGA_BOARD.getState().zoom > 1), 'USB-C static zoom works');
+  await page.locator('#fit').click();
+  for (const side of ['back','front']) {
+    await page.locator('#'+side).click();
+    await page.locator('#board-image').evaluate(image => image.decode());
+    assert((await page.locator('#board-image').getAttribute('src')).includes('Current_'+side[0].toUpperCase()+side.slice(1)), 'USB-C '+side+' native export loads');
+  }
+  await page.locator('#native').click();
+  const usbFrame = await (await page.locator('#native-frame').elementHandle()).contentFrame();
+  await usbFrame.waitForFunction(() => window.pcbViewerDiagnostics?.ready, null, {timeout:60000});
+  assert(await usbFrame.evaluate(expected => pcbViewerDiagnostics.board === 'usb-c' && pcbViewerDiagnostics.sourceHash === expected, usbAudit.board_sha256), 'USB-C iframe shows exact reviewed board');
+  await page.locator('#front').click();
+  for (const [width,height] of [[1440,1000],[390,844]]) {
+    await page.setViewportSize({width,height});
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'USB-C page has no horizontal overflow at '+width);
+    await page.screenshot({path: `${out}/usb-c-${width}.png`, fullPage:true});
+  }
+  for (const a of await page.locator('[data-file]').all()) {
+    const response = await page.request.get(new URL(await a.getAttribute('href'), page.url()).href);
+    assert(response.ok(), 'USB-C linked evidence/download is available');
+  }
+  await page.setViewportSize({width:1440,height:1000});
+  await page.goto(base + 'presentation/fpga/micro-hdmi.html', {waitUntil:'networkidle'});
   await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
   await page.waitForFunction(() => window.FPGA_TEACHING?.getState().components === window.FPGA_REVIEW?.data.components);
   await page.locator('#board-image').evaluate(image => image.decode());
@@ -85,7 +117,7 @@ try {
   await page.locator('#C01 summary').click();
   await page.locator('#engineering-questions > summary').click();
   assert(await page.locator('#board-image').evaluate(image => image.naturalWidth > 0), 'Actual PCB SVG loaded');
-  assert(await page.locator('#title').innerText() === '33 × 36 mm FPGA PCB', 'Current board uses the requested review layout');
+  assert(await page.locator('#title').innerText() === '33 × 36 mm · micro-HDMI checkpoint', 'Current board uses the requested review layout');
   await page.locator('#zoom-in').click();
   assert(await page.evaluate(() => FPGA_BOARD.getState().zoom > 1), 'PCB zoom-in control changes scale');
   const viewport = await page.locator('#viewport').boundingBox();
@@ -170,8 +202,8 @@ try {
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
     await page.waitForURL('**/presentation/fpga/');
-    await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
-    report.checks.push('Root system view opens current review');
+    await page.waitForFunction(() => document.documentElement.dataset.usbReady === 'true');
+    report.checks.push('Root system view opens current USB-C review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
   assert(report.consoleErrors.length === 0, 'No browser console errors');

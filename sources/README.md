@@ -45,9 +45,9 @@ The [separate interface-study package](../hardware/fpga-interface-study/README.m
 
 The [dated 33 × 36 mm study](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/START_HERE.md) is newly generated engineering work from the preserved 37.5 × 36 mm placement. Its 66-file import manifest records byte correspondence and evidence-path normalization. Native CAD and local footprint library bytes are unchanged in the portable publication copy; workstation-specific automation scripts and editor state are omitted from its 49-file ZIP. The 31-page PDF and editable LaTeX source cover all 128 components and 758 electrical endpoints. These remain an unrouted, unqualified proposal; earlier source files and original slides are unchanged.
 
-### Current 33 × 36 mm routing — 26 September 2026
+### Historical 33 × 36 mm routing — 26 September 2026
 
-The [current review](../presentation/fpga/index.html) and [dated routing package](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/README.md) publish one 130-part board with matching 21-sheet schematic, corrected rails, native pin/component ledgers and unsuppressed checks. The [import manifest](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/manifest.json) binds exact CAD/library bytes to the frozen source. Experiments and failed candidate boards are excluded. Earlier source snapshots, ASIC slides and placement reports remain unchanged; routing progress is not a fabrication or functional qualification.
+The [earlier review](../presentation/fpga/micro-hdmi.html) and [dated routing package](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/README.md) publish one 130-part board with matching 21-sheet schematic, corrected rails, native pin/component ledgers and unsuppressed checks. The [import manifest](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/manifest.json) binds exact CAD/library bytes to the frozen source. Experiments and failed candidate boards are excluded. Earlier source snapshots, ASIC slides and placement reports remain unchanged; routing progress is not a fabrication or functional qualification.
 
 ## 26 September: component necessity and pin labels
 
@@ -56,3 +56,11 @@ The [current review](../presentation/fpga/index.html) and [dated routing package
 ## 26 September learning and professor report
 
 The [33-page learning report](../hardware/fpga-interface-study/dated/2026-09-26/learning-report/README.md) is a new, self-contained LaTeX explanation of the frozen 130-part, 33 × 36 mm board. It combines native-derived component/pin ledgers with the later manufacturer-grounded NC review, visual maps and presentation notes. All 762 numbered endpoints are covered. Native CAD and all earlier reports retain their original bytes; this document records corrections and unfinished work rather than implementing them. The dated manifest records the PDF, source and coverage hashes.
+
+## 27 September USB-C revision
+
+The [USB-C revision](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/README.md) preserves the 100T and ASIC assignment while replacing the cable interface and adding its supporting circuitry. Native CAD and local libraries are exact copies of the frozen working revision. Reports bind to the native hash; portable report metadata omits local workstation prefixes, with source and published hashes retained. Views and the schematic PDF are native KiCad exports.
+
+The full newly supplied private discussion, downloaded manufacturer documents, intermediate placements and rejected routing candidates are excluded. The earlier micro-HDMI reports remain separate. Zero native errors, if reported, do not demonstrate firmware, powered operation, cable performance or manufacturing acceptance. No order has been placed.
+
+The USB-C project carries a [library attribution note](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/libraries/README.md) and the unchanged upstream KiCad library license with its bundled library subset. Manufacturer references remain linked to their original publishers.

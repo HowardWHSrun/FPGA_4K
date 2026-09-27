@@ -1,0 +1,719 @@
+{
+  "schema": 1,
+  "status": "Pin-level CAD handoff, bootstrap diagram verified; firmware/PI/ESD/inrush qualification incomplete",
+  "components": {
+    "U200": {
+      "mpn": "TCPP01-M12",
+      "value": "TCPP01-M12",
+      "footprint": "USBPower:ST_TCPP01_QFN12_3x3",
+      "pins": {
+        "1": "USB_CC2",
+        "2": "GND",
+        "3": "USB_CC1",
+        "4": "VBUS_PROTECTED",
+        "5": "VBUS_GATE",
+        "6": "TCPP_OVP",
+        "7": "USB_CC1_RAW",
+        "8": "TCPP_GD_BIAS",
+        "9": "USB_CC2_RAW",
+        "10": "TCPP_DB_N",
+        "11": "CC_FAULT_N",
+        "12": "USB_AON_3V3",
+        "13": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "CC2",
+        "2": "GND",
+        "3": "CC1",
+        "4": "SOURCE",
+        "5": "GATE",
+        "6": "VBUS_CTRL",
+        "7": "CC1c",
+        "8": "IN_GD",
+        "9": "CC2c",
+        "10": "DB_N",
+        "11": "FLT_N",
+        "12": "VCC",
+        "13": "EP_GND"
+      },
+      "pin_types": {
+        "1": "bidirectional",
+        "2": "power_in",
+        "3": "bidirectional",
+        "4": "power_in",
+        "5": "output",
+        "6": "input",
+        "7": "bidirectional",
+        "8": "power_in",
+        "9": "bidirectional",
+        "10": "input",
+        "11": "open_collector",
+        "12": "power_in",
+        "13": "power_in"
+      },
+      "source": "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf",
+      "notes": "IN_GD bootstrap verified visually against ST DS12900 Rev7 Figure4; rawCC330pF capacitors and MCU DBCC grounding follow that figure."
+    },
+    "Q200": {
+      "mpn": "STL6N3LLH6",
+      "value": "STL6N3LLH6 30V N-MOS",
+      "footprint": "USBPower:ST_PowerFLAT_2x2_STL6N3LLH6",
+      "pins": {
+        "1": "USB_VBUS_RAW",
+        "2": "USB_VBUS_RAW",
+        "3": "VBUS_GATE",
+        "4": "VBUS_PROTECTED",
+        "5": "USB_VBUS_RAW",
+        "6": "USB_VBUS_RAW"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "D",
+        "2": "D",
+        "3": "G",
+        "4": "S",
+        "5": "D",
+        "6": "D"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive",
+        "3": "input",
+        "4": "passive",
+        "5": "passive",
+        "6": "passive"
+      },
+      "source": "https://www.st.com/resource/en/datasheet/stl6n3llh6.pdf",
+      "notes": "ST UM2773Rev5 Table1 explicitly names this smaller TCPP external FET. Active ST product status checked2026-09-27.30VDS,+/-20VGS,40mohm max@4.5VGS. Manufacturer two exposed D/S lands represented by repeated pads1/4. Temperature/transient/SOA qualification still needed."
+    },
+    "D200": {
+      "mpn": "BAT54KFILM",
+      "value": "BAT54KFILM 40V Schottky",
+      "footprint": "Diode_SMD:D_SOD-523",
+      "pins": {
+        "1": "TCPP_GD_BIAS",
+        "2": "USB_VBUS_RAW"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "K",
+        "2": "A"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.st.com/resource/en/schematic_pack/x-nucleo-snk1m1_schematic.pdf",
+      "notes": "Anode at rawVBUS, cathode at IN_GD hold-up/ESD capacitor node; visually verified ST DS12900 Rev7 Figure4."
+    },
+    "D201": {
+      "mpn": "ESDA25P35-1U1M",
+      "value": "ESDA25P35-1U1M",
+      "footprint": "Diode_SMD:ST_QFN-2L_1.6x1.0mm",
+      "pins": {
+        "1": "USB_VBUS_RAW",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "K",
+        "2": "A"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.st.com/resource/en/datasheet/esda15p60-1u1m.pdf",
+      "notes": "22V reverse standoff. Raw-port ESD component, not a clamp guaranteed below30V FET absolute maximum; coordinate actual transient waveform."
+    },
+    "U201": {
+      "mpn": "TPS70933DRVR",
+      "value": "TPS70933DRVR 3.3V AON",
+      "footprint": "Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "3": "GND",
+        "6": "VBUS_PROTECTED",
+        "7": "GND",
+        "2": null,
+        "4": null,
+        "5": null
+      },
+      "no_connect": [
+        "2",
+        "4",
+        "5"
+      ],
+      "pin_names": {
+        "1": "OUT",
+        "2": "NC",
+        "3": "GND",
+        "4": "EN",
+        "5": "NC",
+        "6": "IN",
+        "7": "EP_GND"
+      },
+      "pin_types": {
+        "1": "power_out",
+        "2": "no_connect",
+        "3": "power_in",
+        "4": "input",
+        "5": "no_connect",
+        "6": "power_in",
+        "7": "power_in"
+      },
+      "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+      "notes": "EN intentionally open: datasheet allows always-on open EN; never tie this6.5V-limited pin to9V input. Min1.5uF effective outputC."
+    },
+    "U202": {
+      "mpn": "TPS259474LRPWR",
+      "value": "TPS259474LRPWR main eFuse",
+      "footprint": "USBPower:TI_RPW0010A_TPS25947",
+      "pins": {
+        "1": "FPGA_PWR_EN",
+        "2": "EFUSE_OVP",
+        "3": "FPGA_PWR_GOOD",
+        "4": "EFUSE_PGTH",
+        "5": "VBUS_PROTECTED",
+        "6": "USB_MAIN_VIN",
+        "7": "EFUSE_DVDT",
+        "8": "GND",
+        "9": "EFUSE_ILM",
+        "10": null
+      },
+      "no_connect": [
+        "10"
+      ],
+      "pin_names": {
+        "1": "EN_UVLO",
+        "2": "OVLO",
+        "3": "PG",
+        "4": "PGTH",
+        "5": "IN",
+        "6": "OUT",
+        "7": "DVDT",
+        "8": "GND",
+        "9": "ILM",
+        "10": "ITIMER"
+      },
+      "pin_types": {
+        "1": "input",
+        "2": "input",
+        "3": "open_collector",
+        "4": "input",
+        "5": "power_in",
+        "6": "power_out",
+        "7": "passive",
+        "8": "power_in",
+        "9": "passive",
+        "10": "passive"
+      },
+      "source": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+      "notes": "474L is circuit-breaker + latch-off, true PG. No FLT pin. ITIMER open gives fastest overload response; check load pulses against threshold."
+    },
+    "R200": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_VBUS_RAW",
+        "2": "TCPP_OVP"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R201": {
+      "mpn": "RC0402FR-0713K7L",
+      "value": "13.7k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "TCPP_OVP",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R202": {
+      "mpn": "RC0402FR-0710KL",
+      "value": "10k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "CC_FAULT_N"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R203": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "FPGA_PWR_EN",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R204": {
+      "mpn": "RC0402FR-0782K5L",
+      "value": "82.5k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "VBUS_PROTECTED",
+        "2": "EFUSE_OVP"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R205": {
+      "mpn": "RC0402FR-0710KL",
+      "value": "10k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "EFUSE_OVP",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R206": {
+      "mpn": "RC0402FR-071K65L",
+      "value": "1.65k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "EFUSE_ILM",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R207": {
+      "mpn": "RC0402FR-0724K9L",
+      "value": "24.9k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_MAIN_VIN",
+        "2": "EFUSE_PGTH"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R208": {
+      "mpn": "RC0402FR-0710KL",
+      "value": "10k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "EFUSE_PGTH",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R209": {
+      "mpn": "RC0402FR-0747KL",
+      "value": "47k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "FPGA_PWR_GOOD"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R210": {
+      "mpn": "RC0402FR-07220KL",
+      "value": "220k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "VBUS_PROTECTED",
+        "2": "VBUS_SENSE"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R211": {
+      "mpn": "RC0402FR-0727K4L",
+      "value": "27.4k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "VBUS_SENSE",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R212": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "FPGA_PWR_GOOD",
+        "2": "FPGA_CORE_EN"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "R213": {
+      "mpn": "RC0402FR-07100KL",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "FPGA_CORE_EN",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L.pdf",
+      "notes": ""
+    },
+    "C200": {
+      "mpn": "C2012X7R1H225K125AC",
+      "value": "2.2uF 50V X7R 10%",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "USB_VBUS_RAW",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C201": {
+      "mpn": "CC0402KRX7R9BB104",
+      "value": "100nF 50V X7R 10%",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "TCPP_GD_BIAS",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "https://www.st.com/resource/en/datasheet/tcpp01-m12.pdf",
+      "notes": "",
+      "datasheet": "https://yageogroup.com/download/specsheet/CC0402KRX7R9BB104",
+      "status": "Root adopted 2026-09-27: exact Yageo charge-pump capacitor listed by ST TCPP01-M12 DS12900 section 6.6.1/Table 11; vendor dimensions confirm 0402. Nominal 100nF/50V/X7R/10% and pin nets retained. Charge-pump, effective capacitance and assembly qualification remain required."
+    },
+    "C202": {
+      "mpn": "CGA2B2C0G1H331J050BA",
+      "value": "330pF 50V C0G 5%",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_CC1_RAW",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C203": {
+      "mpn": "CGA2B2C0G1H331J050BA",
+      "value": "330pF 50V C0G 5%",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "USB_CC2_RAW",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C204": {
+      "mpn": "GRT155R71C104KE01D",
+      "value": "100nF 16V X7R 10%",
+      "footprint": "CoreSupport:Murata_GRT15_0402_Recommended",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C205": {
+      "mpn": "GRM188R71H104KA93D",
+      "value": "100nF 50V X7R 10%",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VBUS_PROTECTED",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C206": {
+      "mpn": "GRM21BR71C475KE51L",
+      "value": "4.7uF 16V X7R 10%",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "USB_AON_3V3",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C207": {
+      "mpn": "C1608C0G1H332J080AA",
+      "value": "3.3nF 50V C0G 5%",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "EFUSE_DVDT",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C208": {
+      "mpn": "C1608C0G1H102J080AA",
+      "value": "1nF 50V C0G 5%",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VBUS_SENSE",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    },
+    "C209": {
+      "mpn": "C2012X7R1H225K125AC",
+      "value": "2.2uF 50V X7R 10%",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "VBUS_PROTECTED",
+        "2": "GND"
+      },
+      "no_connect": [],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "pin_types": {
+        "1": "passive",
+        "2": "passive"
+      },
+      "source": "",
+      "notes": ""
+    }
+  },
+  "integration_changes": [
+    {
+      "old_net": "LINK_12V",
+      "new_net": "USB_MAIN_VIN",
+      "scope": "Existing board input network except U2.8 and removed J4.19"
+    },
+    {
+      "endpoint": "U2.8",
+      "old_net": "LINK_12V",
+      "new_net": "FPGA_CORE_EN",
+      "reason": "Divider makes the specified unpowered PG maximum safely lower than the buck EN threshold; valid PG still releases startup"
+    }
+  ],
+  "requirements": [
+    "Prefer9V PD contract >=2.5A; source adapter target9V3A.5V fallback only verified3A advertisement/contract and load budget.",
+    "MCU must hold FPGA_PWR_EN low through attach, PD negotiation, detach, faults, unsupported modes and reset.",
+    "The four original buck output settings and core-to-AUX-to-IO sequence stay unchanged.",
+    "No claim of functional firmware, USB certification, transient immunity or production release is made."
+  ],
+  "bootstrap_graph_verified": true,
+  "accepted_compact_fet": "Root accepted2026-09-27;ST-referenceSTL6N3LLH6"
+}
