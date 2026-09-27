@@ -1,5 +1,7 @@
 # FPGA acquisition reference
 
+**New Artix-7 work, 26 September 2026:** the separate [raw-capture engine](artix7/2026-09-26/raw_capture/README.md) passed independent-clock simulations and XC7 synthesis. It stores eight finite buffers on the ASIC clocks' falling edges. It has no SPI/reset sequencer, JTAG transport or XEM8310 link and is not a complete acquisition bitstream. The [clock-pin implementation proof](artix7/2026-09-26/clock_pin_proof/README.md) is a development test only; never program its artificial signature outputs onto an ASIC-connected board.
+
 The actual [FPGA_512 source files](FPGA_512/) are included here so a clone of this repository contains the original RTL, host programs, testbenches, constraints, reference documents and archived bitstreams. Start with the [original README](FPGA_512/README.md), [system overview](FPGA_512/docs/SYSTEM_OVERVIEW.md), and [software guide](../docs/software.md).
 
 This reference targets the 512-channel ECP5/FT600 acquisition system. It provides an implementation to inspect and reuse where appropriate; it does not establish a completed 4K design or Artix-7 compatibility. Performance and hardware-validation statements inside the original files describe their original system and have not been independently revalidated by packaging this copy.

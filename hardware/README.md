@@ -1,12 +1,12 @@
 # Hardware design files
 
-This directory contains the [current 100T review snapshots](../presentation/fpga/index.html), the [earlier FPGA import](fpga-board/README.md), and preserved ASIC-carrier/LDO references. No board in this collection is represented as an approved new-system fabrication package.
+## Current FPGA design
 
-## Current FPGA routing
+Only the **33 × 36 mm** board is active. Open the [native KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pro) with its complete folder, or download the [portable ZIP](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip). It contains 125 components, 21 schematic sheets and local libraries.
 
-Start with [the 33 × 36 mm board](../presentation/fpga/index.html) and [current routing review](fpga-interface-study/dated/2026-09-26/routing-33x36/reports/Routing_Review.md). The [complete current KiCad ZIP](fpga-interface-study/dated/2026-09-26/routing-33x36/FPGA100T_33x36_Routing.zip) contains the 130-part native board, matching 21-sheet schematic and local libraries. All 25 boot/clock/JTAG and three sequencing nets are connected. Native DRC records 0 physical violations and 146 remaining assigned-net connections; the 117 ASIC signals and reserved cable contacts remain unassigned. No manufacturing release exists.
+The [current audit](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md) reports **116/116 assigned ASIC digital nets connected** and **0 assigned-net gaps**, with 0 physical DRC findings and 0 schematic-parity findings. AC_IN is separately reserved for an external analog source. The [pin map](../presentation/fpga/pins/) distinguishes 83 intentional NCs from 19 interface reservations. See the [qualification summary](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Qualification_Summary.md) for parts, stackup and open engineering requirements. No manufacturing release or demonstrated hardware operation is claimed.
 
-The [earlier core, rail revision and placement checkpoints](../presentation/fpga/index.html#design-history) remain historical evidence. Keep each project with its libraries. Use the [team workflow](../CONTRIBUTING.md) and [ownership register](../docs/team/owners-and-work.md) when coordinating edits.
+Earlier revisions remain [historical checkpoints](../presentation/fpga/index.html#design-history).
 
 ## Supplied references
 

@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-27",
+  "result": "PASS",
+  "trial_only": true,
+  "pages": 21,
+  "physical_components": 125,
+  "canonical_endpoints": 752,
+  "intentional_nc": 83,
+  "reserved_endpoints": 19,
+  "netless": 102,
+  "exact_endpoint_changes": {
+    "R106.1": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R106.2": {
+      "before": "FLASH_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.1": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.2": {
+      "before": "FLASH_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.L14": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "U1.M14": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "all_other_endpoints_unchanged": true,
+  "native_nc_net_names": {
+    "U1.L14": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)",
+    "U1.M14": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+  },
+  "remaining_flash_control_nets": {
+    "FLASH_DQ2": [
+      "R101.2",
+      "U6.3"
+    ],
+    "FLASH_DQ3": [
+      "R102.2",
+      "U6.7"
+    ]
+  },
+  "erc": [
+    {
+      "type": "isolated_pin_label",
+      "severity": "warning",
+      "count": 1
+    },
+    {
+      "type": "pin_not_connected",
+      "severity": "error",
+      "count": 19
+    },
+    {
+      "type": "pin_to_pin",
+      "severity": "error",
+      "count": 4
+    }
+  ],
+  "source_hashes": {
+    "2026-09-27_FPGA_Work/qualification/SPIx1_Trial.net": "27812c96604a250b72b0c1e1e3352540f724c5cf76de7570824c5ec7f032cf1d",
+    "2026-09-27_FPGA_Work/qualification/SPIx1_Trial_ERC.json": "d923158acda3b5b990e28bd3258c4f32e23ea940e77926227dd28f598ffbc8cb",
+    "2026-09-27_FPGA_Work/qualification/validation/SPIx1_Project/reports/component_manifest_resolved.json": "84237b8f733e4693a08fabdf9331d943fef8eb4f3df8e51fec8f5f7b654a96d4"
+  },
+  "no_root_CAD_modified": true
+}

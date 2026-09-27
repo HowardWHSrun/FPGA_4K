@@ -1,0 +1,19 @@
+# Assigned copper connected — not a manufacturing release
+
+2026-09-27 · **33 × 36 mm · 125 components · 12 copper layers**.
+
+The selected physical build is JLC12161H1-1080B, 12 layers; manufacturer acceptance, impedance and assembly remain unqualified. Power validation remains FPGA design work; Howard's external inputs are ASIC specifications/startup/timing and the carrier supply/contact map. Read the [qualification summary](reports/Qualification_Summary.md).
+
+Open [the KiCad project](hardware/FPGA100T_33x36_Routing.kicad_pro) with this complete folder intact. The 117 ASIC contacts comprise **116 candidate FPGA signals plus one external analog reservation**; **116 / 116 candidate FPGA nets have completed copper according to this DRC**. There are **0 assigned-net missing connections** and 102 endpoints without a functional net. Eighty-one FPGA balls and two unused regulator PG outputs are intentionally NC; nineteen additional endpoints reserve future interfaces. NC is a subset of the endpoints without a functional net. The six former NC ground pins are assigned GND; see the audit for physical continuity. R112 and R113 are removed; U1.P13/M1 and U1.P11/M2 are directly tied to GND. Normal flash boot and JTAG access remain, but changing to the alternate isolated-JTAG boot mode requires a copper modification. R12 and its unconsumed PGOOD_IO branch are removed; upstream power sequencing remains.
+
+[Routing audit](reports/Routing_Review.md) · [All pins](reports/All_Pin_Connections.csv) · [Components](reports/Component_List.csv) · [Net endpoints](reports/Net_Endpoints.csv) · [21-sheet schematic PDF](output/FPGA100T_33x36_Routing_Schematic.pdf) · [Front/back PCB](output/FPGA100T_33x36_Routing.svg) · [Bringup facts needed](bringup/Bringup_Requirements.md).
+
+Native physical DRC: 0; schematic parity: 0. ERC: 19 open pins, 4 other errors, 1 warnings. The other errors and warnings remain visible; [pin-model review](reports/Pin_Model_Review.md). Inspect the exact [DRC](reports/Native_DRC.json), [ERC](reports/Native_ERC.json), and [snapshot](reports/Routing_Snapshot.json).
+
+The first target is FPGA power-up and finite ASIC capture through JTAG. Receiver integration can follow. The separate raw-capture RTL passes synthetic-data simulation and XC7 synthesis; startup, JTAG transport, placement and timing remain unfinished. ASIC electrical limits, connector mating, startup firmware, capture timing, power integrity and thermal behavior remain unqualified. Electrical and timing qualification remain unfinished. AC_IN is analog 0–1.5 V: J5.46 is reserved for an external source and has no FPGA path. U1.A13 is NC. IMP_TST is provisionally digital 0/1.5 V; inactive polarity remains unverified. Capture assumes eight independent returned clocks sampled on falling edges and four outgoing board clocks. Startup order is SPI, digital/analog resets, then recording clock; exact waveforms remain to be implemented. No validated bitstream or fabrication package is included.
+
+Boot uses **Master SPI x1**. Optional quad-data links R106/R107 are removed and FPGA L14/M14 are NC. Flash WP# and RESET# remain pulled high through R101/R102. This reduces parts and routing; configuration loads more slowly than quad SPI. The image and flash programmer must explicitly use SPI x1. The ASIC recording interface is unchanged.
+
+PCB, project, schematic and library contents are unchanged copies of the measured checkpoint. Library-table URIs and evidence metadata paths are made portable; referenced library contents are verified identical. Custom library provenance remains in its source fields. Standard 3D-model availability does not establish assembly or mating clearance. Editor state, lock files, experiments, private tool inventories and message drafts are excluded.
+
+Board SHA-256: `2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc`. Earlier learning PDFs describe earlier snapshots and are kept outside this current package.

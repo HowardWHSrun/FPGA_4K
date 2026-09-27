@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-27",
+  "status": "Current twelve-layer source notes; publish only with root-selected matching twelve-layer snapshot",
+  "historical_sources_preserved": {
+    "Qualification_Summary.md": {
+      "path": "2026-09-26_FPGA_Work/11_Completion/qualification/publication/Qualification_Summary.md",
+      "sha256": "0d1bbde056bec40e7787c999685a9d7ae3f9af2da0f18f476045327739f3cd24"
+    },
+    "Power_Status_And_Owners.md": {
+      "path": "2026-09-26_FPGA_Work/11_Completion/qualification/publication/Power_Status_And_Owners.md",
+      "sha256": "4f08c585326f7d6747151e94e3f935f5fe7d81f45f0815974162a5f5bc35c5c8"
+    },
+    "Fabrication_Notes.md": {
+      "path": "2026-09-26_FPGA_Work/11_Completion/qualification/Fabrication_Notes.md",
+      "sha256": "6fd805565f3cb4521e6351fbbb42d398688213fac858e20e332f428a4fe43ab1"
+    },
+    "Connector_Thickness_And_Peg_Review.md": {
+      "path": "2026-09-26_FPGA_Work/11_Completion/qualification/Connector_Thickness_And_Peg_Review.md",
+      "sha256": "2bec4761013be313fc4d0c3bd021b46d35fc6683e12109a92106195104784388"
+    }
+  },
+  "portable_report_link_replacements": {
+    "../../../2026-09-26_FPGA_Work/11_Completion/qualification/publication/": "",
+    "../../../2026-09-26_FPGA_Work/11_Completion/qualification/": "",
+    "../Twelve_Layer_Stackup_Review.md": "Twelve_Layer_Stackup_Review.md",
+    "../../stackup_study/JLC12161H1_1080B_Observed.json": "JLC12161H1_1080B_Observed.json",
+    "../../stackup_study/Primary_Dielectric_Parameters.json": "Primary_Dielectric_Parameters.json",
+    "../SPIx1_Native_Validation.json": "SPIx1_Native_Validation.json"
+  },
+  "physical_application_reference": "The curator must link Physical_Stackup_Application.json only after generating it from the final PCB; source notes leave that filename as text until then.",
+  "bringup_link_rule": "When Power_Status_And_Owners.md is placed in bringup/, rewrite current report/evidence links to ../reports/ rather than sibling paths.",
+  "required_additional_curated_sources": [
+    "2026-09-27_FPGA_Work/qualification/Twelve_Layer_Stackup_Review.md",
+    "2026-09-27_FPGA_Work/qualification/Twelve_Layer_Stackup_Review.json",
+    "2026-09-27_FPGA_Work/stackup_study/JLC12161H1_1080B_Observed.json",
+    "2026-09-27_FPGA_Work/stackup_study/Primary_Dielectric_Parameters.json",
+    "2026-09-27_FPGA_Work/qualification/SPIx1_Native_Validation.json"
+  ],
+  "current_source_sha256": {
+    "Connector_Thickness_And_Peg_Review.md": "958ed88267dc34ff52c25b2479193906bc0f55c2fa5cb4ccb0bdbd838ada5910",
+    "Fabrication_Notes.md": "6ace99358b0f12db4f8682692048d00c696b75274163e819fad32c9784899999",
+    "Physical_Stackup_Proposal.md": "4bb262f09b351aaacece3475fc5267f20626b7086dbf1ec1070cd86b2fab9801",
+    "Power_Status_And_Owners.md": "52d0ec6bb66d9454140255e80ffd0ccaf97681e3185f40c0f2c8c3412bc7a41f",
+    "Qualification_Summary.md": "617b70dfbbf9dcb04a5c28a1128d847171571e6cbb045bad0d302961f537f181",
+    "SPIx1_Boot_Constraints_REVIEW_ONLY.tcl": "d85e116d94d7f576ee611d01b5fc156bc5145aed8dd2eb052181d02104589a2b",
+    "SPIx1_Boot_Review.md": "49e37beffd5bc3a88749bc3218ded69edc4cda9011d17710209eacef239f44f1",
+    "SPIx1_Endpoint_Delta.json": "09449fe147e3173007d9a25111277331ccd34f786d7bbdbb24555cbb847bfeb2",
+    "U1_Unused_Pin_Classification.csv": "edb2ef604932537c019f24a9dc84baf5a3d5200dcb97bf3fec69c9bf54897ddf"
+  },
+  "local_links_verified": true,
+  "SPIx1_current_files": [
+    "SPIx1_Boot_Review.md",
+    "SPIx1_Boot_Constraints_REVIEW_ONLY.tcl",
+    "SPIx1_Endpoint_Delta.json",
+    "U1_Unused_Pin_Classification.csv"
+  ],
+  "root_application_report_required": "SPIx1_Removal_Applied.json (root project only, after guarded helper application; do not substitute isolated validation)"
+}

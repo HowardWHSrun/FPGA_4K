@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-27",
+  "applied": true,
+  "project": "integration/project",
+  "pcb_changed": false,
+  "removed_component": "R113",
+  "removed_net": "CFG_M2",
+  "direct_ground_endpoint": "U1.P11",
+  "mode_M2_M1_M0": "001",
+  "new_no_connect_markers": [],
+  "endpoint_changes": {
+    "R113.1": {
+      "before": "CFG_M2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R113.2": {
+      "before": "GND",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.P11": {
+      "before": "CFG_M2",
+      "after": "GND",
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "counts": {
+    "physical_components_before": 128,
+    "physical_components_after": 127,
+    "physical_endpoints_before": 758,
+    "physical_endpoints_after": 756,
+    "virtual_manifest_symbols_unchanged": 6
+  },
+  "other_manifest_fields_and_components_unchanged": true,
+  "M0_M1_unchanged": true,
+  "source": "https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content",
+  "source_pages": [
+    7,
+    8,
+    17,
+    20,
+    62,
+    67,
+    82
+  ],
+  "sheets": [
+    {
+      "path": "hardware/core_11_01.kicad_sch",
+      "removed": {
+        "symbol": 1,
+        "wire": 4,
+        "global_label": 2
+      },
+      "unrelated_forms_byte_preserved": true
+    },
+    {
+      "path": "hardware/fpga_unit_04.kicad_sch",
+      "label": {
+        "from": "CFG_M2",
+        "to": "GND",
+        "at_mm": [
+          254.0,
+          147.32
+        ]
+      },
+      "other_bytes_preserved": true
+    }
+  ],
+  "files": [
+    {
+      "path": "hardware/core_11_01.kicad_sch",
+      "before_sha256": "52004105e8d195efa552ddb3d0db4be418f1ff97ab6d023a75cec2089595133c",
+      "after_sha256": "919da2077c91570f15fdd2132164f10dce9e8bf84d721f96ed8484576214c3bb"
+    },
+    {
+      "path": "hardware/fpga_unit_04.kicad_sch",
+      "before_sha256": "71409d60a992ea33d934fb7c40798f16e2f337cd22bbaf769775087e7e526f64",
+      "after_sha256": "b453a5622e97716adc260ef2df33de917ac5afe1d40c78549271a8c960f3c352"
+    },
+    {
+      "path": "reports/component_manifest_resolved.json",
+      "before_sha256": "3f2e264ded97c36c93c5492338b0d283d2112ddeaf85a639bc263a5152aaa384",
+      "after_sha256": "e7ececadbaddd183648ae587270d2f8f863729358961708bbc4c96b53d2e2f84"
+    }
+  ],
+  "post_apply_required": [
+    "Native XML/ERC: only R113 endpoints disappear; U1.P11 joins GND; CFG_M2 is absent.",
+    "Compare every other endpoint/net with the previous native netlist.",
+    "Separately implement and verify the PCB ground path, remove obsolete R113 copper/footprint, and review retained copper deltas."
+  ],
+  "limitation": "Fixed M2 loses convenient rework to the recommended isolated-JTAG mode; JTAG itself remains available."
+}

@@ -1,11 +1,16 @@
 # Project files and documents
 
+<!-- CURRENT_FPGA_LEARNING_REPORT -->
+**Current learning report:** [PDF · 45 pages](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the current 125 components and all 752 numbered endpoints; matches the current board audit.
+<!-- /CURRENT_FPGA_LEARNING_REPORT -->
+
+
 The original files are stored in this repository. Use the editable formats for further work and the PDFs or searchable notes for a quick review.
 
 ## Team workflow and editable design
 
 <!-- CURRENT_FPGA_ROUTING -->
-- [Current 33 × 36 mm routing board](../presentation/fpga/index.html): [complete 129-component KiCad project](../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/FPGA100T_33x36_Routing.zip) and [current routing audit](../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/reports/Routing_Review.md). 116 candidate FPGA nets and one external analog contact are allocated; 49/116 candidate nets have completed copper. Full routing and electrical/timing qualification remain unfinished. Earlier checkpoints remain historical.
+- [Current 33 × 36 mm routing board](../presentation/fpga/index.html): [complete 125-component KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) and [current routing audit](../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md). 116 candidate FPGA nets and one external analog contact are allocated; 116/116 candidate nets have completed copper. Electrical and timing qualification remain unfinished. Earlier checkpoints remain historical.
 <!-- /CURRENT_FPGA_ROUTING -->
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
@@ -46,6 +51,8 @@ These are supplied examples. Their presence does not establish final mating comp
 ## Previous acquisition code
 
 - [Included FPGA_512 source and revision](../firmware/README.md)
+- [26 September Artix-7 raw-capture engine and tests](../firmware/artix7/2026-09-26/raw_capture/README.md): eight falling-edge buffers; simulation and XC7 synthesis verified; startup and host transport remain separate.
+- [Eight-clock FPGA implementation proof](../firmware/artix7/2026-09-26/clock_pin_proof/README.md): development source for Vivado placement review; no hardware bitstream.
 - [Original project README](../firmware/FPGA_512/README.md)
 - [FPGA top-level Verilog](../firmware/FPGA_512/fpga/top.v) and [FT600 host test in C](../firmware/FPGA_512/ft600_test/test_d3xx.c)
 - [Original-program and run guide](software.md)

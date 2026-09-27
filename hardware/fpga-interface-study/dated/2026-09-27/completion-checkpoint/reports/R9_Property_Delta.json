@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-26",
+  "reference": "R9",
+  "selection": "WSLP1206R0120FEA",
+  "applied_to_canonical": false,
+  "manifest_property_changes": {
+    "value": {"from": "15m 1% 1W", "to": "12m 1% 1W"},
+    "mpn": {"from": "WSLP1206R0150FEA", "to": "WSLP1206R0120FEA"},
+    "status": {
+      "from": "Engineering draft; verify ordered part and layout before fabrication",
+      "to": "12 mOhm isolation selected to reduce core-feed DC loss while retaining greater than 10 mOhm over initial tolerance and specified component TCR range. WSLP1206, 1%, 1 W at 70 C, component TCR 75 ppm/C. Keep C5, VOS and feedback upstream; no geometry or connectivity change. 3 A core operation remains unqualified; 2 A at 85 C is only a DC screening scenario. See Core_DC_Drop_Review.md."
+    }
+  },
+  "schematic_instance_property_mapping": {"value": "Value", "mpn": "MPN", "status": "Status"},
+  "preserve": ["lib_id", "footprint", "datasheet", "pins", "all geometry and connectivity", "R122 at 15m 1% 1W"],
+  "specification": {"nominal_ohm": 0.012, "tolerance_percent": 1, "power_W_at_70C": 1, "component_TCR_ppm_per_C": 75, "TCR_specified_temperature_C": [-55, 155]},
+  "minimum_resistance_with_initial_tolerance_and_130C_TCR_excursion_ohm": 0.01176417,
+  "sources": [
+    {"url": "https://www.vishay.com/docs/30122/wslp.pdf", "locations": "2024-09-09 revision; page 1 WSLP1206 range and global ordering syntax; page 2 component TCR and same 6–50 mOhm body; page 3 power derating"},
+    {"url": "https://www.vishay.com/doc?30117", "locations": "Manufacturer standard resistance decade table includes 12"},
+    {"url": "https://www.ti.com/lit/ds/symlink/tps62135.pdf", "locations": "Rev B section 10.3.2, distributed-load minimum trace resistance 10 mOhm"}
+  ],
+  "qualification": "Ordering configuration and resistance margin source checked; inventory, assembled thermal performance, PDN transient stability and total load-current capability not qualified."
+}

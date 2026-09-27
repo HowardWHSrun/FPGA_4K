@@ -9,6 +9,15 @@
   const limits = {min: 0.5, max: 12};
   let previous = null;
   let imageRequest = 0;
+  let combinedView = get('board-enlarge').getAttribute('href');
+  function applySnapshot(data) {
+    if (typeof data?.artifactRoot !== 'string' || !data.artifactRoot) return;
+    const root = new URL(data.artifactRoot, document.baseURI);
+    combinedView = new URL('output/FPGA100T_33x36_Routing.svg', root).href;
+    if (state.mode !== 'native') get('board-enlarge').href = combinedView;
+  }
+  window.addEventListener('fpga-review-ready', event => applySnapshot(event.detail));
+  if (window.FPGA_REVIEW?.data) applySnapshot(window.FPGA_REVIEW.data);
   const views = {
     front: {src: 'assets/current-front.svg', caption: 'KiCad export · front copper + fabrication · inner layers omitted', alt: 'Front of the current 33 × 36 mm XC7A100T PCB, with its existing copper and component geometry'},
     back: {src: 'assets/current-back.svg', caption: 'KiCad export · mirrored back copper + fabrication · inner layers omitted', alt: 'Mirrored back of the current 33 × 36 mm XC7A100T PCB, with its existing copper and component geometry'}
@@ -57,7 +66,7 @@
     image.src = views[mode].src;
     image.alt = views[mode].alt;
     get('view-caption').textContent = views[mode].caption;
-    get('board-enlarge').href = '../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/output/FPGA100T_33x36_Routing.svg';
+    get('board-enlarge').href = combinedView;
     get('board-enlarge').textContent = 'Both sides ↗';
     get('image-state').textContent = 'Loading current KiCad layout…';
     get('image-state').hidden = false;

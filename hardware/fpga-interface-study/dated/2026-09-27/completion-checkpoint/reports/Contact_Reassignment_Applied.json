@@ -1,0 +1,65 @@
+{
+  "date": "2026-09-27",
+  "applied": true,
+  "moves": [
+    {
+      "signal": "ASIC4_DATA1",
+      "old_contact": "J5.34",
+      "new_contact": "J6.60",
+      "fpga_ball": "C5"
+    },
+    {
+      "signal": "ASIC8_DATA4",
+      "old_contact": "J6.37",
+      "new_contact": "J6.58",
+      "fpga_ball": "L4"
+    }
+  ],
+  "remaining_reserved_contacts": [
+    "J5.34",
+    "J6.37",
+    "J6.59"
+  ],
+  "new_no_connect_markers": [],
+  "analog_contact_unchanged": "J5.46",
+  "fpga_commands_unchanged": true,
+  "other_schematic_forms_unchanged": true,
+  "other_manifest_fields_unchanged": true,
+  "files": [
+    {
+      "path": "hardware/mezzanine_01.kicad_sch",
+      "before_sha256": "4e749922bde76fb62216da5c17ef46baaecede6401b04b304d73c88771b4387e",
+      "after_sha256": "f67c8184b2a55deff3f5281d1e6b569935d64d3953a861b425f80d0bfd709547"
+    },
+    {
+      "path": "reports/component_manifest_resolved.json",
+      "before_sha256": "e7ececadbaddd183648ae587270d2f8f863729358961708bbc4c96b53d2e2f84",
+      "after_sha256": "47a096cc8c2987531730ac5f42878bafff62c03efb639efb82c994cd494711d8"
+    },
+    {
+      "path": "hardware/FPGA100T_33x36_Routing.kicad_pcb",
+      "before_sha256": "3edfa40c13fc21a66e095ce9267222885caef48be97aab3bf920c12f6c3b2201",
+      "after_sha256": "0d0e3cbfc8bb9fe8b2a2c669673e0993e924a41e43f338922325a3bcec5ff2e3"
+    },
+    {
+      "path": "assignment/ASIC_Interface_Assignment.csv",
+      "before_sha256": "615c0e472ac0707b211572972e173709f08b71fc0e1d77b13d3801835d5d7405",
+      "after_sha256": "51e1685a9cdd65170d6ce7682f20ffad2e5640abc78cf1ea1fc6b26a3cb2a521"
+    },
+    {
+      "path": "bringup/ASIC116_Pin_Map_REVIEW_ONLY.xdc.template",
+      "before_sha256": "e9383aca062b37c7d0712aa94ae39627051e556433addd6d5cd0bd5ec73c5a61",
+      "after_sha256": "2e1a39462469dcf0e9ef68389bd5d0b4aabc38c6e777c9987b36b27658bde684"
+    },
+    {
+      "path": "bringup/Pin_Template_Validation.json",
+      "before_sha256": "f06f263458366b981071a5b4b72082720eb601d172228ed5f75e569a0ccdce43",
+      "after_sha256": "78214363c50d65289d9f59919d3df6abeb6353c5c149a873517d40731fcb2aa5"
+    }
+  ],
+  "post_apply_required": [
+    "Native XML/ERC and schematic-PCB parity",
+    "Final endpoint and retained-copper audit"
+  ],
+  "fabrication_release": false
+}

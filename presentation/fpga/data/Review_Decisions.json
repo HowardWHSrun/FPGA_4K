@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-27",
+  "boardSha256": "2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc",
+  "scope": "Current completion work; previous fourth-review register is historical.",
+  "items": [
+    {
+      "id": "C01",
+      "first_step": "lab",
+      "title": "ASIC specification and mating board",
+      "known": "Gerald confirmed nominal 1.5 V, analog AC_IN and falling-edge capture. The selected interpretation uses eight returned clocks and four outgoing board clocks.",
+      "remaining": "Confirm the physical chip/contact map, digital pad limits, input loading and unpowered behavior. Provide guaranteed clock/data delays, SPI values and reset polarity/pulse widths. IMP_TST is provisionally digital; its inactive state remains open.",
+      "owner": "Gerald / ASIC and routing-board designers; FPGA integration checks the supplied specification."
+    },
+    {
+      "id": "C02",
+      "first_step": "engineering",
+      "title": "Firmware and timing proof",
+      "known": "Master SPI x1 boot removes two optional quad-data links. Finite raw-capture logic passes synthetic-data simulation and XC7 synthesis. A separate package/clock proof design is supplied.",
+      "remaining": "Implement the real SPI → resets → clock startup, JTAG readout and revision-specific top level. Run Vivado placement, clock-resource, CDC and timing checks with real ASIC delays. No programmable bitstream is supplied.",
+      "owner": "FPGA firmware / Jiaao, using the ASIC specification. Earlier ECP5 code provides a baseline; its returned-clock startup dependency and uninitialized SPI-default path need correction."
+    },
+    {
+      "id": "C03",
+      "first_step": "engineering",
+      "title": "Power margins and custom input cable",
+      "known": "The four-rail circuit, bypass parts and 12 mΩ core isolation part are selected. Current routing status is measured separately above.",
+      "remaining": "Verify workload currents, capacitor bias, shared mounting-via paths, rail transients and heat. Build the controlled-rise, current-limited 12 V source and verify the actual cable. The source protection is not fitted to this FPGA board; the XEM8310 does not automatically provide 12 V output.",
+      "owner": "FPGA power design and source/carrier design. The 2 A / 85 °C calculation is a screening case, not a guaranteed rating."
+    },
+    {
+      "id": "C04",
+      "first_step": "engineering",
+      "title": "Assembly, stackup and connector fit",
+      "known": "XC7A100T-1CSG324I and the Molex 467651001 port are selected. The physical proposal is JLC12161H1-1080B, 12 layers. The board outline remains 33 × 36 mm.",
+      "remaining": "Obtain fabrication/assembly acceptance of the connector slot tolerances, small-part clearances and BGA process. Check both mezzanine mating footprints, stack height, pin-1 orientation and plug access. Verify impedance and return paths on the final routes.",
+      "owner": "PCB/mechanical design and fabricator/assembler review. No order is authorized or placed."
+    },
+    {
+      "id": "C05",
+      "first_step": "engineering",
+      "title": "Full XEM8310 acquisition link",
+      "known": "Eight FPGA balls and eight cable contacts reserve four differential pairs. They are visibly labeled R; the receiver module is an FPGA/USB module.",
+      "remaining": "Complete the carrier contact map, compatible voltages, receiver network, target-JTAG bridge, packet format and host-stall handling. Route the chosen link only after its electrical contract is established. This remains part of the full system, beyond the first finite capture.",
+      "owner": "FPGA / XEM8310 carrier and acquisition-software design."
+    },
+    {
+      "id": "C06",
+      "first_step": "bench",
+      "title": "Measured operation",
+      "known": "CAD checks and simulation are available. No assembled board has demonstrated operation.",
+      "remaining": "After design release and assembly, check rails and current, JTAG ID, configuration recovery and clocks. Capture a known pattern, then one ASIC and all eight; measure thermal and sustained acquisition margins.",
+      "owner": "Lab integration, using a revision-specific test procedure."
+    }
+  ]
+}

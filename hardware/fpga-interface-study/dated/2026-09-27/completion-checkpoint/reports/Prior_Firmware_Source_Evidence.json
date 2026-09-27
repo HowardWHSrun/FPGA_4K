@@ -1,0 +1,211 @@
+{
+  "date": "2026-09-26",
+  "scope": [
+    "firmware/",
+    "sources/"
+  ],
+  "reference_source_commit": "767e82528780005cbcb37b3e926197755bac622e",
+  "reference_target": "LFE5U-25F-7BG256I; one 512-channel ASIC/ADC interface, eight data lines, one returned clock, FT600.",
+  "current_ASIC_silicon_revision_identified": false,
+  "current_ASIC_payload_workbook_or_BIT_L_R_CSV_found": false,
+  "Jiaao_Artix_constraints_found": false,
+  "current_Artix_bitstream_qualified": false,
+  "code_modified": false,
+  "tests_rerun": false,
+  "source_files": [
+    {
+      "path": "sources/README.md",
+      "sha256": "821a5c66ea75b40a848fba91cc099c04ef29d4bc021315030105b65b455e5b9e",
+      "size_bytes": 8905,
+      "reviewed_line_ranges": [
+        [
+          15,
+          18
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/README.md",
+      "sha256": "2442e297c60e3febc9ad12e40969a7593f4c1752704fac646511ba205e84ba77",
+      "size_bytes": 9830,
+      "reviewed_line_ranges": [
+        [
+          1,
+          8
+        ],
+        [
+          163,
+          221
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/adc_4lane_framed/top_4lane_framed.v",
+      "sha256": "cae4192859b9245eaf27d8a50146dc4e66d1a982fe7f0c8ef9e29ba87eea40e5",
+      "size_bytes": 22173,
+      "reviewed_line_ranges": [
+        [
+          87,
+          118
+        ],
+        [
+          152,
+          277
+        ],
+        [
+          293,
+          328
+        ],
+        [
+          538,
+          538
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/fpga/spi_programmer.v",
+      "sha256": "cb97909aed61ce36b2356add61d74f032d08e77f1637743ab8f6649aa0557b1f",
+      "size_bytes": 6956,
+      "reviewed_line_ranges": [
+        [
+          1,
+          193
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/fpga/spi_trigger.v",
+      "sha256": "24d7010bdb959549319871a02cbec9189bb01852cb5dfee9363451f84f98cd43",
+      "size_bytes": 4340,
+      "reviewed_line_ranges": [
+        [
+          1,
+          126
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/adc_4lane_framed/board_cmd.c",
+      "sha256": "c02b7c8bf6c24b90fa87320b573389005b98228a61463cf4d8b3ea274a66fe42",
+      "size_bytes": 6720,
+      "reviewed_line_ranges": [
+        [
+          54,
+          118
+        ],
+        [
+          161,
+          169
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/adc_4lane_framed/adc_daemon.c",
+      "sha256": "6269d3bf684460cd5a787c9047e4fbe2dc4614c39a9895ef1d0628a0bea4fb77",
+      "size_bytes": 39556,
+      "reviewed_line_ranges": [
+        [
+          613,
+          668
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/fpga/adc_auto_adjust.v",
+      "sha256": "78003acbd933a319bce34fb41db5756787b0270dd3cfa77663dac04705579f30",
+      "size_bytes": 6723,
+      "reviewed_line_ranges": [
+        [
+          1,
+          86
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/fpga/stim_controller.v",
+      "sha256": "1bcfe745cb3511b647f322a2b795d20b11e45130ef5c37bd17d8602e7c8b3bc2",
+      "size_bytes": 7759,
+      "reviewed_line_ranges": [
+        [
+          1,
+          19
+        ],
+        [
+          84,
+          125
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/adc_4lane_framed/adc_4lane_framed.lpf",
+      "sha256": "94154fec04863789a3f267fb13285fb5a59121422a5dac72c66cadc04a1e4d19",
+      "size_bytes": 6392,
+      "reviewed_line_ranges": [
+        [
+          1,
+          145
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/golden_bitstreams/README.txt",
+      "sha256": "0c31219e63b1d4f109cf533de01904f806ee60ea4d394278de9e9444b977d722",
+      "size_bytes": 4836,
+      "reviewed_line_ranges": [
+        [
+          1,
+          106
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/sim/tb_h5.v",
+      "sha256": "3e9f460e7949703d4e6e3d3380f63ab8ea67e70ad9e36f6c60048937d975a07a",
+      "size_bytes": 14364,
+      "reviewed_line_ranges": [
+        [
+          1,
+          37
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "firmware/FPGA_512/sim/extract_h5_stim.py",
+      "sha256": "4460bd65c801f221339555ece94a5afe134b7f2e2a2d1898bcae26075217f33b",
+      "size_bytes": 7242,
+      "reviewed_line_ranges": [
+        [
+          1,
+          55
+        ]
+      ],
+      "source_note": "Local source read; line ranges one-based"
+    },
+    {
+      "path": "sources/slides/Chip_FPGA_Interface.pptx",
+      "sha256": "7f2d6f16144337c9972da8db767505a0fbe06a94ea55ae1a7402121205dd0420",
+      "size_bytes": 14939180,
+      "reviewed_line_ranges": [],
+      "source_note": "Original slides plus existing visual-review evidence; relevant slides13-17,25-28"
+    },
+    {
+      "path": "sources/slides/Chip_FPGA_Interface.pdf",
+      "sha256": "a8f6088e6d41f1e45fdae16e927656a5af1924d467fa9c2cf128d5bb4750320c",
+      "size_bytes": 3953480,
+      "reviewed_line_ranges": [],
+      "source_note": "Original slides plus existing visual-review evidence; relevant slides13-17,25-28"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "date": "2026-09-27",
+  "applied": true,
+  "project": "integration/project",
+  "pcb_changed": false,
+  "removed_components": [
+    "R106",
+    "R107"
+  ],
+  "removed_nets": [
+    "FPGA_CFG_DQ2",
+    "FPGA_CFG_DQ3"
+  ],
+  "new_no_connect_markers": [
+    {
+      "reference": "U1",
+      "pin": "L14",
+      "at_mm": [
+        158.75,
+        101.6
+      ],
+      "uuid": "ab43f097-ff6f-5950-9b52-643f09289928",
+      "expected_native_unconnected_net": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)"
+    },
+    {
+      "reference": "U1",
+      "pin": "M14",
+      "at_mm": [
+        158.75,
+        104.14
+      ],
+      "uuid": "b9c402ac-f93b-5b6b-bb88-632d70f90a3c",
+      "expected_native_unconnected_net": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+    }
+  ],
+  "endpoint_changes": {
+    "R106.1": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R106.2": {
+      "before": "FLASH_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.1": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.2": {
+      "before": "FLASH_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.L14": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "U1.M14": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "before_counts": {
+    "components": 127,
+    "endpoints": 756,
+    "intentional_nc": 81,
+    "netless": 100
+  },
+  "after_counts": {
+    "components": 125,
+    "endpoints": 752,
+    "intentional_nc": 83,
+    "netless": 102
+  },
+  "sheets": [
+    {
+      "path": "hardware/core_10_01.kicad_sch",
+      "removed": {
+        "symbol": 2,
+        "wire": 8,
+        "global_label": 4
+      },
+      "all_other_forms_byte_preserved": true
+    },
+    {
+      "path": "hardware/fpga_unit_01.kicad_sch",
+      "removed": {
+        "wire": 4,
+        "global_label": 2
+      },
+      "added_no_connect": [
+        {
+          "reference": "U1",
+          "pin": "L14",
+          "at_mm": [
+            158.75,
+            101.6
+          ],
+          "uuid": "ab43f097-ff6f-5950-9b52-643f09289928",
+          "expected_native_unconnected_net": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)"
+        },
+        {
+          "reference": "U1",
+          "pin": "M14",
+          "at_mm": [
+            158.75,
+            104.14
+          ],
+          "uuid": "b9c402ac-f93b-5b6b-bb88-632d70f90a3c",
+          "expected_native_unconnected_net": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+        }
+      ],
+      "all_other_forms_byte_preserved": true
+    }
+  ],
+  "all_other_manifest_fields_unchanged": true,
+  "WP_RESET_pullups_retained": true,
+  "ASIC117_contacts_unchanged": true,
+  "files": [
+    {
+      "path": "hardware/core_10_01.kicad_sch",
+      "before_sha256": "891bbdebadc0c0fee5c5f847e1b969899f25f53a8ac9add3345988a6a44a47ab",
+      "after_sha256": "dba3e025d42ba8fab767d06fa2ce9beee2679bfdb4555c1c7c40ce318a0c9ced"
+    },
+    {
+      "path": "hardware/fpga_unit_01.kicad_sch",
+      "before_sha256": "f0bc17d48c473707b5008a67454225ded8675a94e0d6bc3b529b024ba1d98793",
+      "after_sha256": "e080f411cac2be352ae85084a97beae2c5a130bea10e97ee07bfb412aff5b332"
+    },
+    {
+      "path": "reports/component_manifest_resolved.json",
+      "before_sha256": "47a096cc8c2987531730ac5f42878bafff62c03efb639efb82c994cd494711d8",
+      "after_sha256": "84237b8f733e4693a08fabdf9331d943fef8eb4f3df8e51fec8f5f7b654a96d4"
+    }
+  ],
+  "post_apply_required": [
+    "Export native XML/ERC and verify all 752 numbered endpoints against the manifest.",
+    "Give the exact native unconnected names for U1.L14/M14 to the physical routing owner; this helper does not alter PCB pad nets.",
+    "Verify R101/U6.3 and R102/U6.7 remain connected with 4.7k pull-ups; remove only optional quad trunks/resistors."
+  ],
+  "boot_choice": "Fixed SPI x1; no quad boot. Appropriate image/programmer and measured boot remain required.",
+  "fabrication_ready": false
+}

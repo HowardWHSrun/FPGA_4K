@@ -1,0 +1,76 @@
+{
+  "date": "2026-09-26",
+  "status": "Electrically defensible proposal; root application and native PCB/netlist checks required",
+  "applied_to_cad": false,
+  "remove_component": "R113",
+  "remove_net": "CFG_M2",
+  "endpoint_changes": {
+    "R113.1": {
+      "before": "CFG_M2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R113.2": {
+      "before": "GND",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.P11": {
+      "before": "CFG_M2",
+      "after": "GND",
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "counts": {
+    "physical_components_before": 128,
+    "physical_components_after": 127,
+    "physical_endpoints_before": 758,
+    "physical_endpoints_after": 756,
+    "virtual_manifest_symbols_unchanged": 6
+  },
+  "preserve": [
+    "U1.P12 / CFG_M0 high",
+    "U1.P13 / GND",
+    "M[2:0]=001 Master SPI",
+    "all 116 ASIC assignments",
+    "all other component pin/net assignments",
+    "81 intentional NC and 19 reserved endpoints"
+  ],
+  "schematic_files": [
+    "hardware/core_11_01.kicad_sch",
+    "hardware/fpga_unit_04.kicad_sch"
+  ],
+  "source_sha256": {
+    "Original Sources/09_Manufacturer_Documentation/Datasheets/AMD/DS181_Power_and_Electrical_Limits.pdf": "3f0cb482d645e217ae834e9370c1320300abb85a8046287250f9a48856aed070",
+    "FPGA_100T_CSG324/reports/boot_ug470.pdf": "52aa1f1943cdf631b5ff3d859a8d5905dc9fd198522e0e9d63cf3f87271d615c"
+  },
+  "cad_apply_script": "scripts/remove_r113_fixed_m2.py",
+  "dry_run_evidence": "R113_Removal_Dry_Run.json",
+  "primary_sources": [
+    {
+      "document": "UG470 v1.17",
+      "url": "https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content",
+      "pages": [
+        7,
+        8,
+        17,
+        20,
+        62,
+        67,
+        82
+      ]
+    },
+    {
+      "document": "DS181 v1.27.1",
+      "url": "https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet",
+      "pages": [
+        8,
+        9,
+        58
+      ]
+    }
+  ]
+}

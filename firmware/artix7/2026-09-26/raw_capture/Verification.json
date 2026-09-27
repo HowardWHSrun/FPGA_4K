@@ -1,0 +1,41 @@
+{
+  "checkedAtUtc": "2026-09-27T02:32:11.741775+00:00",
+  "checks": [
+    {
+      "name": "independent_clock_capture",
+      "depthPerChip": 16,
+      "captures": 4,
+      "checkedWords": 512,
+      "passed": true
+    },
+    {
+      "name": "independent_clock_capture",
+      "depthPerChip": 4096,
+      "captures": 4,
+      "checkedWords": 131072,
+      "passed": true
+    },
+    {
+      "name": "xc7_technology_synthesis",
+      "passed": true,
+      "resources": {
+        "BUFG": 9,
+        "RAMB18E1": 24
+      },
+      "physicalImplementation": false
+    }
+  ],
+  "passed": true,
+  "sourceSha256": {
+    "rtl/raw_capture_bank.sv": "deefe95784e72c2aecc1ae2bdfc489c7d0512a0342e23d4c3c75f2a82c361615",
+    "rtl/raw_capture_array.sv": "775a4448f35b7c23851d026c02e814c46d85915f42f586da83632628c579e23c",
+    "sim/tb_raw_capture.sv": "bd9010e476cf8f4cf4062a9f90bc14da848c123657d375e5d2eb15b61c7c7452"
+  },
+  "limitations": [
+    "No Vivado placement, routing, timing closure, metastability analysis or bitstream.",
+    "No ASIC control outputs, SPI/reset sequencer, JTAG transport or XEM8310 link.",
+    "Input data test patterns are synthetic; no ASIC or assembled board was operated.",
+    "A missing ASIC clock leaves acquisition busy until that clock resumes or reset aborts it."
+  ],
+  "toolSource": "OSS CAD Suite2026-09-12; Icarus Verilog and Yosys"
+}

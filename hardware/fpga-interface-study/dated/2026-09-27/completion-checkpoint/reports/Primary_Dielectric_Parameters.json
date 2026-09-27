@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-27",
+  "primary_source": "https://jlcpcb.com/impedance",
+  "fields": {
+    "1080_generic_nominal_epsilon_r": 3.91,
+    "core_generic_nominal_epsilon_r": 4.6,
+    "mask_generic_nominal_epsilon_r": 3.8,
+    "mask_above_trace_C2_mil": 0.6
+  },
+  "unsupported_fields": [
+    "2313 epsilon_r",
+    "effective epsilon_r of mixed1080/2313 region",
+    "loss tangent for every material",
+    "frequency/lot/tolerance-qualified dielectric values"
+  ],
+  "format_source": "https://dev-docs.kicad.org/en/file-formats/sexpr-pcb/",
+  "format_fact": "epsilon_r and loss_tangent are optional stackup-layer fields",
+  "native_test_fact": "KiCad10.0.6 accepts omitted unknown fields; its diagnostic save inserts software defaults that this helper does not apply."
+}

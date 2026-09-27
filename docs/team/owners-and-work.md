@@ -1,21 +1,19 @@
 # Owners and open work
 
-Updated 2026-09-26 for **XC7A100T CSG324 / 117 ASIC signals / XEM8310**. Roles below are proposed; no personal ownership or review approval is implied. The earlier 200T/KR260 direction remains in dated historical records.
+Updated 2026-09-27 for **XC7A100T-1CSG324I / 116 digital ASIC nets + one analog contact / XEM8310**. Roles are proposed; no personal acceptance or review approval is implied.
 
-The [fourth-review uncertainty register](../../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) is the detailed current action list, with closure criteria and evidence. The [current 33 × 36 mm board](../../presentation/fpga/index.html) integrates rails and both mezzanines; earlier checkpoints are historical. Full-system assignment, routing and qualification remain incomplete. The [latest component audit](../../presentation/fpga/data/Presenter_Notes.md) adds U1.L9/L10 ground corrections and U2–U5.FB2 grounding reviews; neither is completed in CAD.
+The [current board review](../../presentation/fpga/index.html) and [six work areas](../../presentation/fpga/index.html#uncertainties) are the active status. The fourth-review register and previous native checkpoints remain dated history. The smallest board has 125 parts, with 116/116 assigned ASIC nets connected and 0 assigned-net gaps in its native audit. GND corrections, exact part selections and the R12 removal are integrated.
 
-| Workstream | Current work | Owner / reviewer |
-| --- | --- | --- |
-| ASIC electrical/timing and physical mapping | Obtain authoritative pad limits, startup/control rules and eight-chip/group map (U01–U05) | ASIC/carrier/routing + FPGA, TBD |
-| FPGA part, pins and clocks | Exact standard-voltage order code, legal ball/clock allocation, XDC/CDC/timing (U06–U07) | FPGA hardware/implementation, TBD |
-| Connector and assembly | Mezzanine mating, J4 part/edge/cable, mechanical tolerances (U08–U09) | Mechanical/routing/FPGA, TBD |
-| Power and protection | Actual load/thermal budget, protected source, sequencing and shared returns (U10–U11) | Power/carrier/FPGA, TBD |
-| XEM8310 receiver and cable | Module contacts, VIO/interlocks, LVDS/JTAG margins (U12–U13) | Receiver carrier/FPGA, TBD |
-| Firmware, buffering and host | Packet/USB packing, commands, DDR buffering and explicit overflow policy (U14–U15) | FPGA/receiver/host; system owner for required behavior, TBD |
-| Layout and manufacturing | One integrated schematic/PCB, all copper, stackup, exact BOM and DFM (U16) | Layout + fabricator/assembler, TBD |
-| Boot and acceptance | Revision-specific bring-up, recovery, known-channel capture and sustained disk recording (U17–U18) | Bring-up + lab integration, TBD |
+| Workstream | Remaining result | Proposed owner / reviewer |
+|---|---|---|
+| ASIC and carrier | Current payload/generator, chip/contact map, guaranteed pad timing/levels, ASIC supplies and analog AC_IN source | ASIC + carrier/routing designers; Howard coordinates |
+| FPGA firmware | Local-clock startup, bounded SPI commands, JTAG capture transport, Vivado pin/CDC/timing proof | Jiaao / FPGA implementation, subject to agreement |
+| Power | Workload estimate, final copper/return review, PDN and thermal margin, controlled-rise protected cable source | FPGA power + source/carrier design |
+| Mechanical and manufacturing | Mating connectors and orientation, precision J4 slots, assembled clearances, stackup/process acceptance | Mechanical/layout + fabricator/assembler |
+| XEM8310 and host | Carrier contacts/voltages, electrical receiver network, target JTAG, data format and bounded host-stall behavior | Receiver carrier / FPGA / host software |
+| Prototype acceptance | Rail/JTAG/boot checks, known-pattern capture, eight-ASIC mapping, sustained acquisition and recovery | Lab integration after design release and assembly |
 
-The user has delegated power setup and wants optional headers/test points removed. Circuit design, pin selection and firmware are engineering tasks. External inputs are the actual ASIC/mating-board specification and system operating/recording requirements; ask for a purchased FPGA code only if one is already mandated. XEM8310 is an FPGA/USB receiver module, not a conventional MCU or an automatic target-JTAG programmer.
+Finite raw capture has simulation/synthesis evidence; startup, JTAG transport and a complete bitstream are unfinished. The XEM8310 is an FPGA/USB module, not a conventional MCU or an automatic 12 V output/target programmer. The detailed [power ownership page](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/bringup/Power_Status_And_Owners.md) separates engineering work from the few external specifications needed. No order or supplier submission has been made.
 
 ## Layout ownership record
 

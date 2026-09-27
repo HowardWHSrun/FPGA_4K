@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-26",
+  "reference": "U1",
+  "selection": "XC7A100T-1CSG324I",
+  "applied_to_canonical": false,
+  "source_baseline_sha256": "c5a312d1224f90a454a1ee3275dc211f7994f1c69d441472131f55b363e7cd03",
+  "manifest_property_changes": {
+    "value": {
+      "from": "XC7A100T-CSG324",
+      "to": "XC7A100T-1CSG324I"
+    },
+    "mpn": {
+      "from": "XC7A100T \u2014 speed and temperature grade TBD",
+      "to": "XC7A100T-1CSG324I"
+    },
+    "status": {
+      "from": "Development revision: standard 1.0 V core grade assumed; banks 0/14 = 1.8 V, CFGBVS = GND, bank 16 = 2.5 V, banks 15/34/35 = 1.5 V. There are 116 candidate FPGA connections, including provisional digital IMP_TST. AC_IN is a separate 0-1.5 V analog reservation with no FPGA GPIO. Detailed electrical limits, mating and timing remain unverified; MCU link implementation is deferred.",
+      "to": "Development revision: XC7A100T-1CSG324I selected: standard -1 industrial grade, 1.0 V nominal core; banks 0/14 = 1.8 V, CFGBVS = GND, bank 16 = 2.5 V, banks 15/34/35 = 1.5 V. There are 116 candidate FPGA connections, including provisional digital IMP_TST. AC_IN is a separate 0-1.5 V analog reservation with no FPGA GPIO. Detailed electrical limits, mating and timing remain unverified; MCU link implementation is deferred."
+    }
+  },
+  "schematic_instance_property_mapping": {
+    "value": "Value",
+    "mpn": "MPN",
+    "status": "Status"
+  },
+  "preserve": [
+    "lib_id",
+    "source_lib_id",
+    "footprint",
+    "source_footprint",
+    "datasheet",
+    "pins",
+    "pin_names",
+    "pin_banks",
+    "no_connect",
+    "all geometry and connectivity"
+  ],
+  "vivado_part": "xc7a100tcsg324-1",
+  "vivado_temperature_configuration": "Set implementation/timing operating conditions to industrial purchased grade; verify installed Vivado property support. The part string does not itself prove thermal or timing closure.",
+  "qualification": "Ordering configuration source verified. Stock, timing closure, thermal margin, PDN transient margin and production fit/assembly not qualified.",
+  "sources": [
+    {
+      "url": "https://docs.amd.com/v/u/en-US/ds180_7Series_Overview",
+      "revision": "DS180 v2.6.1",
+      "locations": "Table 5 p3; Table 12 p15; Figure 2 p16"
+    },
+    {
+      "url": "https://docs.amd.com/v/u/en-US/cost-optimized-product-selection-guide",
+      "revision": "XMP100 v2.6 November 19 2025",
+      "locations": "Artix 7 resources/packaging p7; ordering syntax p13"
+    }
+  ]
+}

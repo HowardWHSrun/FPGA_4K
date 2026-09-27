@@ -1,30 +1,30 @@
 # Presenting the smallest FPGA board
 
-26 September 2026 · current native ASIC117 assignment snapshot
+2026-09-27 · current native ASIC117 assignment snapshot
 
-Board SHA-256: `c5a312d1224f90a454a1ee3275dc211f7994f1c69d441472131f55b363e7cd03`. 8 copper layers in this development snapshot.
+Board SHA-256: `2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc`. 12 copper layers in this development snapshot.
 
 **First milestone:** stable rails, JTAG programming, then a finite recording capture from one ASIC. Receiver/MCU integration can follow.
 
 **What changed:** 116 candidate digital ASIC nets are assigned; AC_IN is a separate 0–1.5 V analog contact with no FPGA GPIO path. U1.A13 is NC. Six former NC ground pins now belong to GND. These are provisional electrical assumptions, not hardware proof.
 
-**What remains unassigned:** 87 FPGA user-I/O balls, three mezzanine reserves and eight cable contacts: 98 endpoints. The A13 NC flag is included in that count. Missing routes on assigned nets are counted separately in the current routing audit.
+**What is unused:** 81 FPGA balls and two unused regulator PG outputs have explicit NC markers. Separately, eight FPGA balls and eight cable contacts reserve the future data link; three mezzanine contacts remain reserved. These 102 endpoints are not missing routed ASIC signals. Missing routes on assigned nets are counted separately in the current routing audit.
 
 **AC_IN:** analog 0–1.5 V, with its source on the routing/ASIC side still to be designed. **IMP_TST:** assumed digital 0/1.5 V; inactive polarity is unverified. **Capture assumption:** eight returned clocks sampled on falling edges; retain four outgoing board clocks.
 
 ## Explain the functions
 
 - **FPGA logic (1 parts):** U1 captures and organizes ASIC data.
-- **Four power rails (39 parts):** Four converters provide core, auxiliary/boot and interface voltages.
+- **Four power rails (38 parts):** Four converters provide core, auxiliary/boot and interface voltages.
 - **FPGA supply decoupling (61 parts):** Local capacitors supply fast current demands.
-- **Boot memory (11 parts):** The flash stores the configuration for autonomous startup.
+- **Boot memory (9 parts):** The flash stores the configuration for autonomous startup.
 - **System clock (4 parts):** The oscillator provides the 32 MHz reference.
-- **Configuration and JTAG (10 parts):** Straps and programming signals establish startup behavior.
+- **Configuration and JTAG (9 parts):** Straps and programming signals establish startup behavior.
 - **External connections (3 parts):** J5/J6 carry the provisional ASIC assignments; J4 carries custom power/JTAG and future data.
 
 ## Is every component required?
 
-The circuit functions are required by the chosen architecture; the present component count is not a proven minimum. R12 has no current status consumer. Some straps or links may become copper ties; capacitor removal needs power-integrity evidence. Simply removing a series part opens its circuit.
+The circuit functions are required by the chosen architecture; the present component count is not a proven minimum. R12 and its unconsumed status branch have been removed. R113 is omitted when M2 is directly grounded; normal JTAG remains available, while changing the fixed boot mode requires copper rework. Capacitor removal needs power-integrity evidence. Simply removing a series part opens its circuit.
 
 ## Component and pin reference
 
@@ -40,8 +40,8 @@ The circuit functions are required by the chosen architecture; the present compo
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C2 — Cable-entry high-frequency bypass
 
@@ -55,8 +55,8 @@ The circuit functions are required by the chosen architecture; the present compo
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C3 — Converter input reservoir
 
@@ -70,8 +70,8 @@ Local input reservoir from LINK_12V to GND next to U2. Supplies the converter sw
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C4 — High-frequency input bypass
 
@@ -85,8 +85,8 @@ Small local 100 nF bypass across U2 input, alongside C3.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C5 — Converter local output capacitor
 
@@ -101,7 +101,7 @@ Local output reservoir and voltage-sense pickup for U2; the L/C output function 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | VCORE_REG_1V025 | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C6 — Soft-start timing capacitor
 
@@ -116,7 +116,7 @@ Local output reservoir and voltage-sense pickup for U2; the L/C output function 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SS_CORE | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C7 — Converter input reservoir
 
@@ -130,8 +130,8 @@ Local input reservoir from LINK_12V to GND next to U3. Supplies the converter sw
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C8 — High-frequency input bypass
 
@@ -145,8 +145,8 @@ Small local 100 nF bypass across U3 input, alongside C7.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C9 — Converter local output capacitor
 
@@ -160,8 +160,8 @@ Local output reservoir and voltage-sense pickup for U3; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VAUX_REG_1V803 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VAUX_REG_1V803 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C10 — Soft-start timing capacitor
 
@@ -176,7 +176,7 @@ Local output reservoir and voltage-sense pickup for U3; the L/C output function 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SS_AUX | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C11 — Converter input reservoir
 
@@ -190,8 +190,8 @@ Local input reservoir from LINK_12V to GND next to U4. Supplies the converter sw
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C12 — High-frequency input bypass
 
@@ -205,8 +205,8 @@ Small local 100 nF bypass across U4 input, alongside C11.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C13 — Converter local output capacitor
 
@@ -220,8 +220,8 @@ Local output reservoir and voltage-sense pickup for U4; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C14 — Soft-start timing capacitor
 
@@ -236,7 +236,7 @@ Local output reservoir and voltage-sense pickup for U4; the L/C output function 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SS_CFG | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C15 — Converter input reservoir
 
@@ -250,8 +250,8 @@ Local input reservoir from LINK_12V to GND next to U5. Supplies the converter sw
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C16 — High-frequency input bypass
 
@@ -265,8 +265,8 @@ Small local 100 nF bypass across U5 input, alongside C15.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C17 — Converter local output capacitor
 
@@ -280,8 +280,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C18 — Soft-start timing capacitor
 
@@ -296,22 +296,22 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SS_ASIC | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C20 — Bulk energy reserve
 
-**Value:** 330u 2.5V polymer ESR25m · **Decision:** Check before reducing
+**Value:** 330u 2.5V POSCAP ESR9m@300kHz · **Decision:** Check before reducing
 
-330u 2.5V polymer ESR25m bulk energy reserve for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+330 microfarad polarized bulk capacitor on the FPGA side of R9. Supplies slower core-current changes; local small ceramic capacitors handle faster changes. The smaller manufacturer land pattern opens connector routing space.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
-**Review:** Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence.
+**Review:** Keep the bulk-capacitor function. ETPE330M9GB is the compact selection: 2.5 V, 105 C category maximum, ESR specified at 300 kHz and 20 C. Its model ESL reaches about 1.2 nH, so AMD decoupling-class equivalence, mounted PDN response, ripple and thermal performance still require qualification. Pad 1 is positive core; pad 2 is GND.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C21 — Bulk energy reserve
 
@@ -325,8 +325,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C22 — Local supply bypass
 
@@ -340,8 +340,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C23 — Local supply bypass
 
@@ -355,8 +355,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C24 — Local supply bypass
 
@@ -370,8 +370,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C25 — Local supply bypass
 
@@ -385,8 +385,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C26 — Local supply bypass
 
@@ -400,8 +400,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C27 — Local supply bypass
 
@@ -415,14 +415,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C28 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -430,14 +430,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C29 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -445,14 +445,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C30 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -460,14 +460,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C31 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -475,14 +475,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C32 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -490,14 +490,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C33 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -505,14 +505,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C34 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -520,14 +520,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C35 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA core between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -535,14 +535,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C36 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA block RAM between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA block RAM between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -550,14 +550,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C37 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA block RAM between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA block RAM between VCCINT_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -565,8 +565,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCINT_1V0 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCINT_1V0 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C40 — Bulk energy reserve
 
@@ -580,8 +580,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C41 — Local supply bypass
 
@@ -595,8 +595,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C42 — Local supply bypass
 
@@ -610,14 +610,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C43 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -625,14 +625,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C44 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -640,14 +640,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C45 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -655,14 +655,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C46 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -670,8 +670,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C50 — Bulk energy reserve
 
@@ -685,8 +685,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C51 — Local supply bypass
 
@@ -700,8 +700,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C52 — Local supply bypass
 
@@ -715,14 +715,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C53 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -730,14 +730,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C54 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -745,14 +745,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C55 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -760,14 +760,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C56 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -775,8 +775,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C57 — Local supply bypass
 
@@ -790,8 +790,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C58 — Local supply bypass
 
@@ -805,14 +805,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C59 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -820,14 +820,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C60 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -835,14 +835,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C61 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -850,14 +850,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C62 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for link bank 16 between VCC_LINK_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -865,8 +865,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C63 — Bulk energy reserve
 
@@ -880,8 +880,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C64 — Local supply bypass
 
@@ -895,8 +895,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C65 — Local supply bypass
 
@@ -910,14 +910,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C66 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -925,14 +925,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C67 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -940,14 +940,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C68 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -955,14 +955,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C69 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -970,8 +970,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C70 — Local supply bypass
 
@@ -985,8 +985,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C71 — Local supply bypass
 
@@ -1000,14 +1000,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C72 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1015,14 +1015,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C73 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1030,14 +1030,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C74 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1045,14 +1045,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C75 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1060,8 +1060,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C76 — Local supply bypass
 
@@ -1075,8 +1075,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C77 — Local supply bypass
 
@@ -1090,14 +1090,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C78 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1105,14 +1105,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C79 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1120,14 +1120,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C80 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1135,14 +1135,14 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C81 — Local supply bypass
 
-**Value:** 470n 6.3V X7R · **Decision:** Check before reducing
+**Value:** 470n 10V X7R · **Decision:** Check before reducing
 
-470n 6.3V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
+470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC_ASIC_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.
 
 **If removed:** Less local stored charge and changed power-network impedance; may cause supply noise or transient failures. Removing one is not automatically safe or automatically fatal.
 
@@ -1150,8 +1150,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C82 — Bulk energy reserve
 
@@ -1165,8 +1165,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C90 — Local supply bypass
 
@@ -1180,8 +1180,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C91 — Local supply bypass
 
@@ -1195,8 +1195,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C92 — Bulk energy reserve
 
@@ -1210,8 +1210,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C100 — Flash local supply bypass
 
@@ -1221,16 +1221,16 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 **If removed:** Removes the smallest local flash reservoir; remote rail capacitance does not guarantee an equivalent short current loop.
 
-**Review:** Keep local bypass when U6 is fitted. Final capacitor order code remains pending.
+**Review:** The exact capacitor order code is selected. Keep its bypass function; effective capacitance and the mounted power network still need qualification.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C101 — Flash local bulk reservoir
 
-**Value:** 1u · **Decision:** Check before reducing
+**Value:** 1u 16V X5R · **Decision:** Check before reducing
 
 1 uF supplements C100 at the flash supply.
 
@@ -1240,8 +1240,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C102 — Oscillator local supply bypass
 
@@ -1255,8 +1255,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### C103 — Additional oscillator bypass
 
@@ -1270,8 +1270,8 @@ Local output reservoir and voltage-sense pickup for U5; the L/C output function 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### J4 — Shared power / JTAG / future data cable
 
@@ -1285,26 +1285,26 @@ One custom Type-D connector replaces separate power and debug connectors and res
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | JTAG_TMS | assigned net connected in native DRC |
-| 3 | — | Unassigned | unassigned — interface decision required |
-| 4 | — | GND | assigned, routing incomplete on net |
-| 5 | — | Unassigned | unassigned — interface decision required |
-| 6 | — | Unassigned | unassigned — interface decision required |
-| 7 | — | GND | assigned, routing incomplete on net |
-| 8 | — | Unassigned | unassigned — interface decision required |
-| 9 | — | Unassigned | unassigned — interface decision required |
-| 10 | — | GND | assigned, routing incomplete on net |
-| 11 | — | Unassigned | unassigned — interface decision required |
-| 12 | — | Unassigned | unassigned — interface decision required |
-| 13 | — | GND | assigned, routing incomplete on net |
-| 14 | — | Unassigned | unassigned — interface decision required |
+| 3 | — | Unassigned | reserved — interface implementation required |
+| 4 | — | GND | assigned net connected in native DRC |
+| 5 | — | Unassigned | reserved — interface implementation required |
+| 6 | — | Unassigned | reserved — interface implementation required |
+| 7 | — | GND | assigned net connected in native DRC |
+| 8 | — | Unassigned | reserved — interface implementation required |
+| 9 | — | Unassigned | reserved — interface implementation required |
+| 10 | — | GND | assigned net connected in native DRC |
+| 11 | — | Unassigned | reserved — interface implementation required |
+| 12 | — | Unassigned | reserved — interface implementation required |
+| 13 | — | GND | assigned net connected in native DRC |
+| 14 | — | Unassigned | reserved — interface implementation required |
 | 15 | — | JTAG_TDI | assigned net connected in native DRC |
-| 16 | — | GND | assigned, routing incomplete on net |
+| 16 | — | GND | assigned net connected in native DRC |
 | 17 | — | JTAG_TCK | assigned net connected in native DRC |
 | 18 | — | JTAG_TDO | assigned net connected in native DRC |
-| 19 | — | LINK_12V | assigned, routing incomplete on net |
-| SH | — | GND | assigned, routing incomplete on net |
+| 19 | — | LINK_12V | assigned net connected in native DRC |
+| SH | — | GND | assigned net connected in native DRC |
 
 ### J5 — 60-contact ASIC mezzanine
 
@@ -1320,65 +1320,65 @@ One half of the chosen two-connector ASIC interface; together J5/J6 offer 120 nu
 |---|---|---|---|
 | 1 | — | ASIC1_DATA1 | assigned net connected in native DRC |
 | 2 | — | ASIC1_DATA2 | assigned net connected in native DRC |
-| 3 | — | ASIC1_DATA3 | assigned, routing incomplete on net |
+| 3 | — | ASIC1_DATA3 | assigned net connected in native DRC |
 | 4 | — | ASIC1_DATA4 | assigned net connected in native DRC |
 | 5 | — | ASIC1_DATA5 | assigned net connected in native DRC |
-| 6 | — | ASIC1_DATA6 | assigned, routing incomplete on net |
+| 6 | — | ASIC1_DATA6 | assigned net connected in native DRC |
 | 7 | — | ASIC1_DATA7 | assigned net connected in native DRC |
 | 8 | — | ASIC1_DATA8 | assigned net connected in native DRC |
 | 9 | — | ASIC1_CLK32MHz_Out | assigned net connected in native DRC |
 | 10 | — | ASIC1_READ | assigned net connected in native DRC |
-| 11 | — | ASIC1_SYNC | assigned, routing incomplete on net |
-| 12 | — | ASIC2_DATA1 | assigned, routing incomplete on net |
+| 11 | — | ASIC1_SYNC | assigned net connected in native DRC |
+| 12 | — | ASIC2_DATA1 | assigned net connected in native DRC |
 | 13 | — | ASIC2_DATA2 | assigned net connected in native DRC |
-| 14 | — | ASIC2_DATA3 | assigned, routing incomplete on net |
-| 15 | — | ASIC2_DATA4 | assigned, routing incomplete on net |
-| 16 | — | ASIC2_DATA5 | assigned, routing incomplete on net |
-| 17 | — | ASIC2_DATA6 | assigned, routing incomplete on net |
-| 18 | — | ASIC2_DATA7 | assigned, routing incomplete on net |
+| 14 | — | ASIC2_DATA3 | assigned net connected in native DRC |
+| 15 | — | ASIC2_DATA4 | assigned net connected in native DRC |
+| 16 | — | ASIC2_DATA5 | assigned net connected in native DRC |
+| 17 | — | ASIC2_DATA6 | assigned net connected in native DRC |
+| 18 | — | ASIC2_DATA7 | assigned net connected in native DRC |
 | 19 | — | ASIC2_DATA8 | assigned net connected in native DRC |
-| 20 | — | ASIC2_CLK32MHz_Out | assigned, routing incomplete on net |
-| 21 | — | ASIC2_READ | assigned, routing incomplete on net |
-| 22 | — | ASIC2_SYNC | assigned, routing incomplete on net |
-| 23 | — | ASIC3_DATA1 | assigned, routing incomplete on net |
+| 20 | — | ASIC2_CLK32MHz_Out | assigned net connected in native DRC |
+| 21 | — | ASIC2_READ | assigned net connected in native DRC |
+| 22 | — | ASIC2_SYNC | assigned net connected in native DRC |
+| 23 | — | ASIC3_DATA1 | assigned net connected in native DRC |
 | 24 | — | ASIC3_DATA2 | assigned net connected in native DRC |
-| 25 | — | ASIC3_DATA3 | assigned, routing incomplete on net |
-| 26 | — | ASIC3_DATA4 | assigned, routing incomplete on net |
-| 27 | — | ASIC3_DATA5 | assigned, routing incomplete on net |
-| 28 | — | ASIC3_DATA6 | assigned, routing incomplete on net |
+| 25 | — | ASIC3_DATA3 | assigned net connected in native DRC |
+| 26 | — | ASIC3_DATA4 | assigned net connected in native DRC |
+| 27 | — | ASIC3_DATA5 | assigned net connected in native DRC |
+| 28 | — | ASIC3_DATA6 | assigned net connected in native DRC |
 | 29 | — | ASIC3_DATA7 | assigned net connected in native DRC |
-| 30 | — | ASIC3_DATA8 | assigned, routing incomplete on net |
+| 30 | — | ASIC3_DATA8 | assigned net connected in native DRC |
 | 31 | — | ASIC3_CLK32MHz_Out | assigned net connected in native DRC |
-| 32 | — | ASIC3_READ | assigned, routing incomplete on net |
-| 33 | — | ASIC3_SYNC | assigned, routing incomplete on net |
-| 34 | — | ASIC4_DATA1 | assigned, routing incomplete on net |
+| 32 | — | ASIC3_READ | assigned net connected in native DRC |
+| 33 | — | ASIC3_SYNC | assigned net connected in native DRC |
+| 34 | — | Unassigned | reserved — interface implementation required |
 | 35 | — | ASIC4_DATA2 | assigned net connected in native DRC |
-| 36 | — | ASIC4_DATA3 | assigned, routing incomplete on net |
+| 36 | — | ASIC4_DATA3 | assigned net connected in native DRC |
 | 37 | — | ASIC4_DATA4 | assigned net connected in native DRC |
-| 38 | — | ASIC4_DATA5 | assigned, routing incomplete on net |
-| 39 | — | ASIC4_DATA6 | assigned, routing incomplete on net |
-| 40 | — | ASIC4_DATA7 | assigned, routing incomplete on net |
-| 41 | — | ASIC4_DATA8 | assigned, routing incomplete on net |
-| 42 | — | ASIC4_CLK32MHz_Out | assigned, routing incomplete on net |
+| 38 | — | ASIC4_DATA5 | assigned net connected in native DRC |
+| 39 | — | ASIC4_DATA6 | assigned net connected in native DRC |
+| 40 | — | ASIC4_DATA7 | assigned net connected in native DRC |
+| 41 | — | ASIC4_DATA8 | assigned net connected in native DRC |
+| 42 | — | ASIC4_CLK32MHz_Out | assigned net connected in native DRC |
 | 43 | — | ASIC4_READ | assigned net connected in native DRC |
-| 44 | — | ASIC4_SYNC | assigned, routing incomplete on net |
-| 45 | — | CHIP_RESET_SHARED | assigned, routing incomplete on net |
+| 44 | — | ASIC4_SYNC | assigned net connected in native DRC |
+| 45 | — | CHIP_RESET_SHARED | assigned net connected in native DRC |
 | 46 | — | AC_IN_ANALOG_RESERVED | analog reserved — external source required; no FPGA connection |
-| 47 | — | IMP_TST_SHARED | assigned, routing incomplete on net |
-| 48 | — | FE_RESET_SHARED | assigned, routing incomplete on net |
+| 47 | — | IMP_TST_SHARED | assigned net connected in native DRC |
+| 48 | — | FE_RESET_SHARED | assigned net connected in native DRC |
 | 49 | — | SPI_LATCH_SHARED | assigned net connected in native DRC |
 | 50 | — | STIM_CLK_SHARED | assigned net connected in native DRC |
-| 51 | — | STIM_START_SHARED | assigned, routing incomplete on net |
+| 51 | — | STIM_START_SHARED | assigned net connected in native DRC |
 | 52 | — | STIM_EN_SHARED | assigned net connected in native DRC |
 | 53 | — | STIM_CHB_SHARED | assigned net connected in native DRC |
-| 54 | — | BOARD1_CLK | assigned, routing incomplete on net |
+| 54 | — | BOARD1_CLK | assigned net connected in native DRC |
 | 55 | — | BOARD2_CLK | assigned net connected in native DRC |
 | 56 | — | BOARD3_CLK | assigned net connected in native DRC |
-| 57 | — | BOARD4_CLK | assigned, routing incomplete on net |
+| 57 | — | BOARD4_CLK | assigned net connected in native DRC |
 | 58 | — | BOARD1_SPI_CLK | assigned net connected in native DRC |
-| 59 | — | BOARD2_SPI_CLK | assigned, routing incomplete on net |
+| 59 | — | BOARD2_SPI_CLK | assigned net connected in native DRC |
 | 60 | — | BOARD3_SPI_CLK | assigned net connected in native DRC |
-| G | — | GND | assigned, routing incomplete on net |
+| G | — | GND | assigned net connected in native DRC |
 
 ### J6 — 60-contact ASIC mezzanine
 
@@ -1398,61 +1398,61 @@ One half of the chosen two-connector ASIC interface; together J5/J6 offer 120 nu
 | 4 | — | ASIC5_DATA4 | assigned net connected in native DRC |
 | 5 | — | ASIC5_DATA5 | assigned net connected in native DRC |
 | 6 | — | ASIC5_DATA6 | assigned net connected in native DRC |
-| 7 | — | ASIC5_DATA7 | assigned, routing incomplete on net |
+| 7 | — | ASIC5_DATA7 | assigned net connected in native DRC |
 | 8 | — | ASIC5_DATA8 | assigned net connected in native DRC |
 | 9 | — | ASIC5_CLK32MHz_Out | assigned net connected in native DRC |
 | 10 | — | ASIC5_READ | assigned net connected in native DRC |
-| 11 | — | ASIC5_SYNC | assigned, routing incomplete on net |
+| 11 | — | ASIC5_SYNC | assigned net connected in native DRC |
 | 12 | — | ASIC6_DATA1 | assigned net connected in native DRC |
 | 13 | — | ASIC6_DATA2 | assigned net connected in native DRC |
-| 14 | — | ASIC6_DATA3 | assigned, routing incomplete on net |
-| 15 | — | ASIC6_DATA4 | assigned, routing incomplete on net |
-| 16 | — | ASIC6_DATA5 | assigned, routing incomplete on net |
-| 17 | — | ASIC6_DATA6 | assigned, routing incomplete on net |
-| 18 | — | ASIC6_DATA7 | assigned, routing incomplete on net |
-| 19 | — | ASIC6_DATA8 | assigned, routing incomplete on net |
+| 14 | — | ASIC6_DATA3 | assigned net connected in native DRC |
+| 15 | — | ASIC6_DATA4 | assigned net connected in native DRC |
+| 16 | — | ASIC6_DATA5 | assigned net connected in native DRC |
+| 17 | — | ASIC6_DATA6 | assigned net connected in native DRC |
+| 18 | — | ASIC6_DATA7 | assigned net connected in native DRC |
+| 19 | — | ASIC6_DATA8 | assigned net connected in native DRC |
 | 20 | — | ASIC6_CLK32MHz_Out | assigned net connected in native DRC |
-| 21 | — | ASIC6_READ | assigned, routing incomplete on net |
+| 21 | — | ASIC6_READ | assigned net connected in native DRC |
 | 22 | — | ASIC6_SYNC | assigned net connected in native DRC |
-| 23 | — | ASIC7_DATA1 | assigned, routing incomplete on net |
+| 23 | — | ASIC7_DATA1 | assigned net connected in native DRC |
 | 24 | — | ASIC7_DATA2 | assigned net connected in native DRC |
 | 25 | — | ASIC7_DATA3 | assigned net connected in native DRC |
-| 26 | — | ASIC7_DATA4 | assigned, routing incomplete on net |
+| 26 | — | ASIC7_DATA4 | assigned net connected in native DRC |
 | 27 | — | ASIC7_DATA5 | assigned net connected in native DRC |
 | 28 | — | ASIC7_DATA6 | assigned net connected in native DRC |
-| 29 | — | ASIC7_DATA7 | assigned, routing incomplete on net |
+| 29 | — | ASIC7_DATA7 | assigned net connected in native DRC |
 | 30 | — | ASIC7_DATA8 | assigned net connected in native DRC |
-| 31 | — | ASIC7_CLK32MHz_Out | assigned, routing incomplete on net |
+| 31 | — | ASIC7_CLK32MHz_Out | assigned net connected in native DRC |
 | 32 | — | ASIC7_READ | assigned net connected in native DRC |
-| 33 | — | ASIC7_SYNC | assigned, routing incomplete on net |
-| 34 | — | ASIC8_DATA1 | assigned, routing incomplete on net |
-| 35 | — | ASIC8_DATA2 | assigned, routing incomplete on net |
-| 36 | — | ASIC8_DATA3 | assigned, routing incomplete on net |
-| 37 | — | ASIC8_DATA4 | assigned, routing incomplete on net |
-| 38 | — | ASIC8_DATA5 | assigned, routing incomplete on net |
-| 39 | — | ASIC8_DATA6 | assigned, routing incomplete on net |
-| 40 | — | ASIC8_DATA7 | assigned, routing incomplete on net |
-| 41 | — | ASIC8_DATA8 | assigned, routing incomplete on net |
+| 33 | — | ASIC7_SYNC | assigned net connected in native DRC |
+| 34 | — | ASIC8_DATA1 | assigned net connected in native DRC |
+| 35 | — | ASIC8_DATA2 | assigned net connected in native DRC |
+| 36 | — | ASIC8_DATA3 | assigned net connected in native DRC |
+| 37 | — | Unassigned | reserved — interface implementation required |
+| 38 | — | ASIC8_DATA5 | assigned net connected in native DRC |
+| 39 | — | ASIC8_DATA6 | assigned net connected in native DRC |
+| 40 | — | ASIC8_DATA7 | assigned net connected in native DRC |
+| 41 | — | ASIC8_DATA8 | assigned net connected in native DRC |
 | 42 | — | ASIC8_CLK32MHz_Out | assigned net connected in native DRC |
-| 43 | — | ASIC8_READ | assigned, routing incomplete on net |
-| 44 | — | ASIC8_SYNC | assigned, routing incomplete on net |
+| 43 | — | ASIC8_READ | assigned net connected in native DRC |
+| 44 | — | ASIC8_SYNC | assigned net connected in native DRC |
 | 45 | — | BOARD4_SPI_CLK | assigned net connected in native DRC |
-| 46 | — | STIM_CHIP1_SPI_DL | assigned, routing incomplete on net |
-| 47 | — | STIM_CHIP1_SPI_DR | assigned, routing incomplete on net |
+| 46 | — | STIM_CHIP1_SPI_DL | assigned net connected in native DRC |
+| 47 | — | STIM_CHIP1_SPI_DR | assigned net connected in native DRC |
 | 48 | — | STIM_CHIP2_SPI_DL | assigned net connected in native DRC |
-| 49 | — | STIM_CHIP2_SPI_DR | assigned, routing incomplete on net |
-| 50 | — | STIM_CHIP3_SPI_DL | assigned, routing incomplete on net |
-| 51 | — | STIM_CHIP3_SPI_DR | assigned, routing incomplete on net |
+| 49 | — | STIM_CHIP2_SPI_DR | assigned net connected in native DRC |
+| 50 | — | STIM_CHIP3_SPI_DL | assigned net connected in native DRC |
+| 51 | — | STIM_CHIP3_SPI_DR | assigned net connected in native DRC |
 | 52 | — | STIM_CHIP4_SPI_DL | assigned net connected in native DRC |
-| 53 | — | STIM_CHIP4_SPI_DR | assigned, routing incomplete on net |
-| 54 | — | NONSTIM_BOARD1_SPI_DL | assigned, routing incomplete on net |
-| 55 | — | NONSTIM_BOARD1_SPI_DR | assigned, routing incomplete on net |
+| 53 | — | STIM_CHIP4_SPI_DR | assigned net connected in native DRC |
+| 54 | — | NONSTIM_BOARD1_SPI_DL | assigned net connected in native DRC |
+| 55 | — | NONSTIM_BOARD1_SPI_DR | assigned net connected in native DRC |
 | 56 | — | NONSTIM_BOARD2_SPI_DL | assigned net connected in native DRC |
 | 57 | — | NONSTIM_BOARD2_SPI_DR | assigned net connected in native DRC |
-| 58 | — | Unassigned | unassigned — interface decision required |
-| 59 | — | Unassigned | unassigned — interface decision required |
-| 60 | — | Unassigned | unassigned — interface decision required |
-| G | — | GND | assigned, routing incomplete on net |
+| 58 | — | ASIC8_DATA4 | assigned net connected in native DRC |
+| 59 | — | Unassigned | reserved — interface implementation required |
+| 60 | — | ASIC4_DATA1 | assigned net connected in native DRC |
+| G | — | GND | assigned net connected in native DRC |
 
 ### L1 — Buck energy-storage inductor
 
@@ -1482,7 +1482,7 @@ Carries U3 switched current to its local output capacitor C9; this is part of th
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SW_AUX | assigned net connected in native DRC |
-| 2 | — | VAUX_REG_1V803 | assigned, routing incomplete on net |
+| 2 | — | VAUX_REG_1V803 | assigned net connected in native DRC |
 
 ### L3 — Buck energy-storage inductor
 
@@ -1497,7 +1497,7 @@ Carries U4 switched current to its local output capacitor C13; this is part of t
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SW_CFG | assigned net connected in native DRC |
-| 2 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
+| 2 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
 
 ### L4 — Buck energy-storage inductor
 
@@ -1512,7 +1512,7 @@ Carries U5 switched current to its local output capacitor C17; this is part of t
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | SW_ASIC | assigned net connected in native DRC |
-| 2 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
+| 2 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
 
 ### R1 — Core / block ram feedback divider
 
@@ -1542,7 +1542,7 @@ The lower resistor of U2 output-setting divider; R1/R2 determines the chosen reg
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | FB_CORE | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### R3 — Auxiliary / configuration feedback divider
 
@@ -1556,7 +1556,7 @@ The upper resistor of U3 output-setting divider; R3/R4 determines the chosen reg
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VAUX_REG_1V803 | assigned, routing incomplete on net |
+| 1 | — | VAUX_REG_1V803 | assigned net connected in native DRC |
 | 2 | — | FB_AUX | assigned net connected in native DRC |
 
 ### R4 — Auxiliary / configuration feedback divider
@@ -1572,7 +1572,7 @@ The lower resistor of U3 output-setting divider; R3/R4 determines the chosen reg
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | FB_AUX | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### R5 — 2.5 v link bank feedback divider
 
@@ -1586,7 +1586,7 @@ The upper resistor of U4 output-setting divider; R5/R6 determines the chosen reg
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_LINK_2V5 | assigned, routing incomplete on net |
+| 1 | — | VCC_LINK_2V5 | assigned net connected in native DRC |
 | 2 | — | FB_CFG | assigned net connected in native DRC |
 
 ### R6 — 2.5 v link bank feedback divider
@@ -1602,7 +1602,7 @@ The lower resistor of U4 output-setting divider; R5/R6 determines the chosen reg
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | FB_CFG | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### R7 — 1.5 v asic-facing banks feedback divider
 
@@ -1616,7 +1616,7 @@ The upper resistor of U5 output-setting divider; R7/R8 determines the chosen reg
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCC_ASIC_1V5 | assigned, routing incomplete on net |
+| 1 | — | VCC_ASIC_1V5 | assigned net connected in native DRC |
 | 2 | — | FB_ASIC | assigned net connected in native DRC |
 
 ### R8 — 1.5 v asic-facing banks feedback divider
@@ -1632,13 +1632,13 @@ The lower resistor of U5 output-setting divider; R7/R8 determines the chosen reg
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | FB_ASIC | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
+| 2 | — | GND | assigned net connected in native DRC |
 
 ### R9 — Distributed-capacitance isolation
 
-**Value:** 15m 1% 1W · **Decision:** Keep function
+**Value:** 12m 1% 1W · **Decision:** Keep function
 
-15 milliohm series element between VCORE_REG_1V025 and VCCINT_1V0; local sensing remains upstream, distributed FPGA capacitors downstream.
+12 milliohm series element between VCORE_REG_1V025 and VCCINT_1V0; local sensing remains upstream and distributed FPGA capacitors downstream. Reduces DC loss relative to the earlier 15 milliohm selection while retaining the reviewed isolation margin.
 
 **If removed:** Removing it opens the rail; shorting it defeats the deliberately separated local and distributed capacitor networks.
 
@@ -1647,7 +1647,7 @@ The lower resistor of U5 output-setting divider; R7/R8 determines the chosen reg
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | — | VCORE_REG_1V025 | assigned net connected in native DRC |
-| 2 | — | VCCINT_1V0 | assigned, routing incomplete on net |
+| 2 | — | VCCINT_1V0 | assigned net connected in native DRC |
 
 ### R10 — Power-up sequencing pull-up
 
@@ -1661,7 +1661,7 @@ Pulls PG_CORE high when U2 releases its open-drain power-good output; that signa
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
 | 2 | — | PG_CORE | assigned net connected in native DRC |
 
 ### R11 — Power-up sequencing pull-up
@@ -1676,23 +1676,8 @@ Pulls PG_AUX high when U3 releases its open-drain power-good output; that signal
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | LINK_12V | assigned, routing incomplete on net |
+| 1 | — | LINK_12V | assigned net connected in native DRC |
 | 2 | — | PG_AUX | assigned net connected in native DRC |
-
-### R12 — Unconsumed I/O-good status pull-up
-
-**Value:** 100k · **Decision:** Removal candidate
-
-Pulls up the wired-together U4/U5 power-good outputs, but PGOOD_IO has no FPGA, connector, supervisor or other consumer.
-
-**If removed:** No existing rail-enable or data path is removed. The status branch would lose its defined high state.
-
-**Review:** Remove candidate: delete this status-only branch deliberately, or define a real monitor. No component has been removed in this presentation audit.
-
-| Pin | Function | Native net | Status |
-|---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | — | PGOOD_IO | assigned net connected in native DRC |
 
 ### R100 — Flash chip-select pull-up
 
@@ -1706,22 +1691,22 @@ Holds FLASH_CS_B high while FPGA control is high impedance, preventing accidenta
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FLASH_CS_B | assigned net connected in native DRC |
 
 ### R101 — Flash WP / DQ2 default high
 
 **Value:** 4.7k · **Decision:** Depends on system choice
 
-Pulls U6 WP#/SIO2 high for the initial single-bit SPI interface while allowing quad-data use later.
+Holds flash U6.3 WP#/SIO2 high for the selected single-bit SPI boot. The optional FPGA DQ2 path and R106 are removed; this resistor still supplies the required defined flash input level.
 
 **If removed:** The flash write-protect/data pin may lose its defined default level when FPGA outputs are undriven.
 
-**Review:** Keep for current flash/boot strategy; simplify only with a verified reset/mode/programming contract.
+**Review:** Keep the flash WP# pull-up. The image and programmer must use SPI x1; quad boot is not wired in this revision.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FLASH_DQ2 | assigned net connected in native DRC |
 
 ### R102 — Flash RESET / DQ3 default high
@@ -1736,7 +1721,7 @@ Pulls U6 RESET#/SIO3 high so the selected flash is not unintentionally held in r
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FLASH_DQ3 | assigned net connected in native DRC |
 
 ### R103 — Flash clock source damping
@@ -1784,36 +1769,6 @@ Provides an editable series location in the DQ0 path. Its fitted 0 ohm value is 
 | 1 | — | FPGA_CFG_DQ1 | assigned net connected in native DRC |
 | 2 | — | FLASH_DQ1 | assigned net connected in native DRC |
 
-### R106 — Zero-ohm flash signal link
-
-**Value:** 0 · **Decision:** Check before reducing
-
-Provides an editable series location in the DQ2 path. Its fitted 0 ohm value is electrically a link.
-
-**If removed:** Depopulating it breaks the signal; a deliberate trace replacement keeps connectivity.
-
-**Review:** Footprint-removal candidate after signal-integrity/boot-mode review; do not confuse removing the component with leaving an open circuit.
-
-| Pin | Function | Native net | Status |
-|---|---|---|---|
-| 1 | — | FPGA_CFG_DQ2 | assigned net connected in native DRC |
-| 2 | — | FLASH_DQ2 | assigned net connected in native DRC |
-
-### R107 — Zero-ohm flash signal link
-
-**Value:** 0 · **Decision:** Check before reducing
-
-Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is electrically a link.
-
-**If removed:** Depopulating it breaks the signal; a deliberate trace replacement keeps connectivity.
-
-**Review:** Footprint-removal candidate after signal-integrity/boot-mode review; do not confuse removing the component with leaving an open circuit.
-
-| Pin | Function | Native net | Status |
-|---|---|---|---|
-| 1 | — | FPGA_CFG_DQ3 | assigned net connected in native DRC |
-| 2 | — | FLASH_DQ3 | assigned net connected in native DRC |
-
 ### R108 — PROGRAM_B pull-up
 
 **Value:** 4.7k · **Decision:** Keep function
@@ -1826,7 +1781,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FPGA_PROGRAM_B | assigned net connected in native DRC |
 
 ### R109 — INIT_B pull-up
@@ -1841,7 +1796,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FPGA_INIT_B | assigned net connected in native DRC |
 
 ### R110 — Additional DONE pull-up
@@ -1856,7 +1811,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | FPGA_DONE | assigned net connected in native DRC |
 
 ### R111 — Configuration strap M0
@@ -1871,23 +1826,8 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | CFG_M0 | assigned net connected in native DRC |
-
-### R113 — Configuration strap M2
-
-**Value:** 1k · **Decision:** Depends on system choice
-
-1 kilohm sets M2 to GND / low. M[2:0]=001 chooses SPI; PUDC_B high disables configuration-time user-I/O pull-ups.
-
-**If removed:** The deliberately fixed configuration input loses its chosen strap unless replaced by a direct connection.
-
-**Review:** The stable logic level is needed; the separate resistor is not inherently needed. UG470 permits a direct rail/GND tie, so a later revision can replace it with copper after the pin and configuration choice is frozen.
-
-| Pin | Function | Native net | Status |
-|---|---|---|---|
-| 1 | — | CFG_M2 | assigned net connected in native DRC |
-| 2 | — | GND | assigned, routing incomplete on net |
 
 ### R114 — Configuration strap PUDC_B
 
@@ -1901,7 +1841,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | CFG_PUDC_B | assigned net connected in native DRC |
 
 ### R115 — JTAG TMS external idle bias
@@ -1916,7 +1856,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | JTAG_TMS | assigned net connected in native DRC |
 
 ### R116 — JTAG TDI external idle bias
@@ -1931,7 +1871,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | JTAG_TDI | assigned net connected in native DRC |
 
 ### R117 — JTAG TCK external idle bias
@@ -1946,7 +1886,7 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 | 2 | — | JTAG_TCK | assigned net connected in native DRC |
 
 ### R118 — JTAG TDO source damping
@@ -1991,345 +1931,345 @@ Provides an editable series location in the DQ3 path. Its fitted 0 ohm value is 
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | — | VAUX_REG_1V803 | assigned, routing incomplete on net |
-| 2 | — | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 1 | — | VAUX_REG_1V803 | assigned net connected in native DRC |
+| 2 | — | VCCAUX_1V8 | assigned net connected in native DRC |
 
 ### U1 — Acquire, time and package ASIC data
 
-**Value:** XC7A100T-CSG324 · **Decision:** Keep function
+**Value:** XC7A100T-1CSG324I · **Decision:** Keep function
 
 The XC7A100T is the board logic device. Its planned firmware captures the ASIC interface, supplies control/clock signals and sends data downstream.
 
 **If removed:** There is no FPGA function.
 
-**Review:** Keep. The 116 candidate digital ASIC balls are provisionally assigned; AC_IN is an external analog reservation and U1.A13 is NC. Speed/temperature grade, RTL clock resources and timing still require validation.
+**Review:** Keep XC7A100T-1CSG324I. The 116 candidate digital ASIC balls are assigned; AC_IN is external analog. Eighty-one balls are intentionally NC and eight future-link balls remain reserved. Clock placement, external timing and powered operation still require validation.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | A1 | IO_L9N_T1_DQS_AD7N_35 | ASIC2_DATA8 | assigned net connected in native DRC |
-| A2 | GND | GND | assigned, routing incomplete on net |
-| A3 | IO_L8N_T1_AD14N_35 | ASIC2_DATA5 | assigned, routing incomplete on net |
+| A2 | GND | GND | assigned net connected in native DRC |
+| A3 | IO_L8N_T1_AD14N_35 | ASIC2_DATA5 | assigned net connected in native DRC |
 | A4 | IO_L8P_T1_AD14P_35 | ASIC4_DATA2 | assigned net connected in native DRC |
 | A5 | IO_L3N_T0_DQS_AD5N_35 | ASIC4_DATA4 | assigned net connected in native DRC |
-| A6 | IO_L3P_T0_DQS_AD5P_35 | ASIC4_DATA5 | assigned, routing incomplete on net |
-| A7 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| A8 | IO_L12N_T1_MRCC_16 | Unassigned | unassigned — interface decision required |
-| A9 | IO_L14N_T2_SRCC_16 | Unassigned | unassigned — interface decision required |
-| A10 | IO_L14P_T2_SRCC_16 | Unassigned | unassigned — interface decision required |
+| A6 | IO_L3P_T0_DQS_AD5P_35 | ASIC4_DATA5 | assigned net connected in native DRC |
+| A7 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| A8 | IO_L12N_T1_MRCC_16 | Unassigned | reserved — interface implementation required |
+| A9 | IO_L14N_T2_SRCC_16 | Unassigned | reserved — interface implementation required |
+| A10 | IO_L14P_T2_SRCC_16 | Unassigned | reserved — interface implementation required |
 | A11 | IO_L4N_T0_15 | SPI_LATCH_SHARED | assigned net connected in native DRC |
-| A12 | GND | GND | assigned, routing incomplete on net |
+| A12 | GND | GND | assigned net connected in native DRC |
 | A13 | IO_L9P_T1_DQS_AD3P_15 | Unassigned | intentional no-connect |
-| A14 | IO_L9N_T1_DQS_AD3N_15 | BOARD2_SPI_CLK | assigned, routing incomplete on net |
+| A14 | IO_L9N_T1_DQS_AD3N_15 | BOARD2_SPI_CLK | assigned net connected in native DRC |
 | A15 | IO_L8P_T1_AD10P_15 | STIM_EN_SHARED | assigned net connected in native DRC |
 | A16 | IO_L8N_T1_AD10N_15 | BOARD3_CLK | assigned net connected in native DRC |
-| A17 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
+| A17 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
 | A18 | IO_L10N_T1_AD11N_15 | BOARD3_SPI_CLK | assigned net connected in native DRC |
 | B1 | IO_L9P_T1_DQS_AD7P_35 | ASIC1_READ | assigned net connected in native DRC |
-| B2 | IO_L10N_T1_AD15N_35 | ASIC2_READ | assigned, routing incomplete on net |
-| B3 | IO_L10P_T1_AD15P_35 | ASIC2_DATA3 | assigned, routing incomplete on net |
-| B4 | IO_L7N_T1_AD6N_35 | ASIC2_SYNC | assigned, routing incomplete on net |
-| B5 | GND | GND | assigned, routing incomplete on net |
-| B6 | IO_L2N_T0_AD12N_35 | ASIC4_DATA6 | assigned, routing incomplete on net |
+| B2 | IO_L10N_T1_AD15N_35 | ASIC2_READ | assigned net connected in native DRC |
+| B3 | IO_L10P_T1_AD15P_35 | ASIC2_DATA3 | assigned net connected in native DRC |
+| B4 | IO_L7N_T1_AD6N_35 | ASIC2_SYNC | assigned net connected in native DRC |
+| B5 | GND | GND | assigned net connected in native DRC |
+| B6 | IO_L2N_T0_AD12N_35 | ASIC4_DATA6 | assigned net connected in native DRC |
 | B7 | IO_L2P_T0_AD12P_35 | ASIC4_READ | assigned net connected in native DRC |
-| B8 | IO_L12P_T1_MRCC_16 | Unassigned | unassigned — interface decision required |
-| B9 | IO_L11N_T1_SRCC_16 | Unassigned | unassigned — interface decision required |
-| B10 | VCCO_16 | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| B11 | IO_L4P_T0_15 | IMP_TST_SHARED | assigned, routing incomplete on net |
+| B8 | IO_L12P_T1_MRCC_16 | Unassigned | reserved — interface implementation required |
+| B9 | IO_L11N_T1_SRCC_16 | Unassigned | reserved — interface implementation required |
+| B10 | VCCO_16 | VCC_LINK_2V5 | assigned net connected in native DRC |
+| B11 | IO_L4P_T0_15 | IMP_TST_SHARED | assigned net connected in native DRC |
 | B12 | IO_L3N_T0_DQS_AD1N_15 | STIM_CHB_SHARED | assigned net connected in native DRC |
 | B13 | IO_L2P_T0_AD8P_15 | BOARD2_CLK | assigned net connected in native DRC |
-| B14 | IO_L2N_T0_AD8N_15 | FE_RESET_SHARED | assigned, routing incomplete on net |
-| B15 | GND | GND | assigned, routing incomplete on net |
-| B16 | IO_L7P_T1_AD2P_15 | BOARD1_CLK | assigned, routing incomplete on net |
+| B14 | IO_L2N_T0_AD8N_15 | FE_RESET_SHARED | assigned net connected in native DRC |
+| B15 | GND | GND | assigned net connected in native DRC |
+| B16 | IO_L7P_T1_AD2P_15 | BOARD1_CLK | assigned net connected in native DRC |
 | B17 | IO_L7N_T1_AD2N_15 | BOARD1_SPI_CLK | assigned net connected in native DRC |
-| B18 | IO_L10P_T1_AD11P_15 | Unassigned | unassigned — interface decision required |
+| B18 | IO_L10P_T1_AD11P_15 | Unassigned | intentional no-connect |
 | C1 | IO_L16N_T2_35 | ASIC1_DATA8 | assigned net connected in native DRC |
-| C2 | IO_L16P_T2_35 | ASIC2_DATA1 | assigned, routing incomplete on net |
-| C3 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| C4 | IO_L7P_T1_AD6P_35 | ASIC2_DATA7 | assigned, routing incomplete on net |
-| C5 | IO_L1N_T0_AD4N_35 | ASIC4_DATA1 | assigned, routing incomplete on net |
-| C6 | IO_L1P_T0_AD4P_35 | ASIC4_DATA3 | assigned, routing incomplete on net |
-| C7 | IO_L4N_T0_35 | ASIC4_DATA7 | assigned, routing incomplete on net |
-| C8 | GND | GND | assigned, routing incomplete on net |
-| C9 | IO_L11P_T1_SRCC_16 | Unassigned | unassigned — interface decision required |
-| C10 | IO_L13N_T2_MRCC_16 | Unassigned | unassigned — interface decision required |
-| C11 | IO_L13P_T2_MRCC_16 | Unassigned | unassigned — interface decision required |
-| C12 | IO_L3P_T0_DQS_AD1P_15 | STIM_START_SHARED | assigned, routing incomplete on net |
-| C13 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| C14 | IO_L1N_T0_AD0N_15 | BOARD4_CLK | assigned, routing incomplete on net |
-| C15 | IO_L12N_T1_MRCC_15 | Unassigned | unassigned — interface decision required |
+| C2 | IO_L16P_T2_35 | ASIC2_DATA1 | assigned net connected in native DRC |
+| C3 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| C4 | IO_L7P_T1_AD6P_35 | ASIC2_DATA7 | assigned net connected in native DRC |
+| C5 | IO_L1N_T0_AD4N_35 | ASIC4_DATA1 | assigned net connected in native DRC |
+| C6 | IO_L1P_T0_AD4P_35 | ASIC4_DATA3 | assigned net connected in native DRC |
+| C7 | IO_L4N_T0_35 | ASIC4_DATA7 | assigned net connected in native DRC |
+| C8 | GND | GND | assigned net connected in native DRC |
+| C9 | IO_L11P_T1_SRCC_16 | Unassigned | reserved — interface implementation required |
+| C10 | IO_L13N_T2_MRCC_16 | Unassigned | reserved — interface implementation required |
+| C11 | IO_L13P_T2_MRCC_16 | Unassigned | reserved — interface implementation required |
+| C12 | IO_L3P_T0_DQS_AD1P_15 | STIM_START_SHARED | assigned net connected in native DRC |
+| C13 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| C14 | IO_L1N_T0_AD0N_15 | BOARD4_CLK | assigned net connected in native DRC |
+| C15 | IO_L12N_T1_MRCC_15 | Unassigned | intentional no-connect |
 | C16 | IO_L20P_T3_A20_15 | STIM_CLK_SHARED | assigned net connected in native DRC |
-| C17 | IO_L20N_T3_A19_15 | Unassigned | unassigned — interface decision required |
-| C18 | GND | GND | assigned, routing incomplete on net |
-| D1 | GND | GND | assigned, routing incomplete on net |
-| D2 | IO_L14N_T2_SRCC_35 | Unassigned | unassigned — interface decision required |
-| D3 | IO_L12N_T1_MRCC_35 | Unassigned | unassigned — interface decision required |
-| D4 | IO_L11N_T1_SRCC_35 | Unassigned | unassigned — interface decision required |
-| D5 | IO_L11P_T1_SRCC_35 | ASIC4_CLK32MHz_Out | assigned, routing incomplete on net |
-| D6 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| D7 | IO_L6N_T0_VREF_35 | Unassigned | unassigned — interface decision required |
-| D8 | IO_L4P_T0_35 | ASIC4_SYNC | assigned, routing incomplete on net |
-| D9 | IO_L6N_T0_VREF_16 | Unassigned | unassigned — interface decision required |
-| D10 | IO_L19N_T3_VREF_16 | Unassigned | unassigned — interface decision required |
-| D11 | GND | GND | assigned, routing incomplete on net |
-| D12 | IO_L6P_T0_15 | CHIP_RESET_SHARED | assigned, routing incomplete on net |
-| D13 | IO_L6N_T0_VREF_15 | Unassigned | unassigned — interface decision required |
-| D14 | IO_L1P_T0_AD0P_15 | Unassigned | unassigned — interface decision required |
-| D15 | IO_L12P_T1_MRCC_15 | Unassigned | unassigned — interface decision required |
-| D16 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| D17 | IO_L16N_T2_A27_15 | Unassigned | unassigned — interface decision required |
-| D18 | IO_L21N_T3_DQS_A18_15 | Unassigned | unassigned — interface decision required |
+| C17 | IO_L20N_T3_A19_15 | Unassigned | intentional no-connect |
+| C18 | GND | GND | assigned net connected in native DRC |
+| D1 | GND | GND | assigned net connected in native DRC |
+| D2 | IO_L14N_T2_SRCC_35 | Unassigned | intentional no-connect |
+| D3 | IO_L12N_T1_MRCC_35 | Unassigned | intentional no-connect |
+| D4 | IO_L11N_T1_SRCC_35 | Unassigned | intentional no-connect |
+| D5 | IO_L11P_T1_SRCC_35 | ASIC4_CLK32MHz_Out | assigned net connected in native DRC |
+| D6 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| D7 | IO_L6N_T0_VREF_35 | Unassigned | intentional no-connect |
+| D8 | IO_L4P_T0_35 | ASIC4_SYNC | assigned net connected in native DRC |
+| D9 | IO_L6N_T0_VREF_16 | Unassigned | intentional no-connect |
+| D10 | IO_L19N_T3_VREF_16 | Unassigned | intentional no-connect |
+| D11 | GND | GND | assigned net connected in native DRC |
+| D12 | IO_L6P_T0_15 | CHIP_RESET_SHARED | assigned net connected in native DRC |
+| D13 | IO_L6N_T0_VREF_15 | Unassigned | intentional no-connect |
+| D14 | IO_L1P_T0_AD0P_15 | Unassigned | intentional no-connect |
+| D15 | IO_L12P_T1_MRCC_15 | Unassigned | intentional no-connect |
+| D16 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| D17 | IO_L16N_T2_A27_15 | Unassigned | intentional no-connect |
+| D18 | IO_L21N_T3_DQS_A18_15 | Unassigned | intentional no-connect |
 | E1 | IO_L18N_T2_35 | ASIC1_DATA4 | assigned net connected in native DRC |
 | E2 | IO_L14P_T2_SRCC_35 | ASIC1_CLK32MHz_Out | assigned net connected in native DRC |
-| E3 | IO_L12P_T1_MRCC_35 | ASIC2_CLK32MHz_Out | assigned, routing incomplete on net |
-| E4 | GND | GND | assigned, routing incomplete on net |
-| E5 | IO_L5N_T0_AD13N_35 | ASIC3_DATA6 | assigned, routing incomplete on net |
-| E6 | IO_L5P_T0_AD13P_35 | ASIC3_READ | assigned, routing incomplete on net |
-| E7 | IO_L6P_T0_35 | ASIC4_DATA8 | assigned, routing incomplete on net |
-| E8 | VCCBATT_0 | GND | assigned, routing incomplete on net |
+| E3 | IO_L12P_T1_MRCC_35 | ASIC2_CLK32MHz_Out | assigned net connected in native DRC |
+| E4 | GND | GND | assigned net connected in native DRC |
+| E5 | IO_L5N_T0_AD13N_35 | ASIC3_DATA6 | assigned net connected in native DRC |
+| E6 | IO_L5P_T0_AD13P_35 | ASIC3_READ | assigned net connected in native DRC |
+| E7 | IO_L6P_T0_35 | ASIC4_DATA8 | assigned net connected in native DRC |
+| E8 | VCCBATT_0 | GND | assigned net connected in native DRC |
 | E9 | CCLK_0 | FPGA_CCLK | assigned net connected in native DRC |
 | E10 | TCK_0 | JTAG_TCK | assigned net connected in native DRC |
 | E11 | TDI_0 | JTAG_TDI | assigned net connected in native DRC |
 | E12 | TMS_0 | JTAG_TMS | assigned net connected in native DRC |
 | E13 | TDO_0 | FPGA_TDO | assigned net connected in native DRC |
-| E14 | GND | GND | assigned, routing incomplete on net |
-| E15 | IO_L11P_T1_SRCC_15 | Unassigned | unassigned — interface decision required |
-| E16 | IO_L11N_T1_SRCC_15 | Unassigned | unassigned — interface decision required |
-| E17 | IO_L16P_T2_A28_15 | Unassigned | unassigned — interface decision required |
-| E18 | IO_L21P_T3_DQS_15 | Unassigned | unassigned — interface decision required |
+| E14 | GND | GND | assigned net connected in native DRC |
+| E15 | IO_L11P_T1_SRCC_15 | Unassigned | intentional no-connect |
+| E16 | IO_L11N_T1_SRCC_15 | Unassigned | intentional no-connect |
+| E17 | IO_L16P_T2_A28_15 | Unassigned | intentional no-connect |
+| E18 | IO_L21P_T3_DQS_15 | Unassigned | intentional no-connect |
 | F1 | IO_L18P_T2_35 | ASIC1_DATA2 | assigned net connected in native DRC |
-| F2 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| F3 | IO_L13N_T2_MRCC_35 | Unassigned | unassigned — interface decision required |
+| F2 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| F3 | IO_L13N_T2_MRCC_35 | Unassigned | intentional no-connect |
 | F4 | IO_L13P_T2_MRCC_35 | ASIC3_CLK32MHz_Out | assigned net connected in native DRC |
-| F5 | IO_0_35 | ASIC3_DATA4 | assigned, routing incomplete on net |
-| F6 | IO_L19N_T3_VREF_35 | Unassigned | unassigned — interface decision required |
-| F7 | GND | GND | assigned, routing incomplete on net |
-| F8 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| F9 | GND | GND | assigned, routing incomplete on net |
-| F10 | VCCBRAM | VCCINT_1V0 | assigned, routing incomplete on net |
-| F11 | GND | GND | assigned, routing incomplete on net |
-| F12 | VCCAUX | VCCAUX_1V8 | assigned, routing incomplete on net |
-| F13 | IO_L5P_T0_AD9P_15 | Unassigned | unassigned — interface decision required |
-| F14 | IO_L5N_T0_AD9N_15 | Unassigned | unassigned — interface decision required |
-| F15 | IO_L14P_T2_SRCC_15 | Unassigned | unassigned — interface decision required |
-| F16 | IO_L14N_T2_SRCC_15 | Unassigned | unassigned — interface decision required |
-| F17 | GND | GND | assigned, routing incomplete on net |
-| F18 | IO_L22N_T3_A16_15 | Unassigned | unassigned — interface decision required |
+| F5 | IO_0_35 | ASIC3_DATA4 | assigned net connected in native DRC |
+| F6 | IO_L19N_T3_VREF_35 | Unassigned | intentional no-connect |
+| F7 | GND | GND | assigned net connected in native DRC |
+| F8 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| F9 | GND | GND | assigned net connected in native DRC |
+| F10 | VCCBRAM | VCCINT_1V0 | assigned net connected in native DRC |
+| F11 | GND | GND | assigned net connected in native DRC |
+| F12 | VCCAUX | VCCAUX_1V8 | assigned net connected in native DRC |
+| F13 | IO_L5P_T0_AD9P_15 | Unassigned | intentional no-connect |
+| F14 | IO_L5N_T0_AD9N_15 | Unassigned | intentional no-connect |
+| F15 | IO_L14P_T2_SRCC_15 | Unassigned | intentional no-connect |
+| F16 | IO_L14N_T2_SRCC_15 | Unassigned | intentional no-connect |
+| F17 | GND | GND | assigned net connected in native DRC |
+| F18 | IO_L22N_T3_A16_15 | Unassigned | intentional no-connect |
 | G1 | IO_L17N_T2_35 | ASIC1_DATA7 | assigned net connected in native DRC |
-| G2 | IO_L15N_T2_DQS_35 | ASIC1_DATA6 | assigned, routing incomplete on net |
-| G3 | IO_L20N_T3_35 | ASIC2_DATA6 | assigned, routing incomplete on net |
-| G4 | IO_L20P_T3_35 | ASIC3_DATA5 | assigned, routing incomplete on net |
-| G5 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| G6 | IO_L19P_T3_35 | ASIC3_DATA8 | assigned, routing incomplete on net |
-| G7 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| G8 | GND | GND | assigned, routing incomplete on net |
-| G9 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| G10 | GND | GND | assigned, routing incomplete on net |
-| G11 | VCCBRAM | VCCINT_1V0 | assigned, routing incomplete on net |
-| G12 | GND | GND | assigned, routing incomplete on net |
-| G13 | IO_0_15 | Unassigned | unassigned — interface decision required |
+| G2 | IO_L15N_T2_DQS_35 | ASIC1_DATA6 | assigned net connected in native DRC |
+| G3 | IO_L20N_T3_35 | ASIC2_DATA6 | assigned net connected in native DRC |
+| G4 | IO_L20P_T3_35 | ASIC3_DATA5 | assigned net connected in native DRC |
+| G5 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| G6 | IO_L19P_T3_35 | ASIC3_DATA8 | assigned net connected in native DRC |
+| G7 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| G8 | GND | GND | assigned net connected in native DRC |
+| G9 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| G10 | GND | GND | assigned net connected in native DRC |
+| G11 | VCCBRAM | VCCINT_1V0 | assigned net connected in native DRC |
+| G12 | GND | GND | assigned net connected in native DRC |
+| G13 | IO_0_15 | Unassigned | intentional no-connect |
 | G14 | IO_L15N_T2_DQS_ADV_B_15 | STIM_CHIP2_SPI_DL | assigned net connected in native DRC |
-| G15 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| G16 | IO_L13N_T2_MRCC_15 | Unassigned | unassigned — interface decision required |
-| G17 | IO_L18N_T2_A23_15 | NONSTIM_BOARD1_SPI_DL | assigned, routing incomplete on net |
+| G15 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| G16 | IO_L13N_T2_MRCC_15 | Unassigned | intentional no-connect |
+| G17 | IO_L18N_T2_A23_15 | NONSTIM_BOARD1_SPI_DL | assigned net connected in native DRC |
 | G18 | IO_L22P_T3_A17_15 | NONSTIM_BOARD2_SPI_DR | assigned net connected in native DRC |
 | H1 | IO_L17P_T2_35 | ASIC1_DATA5 | assigned net connected in native DRC |
 | H2 | IO_L15P_T2_DQS_35 | ASIC2_DATA2 | assigned net connected in native DRC |
-| H3 | GND | GND | assigned, routing incomplete on net |
-| H4 | IO_L21N_T3_DQS_35 | ASIC3_DATA3 | assigned, routing incomplete on net |
+| H3 | GND | GND | assigned net connected in native DRC |
+| H4 | IO_L21N_T3_DQS_35 | ASIC3_DATA3 | assigned net connected in native DRC |
 | H5 | IO_L24N_T3_35 | ASIC3_DATA7 | assigned net connected in native DRC |
-| H6 | IO_L24P_T3_35 | ASIC3_SYNC | assigned, routing incomplete on net |
-| H7 | GND | GND | assigned, routing incomplete on net |
-| H8 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| H9 | GNDADC_0 | GND | assigned, routing incomplete on net |
-| H10 | VCCADC_0 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| H11 | GND | GND | assigned, routing incomplete on net |
-| H12 | VCCAUX | VCCAUX_1V8 | assigned, routing incomplete on net |
-| H13 | GND | GND | assigned, routing incomplete on net |
-| H14 | IO_L15P_T2_DQS_15 | STIM_CHIP2_SPI_DR | assigned, routing incomplete on net |
-| H15 | IO_L19N_T3_A21_VREF_15 | Unassigned | unassigned — interface decision required |
-| H16 | IO_L13P_T2_MRCC_15 | Unassigned | unassigned — interface decision required |
-| H17 | IO_L18P_T2_A24_15 | NONSTIM_BOARD1_SPI_DR | assigned, routing incomplete on net |
-| H18 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| J1 | VCCO_35 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| J2 | IO_L22N_T3_35 | ASIC1_SYNC | assigned, routing incomplete on net |
-| J3 | IO_L22P_T3_35 | ASIC2_DATA4 | assigned, routing incomplete on net |
-| J4 | IO_L21P_T3_DQS_35 | ASIC3_DATA1 | assigned, routing incomplete on net |
+| H6 | IO_L24P_T3_35 | ASIC3_SYNC | assigned net connected in native DRC |
+| H7 | GND | GND | assigned net connected in native DRC |
+| H8 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| H9 | GNDADC_0 | GND | assigned net connected in native DRC |
+| H10 | VCCADC_0 | VCCAUX_1V8 | assigned net connected in native DRC |
+| H11 | GND | GND | assigned net connected in native DRC |
+| H12 | VCCAUX | VCCAUX_1V8 | assigned net connected in native DRC |
+| H13 | GND | GND | assigned net connected in native DRC |
+| H14 | IO_L15P_T2_DQS_15 | STIM_CHIP2_SPI_DR | assigned net connected in native DRC |
+| H15 | IO_L19N_T3_A21_VREF_15 | Unassigned | intentional no-connect |
+| H16 | IO_L13P_T2_MRCC_15 | Unassigned | intentional no-connect |
+| H17 | IO_L18P_T2_A24_15 | NONSTIM_BOARD1_SPI_DR | assigned net connected in native DRC |
+| H18 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| J1 | VCCO_35 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| J2 | IO_L22N_T3_35 | ASIC1_SYNC | assigned net connected in native DRC |
+| J3 | IO_L22P_T3_35 | ASIC2_DATA4 | assigned net connected in native DRC |
+| J4 | IO_L21P_T3_DQS_35 | ASIC3_DATA1 | assigned net connected in native DRC |
 | J5 | IO_25_35 | ASIC3_DATA2 | assigned net connected in native DRC |
-| J6 | GND | GND | assigned, routing incomplete on net |
-| J7 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| J8 | GND | GND | assigned, routing incomplete on net |
-| J9 | VREFN_0 | GND | assigned, routing incomplete on net |
-| J10 | VP_0 | GND | assigned, routing incomplete on net |
-| J11 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| J12 | GND | GND | assigned, routing incomplete on net |
-| J13 | IO_L17N_T2_A25_15 | STIM_CHIP1_SPI_DR | assigned, routing incomplete on net |
-| J14 | IO_L19P_T3_A22_15 | STIM_CHIP1_SPI_DL | assigned, routing incomplete on net |
-| J15 | IO_L24N_T3_RS0_15 | STIM_CHIP3_SPI_DL | assigned, routing incomplete on net |
-| J16 | GND | GND | assigned, routing incomplete on net |
+| J6 | GND | GND | assigned net connected in native DRC |
+| J7 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| J8 | GND | GND | assigned net connected in native DRC |
+| J9 | VREFN_0 | GND | assigned net connected in native DRC |
+| J10 | VP_0 | GND | assigned net connected in native DRC |
+| J11 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| J12 | GND | GND | assigned net connected in native DRC |
+| J13 | IO_L17N_T2_A25_15 | STIM_CHIP1_SPI_DR | assigned net connected in native DRC |
+| J14 | IO_L19P_T3_A22_15 | STIM_CHIP1_SPI_DL | assigned net connected in native DRC |
+| J15 | IO_L24N_T3_RS0_15 | STIM_CHIP3_SPI_DL | assigned net connected in native DRC |
+| J16 | GND | GND | assigned net connected in native DRC |
 | J17 | IO_L23P_T3_FOE_B_15 | STIM_CHIP4_SPI_DL | assigned net connected in native DRC |
 | J18 | IO_L23N_T3_FWE_B_15 | NONSTIM_BOARD2_SPI_DL | assigned net connected in native DRC |
 | K1 | IO_L23N_T3_35 | ASIC1_DATA1 | assigned net connected in native DRC |
-| K2 | IO_L23P_T3_35 | ASIC1_DATA3 | assigned, routing incomplete on net |
-| K3 | IO_L2P_T0_34 | ASIC6_DATA5 | assigned, routing incomplete on net |
-| K4 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| K5 | IO_L5P_T0_34 | ASIC8_DATA5 | assigned, routing incomplete on net |
-| K6 | IO_0_34 | ASIC8_SYNC | assigned, routing incomplete on net |
-| K7 | GND | GND | assigned, routing incomplete on net |
-| K8 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| K9 | VN_0 | GND | assigned, routing incomplete on net |
-| K10 | VREFP_0 | GND | assigned, routing incomplete on net |
-| K11 | GND | GND | assigned, routing incomplete on net |
-| K12 | VCCAUX | VCCAUX_1V8 | assigned, routing incomplete on net |
+| K2 | IO_L23P_T3_35 | ASIC1_DATA3 | assigned net connected in native DRC |
+| K3 | IO_L2P_T0_34 | ASIC6_DATA5 | assigned net connected in native DRC |
+| K4 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| K5 | IO_L5P_T0_34 | ASIC8_DATA5 | assigned net connected in native DRC |
+| K6 | IO_0_34 | ASIC8_SYNC | assigned net connected in native DRC |
+| K7 | GND | GND | assigned net connected in native DRC |
+| K8 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| K9 | VN_0 | GND | assigned net connected in native DRC |
+| K10 | VREFP_0 | GND | assigned net connected in native DRC |
+| K11 | GND | GND | assigned net connected in native DRC |
+| K12 | VCCAUX | VCCAUX_1V8 | assigned net connected in native DRC |
 | K13 | IO_L17P_T2_A26_15 | BOARD4_SPI_CLK | assigned net connected in native DRC |
-| K14 | VCCO_15 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| K15 | IO_L24P_T3_RS1_15 | STIM_CHIP3_SPI_DR | assigned, routing incomplete on net |
-| K16 | IO_25_15 | STIM_CHIP4_SPI_DR | assigned, routing incomplete on net |
+| K14 | VCCO_15 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| K15 | IO_L24P_T3_RS1_15 | STIM_CHIP3_SPI_DR | assigned net connected in native DRC |
+| K16 | IO_25_15 | STIM_CHIP4_SPI_DR | assigned net connected in native DRC |
 | K17 | IO_L1P_T0_D00_MOSI_14 | FPGA_CFG_DQ0 | assigned net connected in native DRC |
 | K18 | IO_L1N_T0_D01_DIN_14 | FPGA_CFG_DQ1 | assigned net connected in native DRC |
-| L1 | IO_L1P_T0_34 | ASIC6_DATA6 | assigned, routing incomplete on net |
-| L2 | GND | GND | assigned, routing incomplete on net |
-| L3 | IO_L2N_T0_34 | ASIC6_READ | assigned, routing incomplete on net |
-| L4 | IO_L5N_T0_34 | ASIC8_DATA4 | assigned, routing incomplete on net |
-| L5 | IO_L6N_T0_VREF_34 | Unassigned | unassigned — interface decision required |
-| L6 | IO_L6P_T0_34 | ASIC8_DATA7 | assigned, routing incomplete on net |
-| L7 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| L8 | GND | GND | assigned, routing incomplete on net |
-| L9 | DXN_0 | GND | assigned, routing incomplete on net |
-| L10 | DXP_0 | GND | assigned, routing incomplete on net |
-| L11 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| L12 | GND | GND | assigned, routing incomplete on net |
+| L1 | IO_L1P_T0_34 | ASIC6_DATA6 | assigned net connected in native DRC |
+| L2 | GND | GND | assigned net connected in native DRC |
+| L3 | IO_L2N_T0_34 | ASIC6_READ | assigned net connected in native DRC |
+| L4 | IO_L5N_T0_34 | ASIC8_DATA4 | assigned net connected in native DRC |
+| L5 | IO_L6N_T0_VREF_34 | Unassigned | intentional no-connect |
+| L6 | IO_L6P_T0_34 | ASIC8_DATA7 | assigned net connected in native DRC |
+| L7 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| L8 | GND | GND | assigned net connected in native DRC |
+| L9 | DXN_0 | GND | assigned net connected in native DRC |
+| L10 | DXP_0 | GND | assigned net connected in native DRC |
+| L11 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| L12 | GND | GND | assigned net connected in native DRC |
 | L13 | IO_L6P_T0_FCS_B_14 | FLASH_CS_B | assigned net connected in native DRC |
-| L14 | IO_L2P_T0_D02_14 | FPGA_CFG_DQ2 | assigned net connected in native DRC |
+| L14 | IO_L2P_T0_D02_14 | Unassigned | intentional no-connect |
 | L15 | IO_L3P_T0_DQS_PUDC_B_14 | CFG_PUDC_B | assigned net connected in native DRC |
-| L16 | IO_L3N_T0_DQS_EMCCLK_14 | Unassigned | unassigned — interface decision required |
-| L17 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| L18 | IO_L4P_T0_D04_14 | Unassigned | unassigned — interface decision required |
-| M1 | IO_L1N_T0_34 | ASIC6_DATA4 | assigned, routing incomplete on net |
+| L16 | IO_L3N_T0_DQS_EMCCLK_14 | Unassigned | intentional no-connect |
+| L17 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
+| L18 | IO_L4P_T0_D04_14 | Unassigned | intentional no-connect |
+| M1 | IO_L1N_T0_34 | ASIC6_DATA4 | assigned net connected in native DRC |
 | M2 | IO_L4N_T0_34 | ASIC6_DATA1 | assigned net connected in native DRC |
-| M3 | IO_L4P_T0_34 | ASIC6_DATA3 | assigned, routing incomplete on net |
-| M4 | IO_L16P_T2_34 | ASIC8_DATA2 | assigned, routing incomplete on net |
-| M5 | GND | GND | assigned, routing incomplete on net |
-| M6 | IO_L18P_T2_34 | ASIC8_DATA1 | assigned, routing incomplete on net |
-| M7 | GND | GND | assigned, routing incomplete on net |
-| M8 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| M9 | GND | GND | assigned, routing incomplete on net |
-| M10 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| M11 | GND | GND | assigned, routing incomplete on net |
-| M12 | VCCAUX | VCCAUX_1V8 | assigned, routing incomplete on net |
-| M13 | IO_L6N_T0_D08_VREF_14 | Unassigned | unassigned — interface decision required |
-| M14 | IO_L2N_T0_D03_14 | FPGA_CFG_DQ3 | assigned net connected in native DRC |
-| M15 | GND | GND | assigned, routing incomplete on net |
-| M16 | IO_L10P_T1_D14_14 | Unassigned | unassigned — interface decision required |
-| M17 | IO_L10N_T1_D15_14 | Unassigned | unassigned — interface decision required |
-| M18 | IO_L4N_T0_D05_14 | Unassigned | unassigned — interface decision required |
+| M3 | IO_L4P_T0_34 | ASIC6_DATA3 | assigned net connected in native DRC |
+| M4 | IO_L16P_T2_34 | ASIC8_DATA2 | assigned net connected in native DRC |
+| M5 | GND | GND | assigned net connected in native DRC |
+| M6 | IO_L18P_T2_34 | ASIC8_DATA1 | assigned net connected in native DRC |
+| M7 | GND | GND | assigned net connected in native DRC |
+| M8 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| M9 | GND | GND | assigned net connected in native DRC |
+| M10 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| M11 | GND | GND | assigned net connected in native DRC |
+| M12 | VCCAUX | VCCAUX_1V8 | assigned net connected in native DRC |
+| M13 | IO_L6N_T0_D08_VREF_14 | Unassigned | intentional no-connect |
+| M14 | IO_L2N_T0_D03_14 | Unassigned | intentional no-connect |
+| M15 | GND | GND | assigned net connected in native DRC |
+| M16 | IO_L10P_T1_D14_14 | Unassigned | intentional no-connect |
+| M17 | IO_L10N_T1_D15_14 | Unassigned | intentional no-connect |
+| M18 | IO_L4N_T0_D05_14 | Unassigned | intentional no-connect |
 | N1 | IO_L3N_T0_DQS_34 | ASIC6_DATA2 | assigned net connected in native DRC |
-| N2 | IO_L3P_T0_DQS_34 | ASIC6_DATA8 | assigned, routing incomplete on net |
-| N3 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| N4 | IO_L16N_T2_34 | ASIC6_DATA7 | assigned, routing incomplete on net |
+| N2 | IO_L3P_T0_DQS_34 | ASIC6_DATA8 | assigned net connected in native DRC |
+| N3 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| N4 | IO_L16N_T2_34 | ASIC6_DATA7 | assigned net connected in native DRC |
 | N5 | IO_L13P_T2_MRCC_34 | ASIC8_CLK32MHz_Out | assigned net connected in native DRC |
-| N6 | IO_L18N_T2_34 | ASIC8_DATA8 | assigned, routing incomplete on net |
-| N7 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| N8 | GND | GND | assigned, routing incomplete on net |
-| N9 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| N10 | GND | GND | assigned, routing incomplete on net |
-| N11 | VCCINT | VCCINT_1V0 | assigned, routing incomplete on net |
-| N12 | GND | GND | assigned, routing incomplete on net |
-| N13 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| N14 | IO_L8P_T1_D11_14 | Unassigned | unassigned — interface decision required |
-| N15 | IO_L11P_T1_SRCC_14 | Unassigned | unassigned — interface decision required |
-| N16 | IO_L11N_T1_SRCC_14 | Unassigned | unassigned — interface decision required |
-| N17 | IO_L9P_T1_DQS_14 | Unassigned | unassigned — interface decision required |
-| N18 | GND | GND | assigned, routing incomplete on net |
-| P1 | GND | GND | assigned, routing incomplete on net |
-| P2 | IO_L15P_T2_DQS_34 | ASIC5_SYNC | assigned, routing incomplete on net |
-| P3 | IO_L14N_T2_SRCC_34 | Unassigned | unassigned — interface decision required |
+| N6 | IO_L18N_T2_34 | ASIC8_DATA8 | assigned net connected in native DRC |
+| N7 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| N8 | GND | GND | assigned net connected in native DRC |
+| N9 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| N10 | GND | GND | assigned net connected in native DRC |
+| N11 | VCCINT | VCCINT_1V0 | assigned net connected in native DRC |
+| N12 | GND | GND | assigned net connected in native DRC |
+| N13 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
+| N14 | IO_L8P_T1_D11_14 | Unassigned | intentional no-connect |
+| N15 | IO_L11P_T1_SRCC_14 | Unassigned | intentional no-connect |
+| N16 | IO_L11N_T1_SRCC_14 | Unassigned | intentional no-connect |
+| N17 | IO_L9P_T1_DQS_14 | Unassigned | intentional no-connect |
+| N18 | GND | GND | assigned net connected in native DRC |
+| P1 | GND | GND | assigned net connected in native DRC |
+| P2 | IO_L15P_T2_DQS_34 | ASIC5_SYNC | assigned net connected in native DRC |
+| P3 | IO_L14N_T2_SRCC_34 | Unassigned | intentional no-connect |
 | P4 | IO_L14P_T2_SRCC_34 | ASIC6_CLK32MHz_Out | assigned net connected in native DRC |
-| P5 | IO_L13N_T2_MRCC_34 | Unassigned | unassigned — interface decision required |
-| P6 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
+| P5 | IO_L13N_T2_MRCC_34 | Unassigned | intentional no-connect |
+| P6 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
 | P7 | INIT_B_0 | FPGA_INIT_B | assigned net connected in native DRC |
-| P8 | CFGBVS_0 | GND | assigned, routing incomplete on net |
+| P8 | CFGBVS_0 | GND | assigned net connected in native DRC |
 | P9 | PROGRAM_B_0 | FPGA_PROGRAM_B | assigned net connected in native DRC |
 | P10 | DONE_0 | FPGA_DONE | assigned net connected in native DRC |
-| P11 | M2_0 | CFG_M2 | assigned net connected in native DRC |
+| P11 | M2_0 | GND | assigned net connected in native DRC |
 | P12 | M0_0 | CFG_M0 | assigned net connected in native DRC |
-| P13 | M1_0 | GND | assigned, routing incomplete on net |
-| P14 | IO_L8N_T1_D12_14 | Unassigned | unassigned — interface decision required |
-| P15 | IO_L13P_T2_MRCC_14 | Unassigned | unassigned — interface decision required |
-| P16 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
+| P13 | M1_0 | GND | assigned net connected in native DRC |
+| P14 | IO_L8N_T1_D12_14 | Unassigned | intentional no-connect |
+| P15 | IO_L13P_T2_MRCC_14 | Unassigned | intentional no-connect |
+| P16 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
 | P17 | IO_L12P_T1_MRCC_14 | CLK_32MHZ | assigned net connected in native DRC |
-| P18 | IO_L9N_T1_DQS_D13_14 | Unassigned | unassigned — interface decision required |
+| P18 | IO_L9N_T1_DQS_D13_14 | Unassigned | intentional no-connect |
 | R1 | IO_L17P_T2_34 | ASIC5_DATA2 | assigned net connected in native DRC |
 | R2 | IO_L15N_T2_DQS_34 | ASIC5_DATA6 | assigned net connected in native DRC |
 | R3 | IO_L11P_T1_SRCC_34 | ASIC5_CLK32MHz_Out | assigned net connected in native DRC |
-| R4 | GND | GND | assigned, routing incomplete on net |
-| R5 | IO_L19N_T3_VREF_34 | Unassigned | unassigned — interface decision required |
+| R4 | GND | GND | assigned net connected in native DRC |
+| R5 | IO_L19N_T3_VREF_34 | Unassigned | intentional no-connect |
 | R6 | IO_L19P_T3_34 | ASIC6_SYNC | assigned net connected in native DRC |
-| R7 | IO_L23P_T3_34 | ASIC8_DATA6 | assigned, routing incomplete on net |
-| R8 | IO_L24P_T3_34 | ASIC8_DATA3 | assigned, routing incomplete on net |
-| R9 | VCCO_0 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| R10 | IO_25_14 | Unassigned | unassigned — interface decision required |
-| R11 | IO_0_14 | Unassigned | unassigned — interface decision required |
-| R12 | IO_L5P_T0_D06_14 | Unassigned | unassigned — interface decision required |
-| R13 | IO_L5N_T0_D07_14 | Unassigned | unassigned — interface decision required |
-| R14 | GND | GND | assigned, routing incomplete on net |
-| R15 | IO_L13N_T2_MRCC_14 | Unassigned | unassigned — interface decision required |
-| R16 | IO_L15P_T2_DQS_RDWR_B_14 | Unassigned | unassigned — interface decision required |
-| R17 | IO_L12N_T1_MRCC_14 | Unassigned | unassigned — interface decision required |
-| R18 | IO_L7P_T1_D09_14 | Unassigned | unassigned — interface decision required |
+| R7 | IO_L23P_T3_34 | ASIC8_DATA6 | assigned net connected in native DRC |
+| R8 | IO_L24P_T3_34 | ASIC8_DATA3 | assigned net connected in native DRC |
+| R9 | VCCO_0 | VCCAUX_1V8 | assigned net connected in native DRC |
+| R10 | IO_25_14 | Unassigned | intentional no-connect |
+| R11 | IO_0_14 | Unassigned | intentional no-connect |
+| R12 | IO_L5P_T0_D06_14 | Unassigned | intentional no-connect |
+| R13 | IO_L5N_T0_D07_14 | Unassigned | intentional no-connect |
+| R14 | GND | GND | assigned net connected in native DRC |
+| R15 | IO_L13N_T2_MRCC_14 | Unassigned | intentional no-connect |
+| R16 | IO_L15P_T2_DQS_RDWR_B_14 | Unassigned | intentional no-connect |
+| R17 | IO_L12N_T1_MRCC_14 | Unassigned | intentional no-connect |
+| R18 | IO_L7P_T1_D09_14 | Unassigned | intentional no-connect |
 | T1 | IO_L17N_T2_34 | ASIC5_DATA5 | assigned net connected in native DRC |
-| T2 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| T3 | IO_L11N_T1_SRCC_34 | Unassigned | unassigned — interface decision required |
-| T4 | IO_L12N_T1_MRCC_34 | Unassigned | unassigned — interface decision required |
-| T5 | IO_L12P_T1_MRCC_34 | ASIC7_CLK32MHz_Out | assigned, routing incomplete on net |
-| T6 | IO_L23N_T3_34 | ASIC7_SYNC | assigned, routing incomplete on net |
-| T7 | GND | GND | assigned, routing incomplete on net |
-| T8 | IO_L24N_T3_34 | ASIC8_READ | assigned, routing incomplete on net |
-| T9 | IO_L24P_T3_A01_D17_14 | Unassigned | unassigned — interface decision required |
-| T10 | IO_L24N_T3_A00_D16_14 | Unassigned | unassigned — interface decision required |
-| T11 | IO_L19P_T3_A10_D26_14 | Unassigned | unassigned — interface decision required |
-| T12 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| T13 | IO_L23P_T3_A03_D19_14 | Unassigned | unassigned — interface decision required |
-| T14 | IO_L14P_T2_SRCC_14 | Unassigned | unassigned — interface decision required |
-| T15 | IO_L14N_T2_SRCC_14 | Unassigned | unassigned — interface decision required |
-| T16 | IO_L15N_T2_DQS_DOUT_CSO_B_14 | Unassigned | unassigned — interface decision required |
-| T17 | GND | GND | assigned, routing incomplete on net |
-| T18 | IO_L7N_T1_D10_14 | Unassigned | unassigned — interface decision required |
+| T2 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| T3 | IO_L11N_T1_SRCC_34 | Unassigned | intentional no-connect |
+| T4 | IO_L12N_T1_MRCC_34 | Unassigned | intentional no-connect |
+| T5 | IO_L12P_T1_MRCC_34 | ASIC7_CLK32MHz_Out | assigned net connected in native DRC |
+| T6 | IO_L23N_T3_34 | ASIC7_SYNC | assigned net connected in native DRC |
+| T7 | GND | GND | assigned net connected in native DRC |
+| T8 | IO_L24N_T3_34 | ASIC8_READ | assigned net connected in native DRC |
+| T9 | IO_L24P_T3_A01_D17_14 | Unassigned | intentional no-connect |
+| T10 | IO_L24N_T3_A00_D16_14 | Unassigned | intentional no-connect |
+| T11 | IO_L19P_T3_A10_D26_14 | Unassigned | intentional no-connect |
+| T12 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
+| T13 | IO_L23P_T3_A03_D19_14 | Unassigned | intentional no-connect |
+| T14 | IO_L14P_T2_SRCC_14 | Unassigned | intentional no-connect |
+| T15 | IO_L14N_T2_SRCC_14 | Unassigned | intentional no-connect |
+| T16 | IO_L15N_T2_DQS_DOUT_CSO_B_14 | Unassigned | intentional no-connect |
+| T17 | GND | GND | assigned net connected in native DRC |
+| T18 | IO_L7N_T1_D10_14 | Unassigned | intentional no-connect |
 | U1 | IO_L7P_T1_34 | ASIC5_DATA3 | assigned net connected in native DRC |
 | U2 | IO_L9P_T1_DQS_34 | ASIC5_DATA4 | assigned net connected in native DRC |
 | U3 | IO_L8N_T1_34 | ASIC5_DATA8 | assigned net connected in native DRC |
-| U4 | IO_L8P_T1_34 | ASIC7_DATA1 | assigned, routing incomplete on net |
-| U5 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| U6 | IO_L22N_T3_34 | ASIC7_DATA7 | assigned, routing incomplete on net |
-| U7 | IO_L22P_T3_34 | ASIC7_DATA4 | assigned, routing incomplete on net |
+| U4 | IO_L8P_T1_34 | ASIC7_DATA1 | assigned net connected in native DRC |
+| U5 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| U6 | IO_L22N_T3_34 | ASIC7_DATA7 | assigned net connected in native DRC |
+| U7 | IO_L22P_T3_34 | ASIC7_DATA4 | assigned net connected in native DRC |
 | U8 | IO_25_34 | ASIC7_DATA6 | assigned net connected in native DRC |
 | U9 | IO_L21P_T3_DQS_34 | ASIC7_READ | assigned net connected in native DRC |
-| U10 | GND | GND | assigned, routing incomplete on net |
-| U11 | IO_L19N_T3_A09_D25_VREF_14 | Unassigned | unassigned — interface decision required |
-| U12 | IO_L20P_T3_A08_D24_14 | Unassigned | unassigned — interface decision required |
-| U13 | IO_L23N_T3_A02_D18_14 | Unassigned | unassigned — interface decision required |
-| U14 | IO_L22P_T3_A05_D21_14 | Unassigned | unassigned — interface decision required |
-| U15 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
-| U16 | IO_L18P_T2_A12_D28_14 | Unassigned | unassigned — interface decision required |
-| U17 | IO_L17P_T2_A14_D30_14 | Unassigned | unassigned — interface decision required |
-| U18 | IO_L17N_T2_A13_D29_14 | Unassigned | unassigned — interface decision required |
+| U10 | GND | GND | assigned net connected in native DRC |
+| U11 | IO_L19N_T3_A09_D25_VREF_14 | Unassigned | intentional no-connect |
+| U12 | IO_L20P_T3_A08_D24_14 | Unassigned | intentional no-connect |
+| U13 | IO_L23N_T3_A02_D18_14 | Unassigned | intentional no-connect |
+| U14 | IO_L22P_T3_A05_D21_14 | Unassigned | intentional no-connect |
+| U15 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
+| U16 | IO_L18P_T2_A12_D28_14 | Unassigned | intentional no-connect |
+| U17 | IO_L17P_T2_A14_D30_14 | Unassigned | intentional no-connect |
+| U18 | IO_L17N_T2_A13_D29_14 | Unassigned | intentional no-connect |
 | V1 | IO_L7N_T1_34 | ASIC5_DATA1 | assigned net connected in native DRC |
-| V2 | IO_L9N_T1_DQS_34 | ASIC5_DATA7 | assigned, routing incomplete on net |
-| V3 | GND | GND | assigned, routing incomplete on net |
+| V2 | IO_L9N_T1_DQS_34 | ASIC5_DATA7 | assigned net connected in native DRC |
+| V3 | GND | GND | assigned net connected in native DRC |
 | V4 | IO_L10N_T1_34 | ASIC5_READ | assigned net connected in native DRC |
 | V5 | IO_L10P_T1_34 | ASIC7_DATA3 | assigned net connected in native DRC |
 | V6 | IO_L20N_T3_34 | ASIC7_DATA5 | assigned net connected in native DRC |
 | V7 | IO_L20P_T3_34 | ASIC7_DATA2 | assigned net connected in native DRC |
-| V8 | VCCO_34 | VCC_ASIC_1V5 | assigned, routing incomplete on net |
+| V8 | VCCO_34 | VCC_ASIC_1V5 | assigned net connected in native DRC |
 | V9 | IO_L21N_T3_DQS_34 | ASIC7_DATA8 | assigned net connected in native DRC |
-| V10 | IO_L21P_T3_DQS_14 | Unassigned | unassigned — interface decision required |
-| V11 | IO_L21N_T3_DQS_A06_D22_14 | Unassigned | unassigned — interface decision required |
-| V12 | IO_L20N_T3_A07_D23_14 | Unassigned | unassigned — interface decision required |
-| V13 | GND | GND | assigned, routing incomplete on net |
-| V14 | IO_L22N_T3_A04_D20_14 | Unassigned | unassigned — interface decision required |
-| V15 | IO_L16P_T2_CSI_B_14 | Unassigned | unassigned — interface decision required |
-| V16 | IO_L16N_T2_A15_D31_14 | Unassigned | unassigned — interface decision required |
-| V17 | IO_L18N_T2_A11_D27_14 | Unassigned | unassigned — interface decision required |
-| V18 | VCCO_14 | VCCAUX_1V8 | assigned, routing incomplete on net |
+| V10 | IO_L21P_T3_DQS_14 | Unassigned | intentional no-connect |
+| V11 | IO_L21N_T3_DQS_A06_D22_14 | Unassigned | intentional no-connect |
+| V12 | IO_L20N_T3_A07_D23_14 | Unassigned | intentional no-connect |
+| V13 | GND | GND | assigned net connected in native DRC |
+| V14 | IO_L22N_T3_A04_D20_14 | Unassigned | intentional no-connect |
+| V15 | IO_L16P_T2_CSI_B_14 | Unassigned | intentional no-connect |
+| V16 | IO_L16N_T2_A15_D31_14 | Unassigned | intentional no-connect |
+| V17 | IO_L18N_T2_A11_D27_14 | Unassigned | intentional no-connect |
+| V18 | VCCO_14 | VCCAUX_1V8 | assigned net connected in native DRC |
 
 ### U2 — Core / block ram converter
 
@@ -2343,17 +2283,17 @@ Converts the proposed 12 V input into the core / block RAM rail. Its output volt
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | VIN | LINK_12V | assigned, routing incomplete on net |
+| 1 | VIN | LINK_12V | assigned net connected in native DRC |
 | 2 | SW | SW_CORE | assigned net connected in native DRC |
-| 3 | GND | GND | assigned, routing incomplete on net |
-| 4 | FB2 | GND | assigned, routing incomplete on net |
+| 3 | GND | GND | assigned net connected in native DRC |
+| 4 | FB2 | GND | assigned net connected in native DRC |
 | 5 | FB | FB_CORE | assigned net connected in native DRC |
 | 6 | VOS | VCORE_REG_1V025 | assigned net connected in native DRC |
 | 7 | PG | PG_CORE | assigned net connected in native DRC |
-| 8 | EN | LINK_12V | assigned, routing incomplete on net |
+| 8 | EN | LINK_12V | assigned net connected in native DRC |
 | 9 | SS/TR | SS_CORE | assigned net connected in native DRC |
-| 10 | MODE | LINK_12V | assigned, routing incomplete on net |
-| 11 | VSEL | GND | assigned, routing incomplete on net |
+| 10 | MODE | LINK_12V | assigned net connected in native DRC |
+| 11 | VSEL | GND | assigned net connected in native DRC |
 
 ### U3 — Auxiliary / configuration converter
 
@@ -2367,17 +2307,17 @@ Converts the proposed 12 V input into the auxiliary / configuration rail. Its ou
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | VIN | LINK_12V | assigned, routing incomplete on net |
+| 1 | VIN | LINK_12V | assigned net connected in native DRC |
 | 2 | SW | SW_AUX | assigned net connected in native DRC |
-| 3 | GND | GND | assigned, routing incomplete on net |
-| 4 | FB2 | GND | assigned, routing incomplete on net |
+| 3 | GND | GND | assigned net connected in native DRC |
+| 4 | FB2 | GND | assigned net connected in native DRC |
 | 5 | FB | FB_AUX | assigned net connected in native DRC |
-| 6 | VOS | VAUX_REG_1V803 | assigned, routing incomplete on net |
+| 6 | VOS | VAUX_REG_1V803 | assigned net connected in native DRC |
 | 7 | PG | PG_AUX | assigned net connected in native DRC |
 | 8 | EN | PG_CORE | assigned net connected in native DRC |
 | 9 | SS/TR | SS_AUX | assigned net connected in native DRC |
-| 10 | MODE | LINK_12V | assigned, routing incomplete on net |
-| 11 | VSEL | GND | assigned, routing incomplete on net |
+| 10 | MODE | LINK_12V | assigned net connected in native DRC |
+| 11 | VSEL | GND | assigned net connected in native DRC |
 
 ### U4 — 2.5 v link bank converter
 
@@ -2391,17 +2331,17 @@ Converts the proposed 12 V input into the 2.5 V link bank rail. Its output volta
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | VIN | LINK_12V | assigned, routing incomplete on net |
+| 1 | VIN | LINK_12V | assigned net connected in native DRC |
 | 2 | SW | SW_CFG | assigned net connected in native DRC |
-| 3 | GND | GND | assigned, routing incomplete on net |
-| 4 | FB2 | GND | assigned, routing incomplete on net |
+| 3 | GND | GND | assigned net connected in native DRC |
+| 4 | FB2 | GND | assigned net connected in native DRC |
 | 5 | FB | FB_CFG | assigned net connected in native DRC |
-| 6 | VOS | VCC_LINK_2V5 | assigned, routing incomplete on net |
-| 7 | PG | PGOOD_IO | assigned net connected in native DRC |
+| 6 | VOS | VCC_LINK_2V5 | assigned net connected in native DRC |
+| 7 | PG | Unassigned | intentional no-connect |
 | 8 | EN | PG_AUX | assigned net connected in native DRC |
 | 9 | SS/TR | SS_CFG | assigned net connected in native DRC |
-| 10 | MODE | LINK_12V | assigned, routing incomplete on net |
-| 11 | VSEL | GND | assigned, routing incomplete on net |
+| 10 | MODE | LINK_12V | assigned net connected in native DRC |
+| 11 | VSEL | GND | assigned net connected in native DRC |
 
 ### U5 — 1.5 v asic-facing banks converter
 
@@ -2415,17 +2355,17 @@ Converts the proposed 12 V input into the 1.5 V ASIC-facing banks rail. Its outp
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | VIN | LINK_12V | assigned, routing incomplete on net |
+| 1 | VIN | LINK_12V | assigned net connected in native DRC |
 | 2 | SW | SW_ASIC | assigned net connected in native DRC |
-| 3 | GND | GND | assigned, routing incomplete on net |
-| 4 | FB2 | GND | assigned, routing incomplete on net |
+| 3 | GND | GND | assigned net connected in native DRC |
+| 4 | FB2 | GND | assigned net connected in native DRC |
 | 5 | FB | FB_ASIC | assigned net connected in native DRC |
-| 6 | VOS | VCC_ASIC_1V5 | assigned, routing incomplete on net |
-| 7 | PG | PGOOD_IO | assigned net connected in native DRC |
+| 6 | VOS | VCC_ASIC_1V5 | assigned net connected in native DRC |
+| 7 | PG | Unassigned | intentional no-connect |
 | 8 | EN | PG_AUX | assigned net connected in native DRC |
 | 9 | SS/TR | SS_ASIC | assigned net connected in native DRC |
-| 10 | MODE | LINK_12V | assigned, routing incomplete on net |
-| 11 | VSEL | GND | assigned, routing incomplete on net |
+| 10 | MODE | LINK_12V | assigned net connected in native DRC |
+| 11 | VSEL | GND | assigned net connected in native DRC |
 
 ### U6 — Nonvolatile boot image
 
@@ -2435,18 +2375,18 @@ Stores the configuration image for autonomous SPI boot at 1.8 V. The FPGA logic 
 
 **If removed:** The selected SPI self-boot path is lost; an external configuration method would be required each startup.
 
-**Review:** Keep for autonomous boot. Could be omitted only if externally supplied configuration is an accepted system requirement.
+**Review:** Keep for autonomous Master SPI x1 boot at 1.8 V. R106/R107 and FPGA DQ2/DQ3 paths are omitted. Use a compatible SPI x1 image and validated flash-programming procedure; quad configuration is not supported by this wiring.
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
 | 1 | CS# | FLASH_CS_B | assigned net connected in native DRC |
 | 2 | SO / SIO1 | FLASH_DQ1 | assigned net connected in native DRC |
 | 3 | WP# / SIO2 | FLASH_DQ2 | assigned net connected in native DRC |
-| 4 | GND | GND | assigned, routing incomplete on net |
+| 4 | GND | GND | assigned net connected in native DRC |
 | 5 | SI / SIO0 | FLASH_DQ0 | assigned net connected in native DRC |
 | 6 | SCLK | FLASH_SCLK | assigned net connected in native DRC |
 | 7 | RESET# / SIO3 | FLASH_DQ3 | assigned net connected in native DRC |
-| 8 | VCC | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 8 | VCC | VCCAUX_1V8 | assigned net connected in native DRC |
 
 ### Y1 — 32 MHz system reference
 
@@ -2460,11 +2400,11 @@ The 1.8 V oscillator provides the application clock through R119 to U1.P17. It i
 
 | Pin | Function | Native net | Status |
 |---|---|---|---|
-| 1 | Enable | VCCAUX_1V8 | assigned, routing incomplete on net |
-| 2 | GND | GND | assigned, routing incomplete on net |
+| 1 | Enable | VCCAUX_1V8 | assigned net connected in native DRC |
+| 2 | GND | GND | assigned net connected in native DRC |
 | 3 | Clock output | OSC_32M_RAW | assigned net connected in native DRC |
-| 4 | VDD | VCCAUX_1V8 | assigned, routing incomplete on net |
+| 4 | VDD | VCCAUX_1V8 | assigned net connected in native DRC |
 
 ## Evidence and limits
 
-All 760 electrical endpoints were compared with the supplied native XML and PCB. Package assignments and physical copper status are separate. The current routing audit owns routing counts; all ASIC timing, electrical and bench claims remain unverified.
+All 752 electrical endpoints were compared with the supplied native XML and PCB. Package assignments and physical copper status are separate. The current routing audit owns routing counts; all ASIC timing, electrical and bench claims remain unverified.

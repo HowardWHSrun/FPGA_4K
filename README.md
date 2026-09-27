@@ -1,12 +1,17 @@
 # FPGA_4K
 
-**Learning report:** [Visual explanations and professor briefing · 33-page PDF](hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_And_Professor_Review.pdf). Includes every component and pin, with open corrections clearly labeled.
+<!-- CURRENT_FPGA_LEARNING_REPORT -->
+**Current learning report:** [PDF · 45 pages](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the current 125 components and all 752 numbered endpoints; matches the current board audit.
+<!-- /CURRENT_FPGA_LEARNING_REPORT -->
 
-**Current component and pin review:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). 116 candidate digital ASIC nets have native assignments plus one external analog reservation; 98 endpoints remain unassigned. Six former NC pins are assigned GND. The pin map separates assignments from current copper status.
+
+**Earlier learning report:** [Visual explanations and professor briefing · 33-page PDF](hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_And_Professor_Review.pdf). Explains the earlier snapshot; use the current native audit and pin map for the updated design.
+
+**Current component and pin review:** [Concise presentation](presentation/fpga/index.html#architecture) · [labeled pin map](presentation/fpga/pins/) · [presenter notes](presentation/fpga/data/Presenter_Notes.md). 116 candidate digital ASIC nets have native assignments plus one external analog reservation; 83 pins are intentionally unused and 19 endpoints reserve future interfaces. Six former NC pins are assigned GND. The pin map separates assignments from current copper status.
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — September 26:** [33 × 36 mm partial routing checkpoint](presentation/fpga/index.html) · [complete KiCad ZIP](hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/FPGA100T_33x36_Routing.zip) · [measured routing audit](hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/reports/Routing_Review.md). The smallest board integrates revised rails, both mezzanines and 21 schematic sheets. The audit reports the current native component count, completed ASIC routes and remaining power/ground connections. Electrical limits, capture timing and bench operation remain unverified. **Not ready for manufacture.**
+**Current FPGA review — 2026-09-27:** [33 × 36 mm design checkpoint](presentation/fpga/index.html) · [complete KiCad ZIP](hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) · [measured routing audit](hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Routing_Review.md). The smallest board integrates revised rails, both mezzanines and 21 schematic sheets. The audit reports the current native component count, completed ASIC routes and remaining assigned-net connections. Electrical limits, capture timing and bench operation remain unverified. **Not ready for manufacture.**
 
 ## Start working with the team
 
@@ -14,7 +19,7 @@ Shared PCB development for the 4K neural-recording system: working designs, inte
 
 | Work | Start here | Status |
 |---|---|---|
-| Current FPGA review | [Open the 100T review](presentation/fpga/index.html) | 117 ASIC signals and XEM8310 required; partial core routing; **not for manufacture** |
+| Current FPGA review | [Open the 100T review](presentation/fpga/index.html) | 116 FPGA signals + one analog reservation; XEM8310 link remains part of the full system; **not for manufacture** |
 | Earlier FPGA team draft | [September 21 import](hardware/fpga-board/README.md) | Preserved earlier electrical draft; superseded device/interface choices; **not for manufacture** |
 | Carrier and routing boards | [Original reference projects](hardware/README.md) | Preserved references; active baselines and owners to confirm |
 | Tasks and layout ownership | [Create a PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) | One active layout editor per board |

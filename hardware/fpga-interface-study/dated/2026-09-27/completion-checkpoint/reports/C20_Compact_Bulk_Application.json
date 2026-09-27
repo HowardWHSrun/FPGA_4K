@@ -1,0 +1,60 @@
+{
+  "reference": "C20",
+  "selection": {
+    "lib_id": "CoreSupport:Device__C_Polarized",
+    "value": "330u 2.5V POSCAP ESR9m@300kHz",
+    "mpn": "ETPE330M9GB",
+    "footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended",
+    "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/AAA8000/AAA8000C36.pdf",
+    "group": "decoupling_core",
+    "status": "Compact bulk candidate;105C category max;ESR9m@300kHz20C;AMD ESL/PDN equivalence and load-step/ripple/thermal validation pending",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "C20",
+    "source_lib_id": "Device:C_Polarized",
+    "source_footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended"
+  },
+  "changed_files": [
+    {
+      "path": "hardware/FPGA100T_33x36_Routing.kicad_pcb",
+      "before_sha256": "9f5741d2ca97fc9d2c4c176680235515acb65d3a17da056400100ce334f3d3db",
+      "after_sha256": "3edfa40c13fc21a66e095ce9267222885caef48be97aab3bf920c12f6c3b2201"
+    },
+    {
+      "path": "libraries/CoreSupport.kicad_sym",
+      "before_sha256": "a6a515e00d7d21d3a61e106cdb69ad09534b31b1b0c0d036cd33ca5a215a148d",
+      "after_sha256": "735fd094586d06e49a97561a62c5f2099fbf0d88955d7cb4c285c001e90f4354"
+    },
+    {
+      "path": "hardware/core_04_01.kicad_sch",
+      "before_sha256": "96129aa0e292435e660fa3fc147077ff8bab24c360c88e7cbaf3640d63b0cf23",
+      "after_sha256": "fcbe821ecb41de1eebcbef2124c4b99611c07378df663a1d2fa94ba84851e877"
+    },
+    {
+      "path": "hardware/core_05_01.kicad_sch",
+      "before_sha256": "40a15ef0f4d4dc3249ea6764aeabd73cf2ccdb91fa02e7437ed8b99775fffd49",
+      "after_sha256": "9add1e5da0c4d10623cffece34d5d54ac25ac9aa4885b29c48e888c9d4791bb5"
+    },
+    {
+      "path": "hardware/core_06_01.kicad_sch",
+      "before_sha256": "1c606c9f4449bf5d148c5bc4b79591a859f13e467ca63173dc6313dc0c0a4fda",
+      "after_sha256": "0ae3b28dd0d663d82c5d248255723fd30a010260f0011405af7125ddd224d4d8"
+    }
+  ],
+  "instance_counts": {
+    "pcb": 1,
+    "schematic": 1
+  },
+  "symbol_filter_copies": 2,
+  "footprint_sha256": "f7286ac6deea7b9cd3e5e232b06f45447991889590f7f156981ba2b67c302083",
+  "functional_nets_changed": false,
+  "physical_placement_preexists": true,
+  "native_reexport_required": true,
+  "native_library_geometry_DRC_required": true,
+  "AMD_PDN_equivalence_qualified": false,
+  "fabrication_release": false
+}

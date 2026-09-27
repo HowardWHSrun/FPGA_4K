@@ -1,0 +1,405 @@
+{
+  "status": "Screening scenarios, not guaranteed limits or finite-element analysis",
+  "board_sha256": "f90665dc6081b39718f98de58d76150dc66c449ef5a7168b71ddbb09ea6d6223",
+  "copper_resistivity_20C_ohm_m": 1.724e-08,
+  "copper_temperature_coefficient_per_C": 0.00393,
+  "outer_sheet_ohm": 0.0004925714285714286,
+  "inner_sheet_ohm": 0.0011342105263157894,
+  "feeder": [
+    {
+      "assumed_plating_um": 20.0,
+      "single_via_to_L4_ohm": 0.0012716285784011867,
+      "two_via_network_ohm": 0.0007909690881823278,
+      "C5_to_R9_ohm": 0.0014752350642547273,
+      "R9_to_via_ohm": 0.000688389498787435,
+      "total_feeder_ohm": 0.0029545936512244903
+    },
+    {
+      "assumed_plating_um": 25.0,
+      "single_via_to_L4_ohm": 0.0010173028627209492,
+      "two_via_network_ohm": 0.0006548850529825175,
+      "C5_to_R9_ohm": 0.0014752350642547273,
+      "R9_to_via_ohm": 0.000688389498787435,
+      "total_feeder_ohm": 0.00281850961602468
+    }
+  ],
+  "field_ideal_plane_model": {
+    "assumption": "1 A divided equally across 16 core/BRAM balls; ideal equipotential core plane; 20 um via copper; nominal outer copper; no package resistance",
+    "field_vias": 10,
+    "equivalent_resistance_ohm": 0.0003999129081295019,
+    "per_ball_mV_per_total_A": {
+      "F8": 0.6302362075419837,
+      "F10": 0.3839504932562694,
+      "G7": 0.2266003473246676,
+      "G9": 0.3839504932562687,
+      "G11": 0.2266003473246683,
+      "H8": 0.876521921827697,
+      "J7": 0.771621824539964,
+      "J11": 0.22660034732466913,
+      "K8": 0.2790503959685353,
+      "L7": 0.2266003473246683,
+      "L11": 0.2266003473246676,
+      "M8": 0.33150044461240163,
+      "M10": 0.5777861588981161,
+      "N7": 0.4728860616103821,
+      "N9": 0.33150044461240313,
+      "N11": 0.2266003473246683
+    }
+  },
+  "R9_12m_minimum_25to155_TCR_ohm": 0.01176417,
+  "R9_12m_change_3A_gain_mV_25C": 9.089999999999998,
+  "scenarios": [
+    {
+      "temperature_C": 25,
+      "load_A": 1,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01515,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9904981996438176,
+          "margin_above_0p95_mV": 40.49819964381762
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9864195996438175,
+          "margin_above_0p95_mV": 36.41959964381758
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 2,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01515,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9692302996438176,
+          "margin_above_0p95_mV": 19.230299643817617
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9610730996438176,
+          "margin_above_0p95_mV": 11.073099643817642
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 2.5,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01515,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9585963496438176,
+          "margin_above_0p95_mV": 8.596349643817614
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9483998496438176,
+          "margin_above_0p95_mV": -1.6001503561823283
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 3,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01515,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9479623996438176,
+          "margin_above_0p95_mV": -2.0376003561823897
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9357265996438175,
+          "margin_above_0p95_mV": -14.273400356182409
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 1,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01212,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9935281996438176,
+          "margin_above_0p95_mV": 43.5281996438176
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9894495996438176,
+          "margin_above_0p95_mV": 39.44959964381767
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 2,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01212,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9752902996438175,
+          "margin_above_0p95_mV": 25.29029964381757
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9671330996438176,
+          "margin_above_0p95_mV": 17.133099643817594
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 2.5,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01212,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9661713496438176,
+          "margin_above_0p95_mV": 16.171349643817614
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9559748496438176,
+          "margin_above_0p95_mV": 5.97484964381767
+        }
+      ]
+    },
+    {
+      "temperature_C": 25,
+      "load_A": 3,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.0117660996438176,
+      "regulator_corner_high_V": 1.0381049307429722,
+      "R9_corner_high_ohm": 0.01212,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0061179,
+          "FPGA_DC_voltage_V": 0.9570523996438176,
+          "margin_above_0p95_mV": 7.052399643817653
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.010196499999999999,
+          "FPGA_DC_voltage_V": 0.9448165996438176,
+          "margin_above_0p95_mV": -5.183400356182366
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 1,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.015218174999999999,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.988050153640219,
+          "margin_above_0p95_mV": 38.05015364021902
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.9830283536402189,
+          "margin_above_0p95_mV": 33.028353640218945
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 2,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.015218174999999999,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9652992786402189,
+          "margin_above_0p95_mV": 15.299278640218962
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.9552556786402189,
+          "margin_above_0p95_mV": 5.255678640218919
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 2.5,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.015218174999999999,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9539238411402189,
+          "margin_above_0p95_mV": 3.923841140218931
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.941369341140219,
+          "margin_above_0p95_mV": -8.630658859780983
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 3,
+      "R9_nominal_ohm": 0.015,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.015218174999999999,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.942548403640219,
+          "margin_above_0p95_mV": -7.4515963597809876
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.927483003640219,
+          "margin_above_0p95_mV": -22.516996359780993
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 1,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.01217454,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9910937886402189,
+          "margin_above_0p95_mV": 41.09378864021895
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.9860719886402189,
+          "margin_above_0p95_mV": 36.07198864021899
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 2,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.01217454,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9713865486402189,
+          "margin_above_0p95_mV": 21.38654864021894
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.961342948640219,
+          "margin_above_0p95_mV": 11.342948640219008
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 2.5,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.01217454,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9615329286402189,
+          "margin_above_0p95_mV": 11.53292864021893
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.948978428640219,
+          "margin_above_0p95_mV": -1.0215713597809817
+        }
+      ]
+    },
+    {
+      "temperature_C": 85,
+      "load_A": 3,
+      "R9_nominal_ohm": 0.012,
+      "regulator_corner_low_V": 1.010801028640219,
+      "regulator_corner_high_V": 1.0390963211838333,
+      "R9_corner_high_ohm": 0.01217454,
+      "PCB_scenarios": [
+        {
+          "PCB_assumed_20C_ohm": 0.006,
+          "PCB_at_temperature_ohm": 0.0075327,
+          "FPGA_DC_voltage_V": 0.9516793086402189,
+          "margin_above_0p95_mV": 1.679308640218924
+        },
+        {
+          "PCB_assumed_20C_ohm": 0.01,
+          "PCB_at_temperature_ohm": 0.0125545,
+          "FPGA_DC_voltage_V": 0.936613908640219,
+          "margin_above_0p95_mV": -13.386091359780972
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,474 @@
+# ASIC116 physical pin-map REVIEW TEMPLATE --2026-09-26
+# Generated from ASIC_Interface_Assignment.csv; not an active build input.
+#116PACKAGE_PIN and116candidateLVCMOS15 entries; no active RTL, output enables or invented timing.
+# AC_IN is analog0-1.5V on J5.46, generated on routing/ASIC side; no FPGA port or package pin.
+# IMP_TST is ASSUMED0/1.5V digital; polarity and safe inactive state remain unverified.
+# Eight independent returned clocks use falling-edge capture; four outgoing BOARD_CLK retained.
+# XDC alone does not enforce RTL direction, high impedance, startup sequence or electrical safety.
+# No create_clock, input/output delays, false paths or timing exceptions are invented.
+# Do not use as a completed implementation or suppress timing/DRC errors.
+
+# J5.1 -> U1.K1; bank 35; Input
+set_property PACKAGE_PIN K1 [get_ports {ASIC1_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA1}]
+
+# J5.2 -> U1.F1; bank 35; Input
+set_property PACKAGE_PIN F1 [get_ports {ASIC1_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA2}]
+
+# J5.3 -> U1.K2; bank 35; Input
+set_property PACKAGE_PIN K2 [get_ports {ASIC1_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA3}]
+
+# J5.4 -> U1.E1; bank 35; Input
+set_property PACKAGE_PIN E1 [get_ports {ASIC1_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA4}]
+
+# J5.5 -> U1.H1; bank 35; Input
+set_property PACKAGE_PIN H1 [get_ports {ASIC1_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA5}]
+
+# J5.6 -> U1.G2; bank 35; Input
+set_property PACKAGE_PIN G2 [get_ports {ASIC1_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA6}]
+
+# J5.7 -> U1.G1; bank 35; Input
+set_property PACKAGE_PIN G1 [get_ports {ASIC1_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA7}]
+
+# J5.8 -> U1.C1; bank 35; Input
+set_property PACKAGE_PIN C1 [get_ports {ASIC1_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_DATA8}]
+
+# J5.9 -> U1.E2; bank 35; Input
+set_property PACKAGE_PIN E2 [get_ports {ASIC1_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_CLK32MHz_Out}]
+
+# J5.10 -> U1.B1; bank 35; Input
+set_property PACKAGE_PIN B1 [get_ports {ASIC1_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_READ}]
+
+# J5.11 -> U1.J2; bank 35; Input
+set_property PACKAGE_PIN J2 [get_ports {ASIC1_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC1_SYNC}]
+
+# J5.12 -> U1.C2; bank 35; Input
+set_property PACKAGE_PIN C2 [get_ports {ASIC2_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA1}]
+
+# J5.13 -> U1.H2; bank 35; Input
+set_property PACKAGE_PIN H2 [get_ports {ASIC2_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA2}]
+
+# J5.14 -> U1.B3; bank 35; Input
+set_property PACKAGE_PIN B3 [get_ports {ASIC2_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA3}]
+
+# J5.15 -> U1.J3; bank 35; Input
+set_property PACKAGE_PIN J3 [get_ports {ASIC2_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA4}]
+
+# J5.16 -> U1.A3; bank 35; Input
+set_property PACKAGE_PIN A3 [get_ports {ASIC2_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA5}]
+
+# J5.17 -> U1.G3; bank 35; Input
+set_property PACKAGE_PIN G3 [get_ports {ASIC2_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA6}]
+
+# J5.18 -> U1.C4; bank 35; Input
+set_property PACKAGE_PIN C4 [get_ports {ASIC2_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA7}]
+
+# J5.19 -> U1.A1; bank 35; Input
+set_property PACKAGE_PIN A1 [get_ports {ASIC2_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_DATA8}]
+
+# J5.20 -> U1.E3; bank 35; Input
+set_property PACKAGE_PIN E3 [get_ports {ASIC2_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_CLK32MHz_Out}]
+
+# J5.21 -> U1.B2; bank 35; Input
+set_property PACKAGE_PIN B2 [get_ports {ASIC2_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_READ}]
+
+# J5.22 -> U1.B4; bank 35; Input
+set_property PACKAGE_PIN B4 [get_ports {ASIC2_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC2_SYNC}]
+
+# J5.23 -> U1.J4; bank 35; Input
+set_property PACKAGE_PIN J4 [get_ports {ASIC3_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA1}]
+
+# J5.24 -> U1.J5; bank 35; Input
+set_property PACKAGE_PIN J5 [get_ports {ASIC3_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA2}]
+
+# J5.25 -> U1.H4; bank 35; Input
+set_property PACKAGE_PIN H4 [get_ports {ASIC3_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA3}]
+
+# J5.26 -> U1.F5; bank 35; Input
+set_property PACKAGE_PIN F5 [get_ports {ASIC3_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA4}]
+
+# J5.27 -> U1.G4; bank 35; Input
+set_property PACKAGE_PIN G4 [get_ports {ASIC3_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA5}]
+
+# J5.28 -> U1.E5; bank 35; Input
+set_property PACKAGE_PIN E5 [get_ports {ASIC3_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA6}]
+
+# J5.29 -> U1.H5; bank 35; Input
+set_property PACKAGE_PIN H5 [get_ports {ASIC3_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA7}]
+
+# J5.30 -> U1.G6; bank 35; Input
+set_property PACKAGE_PIN G6 [get_ports {ASIC3_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_DATA8}]
+
+# J5.31 -> U1.F4; bank 35; Input
+set_property PACKAGE_PIN F4 [get_ports {ASIC3_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_CLK32MHz_Out}]
+
+# J5.32 -> U1.E6; bank 35; Input
+set_property PACKAGE_PIN E6 [get_ports {ASIC3_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_READ}]
+
+# J5.33 -> U1.H6; bank 35; Input
+set_property PACKAGE_PIN H6 [get_ports {ASIC3_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC3_SYNC}]
+
+# J6.60 -> U1.C5; bank 35; Input
+set_property PACKAGE_PIN C5 [get_ports {ASIC4_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA1}]
+
+# J5.35 -> U1.A4; bank 35; Input
+set_property PACKAGE_PIN A4 [get_ports {ASIC4_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA2}]
+
+# J5.36 -> U1.C6; bank 35; Input
+set_property PACKAGE_PIN C6 [get_ports {ASIC4_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA3}]
+
+# J5.37 -> U1.A5; bank 35; Input
+set_property PACKAGE_PIN A5 [get_ports {ASIC4_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA4}]
+
+# J5.38 -> U1.A6; bank 35; Input
+set_property PACKAGE_PIN A6 [get_ports {ASIC4_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA5}]
+
+# J5.39 -> U1.B6; bank 35; Input
+set_property PACKAGE_PIN B6 [get_ports {ASIC4_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA6}]
+
+# J5.40 -> U1.C7; bank 35; Input
+set_property PACKAGE_PIN C7 [get_ports {ASIC4_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA7}]
+
+# J5.41 -> U1.E7; bank 35; Input
+set_property PACKAGE_PIN E7 [get_ports {ASIC4_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_DATA8}]
+
+# J5.42 -> U1.D5; bank 35; Input
+set_property PACKAGE_PIN D5 [get_ports {ASIC4_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_CLK32MHz_Out}]
+
+# J5.43 -> U1.B7; bank 35; Input
+set_property PACKAGE_PIN B7 [get_ports {ASIC4_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_READ}]
+
+# J5.44 -> U1.D8; bank 35; Input
+set_property PACKAGE_PIN D8 [get_ports {ASIC4_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC4_SYNC}]
+
+# J6.1 -> U1.V1; bank 34; Input
+set_property PACKAGE_PIN V1 [get_ports {ASIC5_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA1}]
+
+# J6.2 -> U1.R1; bank 34; Input
+set_property PACKAGE_PIN R1 [get_ports {ASIC5_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA2}]
+
+# J6.3 -> U1.U1; bank 34; Input
+set_property PACKAGE_PIN U1 [get_ports {ASIC5_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA3}]
+
+# J6.4 -> U1.U2; bank 34; Input
+set_property PACKAGE_PIN U2 [get_ports {ASIC5_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA4}]
+
+# J6.5 -> U1.T1; bank 34; Input
+set_property PACKAGE_PIN T1 [get_ports {ASIC5_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA5}]
+
+# J6.6 -> U1.R2; bank 34; Input
+set_property PACKAGE_PIN R2 [get_ports {ASIC5_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA6}]
+
+# J6.7 -> U1.V2; bank 34; Input
+set_property PACKAGE_PIN V2 [get_ports {ASIC5_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA7}]
+
+# J6.8 -> U1.U3; bank 34; Input
+set_property PACKAGE_PIN U3 [get_ports {ASIC5_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_DATA8}]
+
+# J6.9 -> U1.R3; bank 34; Input
+set_property PACKAGE_PIN R3 [get_ports {ASIC5_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_CLK32MHz_Out}]
+
+# J6.10 -> U1.V4; bank 34; Input
+set_property PACKAGE_PIN V4 [get_ports {ASIC5_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_READ}]
+
+# J6.11 -> U1.P2; bank 34; Input
+set_property PACKAGE_PIN P2 [get_ports {ASIC5_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC5_SYNC}]
+
+# J6.12 -> U1.M2; bank 34; Input
+set_property PACKAGE_PIN M2 [get_ports {ASIC6_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA1}]
+
+# J6.13 -> U1.N1; bank 34; Input
+set_property PACKAGE_PIN N1 [get_ports {ASIC6_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA2}]
+
+# J6.14 -> U1.M3; bank 34; Input
+set_property PACKAGE_PIN M3 [get_ports {ASIC6_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA3}]
+
+# J6.15 -> U1.M1; bank 34; Input
+set_property PACKAGE_PIN M1 [get_ports {ASIC6_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA4}]
+
+# J6.16 -> U1.K3; bank 34; Input
+set_property PACKAGE_PIN K3 [get_ports {ASIC6_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA5}]
+
+# J6.17 -> U1.L1; bank 34; Input
+set_property PACKAGE_PIN L1 [get_ports {ASIC6_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA6}]
+
+# J6.18 -> U1.N4; bank 34; Input
+set_property PACKAGE_PIN N4 [get_ports {ASIC6_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA7}]
+
+# J6.19 -> U1.N2; bank 34; Input
+set_property PACKAGE_PIN N2 [get_ports {ASIC6_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_DATA8}]
+
+# J6.20 -> U1.P4; bank 34; Input
+set_property PACKAGE_PIN P4 [get_ports {ASIC6_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_CLK32MHz_Out}]
+
+# J6.21 -> U1.L3; bank 34; Input
+set_property PACKAGE_PIN L3 [get_ports {ASIC6_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_READ}]
+
+# J6.22 -> U1.R6; bank 34; Input
+set_property PACKAGE_PIN R6 [get_ports {ASIC6_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC6_SYNC}]
+
+# J6.23 -> U1.U4; bank 34; Input
+set_property PACKAGE_PIN U4 [get_ports {ASIC7_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA1}]
+
+# J6.24 -> U1.V7; bank 34; Input
+set_property PACKAGE_PIN V7 [get_ports {ASIC7_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA2}]
+
+# J6.25 -> U1.V5; bank 34; Input
+set_property PACKAGE_PIN V5 [get_ports {ASIC7_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA3}]
+
+# J6.26 -> U1.U7; bank 34; Input
+set_property PACKAGE_PIN U7 [get_ports {ASIC7_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA4}]
+
+# J6.27 -> U1.V6; bank 34; Input
+set_property PACKAGE_PIN V6 [get_ports {ASIC7_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA5}]
+
+# J6.28 -> U1.U8; bank 34; Input
+set_property PACKAGE_PIN U8 [get_ports {ASIC7_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA6}]
+
+# J6.29 -> U1.U6; bank 34; Input
+set_property PACKAGE_PIN U6 [get_ports {ASIC7_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA7}]
+
+# J6.30 -> U1.V9; bank 34; Input
+set_property PACKAGE_PIN V9 [get_ports {ASIC7_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_DATA8}]
+
+# J6.31 -> U1.T5; bank 34; Input
+set_property PACKAGE_PIN T5 [get_ports {ASIC7_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_CLK32MHz_Out}]
+
+# J6.32 -> U1.U9; bank 34; Input
+set_property PACKAGE_PIN U9 [get_ports {ASIC7_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_READ}]
+
+# J6.33 -> U1.T6; bank 34; Input
+set_property PACKAGE_PIN T6 [get_ports {ASIC7_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC7_SYNC}]
+
+# J6.34 -> U1.M6; bank 34; Input
+set_property PACKAGE_PIN M6 [get_ports {ASIC8_DATA1}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA1}]
+
+# J6.35 -> U1.M4; bank 34; Input
+set_property PACKAGE_PIN M4 [get_ports {ASIC8_DATA2}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA2}]
+
+# J6.36 -> U1.R8; bank 34; Input
+set_property PACKAGE_PIN R8 [get_ports {ASIC8_DATA3}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA3}]
+
+# J6.58 -> U1.L4; bank 34; Input
+set_property PACKAGE_PIN L4 [get_ports {ASIC8_DATA4}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA4}]
+
+# J6.38 -> U1.K5; bank 34; Input
+set_property PACKAGE_PIN K5 [get_ports {ASIC8_DATA5}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA5}]
+
+# J6.39 -> U1.R7; bank 34; Input
+set_property PACKAGE_PIN R7 [get_ports {ASIC8_DATA6}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA6}]
+
+# J6.40 -> U1.L6; bank 34; Input
+set_property PACKAGE_PIN L6 [get_ports {ASIC8_DATA7}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA7}]
+
+# J6.41 -> U1.N6; bank 34; Input
+set_property PACKAGE_PIN N6 [get_ports {ASIC8_DATA8}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_DATA8}]
+
+# J6.42 -> U1.N5; bank 34; Input
+set_property PACKAGE_PIN N5 [get_ports {ASIC8_CLK32MHz_Out}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_CLK32MHz_Out}]
+
+# J6.43 -> U1.T8; bank 34; Input
+set_property PACKAGE_PIN T8 [get_ports {ASIC8_READ}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_READ}]
+
+# J6.44 -> U1.K6; bank 34; Input
+set_property PACKAGE_PIN K6 [get_ports {ASIC8_SYNC}]
+set_property IOSTANDARD LVCMOS15 [get_ports {ASIC8_SYNC}]
+
+# J5.45 -> U1.D12; bank 15; Output
+set_property PACKAGE_PIN D12 [get_ports {CHIP_RESET_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {CHIP_RESET_SHARED}]
+
+# J5.47 -> U1.B11; bank 15; Output ASSUMED;0/1.5V digital test control
+set_property PACKAGE_PIN B11 [get_ports {IMP_TST_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {IMP_TST_SHARED}]
+
+# J5.48 -> U1.B14; bank 15; Output
+set_property PACKAGE_PIN B14 [get_ports {FE_RESET_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {FE_RESET_SHARED}]
+
+# J5.49 -> U1.A11; bank 15; Output
+set_property PACKAGE_PIN A11 [get_ports {SPI_LATCH_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {SPI_LATCH_SHARED}]
+
+# J5.50 -> U1.C16; bank 15; Output
+set_property PACKAGE_PIN C16 [get_ports {STIM_CLK_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CLK_SHARED}]
+
+# J5.51 -> U1.C12; bank 15; Output
+set_property PACKAGE_PIN C12 [get_ports {STIM_START_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_START_SHARED}]
+
+# J5.52 -> U1.A15; bank 15; Output
+set_property PACKAGE_PIN A15 [get_ports {STIM_EN_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_EN_SHARED}]
+
+# J5.53 -> U1.B12; bank 15; Output
+set_property PACKAGE_PIN B12 [get_ports {STIM_CHB_SHARED}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHB_SHARED}]
+
+# J5.54 -> U1.B16; bank 15; Output
+set_property PACKAGE_PIN B16 [get_ports {BOARD1_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD1_CLK}]
+
+# J5.55 -> U1.B13; bank 15; Output
+set_property PACKAGE_PIN B13 [get_ports {BOARD2_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD2_CLK}]
+
+# J5.56 -> U1.A16; bank 15; Output
+set_property PACKAGE_PIN A16 [get_ports {BOARD3_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD3_CLK}]
+
+# J5.57 -> U1.C14; bank 15; Output
+set_property PACKAGE_PIN C14 [get_ports {BOARD4_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD4_CLK}]
+
+# J6.46 -> U1.J14; bank 15; Output
+set_property PACKAGE_PIN J14 [get_ports {STIM_CHIP1_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP1_SPI_DL}]
+
+# J6.47 -> U1.J13; bank 15; Output
+set_property PACKAGE_PIN J13 [get_ports {STIM_CHIP1_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP1_SPI_DR}]
+
+# J6.48 -> U1.G14; bank 15; Output
+set_property PACKAGE_PIN G14 [get_ports {STIM_CHIP2_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP2_SPI_DL}]
+
+# J6.49 -> U1.H14; bank 15; Output
+set_property PACKAGE_PIN H14 [get_ports {STIM_CHIP2_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP2_SPI_DR}]
+
+# J6.50 -> U1.J15; bank 15; Output
+set_property PACKAGE_PIN J15 [get_ports {STIM_CHIP3_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP3_SPI_DL}]
+
+# J6.51 -> U1.K15; bank 15; Output
+set_property PACKAGE_PIN K15 [get_ports {STIM_CHIP3_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP3_SPI_DR}]
+
+# J6.52 -> U1.J17; bank 15; Output
+set_property PACKAGE_PIN J17 [get_ports {STIM_CHIP4_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP4_SPI_DL}]
+
+# J6.53 -> U1.K16; bank 15; Output
+set_property PACKAGE_PIN K16 [get_ports {STIM_CHIP4_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {STIM_CHIP4_SPI_DR}]
+
+# J6.54 -> U1.G17; bank 15; Output
+set_property PACKAGE_PIN G17 [get_ports {NONSTIM_BOARD1_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {NONSTIM_BOARD1_SPI_DL}]
+
+# J6.55 -> U1.H17; bank 15; Output
+set_property PACKAGE_PIN H17 [get_ports {NONSTIM_BOARD1_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {NONSTIM_BOARD1_SPI_DR}]
+
+# J6.56 -> U1.J18; bank 15; Output
+set_property PACKAGE_PIN J18 [get_ports {NONSTIM_BOARD2_SPI_DL}]
+set_property IOSTANDARD LVCMOS15 [get_ports {NONSTIM_BOARD2_SPI_DL}]
+
+# J6.57 -> U1.G18; bank 15; Output
+set_property PACKAGE_PIN G18 [get_ports {NONSTIM_BOARD2_SPI_DR}]
+set_property IOSTANDARD LVCMOS15 [get_ports {NONSTIM_BOARD2_SPI_DR}]
+
+# J5.58 -> U1.B17; bank 15; Output
+set_property PACKAGE_PIN B17 [get_ports {BOARD1_SPI_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD1_SPI_CLK}]
+
+# J5.59 -> U1.A14; bank 15; Output
+set_property PACKAGE_PIN A14 [get_ports {BOARD2_SPI_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD2_SPI_CLK}]
+
+# J5.60 -> U1.A18; bank 15; Output
+set_property PACKAGE_PIN A18 [get_ports {BOARD3_SPI_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD3_SPI_CLK}]
+
+# J6.45 -> U1.K13; bank 15; Output
+set_property PACKAGE_PIN K13 [get_ports {BOARD4_SPI_CLK}]
+set_property IOSTANDARD LVCMOS15 [get_ports {BOARD4_SPI_CLK}]
+

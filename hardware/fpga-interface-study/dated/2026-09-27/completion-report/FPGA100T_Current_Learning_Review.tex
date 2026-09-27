@@ -1,0 +1,2198 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=18mm,headheight=14pt]{geometry}
+\usepackage[T1]{fontenc}\usepackage{mathpazo,microtype,booktabs,array,longtable,xcolor,xurl,fancyhdr,enumitem,tikz,needspace}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{ink}{HTML}{183047}\definecolor{accent}{HTML}{206676}\definecolor{muted}{HTML}{64768A}
+\usepackage[colorlinks=true,linkcolor=ink,urlcolor=accent,pdftitle={Understanding the compact 100T board: current review}]{hyperref}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\urlstyle{same}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}\setlength{\emergencystretch}{3em}
+\setlist{nosep,leftmargin=5mm}\setcounter{tocdepth}{1}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small FPGA 4K / Compact board review}
+\fancyhead[R]{\small 27 September 2026}\fancyfoot[L]{\footnotesize Design checkpoint / not released for fabrication}\fancyfoot[R]{\thepage}
+\begin{document}
+{\color{accent}\small LEARN / EXPLAIN / INSPECT}\par
+{\color{ink}\fontsize{26}{30}\selectfont Understanding the compact\\100T FPGA board}\par
+{\large Current 33 $\times$ 36 mm design}\par
+XC7A100T-1CSG324I / 15 $\times$ 15 mm FPGA package
+
+\textbf{The job of this board.} Capture recording data from eight ASICs, provide their digital control signals, and eventually send captured data to the XEM8310/PC. The XEM8310 is another FPGA module with USB, not a conventional MCU. This report distinguishes saved circuit connections, implemented copper, assumptions, and evidence still needed.
+
+\begin{center}\begin{tikzpicture}[x=1mm,y=1mm,>=Latex]
+\foreach \x/\title/\sub in {0/8 ASICs/Recording,35/Routing board/Interconnect,70/100T board/Capture + control,105/XEM8310/FPGA + USB,140/PC/Store + inspect}{
+\node[draw=muted,minimum width=30mm,minimum height=15mm,align=center,font=\small] at (\x,0) {\textbf{\title}\\{\scriptsize\sub}};}
+\foreach \x in {15,50}\draw[->,accent,line width=.7pt] (\x,0)--(\x+5,0);
+\foreach \x in {85,120}\draw[->,muted,dashed,line width=.7pt] (\x,0)--(\x+5,0);
+\end{tikzpicture}\end{center}
+{\small System direction. Dashed links require downstream implementation; the diagram is not proof of a working assembled system.}
+\textbf{Presentation sentence.} ``This is our compact acquisition-board design. The FPGA receives ASIC data, and separate power, clock and configuration circuits let it start. We can trace every assigned pin in KiCad; hardware operation and the complete downstream link still require validation.''
+
+
+\begingroup\fontsize{9}{11}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{76mm}P{87mm}@{}}
+\toprule \textbf{Measured in this snapshot} & \textbf{Result} \\ \midrule
+\endfirsthead\toprule \textbf{Measured in this snapshot} & \textbf{Result} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+PCB outline & 33 x 36 mm; 12 copper layers \\
+Components / numbered endpoints & 125 / 752 \\
+ASIC interface allocation & 116 provisional digital FPGA nets + one external analog reservation \\
+Completed ASIC copper nets & 116 / 116 \\
+Assigned-net connection gaps & 0 \\
+Native physical DRC / schematic parity findings & 0 / 0 \\
+Intentional unused / future reserved endpoints & 83 NC / 19 reserved \\
+Demonstrated powered operation / fabrication release & Neither is established; no order placed \\
+\end{longtable}\endgroup
+
+\textbf{Source identity.}\quad \nolinkurl{2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc}\par{\small This is the saved PCB SHA-256. The packaged native reports bind the schematic, manifest, libraries and check outputs to this revision. A report with zero DRC violations is not a power, timing or assembly qualification.}
+\clearpage\tableofcontents\clearpage\section{How power, boot and recording fit together}
+\textbf{Power first.} J4 is a custom electrical interface using a micro-HDMI connector. Its proposed input is externally controlled 12 V. It is not HDMI-compatible, and an XEM8310 does not automatically provide this source. The four converters create approximately 1.0 V core, 1.8 V auxiliary/configuration, 1.5 V ASIC I/O, and 2.5 V future-link I/O supplies. Power-good signals control startup sequencing. The source must handle cable drop and input-capacitor charging.
+
+\textbf{Energy close to the load.} Large capacitors supply slower current changes. Small ceramic capacitors next to FPGA supply connections handle faster changes. Copper and vias add inductance and resistance, so two capacitors on the same net can serve different locations. Removing one simply because its net name is duplicated is not justified. Mounted power-network response, temperature and load transients remain unqualified. The final independent audit found 13 groups where multiple capacitor lands share one mounting via. C34 and C61 retain narrow connection portions, and the smaller C20 model is about 1.2 nH rather than demonstrated compliance with AMD's 1 nH bulk class. These are specific PDN review items; an electrically connected capacitor can still be ineffective at a fast transient. Every physical ground land is connected, including all repeated mezzanine ground blades.
+
+R9 is the selected 12 milliohm core isolation resistor. It separates the converter's local sensed output from the FPGA's distributed capacitance. This lowers loss versus the earlier 15 milliohm part while retaining the reviewed isolation margin; it does not establish an operating-current rating.
+
+\textbf{Boot and clock.} The mode straps select Master SPI. The 1.8 V configuration flash stores the future FPGA image, and the 32 MHz oscillator provides a local timing source. JTAG supports inspection/programming through the custom connector. A compatible external programmer/adapter is still needed. Board copper does not supply a bitstream.
+
+The selected boot bus is \textbf{single-bit SPI}. It keeps CS, CCLK, DQ0 and DQ1, and removes optional quad-SPI links R106/R107. FPGA L14 and M14 are now NC. The flash still needs R101/R102 to hold WP\# and RESET\# high; pin 7 on this exact flash is RESET\#, not HOLD\#. Configuration is slower than quad SPI, while the 116 ASIC digital connections and recording path are unchanged. The bitstream and programming procedure must explicitly use SPI x1; the retained net names FLASH\_DQ2/3 now identify only the flash pull-up branches.
+
+\textbf{Acquisition startup.} Gerald's sequence is SPI setup, digital/analog resets, then the recording clock. The current assumption is four outgoing board clocks and eight returned chip clocks, with data sampled on falling edges. Exact reset polarity/width, SPI payload, clock ownership and timing margins still need confirmation. Startup SPI logic must use the local clock; it cannot wait for a returned recording clock that has not started.
+
+\textbf{What the capture simulation proves.} The isolated capture engine records eight independent falling-edge data domains. Each stored word contains DATA1--8, READ and SYNC: ten raw bits per chip. Four full synthetic captures checked 131,072 words, and a structural XC7 synthesis check passed. This does not prove I/O timing, an integrated top-level bitstream, JTAG readout, the full XEM8310 link or acquisition from actual ASICs.
+\section{Explain the connectors and unused pins}
+J5 and J6 provide two 60-contact mezzanine interfaces plus separate ground blades. The current allocation uses 116 digital contacts, one AC\_IN analog reservation, and three spares. Their carrier orientation, return paths and mating mechanics need joint verification.
+
+\textbf{Why 117 contacts?} The 88 recording connections comprise 64 DATA pins (eight per chip), eight returned clocks, eight READ pins and eight SYNC pins. Add 12 SPI L/R programming lines, four outgoing recording clocks, four SPI clocks, eight shared digital controls and one analog AC\_IN contact: $88+12+4+4+8+1=117$. Physical pin count is different from the ASIC's recording-channel count.
+
+AC\_IN at J5.46 must come from an external 0--1.5 V analog source on the ASIC/routing side. U1.A13 is intentionally unused. An FPGA GPIO cannot generate that analog voltage directly. IMP\_TST is provisionally digital 0/1.5 V; this is a design assumption, not a confirmed analog-interface specification.
+
+\textbf{Use these labels when presenting:}
+\begin{itemize}
+\item \textbf{C}: the assigned net has no gap in the supplied native DRC. This does not prove electrical operation.
+\item \textbf{P}: assigned net with a routing gap. Some pads on that net may already be connected.
+\item \textbf{NC}: deliberately unused. There are 81 FPGA balls and two unused regulator PG outputs. The bitstream must also define unused FPGA pin behavior.
+\item \textbf{R}: future reservation, not implemented. Eight FPGA balls, eight J4 data contacts and J5.34, J6.37, J6.59 remain reserved.
+\item \textbf{AN}: the external analog reservation. A single named pad is not a working source circuit.
+\end{itemize}
+
+R12 and the unused shared final power-good branch were removed. The remaining two PG outputs are intentional NC; core and auxiliary PG still perform sequencing. The ERC report retains 19 reserved-pin errors, four documented regulator FB2/GND symbol-type conflicts, and the analog-reservation warning. These are visible review items, not hidden exclusions.
+
+R113 is also omitted. Its function was to hold configuration-mode input M2 low through a resistor; the current board ties M2 directly to GND, as AMD permits. With M1 low and M0 high, Master SPI mode 001 is unchanged and normal JTAG remains available. The tradeoff is less convenient rework to mode 101 for isolated JTAG debugging, because that now requires changing copper.
+\section{What remains before a functioning manufactured system}
+The proposed construction is JLC12161H1-1080B: twelve layers, with a planned ordering thickness of 1.6 mm and listed as 1.59 mm +/-10 percent finished thickness. Six signal layers and four ground planes provide additional routing channels; the two central power layers use 30 micrometre copper. The footprint remains 33 by 36 mm. This is a measured routing improvement over the earlier eight-layer trial, not a proof that eight layers are impossible. Mixed 1080/2313 dielectric constants and every loss tangent remain unqualified; omitted values can be replaced by software defaults during a later KiCad save. Adjacent inner signal layers, return transitions, impedance and the mounted power network still require qualification. J4's short shell tabs remain recessed in the plated slots. Slot tolerances, soldering/inspection and retention require process acceptance; do not assume a protruding bottom-side solder fillet.
+
+
+\begingroup\fontsize{9}{11}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{43mm}P{48mm}P{69mm}@{}}
+\toprule \textbf{Layers in KiCad} & \textbf{Function / nominal copper} & \textbf{How to explain them} \\ \midrule
+\endfirsthead\toprule \textbf{Layers in KiCad} & \textbf{Function / nominal copper} & \textbf{How to explain them} \\ \midrule
+\endhead\midrule\multicolumn{3}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+F.Cu and B.Cu & Outer signals / 35 micrometres & Components and local connections; each faces a ground plane. \\
+In2, In3, In8, In9.Cu & Inner signals / 15.2 micrometres & Additional paths carry the dense ASIC connections. Each layer has an adjacent ground reference. \\
+In1, In4, In7, In10.Cu & Ground / 15.2 micrometres & Return paths and supply returns. Continuity is checked; high-frequency return quality still needs analysis. \\
+In5 and In6.Cu & Power / 30 micrometres & Distribute the selected rails. Thicker copper lowers nominal resistance but does not establish current or transient margin. \\
+\end{longtable}\endgroup
+
+
+\begingroup\fontsize{9}{11}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{34mm}P{129mm}@{}}
+\toprule \textbf{Workstream} & \textbf{Evidence still needed} \\ \midrule
+\endfirsthead\toprule \textbf{Workstream} & \textbf{Evidence still needed} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+FPGA layout & Assigned copper is complete. Qualify mounting paths, high-frequency ground returns, filled-plane behavior and signal timing; revise layout where analysis requires it. \\
+Power / assembly & Operating-current estimate, power-network and load-step validation, input ramp/current limit, temperature and cable drop; approval of stackup, plated slots and recessed connector shell-tab soldering. \\
+ASIC / carrier & Confirmed chip/contact identities, logic limits, safe inactive levels, reset/SPI sequence and timing; analog AC\_IN source; mating continuity. \\
+Firmware / link & Integrated Artix-7 top level, constraints and timing closure, known ASIC configuration payload, capture readout and XEM8310 carrier/transport implementation. \\
+Bench & Current-limited staged power-up, all rail measurements, clock/configuration/JTAG checks, then synthetic and actual-ASIC capture tests. \\
+\end{longtable}\endgroup
+
+\section{Inspect this exact project in KiCad}
+\begin{enumerate}
+\item Extract the complete project ZIP. Keep its hardware folder, all hierarchical schematic sheets, libraries and reports together.
+\item Open \nolinkurl{hardware/FPGA100T_33x36_Routing.kicad_pro}. Open the PCB editor and press Home to fit the board.
+\item Select a pad or track and inspect its net name. Use the net-highlighting tool to follow all copper with that name. Toggle copper layers in the Appearance panel to see inner routing; a front/back picture omits these layers.
+\item Open the schematic editor. Follow hierarchical sheets, then compare a pin's net label with the PCB pad and the pin appendix. Matching names specify the intended connection; the DRC establishes whether its assigned copper has gaps.
+\item Run Electrical Rules Checker on the schematic and Design Rules Checker on the PCB with schematic parity enabled. Keep the included reports as the original checkpoint evidence; save experimental edits as another revision.
+\item Open the website's component/pin explorer for a short explanation, and the native PCB when checking geometry. Older reports and board snapshots remain historical.
+\end{enumerate}
+
+\section{Reference basis and limits}
+Component explanations inherit the documented review, with current values, part numbers and endpoints read back from the native project. Part substitutions and physical routing are engineering proposals until qualified. Manufacturer sources and exact selections are packaged in the qualification notes.
+\begin{itemize}
+\item \href{https://docs.amd.com/v/u/en-US/ug483_7Series_PCB}{AMD UG483}: power distribution and decoupling.
+\item \href{https://docs.amd.com/v/u/en-US/ug470_7Series_Config}{AMD UG470}: configuration and startup.
+\item \href{https://docs.amd.com/v/u/en-US/ug475_7Series_Pkg_Pinout}{AMD UG475}: package pins.
+\item \href{https://www.ti.com/lit/ds/symlink/tps62135.pdf}{TI TPS62135}: regulator application and unused PG/FB2 behavior.
+\item \href{https://www.opalkelly.com/products/fpga-integration/xem8310}{Opal Kelly XEM8310}: downstream module context.
+\item \href{https://howardwhsrun.github.io/FPGA_4K/presentation/fpga/}{Project website}: current native project, interactive board, source evidence and historical revisions.
+\end{itemize}
+\clearpage\appendix\section{Every component: purpose and selected part}
+Read the group explanation first, then use these rows for a specific reference. The selected MPN is not a promise of availability, assembly acceptance or tested performance.
+
+\Needspace{35mm}\subsection{FPGA logic}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{U1}\par XC7A100T-1CSG324I\par\scriptsize \nolinkurl{XC7A100T-1CSG324I} & The XC7A100T is the board logic device. Its planned firmware captures the ASIC interface, supplies control/clock signals and sends data downstream.\par\smallskip\textit{Review:} Keep XC7A100T-1CSG324I. The 116 candidate digital ASIC balls are assigned; AC\_IN is external analog. Eighty-one balls are intentionally NC and eight future-link balls remain reserved. Clock placement, external timing and powered operation still require validation. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{Four power rails}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{C1}\par 47u 25V X5R\par\scriptsize \nolinkurl{MSAST32MAB5476MPNDT1} & 47 uF at the proposed 12 V cable entry supports slower input current changes before the individual converter input reservoirs.\par\smallskip\textit{Review:} Do not call this input protection. Retain pending a source/cable transient study; optimize jointly with the carrier, not by visual whitespace. \\
+\nolinkurl{C2}\par 100n 100V X7R\par\scriptsize \nolinkurl{GRM188R72A104KA35D} & 100 nF from the cable input to GND bypasses faster voltage disturbance at entry.\par\smallskip\textit{Review:} Review jointly with C1 and converter input loops. It does not clamp overvoltage. \\
+\nolinkurl{C3}\par 22u 25V X5R\par\scriptsize \nolinkurl{MSAST31LBB5226MTNA01} & Local input reservoir from LINK\_12V to GND next to U2. Supplies the converter switching loop.\par\smallskip\textit{Review:} Keep a qualified local input-capacitance function. Actual capacitance at 12 V, tolerance, temperature and aging must meet the input requirement. \\
+\nolinkurl{C4}\par 100n 100V X7R\par\scriptsize \nolinkurl{GRM188R72A104KA35D} & Small local 100 nF bypass across U2 input, alongside C3.\par\smallskip\textit{Review:} A possible optimization only after checking switching-loop layout, impedance and EMI; not proven individually indispensable. \\
+\nolinkurl{C5}\par 22u 16V X5R\par\scriptsize \nolinkurl{EMK212BBJ226MG-T} & Local output reservoir and voltage-sense pickup for U2; the L/C output function works with L1.\par\smallskip\textit{Review:} Keep a qualified local output capacitor. C5 and C9 remain upstream of R9 and R122 respectively. \\
+\nolinkurl{C6}\par 10n 50V X7R\par\scriptsize \nolinkurl{GRM188R71H103KA01D} & 10 nF from U2 SS/TR to GND controls the rail rise time. It is a timing choice, not the source of rail power.\par\smallskip\textit{Review:} Could be reduced or omitted only after measured startup remains within FPGA ramp and sequencing limits. Retain until those checks pass. \\
+\nolinkurl{C7}\par 22u 25V X5R\par\scriptsize \nolinkurl{MSAST31LBB5226MTNA01} & Local input reservoir from LINK\_12V to GND next to U3. Supplies the converter switching loop.\par\smallskip\textit{Review:} Keep a qualified local input-capacitance function. Actual capacitance at 12 V, tolerance, temperature and aging must meet the input requirement. \\
+\nolinkurl{C8}\par 100n 100V X7R\par\scriptsize \nolinkurl{GRM188R72A104KA35D} & Small local 100 nF bypass across U3 input, alongside C7.\par\smallskip\textit{Review:} A possible optimization only after checking switching-loop layout, impedance and EMI; not proven individually indispensable. \\
+\nolinkurl{C9}\par 22u 16V X5R\par\scriptsize \nolinkurl{EMK212BBJ226MG-T} & Local output reservoir and voltage-sense pickup for U3; the L/C output function works with L2.\par\smallskip\textit{Review:} Keep a qualified local output capacitor. C5 and C9 remain upstream of R9 and R122 respectively. \\
+\nolinkurl{C10}\par 10n 50V X7R\par\scriptsize \nolinkurl{GRM188R71H103KA01D} & 10 nF from U3 SS/TR to GND controls the rail rise time. It is a timing choice, not the source of rail power.\par\smallskip\textit{Review:} Could be reduced or omitted only after measured startup remains within FPGA ramp and sequencing limits. Retain until those checks pass. \\
+\nolinkurl{C11}\par 22u 25V X5R\par\scriptsize \nolinkurl{MSAST31LBB5226MTNA01} & Local input reservoir from LINK\_12V to GND next to U4. Supplies the converter switching loop.\par\smallskip\textit{Review:} Keep a qualified local input-capacitance function. Actual capacitance at 12 V, tolerance, temperature and aging must meet the input requirement. \\
+\nolinkurl{C12}\par 100n 100V X7R\par\scriptsize \nolinkurl{GRM188R72A104KA35D} & Small local 100 nF bypass across U4 input, alongside C11.\par\smallskip\textit{Review:} A possible optimization only after checking switching-loop layout, impedance and EMI; not proven individually indispensable. \\
+\nolinkurl{C13}\par 22u 16V X5R\par\scriptsize \nolinkurl{EMK212BBJ226MG-T} & Local output reservoir and voltage-sense pickup for U4; the L/C output function works with L3.\par\smallskip\textit{Review:} Keep a qualified local output capacitor. C5 and C9 remain upstream of R9 and R122 respectively. \\
+\nolinkurl{C14}\par 10n 50V X7R\par\scriptsize \nolinkurl{GRM188R71H103KA01D} & 10 nF from U4 SS/TR to GND controls the rail rise time. It is a timing choice, not the source of rail power.\par\smallskip\textit{Review:} Could be reduced or omitted only after measured startup remains within FPGA ramp and sequencing limits. Retain until those checks pass. \\
+\nolinkurl{C15}\par 22u 25V X5R\par\scriptsize \nolinkurl{MSAST31LBB5226MTNA01} & Local input reservoir from LINK\_12V to GND next to U5. Supplies the converter switching loop.\par\smallskip\textit{Review:} Keep a qualified local input-capacitance function. Actual capacitance at 12 V, tolerance, temperature and aging must meet the input requirement. \\
+\nolinkurl{C16}\par 100n 100V X7R\par\scriptsize \nolinkurl{GRM188R72A104KA35D} & Small local 100 nF bypass across U5 input, alongside C15.\par\smallskip\textit{Review:} A possible optimization only after checking switching-loop layout, impedance and EMI; not proven individually indispensable. \\
+\nolinkurl{C17}\par 22u 16V X5R\par\scriptsize \nolinkurl{EMK212BBJ226MG-T} & Local output reservoir and voltage-sense pickup for U5; the L/C output function works with L4.\par\smallskip\textit{Review:} Keep a qualified local output capacitor. C5 and C9 remain upstream of R9 and R122 respectively. \\
+\nolinkurl{C18}\par 10n 50V X7R\par\scriptsize \nolinkurl{GRM188R71H103KA01D} & 10 nF from U5 SS/TR to GND controls the rail rise time. It is a timing choice, not the source of rail power.\par\smallskip\textit{Review:} Could be reduced or omitted only after measured startup remains within FPGA ramp and sequencing limits. Retain until those checks pass. \\
+\nolinkurl{L1}\par 1uH 5.4A Isat30\%\par\scriptsize \nolinkurl{XFL4020-102MEC} & Carries U2 switched current to its local output capacitor C5; this is part of the conversion path.\par\smallskip\textit{Review:} Keep the function; verify inductance under load, saturation, heating and selected footprint. \\
+\nolinkurl{L2}\par 1uH 5.4A Isat30\%\par\scriptsize \nolinkurl{XFL4020-102MEC} & Carries U3 switched current to its local output capacitor C9; this is part of the conversion path.\par\smallskip\textit{Review:} Keep the function; verify inductance under load, saturation, heating and selected footprint. \\
+\nolinkurl{L3}\par 1uH 5.4A Isat30\%\par\scriptsize \nolinkurl{XFL4020-102MEC} & Carries U4 switched current to its local output capacitor C13; this is part of the conversion path.\par\smallskip\textit{Review:} Keep the function; verify inductance under load, saturation, heating and selected footprint. \\
+\nolinkurl{L4}\par 1uH 5.4A Isat30\%\par\scriptsize \nolinkurl{XFL4020-102MEC} & Carries U5 switched current to its local output capacitor C17; this is part of the conversion path.\par\smallskip\textit{Review:} Keep the function; verify inductance under load, saturation, heating and selected footprint. \\
+\nolinkurl{R1}\par 32.4k 0.1\%\par\scriptsize \nolinkurl{TNPW060332K4BEEA} & The upper resistor of U2 output-setting divider; R1/R2 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R2}\par 69.8k 0.1\%\par\scriptsize \nolinkurl{TNPW060369K8BEEA} & The lower resistor of U2 output-setting divider; R1/R2 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R3}\par 110k 0.1\%\par\scriptsize \nolinkurl{TNPW0603110KBEEA} & The upper resistor of U3 output-setting divider; R3/R4 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R4}\par 69.8k 0.1\%\par\scriptsize \nolinkurl{TNPW060369K8BEEA} & The lower resistor of U3 output-setting divider; R3/R4 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R5}\par 180k 0.1\%\par\scriptsize \nolinkurl{TNPW0603180KBEEA} & The upper resistor of U4 output-setting divider; R5/R6 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R6}\par 69.8k 0.1\%\par\scriptsize \nolinkurl{TNPW060369K8BEEA} & The lower resistor of U4 output-setting divider; R5/R6 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R7}\par 80.6k 0.1\%\par\scriptsize \nolinkurl{TNPW060380K6BEEA} & The upper resistor of U5 output-setting divider; R7/R8 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R8}\par 69.8k 0.1\%\par\scriptsize \nolinkurl{TNPW060369K8BEEA} & The lower resistor of U5 output-setting divider; R7/R8 determines the chosen regulated voltage.\par\smallskip\textit{Review:} Keep both divider functions with required tolerance; never treat these as optional bias resistors. \\
+\nolinkurl{R9}\par 12m 1\% 1W\par\scriptsize \nolinkurl{WSLP1206R0120FEA} & 12 milliohm series element between VCORE\_REG\_1V025 and VCCINT\_1V0; local sensing remains upstream and distributed FPGA capacitors downstream. Reduces DC loss relative to the earlier 15 milliohm selection while retaining the reviewed isolation margin.\par\smallskip\textit{Review:} Retain for this topology. Replacing it requires a demonstrated alternative series impedance and a full DC-drop/stability review. \\
+\nolinkurl{R10}\par 100k\par\scriptsize \nolinkurl{CRCW0603100KFKEA} & Pulls PG\_CORE high when U2 releases its open-drain power-good output; that signal enables U3.\par\smallskip\textit{Review:} Keep while this sequencing chain is used; startup and unplug waveforms still need checking. \\
+\nolinkurl{R11}\par 100k\par\scriptsize \nolinkurl{CRCW0603100KFKEA} & Pulls PG\_AUX high when U3 releases its open-drain power-good output; that signal enables U4 and U5.\par\smallskip\textit{Review:} Keep while this sequencing chain is used; startup and unplug waveforms still need checking. \\
+\nolinkurl{R122}\par 15m 1\% 1W\par\scriptsize \nolinkurl{WSLP1206R0150FEA} & 15 milliohm series element between VAUX\_REG\_1V803 and VCCAUX\_1V8; local sensing remains upstream, distributed FPGA capacitors downstream.\par\smallskip\textit{Review:} Retain for this topology. Replacing it requires a demonstrated alternative series impedance and a full DC-drop/stability review. \\
+\nolinkurl{U2}\par TPS62135RGXR\par\scriptsize \nolinkurl{TPS62135RGXR} & Converts the proposed 12 V input into the core / block RAM rail. Its output voltage is selected by R1/R2.\par\smallskip\textit{Review:} Keep for this four-rail architecture. A different input or interface voltage requires redesign; the 4 A IC rating is not a validated available board current. \\
+\nolinkurl{U3}\par TPS62135RGXR\par\scriptsize \nolinkurl{TPS62135RGXR} & Converts the proposed 12 V input into the auxiliary / configuration rail. Its output voltage is selected by R3/R4.\par\smallskip\textit{Review:} Keep for this four-rail architecture. A different input or interface voltage requires redesign; the 4 A IC rating is not a validated available board current. \\
+\nolinkurl{U4}\par TPS62135RGXR\par\scriptsize \nolinkurl{TPS62135RGXR} & Converts the proposed 12 V input into the 2.5 V link bank rail. Its output voltage is selected by R5/R6.\par\smallskip\textit{Review:} Keep for this four-rail architecture. A different input or interface voltage requires redesign; the 4 A IC rating is not a validated available board current. \\
+\nolinkurl{U5}\par TPS62135RGXR\par\scriptsize \nolinkurl{TPS62135RGXR} & Converts the proposed 12 V input into the 1.5 V ASIC-facing banks rail. Its output voltage is selected by R7/R8.\par\smallskip\textit{Review:} Keep for this four-rail architecture. A different input or interface voltage requires redesign; the 4 A IC rating is not a validated available board current. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{FPGA supply decoupling}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{C20}\par 330u 2.5V POSCAP ESR9m@300kHz\par\scriptsize \nolinkurl{ETPE330M9GB} & 330 microfarad polarized bulk capacitor on the FPGA side of R9. Supplies slower core-current changes; local small ceramic capacitors handle faster changes. The smaller manufacturer land pattern opens connector routing space.\par\smallskip\textit{Review:} Keep the bulk-capacitor function. ETPE330M9GB is the compact selection: 2.5 V, 105 C category maximum, ESR specified at 300 kHz and 20 C. Its model ESL reaches about 1.2 nH, so AMD decoupling-class equivalence, mounted PDN response, ripple and thermal performance still require qualification. Pad 1 is positive core; pad 2 is GND. \\
+\nolinkurl{C21}\par 100u 6.3V X5R\par\scriptsize \nolinkurl{GRM32ER60J107ME20L} & 100u 6.3V X5R bulk energy reserve for FPGA block RAM between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. The recorded part family is NRND; qualify an orderable alternative. \\
+\nolinkurl{C22}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C23}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C24}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C25}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C26}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C27}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C28}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C29}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C30}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C31}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C32}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C33}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C34}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C35}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA core between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C36}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA block RAM between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C37}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA block RAM between VCCINT\_1V0 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C40}\par 47u 6.3V X7R\par\scriptsize \nolinkurl{GRM32ER70J476ME20L} & 47u 6.3V X7R bulk energy reserve for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C41}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C42}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C43}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C44}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C45}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C46}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for FPGA auxiliary circuits between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C50}\par 47u 6.3V X7R\par\scriptsize \nolinkurl{GRM32ER70J476ME20L} & 47u 6.3V X7R bulk energy reserve for configuration bank 0 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C51}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C52}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C53}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C54}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C55}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C56}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for configuration/user-I/O bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C57}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C58}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C59}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C60}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C61}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C62}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C63}\par 47u 6.3V X7R\par\scriptsize \nolinkurl{GRM32ER70J476ME20L} & 47u 6.3V X7R bulk energy reserve for link bank 16 between VCC\_LINK\_2V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C64}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C65}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C66}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C67}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C68}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C69}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 15 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C70}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C71}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C72}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C73}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C74}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C75}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 34 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C76}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C77}\par 4.7u 10V X7R\par\scriptsize \nolinkurl{GRM21BR71A475KA73L} & 4.7u 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C78}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C79}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C80}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C81}\par 470n 10V X7R\par\scriptsize \nolinkurl{GRT155R71A474KE01D} & 470n 10V X7R local supply bypass for ASIC-facing bank 35 between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C82}\par 47u 6.3V X7R\par\scriptsize \nolinkurl{GRM32ER70J476ME20L} & 47u 6.3V X7R bulk energy reserve for the three ASIC-facing banks between VCC\_ASIC\_1V5 and GND. Supplies short current pulses locally while the regulator and plane respond.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C90}\par 100n 16V X7R\par\scriptsize \nolinkurl{GRT155R71C104KE01D} & 100n 16V X7R local supply bypass for XADC analog supply between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond. The ADC-related supply still needs a defined electrical connection even when external temperature-diode sensing is unused.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C91}\par 1u 10V X7R\par\scriptsize \nolinkurl{GRM188R71A105KA61D} & 1u 10V X7R local supply bypass for XADC analog supply between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond. The ADC-related supply still needs a defined electrical connection even when external temperature-diode sensing is unused.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\nolinkurl{C92}\par 47u 6.3V X7R\par\scriptsize \nolinkurl{GRM32ER70J476ME20L} & 47u 6.3V X7R bulk energy reserve for bank 14 between VCCAUX\_1V8 and GND. Supplies short current pulses locally while the regulator and plane respond. Added when bank 14 and bank 16 were separated onto different voltages; it is not a duplicate on the 2.5 V rail.\par\smallskip\textit{Review:} Retain the documented decoupling baseline. This individual part is not proven to be the unique minimum; reduction requires equivalent impedance, effective capacitance and load-step evidence. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{Boot memory}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{C100}\par 100n\par\scriptsize \nolinkurl{GRM155R71C104KA88D} & 100 nF between U6 VCC and GND supports local flash switching current.\par\smallskip\textit{Review:} The exact capacitor order code is selected. Keep its bypass function; effective capacitance and the mounted power network still need qualification. \\
+\nolinkurl{C101}\par 1u 16V X5R\par\scriptsize \nolinkurl{GRM155R61C105KA12D} & 1 uF supplements C100 at the flash supply.\par\smallskip\textit{Review:} Potential reduction only after supply-noise and flash power-cycle tests. \\
+\nolinkurl{R100}\par 2.4k\par\scriptsize \nolinkurl{CRCW04022K40FKED} & Holds FLASH\_CS\_B high while FPGA control is high impedance, preventing accidental selection.\par\smallskip\textit{Review:} Keep for the selected SPI boot interface. \\
+\nolinkurl{R101}\par 4.7k\par\scriptsize \nolinkurl{CRCW04024K70FKED} & Holds flash U6.3 WP\#/SIO2 high for the selected single-bit SPI boot. The optional FPGA DQ2 path and R106 are removed; this resistor still supplies the required defined flash input level.\par\smallskip\textit{Review:} Keep the flash WP\# pull-up. The image and programmer must use SPI x1; quad boot is not wired in this revision. \\
+\nolinkurl{R102}\par 4.7k\par\scriptsize \nolinkurl{CRCW04024K70FKED} & Pulls U6 RESET\#/SIO3 high so the selected flash is not unintentionally held in reset.\par\smallskip\textit{Review:} Keep for this exact flash part and mode; it is RESET\#, not a generic HOLD\# pin. \\
+\nolinkurl{R103}\par 33\par\scriptsize \nolinkurl{CRCW040233R0FKED} & 33 ohm series element reduces fast-edge ringing in this saved signal path; its actual value depends on driver, trace/cable and load.\par\smallskip\textit{Review:} Tune or replace by a direct route only after signal-integrity evidence. The existing 33 ohm value is a draft value, not a measured optimum. \\
+\nolinkurl{R104}\par 0\par\scriptsize \nolinkurl{CRCW04020000Z0ED} & Provides an editable series location in the DQ0 path. Its fitted 0 ohm value is electrically a link.\par\smallskip\textit{Review:} Footprint-removal candidate after signal-integrity/boot-mode review; do not confuse removing the component with leaving an open circuit. \\
+\nolinkurl{R105}\par 33\par\scriptsize \nolinkurl{CRCW040233R0FKED} & 33 ohm series element reduces fast-edge ringing in this saved signal path; its actual value depends on driver, trace/cable and load.\par\smallskip\textit{Review:} Tune or replace by a direct route only after signal-integrity evidence. The existing 33 ohm value is a draft value, not a measured optimum. \\
+\nolinkurl{U6}\par MX25U12835FM2I-10G\par\scriptsize \nolinkurl{MX25U12835FM2I-10G} & Stores the configuration image for autonomous SPI boot at 1.8 V. The FPGA logic configuration must be loaded after power-up.\par\smallskip\textit{Review:} Keep for autonomous Master SPI x1 boot at 1.8 V. R106/R107 and FPGA DQ2/DQ3 paths are omitted. Use a compatible SPI x1 image and validated flash-programming procedure; quad configuration is not supported by this wiring. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{System clock}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{C102}\par 10n\par\scriptsize \nolinkurl{GRM155R71C103KA01D} & 10 nF adjacent to Y1 VDD/GND follows the oscillator bypass arrangement in the selected-part documentation.\par\smallskip\textit{Review:} Keep local bypass when Y1 is fitted. ASE3 recommends 10 nF, but its note incorrectly says pins 7/14; the actual four-pin table is VDD=4 and GND=2. Use that verified mapping. \\
+\nolinkurl{C103}\par 100n\par\scriptsize \nolinkurl{GRM155R71C104KA88D} & 100 nF supplements Y1 local supply bypass C102.\par\smallskip\textit{Review:} Can be optimized after clock jitter/supply-noise evidence; do not claim two bypass parts are universally mandatory. \\
+\nolinkurl{R119}\par 33\par\scriptsize \nolinkurl{CRCW040233R0FKED} & 33 ohm series element reduces fast-edge ringing in this saved signal path; its actual value depends on driver, trace/cable and load.\par\smallskip\textit{Review:} Tune or replace by a direct route only after signal-integrity evidence. The existing 33 ohm value is a draft value, not a measured optimum. \\
+\nolinkurl{Y1}\par ASE3 32MHz 1.8V\par\scriptsize \nolinkurl{ASE3-32.000MHZ-L-C-T} & The 1.8 V oscillator provides the application clock through R119 to U1.P17. It is separate from the FPGA configuration clock.\par\smallskip\textit{Review:} Keep for self-contained clocking. Remove only if another approved clock source is supplied with valid startup and timing. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{Configuration and JTAG}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{R108}\par 4.7k\par\scriptsize \nolinkurl{CRCW04024K70FKED} & 4.7 kilohm to the 1.8 V configuration rail gives PROGRAM\_B the specified released/high state.\par\smallskip\textit{Review:} Keep the pull-up function required for this configuration scheme. \\
+\nolinkurl{R109}\par 4.7k\par\scriptsize \nolinkurl{CRCW04024K70FKED} & 4.7 kilohm to the 1.8 V configuration rail gives INIT\_B the specified released/high state.\par\smallskip\textit{Review:} Keep the pull-up function required for this configuration scheme. \\
+\nolinkurl{R110}\par 4.7k\par\scriptsize \nolinkurl{CRCW04024K70FKED} & 4.7 kilohm supplements the FPGA internal DONE pull-up. The current DONE net has no external monitor or LED.\par\smallskip\textit{Review:} A removal candidate after confirming DonePipe/startup settings, leakage and waveform. Do not state that every external DONE pull-up is mandatory. \\
+\nolinkurl{R111}\par 1k\par\scriptsize \nolinkurl{CRCW04021K00FKED} & 1 kilohm sets M0 to 1.8 V / high. M[2:0]=001 chooses SPI; PUDC\_B high disables configuration-time user-I/O pull-ups.\par\smallskip\textit{Review:} The stable logic level is needed; the separate resistor is not inherently needed. UG470 permits a direct rail/GND tie, so a later revision can replace it with copper after the pin and configuration choice is frozen. \\
+\nolinkurl{R114}\par 1k\par\scriptsize \nolinkurl{CRCW04021K00FKED} & 1 kilohm sets PUDC\_B to 1.8 V / high. M[2:0]=001 chooses SPI; PUDC\_B high disables configuration-time user-I/O pull-ups.\par\smallskip\textit{Review:} The stable logic level is needed; the separate resistor is not inherently needed. UG470 permits a direct rail/GND tie, so a later revision can replace it with copper after the pin and configuration choice is frozen. \\
+\nolinkurl{R115}\par 10k\par\scriptsize \nolinkurl{CRCW040210K0FKED} & 10 kilohm to 1.8 V provides a weak external high level at JTAG TMS when the cable is undriven.\par\smallskip\textit{Review:} Review with the programming-interface contract. The current direct, single-FPGA connection does not prove that all three extra resistors are mandatory. \\
+\nolinkurl{R116}\par 10k\par\scriptsize \nolinkurl{CRCW040210K0FKED} & 10 kilohm to 1.8 V provides a weak external high level at JTAG TDI when the cable is undriven.\par\smallskip\textit{Review:} Review with the programming-interface contract. The current direct, single-FPGA connection does not prove that all three extra resistors are mandatory. \\
+\nolinkurl{R117}\par 10k\par\scriptsize \nolinkurl{CRCW040210K0FKED} & 10 kilohm to 1.8 V provides a weak external high level at JTAG TCK when the cable is undriven.\par\smallskip\textit{Review:} Review with the programming-interface contract. The current direct, single-FPGA connection does not prove that all three extra resistors are mandatory. \\
+\nolinkurl{R118}\par 33\par\scriptsize \nolinkurl{CRCW040233R0FKED} & 33 ohm series element reduces fast-edge ringing in this saved signal path; its actual value depends on driver, trace/cable and load.\par\smallskip\textit{Review:} Tune or replace by a direct route only after signal-integrity evidence. The existing 33 ohm value is a draft value, not a measured optimum. \\
+\end{longtable}\endgroup
+
+\Needspace{35mm}\subsection{External connections}
+
+\begingroup\fontsize{8.5}{10.5}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{46mm}P{117mm}@{}}
+\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endfirsthead\toprule \textbf{Reference / selected part} & \textbf{Why it is present and what remains to verify} \\ \midrule
+\endhead\midrule\multicolumn{2}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{J4}\par CUSTOM POWER + JTAG / DATA TBD\par\scriptsize \nolinkurl{467651001} & One custom Type-D connector replaces separate power and debug connectors and reserves contacts for four data pairs.\par\smallskip\textit{Review:} Keep one system connector. Exact cable pinout, protected source and receiver design must be qualified; this custom 12 V wiring is not HDMI compatible. \\
+\nolinkurl{J5}\par QSH-030-01-L-D-A\par\scriptsize \nolinkurl{QSH-030-01-L-D-A} & One half of the chosen two-connector ASIC interface; together J5/J6 offer 120 numbered signal contacts plus ground-blade lands.\par\smallskip\textit{Review:} Keep both for the selected 2 x 60 interface. There are 116 candidate digital FPGA connections, one AC\_IN analog contact reserved for the routing/ASIC side, and three spare contacts. Electrical compatibility, connector mating and timing are not yet approved. \\
+\nolinkurl{J6}\par QSH-030-01-L-D-A\par\scriptsize \nolinkurl{QSH-030-01-L-D-A} & One half of the chosen two-connector ASIC interface; together J5/J6 offer 120 numbered signal contacts plus ground-blade lands.\par\smallskip\textit{Review:} Keep both for the selected 2 x 60 interface. There are 116 candidate digital FPGA connections, one AC\_IN analog contact reserved for the routing/ASIC side, and three spare contacts. Electrical compatibility, connector mating and timing are not yet approved. \\
+\end{longtable}\endgroup
+
+\clearpage\section{Every numbered pin: connection and state}
+The net column is the native electrical connection name. All pins with the same functional net name belong together; C/P describes that whole net. Repeated physical pads sharing a number appear once. The downloadable CSV additionally records physical pad count and schematic net names. NC/R rows have no functional net.
+
+\Needspace{32mm}\subsection*{C1}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C2}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C3}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C4}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C5}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCORE_REG_1V025} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C6}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{SS_CORE} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C7}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C8}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C9}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VAUX_REG_1V803} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C10}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{SS_AUX} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C11}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C12}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C13}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C14}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{SS_CFG} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C15}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C16}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C17}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C18}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{SS_ASIC} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C20}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C21}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C22}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C23}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C24}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C25}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C26}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C27}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C28}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C29}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C30}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C31}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C32}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C33}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C34}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C35}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C36}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C37}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C40}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C41}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C42}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C43}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C44}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C45}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C46}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C50}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C51}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C52}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C53}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C54}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C55}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C56}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C57}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C58}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C59}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C60}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C61}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C62}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C63}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C64}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C65}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C66}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C67}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C68}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C69}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C70}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C71}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C72}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C73}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C74}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C75}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C76}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C77}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C78}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C79}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C80}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C81}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C82}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C90}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C91}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C92}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C100}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C101}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C102}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{C103}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{J4}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{VTREF} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{JTAG_TMS} & \nolinkurl{JTAG_TMS} & C \\
+\nolinkurl{3} & \nolinkurl{PAIR0_P_RESERVED} & No functional net & R \\
+\nolinkurl{4} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{PAIR0_N_RESERVED} & No functional net & R \\
+\nolinkurl{6} & \nolinkurl{PAIR1_P_RESERVED} & No functional net & R \\
+\nolinkurl{7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{8} & \nolinkurl{PAIR1_N_RESERVED} & No functional net & R \\
+\nolinkurl{9} & \nolinkurl{PAIR2_P_RESERVED} & No functional net & R \\
+\nolinkurl{10} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{11} & \nolinkurl{PAIR2_N_RESERVED} & No functional net & R \\
+\nolinkurl{12} & \nolinkurl{PAIR3_P_RESERVED} & No functional net & R \\
+\nolinkurl{13} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{14} & \nolinkurl{PAIR3_N_RESERVED} & No functional net & R \\
+\nolinkurl{15} & \nolinkurl{JTAG_TDI} & \nolinkurl{JTAG_TDI} & C \\
+\nolinkurl{16} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{17} & \nolinkurl{JTAG_TCK} & \nolinkurl{JTAG_TCK} & C \\
+\nolinkurl{18} & \nolinkurl{JTAG_TDO} & \nolinkurl{JTAG_TDO} & C \\
+\nolinkurl{19} & \nolinkurl{12V} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{SH} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{J5}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{CONTACT_1} & \nolinkurl{ASIC1_DATA1} & C \\
+\nolinkurl{2} & \nolinkurl{CONTACT_2} & \nolinkurl{ASIC1_DATA2} & C \\
+\nolinkurl{3} & \nolinkurl{CONTACT_3} & \nolinkurl{ASIC1_DATA3} & C \\
+\nolinkurl{4} & \nolinkurl{CONTACT_4} & \nolinkurl{ASIC1_DATA4} & C \\
+\nolinkurl{5} & \nolinkurl{CONTACT_5} & \nolinkurl{ASIC1_DATA5} & C \\
+\nolinkurl{6} & \nolinkurl{CONTACT_6} & \nolinkurl{ASIC1_DATA6} & C \\
+\nolinkurl{7} & \nolinkurl{CONTACT_7} & \nolinkurl{ASIC1_DATA7} & C \\
+\nolinkurl{8} & \nolinkurl{CONTACT_8} & \nolinkurl{ASIC1_DATA8} & C \\
+\nolinkurl{9} & \nolinkurl{CONTACT_9} & \nolinkurl{ASIC1_CLK32MHz_Out} & C \\
+\nolinkurl{10} & \nolinkurl{CONTACT_10} & \nolinkurl{ASIC1_READ} & C \\
+\nolinkurl{11} & \nolinkurl{CONTACT_11} & \nolinkurl{ASIC1_SYNC} & C \\
+\nolinkurl{12} & \nolinkurl{CONTACT_12} & \nolinkurl{ASIC2_DATA1} & C \\
+\nolinkurl{13} & \nolinkurl{CONTACT_13} & \nolinkurl{ASIC2_DATA2} & C \\
+\nolinkurl{14} & \nolinkurl{CONTACT_14} & \nolinkurl{ASIC2_DATA3} & C \\
+\nolinkurl{15} & \nolinkurl{CONTACT_15} & \nolinkurl{ASIC2_DATA4} & C \\
+\nolinkurl{16} & \nolinkurl{CONTACT_16} & \nolinkurl{ASIC2_DATA5} & C \\
+\nolinkurl{17} & \nolinkurl{CONTACT_17} & \nolinkurl{ASIC2_DATA6} & C \\
+\nolinkurl{18} & \nolinkurl{CONTACT_18} & \nolinkurl{ASIC2_DATA7} & C \\
+\nolinkurl{19} & \nolinkurl{CONTACT_19} & \nolinkurl{ASIC2_DATA8} & C \\
+\nolinkurl{20} & \nolinkurl{CONTACT_20} & \nolinkurl{ASIC2_CLK32MHz_Out} & C \\
+\nolinkurl{21} & \nolinkurl{CONTACT_21} & \nolinkurl{ASIC2_READ} & C \\
+\nolinkurl{22} & \nolinkurl{CONTACT_22} & \nolinkurl{ASIC2_SYNC} & C \\
+\nolinkurl{23} & \nolinkurl{CONTACT_23} & \nolinkurl{ASIC3_DATA1} & C \\
+\nolinkurl{24} & \nolinkurl{CONTACT_24} & \nolinkurl{ASIC3_DATA2} & C \\
+\nolinkurl{25} & \nolinkurl{CONTACT_25} & \nolinkurl{ASIC3_DATA3} & C \\
+\nolinkurl{26} & \nolinkurl{CONTACT_26} & \nolinkurl{ASIC3_DATA4} & C \\
+\nolinkurl{27} & \nolinkurl{CONTACT_27} & \nolinkurl{ASIC3_DATA5} & C \\
+\nolinkurl{28} & \nolinkurl{CONTACT_28} & \nolinkurl{ASIC3_DATA6} & C \\
+\nolinkurl{29} & \nolinkurl{CONTACT_29} & \nolinkurl{ASIC3_DATA7} & C \\
+\nolinkurl{30} & \nolinkurl{CONTACT_30} & \nolinkurl{ASIC3_DATA8} & C \\
+\nolinkurl{31} & \nolinkurl{CONTACT_31} & \nolinkurl{ASIC3_CLK32MHz_Out} & C \\
+\nolinkurl{32} & \nolinkurl{CONTACT_32} & \nolinkurl{ASIC3_READ} & C \\
+\nolinkurl{33} & \nolinkurl{CONTACT_33} & \nolinkurl{ASIC3_SYNC} & C \\
+\nolinkurl{34} & \nolinkurl{CONTACT_34} & No functional net & R \\
+\nolinkurl{35} & \nolinkurl{CONTACT_35} & \nolinkurl{ASIC4_DATA2} & C \\
+\nolinkurl{36} & \nolinkurl{CONTACT_36} & \nolinkurl{ASIC4_DATA3} & C \\
+\nolinkurl{37} & \nolinkurl{CONTACT_37} & \nolinkurl{ASIC4_DATA4} & C \\
+\nolinkurl{38} & \nolinkurl{CONTACT_38} & \nolinkurl{ASIC4_DATA5} & C \\
+\nolinkurl{39} & \nolinkurl{CONTACT_39} & \nolinkurl{ASIC4_DATA6} & C \\
+\nolinkurl{40} & \nolinkurl{CONTACT_40} & \nolinkurl{ASIC4_DATA7} & C \\
+\nolinkurl{41} & \nolinkurl{CONTACT_41} & \nolinkurl{ASIC4_DATA8} & C \\
+\nolinkurl{42} & \nolinkurl{CONTACT_42} & \nolinkurl{ASIC4_CLK32MHz_Out} & C \\
+\nolinkurl{43} & \nolinkurl{CONTACT_43} & \nolinkurl{ASIC4_READ} & C \\
+\nolinkurl{44} & \nolinkurl{CONTACT_44} & \nolinkurl{ASIC4_SYNC} & C \\
+\nolinkurl{45} & \nolinkurl{CONTACT_45} & \nolinkurl{CHIP_RESET_SHARED} & C \\
+\nolinkurl{46} & \nolinkurl{CONTACT_46} & \nolinkurl{AC_IN_ANALOG_RESERVED} & AN \\
+\nolinkurl{47} & \nolinkurl{CONTACT_47} & \nolinkurl{IMP_TST_SHARED} & C \\
+\nolinkurl{48} & \nolinkurl{CONTACT_48} & \nolinkurl{FE_RESET_SHARED} & C \\
+\nolinkurl{49} & \nolinkurl{CONTACT_49} & \nolinkurl{SPI_LATCH_SHARED} & C \\
+\nolinkurl{50} & \nolinkurl{CONTACT_50} & \nolinkurl{STIM_CLK_SHARED} & C \\
+\nolinkurl{51} & \nolinkurl{CONTACT_51} & \nolinkurl{STIM_START_SHARED} & C \\
+\nolinkurl{52} & \nolinkurl{CONTACT_52} & \nolinkurl{STIM_EN_SHARED} & C \\
+\nolinkurl{53} & \nolinkurl{CONTACT_53} & \nolinkurl{STIM_CHB_SHARED} & C \\
+\nolinkurl{54} & \nolinkurl{CONTACT_54} & \nolinkurl{BOARD1_CLK} & C \\
+\nolinkurl{55} & \nolinkurl{CONTACT_55} & \nolinkurl{BOARD2_CLK} & C \\
+\nolinkurl{56} & \nolinkurl{CONTACT_56} & \nolinkurl{BOARD3_CLK} & C \\
+\nolinkurl{57} & \nolinkurl{CONTACT_57} & \nolinkurl{BOARD4_CLK} & C \\
+\nolinkurl{58} & \nolinkurl{CONTACT_58} & \nolinkurl{BOARD1_SPI_CLK} & C \\
+\nolinkurl{59} & \nolinkurl{CONTACT_59} & \nolinkurl{BOARD2_SPI_CLK} & C \\
+\nolinkurl{60} & \nolinkurl{CONTACT_60} & \nolinkurl{BOARD3_SPI_CLK} & C \\
+\nolinkurl{G} & \nolinkurl{GROUND_BLADE} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{J6}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{CONTACT_1} & \nolinkurl{ASIC5_DATA1} & C \\
+\nolinkurl{2} & \nolinkurl{CONTACT_2} & \nolinkurl{ASIC5_DATA2} & C \\
+\nolinkurl{3} & \nolinkurl{CONTACT_3} & \nolinkurl{ASIC5_DATA3} & C \\
+\nolinkurl{4} & \nolinkurl{CONTACT_4} & \nolinkurl{ASIC5_DATA4} & C \\
+\nolinkurl{5} & \nolinkurl{CONTACT_5} & \nolinkurl{ASIC5_DATA5} & C \\
+\nolinkurl{6} & \nolinkurl{CONTACT_6} & \nolinkurl{ASIC5_DATA6} & C \\
+\nolinkurl{7} & \nolinkurl{CONTACT_7} & \nolinkurl{ASIC5_DATA7} & C \\
+\nolinkurl{8} & \nolinkurl{CONTACT_8} & \nolinkurl{ASIC5_DATA8} & C \\
+\nolinkurl{9} & \nolinkurl{CONTACT_9} & \nolinkurl{ASIC5_CLK32MHz_Out} & C \\
+\nolinkurl{10} & \nolinkurl{CONTACT_10} & \nolinkurl{ASIC5_READ} & C \\
+\nolinkurl{11} & \nolinkurl{CONTACT_11} & \nolinkurl{ASIC5_SYNC} & C \\
+\nolinkurl{12} & \nolinkurl{CONTACT_12} & \nolinkurl{ASIC6_DATA1} & C \\
+\nolinkurl{13} & \nolinkurl{CONTACT_13} & \nolinkurl{ASIC6_DATA2} & C \\
+\nolinkurl{14} & \nolinkurl{CONTACT_14} & \nolinkurl{ASIC6_DATA3} & C \\
+\nolinkurl{15} & \nolinkurl{CONTACT_15} & \nolinkurl{ASIC6_DATA4} & C \\
+\nolinkurl{16} & \nolinkurl{CONTACT_16} & \nolinkurl{ASIC6_DATA5} & C \\
+\nolinkurl{17} & \nolinkurl{CONTACT_17} & \nolinkurl{ASIC6_DATA6} & C \\
+\nolinkurl{18} & \nolinkurl{CONTACT_18} & \nolinkurl{ASIC6_DATA7} & C \\
+\nolinkurl{19} & \nolinkurl{CONTACT_19} & \nolinkurl{ASIC6_DATA8} & C \\
+\nolinkurl{20} & \nolinkurl{CONTACT_20} & \nolinkurl{ASIC6_CLK32MHz_Out} & C \\
+\nolinkurl{21} & \nolinkurl{CONTACT_21} & \nolinkurl{ASIC6_READ} & C \\
+\nolinkurl{22} & \nolinkurl{CONTACT_22} & \nolinkurl{ASIC6_SYNC} & C \\
+\nolinkurl{23} & \nolinkurl{CONTACT_23} & \nolinkurl{ASIC7_DATA1} & C \\
+\nolinkurl{24} & \nolinkurl{CONTACT_24} & \nolinkurl{ASIC7_DATA2} & C \\
+\nolinkurl{25} & \nolinkurl{CONTACT_25} & \nolinkurl{ASIC7_DATA3} & C \\
+\nolinkurl{26} & \nolinkurl{CONTACT_26} & \nolinkurl{ASIC7_DATA4} & C \\
+\nolinkurl{27} & \nolinkurl{CONTACT_27} & \nolinkurl{ASIC7_DATA5} & C \\
+\nolinkurl{28} & \nolinkurl{CONTACT_28} & \nolinkurl{ASIC7_DATA6} & C \\
+\nolinkurl{29} & \nolinkurl{CONTACT_29} & \nolinkurl{ASIC7_DATA7} & C \\
+\nolinkurl{30} & \nolinkurl{CONTACT_30} & \nolinkurl{ASIC7_DATA8} & C \\
+\nolinkurl{31} & \nolinkurl{CONTACT_31} & \nolinkurl{ASIC7_CLK32MHz_Out} & C \\
+\nolinkurl{32} & \nolinkurl{CONTACT_32} & \nolinkurl{ASIC7_READ} & C \\
+\nolinkurl{33} & \nolinkurl{CONTACT_33} & \nolinkurl{ASIC7_SYNC} & C \\
+\nolinkurl{34} & \nolinkurl{CONTACT_34} & \nolinkurl{ASIC8_DATA1} & C \\
+\nolinkurl{35} & \nolinkurl{CONTACT_35} & \nolinkurl{ASIC8_DATA2} & C \\
+\nolinkurl{36} & \nolinkurl{CONTACT_36} & \nolinkurl{ASIC8_DATA3} & C \\
+\nolinkurl{37} & \nolinkurl{CONTACT_37} & No functional net & R \\
+\nolinkurl{38} & \nolinkurl{CONTACT_38} & \nolinkurl{ASIC8_DATA5} & C \\
+\nolinkurl{39} & \nolinkurl{CONTACT_39} & \nolinkurl{ASIC8_DATA6} & C \\
+\nolinkurl{40} & \nolinkurl{CONTACT_40} & \nolinkurl{ASIC8_DATA7} & C \\
+\nolinkurl{41} & \nolinkurl{CONTACT_41} & \nolinkurl{ASIC8_DATA8} & C \\
+\nolinkurl{42} & \nolinkurl{CONTACT_42} & \nolinkurl{ASIC8_CLK32MHz_Out} & C \\
+\nolinkurl{43} & \nolinkurl{CONTACT_43} & \nolinkurl{ASIC8_READ} & C \\
+\nolinkurl{44} & \nolinkurl{CONTACT_44} & \nolinkurl{ASIC8_SYNC} & C \\
+\nolinkurl{45} & \nolinkurl{CONTACT_45} & \nolinkurl{BOARD4_SPI_CLK} & C \\
+\nolinkurl{46} & \nolinkurl{CONTACT_46} & \nolinkurl{STIM_CHIP1_SPI_DL} & C \\
+\nolinkurl{47} & \nolinkurl{CONTACT_47} & \nolinkurl{STIM_CHIP1_SPI_DR} & C \\
+\nolinkurl{48} & \nolinkurl{CONTACT_48} & \nolinkurl{STIM_CHIP2_SPI_DL} & C \\
+\nolinkurl{49} & \nolinkurl{CONTACT_49} & \nolinkurl{STIM_CHIP2_SPI_DR} & C \\
+\nolinkurl{50} & \nolinkurl{CONTACT_50} & \nolinkurl{STIM_CHIP3_SPI_DL} & C \\
+\nolinkurl{51} & \nolinkurl{CONTACT_51} & \nolinkurl{STIM_CHIP3_SPI_DR} & C \\
+\nolinkurl{52} & \nolinkurl{CONTACT_52} & \nolinkurl{STIM_CHIP4_SPI_DL} & C \\
+\nolinkurl{53} & \nolinkurl{CONTACT_53} & \nolinkurl{STIM_CHIP4_SPI_DR} & C \\
+\nolinkurl{54} & \nolinkurl{CONTACT_54} & \nolinkurl{NONSTIM_BOARD1_SPI_DL} & C \\
+\nolinkurl{55} & \nolinkurl{CONTACT_55} & \nolinkurl{NONSTIM_BOARD1_SPI_DR} & C \\
+\nolinkurl{56} & \nolinkurl{CONTACT_56} & \nolinkurl{NONSTIM_BOARD2_SPI_DL} & C \\
+\nolinkurl{57} & \nolinkurl{CONTACT_57} & \nolinkurl{NONSTIM_BOARD2_SPI_DR} & C \\
+\nolinkurl{58} & \nolinkurl{CONTACT_58} & \nolinkurl{ASIC8_DATA4} & C \\
+\nolinkurl{59} & \nolinkurl{CONTACT_59} & No functional net & R \\
+\nolinkurl{60} & \nolinkurl{CONTACT_60} & \nolinkurl{ASIC4_DATA1} & C \\
+\nolinkurl{G} & \nolinkurl{GROUND_BLADE} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{L1}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{1} & \nolinkurl{SW_CORE} & C \\
+\nolinkurl{2} & \nolinkurl{2} & \nolinkurl{VCORE_REG_1V025} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{L2}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{1} & \nolinkurl{SW_AUX} & C \\
+\nolinkurl{2} & \nolinkurl{2} & \nolinkurl{VAUX_REG_1V803} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{L3}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{1} & \nolinkurl{SW_CFG} & C \\
+\nolinkurl{2} & \nolinkurl{2} & \nolinkurl{VCC_LINK_2V5} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{L4}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{1} & \nolinkurl{SW_ASIC} & C \\
+\nolinkurl{2} & \nolinkurl{2} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R1}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCORE_REG_1V025} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FB_CORE} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R2}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FB_CORE} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R3}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VAUX_REG_1V803} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FB_AUX} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R4}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FB_AUX} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R5}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FB_CFG} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R6}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FB_CFG} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R7}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FB_ASIC} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R8}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FB_ASIC} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R9}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCORE_REG_1V025} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{VCCINT_1V0} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R10}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{PG_CORE} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R11}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{PG_AUX} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R100}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_CS_B} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R101}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_DQ2} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R102}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_DQ3} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R103}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FPGA_CCLK} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_SCLK} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R104}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FPGA_CFG_DQ0} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_DQ0} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R105}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FPGA_CFG_DQ1} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FLASH_DQ1} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R108}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FPGA_PROGRAM_B} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R109}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FPGA_INIT_B} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R110}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{FPGA_DONE} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R111}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{CFG_M0} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R114}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{CFG_PUDC_B} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R115}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{JTAG_TMS} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R116}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{JTAG_TDI} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R117}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{JTAG_TCK} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R118}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{FPGA_TDO} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{JTAG_TDO} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R119}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{OSC_32M_RAW} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{CLK_32MHZ} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{R122}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{} & \nolinkurl{VAUX_REG_1V803} & C \\
+\nolinkurl{2} & \nolinkurl{} & \nolinkurl{VCCAUX_1V8} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U1}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{A1} & \nolinkurl{IO_L9N_T1_DQS_AD7N_35} & \nolinkurl{ASIC2_DATA8} & C \\
+\nolinkurl{A2} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{A3} & \nolinkurl{IO_L8N_T1_AD14N_35} & \nolinkurl{ASIC2_DATA5} & C \\
+\nolinkurl{A4} & \nolinkurl{IO_L8P_T1_AD14P_35} & \nolinkurl{ASIC4_DATA2} & C \\
+\nolinkurl{A5} & \nolinkurl{IO_L3N_T0_DQS_AD5N_35} & \nolinkurl{ASIC4_DATA4} & C \\
+\nolinkurl{A6} & \nolinkurl{IO_L3P_T0_DQS_AD5P_35} & \nolinkurl{ASIC4_DATA5} & C \\
+\nolinkurl{A7} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{A8} & \nolinkurl{IO_L12N_T1_MRCC_16} & No functional net & R \\
+\nolinkurl{A9} & \nolinkurl{IO_L14N_T2_SRCC_16} & No functional net & R \\
+\nolinkurl{A10} & \nolinkurl{IO_L14P_T2_SRCC_16} & No functional net & R \\
+\nolinkurl{A11} & \nolinkurl{IO_L4N_T0_15} & \nolinkurl{SPI_LATCH_SHARED} & C \\
+\nolinkurl{A12} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{A13} & \nolinkurl{IO_L9P_T1_DQS_AD3P_15} & No functional net & NC \\
+\nolinkurl{A14} & \nolinkurl{IO_L9N_T1_DQS_AD3N_15} & \nolinkurl{BOARD2_SPI_CLK} & C \\
+\nolinkurl{A15} & \nolinkurl{IO_L8P_T1_AD10P_15} & \nolinkurl{STIM_EN_SHARED} & C \\
+\nolinkurl{A16} & \nolinkurl{IO_L8N_T1_AD10N_15} & \nolinkurl{BOARD3_CLK} & C \\
+\nolinkurl{A17} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{A18} & \nolinkurl{IO_L10N_T1_AD11N_15} & \nolinkurl{BOARD3_SPI_CLK} & C \\
+\nolinkurl{B1} & \nolinkurl{IO_L9P_T1_DQS_AD7P_35} & \nolinkurl{ASIC1_READ} & C \\
+\nolinkurl{B2} & \nolinkurl{IO_L10N_T1_AD15N_35} & \nolinkurl{ASIC2_READ} & C \\
+\nolinkurl{B3} & \nolinkurl{IO_L10P_T1_AD15P_35} & \nolinkurl{ASIC2_DATA3} & C \\
+\nolinkurl{B4} & \nolinkurl{IO_L7N_T1_AD6N_35} & \nolinkurl{ASIC2_SYNC} & C \\
+\nolinkurl{B5} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{B6} & \nolinkurl{IO_L2N_T0_AD12N_35} & \nolinkurl{ASIC4_DATA6} & C \\
+\nolinkurl{B7} & \nolinkurl{IO_L2P_T0_AD12P_35} & \nolinkurl{ASIC4_READ} & C \\
+\nolinkurl{B8} & \nolinkurl{IO_L12P_T1_MRCC_16} & No functional net & R \\
+\nolinkurl{B9} & \nolinkurl{IO_L11N_T1_SRCC_16} & No functional net & R \\
+\nolinkurl{B10} & \nolinkurl{VCCO_16} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{B11} & \nolinkurl{IO_L4P_T0_15} & \nolinkurl{IMP_TST_SHARED} & C \\
+\nolinkurl{B12} & \nolinkurl{IO_L3N_T0_DQS_AD1N_15} & \nolinkurl{STIM_CHB_SHARED} & C \\
+\nolinkurl{B13} & \nolinkurl{IO_L2P_T0_AD8P_15} & \nolinkurl{BOARD2_CLK} & C \\
+\nolinkurl{B14} & \nolinkurl{IO_L2N_T0_AD8N_15} & \nolinkurl{FE_RESET_SHARED} & C \\
+\nolinkurl{B15} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{B16} & \nolinkurl{IO_L7P_T1_AD2P_15} & \nolinkurl{BOARD1_CLK} & C \\
+\nolinkurl{B17} & \nolinkurl{IO_L7N_T1_AD2N_15} & \nolinkurl{BOARD1_SPI_CLK} & C \\
+\nolinkurl{B18} & \nolinkurl{IO_L10P_T1_AD11P_15} & No functional net & NC \\
+\nolinkurl{C1} & \nolinkurl{IO_L16N_T2_35} & \nolinkurl{ASIC1_DATA8} & C \\
+\nolinkurl{C2} & \nolinkurl{IO_L16P_T2_35} & \nolinkurl{ASIC2_DATA1} & C \\
+\nolinkurl{C3} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{C4} & \nolinkurl{IO_L7P_T1_AD6P_35} & \nolinkurl{ASIC2_DATA7} & C \\
+\nolinkurl{C5} & \nolinkurl{IO_L1N_T0_AD4N_35} & \nolinkurl{ASIC4_DATA1} & C \\
+\nolinkurl{C6} & \nolinkurl{IO_L1P_T0_AD4P_35} & \nolinkurl{ASIC4_DATA3} & C \\
+\nolinkurl{C7} & \nolinkurl{IO_L4N_T0_35} & \nolinkurl{ASIC4_DATA7} & C \\
+\nolinkurl{C8} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{C9} & \nolinkurl{IO_L11P_T1_SRCC_16} & No functional net & R \\
+\nolinkurl{C10} & \nolinkurl{IO_L13N_T2_MRCC_16} & No functional net & R \\
+\nolinkurl{C11} & \nolinkurl{IO_L13P_T2_MRCC_16} & No functional net & R \\
+\nolinkurl{C12} & \nolinkurl{IO_L3P_T0_DQS_AD1P_15} & \nolinkurl{STIM_START_SHARED} & C \\
+\nolinkurl{C13} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{C14} & \nolinkurl{IO_L1N_T0_AD0N_15} & \nolinkurl{BOARD4_CLK} & C \\
+\nolinkurl{C15} & \nolinkurl{IO_L12N_T1_MRCC_15} & No functional net & NC \\
+\nolinkurl{C16} & \nolinkurl{IO_L20P_T3_A20_15} & \nolinkurl{STIM_CLK_SHARED} & C \\
+\nolinkurl{C17} & \nolinkurl{IO_L20N_T3_A19_15} & No functional net & NC \\
+\nolinkurl{C18} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{D1} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{D2} & \nolinkurl{IO_L14N_T2_SRCC_35} & No functional net & NC \\
+\nolinkurl{D3} & \nolinkurl{IO_L12N_T1_MRCC_35} & No functional net & NC \\
+\nolinkurl{D4} & \nolinkurl{IO_L11N_T1_SRCC_35} & No functional net & NC \\
+\nolinkurl{D5} & \nolinkurl{IO_L11P_T1_SRCC_35} & \nolinkurl{ASIC4_CLK32MHz_Out} & C \\
+\nolinkurl{D6} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{D7} & \nolinkurl{IO_L6N_T0_VREF_35} & No functional net & NC \\
+\nolinkurl{D8} & \nolinkurl{IO_L4P_T0_35} & \nolinkurl{ASIC4_SYNC} & C \\
+\nolinkurl{D9} & \nolinkurl{IO_L6N_T0_VREF_16} & No functional net & NC \\
+\nolinkurl{D10} & \nolinkurl{IO_L19N_T3_VREF_16} & No functional net & NC \\
+\nolinkurl{D11} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{D12} & \nolinkurl{IO_L6P_T0_15} & \nolinkurl{CHIP_RESET_SHARED} & C \\
+\nolinkurl{D13} & \nolinkurl{IO_L6N_T0_VREF_15} & No functional net & NC \\
+\nolinkurl{D14} & \nolinkurl{IO_L1P_T0_AD0P_15} & No functional net & NC \\
+\nolinkurl{D15} & \nolinkurl{IO_L12P_T1_MRCC_15} & No functional net & NC \\
+\nolinkurl{D16} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{D17} & \nolinkurl{IO_L16N_T2_A27_15} & No functional net & NC \\
+\nolinkurl{D18} & \nolinkurl{IO_L21N_T3_DQS_A18_15} & No functional net & NC \\
+\nolinkurl{E1} & \nolinkurl{IO_L18N_T2_35} & \nolinkurl{ASIC1_DATA4} & C \\
+\nolinkurl{E2} & \nolinkurl{IO_L14P_T2_SRCC_35} & \nolinkurl{ASIC1_CLK32MHz_Out} & C \\
+\nolinkurl{E3} & \nolinkurl{IO_L12P_T1_MRCC_35} & \nolinkurl{ASIC2_CLK32MHz_Out} & C \\
+\nolinkurl{E4} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{E5} & \nolinkurl{IO_L5N_T0_AD13N_35} & \nolinkurl{ASIC3_DATA6} & C \\
+\nolinkurl{E6} & \nolinkurl{IO_L5P_T0_AD13P_35} & \nolinkurl{ASIC3_READ} & C \\
+\nolinkurl{E7} & \nolinkurl{IO_L6P_T0_35} & \nolinkurl{ASIC4_DATA8} & C \\
+\nolinkurl{E8} & \nolinkurl{VCCBATT_0} & \nolinkurl{GND} & C \\
+\nolinkurl{E9} & \nolinkurl{CCLK_0} & \nolinkurl{FPGA_CCLK} & C \\
+\nolinkurl{E10} & \nolinkurl{TCK_0} & \nolinkurl{JTAG_TCK} & C \\
+\nolinkurl{E11} & \nolinkurl{TDI_0} & \nolinkurl{JTAG_TDI} & C \\
+\nolinkurl{E12} & \nolinkurl{TMS_0} & \nolinkurl{JTAG_TMS} & C \\
+\nolinkurl{E13} & \nolinkurl{TDO_0} & \nolinkurl{FPGA_TDO} & C \\
+\nolinkurl{E14} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{E15} & \nolinkurl{IO_L11P_T1_SRCC_15} & No functional net & NC \\
+\nolinkurl{E16} & \nolinkurl{IO_L11N_T1_SRCC_15} & No functional net & NC \\
+\nolinkurl{E17} & \nolinkurl{IO_L16P_T2_A28_15} & No functional net & NC \\
+\nolinkurl{E18} & \nolinkurl{IO_L21P_T3_DQS_15} & No functional net & NC \\
+\nolinkurl{F1} & \nolinkurl{IO_L18P_T2_35} & \nolinkurl{ASIC1_DATA2} & C \\
+\nolinkurl{F2} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{F3} & \nolinkurl{IO_L13N_T2_MRCC_35} & No functional net & NC \\
+\nolinkurl{F4} & \nolinkurl{IO_L13P_T2_MRCC_35} & \nolinkurl{ASIC3_CLK32MHz_Out} & C \\
+\nolinkurl{F5} & \nolinkurl{IO_0_35} & \nolinkurl{ASIC3_DATA4} & C \\
+\nolinkurl{F6} & \nolinkurl{IO_L19N_T3_VREF_35} & No functional net & NC \\
+\nolinkurl{F7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{F8} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{F9} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{F10} & \nolinkurl{VCCBRAM} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{F11} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{F12} & \nolinkurl{VCCAUX} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{F13} & \nolinkurl{IO_L5P_T0_AD9P_15} & No functional net & NC \\
+\nolinkurl{F14} & \nolinkurl{IO_L5N_T0_AD9N_15} & No functional net & NC \\
+\nolinkurl{F15} & \nolinkurl{IO_L14P_T2_SRCC_15} & No functional net & NC \\
+\nolinkurl{F16} & \nolinkurl{IO_L14N_T2_SRCC_15} & No functional net & NC \\
+\nolinkurl{F17} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{F18} & \nolinkurl{IO_L22N_T3_A16_15} & No functional net & NC \\
+\nolinkurl{G1} & \nolinkurl{IO_L17N_T2_35} & \nolinkurl{ASIC1_DATA7} & C \\
+\nolinkurl{G2} & \nolinkurl{IO_L15N_T2_DQS_35} & \nolinkurl{ASIC1_DATA6} & C \\
+\nolinkurl{G3} & \nolinkurl{IO_L20N_T3_35} & \nolinkurl{ASIC2_DATA6} & C \\
+\nolinkurl{G4} & \nolinkurl{IO_L20P_T3_35} & \nolinkurl{ASIC3_DATA5} & C \\
+\nolinkurl{G5} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{G6} & \nolinkurl{IO_L19P_T3_35} & \nolinkurl{ASIC3_DATA8} & C \\
+\nolinkurl{G7} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{G8} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{G9} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{G10} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{G11} & \nolinkurl{VCCBRAM} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{G12} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{G13} & \nolinkurl{IO_0_15} & No functional net & NC \\
+\nolinkurl{G14} & \nolinkurl{IO_L15N_T2_DQS_ADV_B_15} & \nolinkurl{STIM_CHIP2_SPI_DL} & C \\
+\nolinkurl{G15} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{G16} & \nolinkurl{IO_L13N_T2_MRCC_15} & No functional net & NC \\
+\nolinkurl{G17} & \nolinkurl{IO_L18N_T2_A23_15} & \nolinkurl{NONSTIM_BOARD1_SPI_DL} & C \\
+\nolinkurl{G18} & \nolinkurl{IO_L22P_T3_A17_15} & \nolinkurl{NONSTIM_BOARD2_SPI_DR} & C \\
+\nolinkurl{H1} & \nolinkurl{IO_L17P_T2_35} & \nolinkurl{ASIC1_DATA5} & C \\
+\nolinkurl{H2} & \nolinkurl{IO_L15P_T2_DQS_35} & \nolinkurl{ASIC2_DATA2} & C \\
+\nolinkurl{H3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{H4} & \nolinkurl{IO_L21N_T3_DQS_35} & \nolinkurl{ASIC3_DATA3} & C \\
+\nolinkurl{H5} & \nolinkurl{IO_L24N_T3_35} & \nolinkurl{ASIC3_DATA7} & C \\
+\nolinkurl{H6} & \nolinkurl{IO_L24P_T3_35} & \nolinkurl{ASIC3_SYNC} & C \\
+\nolinkurl{H7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{H8} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{H9} & \nolinkurl{GNDADC_0} & \nolinkurl{GND} & C \\
+\nolinkurl{H10} & \nolinkurl{VCCADC_0} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{H11} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{H12} & \nolinkurl{VCCAUX} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{H13} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{H14} & \nolinkurl{IO_L15P_T2_DQS_15} & \nolinkurl{STIM_CHIP2_SPI_DR} & C \\
+\nolinkurl{H15} & \nolinkurl{IO_L19N_T3_A21_VREF_15} & No functional net & NC \\
+\nolinkurl{H16} & \nolinkurl{IO_L13P_T2_MRCC_15} & No functional net & NC \\
+\nolinkurl{H17} & \nolinkurl{IO_L18P_T2_A24_15} & \nolinkurl{NONSTIM_BOARD1_SPI_DR} & C \\
+\nolinkurl{H18} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{J1} & \nolinkurl{VCCO_35} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{J2} & \nolinkurl{IO_L22N_T3_35} & \nolinkurl{ASIC1_SYNC} & C \\
+\nolinkurl{J3} & \nolinkurl{IO_L22P_T3_35} & \nolinkurl{ASIC2_DATA4} & C \\
+\nolinkurl{J4} & \nolinkurl{IO_L21P_T3_DQS_35} & \nolinkurl{ASIC3_DATA1} & C \\
+\nolinkurl{J5} & \nolinkurl{IO_25_35} & \nolinkurl{ASIC3_DATA2} & C \\
+\nolinkurl{J6} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{J7} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{J8} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{J9} & \nolinkurl{VREFN_0} & \nolinkurl{GND} & C \\
+\nolinkurl{J10} & \nolinkurl{VP_0} & \nolinkurl{GND} & C \\
+\nolinkurl{J11} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{J12} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{J13} & \nolinkurl{IO_L17N_T2_A25_15} & \nolinkurl{STIM_CHIP1_SPI_DR} & C \\
+\nolinkurl{J14} & \nolinkurl{IO_L19P_T3_A22_15} & \nolinkurl{STIM_CHIP1_SPI_DL} & C \\
+\nolinkurl{J15} & \nolinkurl{IO_L24N_T3_RS0_15} & \nolinkurl{STIM_CHIP3_SPI_DL} & C \\
+\nolinkurl{J16} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{J17} & \nolinkurl{IO_L23P_T3_FOE_B_15} & \nolinkurl{STIM_CHIP4_SPI_DL} & C \\
+\nolinkurl{J18} & \nolinkurl{IO_L23N_T3_FWE_B_15} & \nolinkurl{NONSTIM_BOARD2_SPI_DL} & C \\
+\nolinkurl{K1} & \nolinkurl{IO_L23N_T3_35} & \nolinkurl{ASIC1_DATA1} & C \\
+\nolinkurl{K2} & \nolinkurl{IO_L23P_T3_35} & \nolinkurl{ASIC1_DATA3} & C \\
+\nolinkurl{K3} & \nolinkurl{IO_L2P_T0_34} & \nolinkurl{ASIC6_DATA5} & C \\
+\nolinkurl{K4} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{K5} & \nolinkurl{IO_L5P_T0_34} & \nolinkurl{ASIC8_DATA5} & C \\
+\nolinkurl{K6} & \nolinkurl{IO_0_34} & \nolinkurl{ASIC8_SYNC} & C \\
+\nolinkurl{K7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{K8} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{K9} & \nolinkurl{VN_0} & \nolinkurl{GND} & C \\
+\nolinkurl{K10} & \nolinkurl{VREFP_0} & \nolinkurl{GND} & C \\
+\nolinkurl{K11} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{K12} & \nolinkurl{VCCAUX} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{K13} & \nolinkurl{IO_L17P_T2_A26_15} & \nolinkurl{BOARD4_SPI_CLK} & C \\
+\nolinkurl{K14} & \nolinkurl{VCCO_15} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{K15} & \nolinkurl{IO_L24P_T3_RS1_15} & \nolinkurl{STIM_CHIP3_SPI_DR} & C \\
+\nolinkurl{K16} & \nolinkurl{IO_25_15} & \nolinkurl{STIM_CHIP4_SPI_DR} & C \\
+\nolinkurl{K17} & \nolinkurl{IO_L1P_T0_D00_MOSI_14} & \nolinkurl{FPGA_CFG_DQ0} & C \\
+\nolinkurl{K18} & \nolinkurl{IO_L1N_T0_D01_DIN_14} & \nolinkurl{FPGA_CFG_DQ1} & C \\
+\nolinkurl{L1} & \nolinkurl{IO_L1P_T0_34} & \nolinkurl{ASIC6_DATA6} & C \\
+\nolinkurl{L2} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{L3} & \nolinkurl{IO_L2N_T0_34} & \nolinkurl{ASIC6_READ} & C \\
+\nolinkurl{L4} & \nolinkurl{IO_L5N_T0_34} & \nolinkurl{ASIC8_DATA4} & C \\
+\nolinkurl{L5} & \nolinkurl{IO_L6N_T0_VREF_34} & No functional net & NC \\
+\nolinkurl{L6} & \nolinkurl{IO_L6P_T0_34} & \nolinkurl{ASIC8_DATA7} & C \\
+\nolinkurl{L7} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{L8} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{L9} & \nolinkurl{DXN_0} & \nolinkurl{GND} & C \\
+\nolinkurl{L10} & \nolinkurl{DXP_0} & \nolinkurl{GND} & C \\
+\nolinkurl{L11} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{L12} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{L13} & \nolinkurl{IO_L6P_T0_FCS_B_14} & \nolinkurl{FLASH_CS_B} & C \\
+\nolinkurl{L14} & \nolinkurl{IO_L2P_T0_D02_14} & No functional net & NC \\
+\nolinkurl{L15} & \nolinkurl{IO_L3P_T0_DQS_PUDC_B_14} & \nolinkurl{CFG_PUDC_B} & C \\
+\nolinkurl{L16} & \nolinkurl{IO_L3N_T0_DQS_EMCCLK_14} & No functional net & NC \\
+\nolinkurl{L17} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{L18} & \nolinkurl{IO_L4P_T0_D04_14} & No functional net & NC \\
+\nolinkurl{M1} & \nolinkurl{IO_L1N_T0_34} & \nolinkurl{ASIC6_DATA4} & C \\
+\nolinkurl{M2} & \nolinkurl{IO_L4N_T0_34} & \nolinkurl{ASIC6_DATA1} & C \\
+\nolinkurl{M3} & \nolinkurl{IO_L4P_T0_34} & \nolinkurl{ASIC6_DATA3} & C \\
+\nolinkurl{M4} & \nolinkurl{IO_L16P_T2_34} & \nolinkurl{ASIC8_DATA2} & C \\
+\nolinkurl{M5} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{M6} & \nolinkurl{IO_L18P_T2_34} & \nolinkurl{ASIC8_DATA1} & C \\
+\nolinkurl{M7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{M8} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{M9} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{M10} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{M11} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{M12} & \nolinkurl{VCCAUX} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{M13} & \nolinkurl{IO_L6N_T0_D08_VREF_14} & No functional net & NC \\
+\nolinkurl{M14} & \nolinkurl{IO_L2N_T0_D03_14} & No functional net & NC \\
+\nolinkurl{M15} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{M16} & \nolinkurl{IO_L10P_T1_D14_14} & No functional net & NC \\
+\nolinkurl{M17} & \nolinkurl{IO_L10N_T1_D15_14} & No functional net & NC \\
+\nolinkurl{M18} & \nolinkurl{IO_L4N_T0_D05_14} & No functional net & NC \\
+\nolinkurl{N1} & \nolinkurl{IO_L3N_T0_DQS_34} & \nolinkurl{ASIC6_DATA2} & C \\
+\nolinkurl{N2} & \nolinkurl{IO_L3P_T0_DQS_34} & \nolinkurl{ASIC6_DATA8} & C \\
+\nolinkurl{N3} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{N4} & \nolinkurl{IO_L16N_T2_34} & \nolinkurl{ASIC6_DATA7} & C \\
+\nolinkurl{N5} & \nolinkurl{IO_L13P_T2_MRCC_34} & \nolinkurl{ASIC8_CLK32MHz_Out} & C \\
+\nolinkurl{N6} & \nolinkurl{IO_L18N_T2_34} & \nolinkurl{ASIC8_DATA8} & C \\
+\nolinkurl{N7} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{N8} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{N9} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{N10} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{N11} & \nolinkurl{VCCINT} & \nolinkurl{VCCINT_1V0} & C \\
+\nolinkurl{N12} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{N13} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{N14} & \nolinkurl{IO_L8P_T1_D11_14} & No functional net & NC \\
+\nolinkurl{N15} & \nolinkurl{IO_L11P_T1_SRCC_14} & No functional net & NC \\
+\nolinkurl{N16} & \nolinkurl{IO_L11N_T1_SRCC_14} & No functional net & NC \\
+\nolinkurl{N17} & \nolinkurl{IO_L9P_T1_DQS_14} & No functional net & NC \\
+\nolinkurl{N18} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{P1} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{P2} & \nolinkurl{IO_L15P_T2_DQS_34} & \nolinkurl{ASIC5_SYNC} & C \\
+\nolinkurl{P3} & \nolinkurl{IO_L14N_T2_SRCC_34} & No functional net & NC \\
+\nolinkurl{P4} & \nolinkurl{IO_L14P_T2_SRCC_34} & \nolinkurl{ASIC6_CLK32MHz_Out} & C \\
+\nolinkurl{P5} & \nolinkurl{IO_L13N_T2_MRCC_34} & No functional net & NC \\
+\nolinkurl{P6} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{P7} & \nolinkurl{INIT_B_0} & \nolinkurl{FPGA_INIT_B} & C \\
+\nolinkurl{P8} & \nolinkurl{CFGBVS_0} & \nolinkurl{GND} & C \\
+\nolinkurl{P9} & \nolinkurl{PROGRAM_B_0} & \nolinkurl{FPGA_PROGRAM_B} & C \\
+\nolinkurl{P10} & \nolinkurl{DONE_0} & \nolinkurl{FPGA_DONE} & C \\
+\nolinkurl{P11} & \nolinkurl{M2_0} & \nolinkurl{GND} & C \\
+\nolinkurl{P12} & \nolinkurl{M0_0} & \nolinkurl{CFG_M0} & C \\
+\nolinkurl{P13} & \nolinkurl{M1_0} & \nolinkurl{GND} & C \\
+\nolinkurl{P14} & \nolinkurl{IO_L8N_T1_D12_14} & No functional net & NC \\
+\nolinkurl{P15} & \nolinkurl{IO_L13P_T2_MRCC_14} & No functional net & NC \\
+\nolinkurl{P16} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{P17} & \nolinkurl{IO_L12P_T1_MRCC_14} & \nolinkurl{CLK_32MHZ} & C \\
+\nolinkurl{P18} & \nolinkurl{IO_L9N_T1_DQS_D13_14} & No functional net & NC \\
+\nolinkurl{R1} & \nolinkurl{IO_L17P_T2_34} & \nolinkurl{ASIC5_DATA2} & C \\
+\nolinkurl{R2} & \nolinkurl{IO_L15N_T2_DQS_34} & \nolinkurl{ASIC5_DATA6} & C \\
+\nolinkurl{R3} & \nolinkurl{IO_L11P_T1_SRCC_34} & \nolinkurl{ASIC5_CLK32MHz_Out} & C \\
+\nolinkurl{R4} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{R5} & \nolinkurl{IO_L19N_T3_VREF_34} & No functional net & NC \\
+\nolinkurl{R6} & \nolinkurl{IO_L19P_T3_34} & \nolinkurl{ASIC6_SYNC} & C \\
+\nolinkurl{R7} & \nolinkurl{IO_L23P_T3_34} & \nolinkurl{ASIC8_DATA6} & C \\
+\nolinkurl{R8} & \nolinkurl{IO_L24P_T3_34} & \nolinkurl{ASIC8_DATA3} & C \\
+\nolinkurl{R9} & \nolinkurl{VCCO_0} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{R10} & \nolinkurl{IO_25_14} & No functional net & NC \\
+\nolinkurl{R11} & \nolinkurl{IO_0_14} & No functional net & NC \\
+\nolinkurl{R12} & \nolinkurl{IO_L5P_T0_D06_14} & No functional net & NC \\
+\nolinkurl{R13} & \nolinkurl{IO_L5N_T0_D07_14} & No functional net & NC \\
+\nolinkurl{R14} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{R15} & \nolinkurl{IO_L13N_T2_MRCC_14} & No functional net & NC \\
+\nolinkurl{R16} & \nolinkurl{IO_L15P_T2_DQS_RDWR_B_14} & No functional net & NC \\
+\nolinkurl{R17} & \nolinkurl{IO_L12N_T1_MRCC_14} & No functional net & NC \\
+\nolinkurl{R18} & \nolinkurl{IO_L7P_T1_D09_14} & No functional net & NC \\
+\nolinkurl{T1} & \nolinkurl{IO_L17N_T2_34} & \nolinkurl{ASIC5_DATA5} & C \\
+\nolinkurl{T2} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{T3} & \nolinkurl{IO_L11N_T1_SRCC_34} & No functional net & NC \\
+\nolinkurl{T4} & \nolinkurl{IO_L12N_T1_MRCC_34} & No functional net & NC \\
+\nolinkurl{T5} & \nolinkurl{IO_L12P_T1_MRCC_34} & \nolinkurl{ASIC7_CLK32MHz_Out} & C \\
+\nolinkurl{T6} & \nolinkurl{IO_L23N_T3_34} & \nolinkurl{ASIC7_SYNC} & C \\
+\nolinkurl{T7} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{T8} & \nolinkurl{IO_L24N_T3_34} & \nolinkurl{ASIC8_READ} & C \\
+\nolinkurl{T9} & \nolinkurl{IO_L24P_T3_A01_D17_14} & No functional net & NC \\
+\nolinkurl{T10} & \nolinkurl{IO_L24N_T3_A00_D16_14} & No functional net & NC \\
+\nolinkurl{T11} & \nolinkurl{IO_L19P_T3_A10_D26_14} & No functional net & NC \\
+\nolinkurl{T12} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{T13} & \nolinkurl{IO_L23P_T3_A03_D19_14} & No functional net & NC \\
+\nolinkurl{T14} & \nolinkurl{IO_L14P_T2_SRCC_14} & No functional net & NC \\
+\nolinkurl{T15} & \nolinkurl{IO_L14N_T2_SRCC_14} & No functional net & NC \\
+\nolinkurl{T16} & \nolinkurl{IO_L15N_T2_DQS_DOUT_CSO_B_14} & No functional net & NC \\
+\nolinkurl{T17} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{T18} & \nolinkurl{IO_L7N_T1_D10_14} & No functional net & NC \\
+\nolinkurl{U1} & \nolinkurl{IO_L7P_T1_34} & \nolinkurl{ASIC5_DATA3} & C \\
+\nolinkurl{U2} & \nolinkurl{IO_L9P_T1_DQS_34} & \nolinkurl{ASIC5_DATA4} & C \\
+\nolinkurl{U3} & \nolinkurl{IO_L8N_T1_34} & \nolinkurl{ASIC5_DATA8} & C \\
+\nolinkurl{U4} & \nolinkurl{IO_L8P_T1_34} & \nolinkurl{ASIC7_DATA1} & C \\
+\nolinkurl{U5} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{U6} & \nolinkurl{IO_L22N_T3_34} & \nolinkurl{ASIC7_DATA7} & C \\
+\nolinkurl{U7} & \nolinkurl{IO_L22P_T3_34} & \nolinkurl{ASIC7_DATA4} & C \\
+\nolinkurl{U8} & \nolinkurl{IO_25_34} & \nolinkurl{ASIC7_DATA6} & C \\
+\nolinkurl{U9} & \nolinkurl{IO_L21P_T3_DQS_34} & \nolinkurl{ASIC7_READ} & C \\
+\nolinkurl{U10} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{U11} & \nolinkurl{IO_L19N_T3_A09_D25_VREF_14} & No functional net & NC \\
+\nolinkurl{U12} & \nolinkurl{IO_L20P_T3_A08_D24_14} & No functional net & NC \\
+\nolinkurl{U13} & \nolinkurl{IO_L23N_T3_A02_D18_14} & No functional net & NC \\
+\nolinkurl{U14} & \nolinkurl{IO_L22P_T3_A05_D21_14} & No functional net & NC \\
+\nolinkurl{U15} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{U16} & \nolinkurl{IO_L18P_T2_A12_D28_14} & No functional net & NC \\
+\nolinkurl{U17} & \nolinkurl{IO_L17P_T2_A14_D30_14} & No functional net & NC \\
+\nolinkurl{U18} & \nolinkurl{IO_L17N_T2_A13_D29_14} & No functional net & NC \\
+\nolinkurl{V1} & \nolinkurl{IO_L7N_T1_34} & \nolinkurl{ASIC5_DATA1} & C \\
+\nolinkurl{V2} & \nolinkurl{IO_L9N_T1_DQS_34} & \nolinkurl{ASIC5_DATA7} & C \\
+\nolinkurl{V3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{V4} & \nolinkurl{IO_L10N_T1_34} & \nolinkurl{ASIC5_READ} & C \\
+\nolinkurl{V5} & \nolinkurl{IO_L10P_T1_34} & \nolinkurl{ASIC7_DATA3} & C \\
+\nolinkurl{V6} & \nolinkurl{IO_L20N_T3_34} & \nolinkurl{ASIC7_DATA5} & C \\
+\nolinkurl{V7} & \nolinkurl{IO_L20P_T3_34} & \nolinkurl{ASIC7_DATA2} & C \\
+\nolinkurl{V8} & \nolinkurl{VCCO_34} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{V9} & \nolinkurl{IO_L21N_T3_DQS_34} & \nolinkurl{ASIC7_DATA8} & C \\
+\nolinkurl{V10} & \nolinkurl{IO_L21P_T3_DQS_14} & No functional net & NC \\
+\nolinkurl{V11} & \nolinkurl{IO_L21N_T3_DQS_A06_D22_14} & No functional net & NC \\
+\nolinkurl{V12} & \nolinkurl{IO_L20N_T3_A07_D23_14} & No functional net & NC \\
+\nolinkurl{V13} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{V14} & \nolinkurl{IO_L22N_T3_A04_D20_14} & No functional net & NC \\
+\nolinkurl{V15} & \nolinkurl{IO_L16P_T2_CSI_B_14} & No functional net & NC \\
+\nolinkurl{V16} & \nolinkurl{IO_L16N_T2_A15_D31_14} & No functional net & NC \\
+\nolinkurl{V17} & \nolinkurl{IO_L18N_T2_A11_D27_14} & No functional net & NC \\
+\nolinkurl{V18} & \nolinkurl{VCCO_14} & \nolinkurl{VCCAUX_1V8} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U2}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{VIN} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{SW} & \nolinkurl{SW_CORE} & C \\
+\nolinkurl{3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{4} & \nolinkurl{FB2} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{FB} & \nolinkurl{FB_CORE} & C \\
+\nolinkurl{6} & \nolinkurl{VOS} & \nolinkurl{VCORE_REG_1V025} & C \\
+\nolinkurl{7} & \nolinkurl{PG} & \nolinkurl{PG_CORE} & C \\
+\nolinkurl{8} & \nolinkurl{EN} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{9} & \nolinkurl{SS/TR} & \nolinkurl{SS_CORE} & C \\
+\nolinkurl{10} & \nolinkurl{MODE} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{11} & \nolinkurl{VSEL} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U3}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{VIN} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{SW} & \nolinkurl{SW_AUX} & C \\
+\nolinkurl{3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{4} & \nolinkurl{FB2} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{FB} & \nolinkurl{FB_AUX} & C \\
+\nolinkurl{6} & \nolinkurl{VOS} & \nolinkurl{VAUX_REG_1V803} & C \\
+\nolinkurl{7} & \nolinkurl{PG} & \nolinkurl{PG_AUX} & C \\
+\nolinkurl{8} & \nolinkurl{EN} & \nolinkurl{PG_CORE} & C \\
+\nolinkurl{9} & \nolinkurl{SS/TR} & \nolinkurl{SS_AUX} & C \\
+\nolinkurl{10} & \nolinkurl{MODE} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{11} & \nolinkurl{VSEL} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U4}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{VIN} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{SW} & \nolinkurl{SW_CFG} & C \\
+\nolinkurl{3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{4} & \nolinkurl{FB2} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{FB} & \nolinkurl{FB_CFG} & C \\
+\nolinkurl{6} & \nolinkurl{VOS} & \nolinkurl{VCC_LINK_2V5} & C \\
+\nolinkurl{7} & \nolinkurl{PG} & No functional net & NC \\
+\nolinkurl{8} & \nolinkurl{EN} & \nolinkurl{PG_AUX} & C \\
+\nolinkurl{9} & \nolinkurl{SS/TR} & \nolinkurl{SS_CFG} & C \\
+\nolinkurl{10} & \nolinkurl{MODE} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{11} & \nolinkurl{VSEL} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U5}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{VIN} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{2} & \nolinkurl{SW} & \nolinkurl{SW_ASIC} & C \\
+\nolinkurl{3} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{4} & \nolinkurl{FB2} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{FB} & \nolinkurl{FB_ASIC} & C \\
+\nolinkurl{6} & \nolinkurl{VOS} & \nolinkurl{VCC_ASIC_1V5} & C \\
+\nolinkurl{7} & \nolinkurl{PG} & No functional net & NC \\
+\nolinkurl{8} & \nolinkurl{EN} & \nolinkurl{PG_AUX} & C \\
+\nolinkurl{9} & \nolinkurl{SS/TR} & \nolinkurl{SS_ASIC} & C \\
+\nolinkurl{10} & \nolinkurl{MODE} & \nolinkurl{LINK_12V} & C \\
+\nolinkurl{11} & \nolinkurl{VSEL} & \nolinkurl{GND} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{U6}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{~{CS}} & \nolinkurl{FLASH_CS_B} & C \\
+\nolinkurl{2} & \nolinkurl{SO/SIO1} & \nolinkurl{FLASH_DQ1} & C \\
+\nolinkurl{3} & \nolinkurl{~{WP}/SIO2} & \nolinkurl{FLASH_DQ2} & C \\
+\nolinkurl{4} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{5} & \nolinkurl{SI/SIO0} & \nolinkurl{FLASH_DQ0} & C \\
+\nolinkurl{6} & \nolinkurl{SCLK} & \nolinkurl{FLASH_SCLK} & C \\
+\nolinkurl{7} & \nolinkurl{~{RESET}/SIO3} & \nolinkurl{FLASH_DQ3} & C \\
+\nolinkurl{8} & \nolinkurl{VCC} & \nolinkurl{VCCAUX_1V8} & C \\
+\end{longtable}\endgroup
+
+\Needspace{32mm}\subsection*{Y1}
+
+\begingroup\fontsize{8}{10}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}P{15mm}P{42mm}P{92mm}P{10mm}@{}}
+\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endfirsthead\toprule \textbf{Pin} & \textbf{Function} & \textbf{Native net} & \textbf{State} \\ \midrule
+\endhead\midrule\multicolumn{4}{r}{\footnotesize Continued}\endfoot\bottomrule\endlastfoot
+\nolinkurl{1} & \nolinkurl{EN} & \nolinkurl{VCCAUX_1V8} & C \\
+\nolinkurl{2} & \nolinkurl{GND} & \nolinkurl{GND} & C \\
+\nolinkurl{3} & \nolinkurl{OUT} & \nolinkurl{OSC_32M_RAW} & C \\
+\nolinkurl{4} & \nolinkurl{Vdd} & \nolinkurl{VCCAUX_1V8} & C \\
+\end{longtable}\endgroup
+
+\end{document}

@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-26",
+  "applied": true,
+  "project": "integration/project",
+  "source": "https://www.ti.com/lit/ds/symlink/tps62135.pdf#page=9",
+  "reason": "Unused open-drain PG outputs can be left open, TI section 9.3.2; PGOOD_IO has no consumer.",
+  "removed_component": "R12",
+  "removed_net": "PGOOD_IO",
+  "add_no_connect": [
+    "U4.7",
+    "U5.7"
+  ],
+  "other_manifest_components_unchanged": true,
+  "other_U4_U5_pin_assignments_unchanged": true,
+  "pcb_changed": false,
+  "sheets": [
+    {
+      "path": "hardware/core_04_01.kicad_sch",
+      "removed": {
+        "wire": 6,
+        "global_label": 3,
+        "symbol": 1
+      },
+      "add_no_connect": "U4.7",
+      "marker_mm": [
+        55.88,
+        80.01
+      ],
+      "unrelated_forms_byte_preserved": true
+    },
+    {
+      "path": "hardware/core_05_01.kicad_sch",
+      "removed": {
+        "wire": 2,
+        "global_label": 1,
+        "symbol": 0
+      },
+      "add_no_connect": "U5.7",
+      "marker_mm": [
+        55.88,
+        80.01
+      ],
+      "unrelated_forms_byte_preserved": true
+    }
+  ],
+  "files": [
+    {
+      "path": "hardware/core_04_01.kicad_sch",
+      "before_sha256": "f0e7add5964cac5d1d7c06c581e53919d17129c23a825d0c2949161058f27341",
+      "after_sha256": "e5a0ed694fa8c4bda875dc3f7ff312d41f73d037fb499cc626c3a34de4c20458"
+    },
+    {
+      "path": "hardware/core_05_01.kicad_sch",
+      "before_sha256": "b951f172add6cd4b78e5ee6363defe8177b1271b31f9ea038f64b2051499631d",
+      "after_sha256": "fc619f34166d02f98c5c83b467f8f98d9a50e8236b4c2e59e2650cc85ac0477c"
+    },
+    {
+      "path": "reports/component_manifest_resolved.json",
+      "before_sha256": "e168cddd6d4714ddb2780a11d3f7e27a12eacac0c6be7c211caeef4b65253c00",
+      "after_sha256": "073020543d44b984d8217487887924e17f98aa65d6ca7ad9306a60ed2f2a2f85"
+    }
+  ],
+  "post_apply_required": [
+    "Native netlist comparison: only R12 removed; VCCAUX loses R12.1; PGOOD_IO removed; U4.7/U5.7 explicit NC.",
+    "Native ERC; separately remove obsolete PCB footprint/copper and reconcile netlist."
+  ]
+}

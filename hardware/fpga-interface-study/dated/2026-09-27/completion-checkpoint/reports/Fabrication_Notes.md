@@ -1,0 +1,41 @@
+# Fabrication and assembly proposal — 27 September 2026
+
+**33 × 36 mm FPGA board; review proposal, not an authorized order or fabrication release.** No files have been submitted to a supplier. Final outputs must come from the integrated PCB that passes the release review, not an intermediate routing candidate.
+
+**Selected boot simplification:** fixed SPI x1 removes R106/R107 and marks U1.L14/M14 NC; the flash WP#/RESET# pull-ups remain. The resulting design has **125 components, 752 numbered endpoints, 83 intentional NC and 19 reserved endpoints**. One-bit boot is slower than quad at the same clock; ASIC capture bandwidth is unchanged. See the [source review and boot constraints](SPIx1_Boot_Review.md).
+
+## Construction
+
+Use the current **JLC12161H1-1080B**, twelve-layer rigid construction: planned nominal ordering thickness 1.6 mm, listed finished thickness **1.59 mm ±10%**. The exact [physical stackup](Physical_Stackup_Proposal.md) has six signal layers, four ground layers and two power layers. Outer copper is 35 µm; the two middle power layers are 30 µm; the other eight inner copper layers are 15.2 µm. Copper plus dielectric nominal thickness is **1.5928 mm**. These constituent values are not individual manufacturing tolerances.
+
+The earlier **eight-layer JLC08161H-3313 / 1.57 mm** build is historical. Do not fabricate the twelve-layer files against that prior construction. The [independent review](Twelve_Layer_Stackup_Review.md) covers arithmetic and reference geometry; the final hash-bound [physical application](Physical_Stackup_Application.json) must identify the actual metadata applied to the released PCB. Unknown mixed-material Dk and loss tangent remain unqualified; CAD software defaults must not be represented as material data.
+
+Propose **ENIG**, lead-free assembly and solder mask on both sides. Do not substitute HASL or change copper weights/stackup without engineering review. Exact laminate, finish specification and production tolerance require supplier acceptance. No controlled-impedance guarantee is implied by calculator settings; 0.10 mm fanout necks are not automatically 50 Ω.
+
+Use conventional through-vias; the principal escape geometry is 0.40 mm pad / 0.20 mm hole. No blind/buried vias or microvias are intended. Confirm the drill table's finished-hole/tool-size interpretation and solder-mask/via treatment with fabrication. Do not create open via-in-pad joints or assume tenting is equivalent to filled and capped vias. Minimum routed width/spacing and all internal plane clearances must be read from final CAM/native DRC.
+
+## J4: four precision plated mounting slots
+
+J4 is **Molex 467651001**. Require **four finished plated slots, 0.65 ±0.05 mm × 1.70 ±0.05 mm**, preserving the native slot centers and shell-pad geometry. These are finished dimensions after plating. Use the [Molex family drawing, through-hole variant and page 5 footprint](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf) as the dimensional authority; see [connector review](J4_Connector_Selection.md).
+
+JLC's standard plated-slot tolerance **+0.13/−0.08 mm** does not guarantee those Molex limits. Obtain written acceptance of both finished slot dimensions before release, or select a compatible fabrication process. A circular press-fit-hole option is not proof that the slot tolerance is available.
+
+J4 shell tabs extend only **0.55 ±0.15 mm** below the signal-tail seating plane. On the selected **1.431–1.749 mm** finished-thickness range, the tab ends remain **0.731–1.349 mm** inside the slots, before solder standoff. The assembly process must explicitly accept this recessed-tab geometry and define upper-barrel/land wetting, inspection and mechanical retention; do not require or promise a projecting-tail bottom fillet. No allowed board-thickness range was found in the sales drawing/product specification. The manufacturer's 0.8 mm electrical-model board is simulation context, not an assembly qualification. See the [dimensioned thickness review](Connector_Thickness_And_Peg_Review.md).
+
+The connector edge datum is aligned by the +0.10 mm X placement correction. The proposed **0.40 mm copper-to-edge rule applies only to J4's four SH shell pads**. Keep the general 0.50 mm rule and all hole, copper-short and keepout checks. Nominal remaining shell-copper clearance is 0.425 mm; after a 0.20 mm inward outline error it is 0.225 mm. This is consistent with the published 0.20 mm routed-edge capability, but still needs vendor acceptance. Do not use V-score at this connector edge. Do not claim the optional ±0.10 mm outline process for a bare 33 × 36 mm board without its panel/tooling conditions. Source: [JLC manufacturing capabilities](https://jlcpcb.com/capabilities/Capab).
+
+## Mixed assembly
+
+The assembly combines a 15 × 15 mm, 0.8 mm-pitch CSG324 BGA, two-sided 0402 bypasses, regulator packages, two Samtec QSH-030-01-L-D-A mezzanine connectors and micro-HDMI shell tabs. Preserve polarity/orientation and exact BOM/placement references. C20 uses the selected Panasonic ETPE330M9GB compact polarized footprint: two 1.6 × 2.7 mm lands centered ±1.5 mm, pad 1 positive and pad 2 GND; the final footprint/readback must match that selection. Use BGA X-ray inspection and inspect connector solder joints, not only optical component presence.
+
+The 0402 bypass footprint has 0.45 × 0.55 mm copper lands at centers ±0.425 mm. These meet the selected Murata recommended ranges; [capacitor review](Murata_0402_Qualification.md) records the evidence. Have the assembler choose and approve stencil thickness/apertures and soldering sequence for the combined geometry. The [Samtec QSH footprint](https://suddendocs.samtec.com/prints/qsh-xxx-01-x-d-xx-footprint.pdf) uses a 0.152 mm stencil reference; that does not establish a universal stencil for adjacent 0402/BGA features.
+
+A 0.010 mm **courtyard** gap is not the physical body/pad clearance. Use maximum body dimensions, pad gaps, placement tolerances and rework access when reviewing the compact layout. JLC recommends 0.15 mm between 0402 chips, 0.18 mm between 0402/0603 chips, and 1.0 mm between a chip and QFN or BGA; resolve any actual same-side shortfalls in the final integrated board with placement changes or explicit assembler approval. Source: [JLC SMD spacing guide](https://jlcpcb.com/help/article/minimum-spacing-for-smd-components).
+
+Samtec's alignment pegs are **Ø0.89 mm REF**, **0.95 mm REF below the housing underside**; the specified holes are **Ø1.02 mm NPTH**. Using the full reference peg length as a conservative insertion screen leaves 0.640 mm of nominal board thickness, or 0.481 mm at minimum board thickness. These REF values are not guaranteed maximum dimensions. An earlier eight-layer native readback found matching holes and no opposite-side footprint box covering a hole; that placement evidence is historical. Repeat the screen on the final twelve-layer placement, including actual mask expansions and nearby drill-to-mask openings. See the [peg and backside-clearance evidence](Connector_Thickness_And_Peg_Review.md).
+
+Panel rails/fiducials/tooling may enlarge the manufacturing panel without enlarging the finished PCB. Agree panel support, depanelization, connector edge access and soldering of the four plated shell slots with the assembler. Verify the selected mating connector/stack height and opposite-board keepouts before a mechanical release. All mezzanine ground-blade pads must connect to GND planes; the 117 signal-contact allocation does not replace the blades' return path.
+
+## Release package boundary
+
+The eventual package must contain matching copper/mask/paste/legend/outline files, PTH and NPTH drill/slot files, stackup and slot notes, BOM with exact ordering codes, placement files, assembly drawings and revision/hash identification. Review CAM against native PCB, including plane fill and intentional unused/reserved contacts. Confirm fabrication and assembly acceptance before authorizing production. This note describes the intended process and remaining acceptance requirements; it is not evidence of zero unrouted nets, power integrity, functional timing or an accepted manufacturing order.

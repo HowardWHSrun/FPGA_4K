@@ -1,0 +1,134 @@
+{
+  "date": "2026-09-27",
+  "status": "Root-selected fixed SPI x1; isolated native schematic validation, root application recorded separately",
+  "endpoint_changes": {
+    "R106.1": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R106.2": {
+      "before": "FLASH_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.1": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.2": {
+      "before": "FLASH_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.L14": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "U1.M14": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "counts_after": {
+    "components": 125,
+    "endpoints": 752,
+    "intentional_nc": 83,
+    "netless": 102,
+    "reserved_endpoints": 19
+  },
+  "native_nc_net_names": {
+    "U1.L14": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)",
+    "U1.M14": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+  },
+  "retained_control_nets": {
+    "FLASH_DQ2": [
+      "R101.2",
+      "U6.3"
+    ],
+    "FLASH_DQ3": [
+      "R102.2",
+      "U6.7"
+    ]
+  },
+  "schematics": [
+    {
+      "path": "hardware/core_10_01.kicad_sch",
+      "removed": {
+        "symbol": 2,
+        "wire": 8,
+        "global_label": 4
+      },
+      "all_other_forms_byte_preserved": true
+    },
+    {
+      "path": "hardware/fpga_unit_01.kicad_sch",
+      "removed": {
+        "wire": 4,
+        "global_label": 2
+      },
+      "added_no_connect": [
+        {
+          "reference": "U1",
+          "pin": "L14",
+          "at_mm": [
+            158.75,
+            101.6
+          ],
+          "uuid": "ab43f097-ff6f-5950-9b52-643f09289928",
+          "expected_native_unconnected_net": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)"
+        },
+        {
+          "reference": "U1",
+          "pin": "M14",
+          "at_mm": [
+            158.75,
+            104.14
+          ],
+          "uuid": "b9c402ac-f93b-5b6b-bb88-632d70f90a3c",
+          "expected_native_unconnected_net": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+        }
+      ],
+      "all_other_forms_byte_preserved": true
+    }
+  ],
+  "new_no_connect_markers": [
+    {
+      "reference": "U1",
+      "pin": "L14",
+      "at_mm": [
+        158.75,
+        101.6
+      ],
+      "uuid": "ab43f097-ff6f-5950-9b52-643f09289928",
+      "expected_native_unconnected_net": "unconnected-(U1A-IO_L2P_T0_D02_14-PadL14)"
+    },
+    {
+      "reference": "U1",
+      "pin": "M14",
+      "at_mm": [
+        158.75,
+        104.14
+      ],
+      "uuid": "b9c402ac-f93b-5b6b-bb88-632d70f90a3c",
+      "expected_native_unconnected_net": "unconnected-(U1A-IO_L2N_T0_D03_14-PadM14)"
+    }
+  ],
+  "historical_unused_csv_sha256": "ea7e2b0c0d5f8ea4d6e6ca66387429f4de9858224304be75947fd423205229fb",
+  "current_unused_csv_sha256": "edb2ef604932537c019f24a9dc84baf5a3d5200dcb97bf3fec69c9bf54897ddf",
+  "root_application_report": "SPIx1_Removal_Applied.json",
+  "no_root_CAD_modified_by_review": true,
+  "sources": [
+    "https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content",
+    "https://www.macronix.com/Lists/Datasheet/Attachments/8704/MX25U12835F,%201.8V,%20128Mb,%20v1.9.pdf"
+  ]
+}

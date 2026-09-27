@@ -7,7 +7,7 @@ Start with [team setup](docs/team/README.md), [owners and open work](docs/team/o
 1. Accept the repository collaborator invitation and sign in to GitHub Desktop. Reading/cloning this public repository does not give write access.
 2. Install KiCad **10.0.6**, including its standard symbol, footprint and optional 3D libraries. Coordinate any version upgrade in a separate pull request. The historical routing reference remains in its original KiCad 9 format.
 3. Clone `https://github.com/HowardWHSrun/FPGA_4K.git` with GitHub Desktop into a normal local folder outside iCloud/Dropbox/OneDrive synchronization. Do not use downloaded ZIPs as working copies.
-4. For the current smallest board, open `hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pro`. Keep the complete project folder and libraries. Read the latest component audit on the review page: this is an incomplete routing snapshot with known pin-grounding corrections, not a fabrication release.
+4. For the current smallest board, open `hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pro`. Keep the complete project folder and libraries. Read the latest component audit on the review page: the audit states the measured routing status; unused pins, future-link reservations and physical missing connections are separate. This is not a fabrication release.
 5. Run the checks below. Verify the schematic hierarchy and board open on your computer. Standard 3D assets are installed with KiCad; absent custom models do not establish mechanical clearance.
 
 ## Every change
@@ -38,8 +38,8 @@ Optional terminal equivalents, once `kicad-cli` is on PATH:
 
 ```sh
 mkdir -p build/review
-kicad-cli sch erc --format json --output build/review/erc.json hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_sch
-kicad-cli pcb drc --schematic-parity --format json --output build/review/drc.json hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/hardware/FPGA100T_33x36_Routing.kicad_pcb
+kicad-cli sch erc --format json --output build/review/erc.json hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_sch
+kicad-cli pcb drc --schematic-parity --format json --output build/review/drc.json hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pcb
 ```
 
 These commands export findings; their default exit code does not mean the design is error-free. Review the reports. For a release gate, use `--exit-code-violations` and review disabled rules and exclusions as well.

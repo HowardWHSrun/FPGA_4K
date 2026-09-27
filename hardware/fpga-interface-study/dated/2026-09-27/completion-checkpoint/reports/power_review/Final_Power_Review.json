@@ -1,0 +1,1868 @@
+{
+  "date": "2026-09-27",
+  "board": "FPGA100T_33x36_Routing.kicad_pcb",
+  "board_sha256": "2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc",
+  "status": "Routing/continuity review complete; physical power integrity and hardware function remain unqualified.",
+  "verification": {
+    "all_power_GND_physical_pads_connected": true,
+    "SMD_via_overlap_count": 0,
+    "native_DRC_errors": 0,
+    "native_DRC_unconnected_items": 0,
+    "native_DRC_warning_counts": {},
+    "R9_exact_12mohm_part": true,
+    "R122_exact_15mohm_part": true,
+    "U1_exact_selected_grade": true,
+    "native_12layer_stackup_30um_power_planes": true,
+    "no_signal_tracks_on_power_layers": true,
+    "source_core_tracks_preserved": true
+  },
+  "physical_pad_connectivity": {
+    "GND": {
+      "source": "C1.2",
+      "physical_pad_count": 176,
+      "logical_endpoint_count": 167,
+      "connected_physical_pad_count": 176,
+      "missing": []
+    },
+    "VCCINT_1V0": {
+      "source": "R9.2",
+      "physical_pad_count": 35,
+      "logical_endpoint_count": 35,
+      "connected_physical_pad_count": 35,
+      "missing": []
+    },
+    "VCCAUX_1V8": {
+      "source": "R122.2",
+      "physical_pad_count": 49,
+      "logical_endpoint_count": 49,
+      "connected_physical_pad_count": 49,
+      "missing": []
+    },
+    "VCC_ASIC_1V5": {
+      "source": "C17.1",
+      "physical_pad_count": 41,
+      "logical_endpoint_count": 41,
+      "connected_physical_pad_count": 41,
+      "missing": []
+    },
+    "VCC_LINK_2V5": {
+      "source": "C13.1",
+      "physical_pad_count": 12,
+      "logical_endpoint_count": 12,
+      "connected_physical_pad_count": 12,
+      "missing": []
+    },
+    "LINK_12V": {
+      "source": "C1.1",
+      "physical_pad_count": 22,
+      "logical_endpoint_count": 22,
+      "connected_physical_pad_count": 22,
+      "missing": []
+    },
+    "VAUX_REG_1V803": {
+      "source": "C9.1",
+      "physical_pad_count": 5,
+      "logical_endpoint_count": 5,
+      "connected_physical_pad_count": 5,
+      "missing": []
+    }
+  },
+  "FPGA_power_ground_pad_counts": {
+    "GND": 58,
+    "VCCINT_1V0": 16,
+    "VCCAUX_1V8": 12,
+    "VCC_ASIC_1V5": 18,
+    "VCC_LINK_2V5": 1,
+    "LINK_12V": 0,
+    "VAUX_REG_1V803": 0
+  },
+  "parts": {
+    "U1": {
+      "value": "XC7A100T-1CSG324I",
+      "MPN": "XC7A100T-1CSG324I",
+      "footprint": "FPGA100T:Xilinx_CSG324"
+    },
+    "R122": {
+      "value": "15m 1% 1W",
+      "MPN": "WSLP1206R0150FEA",
+      "footprint": "CoreSupport:Resistor_SMD__R_1206_3216Metric"
+    },
+    "C20": {
+      "value": "330u 2.5V POSCAP ESR9m@300kHz",
+      "MPN": "ETPE330M9GB",
+      "footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended"
+    },
+    "R9": {
+      "value": "12m 1% 1W",
+      "MPN": "WSLP1206R0120FEA",
+      "footprint": "CoreSupport:Resistor_SMD__R_1206_3216Metric"
+    },
+    "C78": {
+      "value": "470n 10V X7R",
+      "MPN": "GRT155R71A474KE01D",
+      "footprint": "CoreSupport:Murata_GRT15_0402_Recommended"
+    }
+  },
+  "single_via_multi_capacitor_groups": [
+    {
+      "net": "VCCAUX_1V8",
+      "capacitor_pads": [
+        "C102.1",
+        "C103.1"
+      ],
+      "FPGA_ball_pads": [],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "af8efdad-b9fa-41ee-90c2-6c467093058f",
+          "xy": [
+            12.64,
+            8.85
+          ]
+        }
+      ],
+      "other_pads": [
+        "R100.1",
+        "R116.1",
+        "Y1.1",
+        "Y1.4"
+      ],
+      "trace_ids": [
+        "26768425-f6a1-4261-87c5-b616f8e53987",
+        "28325eb1-3fc3-45eb-a204-b772f93aa522",
+        "782b1e08-4921-4b9b-9eb3-7d5ef5912d5e",
+        "904b8859-46cb-4f06-9a02-a2797a59386c",
+        "94ed2d70-f6c6-4594-9507-69cf0fa31367",
+        "d3e1dc30-8d22-4780-ab28-fc87a18c6714",
+        "9edf7fc8-6969-43a5-be9c-aad0453072ae",
+        "f0e292ee-3c32-4ec4-903d-6533b04eb2ee",
+        "ad6fd47c-75df-490e-b7fe-8aa5e19c81fd",
+        "c862de82-d87e-42f6-aa2f-2b0cced0602a",
+        "3de0d632-31cb-4c82-8161-ebc31571594d",
+        "d545833e-7e7f-4c7a-a6bd-84597b574684",
+        "b9f5f351-0293-41bc-a45a-486c08a0a6a6",
+        "779579ac-cceb-4bbc-ab97-ab95e95351f4",
+        "a8dcd81d-2568-4aa6-b277-8ff2b34856e0",
+        "96180e1b-c944-4c45-a638-70535fcf3bc0",
+        "9bb58437-b46b-4d60-8bd7-95f9cc3959d6"
+      ]
+    },
+    {
+      "net": "GND",
+      "capacitor_pads": [
+        "C62.2",
+        "C81.2"
+      ],
+      "FPGA_ball_pads": [],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "f8627474-022c-4ea3-a4da-7e6e00a7394f",
+          "xy": [
+            16.95,
+            10.675
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "1c7f52c5-9e14-434c-abc1-65e508d0fbcb",
+        "c289dbc3-80ca-46e9-818b-85d1944df3a3",
+        "39d48ccb-ed5a-422b-a7ee-737cc0166210",
+        "f868f98b-7e6a-42a4-8ed3-ddcb44bda49c",
+        "5c4d4e4e-cd28-459a-89e0-dc192dca540c"
+      ]
+    },
+    {
+      "net": "GND",
+      "capacitor_pads": [
+        "C22.2",
+        "C78.2"
+      ],
+      "FPGA_ball_pads": [],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "8c4798fe-3712-49db-a299-a8bfb82ea9f0",
+          "xy": [
+            11.15,
+            18.325
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "9bebfa75-25d5-4e34-a5cc-e25061afdbb1",
+        "c209f81d-eb7a-46ea-9020-e9b4c69bbcdc",
+        "c04a5677-98f5-484e-b936-61ac0c5f0009",
+        "dcc387ff-3021-483d-a7a8-7e1e43d82dbe",
+        "e984614b-e3af-418f-afd4-9d5df76efa35",
+        "5913b7c5-b0b5-49da-b9e0-f41b8b87d926",
+        "f62acf78-b05e-48e4-9263-162b63c4a5bb",
+        "7a33b9a6-694b-4fe7-aae9-ffdc932f9cc5",
+        "ec2ff17a-5818-409a-baca-2fb3e579dff7"
+      ]
+    },
+    {
+      "net": "VCCAUX_1V8",
+      "capacitor_pads": [
+        "C51.1",
+        "C53.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.V18"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "22bed271-2f01-4c88-9104-6ce91fa8c3a1",
+          "xy": [
+            26.4,
+            26.5
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "8d742edc-4d92-449e-83c1-d5cfc5b35277",
+        "ca5b021a-2af7-4b8d-9676-444de12ce47a",
+        "6e641ab4-d5e4-4964-a527-8b82fe338815",
+        "9bfc881a-ae05-4e9a-9b5b-aec750b4a09f"
+      ]
+    },
+    {
+      "net": "VCCINT_1V0",
+      "capacitor_pads": [
+        "C31.1",
+        "C33.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.G7"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "127924af-0122-41c5-902a-7f9f98b11760",
+          "xy": [
+            17.6,
+            16.1
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "6b66a55e-fbd1-45e4-aee7-6d32b7a82f38",
+        "1a7ea9c3-eaac-4dc2-b786-ae7761058395",
+        "a92eb524-2c9b-4fb7-ae11-f79ec75ba1cb",
+        "5a30d9dd-8dd6-4526-8314-d20bf741527e",
+        "5b30b248-0e6c-46df-8b27-23f4c8627352",
+        "dc5c839f-38dc-4dad-9873-71b1afc6b452",
+        "10b99568-73cf-4923-8be3-8dbd196a1e76",
+        "7109f310-0337-47cf-84be-d2480401e0ee",
+        "ee04c93e-d73d-4547-bec7-f86b2b31d74e",
+        "a18f7610-7514-4b97-81de-827adcb1fc12",
+        "aeaa85c7-4d77-47dd-9a9b-e4c36bbe27ef",
+        "109f30a1-6a06-4275-9071-36436a59d0be",
+        "1baccd75-f141-48d6-845e-ebf9995492c4",
+        "e991b170-1e93-4b8e-8fbf-2d357c3f4a55",
+        "411c67a6-087a-4c2f-8caa-204de48c97e3",
+        "ecdd8f09-daba-4b2e-a5df-3e65c9b23796",
+        "f9978a6e-8382-498b-aca7-0da45bc437d7",
+        "535fbeb6-7148-4b4f-9511-37fd11d2f743",
+        "69800c2b-7091-454f-82d1-b6af1ba0eac6"
+      ]
+    },
+    {
+      "net": "VCCAUX_1V8",
+      "capacitor_pads": [
+        "C43.1",
+        "C44.1",
+        "C45.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.M12",
+        "U1.N13"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "cb369a9e-2ba5-4bb3-9241-a7873c41cb0d",
+          "xy": [
+            23.2,
+            20.9
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "7ae2f10a-f688-4a3c-939b-54a59613c7df",
+        "dc63c5f7-7379-49c1-b5fd-f2018bb35717",
+        "e4fba843-d527-4947-af94-72128ce732c9",
+        "4c755f74-7841-4c32-b37b-0e27a61aaf9e",
+        "c9b1dcce-bc21-48a4-aa5c-ab4b49e538b3",
+        "89b898ac-bbf5-4ed3-9497-b5dbb80bca84",
+        "7a0787da-40b0-4112-80bb-9c1e39a19a21",
+        "8504eb31-807e-4f17-8082-c2859e0e6530",
+        "9a6093fa-726c-4d7a-8cd3-d0627a05ed9e",
+        "b450d50f-ff6c-4774-9215-c48f1f06889e",
+        "3a175d63-ca14-4b88-94e4-4b191ed88edd",
+        "98ba3937-347e-4658-ad4b-5ae3323fa88f",
+        "bd2549f9-7c7f-4af5-9559-d8fe5cd3a721",
+        "e5baf6fa-fa5c-412d-be99-ea79e7ce5c9e"
+      ]
+    },
+    {
+      "net": "VCCINT_1V0",
+      "capacitor_pads": [
+        "C29.1",
+        "C34.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.L7"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "e62aed95-e67e-40db-b35b-14a2145a80a5",
+          "xy": [
+            18.4,
+            20.1
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "c898cf5f-4ea5-49e4-b44d-598631d22efd",
+        "109234ee-7f2a-4432-ab11-e1e4cb96452b",
+        "18be3e78-3723-4e4f-8a2e-685c565749bd",
+        "406160c2-4a79-404f-b1a2-008500a23300",
+        "42775bb7-2dae-43b8-8a0c-532826d6c006",
+        "431bf043-6e11-41d7-afab-7bb80ab6c65e",
+        "5d36e600-a9ff-4757-8cdc-62bdfbd48b2d",
+        "eee58f36-34ff-45c6-8ea1-a3d5128d3f71",
+        "23096f32-5e75-4900-af5b-48a7dbd0acc3",
+        "d50e977d-07e2-4991-92b0-7f3265c1fefd",
+        "141aad88-e569-47ff-aa41-e4b356f20697",
+        "d262cb66-f987-4c24-9208-3697ca37f9d3",
+        "c7312251-366f-47ff-be19-615e70a4b8c2",
+        "f8dcd14d-8cc6-4ff6-881e-8185ea970eb1",
+        "1d2fda01-9fe5-4c09-8f9a-043678c38618",
+        "f1c787e4-b59e-4765-9225-2374c04b82b4",
+        "3cb35c46-f563-4889-86d5-49e90cbdd2c8",
+        "a696d3b9-6886-4c59-889e-fc2e40fb39d6",
+        "029f82e6-cb0d-4e7f-b2de-396f7852a9f6",
+        "8d9584d9-1147-4d61-8d50-9937ba60c601",
+        "a75217ec-25c9-4174-ac87-d77e648dd8a2",
+        "0e022c7b-d23e-4b45-ae38-bec8eac26e68",
+        "316c12b2-fb0e-43b7-b5cf-43fc0e40d6f4",
+        "5c7f51c0-e6b6-40ba-9be5-b1d1da0568a2",
+        "ab7b42ca-822b-4ac8-bd56-b4399aa06838",
+        "c1757fe7-f3b4-4622-959a-f21cbbf89d76",
+        "d0acf435-cdb2-4fa2-8adb-b7d786e908bc",
+        "6c7e9e1c-799a-4b6e-bf4d-7180ec149807",
+        "c9690f7b-fc6a-4ecb-88d1-e8e8a589aeae",
+        "eebd281a-45ff-4ccd-858f-daef51afda7c",
+        "3a1721ed-2322-4091-8673-43a192f5c742",
+        "055072e4-ac13-4fa5-adad-8dcc10a65f32",
+        "e3849b31-a8d8-456f-81ac-6d82dbee5ced",
+        "ea216733-cc14-4998-bf53-e13be4ed3ad9",
+        "05bc16c5-ff32-4b7f-ae0b-817c8d4d4974",
+        "683b63fc-2014-413c-86f5-319f8b7885dc",
+        "ab149347-aa36-46ad-a8ee-818d22ce9339",
+        "036256cd-ad13-4c66-8708-ea17697b006b",
+        "1a036ec5-03a1-4b89-afc0-51d8d0857d65",
+        "5bba1a49-1d68-47ee-9949-b82ea47889a8",
+        "ba661722-12f2-4287-90e0-f3360652ccb0"
+      ]
+    },
+    {
+      "net": "VCCAUX_1V8",
+      "capacitor_pads": [
+        "C90.1",
+        "C91.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.H10"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "1250c603-4ac8-436f-aa4b-cdaeb16b1b50",
+          "xy": [
+            20.8,
+            18.5
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "439534d1-eb64-4cb1-b506-4b2adceba419",
+        "9750790c-1d23-4393-9e00-5b1cb5fbaa90",
+        "901b1d60-5867-4e08-aab1-022518e9dba9",
+        "26b0fa24-5cf4-4f71-aa9b-540fe4e385f5"
+      ]
+    },
+    {
+      "net": "VCCINT_1V0",
+      "capacitor_pads": [
+        "C28.1",
+        "C32.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.N7"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "6e48e61d-0db0-4faa-a7bf-21f86caa1c6c",
+          "xy": [
+            16.8,
+            21.7
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "55883362-c714-4dce-b762-8af537a69535",
+        "e97c69d7-e886-4463-82bc-c32a123d0151",
+        "16748e43-fd48-4cc6-9cf0-13793697264b",
+        "d985f739-0e0b-4383-b031-ad14d27b0c6e"
+      ]
+    },
+    {
+      "net": "VCCINT_1V0",
+      "capacitor_pads": [
+        "C30.1",
+        "C35.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.N11"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "5e3fdde1-23fe-408e-bf6a-17eecf32271c",
+          "xy": [
+            21.6,
+            21.7
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "01bc826f-6bd9-4794-b96e-327a69faf703",
+        "668815ad-0fb3-47be-9008-1cb9adf37496",
+        "80e4a294-86a0-4609-a65d-363b5d894bd1",
+        "2e1508df-0daa-498b-a54c-8573f21a442e",
+        "9d579be4-b1ce-4fca-819e-17143a90dde4",
+        "bfaca832-f637-4772-97b5-d225034730fa",
+        "d85a86a6-acb1-47fc-abc8-f5d5cb5c118e",
+        "12f90e49-0dfd-41a4-a9c3-6e7a208c32f6",
+        "423beb2f-a0ce-47b1-a175-fd0887b45237",
+        "897f0d4a-ba49-4a66-aa65-29beee24fa9e"
+      ]
+    },
+    {
+      "net": "GND",
+      "capacitor_pads": [
+        "C30.2",
+        "C41.2"
+      ],
+      "FPGA_ball_pads": [
+        "U1.U10"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "cbfd0dc2-2afa-4044-8d20-d7c52725c8cc",
+          "xy": [
+            20.0,
+            24.9
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "4ac8f134-cc5f-4f5e-b2c6-92681f898f54",
+        "e068a234-a00d-4330-bda5-cbb009a49e04",
+        "704c7b34-6659-408b-b190-87b13ec16020"
+      ]
+    },
+    {
+      "net": "VCC_ASIC_1V5",
+      "capacitor_pads": [
+        "C64.1",
+        "C69.1"
+      ],
+      "FPGA_ball_pads": [],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "712e77c5-a830-4330-a60f-0fcb0277d88e",
+          "xy": [
+            29.78,
+            12.149999
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "930130ad-9fad-4868-babb-cce35152eb75",
+        "af147829-5efb-4626-83fd-4c093ef0c9e1"
+      ]
+    },
+    {
+      "net": "VCC_ASIC_1V5",
+      "capacitor_pads": [
+        "C73.1",
+        "C74.1"
+      ],
+      "FPGA_ball_pads": [
+        "U1.T2",
+        "U1.U5"
+      ],
+      "via_count": 1,
+      "vias": [
+        {
+          "uuid": "dc93c5dd-16d4-4721-9cdf-5a20d4d28cde",
+          "xy": [
+            15.2,
+            24.1
+          ]
+        }
+      ],
+      "other_pads": [],
+      "trace_ids": [
+        "204c1d6b-6987-4ae8-8d0f-22176dbe5138",
+        "318f26e6-cb6d-4f88-9bad-d968d5cfb540",
+        "ed49a839-5c21-4eff-ac87-a4f114c2bb06",
+        "d6801137-cd12-4d72-9ab9-3fa3f9dc2448",
+        "de358328-ceb6-4f61-bcea-a8a48632a692",
+        "ee383b1a-b444-4d0e-b788-02e3fce434c0"
+      ]
+    }
+  ],
+  "mounting_path_screening_unresolved_ground_paths": [
+    "C40",
+    "C75",
+    "C31",
+    "C73"
+  ],
+  "selected_mounting_paths": [
+    {
+      "reference": "C33",
+      "value": "470n 10V X7R",
+      "net": "VCCINT_1V0",
+      "positive": {
+        "surface_length_mm": 1.9417261889578048,
+        "via_xy": [
+          17.6,
+          16.1
+        ],
+        "via_uuid": "127924af-0122-41c5-902a-7f9f98b11760",
+        "layer": "B.Cu",
+        "path": [
+          [
+            16.0,
+            15.275
+          ],
+          [
+            16.425,
+            15.7
+          ],
+          [
+            16.649999,
+            15.7
+          ],
+          [
+            16.95,
+            15.7
+          ],
+          [
+            17.075,
+            15.7
+          ],
+          [
+            17.2,
+            15.7
+          ],
+          [
+            17.6,
+            16.1
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 0.8035079339994106,
+        "via_xy": [
+          15.2,
+          14.5
+        ],
+        "via_uuid": "bd3dc06f-14a5-4b64-b79f-50deb53ee5ae",
+        "layer": "B.Cu",
+        "path": [
+          [
+            16.0,
+            14.425
+          ],
+          [
+            15.2,
+            14.5
+          ]
+        ],
+        "via_selection": "Geometric path through the common filled ground pour; this is not an exclusive dedicated mounting via",
+        "centerline_sampling_mm": 0.025
+      },
+      "surface_path_sum_mm": 2.7452341229572155,
+      "mounting_via_separation_mm": 2.884441020371194
+    },
+    {
+      "reference": "C20",
+      "value": "330u 2.5V POSCAP ESR9m@300kHz",
+      "net": "VCCINT_1V0",
+      "positive": {
+        "surface_length_mm": 1.6808331019803637,
+        "via_xy": [
+          11.88,
+          32.9
+        ],
+        "via_uuid": "4e4de2ce-b91e-4925-97d4-f3e70cc7a7fe",
+        "layer": "B.Cu",
+        "path": [
+          [
+            10.4,
+            32.15
+          ],
+          [
+            10.58,
+            32.15
+          ],
+          [
+            11.88,
+            32.9
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 1.632674186725569,
+        "via_xy": [
+          11.925,
+          31.45
+        ],
+        "via_uuid": "84d0434f-7e11-4af2-a421-f62b7bc1ce1e",
+        "layer": "B.Cu",
+        "path": [
+          [
+            13.4,
+            32.15
+          ],
+          [
+            11.925,
+            31.45
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "surface_path_sum_mm": 3.3135072887059325,
+      "mounting_via_separation_mm": 1.4506981078087882
+    },
+    {
+      "reference": "C44",
+      "value": "470n 10V X7R",
+      "net": "VCCAUX_1V8",
+      "positive": {
+        "surface_length_mm": 2.0063708498984747,
+        "via_xy": [
+          23.2,
+          20.9
+        ],
+        "via_uuid": "cb369a9e-2ba5-4bb3-9241-a7873c41cb0d",
+        "layer": "B.Cu",
+        "path": [
+          [
+            24.0,
+            19.225
+          ],
+          [
+            23.6,
+            19.625
+          ],
+          [
+            23.6,
+            19.8
+          ],
+          [
+            23.6,
+            19.95
+          ],
+          [
+            23.6,
+            20.25
+          ],
+          [
+            23.6,
+            20.375
+          ],
+          [
+            23.6,
+            20.5
+          ],
+          [
+            23.2,
+            20.9
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 1.046721070772917,
+        "via_xy": [
+          23.2,
+          17.7
+        ],
+        "via_uuid": "fe8bf1bc-f8ba-4887-9d7d-018bb48f32bc",
+        "layer": "B.Cu",
+        "path": [
+          [
+            24.0,
+            18.375
+          ],
+          [
+            23.2,
+            17.7
+          ]
+        ],
+        "via_selection": "Geometric path through the common filled ground pour; this is not an exclusive dedicated mounting via",
+        "centerline_sampling_mm": 0.025
+      },
+      "surface_path_sum_mm": 3.053091920671392,
+      "mounting_via_separation_mm": 3.1999999999999993
+    },
+    {
+      "reference": "C34",
+      "value": "470n 10V X7R",
+      "net": "VCCINT_1V0",
+      "positive": {
+        "surface_length_mm": 4.057411613907039,
+        "via_xy": [
+          18.4,
+          20.1
+        ],
+        "via_uuid": "e62aed95-e67e-40db-b35b-14a2145a80a5",
+        "layer": "B.Cu",
+        "path": [
+          [
+            15.25,
+            18.475
+          ],
+          [
+            15.675,
+            18.9
+          ],
+          [
+            15.85,
+            18.9
+          ],
+          [
+            16.149999,
+            18.9
+          ],
+          [
+            16.274999,
+            18.9
+          ],
+          [
+            16.5,
+            18.9
+          ],
+          [
+            16.649999,
+            18.9
+          ],
+          [
+            16.95,
+            18.9
+          ],
+          [
+            17.0,
+            18.9
+          ],
+          [
+            17.066666,
+            18.966666
+          ],
+          [
+            17.133333,
+            19.033333
+          ],
+          [
+            17.2,
+            19.1
+          ],
+          [
+            17.2,
+            19.15
+          ],
+          [
+            17.2,
+            19.45
+          ],
+          [
+            17.2,
+            19.5
+          ],
+          [
+            17.266666,
+            19.566666
+          ],
+          [
+            17.333333,
+            19.633333
+          ],
+          [
+            17.4,
+            19.7
+          ],
+          [
+            17.448,
+            19.7
+          ],
+          [
+            17.759999,
+            19.7
+          ],
+          [
+            17.88,
+            19.7
+          ],
+          [
+            18.0,
+            19.7
+          ],
+          [
+            18.4,
+            20.1
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 0.7267220926874332,
+        "via_xy": [
+          15.2,
+          16.9
+        ],
+        "via_uuid": "22231bd2-d8b0-4846-9410-17a26d2b622f",
+        "layer": "B.Cu",
+        "path": [
+          [
+            15.25,
+            17.625
+          ],
+          [
+            15.2,
+            16.9
+          ]
+        ],
+        "via_selection": "Geometric path through the common filled ground pour; this is not an exclusive dedicated mounting via",
+        "centerline_sampling_mm": 0.025
+      },
+      "surface_path_sum_mm": 4.7841337065944725,
+      "mounting_via_separation_mm": 4.525483399593906
+    },
+    {
+      "reference": "C78",
+      "value": "470n 10V X7R",
+      "net": "VCC_ASIC_1V5",
+      "positive": {
+        "surface_length_mm": 1.2002603884157814,
+        "via_xy": [
+          14.4,
+          18.5
+        ],
+        "via_uuid": "d8b4fb53-568b-4505-b183-3a5fcc592e2e",
+        "layer": "B.Cu",
+        "path": [
+          [
+            13.2,
+            18.525
+          ],
+          [
+            14.4,
+            18.5
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 2.3192388155425094,
+        "via_xy": [
+          11.15,
+          18.325
+        ],
+        "via_uuid": "8c4798fe-3712-49db-a299-a8bfb82ea9f0",
+        "layer": "B.Cu",
+        "path": [
+          [
+            13.2,
+            17.675
+          ],
+          [
+            12.675,
+            17.675
+          ],
+          [
+            12.465,
+            17.885
+          ],
+          [
+            12.325,
+            18.025
+          ],
+          [
+            12.158333,
+            18.191667
+          ],
+          [
+            12.025,
+            18.325
+          ],
+          [
+            11.15,
+            18.325
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "surface_path_sum_mm": 3.519499203958291,
+      "mounting_via_separation_mm": 3.254708128235157
+    },
+    {
+      "reference": "C31",
+      "value": "470n 10V X7R",
+      "net": "VCCINT_1V0",
+      "positive": {
+        "surface_length_mm": 1.8649494936611668,
+        "via_xy": [
+          17.6,
+          16.1
+        ],
+        "via_uuid": "127924af-0122-41c5-902a-7f9f98b11760",
+        "layer": "B.Cu",
+        "path": [
+          [
+            17.7,
+            14.525
+          ],
+          [
+            18.0,
+            14.825
+          ],
+          [
+            18.0,
+            15.0
+          ],
+          [
+            18.0,
+            15.149999
+          ],
+          [
+            18.0,
+            15.45
+          ],
+          [
+            18.0,
+            15.575
+          ],
+          [
+            18.0,
+            15.7
+          ],
+          [
+            17.6,
+            16.1
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "ground_pour_path_unresolved": true
+      }
+    },
+    {
+      "reference": "C29",
+      "value": "470n 10V X7R",
+      "net": "VCCINT_1V0",
+      "positive": {
+        "surface_length_mm": 2.4538582233137687,
+        "via_xy": [
+          18.4,
+          20.1
+        ],
+        "via_uuid": "e62aed95-e67e-40db-b35b-14a2145a80a5",
+        "layer": "B.Cu",
+        "path": [
+          [
+            16.95,
+            18.525
+          ],
+          [
+            17.154545,
+            18.729545
+          ],
+          [
+            17.325,
+            18.9
+          ],
+          [
+            17.443055,
+            18.9
+          ],
+          [
+            17.75,
+            18.9
+          ],
+          [
+            17.8,
+            18.9
+          ],
+          [
+            17.866666,
+            18.966666
+          ],
+          [
+            17.933333,
+            19.033333
+          ],
+          [
+            18.0,
+            19.1
+          ],
+          [
+            18.0,
+            19.15
+          ],
+          [
+            18.0,
+            19.45
+          ],
+          [
+            18.0,
+            19.575
+          ],
+          [
+            18.0,
+            19.7
+          ],
+          [
+            18.4,
+            20.1
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 0.6504805915628865,
+        "via_xy": [
+          17.6,
+          17.7
+        ],
+        "via_uuid": "ab2d0e35-07a4-4522-82ec-8d17cc68f69f",
+        "layer": "B.Cu",
+        "path": [
+          [
+            16.95,
+            17.675
+          ],
+          [
+            17.6,
+            17.7
+          ]
+        ],
+        "via_selection": "Geometric path through the common filled ground pour; this is not an exclusive dedicated mounting via",
+        "centerline_sampling_mm": 0.025
+      },
+      "surface_path_sum_mm": 3.1043388148766553,
+      "mounting_via_separation_mm": 2.5298221281347044
+    },
+    {
+      "reference": "C61",
+      "value": "470n 10V X7R",
+      "net": "VCC_LINK_2V5",
+      "positive": {
+        "surface_length_mm": 4.188172798364532,
+        "via_xy": [
+          19.2,
+          12.1
+        ],
+        "via_uuid": "7c32e837-00c4-44f0-ba5b-ee42cbac8ed6",
+        "layer": "B.Cu",
+        "path": [
+          [
+            23.15,
+            12.675
+          ],
+          [
+            22.975,
+            12.5
+          ],
+          [
+            22.70257,
+            12.5
+          ],
+          [
+            22.553971,
+            12.5
+          ],
+          [
+            22.232009,
+            12.5
+          ],
+          [
+            22.132943,
+            12.5
+          ],
+          [
+            21.910046,
+            12.5
+          ],
+          [
+            21.761448,
+            12.5
+          ],
+          [
+            21.439485,
+            12.5
+          ],
+          [
+            21.34042,
+            12.5
+          ],
+          [
+            21.117523,
+            12.5
+          ],
+          [
+            20.944158,
+            12.5
+          ],
+          [
+            20.646962,
+            12.5
+          ],
+          [
+            20.52313,
+            12.5
+          ],
+          [
+            20.325,
+            12.5
+          ],
+          [
+            19.925,
+            12.1
+          ],
+          [
+            19.2,
+            12.1
+          ]
+        ],
+        "component_via_count": 1
+      },
+      "ground": {
+        "surface_length_mm": 0.915491671180027,
+        "via_xy": [
+          22.4,
+          11.3
+        ],
+        "via_uuid": "363bca65-8435-4e59-b569-36ec25768eea",
+        "layer": "B.Cu",
+        "path": [
+          [
+            23.15,
+            11.825
+          ],
+          [
+            22.4,
+            11.3
+          ]
+        ],
+        "via_selection": "Geometric path through the common filled ground pour; this is not an exclusive dedicated mounting via",
+        "centerline_sampling_mm": 0.025
+      },
+      "surface_path_sum_mm": 5.103664469544558,
+      "mounting_via_separation_mm": 3.2984845004941272
+    }
+  ],
+  "minimum_nominal_mask_pair": {
+    "pad": "C101.1",
+    "pad_uuid": "80983435-f0de-403e-a0a8-28566458b45b",
+    "pad_net": "VCCAUX_1V8",
+    "via_net": "VCCAUX_1V8",
+    "pad_xy": [
+      24.3,
+      4.78
+    ],
+    "via_xy": [
+      24.1,
+      5.28
+    ],
+    "via_uuid": "2446f4cf-b900-45cb-bfcc-b9a83a44129d",
+    "layer": "B.Cu",
+    "via_copper_to_pad_copper_mm": 0.021247994899749753,
+    "drill_edge_to_pad_copper_mm": 0.12124799489974977,
+    "native_mask_expansion_mm": 0.0,
+    "drill_edge_to_nominal_pad_mask_opening_mm": 0.12124799489974977
+  },
+  "plane_change_screening": [
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 11.3,
+      "change_mm": -0.725
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 11.35,
+      "change_mm": -0.675
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 8.8,
+      "new_occupied_sample_width_mm": 9.675,
+      "change_mm": 0.875
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 5.95,
+      "new_occupied_sample_width_mm": 5.95,
+      "change_mm": 0.0
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 8.125,
+      "new_occupied_sample_width_mm": 8.85,
+      "change_mm": 0.725
+    },
+    {
+      "role": "front_ground_reference",
+      "net": "GND",
+      "old_layer": "In1.Cu",
+      "new_layer": "In1.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 11.55,
+      "new_occupied_sample_width_mm": 10.825,
+      "change_mm": -0.725
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 11.35,
+      "change_mm": -0.675
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 7.525,
+      "new_occupied_sample_width_mm": 8.45,
+      "change_mm": 0.925
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 5.225,
+      "new_occupied_sample_width_mm": 5.225,
+      "change_mm": 0.0
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 7.2,
+      "new_occupied_sample_width_mm": 7.925,
+      "change_mm": 0.725
+    },
+    {
+      "role": "core_power",
+      "net": "VCCINT_1V0",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "input_power",
+      "net": "LINK_12V",
+      "old_layer": "In3.Cu",
+      "new_layer": "In5.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 9.85,
+      "new_occupied_sample_width_mm": 9.125,
+      "change_mm": -0.725
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 9.925,
+      "new_occupied_sample_width_mm": 9.25,
+      "change_mm": -0.675
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 7.875,
+      "new_occupied_sample_width_mm": 8.8,
+      "change_mm": 0.925
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 5.95,
+      "new_occupied_sample_width_mm": 5.95,
+      "change_mm": 0.0
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 0.925,
+      "new_occupied_sample_width_mm": 0.925,
+      "change_mm": 0.0
+    },
+    {
+      "role": "ASIC_bank_power",
+      "net": "VCC_ASIC_1V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 1.75,
+      "new_occupied_sample_width_mm": 1.75,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 5.275,
+      "new_occupied_sample_width_mm": 6.0,
+      "change_mm": 0.725
+    },
+    {
+      "role": "auxiliary_power",
+      "net": "VCCAUX_1V8",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 10.1,
+      "new_occupied_sample_width_mm": 10.1,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 1.55,
+      "new_occupied_sample_width_mm": 1.55,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 0.4,
+      "new_occupied_sample_width_mm": 0.4,
+      "change_mm": 0.0
+    },
+    {
+      "role": "link_bank_power",
+      "net": "VCC_LINK_2V5",
+      "old_layer": "In4.Cu",
+      "new_layer": "In6.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 0.0,
+      "new_occupied_sample_width_mm": 0.0,
+      "change_mm": 0.0
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 8.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 11.3,
+      "change_mm": -0.725
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 10.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 11.35,
+      "change_mm": -0.675
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 12.0,
+      "old_occupied_sample_width_mm": 8.8,
+      "new_occupied_sample_width_mm": 9.675,
+      "change_mm": 0.875
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 14.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 16.0,
+      "old_occupied_sample_width_mm": 5.95,
+      "new_occupied_sample_width_mm": 5.95,
+      "change_mm": 0.0
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 18.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 20.0,
+      "old_occupied_sample_width_mm": 8.125,
+      "new_occupied_sample_width_mm": 8.85,
+      "change_mm": 0.725
+    },
+    {
+      "role": "rear_ground_reference",
+      "net": "GND",
+      "old_layer": "In6.Cu",
+      "new_layer": "In10.Cu",
+      "x_mm": 22.0,
+      "old_occupied_sample_width_mm": 12.025,
+      "new_occupied_sample_width_mm": 12.025,
+      "change_mm": 0.0
+    }
+  ],
+  "native_stackup_copper_um": {
+    "F.Cu": 35.0,
+    "In1.Cu": 15.2,
+    "In2.Cu": 15.2,
+    "In3.Cu": 15.2,
+    "In4.Cu": 15.2,
+    "In5.Cu": 30.0,
+    "In6.Cu": 30.0,
+    "In7.Cu": 15.2,
+    "In8.Cu": 15.2,
+    "In9.Cu": 15.2,
+    "In10.Cu": 15.2,
+    "B.Cu": 35.0
+  },
+  "nominal_fixed_feeder_screening": [
+    {
+      "assumed_barrel_plating_um": 20,
+      "back_to_core_plane_center_mm": 0.8439000000000009,
+      "single_barrel_milliohm": 1.1577595828166605,
+      "two_branch_equivalent_milliohm": 0.7303980615355421,
+      "fixed_feeder_milliohm_excluding_R9_plane_ball_return": 2.894018061535543
+    },
+    {
+      "assumed_barrel_plating_um": 25,
+      "back_to_core_plane_center_mm": 0.8439000000000009,
+      "single_barrel_milliohm": 0.9262076662533283,
+      "two_branch_equivalent_milliohm": 0.6053162914126927,
+      "fixed_feeder_milliohm_excluding_R9_plane_ball_return": 2.7689362914126936
+    }
+  ],
+  "nominal_feeder_limits": "Existing 3.594 mm/1.20 mm outer path, 1.118 mm/0.80 mm outer feed, 0.50 mm/0.30 mm spur and two 0.40/0.20 mm vias. 35 um outer copper and 20\u201325 um barrel plating are nominal assumptions; excludes R9, plane, FPGA escape, package, ground return, temperature and process tolerance. New plane depth uses observed twelve-layer stackup and is not independent vendor qualification.",
+  "release_limitations": [
+    "Native continuity and rules do not qualify FPGA power-up, transient rail limits, timing, firmware, thermal behavior or manufacturing yield.",
+    "Mounted bypass network has multiple capacitor lands sharing a single mounting via, contrary to the preferred one-to-one mounting guidance; acceptability needs layout improvement or integrated PDN evidence.",
+    "No measured operating core-current limit is established. TPS62135 is a 4 A-rated IC; 3 A board load remains unqualified.",
+    "30 um power-plane copper has lower nominal sheet resistance, but dense via antipads change spreading paths. Aggregate sampled copper widths are not connected bottleneck widths or extracted resistance bounds.",
+    "Controlled-rise, current-limited custom 12 V adapter and qualified custom cable required; ordinary HDMI is invalid. No onboard source eFuse/damping is asserted.",
+    "Nominal mask margins exclude fabrication registration and tenting tolerances; assembly/fabricator approval remains required."
+  ],
+  "evidence": {
+    "Physical_Pad_Readback.json": {
+      "path": "Physical_Pad_Readback.json",
+      "sha256": "49e273c17e7c6eb8cbdb20b5c550dce4369ff3ce909d082081d081a4bd66e12f",
+      "raw_source_evidence_sha256": "4220c8d7c7a866bc68c8c4bc3e274187b69e6d6848bc52686b61fa06cbbf635f"
+    },
+    "Plane_Role_Comparison.json": {
+      "path": "Plane_Role_Comparison.json",
+      "sha256": "e72ea853a816e5a8ed2228b45465d581d83538a62091b2ba8245eea5d4001f90",
+      "raw_source_evidence_sha256": "97f815a35a300106aa8858681259579ff8f1adc250089ad876e4383a024a5724"
+    },
+    "Mounting_Via_Groups.json": {
+      "path": "Mounting_Via_Groups.json",
+      "sha256": "25d5d38b53a5aee16768c7c548fe994e8f20120688edc76629607b9d9e0d50ce",
+      "raw_source_evidence_sha256": "5916fb4a446317c102b42a84ca9e28b74990b4bf0c97f0f4098e4faff9e560e3"
+    },
+    "Capacitor_Mounting_Paths.json": {
+      "path": "Capacitor_Mounting_Paths.json",
+      "sha256": "7062c7634a91ec02c26b030286bf3da5c33c45e07b1d7225b52a3400d6efc2cc",
+      "raw_source_evidence_sha256": "602eb91dbadd75b1b11d3a234fcf818ac4b56f7ddae4d8863f0baa18cdb34e77"
+    },
+    "Via_Mask_Margins.json": {
+      "path": "Via_Mask_Margins.json",
+      "sha256": "e71ce5ce58528b59c2244d5ab7640aeca33877ed622a4394d5cce6434d90a7b4",
+      "raw_source_evidence_sha256": "d7eb43a478831702518593902c93d57b731a93a8aee5cc264e9d41de8b6cbe6d"
+    },
+    "Native_DRC.json": {
+      "path": "Native_DRC.json",
+      "sha256": "d98b7dfefb18f712cb315fd6bc56c6a65cc9b1ef409d2c7668642dc72ade5b6c",
+      "raw_source_evidence_sha256": "155e08897cb82de10cd7ac989a1160d3dfeff161678e498304b1862d9776063b"
+    },
+    "Native_Stackup_Readback.json": {
+      "path": "Native_Stackup_Readback.json",
+      "sha256": "fc75d5566c2c95400d442a7d2ceb4acb47e5b1f206ab37c58365fe2241c329f6",
+      "raw_source_evidence_sha256": "035f2539f72f35404be733d4a7f21523abbc2aa0759a54397ff3f12454de2bc6"
+    },
+    "Native_DRC_Binding.json": {
+      "path": "Native_DRC_Binding.json",
+      "sha256": "20b25b280882c34b3851a1873e01fa28645b67248d47629683398e018810915b",
+      "raw_source_evidence_sha256": "12de736b32e9b6b78501746fa16178131eb73eb720838c3b6117182da1415b25"
+    },
+    "Retained_Capacitor_Necks.json": {
+      "path": "Retained_Capacitor_Necks.json",
+      "sha256": "38ae8e4c0121a064aa403cd802b2d342a819ee6f18caf93420e56b262b475ec1",
+      "raw_source_evidence_sha256": "2a41ed3ec6071432a39e606bd4fab25f8608189a8476a2cdb2f4f58cb2a29bd5"
+    }
+  },
+  "portable_curation": "Only file-location strings were reduced to source basenames; measured values, board hash and UUIDs were preserved. Evidence hashes above bind the portable JSON; raw_source_evidence_sha256 retains the original local evidence identity. CAD is supplied separately in the complete project."
+}

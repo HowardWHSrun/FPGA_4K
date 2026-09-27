@@ -13,6 +13,7 @@ The project files are stored in this repository. Attribution and copy details ar
 | September 17 DOCX/PDF notes | Summary prepared from the recorded team meeting; not a verbatim transcript |
 | September 18 follow-up | Technical summary of team messages; received date is known, individual message dates were not provided |
 | FPGA_512 code | Snapshot of [gt-ic/FPGA_512](https://github.com/gt-ic/FPGA_512/tree/767e82528780005cbcb37b3e926197755bac622e), shared as the prior acquisition reference; [included files and packaging details](../firmware/README.md) |
+| Artix-7 raw-capture engine and clock proof | New isolated development, 26 September 2026; [scope and measured tests](../firmware/artix7/2026-09-26/raw_capture/README.md). No upstream files modified; synthetic-data simulation is distinct from ASIC operation. Tool caches, compiled images and workstation paths are omitted. |
 
 [manifest.json](manifest.json) records each imported file's origin, size and SHA-256. Origins identify source revisions or archive labels; they are not paths required on a collaborator's computer.
 

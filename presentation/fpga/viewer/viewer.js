@@ -147,6 +147,9 @@ try {
   const response = await fetch('./boards.json');
   if (!response.ok) throw new Error('Board index unavailable.');
   const {boards} = await response.json();
+  const current = boards.find(item => item.id === 'compact-routed');
+  const currentOption = $('#board-choice option[value="compact-routed"]');
+  if (current && currentOption) currentOption.textContent = current.title;
   const selected = boards.find(item => item.id === params.get('board')) || boards.find(item => item.id === 'compact-routed');
   if (!selected) throw new Error('The current smallest-board index is unavailable.');
   $('#board-choice').addEventListener('change', () => {

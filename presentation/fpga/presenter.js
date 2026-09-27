@@ -17,6 +17,10 @@
     if(data.boardSha256!==board.boardSha256||data.components.length!==board.components||data.components.reduce((n,c)=>n+c.pins.length,0)!==board.canonicalPins||data.fabricationReady||data.cadModified)throw Error('Audit does not match the saved board');
     const refs=new Set(data.components.map(c=>c.reference));
     if(refs.size!==data.components.length)throw Error('Duplicate component references');
+    const removed=['R12','R106','R107','R113'].filter(ref=>!refs.has(ref));
+    const removalSummary=removed.length?`${removed.join(', ')} already removed. `:'';
+    const remainingSimplification='Further reductions require preserving each circuit function; capacitor removal needs power-integrity evidence.';
+    $('#simplification-summary').innerHTML=`${removalSummary?`<strong>${esc(removalSummary)}</strong>`:''}${esc(remainingSimplification)}`;
     let group='fpga',page=0,selected='U1';const pageSize=10;
     const sourceById=Object.fromEntries(data.sources.map(s=>[s.id,s]));
     function renderGroups(){
@@ -43,7 +47,7 @@
     $('#component-search').oninput=()=>{group='all';page=0;render();};
     $('#component-necessity').onchange=()=>{group='all';page=0;render();};
     $('#parts-prev').onclick=()=>{page--;render();};$('#parts-next').onclick=()=>{page++;render();};
-    $('#speaking-notes').innerHTML=data.groups.map(g=>`<h3>${esc(g.title)} · ${g.count} ${g.count===1?'part':'parts'}</h3><p>${esc(say[g.id])}</p>`).join('')+'<p><strong>When asked whether every part is necessary:</strong> R12 has no current consumer. Some straps and links can be redesigned, and capacitor quantities need qualification. We have documented the function of every part; we have not demonstrated the smallest working implementation.</p>';
+    $('#speaking-notes').innerHTML=data.groups.map(g=>`<h3>${esc(g.title)} · ${g.count} ${g.count===1?'part':'parts'}</h3><p>${esc(say[g.id])}</p>`).join('')+`<p><strong>When asked whether every part is necessary:</strong> ${esc(removalSummary+remainingSimplification)} We have documented the function of every part; we have not demonstrated the smallest working implementation.</p>`;
     render();document.documentElement.dataset.teachingReady='true';
     window.FPGA_TEACHING=Object.freeze({data,getState:()=>({boardSha256:data.boardSha256,components:data.components.length,pins:data.counts.pins,group,selected})});
   }catch(error){$('#component-error').hidden=false;console.error(error);}

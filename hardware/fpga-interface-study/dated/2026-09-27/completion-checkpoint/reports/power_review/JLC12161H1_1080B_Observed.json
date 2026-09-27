@@ -1,0 +1,196 @@
+{
+  "date": "2026-09-27",
+  "status": "Isolated routing/stackup study; not adopted into active8layerproject; no order",
+  "source": "https://jlcpcb.com/pcb-impedance-calculator",
+  "read_method": "Visible selected manufacturer calculator tab, Rigid/12layers/1.6mm/inner0.5oz/outer1oz",
+  "source_tab": "JLC12161H1-1080B(\u5185\u5c42\u94dc\u539a\u4e0d\u4e00\u81f4/\u6210\u54c1\u677f\u539a1.59mm\u00b110%)",
+  "listed_finished_thickness_mm": 1.59,
+  "listed_finished_tolerance_percent": 10,
+  "planned_ordering_thickness_mm": 1.6,
+  "copper_mm": [
+    0.035,
+    0.0152,
+    0.0152,
+    0.0152,
+    0.0152,
+    0.03,
+    0.03,
+    0.0152,
+    0.0152,
+    0.0152,
+    0.0152,
+    0.035
+  ],
+  "dielectric_totals_mm": [
+    0.0784,
+    0.1,
+    0.1748,
+    0.1,
+    0.1674,
+    0.1,
+    0.1674,
+    0.1,
+    0.1748,
+    0.1,
+    0.0784
+  ],
+  "summed_nominal_thickness_mm": 1.5928,
+  "proposed_roles": [
+    "signal",
+    "ground",
+    "signal",
+    "signal",
+    "ground",
+    "power",
+    "power",
+    "ground",
+    "signal",
+    "signal",
+    "ground",
+    "signal"
+  ],
+  "dielectric_details": [
+    {
+      "between": "L1/L2",
+      "materials": [
+        {
+          "name": "1080 RC69%",
+          "mm": 0.0784
+        }
+      ]
+    },
+    {
+      "between": "L2/L3",
+      "materials": [
+        {
+          "name": "Core H/HOZ without copper",
+          "mm": 0.1
+        }
+      ]
+    },
+    {
+      "between": "L3/L4",
+      "materials": [
+        {
+          "name": "1080 RC69%",
+          "mm": 0.0784
+        },
+        {
+          "name": "2313 RC58%",
+          "mm": 0.0964
+        }
+      ]
+    },
+    {
+      "between": "L4/L5",
+      "materials": [
+        {
+          "name": "Core H/HOZ without copper",
+          "mm": 0.1
+        }
+      ]
+    },
+    {
+      "between": "L5/L6",
+      "materials": [
+        {
+          "name": "2313 RC58%",
+          "mm": 0.0964
+        },
+        {
+          "name": "1080 RC69%",
+          "mm": 0.071
+        }
+      ]
+    },
+    {
+      "between": "L6/L7",
+      "materials": [
+        {
+          "name": "Core 1/1OZ without copper",
+          "mm": 0.1
+        }
+      ]
+    },
+    {
+      "between": "L7/L8",
+      "materials": [
+        {
+          "name": "1080 RC69%",
+          "mm": 0.071
+        },
+        {
+          "name": "2313 RC58%",
+          "mm": 0.0964
+        }
+      ]
+    },
+    {
+      "between": "L8/L9",
+      "materials": [
+        {
+          "name": "Core H/HOZ without copper",
+          "mm": 0.1
+        }
+      ]
+    },
+    {
+      "between": "L9/L10",
+      "materials": [
+        {
+          "name": "2313 RC58%",
+          "mm": 0.0964
+        },
+        {
+          "name": "1080 RC69%",
+          "mm": 0.0784
+        }
+      ]
+    },
+    {
+      "between": "L10/L11",
+      "materials": [
+        {
+          "name": "Core H/HOZ without copper",
+          "mm": 0.1
+        }
+      ]
+    },
+    {
+      "between": "L11/L12",
+      "materials": [
+        {
+          "name": "1080 RC69%",
+          "mm": 0.0784
+        }
+      ]
+    }
+  ],
+  "old8_to_new12_copper_layer_mapping": {
+    "F.Cu": "F.Cu",
+    "In1.Cu": "In1.Cu",
+    "In2.Cu": "In2.Cu",
+    "In3.Cu": "In5.Cu",
+    "In4.Cu": "In6.Cu",
+    "In5.Cu": "In9.Cu",
+    "In6.Cu": "In10.Cu",
+    "B.Cu": "B.Cu"
+  },
+  "additional_signal_layers": [
+    "In3.Cu",
+    "In8.Cu"
+  ],
+  "additional_ground_layers": [
+    "In4.Cu",
+    "In7.Cu"
+  ],
+  "fabrication_ready": false,
+  "routing_feasibility_test_pending": true,
+  "limitations": [
+    "This is a proposed6signal/4ground/2power layer allocation, not manufacturer endorsement of this design.",
+    "Higherlayercountmustbejustifiedbyactualrouting; prior8layerroutingfailuredoesnotprove8layersimpossible.",
+    "Exactassembly,slot,tenting,impedance,PDN,currentandthermalqualificationremainopen.",
+    "Calculatorsearchtolerance0.5%isnotaproductionguarantee.",
+    "No board files or personal information uploaded, no supplier contact, order or payment."
+  ]
+}

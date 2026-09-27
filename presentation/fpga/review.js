@@ -29,6 +29,7 @@
     document.querySelector('#routed-signals').textContent = data.routedSignals.join(', ');
     document.querySelector('#remaining-nets').textContent = Object.entries(data.remainingByNet).map(([name, count]) => `${name}: ${count}`).join(' · ') || 'None on assigned nets. Unassigned application contacts are excluded.';
     window.FPGA_REVIEW = Object.freeze({data, getState: () => ({loaded: true, boardSha256: data.boardSha256, fabricationReady: false})});
+    window.dispatchEvent(new CustomEvent('fpga-review-ready', {detail: data}));
     document.documentElement.dataset.reviewReady = 'true';
   } catch (error) {
     document.querySelector('#load-error').hidden = false;

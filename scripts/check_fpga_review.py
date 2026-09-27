@@ -3,6 +3,7 @@
 import hashlib
 import csv
 import json
+from collections import Counter
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -13,6 +14,20 @@ PACKAGE = ROOT / 'hardware/fpga-100t-review'
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def check_report_input_binding(coverage, data):
+    package = (ROOT / 'presentation/fpga' / data['artifactRoot']).resolve()
+    assert package.is_relative_to(ROOT)
+    expected = {(package / 'reports/Routing_Snapshot.json').relative_to(ROOT).as_posix(),
+                (package / 'reports/Physical_Stackup_Application.json').relative_to(ROOT).as_posix(),
+                'presentation/fpga/pins/pin_status.json',
+                'presentation/fpga/data/Component_Necessity.json',
+                'firmware/artix7/2026-09-26/raw_capture/Verification.json'}
+    assert coverage['inputHashPaths'] == 'repository-relative public files'
+    assert set(coverage['inputSha256']) == expected, 'Report has missing or unexpected public input bindings'
+    for relative, digest in coverage['inputSha256'].items():
+        path = (ROOT / relative).resolve()
+        assert path.is_relative_to(ROOT) and sha(path) == digest, 'Report input changed: ' + relative
 
 def native_tree(text):
     stack=[]; root=None
@@ -35,9 +50,53 @@ def check_current(data):
     name='FPGA100T_33x36_Routing'; board=package/'hardware'/(name+'.kicad_pcb')
     meta=json.loads((package/'manifest.json').read_text());snapshot=json.loads((package/'reports/Routing_Snapshot.json').read_text())
     assert sha(board)==data['boardSha256']==snapshot['boardSha256']==meta['board_sha256']
+    if 'completion-checkpoint' in data['artifactRoot']:
+        presentation=json.loads((ROOT/'presentation/fpga/manifest.json').read_text())
+        learning=presentation['learning_report']; report_folder=ROOT/learning['path']
+        assert learning['board_sha256']==data['boardSha256'], 'Current learning report belongs to a different PCB'
+        assert sha(report_folder/learning['pdf'])==learning['pdf_sha256']
+        assert sha(report_folder/learning['source'])==learning['source_sha256']
+        coverage=json.loads((report_folder/'Report_Coverage.json').read_text())
+        reviewed=json.loads((report_folder/'Report_Verification.json').read_text())
+        assert coverage['boardSha256']==reviewed['boardSha256']==data['boardSha256']
+        assert coverage['sourceSha256']==reviewed['sourceSha256']==learning['source_sha256']
+        assert reviewed['pdfSha256']==learning['pdf_sha256']
+        assert coverage['components']==learning['components']==data['components']
+        assert coverage['canonicalPins']==learning['canonical_pins']==data['canonicalPins']
+        assert reviewed['nativeLatexCompilationPassed'] and reviewed['visualInspectionPassed']
+        assert reviewed['pageCount']==learning['pages']>0
+        check_report_input_binding(coverage, data)
+        assert coverage['components'] == 125 and coverage['canonicalPins'] == 752
+        assert not coverage['fabricationReady']
     assert not meta['fabrication_ready'] and not meta['native_CAD_changed_during_packaging']
     for record in meta['files']:
         p=package/record['path'];assert p.is_file() and sha(p)==record['sha256'] and p.stat().st_size==record['bytes'],record['path']
+    provenance=json.loads((package/'reports/Native_Run_Provenance.json').read_text())
+    packaged={item['path']:item for item in meta['files']}
+    if 'completion-checkpoint' in data['artifactRoot']:
+        applied_stackup = json.loads((package / 'reports/Physical_Stackup_Application.json').read_text())
+        assert packaged['reports/Physical_Stackup_Application.json']['source_sha256'] == data['physicalStackupApplicationSha256']
+        assert applied_stackup['selection'] == data['physicalStackupSelection']
+        if data['copperLayers'] == 12:
+            assert applied_stackup['applied'] and applied_stackup['after_sha256'] == data['boardSha256']
+    assert provenance['board_sha256']==sha(board) and provenance['all_checks_from_saved_native_files']
+    assert provenance['manifest_sha256']==packaged['reports/component_manifest_resolved.json']['source_sha256']
+    for relative_path,digest in provenance['native_report_sha256'].items():
+        assert packaged['reports/'+relative_path]['source_sha256']==digest,relative_path
+    for relative_path,digest in provenance['schematic_sha256'].items():
+        assert packaged['hardware/'+relative_path]['sha256']==digest,relative_path
+    for relative_path,digest in provenance['project_and_library_sha256'].items():
+        assert packaged[relative_path]['source_sha256']==digest,relative_path
+    firmware=ROOT/'firmware/artix7/2026-09-26/raw_capture'
+    capture=json.loads((firmware/'Verification.json').read_text())
+    assert capture['passed'] and len(capture['sourceSha256'])==3
+    for relative_path,digest in capture['sourceSha256'].items():
+        assert sha(firmware/relative_path)==digest,relative_path
+    full_depth=next(check for check in capture['checks'] if check.get('depthPerChip')==4096)
+    assert full_depth['passed'] and full_depth['captures']==4 and full_depth['checkedWords']==131072
+    synthesis=next(check for check in capture['checks'] if check['name']=='xc7_technology_synthesis')
+    assert synthesis['passed'] and synthesis['physicalImplementation'] is False
+    assert synthesis['resources']=={'BUFG':9,'RAMB18E1':24}
     for key,value in snapshot.items():
         if key!='artifactRoot':assert data[key]==value,key
     tree=native_tree(board.read_text());fps=nodes(tree,'footprint')
@@ -56,12 +115,49 @@ def check_current(data):
                 assert actual==target==xmlnets[ref,pin],(ref,pin,actual,target);assigned+=1
             else:assert not actual or actual.startswith('unconnected-'),(ref,pin,actual)
     assert refs=={r for r in expected if not r.startswith('#')} and assigned==data['endpointsVerified']
+    if 'completion-checkpoint' in data['artifactRoot']:
+        assert len(refs) == 125 and len(pinmap) == 752
+        assert not {'R12', 'R106', 'R107', 'R112', 'R113'} & refs
+        assert pinmap['U1', 'L14'] == pinmap['U1', 'M14'] == ''
+        assert {'L14', 'M14'} <= set(expected['U1']['no_connect'])
+        assert pinmap['U6', '3'] == pinmap['R101', '2'] == 'FLASH_DQ2'
+        assert pinmap['U6', '7'] == pinmap['R102', '2'] == 'FLASH_DQ3'
+        assert pinmap['U1', 'P11'] == pinmap['U1', 'P13'] == 'GND'
+        assert pinmap['U1', 'P12'] == pinmap['R111', '2'] == 'CFG_M0'
+        assert pinmap['R111', '1'] == 'VCCAUX_1V8' and expected['R111']['value'] == '1k'
+        assert pinmap['J6', '60'] == pinmap['U1', 'C5'] == 'ASIC4_DATA1'
+        assert pinmap['J6', '58'] == pinmap['U1', 'L4'] == 'ASIC8_DATA4'
+        assert {(ref, pin) for (ref, pin), net in pinmap.items() if ref in ('J5', 'J6') and not net} == {('J5', '34'), ('J6', '37'), ('J6', '59')}
+        assert expected['J5']['no_connect'] == expected['J6']['no_connect'] == []
     drc=json.loads((package/'reports/Native_DRC.json').read_text());assert len(drc['violations'])==data['drcViolations']==0 and len(drc['schematic_parity'])==data['parityIssues']==0 and len(drc['unconnected_items'])==data['unconnectedItems']
     assert drc['ignored_checks']==data['ignoredChecks']
     assert sha(package/'reports/Native_DRC.json')==data['snapshotSha256']
     erc=json.loads((package/'reports/Native_ERC.json').read_text());issues=[v for sheet in erc['sheets'] for v in sheet['violations']]
     assert sum(v['type']=='pin_not_connected' for v in issues)==data['ercOpenPins']
     assert sum(v['severity']=='warning' for v in issues)==data['ercWarnings']
+    if 'completion-checkpoint' in data['artifactRoot']:
+        assert Counter((v['type'], v['severity']) for v in issues) == {('pin_not_connected', 'error'): 19, ('pin_to_pin', 'error'): 4, ('isolated_pin_label', 'warning'): 1}
+        assert (data['ercOpenPins'], data['ercOtherErrors'], data['ercWarnings']) == (19, 4, 1)
+        fb2 = []
+        opens = []
+        for issue in issues:
+            descriptions = [item['description'] for item in issue['items']]
+            if issue['type'] == 'pin_to_pin':
+                matches = [re.match(r'Symbol (U[2-5]) Pin 4 \[FB2,', text) for text in descriptions]
+                found = [match[1] for match in matches if match]
+                assert len(found) == 1 and any('Power output' in text for text in descriptions)
+                assert pinmap[found[0], '4'] == 'GND'
+                fb2 += found
+            elif issue['type'] == 'pin_not_connected':
+                assert len(descriptions) == 1
+                match = re.match(r'Symbol (\S+) Pin (\S+) \[', descriptions[0])
+                assert match
+                opens.append(match[1] + '.' + match[2])
+            else:
+                assert descriptions == ["Global Label 'AC_IN_ANALOG_RESERVED'"]
+        labels = json.loads((ROOT / 'presentation/fpga/pins/pin_status.json').read_text())
+        assert set(opens) == {pin['id'] for pin in labels['pins'] if pin['statusCode'] == 'unassigned'}
+        assert len(opens) == 19 and sorted(fb2) == ['U2', 'U3', 'U4', 'U5']
     with (package/'reports/All_Pin_Connections.csv').open() as f:pinrows=list(csv.DictReader(f))
     assert len(pinrows)==data['canonicalPins'] and {(r['reference'],r['pin']):r['net'] for r in pinrows}==pinmap
     with (package/'reports/Component_List.csv').open() as f:components=list(csv.DictReader(f))
@@ -125,7 +221,7 @@ def check_current(data):
             ref,pin=row[key].split('.',1);assert pinmap[ref,pin]==row['signal']
     done={r['signal'] for r in assignments if r['interface_kind']=='fpga_candidate' and r['signal'] not in data['remainingByNet']}
     assert len(done)==data['asicNetsRouted'] and done==set(data['asicRoutedSignals'])
-    assert data['asicNetsAssigned']==116 and data['asicAnalogReservedContacts']==1 and data['unassignedEndpoints']==98
+    assert data['asicNetsAssigned']==116 and data['asicAnalogReservedContacts']==1 and data['unassignedEndpoints']==102 and data['intentionalNoConnectEndpoints']==83
     assert sum(v['severity']=='error' and v['type']!='pin_not_connected' for v in issues)==data['ercOtherErrors']
     assert erc['ignored_checks']==data['ercIgnoredChecks']
     print(f"PASS: current {data['components']}-part snapshot, {data['canonicalPins']} native endpoints, 116 candidate FPGA assignments + one analog reservation / {data['asicNetsRouted']} copper-connected nets, 21-sheet PDF, portable ZIP and matched viewer/SVG hashes.")

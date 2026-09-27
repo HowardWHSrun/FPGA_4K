@@ -1,0 +1,122 @@
+{
+  "reference": "C20",
+  "decision": "Candidate qualification supports integration; not applied by this subtask",
+  "rejected_first_suggestion": "ETLE330MCGB: official EOL April2024; replacement ETPE330M9GB",
+  "schematic_file": "hardware/core_06_01.kicad_sch",
+  "before": {
+    "lib_id": "CoreSupport:Device__C_Polarized",
+    "value": "330u 2.5V polymer ESR25m",
+    "mpn": "T520V337M2R5ATE025",
+    "footprint": "CoreSupport:Capacitor_Tantalum_SMD__CP_EIA-7343-20_Kemet-V",
+    "datasheet": "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content",
+    "group": "decoupling_core",
+    "status": "Engineering draft; verify ordered part and layout before fabrication",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "C20",
+    "source_lib_id": "Device:C_Polarized",
+    "source_footprint": "Capacitor_Tantalum_SMD:CP_EIA-7343-20_Kemet-V"
+  },
+  "after": {
+    "lib_id": "CoreSupport:Device__C_Polarized",
+    "value": "330u 2.5V POSCAP ESR9m@300kHz",
+    "mpn": "ETPE330M9GB",
+    "footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended",
+    "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/AAA8000/AAA8000C36.pdf",
+    "group": "decoupling_core",
+    "status": "Compact bulk candidate;105C category max;ESR9m@300kHz20C;AMD ESL/PDN equivalence and load-step/ripple/thermal validation pending",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "no_connect": [],
+    "dnp": false,
+    "ref": "C20",
+    "source_lib_id": "Device:C_Polarized",
+    "source_footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended"
+  },
+  "preserve": {
+    "symbol": "CoreSupport:Device__C_Polarized",
+    "pins": {
+      "1": "VCCINT_1V0",
+      "2": "GND"
+    },
+    "R9": "WSLP1206R0120FEA 12mOhm",
+    "local_converter_C5_and_VOS_FB": "unchanged upstream of R9"
+  },
+  "footprint_candidate": "candidates/CoreSupport.pretty/Panasonic_POSCAP_B2_Recommended.kicad_mod",
+  "footprint": {
+    "body_nominal_mm": [
+      3.5,
+      2.8,
+      1.9
+    ],
+    "body_maximum_mm": [
+      3.7,
+      3.0,
+      2.0
+    ],
+    "pad_size_mm": [
+      1.6,
+      2.7
+    ],
+    "pad1_positive_center_mm": [
+      -1.5,
+      0
+    ],
+    "pad2_negative_center_mm": [
+      1.5,
+      0
+    ],
+    "pad_gap_mm": 1.4,
+    "courtyard_engineering_mm": [
+      5.1,
+      3.5
+    ],
+    "courtyard_basis": "Maximum body and copper land extents +0.25mm each edge; not manufacturer-recommended component spacing"
+  },
+  "electrical_guarantees": {
+    "capacitance_uF": 330,
+    "tolerance_percent": 20,
+    "voltage_rating_V_at105C": 2.5,
+    "temperature_range_C": [
+      -55,
+      105
+    ],
+    "ESR_max_mOhm": 9,
+    "ESR_test_frequency_kHz": 300,
+    "ESR_test_temperature_C": 20,
+    "ripple_rating_A_rms": 3.2,
+    "ripple_test_frequency_kHz": 100,
+    "ripple_test_temperature_C": 45,
+    "endurance_hours": 1000,
+    "endurance_temperature_C": 105,
+    "leakage_max_uA_after5min": 165
+  },
+  "not_guaranteed": [
+    "100kHz ESR maximum",
+    "45C ripple current at all ambient temperatures",
+    "cold ESR bound",
+    "integrated regulator/PDN transient stability",
+    "system105C ambient operating rating",
+    "UG483330uF-class1nH ESL maximum; model includes~1.2nH region"
+  ],
+  "sources": {
+    "Panasonic_TPE_AAA8000C36.pdf": {
+      "sha256": "1511fbc08146cc852fa6a9b1158340d4e48a895b12fed57c19bb58fc87cd7173"
+    },
+    "Panasonic_POSCAP_Mounting_2026.pdf": {
+      "sha256": "9e702f03e833f50ca84d672af655f115ddbdf9b6f19716980069ff35a7a72789"
+    },
+    "Panasonic_ETPE330M9GB_Model.zip": {
+      "sha256": "cbff78c4ab8c7b0d4cf2ade8dde661636d1d09e8b5ebd2bf05a1543b6aa5f32d"
+    },
+    "Panasonic_ETPE330M9GB_Characteristic.html": {
+      "sha256": "2a03227fc0000656c483b04009734d666d3e6542e64c863db86df8dba0fa2575"
+    }
+  }
+}

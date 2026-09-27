@@ -1,0 +1,6807 @@
+{
+  "scope": "Independent pin/geometry screen; not electrical, timing, assembly or fabrication certification",
+  "mode": "final-review",
+  "board_sha256": "2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc",
+  "reference_board_sha256": "7db8944f46e592aa31432101cd6ac02b91897155b3c7962f09dbd57118a8dba7",
+  "source_sha256": {
+    "board": "2975050c28c89fc96bf781cf082bffffc84189e6720ce05c4200d8552ac298fc",
+    "reference_board": "7db8944f46e592aa31432101cd6ac02b91897155b3c7962f09dbd57118a8dba7",
+    "manifest": "84237b8f733e4693a08fabdf9331d943fef8eb4f3df8e51fec8f5f7b654a96d4",
+    "assignment": "51e1685a9cdd65170d6ce7682f20ffad2e5640abc78cf1ea1fc6b26a3cb2a521",
+    "package_pins": "7256165af18dcb6007321309f5a1d08dfce32c33a802207f5f1f051520c0e702",
+    "accepted_routing_delta": "a28cfdd433883c4c7927b117a2b2cbc949f3d1daa61eeb5046766558fb3c678e"
+  },
+  "source_paths": {
+    "board": "hardware/FPGA100T_33x36_Routing.kicad_pcb",
+    "reference_board": "integration/reference_before_final_routes/FPGA100T_33x36_Routing.kicad_pcb",
+    "manifest": "reports/component_manifest_resolved.json",
+    "assignment": "assignment/ASIC_Interface_Assignment.csv",
+    "package_pins": "FPGA_100T_CSG324/sources/xc7a100tcsg324pkg.csv",
+    "accepted_routing_delta": "2026-09-27_FPGA_Work/qualification/Final_Routing_Delta_Acceptance.json"
+  },
+  "script_sha256": "bb1d70a12e7d68b7330ef941fac3e40bcc554b86647806861fa62494d19f23ec",
+  "kicad_version": "10.0.6",
+  "numbered_endpoints": 752,
+  "endpoint_changes": {
+    "J5.34": {
+      "before": "ASIC4_DATA1",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "J6.37": {
+      "before": "ASIC8_DATA4",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "J6.58": {
+      "before": null,
+      "after": "ASIC8_DATA4",
+      "present_before": true,
+      "present_after": true
+    },
+    "J6.60": {
+      "before": null,
+      "after": "ASIC4_DATA1",
+      "present_before": true,
+      "present_after": true
+    },
+    "R106.1": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R106.2": {
+      "before": "FLASH_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.1": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R107.2": {
+      "before": "FLASH_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R113.1": {
+      "before": "CFG_M2",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "R113.2": {
+      "before": "GND",
+      "after": null,
+      "present_before": true,
+      "present_after": false
+    },
+    "U1.L14": {
+      "before": "FPGA_CFG_DQ2",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "U1.M14": {
+      "before": "FPGA_CFG_DQ3",
+      "after": null,
+      "present_before": true,
+      "present_after": true
+    },
+    "U1.P11": {
+      "before": "CFG_M2",
+      "after": "GND",
+      "present_before": true,
+      "present_after": true
+    }
+  },
+  "endpoint_changes_accepted": true,
+  "accepted_connector_map": null,
+  "connector_intent_review": null,
+  "mezzanine_reserved_contacts": [
+    "J5.34",
+    "J6.37",
+    "J6.59"
+  ],
+  "digital_assignments": [
+    {
+      "signal": "ASIC1_DATA1",
+      "fpga_endpoint": "U1.K1",
+      "connector_endpoint": "J5.1",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA2",
+      "fpga_endpoint": "U1.F1",
+      "connector_endpoint": "J5.2",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA3",
+      "fpga_endpoint": "U1.K2",
+      "connector_endpoint": "J5.3",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA4",
+      "fpga_endpoint": "U1.E1",
+      "connector_endpoint": "J5.4",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA5",
+      "fpga_endpoint": "U1.H1",
+      "connector_endpoint": "J5.5",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA6",
+      "fpga_endpoint": "U1.G2",
+      "connector_endpoint": "J5.6",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA7",
+      "fpga_endpoint": "U1.G1",
+      "connector_endpoint": "J5.7",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_DATA8",
+      "fpga_endpoint": "U1.C1",
+      "connector_endpoint": "J5.8",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_CLK32MHz_Out",
+      "fpga_endpoint": "U1.E2",
+      "connector_endpoint": "J5.9",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_READ",
+      "fpga_endpoint": "U1.B1",
+      "connector_endpoint": "J5.10",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC1_SYNC",
+      "fpga_endpoint": "U1.J2",
+      "connector_endpoint": "J5.11",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA1",
+      "fpga_endpoint": "U1.C2",
+      "connector_endpoint": "J5.12",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA2",
+      "fpga_endpoint": "U1.H2",
+      "connector_endpoint": "J5.13",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA3",
+      "fpga_endpoint": "U1.B3",
+      "connector_endpoint": "J5.14",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA4",
+      "fpga_endpoint": "U1.J3",
+      "connector_endpoint": "J5.15",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA5",
+      "fpga_endpoint": "U1.A3",
+      "connector_endpoint": "J5.16",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA6",
+      "fpga_endpoint": "U1.G3",
+      "connector_endpoint": "J5.17",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA7",
+      "fpga_endpoint": "U1.C4",
+      "connector_endpoint": "J5.18",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_DATA8",
+      "fpga_endpoint": "U1.A1",
+      "connector_endpoint": "J5.19",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_CLK32MHz_Out",
+      "fpga_endpoint": "U1.E3",
+      "connector_endpoint": "J5.20",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_READ",
+      "fpga_endpoint": "U1.B2",
+      "connector_endpoint": "J5.21",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_SYNC",
+      "fpga_endpoint": "U1.B4",
+      "connector_endpoint": "J5.22",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA1",
+      "fpga_endpoint": "U1.J4",
+      "connector_endpoint": "J5.23",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA2",
+      "fpga_endpoint": "U1.J5",
+      "connector_endpoint": "J5.24",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA3",
+      "fpga_endpoint": "U1.H4",
+      "connector_endpoint": "J5.25",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA4",
+      "fpga_endpoint": "U1.F5",
+      "connector_endpoint": "J5.26",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA5",
+      "fpga_endpoint": "U1.G4",
+      "connector_endpoint": "J5.27",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA6",
+      "fpga_endpoint": "U1.E5",
+      "connector_endpoint": "J5.28",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA7",
+      "fpga_endpoint": "U1.H5",
+      "connector_endpoint": "J5.29",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_DATA8",
+      "fpga_endpoint": "U1.G6",
+      "connector_endpoint": "J5.30",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_CLK32MHz_Out",
+      "fpga_endpoint": "U1.F4",
+      "connector_endpoint": "J5.31",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_READ",
+      "fpga_endpoint": "U1.E6",
+      "connector_endpoint": "J5.32",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_SYNC",
+      "fpga_endpoint": "U1.H6",
+      "connector_endpoint": "J5.33",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA1",
+      "fpga_endpoint": "U1.C5",
+      "connector_endpoint": "J6.60",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA2",
+      "fpga_endpoint": "U1.A4",
+      "connector_endpoint": "J5.35",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA3",
+      "fpga_endpoint": "U1.C6",
+      "connector_endpoint": "J5.36",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA4",
+      "fpga_endpoint": "U1.A5",
+      "connector_endpoint": "J5.37",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA5",
+      "fpga_endpoint": "U1.A6",
+      "connector_endpoint": "J5.38",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA6",
+      "fpga_endpoint": "U1.B6",
+      "connector_endpoint": "J5.39",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA7",
+      "fpga_endpoint": "U1.C7",
+      "connector_endpoint": "J5.40",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_DATA8",
+      "fpga_endpoint": "U1.E7",
+      "connector_endpoint": "J5.41",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_CLK32MHz_Out",
+      "fpga_endpoint": "U1.D5",
+      "connector_endpoint": "J5.42",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_READ",
+      "fpga_endpoint": "U1.B7",
+      "connector_endpoint": "J5.43",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_SYNC",
+      "fpga_endpoint": "U1.D8",
+      "connector_endpoint": "J5.44",
+      "bank": "35",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA1",
+      "fpga_endpoint": "U1.V1",
+      "connector_endpoint": "J6.1",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA2",
+      "fpga_endpoint": "U1.R1",
+      "connector_endpoint": "J6.2",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA3",
+      "fpga_endpoint": "U1.U1",
+      "connector_endpoint": "J6.3",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA4",
+      "fpga_endpoint": "U1.U2",
+      "connector_endpoint": "J6.4",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA5",
+      "fpga_endpoint": "U1.T1",
+      "connector_endpoint": "J6.5",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA6",
+      "fpga_endpoint": "U1.R2",
+      "connector_endpoint": "J6.6",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA7",
+      "fpga_endpoint": "U1.V2",
+      "connector_endpoint": "J6.7",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_DATA8",
+      "fpga_endpoint": "U1.U3",
+      "connector_endpoint": "J6.8",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_CLK32MHz_Out",
+      "fpga_endpoint": "U1.R3",
+      "connector_endpoint": "J6.9",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_READ",
+      "fpga_endpoint": "U1.V4",
+      "connector_endpoint": "J6.10",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_SYNC",
+      "fpga_endpoint": "U1.P2",
+      "connector_endpoint": "J6.11",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA1",
+      "fpga_endpoint": "U1.M2",
+      "connector_endpoint": "J6.12",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA2",
+      "fpga_endpoint": "U1.N1",
+      "connector_endpoint": "J6.13",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA3",
+      "fpga_endpoint": "U1.M3",
+      "connector_endpoint": "J6.14",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA4",
+      "fpga_endpoint": "U1.M1",
+      "connector_endpoint": "J6.15",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA5",
+      "fpga_endpoint": "U1.K3",
+      "connector_endpoint": "J6.16",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA6",
+      "fpga_endpoint": "U1.L1",
+      "connector_endpoint": "J6.17",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA7",
+      "fpga_endpoint": "U1.N4",
+      "connector_endpoint": "J6.18",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_DATA8",
+      "fpga_endpoint": "U1.N2",
+      "connector_endpoint": "J6.19",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_CLK32MHz_Out",
+      "fpga_endpoint": "U1.P4",
+      "connector_endpoint": "J6.20",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_READ",
+      "fpga_endpoint": "U1.L3",
+      "connector_endpoint": "J6.21",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_SYNC",
+      "fpga_endpoint": "U1.R6",
+      "connector_endpoint": "J6.22",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA1",
+      "fpga_endpoint": "U1.U4",
+      "connector_endpoint": "J6.23",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA2",
+      "fpga_endpoint": "U1.V7",
+      "connector_endpoint": "J6.24",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA3",
+      "fpga_endpoint": "U1.V5",
+      "connector_endpoint": "J6.25",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA4",
+      "fpga_endpoint": "U1.U7",
+      "connector_endpoint": "J6.26",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA5",
+      "fpga_endpoint": "U1.V6",
+      "connector_endpoint": "J6.27",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA6",
+      "fpga_endpoint": "U1.U8",
+      "connector_endpoint": "J6.28",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA7",
+      "fpga_endpoint": "U1.U6",
+      "connector_endpoint": "J6.29",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_DATA8",
+      "fpga_endpoint": "U1.V9",
+      "connector_endpoint": "J6.30",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_CLK32MHz_Out",
+      "fpga_endpoint": "U1.T5",
+      "connector_endpoint": "J6.31",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_READ",
+      "fpga_endpoint": "U1.U9",
+      "connector_endpoint": "J6.32",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_SYNC",
+      "fpga_endpoint": "U1.T6",
+      "connector_endpoint": "J6.33",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA1",
+      "fpga_endpoint": "U1.M6",
+      "connector_endpoint": "J6.34",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA2",
+      "fpga_endpoint": "U1.M4",
+      "connector_endpoint": "J6.35",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA3",
+      "fpga_endpoint": "U1.R8",
+      "connector_endpoint": "J6.36",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA4",
+      "fpga_endpoint": "U1.L4",
+      "connector_endpoint": "J6.58",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA5",
+      "fpga_endpoint": "U1.K5",
+      "connector_endpoint": "J6.38",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA6",
+      "fpga_endpoint": "U1.R7",
+      "connector_endpoint": "J6.39",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA7",
+      "fpga_endpoint": "U1.L6",
+      "connector_endpoint": "J6.40",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_DATA8",
+      "fpga_endpoint": "U1.N6",
+      "connector_endpoint": "J6.41",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_CLK32MHz_Out",
+      "fpga_endpoint": "U1.N5",
+      "connector_endpoint": "J6.42",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_READ",
+      "fpga_endpoint": "U1.T8",
+      "connector_endpoint": "J6.43",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_SYNC",
+      "fpga_endpoint": "U1.K6",
+      "connector_endpoint": "J6.44",
+      "bank": "34",
+      "pass": true
+    },
+    {
+      "signal": "CHIP_RESET_SHARED",
+      "fpga_endpoint": "U1.D12",
+      "connector_endpoint": "J5.45",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "IMP_TST_SHARED",
+      "fpga_endpoint": "U1.B11",
+      "connector_endpoint": "J5.47",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "FE_RESET_SHARED",
+      "fpga_endpoint": "U1.B14",
+      "connector_endpoint": "J5.48",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "SPI_LATCH_SHARED",
+      "fpga_endpoint": "U1.A11",
+      "connector_endpoint": "J5.49",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CLK_SHARED",
+      "fpga_endpoint": "U1.C16",
+      "connector_endpoint": "J5.50",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_START_SHARED",
+      "fpga_endpoint": "U1.C12",
+      "connector_endpoint": "J5.51",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_EN_SHARED",
+      "fpga_endpoint": "U1.A15",
+      "connector_endpoint": "J5.52",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHB_SHARED",
+      "fpga_endpoint": "U1.B12",
+      "connector_endpoint": "J5.53",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD1_CLK",
+      "fpga_endpoint": "U1.B16",
+      "connector_endpoint": "J5.54",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD2_CLK",
+      "fpga_endpoint": "U1.B13",
+      "connector_endpoint": "J5.55",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD3_CLK",
+      "fpga_endpoint": "U1.A16",
+      "connector_endpoint": "J5.56",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD4_CLK",
+      "fpga_endpoint": "U1.C14",
+      "connector_endpoint": "J5.57",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP1_SPI_DL",
+      "fpga_endpoint": "U1.J14",
+      "connector_endpoint": "J6.46",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP1_SPI_DR",
+      "fpga_endpoint": "U1.J13",
+      "connector_endpoint": "J6.47",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP2_SPI_DL",
+      "fpga_endpoint": "U1.G14",
+      "connector_endpoint": "J6.48",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP2_SPI_DR",
+      "fpga_endpoint": "U1.H14",
+      "connector_endpoint": "J6.49",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP3_SPI_DL",
+      "fpga_endpoint": "U1.J15",
+      "connector_endpoint": "J6.50",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP3_SPI_DR",
+      "fpga_endpoint": "U1.K15",
+      "connector_endpoint": "J6.51",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP4_SPI_DL",
+      "fpga_endpoint": "U1.J17",
+      "connector_endpoint": "J6.52",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "STIM_CHIP4_SPI_DR",
+      "fpga_endpoint": "U1.K16",
+      "connector_endpoint": "J6.53",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "NONSTIM_BOARD1_SPI_DL",
+      "fpga_endpoint": "U1.G17",
+      "connector_endpoint": "J6.54",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "NONSTIM_BOARD1_SPI_DR",
+      "fpga_endpoint": "U1.H17",
+      "connector_endpoint": "J6.55",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "NONSTIM_BOARD2_SPI_DL",
+      "fpga_endpoint": "U1.J18",
+      "connector_endpoint": "J6.56",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "NONSTIM_BOARD2_SPI_DR",
+      "fpga_endpoint": "U1.G18",
+      "connector_endpoint": "J6.57",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD1_SPI_CLK",
+      "fpga_endpoint": "U1.B17",
+      "connector_endpoint": "J5.58",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD2_SPI_CLK",
+      "fpga_endpoint": "U1.A14",
+      "connector_endpoint": "J5.59",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD3_SPI_CLK",
+      "fpga_endpoint": "U1.A18",
+      "connector_endpoint": "J5.60",
+      "bank": "15",
+      "pass": true
+    },
+    {
+      "signal": "BOARD4_SPI_CLK",
+      "fpga_endpoint": "U1.K13",
+      "connector_endpoint": "J6.45",
+      "bank": "15",
+      "pass": true
+    }
+  ],
+  "returned_clocks": [
+    {
+      "signal": "ASIC1_CLK32MHz_Out",
+      "ball": "E2",
+      "function": "IO_L14P_T2_SRCC_35",
+      "bank": "35",
+      "unused_n_mate": "D2",
+      "mate_function": "IO_L14N_T2_SRCC_35",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC2_CLK32MHz_Out",
+      "ball": "E3",
+      "function": "IO_L12P_T1_MRCC_35",
+      "bank": "35",
+      "unused_n_mate": "D3",
+      "mate_function": "IO_L12N_T1_MRCC_35",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC3_CLK32MHz_Out",
+      "ball": "F4",
+      "function": "IO_L13P_T2_MRCC_35",
+      "bank": "35",
+      "unused_n_mate": "F3",
+      "mate_function": "IO_L13N_T2_MRCC_35",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC4_CLK32MHz_Out",
+      "ball": "D5",
+      "function": "IO_L11P_T1_SRCC_35",
+      "bank": "35",
+      "unused_n_mate": "D4",
+      "mate_function": "IO_L11N_T1_SRCC_35",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC5_CLK32MHz_Out",
+      "ball": "R3",
+      "function": "IO_L11P_T1_SRCC_34",
+      "bank": "34",
+      "unused_n_mate": "T3",
+      "mate_function": "IO_L11N_T1_SRCC_34",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC6_CLK32MHz_Out",
+      "ball": "P4",
+      "function": "IO_L14P_T2_SRCC_34",
+      "bank": "34",
+      "unused_n_mate": "P3",
+      "mate_function": "IO_L14N_T2_SRCC_34",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC7_CLK32MHz_Out",
+      "ball": "T5",
+      "function": "IO_L12P_T1_MRCC_34",
+      "bank": "34",
+      "unused_n_mate": "T4",
+      "mate_function": "IO_L12N_T1_MRCC_34",
+      "mate_intentional_nc": true,
+      "pass": true
+    },
+    {
+      "signal": "ASIC8_CLK32MHz_Out",
+      "ball": "N5",
+      "function": "IO_L13P_T2_MRCC_34",
+      "bank": "34",
+      "unused_n_mate": "P5",
+      "mate_function": "IO_L13N_T2_MRCC_34",
+      "mate_intentional_nc": true,
+      "pass": true
+    }
+  ],
+  "bank_supply_pins": [
+    {
+      "ball": "R9",
+      "bank": "0",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "L17",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "N13",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "P16",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "T12",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "U15",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "V18",
+      "bank": "14",
+      "nominal_V": 1.8,
+      "expected_net": "VCCAUX_1V8",
+      "native_net": "VCCAUX_1V8"
+    },
+    {
+      "ball": "A17",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "C13",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "D16",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "G15",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "H18",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "K14",
+      "bank": "15",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "B10",
+      "bank": "16",
+      "nominal_V": 2.5,
+      "expected_net": "VCC_LINK_2V5",
+      "native_net": "VCC_LINK_2V5"
+    },
+    {
+      "ball": "K4",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "N3",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "P6",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "T2",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "U5",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "V8",
+      "bank": "34",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "A7",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "C3",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "D6",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "F2",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "G5",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    },
+    {
+      "ball": "J1",
+      "bank": "35",
+      "nominal_V": 1.5,
+      "expected_net": "VCC_ASIC_1V5",
+      "native_net": "VCC_ASIC_1V5"
+    }
+  ],
+  "c20": {
+    "selected_compact": true,
+    "mpn": "ETPE330M9GB",
+    "footprint": "CoreSupport:Panasonic_POSCAP_B2_Recommended",
+    "pads": [
+      {
+        "number": "1",
+        "local_mm": [
+          -1.5,
+          0.0
+        ],
+        "size_mm": [
+          1.6,
+          2.7
+        ],
+        "net": "VCCINT_1V0",
+        "shape": 1,
+        "attribute": 1
+      },
+      {
+        "number": "2",
+        "local_mm": [
+          1.5,
+          0.0
+        ],
+        "size_mm": [
+          1.6,
+          2.7
+        ],
+        "net": "GND",
+        "shape": 1,
+        "attribute": 1
+      }
+    ]
+  },
+  "board_bounds_mm": [
+    0.0,
+    0.0,
+    33.0,
+    36.0
+  ],
+  "native_thickness_mm": 1.6,
+  "j4_datum_lines": [
+    {
+      "start_mm": [
+        33.0,
+        8.5
+      ],
+      "end_mm": [
+        33.0,
+        2.5
+      ]
+    }
+  ],
+  "j4_shell_copper_edge_gaps": [
+    {
+      "pad_uuid": "90667109-ca9a-43c8-b368-4ed782462034",
+      "nominal_copper_edge_gap_mm": 3.785
+    },
+    {
+      "pad_uuid": "ca55ae5c-c2de-416a-8fe1-3ff41c192b85",
+      "nominal_copper_edge_gap_mm": 0.425
+    },
+    {
+      "pad_uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+      "nominal_copper_edge_gap_mm": 1.65
+    },
+    {
+      "pad_uuid": "e5f5dd5c-7094-4356-9a1c-3aec07fb3567",
+      "nominal_copper_edge_gap_mm": 0.425
+    }
+  ],
+  "connector_geometry": [
+    {
+      "reference": "J4",
+      "holes": [
+        {
+          "pad": "SH",
+          "uuid": "90667109-ca9a-43c8-b368-4ed782462034",
+          "xy_mm": [
+            27.94,
+            8.6
+          ],
+          "local_mm": [
+            -3.1,
+            -3.36
+          ],
+          "drill_mm": [
+            0.65,
+            1.7
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C40",
+              "drill_edge_to_bbox_mm": 0.55,
+              "bbox_mm": [
+                27.975,
+                4.475,
+                32.625,
+                7.725
+              ]
+            },
+            {
+              "reference": "C21",
+              "drill_edge_to_bbox_mm": 0.615,
+              "bbox_mm": [
+                23.225,
+                5.475,
+                26.475,
+                10.125
+              ]
+            },
+            {
+              "reference": "C64",
+              "drill_edge_to_bbox_mm": 1.209022,
+              "bbox_mm": [
+                29.725,
+                9.474999,
+                31.735,
+                12.924999
+              ]
+            },
+            {
+              "reference": "C69",
+              "drill_edge_to_bbox_mm": 1.23,
+              "bbox_mm": [
+                28.03,
+                10.155,
+                28.93,
+                11.805
+              ]
+            },
+            {
+              "reference": "C66",
+              "drill_edge_to_bbox_mm": 2.389885,
+              "bbox_mm": [
+                25.175,
+                11.25,
+                26.825,
+                12.15
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J4.19",
+                "uuid": "b3e9300f-be6a-40f2-ad79-ad5cf8517473",
+                "gap_mm": 0.947969,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.18",
+                "uuid": "d526a0b0-37bb-4088-a41f-8c5a8306e406",
+                "gap_mm": 1.06,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "ca55ae5c-c2de-416a-8fe1-3ff41c192b85",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.17",
+                "uuid": "ececaf84-89db-4e28-9783-3dcc70904b03",
+                "gap_mm": 1.326802,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.16",
+                "uuid": "394608a2-c9b7-423f-9c45-628efd2541a3",
+                "gap_mm": 1.46,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "C40.1",
+                "uuid": "c451390c-4f41-41c7-8886-d444cd08d791",
+                "gap_mm": 0.825214,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C21.2",
+                "uuid": "7d7b9bff-578e-40c1-8ce1-5069005d6718",
+                "gap_mm": 0.931114,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "ca55ae5c-c2de-416a-8fe1-3ff41c192b85",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C69.2",
+                "uuid": "20c8e21a-54c9-4f9b-8fdc-280f6585d320",
+                "gap_mm": 1.405,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C64.2",
+                "uuid": "016c2427-3137-46d6-9f73-f3b9eebcb38e",
+                "gap_mm": 1.696598,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        },
+        {
+          "pad": "SH",
+          "uuid": "ca55ae5c-c2de-416a-8fe1-3ff41c192b85",
+          "xy_mm": [
+            31.3,
+            8.6
+          ],
+          "local_mm": [
+            -3.1,
+            0.0
+          ],
+          "drill_mm": [
+            0.65,
+            1.7
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C64",
+              "drill_edge_to_bbox_mm": 0.549999,
+              "bbox_mm": [
+                29.725,
+                9.474999,
+                31.735,
+                12.924999
+              ]
+            },
+            {
+              "reference": "C40",
+              "drill_edge_to_bbox_mm": 0.55,
+              "bbox_mm": [
+                27.975,
+                4.475,
+                32.625,
+                7.725
+              ]
+            },
+            {
+              "reference": "C69",
+              "drill_edge_to_bbox_mm": 2.087892,
+              "bbox_mm": [
+                28.03,
+                10.155,
+                28.93,
+                11.805
+              ]
+            },
+            {
+              "reference": "C42",
+              "drill_edge_to_bbox_mm": 3.943316,
+              "bbox_mm": [
+                27.495,
+                12.675,
+                29.505,
+                16.125
+              ]
+            },
+            {
+              "reference": "C21",
+              "drill_edge_to_bbox_mm": 3.975,
+              "bbox_mm": [
+                23.225,
+                5.475,
+                26.475,
+                10.125
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J4.SH",
+                "uuid": "90667109-ca9a-43c8-b368-4ed782462034",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C1.1",
+                "uuid": "2b0c8bfa-819b-4330-9e5f-366ba47aa0f2",
+                "gap_mm": 1.325,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.18",
+                "uuid": "d526a0b0-37bb-4088-a41f-8c5a8306e406",
+                "gap_mm": 2.554905,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.16",
+                "uuid": "394608a2-c9b7-423f-9c45-628efd2541a3",
+                "gap_mm": 2.767224,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.14",
+                "uuid": "d10e4d2f-227d-4d10-8b7c-4edb74a85e31",
+                "gap_mm": 3.014139,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "C64.2",
+                "uuid": "016c2427-3137-46d6-9f73-f3b9eebcb38e",
+                "gap_mm": 0.824999,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C40.2",
+                "uuid": "03ae0430-58ba-41cc-8c98-dc4aa6cd61e8",
+                "gap_mm": 0.825,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "90667109-ca9a-43c8-b368-4ed782462034",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C40.1",
+                "uuid": "c451390c-4f41-41c7-8886-d444cd08d791",
+                "gap_mm": 1.568931,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C69.2",
+                "uuid": "20c8e21a-54c9-4f9b-8fdc-280f6585d320",
+                "gap_mm": 2.380062,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        },
+        {
+          "pad": "SH",
+          "uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+          "xy_mm": [
+            27.94,
+            2.4
+          ],
+          "local_mm": [
+            3.1,
+            -3.36
+          ],
+          "drill_mm": [
+            0.65,
+            1.7
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C40",
+              "drill_edge_to_bbox_mm": 1.75,
+              "bbox_mm": [
+                27.975,
+                4.475,
+                32.625,
+                7.725
+              ]
+            },
+            {
+              "reference": "C101",
+              "drill_edge_to_bbox_mm": 2.476451,
+              "bbox_mm": [
+                23.815,
+                3.365,
+                24.785,
+                5.235
+              ]
+            },
+            {
+              "reference": "C21",
+              "drill_edge_to_bbox_mm": 2.890467,
+              "bbox_mm": [
+                23.225,
+                5.475,
+                26.475,
+                10.125
+              ]
+            },
+            {
+              "reference": "R102",
+              "drill_edge_to_bbox_mm": 3.545,
+              "bbox_mm": [
+                22.555,
+                1.094999,
+                23.545,
+                3.004999
+              ]
+            },
+            {
+              "reference": "C100",
+              "drill_edge_to_bbox_mm": 3.673203,
+              "bbox_mm": [
+                22.565,
+                3.365,
+                23.535,
+                5.235
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J4.1",
+                "uuid": "9acf6a50-a2b0-41a3-aa61-a8863050eb0a",
+                "gap_mm": 0.947969,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.2",
+                "uuid": "78fa3568-5486-4ccd-8f46-d5c0d28edcb6",
+                "gap_mm": 1.06,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "e5f5dd5c-7094-4356-9a1c-3aec07fb3567",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.3",
+                "uuid": "ad8fd1cb-b103-4269-991f-353cb00b92c3",
+                "gap_mm": 1.326802,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.4",
+                "uuid": "f0646a2c-6cf4-4314-bce8-c7c7530a3a09",
+                "gap_mm": 1.46,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "J4.SH",
+                "uuid": "e5f5dd5c-7094-4356-9a1c-3aec07fb3567",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C40.1",
+                "uuid": "c451390c-4f41-41c7-8886-d444cd08d791",
+                "gap_mm": 2.025106,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.<NPTH>",
+                "uuid": "96c6320f-a848-486c-8ce9-b67c22eab9ab",
+                "gap_mm": 2.365387,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C101.2",
+                "uuid": "3b90087f-11cc-4a1b-b89c-dcde658f5e6a",
+                "gap_mm": 2.745125,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C101.1",
+                "uuid": "80983435-f0de-403e-a0a8-28566458b45b",
+                "gap_mm": 3.234071,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        },
+        {
+          "pad": "SH",
+          "uuid": "e5f5dd5c-7094-4356-9a1c-3aec07fb3567",
+          "xy_mm": [
+            31.3,
+            2.4
+          ],
+          "local_mm": [
+            3.1,
+            0.0
+          ],
+          "drill_mm": [
+            0.65,
+            1.7
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C40",
+              "drill_edge_to_bbox_mm": 1.75,
+              "bbox_mm": [
+                27.975,
+                4.475,
+                32.625,
+                7.725
+              ]
+            },
+            {
+              "reference": "C21",
+              "drill_edge_to_bbox_mm": 4.961362,
+              "bbox_mm": [
+                23.225,
+                5.475,
+                26.475,
+                10.125
+              ]
+            },
+            {
+              "reference": "C101",
+              "drill_edge_to_bbox_mm": 5.742234,
+              "bbox_mm": [
+                23.815,
+                3.365,
+                24.785,
+                5.235
+              ]
+            },
+            {
+              "reference": "C64",
+              "drill_edge_to_bbox_mm": 6.749999,
+              "bbox_mm": [
+                29.725,
+                9.474999,
+                31.735,
+                12.924999
+              ]
+            },
+            {
+              "reference": "R102",
+              "drill_edge_to_bbox_mm": 6.905,
+              "bbox_mm": [
+                22.555,
+                1.094999,
+                23.545,
+                3.004999
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J4.SH",
+                "uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.2",
+                "uuid": "78fa3568-5486-4ccd-8f46-d5c0d28edcb6",
+                "gap_mm": 2.554905,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.4",
+                "uuid": "f0646a2c-6cf4-4314-bce8-c7c7530a3a09",
+                "gap_mm": 2.767224,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.6",
+                "uuid": "1f3c33c8-3d00-4be0-b758-4902fb367b9f",
+                "gap_mm": 3.014139,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.8",
+                "uuid": "9cae5b51-2e8b-4c63-9ee2-b33362a7d56a",
+                "gap_mm": 3.288565,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "J4.SH",
+                "uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+                "gap_mm": 1.235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C40.2",
+                "uuid": "03ae0430-58ba-41cc-8c98-dc4aa6cd61e8",
+                "gap_mm": 2.025,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C40.1",
+                "uuid": "c451390c-4f41-41c7-8886-d444cd08d791",
+                "gap_mm": 2.490281,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "ca55ae5c-c2de-416a-8fe1-3ff41c192b85",
+                "gap_mm": 5.125,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C21.1",
+                "uuid": "2ab42056-d8b0-4b7a-9e59-7ebc8f92b871",
+                "gap_mm": 5.444399,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "reference": "J5",
+      "holes": [
+        {
+          "pad": "",
+          "uuid": "f028428e-956f-4eb3-ad82-ff9734e0fa8f",
+          "xy_mm": [
+            4.135,
+            1.83
+          ],
+          "local_mm": [
+            -10.065,
+            -2.67
+          ],
+          "drill_mm": [
+            1.02,
+            1.02
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "L4",
+              "drill_edge_to_bbox_mm": 0.135,
+              "bbox_mm": [
+                3.154999,
+                2.475,
+                8.004999,
+                7.325
+              ]
+            },
+            {
+              "reference": "C17",
+              "drill_edge_to_bbox_mm": 1.19632,
+              "bbox_mm": [
+                1.074999,
+                3.175,
+                3.084999,
+                6.625
+              ]
+            },
+            {
+              "reference": "U5",
+              "drill_edge_to_bbox_mm": 5.035,
+              "bbox_mm": [
+                3.604999,
+                7.375,
+                7.554999,
+                10.425
+              ]
+            },
+            {
+              "reference": "R7",
+              "drill_edge_to_bbox_mm": 5.534851,
+              "bbox_mm": [
+                2.024999,
+                7.845,
+                3.534999,
+                10.855
+              ]
+            },
+            {
+              "reference": "C18",
+              "drill_edge_to_bbox_mm": 6.146402,
+              "bbox_mm": [
+                7.824999,
+                7.37,
+                9.334999,
+                10.38
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J5.G",
+                "uuid": "44de79d0-6432-425e-bfda-cdbdac9f8a43",
+                "gap_mm": 2.051235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.2",
+                "uuid": "61bfdead-00d5-41ca-b95a-e250ab50e4b8",
+                "gap_mm": 2.16405,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.4",
+                "uuid": "fad8f640-501c-4f92-b672-6902356f73c6",
+                "gap_mm": 2.66415,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.6",
+                "uuid": "0c671b82-96db-47b1-ab64-bb967ca95dc2",
+                "gap_mm": 3.16425,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.8",
+                "uuid": "2459f122-8b73-42c5-a3df-8d02a6ba9635",
+                "gap_mm": 3.66435,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "L4.2",
+                "uuid": "9e42dc19-201d-44c0-9e1f-606d64b72c76",
+                "gap_mm": 0.885,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C17.1",
+                "uuid": "10da42ed-6eba-4308-bcea-21e01bc64ded",
+                "gap_mm": 1.687117,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "L4.1",
+                "uuid": "7c657a2e-6734-4576-8e3b-b8dad6c11970",
+                "gap_mm": 3.255,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C17.2",
+                "uuid": "25a2c77f-2984-40c8-96fd-45d844106fb1",
+                "gap_mm": 3.327177,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "U5.3",
+                "uuid": "c71d10d9-9a26-44e9-9d28-2e4bfe594b2f",
+                "gap_mm": 5.416997,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        },
+        {
+          "pad": "",
+          "uuid": "96c6320f-a848-486c-8ce9-b67c22eab9ab",
+          "xy_mm": [
+            24.265,
+            1.83
+          ],
+          "local_mm": [
+            10.065,
+            -2.67
+          ],
+          "drill_mm": [
+            1.02,
+            1.02
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "R102",
+              "drill_edge_to_bbox_mm": 0.21,
+              "bbox_mm": [
+                22.555,
+                1.094999,
+                23.545,
+                3.004999
+              ]
+            },
+            {
+              "reference": "C101",
+              "drill_edge_to_bbox_mm": 1.025,
+              "bbox_mm": [
+                23.815,
+                3.365,
+                24.785,
+                5.235
+              ]
+            },
+            {
+              "reference": "C100",
+              "drill_edge_to_bbox_mm": 1.189743,
+              "bbox_mm": [
+                22.565,
+                3.365,
+                23.535,
+                5.235
+              ]
+            },
+            {
+              "reference": "C21",
+              "drill_edge_to_bbox_mm": 3.135,
+              "bbox_mm": [
+                23.225,
+                5.475,
+                26.475,
+                10.125
+              ]
+            },
+            {
+              "reference": "U6",
+              "drill_edge_to_bbox_mm": 3.175,
+              "bbox_mm": [
+                14.625,
+                0.225,
+                20.58,
+                9.575
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "J4.SH",
+                "uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+                "gap_mm": 1.940746,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.1",
+                "uuid": "9acf6a50-a2b0-41a3-aa61-a8863050eb0a",
+                "gap_mm": 2.029144,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.G",
+                "uuid": "deaa4d3f-0dbc-41c6-ae6b-c253c242d228",
+                "gap_mm": 2.051235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J5.60",
+                "uuid": "fbc72a83-d11a-4585-a208-0f02bc54fee9",
+                "gap_mm": 2.16405,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.3",
+                "uuid": "ad8fd1cb-b103-4269-991f-353cb00b92c3",
+                "gap_mm": 2.320415,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "R102.2",
+                "uuid": "1f32eb49-4a88-42a6-9526-b5a2c9a07b38",
+                "gap_mm": 0.395685,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "R102.1",
+                "uuid": "087287a2-c276-4797-abc8-a3b7370d7e3d",
+                "gap_mm": 0.544295,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C101.2",
+                "uuid": "3b90087f-11cc-4a1b-b89c-dcde658f5e6a",
+                "gap_mm": 1.200001,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C100.2",
+                "uuid": "ab7eda58-8a3b-4c4c-81d3-95000de86c21",
+                "gap_mm": 1.474342,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J4.SH",
+                "uuid": "5624c1b6-3fe4-490e-b35b-e128771579a1",
+                "gap_mm": 1.940746,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "reference": "J6",
+      "holes": [
+        {
+          "pad": "",
+          "uuid": "326511ca-9d24-4010-bf3c-0225e0d36e5a",
+          "xy_mm": [
+            11.435,
+            28.83
+          ],
+          "local_mm": [
+            -10.065,
+            -2.67
+          ],
+          "drill_mm": [
+            1.02,
+            1.02
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C71",
+              "drill_edge_to_bbox_mm": 0.265,
+              "bbox_mm": [
+                10.575,
+                26.045,
+                14.025,
+                28.055
+              ]
+            },
+            {
+              "reference": "C20",
+              "drill_edge_to_bbox_mm": 1.035,
+              "bbox_mm": [
+                9.325,
+                30.375,
+                14.475,
+                33.925
+              ]
+            },
+            {
+              "reference": "C23",
+              "drill_edge_to_bbox_mm": 2.397959,
+              "bbox_mm": [
+                14.275,
+                26.195,
+                17.725,
+                28.205
+              ]
+            },
+            {
+              "reference": "C70",
+              "drill_edge_to_bbox_mm": 2.545,
+              "bbox_mm": [
+                11.045,
+                22.325,
+                13.055,
+                25.775
+              ]
+            },
+            {
+              "reference": "R122",
+              "drill_edge_to_bbox_mm": 3.189747,
+              "bbox_mm": [
+                3.195,
+                29.545,
+                7.805,
+                31.855
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "R4.2",
+                "uuid": "f2ea04d7-58b6-43dd-a012-8cdcaa6bc41c",
+                "gap_mm": 1.290393,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C9.2",
+                "uuid": "e9159dfb-f866-4a10-be64-29698e06e0b2",
+                "gap_mm": 1.840118,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.G",
+                "uuid": "b73bbc2d-620f-44b7-836c-a03e0c952d46",
+                "gap_mm": 2.051235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.2",
+                "uuid": "81577d58-f87a-4d8e-934d-b9f4961681c2",
+                "gap_mm": 2.16405,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "R4.1",
+                "uuid": "5a0f3212-5489-4ff6-a42a-4536936dda08",
+                "gap_mm": 2.497198,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "C71.1",
+                "uuid": "b42e1d5b-42a8-45a1-9e93-d634f67c06e9",
+                "gap_mm": 0.545001,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C71.2",
+                "uuid": "906437b5-3237-4578-b152-65d73d06bb7e",
+                "gap_mm": 1.276697,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C20.1",
+                "uuid": "bb441957-c9ec-4530-907e-a029b771b104",
+                "gap_mm": 1.473967,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C20.2",
+                "uuid": "cc8a0aa3-79e1-471d-b5af-df5b3124f88b",
+                "gap_mm": 1.778695,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C23.1",
+                "uuid": "1519d59e-9f36-458a-a725-624dfb118109",
+                "gap_mm": 2.796698,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        },
+        {
+          "pad": "",
+          "uuid": "1b73a610-efd5-454f-9aa2-db6d004a6ab2",
+          "xy_mm": [
+            31.565,
+            28.83
+          ],
+          "local_mm": [
+            10.065,
+            -2.67
+          ],
+          "drill_mm": [
+            1.02,
+            1.02
+          ],
+          "nearest_opposite_bounds": [
+            {
+              "reference": "C63",
+              "drill_edge_to_bbox_mm": 0.135,
+              "bbox_mm": [
+                27.975,
+                29.475,
+                32.625,
+                32.725
+              ]
+            },
+            {
+              "reference": "C51",
+              "drill_edge_to_bbox_mm": 2.11776,
+              "bbox_mm": [
+                27.745,
+                23.475,
+                29.755,
+                26.925
+              ]
+            },
+            {
+              "reference": "C52",
+              "drill_edge_to_bbox_mm": 2.58,
+              "bbox_mm": [
+                25.025,
+                27.195,
+                28.475,
+                29.205
+              ]
+            },
+            {
+              "reference": "C92",
+              "drill_edge_to_bbox_mm": 4.081419,
+              "bbox_mm": [
+                23.925,
+                30.175,
+                27.175,
+                34.825
+              ]
+            },
+            {
+              "reference": "C53",
+              "drill_edge_to_bbox_mm": 4.582764,
+              "bbox_mm": [
+                26.35,
+                24.475,
+                27.25,
+                26.125
+              ]
+            }
+          ],
+          "nearest_other_mask_openings": {
+            "F.Mask": [
+              {
+                "endpoint": "C82.1",
+                "uuid": "0b1e55ca-413c-4ab8-a527-472aefd22435",
+                "gap_mm": 1.720001,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.G",
+                "uuid": "6882a4db-96e3-4eca-af4f-1ad67b9ec39e",
+                "gap_mm": 2.051235,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.60",
+                "uuid": "6c7962d4-02d2-4c36-9c95-95a26331d85a",
+                "gap_mm": 2.16405,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.58",
+                "uuid": "0af3a360-795f-473d-a23a-bdff66a9ffe5",
+                "gap_mm": 2.66415,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "J6.56",
+                "uuid": "8fb85e0e-ec4a-45e1-b95a-d058a7d4cd4b",
+                "gap_mm": 3.16425,
+                "kind": "pad_mask_opening"
+              }
+            ],
+            "B.Mask": [
+              {
+                "endpoint": "C63.2",
+                "uuid": "91b73dcc-6864-456f-97ef-61e0a4ae4856",
+                "gap_mm": 0.410001,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C63.1",
+                "uuid": "b36c81e6-56c8-4503-a6b2-577f414f5da1",
+                "gap_mm": 1.923065,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C51.1",
+                "uuid": "060a48a9-c608-4f5d-a5ae-9a10e3a2642c",
+                "gap_mm": 2.613171,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C52.2",
+                "uuid": "a1d766b8-4454-4adb-811c-fe28412c1cef",
+                "gap_mm": 2.858002,
+                "kind": "pad_mask_opening"
+              },
+              {
+                "endpoint": "C51.2",
+                "uuid": "55e8cf87-ce46-4adf-b316-ccbdb8ed1863",
+                "gap_mm": 4.160886,
+                "kind": "pad_mask_opening"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "smd_via_copper_intersections": [],
+  "retained_copper_changes": [
+    {
+      "uuid": "00c248eb-2df0-4d66-a227-9e7b591e03c5",
+      "before": {
+        "kind": "zone",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "47b8c3ef0af1fafed5194f67c4cee20b88e5043495c4fbaafb16af51047a3984",
+        "definition_sha256": "428a894545fed2b293a396613e6d48e00f8ffc22ca69838dab07feef59f51f5a",
+        "filled_geometry_sha256": "e66cec1af209076481ef6f3249e423085531ad2b157400c473823e4ee457bd50",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In4.Cu"
+          ],
+          [
+            "uuid",
+            "00c248eb-2df0-4d66-a227-9e7b591e03c5"
+          ],
+          [
+            "name",
+            "Bank16 local bulk distribution"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "14.8",
+                "7.2"
+              ],
+              [
+                "xy",
+                "21.4",
+                "7.2"
+              ],
+              [
+                "xy",
+                "21.4",
+                "13.65"
+              ],
+              [
+                "xy",
+                "19.2",
+                "13.65"
+              ],
+              [
+                "xy",
+                "19.2",
+                "10.7"
+              ],
+              [
+                "xy",
+                "14.8",
+                "10.7"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_LINK_2V5"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "7b78d5364235676ad7c1158fdb80740120f0e96c23ac6f7ed8d4afd22cd7ca61",
+        "definition_sha256": "34d17dad2f2827be772fa7689481d12c6c1a7d12a830c712678162e52e53eda2",
+        "filled_geometry_sha256": "ed927cfaab5af88946108e151e0322a47a308a1171d9c9813ef8ef1eed9aa7fb",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "00c248eb-2df0-4d66-a227-9e7b591e03c5"
+          ],
+          [
+            "name",
+            "Bank16 local bulk distribution"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "14.8",
+                "7.2"
+              ],
+              [
+                "xy",
+                "22.95",
+                "7.2"
+              ],
+              [
+                "xy",
+                "22.95",
+                "10.6"
+              ],
+              [
+                "xy",
+                "21.4",
+                "10.6"
+              ],
+              [
+                "xy",
+                "21.4",
+                "13.65"
+              ],
+              [
+                "xy",
+                "19.2",
+                "13.65"
+              ],
+              [
+                "xy",
+                "19.2",
+                "10.7"
+              ],
+              [
+                "xy",
+                "14.8",
+                "10.7"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_LINK_2V5"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "0f51bb04-31ad-4c11-aede-fa22d6b9954b",
+      "before": {
+        "kind": "segment",
+        "net": "GND",
+        "signature_sha256": "cf7a30040a6b18c5a63d0026c81d82649b29daf210fbd7c076516b398099a848"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "GND",
+        "signature_sha256": "5594f2b31d11c3d18db9478ee347ac77026f9e8b2a287bbd181307dc10a3a23e"
+      }
+    },
+    {
+      "uuid": "19ed7dc1-11ea-4a1a-b002-418c97d549a1",
+      "before": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "af12da99667b8ca128e404b1d7ecf432dcd135270845c4a2ef662f6a3fb180fb",
+        "definition_sha256": "4383ca0b06c4612cfb7e5088d1391bd5aa68fe87e4771e1722d087007ecb7704",
+        "filled_geometry_sha256": "410b71ca83b0b1f9d1d62c7e943be7ddc672d9dd09cd9d30c550077fc312b6a0",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In1.Cu"
+          ],
+          [
+            "uuid",
+            "19ed7dc1-11ea-4a1a-b002-418c97d549a1"
+          ],
+          [
+            "name",
+            "GND reference In1.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "8021ef6f2fbe0f15f47c20a21205b64a79cdc221d96819dd3510bf9fe6440feb",
+        "definition_sha256": "4383ca0b06c4612cfb7e5088d1391bd5aa68fe87e4771e1722d087007ecb7704",
+        "filled_geometry_sha256": "b6725cf29647c7df7f3a144e02449b7612885f6a91aa3dcdd0a33db11a4ca757",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In1.Cu"
+          ],
+          [
+            "uuid",
+            "19ed7dc1-11ea-4a1a-b002-418c97d549a1"
+          ],
+          [
+            "name",
+            "GND reference In1.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "1c9575b8-28f4-4713-a35e-52b4ba6ce9a4",
+      "before": {
+        "kind": "segment",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "a0769500d77dbce836d8a5b494472930fb48773186f226e30f945a278ccaaa4f"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "4a712c0c4d579cd2012049eed7fcbac4498f73ded8391a9cbc6daf0aa535cf57"
+      }
+    },
+    {
+      "uuid": "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2",
+      "before": {
+        "kind": "zone",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "8a88694a268a506282e3069df80fdc022fb8023ed7813f39cb7d4d7fd5cc4e95",
+        "definition_sha256": "5f73fd21d207742ad3457511a0d65657d311fd480b7d1ad786b8314791ad955c",
+        "filled_geometry_sha256": "9ae2183b655be7a4e677ccd25d9688c6cbb7cc3bd365259c9ed2341ea05a31e4",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In4.Cu"
+          ],
+          [
+            "uuid",
+            "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2"
+          ],
+          [
+            "name",
+            "AUX boot clock and outer-bank distribution"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "4"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.1",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "9.2"
+              ],
+              [
+                "xy",
+                "7.1",
+                "9.2"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCAUX_1V8"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "3b7ff5abc530b843966064f18144557978c53fae59c4e7ed92a2862ced71f5b2",
+        "definition_sha256": "dd02ba7f584f2bdd67bc6909de30b4acb958d608ce6d9ad64007f903125cf4d6",
+        "filled_geometry_sha256": "1047fe0efbe8d3bf089491c79bcfdef3a40d484727b138d611ebf80c65cc1d58",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2"
+          ],
+          [
+            "name",
+            "AUX boot clock and outer-bank distribution"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "4"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.1",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "9.2"
+              ],
+              [
+                "xy",
+                "7.1",
+                "9.2"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCAUX_1V8"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "2bf70f10-4a75-4c73-ba61-87ecdef30845",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "4bf2fc73a5d88cd3a8b5a4c779c42f9ccb49e55af1457826f5011824455462f1"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "23c8f9603104735a88e071583326ed8585e75a9c638fce8ba75fa3e615aa9cfc"
+      }
+    },
+    {
+      "uuid": "2d80db3b-d05f-4969-992a-337eb5d14744",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "7e7ace35439fb32f765ab29342d9b6518ce538abbb3e851b53f1853b987e931c"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "385b6c44dd4f59770acadb7fac50516f82da032a504b166d5018b05cbe47a6e5"
+      }
+    },
+    {
+      "uuid": "326f364c-9590-4db1-9e9d-c0097f02c2d5",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "df652173445005cfe04ade284cb910f7cd5513c48cc38a5fdd1d21060cadc9e0"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "d99087ac71b7603b68e13187e27cbf2ba2e37fd02ffb0a838890aaea17573981"
+      }
+    },
+    {
+      "uuid": "3358a157-e904-45f3-ad0c-740e6229acf1",
+      "before": {
+        "kind": "zone",
+        "net": "VCCINT_1V0",
+        "signature_sha256": "373d833a9b842eccc31a696b0d4dc7343c80a2699cf85fbeda8316e15ffc7bed",
+        "definition_sha256": "257765b0af4b2619fb72483140d05015eca770f218110d30d97c0ad2e0cc792b",
+        "filled_geometry_sha256": "b8e962240d145502bb55f5402bbdc1858226f1ddbc778d4a132a0f1d2b587b99",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In3.Cu"
+          ],
+          [
+            "uuid",
+            "3358a157-e904-45f3-ad0c-740e6229acf1"
+          ],
+          [
+            "name",
+            "Core downstream of R9"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "1"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.1",
+                "4.5"
+              ],
+              [
+                "xy",
+                "29.15",
+                "4.5"
+              ],
+              [
+                "xy",
+                "29.15",
+                "35.5"
+              ],
+              [
+                "xy",
+                "7.1",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCINT_1V0"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCCINT_1V0",
+        "signature_sha256": "1c0ed10d87243b93cac2fe60875be33e3fc5bff2e6813f8d3081987135887b43",
+        "definition_sha256": "fca7b9b8c31414137d4dfb7d88c57f52e0c4aa3951588baa17cf9fe9bb5ba1df",
+        "filled_geometry_sha256": "44c965262e2fa84e8b74ebb4f1da0424d7c61c309901a26ffc952636fc2c36f6",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In5.Cu"
+          ],
+          [
+            "uuid",
+            "3358a157-e904-45f3-ad0c-740e6229acf1"
+          ],
+          [
+            "name",
+            "Core downstream of R9"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "1"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.1",
+                "4.5"
+              ],
+              [
+                "xy",
+                "29.15",
+                "4.5"
+              ],
+              [
+                "xy",
+                "29.15",
+                "35.5"
+              ],
+              [
+                "xy",
+                "7.1",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCINT_1V0"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "37ed3d67-8190-481a-914c-0b8151c93014",
+      "before": {
+        "kind": "zone",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "92123e0c1eb2de1111aed75ab493a2bc4f46f4ff9fd46112c62ab24b9c08cb49",
+        "definition_sha256": "1ed720e5f26fbbcfdad304a068787395526b4c5fad7bcbfe1ce32ee733cdd6a7",
+        "filled_geometry_sha256": "a0129710e661e58bd885b82fbe637acf1a39d5a042981ed4e5a56ec0402be391",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In4.Cu"
+          ],
+          [
+            "uuid",
+            "37ed3d67-8190-481a-914c-0b8151c93014"
+          ],
+          [
+            "name",
+            "Bank16 2V5 source and upper BGA island"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "3"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.9",
+                "9.5"
+              ],
+              [
+                "xy",
+                "21.3",
+                "9.5"
+              ],
+              [
+                "xy",
+                "21.3",
+                "13.1"
+              ],
+              [
+                "xy",
+                "19.5",
+                "13.1"
+              ],
+              [
+                "xy",
+                "19.5",
+                "10.8"
+              ],
+              [
+                "xy",
+                "9.9",
+                "10.8"
+              ],
+              [
+                "xy",
+                "9.9",
+                "15"
+              ],
+              [
+                "xy",
+                "7.9",
+                "15"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_LINK_2V5"
+          ]
+        ],
+        "filled_geometry_blocks": 3
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "9a73de630e9a15ba573c69d83286b9c4d15c222e2e6d5303679575e50ddf1b90",
+        "definition_sha256": "69c5f5d421d26de6b55bc3212d0315f2bee530d96450364a293df061b547ccfe",
+        "filled_geometry_sha256": "645847e4a87f8381d10a4544d8d0c9ed615299e15334d6c62d6b038e809bfc59",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "37ed3d67-8190-481a-914c-0b8151c93014"
+          ],
+          [
+            "name",
+            "Bank16 2V5 source and upper BGA island"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "3"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "7.9",
+                "9.5"
+              ],
+              [
+                "xy",
+                "21.3",
+                "9.5"
+              ],
+              [
+                "xy",
+                "21.3",
+                "13.1"
+              ],
+              [
+                "xy",
+                "19.5",
+                "13.1"
+              ],
+              [
+                "xy",
+                "19.5",
+                "10.8"
+              ],
+              [
+                "xy",
+                "9.9",
+                "10.8"
+              ],
+              [
+                "xy",
+                "9.9",
+                "15"
+              ],
+              [
+                "xy",
+                "7.9",
+                "15"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_LINK_2V5"
+          ]
+        ],
+        "filled_geometry_blocks": 3
+      }
+    },
+    {
+      "uuid": "40370a94-cb5d-4197-bdf5-2b5cc83154dc",
+      "before": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "9f50bd424ffccfca4ccb6f65028c644827dde569cc300b701c80f4bdb55932da",
+        "definition_sha256": "be4a83b02f0d6d10a5fc7e6e93b4a09247dd6ff0b470b68dd949af2cf99db852",
+        "filled_geometry_sha256": "0db38429a2315a9ae39f1bd52869bdeab0b9e287f44c53980840b43d09c5290b",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "F.Cu"
+          ],
+          [
+            "uuid",
+            "40370a94-cb5d-4197-bdf5-2b5cc83154dc"
+          ],
+          [
+            "name",
+            "Local BGA ground F.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "12",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "26.5"
+              ],
+              [
+                "xy",
+                "12",
+                "26.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 19
+      },
+      "after": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "9b4a59f98f615182f4ea1bcef6d6f70388af9bf3d6bd456df0d6117943e194c7",
+        "definition_sha256": "be4a83b02f0d6d10a5fc7e6e93b4a09247dd6ff0b470b68dd949af2cf99db852",
+        "filled_geometry_sha256": "1b279606190a806b3a3151fbebe04c4209733acb4cbff284856a5c5c921f1b5a",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "F.Cu"
+          ],
+          [
+            "uuid",
+            "40370a94-cb5d-4197-bdf5-2b5cc83154dc"
+          ],
+          [
+            "name",
+            "Local BGA ground F.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "12",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "26.5"
+              ],
+              [
+                "xy",
+                "12",
+                "26.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 24
+      }
+    },
+    {
+      "uuid": "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5",
+      "before": {
+        "kind": "zone",
+        "net": "VCC_ASIC_1V5",
+        "signature_sha256": "68765c74305c199db93aba5205822a5f2da4b961b267694a367f527063ccc4dd",
+        "definition_sha256": "c68f68775773483bd93714d376d03bb9d1fc5dc57e158b2f25a29edaefb5b5ae",
+        "filled_geometry_sha256": "cf9f99600289e4cfc30aa9afb45832fcc9d6b0b90ac7f0fa38a2f96cd284f049",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In4.Cu"
+          ],
+          [
+            "uuid",
+            "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5"
+          ],
+          [
+            "name",
+            "ASIC banks 15 34 35 distribution study"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_ASIC_1V5"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCC_ASIC_1V5",
+        "signature_sha256": "f85fcfacb71e458e4bb14dfd424be9566440ec6d09ce94f3d851555ab4f5c061",
+        "definition_sha256": "22a94681abe6605b58e6b22eea47f1575ec77a21a60aaff1a69521e152b8a18d",
+        "filled_geometry_sha256": "8655699f173f64d4c825c19652507329d0038bc2f16ec32c8378b27a6af7081e",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5"
+          ],
+          [
+            "name",
+            "ASIC banks 15 34 35 distribution study"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCC_ASIC_1V5"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "774b39a5-3476-4bd8-8503-4ae71ed37174",
+      "before": {
+        "kind": "via",
+        "net": "GND",
+        "signature_sha256": "25767289d0aff2c6b31d2e7d18c659d276dd5ec256cdcb24d151869a19794d6b"
+      },
+      "after": {
+        "kind": "via",
+        "net": "GND",
+        "signature_sha256": "467d2fe0ca76db2c5354b50f5c99aa60aa71b8d2de16646c07c3de294aa676c9"
+      }
+    },
+    {
+      "uuid": "7c7cda21-f1ce-4368-b614-bba3ea1f8da5",
+      "before": {
+        "kind": "via",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "f87679ba945a543b12f62f66500cb58e1f31c60b61910112df34396f288c5a28"
+      },
+      "after": {
+        "kind": "via",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "16363853de07301335bce8773f9ac3269b0a6b9b94e05f6a5a9afe0355fc541d"
+      }
+    },
+    {
+      "uuid": "85b772e2-3ceb-4858-be7e-f749ff6d9583",
+      "before": {
+        "kind": "zone",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "457ac08b10613698f56fda5d45e8e89bd5b2566b8dc08f53bb62936d599bfbad",
+        "definition_sha256": "93044e6ee54db3232e90a00fa063f3024caae9eda91e51847715f034c6b18ebb",
+        "filled_geometry_sha256": "de996344700c34bb94298c481b708c4ad8ee5ab3d8b4cf1a9919205241f8c95a",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In4.Cu"
+          ],
+          [
+            "uuid",
+            "85b772e2-3ceb-4858-be7e-f749ff6d9583"
+          ],
+          [
+            "name",
+            "AUX downstream of R122"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "2"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "19.1",
+                "14.9"
+              ],
+              [
+                "xy",
+                "23.1",
+                "14.9"
+              ],
+              [
+                "xy",
+                "23.1",
+                "19.35"
+              ],
+              [
+                "xy",
+                "28.6",
+                "19.35"
+              ],
+              [
+                "xy",
+                "28.6",
+                "35.5"
+              ],
+              [
+                "xy",
+                "6.6",
+                "35.5"
+              ],
+              [
+                "xy",
+                "6.6",
+                "29.6"
+              ],
+              [
+                "xy",
+                "19.1",
+                "29.6"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCAUX_1V8"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "e7c84a03e90c9c6af3086cc6a2ea57d7a2a19f05caa0554c6b88ac5d26f54808",
+        "definition_sha256": "183c3f6c0e85dc5364c1a34cfdf2cb4c8648113e7d90af20162fd19d1da65ca2",
+        "filled_geometry_sha256": "11103317f47f302c59e007d524843baa12394c430747bdcf970af04c878f94bf",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "85b772e2-3ceb-4858-be7e-f749ff6d9583"
+          ],
+          [
+            "name",
+            "AUX downstream of R122"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "2"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "19.1",
+                "14.9"
+              ],
+              [
+                "xy",
+                "23.1",
+                "14.9"
+              ],
+              [
+                "xy",
+                "23.1",
+                "19.35"
+              ],
+              [
+                "xy",
+                "28.6",
+                "19.35"
+              ],
+              [
+                "xy",
+                "28.6",
+                "35.5"
+              ],
+              [
+                "xy",
+                "6.6",
+                "35.5"
+              ],
+              [
+                "xy",
+                "6.6",
+                "29.6"
+              ],
+              [
+                "xy",
+                "19.1",
+                "29.6"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "VCCAUX_1V8"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "948e8224-35c4-4d52-bc48-f7e0fc0d1be0",
+      "before": {
+        "kind": "via",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "039b72e7597d1be7d91a86aac271b4d9b70d806066c399f71d93088fa8c36b21"
+      },
+      "after": {
+        "kind": "via",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "a590f6ec00bf55a987c95e0d1d95b80d0fa38bb02f037e6087c11943d3d7123c"
+      }
+    },
+    {
+      "uuid": "98301355-30cc-4a94-b38e-bf1f36dcf994",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "49d70f92d3123269e3f8029292fc9eb55d796379798b905c33d8731febdde6a9"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "d12b9dace18a69d7692ad241a7712446a3019ebb2bc67de4b778a773c44cc10c"
+      }
+    },
+    {
+      "uuid": "9e31b35a-f053-4a06-b20c-8e9143ee00dd",
+      "before": {
+        "kind": "zone",
+        "net": "LINK_12V",
+        "signature_sha256": "093375a7b053410660cbf0429d46c275e593c83f2b03f4c26b29f6f9d2464e69",
+        "definition_sha256": "80676d2d3283767a8f94a5affd5d8a0962d23fab7fa9bf64905e1bdebe42631c",
+        "filled_geometry_sha256": "b44bffcbacdd045c1610f01e2a4e6f4989be044e8cdf632f3d59a5bfd7a8d360",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In3.Cu"
+          ],
+          [
+            "uuid",
+            "9e31b35a-f053-4a06-b20c-8e9143ee00dd"
+          ],
+          [
+            "name",
+            "12V input distribution study"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "2"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "16"
+              ],
+              [
+                "xy",
+                "29.5",
+                "16"
+              ],
+              [
+                "xy",
+                "29.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "27.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "27.5",
+                "8.4"
+              ],
+              [
+                "xy",
+                "24.5",
+                "8.4"
+              ],
+              [
+                "xy",
+                "24.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "6.75",
+                "4.2"
+              ],
+              [
+                "xy",
+                "6.75",
+                "10"
+              ],
+              [
+                "xy",
+                "8.4",
+                "10"
+              ],
+              [
+                "xy",
+                "8.4",
+                "13.25"
+              ],
+              [
+                "xy",
+                "6.75",
+                "13.25"
+              ],
+              [
+                "xy",
+                "6.75",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "LINK_12V"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "LINK_12V",
+        "signature_sha256": "414b02c8ea1a9105d15911a61e726a083c33a3a8f652c11b5d8fef9d39ab75b9",
+        "definition_sha256": "172e1a53ac51ba3cedee70d525e3e11955183cbd4844f45071ca6bdaae93d81f",
+        "filled_geometry_sha256": "8aac748176365259bdbddbff88582d6cc2894def7e31dc5416a2bfd223b70149",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In5.Cu"
+          ],
+          [
+            "uuid",
+            "9e31b35a-f053-4a06-b20c-8e9143ee00dd"
+          ],
+          [
+            "name",
+            "12V input distribution study"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "priority",
+            "2"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "16"
+              ],
+              [
+                "xy",
+                "29.5",
+                "16"
+              ],
+              [
+                "xy",
+                "29.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "27.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "27.5",
+                "8.4"
+              ],
+              [
+                "xy",
+                "24.5",
+                "8.4"
+              ],
+              [
+                "xy",
+                "24.5",
+                "4.2"
+              ],
+              [
+                "xy",
+                "6.75",
+                "4.2"
+              ],
+              [
+                "xy",
+                "6.75",
+                "10"
+              ],
+              [
+                "xy",
+                "8.4",
+                "10"
+              ],
+              [
+                "xy",
+                "8.4",
+                "13.25"
+              ],
+              [
+                "xy",
+                "6.75",
+                "13.25"
+              ],
+              [
+                "xy",
+                "6.75",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "LINK_12V"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "a5321e51-3f5f-4c3e-8b0c-67f91bd9904b",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "fb9bfa5d314b311ef12013df6290caef385299dc8be7676b85713cb3d6e736b1"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "97dfc15ae546b8228fd4cd232397a557240c9879f1bceffd3e2ea8a1d3767270"
+      }
+    },
+    {
+      "uuid": "aa5e334b-8a24-4687-84c8-eddbb34b6b3a",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "0c6e19a319fdefe7277352fc6b6f872389453592837c5c351e8ba700b56d3fc7"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "0c3f83431a8ca2a9894ed5283fe445a2c189fb031119b75ece79726d150e38b8"
+      }
+    },
+    {
+      "uuid": "aefa4b8f-67fc-4290-b2d1-8b6bf00c7855",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "129b711ff98b7d3d84f22b7691f6a314c7323f5b79010e16d5cc3ae653a57398"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "4bf36aaa6d3575d4e6a376647b3d162485fae73df23a3450599e0e98e2352c4d"
+      }
+    },
+    {
+      "uuid": "b312a487-285b-4edb-a16c-696a2ad3930d",
+      "before": {
+        "kind": "segment",
+        "net": "CFG_M2",
+        "signature_sha256": "85c16b16e25c6345b938d28387b808a4f3a8045f7f4672c1f3e56eecc64b276f"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "GND",
+        "signature_sha256": "ba4bd81b2f065d89a6723fab05a35b4867d143ada1a820a3b698e65c30fe8c33"
+      }
+    },
+    {
+      "uuid": "bab688e8-88b1-40e9-8000-764b2a191b8d",
+      "before": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "018b9e3a9d5f0568e9109407287036b53b6c9643c9fa558c0672df9ecc69e7de",
+        "definition_sha256": "421b414a54d24291e7796e8ce7ed2ed98796cab2cd2dd89d8231ddd46d515e46",
+        "filled_geometry_sha256": "a19d6c5ead230bb3a2c4f532e09fe231826142384f7eceb68956dd61ec7212a2",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In6.Cu"
+          ],
+          [
+            "uuid",
+            "bab688e8-88b1-40e9-8000-764b2a191b8d"
+          ],
+          [
+            "name",
+            "GND reference In6.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "1d26d52ec5f356a679af14d2d6de823e78582dc76e686f71949e3bb63eb81d19",
+        "definition_sha256": "ec7f2fe7f11a8191655554e64bc170ca2675182df8eb6e9e91edfd844bce37db",
+        "filled_geometry_sha256": "4ee18b1b94969204151ccce8750939d0e6d9e915572f94b8d2b82eb2a0336daf",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "In10.Cu"
+          ],
+          [
+            "uuid",
+            "bab688e8-88b1-40e9-8000-764b2a191b8d"
+          ],
+          [
+            "name",
+            "GND reference In6.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "0.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "0.5"
+              ],
+              [
+                "xy",
+                "32.5",
+                "35.5"
+              ],
+              [
+                "xy",
+                "0.5",
+                "35.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      }
+    },
+    {
+      "uuid": "bfbb19bb-86ca-45dc-843b-3fb2ed2586c8",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "d6417de0ba90bc6fff56a8f2ebe50f6cb773d51bc134e475fdcf2163f43aa724"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "71837fef092f7a63416b212febaf9fe8735cd7232086effe4069009e0e4c628f"
+      }
+    },
+    {
+      "uuid": "c5eebe4e-0bf1-4133-a37e-4d586c41bffc",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "467c9ef085b85873bb45f796cb92026ade9c3b335a6ad6dc5bb6a06dcaa865c8"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "00962e914eda4a543f12094a4dc6d250ef17eb2e810f4c8823dc8304bcae15ae"
+      }
+    },
+    {
+      "uuid": "de92a646-a440-4189-8293-8be8cb7636e8",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "f2d8ae5c4e16779fb772b9719eb65141965628e178afc4e8c3fe07186281bbdd"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "aa885685ec4fa5fd25bd62578cb9930d853da829206b2a9fb799241cb48c1b6c"
+      }
+    },
+    {
+      "uuid": "e3dba91d-d612-44fa-bf70-210961fbbc82",
+      "before": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "5277a885f0f73e5be4f6dd44c9fec3ed6e08541ab683c30c1a294573d6ca704f",
+        "definition_sha256": "bc058fc13b99ac35bf5135c134f5fc59e6a54d34b73e850560f9d9b92025a91e",
+        "filled_geometry_sha256": "490ef3f25f42e9fcb60449372d911bcd035b6df981533d451eb78a31cd669879",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "B.Cu"
+          ],
+          [
+            "uuid",
+            "e3dba91d-d612-44fa-bf70-210961fbbc82"
+          ],
+          [
+            "name",
+            "Local BGA ground B.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "12",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "26.5"
+              ],
+              [
+                "xy",
+                "12",
+                "26.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 1
+      },
+      "after": {
+        "kind": "zone",
+        "net": "GND",
+        "signature_sha256": "bbce052be0222c71f33492b6e7bb4915c9cb11cc9f46d4d00b0ad430c110e368",
+        "definition_sha256": "bc058fc13b99ac35bf5135c134f5fc59e6a54d34b73e850560f9d9b92025a91e",
+        "filled_geometry_sha256": "c1fe6b6d8c6b175ee488a69ae7ff34aa867e08a4c969500d684a12e0dce15fbc",
+        "definition": [
+          "zone",
+          [
+            "layer",
+            "B.Cu"
+          ],
+          [
+            "uuid",
+            "e3dba91d-d612-44fa-bf70-210961fbbc82"
+          ],
+          [
+            "name",
+            "Local BGA ground B.Cu"
+          ],
+          [
+            "hatch",
+            "edge",
+            "0.5"
+          ],
+          [
+            "connect_pads",
+            "yes",
+            [
+              "clearance",
+              "0.15"
+            ]
+          ],
+          [
+            "min_thickness",
+            "0.1"
+          ],
+          [
+            "fill",
+            "yes",
+            [
+              "thermal_gap",
+              "0.5"
+            ],
+            [
+              "thermal_bridge_width",
+              "0.5"
+            ],
+            [
+              "island_removal_mode",
+              "0"
+            ]
+          ],
+          [
+            "polygon",
+            [
+              "pts",
+              [
+                "xy",
+                "12",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "10.5"
+              ],
+              [
+                "xy",
+                "28",
+                "26.5"
+              ],
+              [
+                "xy",
+                "12",
+                "26.5"
+              ]
+            ]
+          ],
+          [
+            "functional_net",
+            "GND"
+          ]
+        ],
+        "filled_geometry_blocks": 17
+      }
+    },
+    {
+      "uuid": "eb67d260-5492-45ba-95f9-afeb71867e52",
+      "before": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "cb310fc95f26de29cf347e20061f5330a7e4440e52bbca8fc7166b9e99364134"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCC_LINK_2V5",
+        "signature_sha256": "070e0f2508d8cd3ed1292faeab8b391c2214e0cff1521debaaedbb865007f719"
+      }
+    },
+    {
+      "uuid": "f0c23151-43f8-4a24-b3c6-f6333a3087f1",
+      "before": {
+        "kind": "segment",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "72f778890bc8498dcd8714c9e6534931782e49e824a74932ea3e870809bf6897"
+      },
+      "after": {
+        "kind": "segment",
+        "net": "VCCAUX_1V8",
+        "signature_sha256": "c713074ab9002b2fb4bae5187339b08737db5cee3380019773d3fa6e0f858bcb"
+      }
+    },
+    {
+      "uuid": "f68df58f-a5e1-4463-b8a6-cf668f727372",
+      "before": {
+        "kind": "via",
+        "net": "CFG_M2",
+        "signature_sha256": "715f2d107118de88f0136353c044263b843aa8a974e0e716c5d60b046cee4da5"
+      },
+      "after": {
+        "kind": "via",
+        "net": "GND",
+        "signature_sha256": "0eb31b3440dd08defd41c681988f584108e3e245f061dde3e1ac46e62bbca2eb"
+      }
+    }
+  ],
+  "retained_copper_acceptance_verified": true,
+  "zone_changes": [
+    {
+      "uuid": "00c248eb-2df0-4d66-a227-9e7b591e03c5",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "428a894545fed2b293a396613e6d48e00f8ffc22ca69838dab07feef59f51f5a",
+      "after_definition_sha256": "34d17dad2f2827be772fa7689481d12c6c1a7d12a830c712678162e52e53eda2",
+      "before_filled_geometry_sha256": "e66cec1af209076481ef6f3249e423085531ad2b157400c473823e4ee457bd50",
+      "after_filled_geometry_sha256": "ed927cfaab5af88946108e151e0322a47a308a1171d9c9813ef8ef1eed9aa7fb",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "00c248eb-2df0-4d66-a227-9e7b591e03c5"
+        ],
+        [
+          "name",
+          "Bank16 local bulk distribution"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "14.8",
+              "7.2"
+            ],
+            [
+              "xy",
+              "21.4",
+              "7.2"
+            ],
+            [
+              "xy",
+              "21.4",
+              "13.65"
+            ],
+            [
+              "xy",
+              "19.2",
+              "13.65"
+            ],
+            [
+              "xy",
+              "19.2",
+              "10.7"
+            ],
+            [
+              "xy",
+              "14.8",
+              "10.7"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_LINK_2V5"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "00c248eb-2df0-4d66-a227-9e7b591e03c5"
+        ],
+        [
+          "name",
+          "Bank16 local bulk distribution"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "14.8",
+              "7.2"
+            ],
+            [
+              "xy",
+              "22.95",
+              "7.2"
+            ],
+            [
+              "xy",
+              "22.95",
+              "10.6"
+            ],
+            [
+              "xy",
+              "21.4",
+              "10.6"
+            ],
+            [
+              "xy",
+              "21.4",
+              "13.65"
+            ],
+            [
+              "xy",
+              "19.2",
+              "13.65"
+            ],
+            [
+              "xy",
+              "19.2",
+              "10.7"
+            ],
+            [
+              "xy",
+              "14.8",
+              "10.7"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_LINK_2V5"
+        ]
+      ]
+    },
+    {
+      "uuid": "19ed7dc1-11ea-4a1a-b002-418c97d549a1",
+      "definition_changed": false,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "4383ca0b06c4612cfb7e5088d1391bd5aa68fe87e4771e1722d087007ecb7704",
+      "after_definition_sha256": "4383ca0b06c4612cfb7e5088d1391bd5aa68fe87e4771e1722d087007ecb7704",
+      "before_filled_geometry_sha256": "410b71ca83b0b1f9d1d62c7e943be7ddc672d9dd09cd9d30c550077fc312b6a0",
+      "after_filled_geometry_sha256": "b6725cf29647c7df7f3a144e02449b7612885f6a91aa3dcdd0a33db11a4ca757",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": null,
+      "after_definition": null
+    },
+    {
+      "uuid": "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "5f73fd21d207742ad3457511a0d65657d311fd480b7d1ad786b8314791ad955c",
+      "after_definition_sha256": "dd02ba7f584f2bdd67bc6909de30b4acb958d608ce6d9ad64007f903125cf4d6",
+      "before_filled_geometry_sha256": "9ae2183b655be7a4e677ccd25d9688c6cbb7cc3bd365259c9ed2341ea05a31e4",
+      "after_filled_geometry_sha256": "1047fe0efbe8d3bf089491c79bcfdef3a40d484727b138d611ebf80c65cc1d58",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2"
+        ],
+        [
+          "name",
+          "AUX boot clock and outer-bank distribution"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "4"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.1",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "9.2"
+            ],
+            [
+              "xy",
+              "7.1",
+              "9.2"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCAUX_1V8"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "237ef7d3-4dc5-4705-9ac3-fdc476f6acd2"
+        ],
+        [
+          "name",
+          "AUX boot clock and outer-bank distribution"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "4"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.1",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "9.2"
+            ],
+            [
+              "xy",
+              "7.1",
+              "9.2"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCAUX_1V8"
+        ]
+      ]
+    },
+    {
+      "uuid": "3358a157-e904-45f3-ad0c-740e6229acf1",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "257765b0af4b2619fb72483140d05015eca770f218110d30d97c0ad2e0cc792b",
+      "after_definition_sha256": "fca7b9b8c31414137d4dfb7d88c57f52e0c4aa3951588baa17cf9fe9bb5ba1df",
+      "before_filled_geometry_sha256": "b8e962240d145502bb55f5402bbdc1858226f1ddbc778d4a132a0f1d2b587b99",
+      "after_filled_geometry_sha256": "44c965262e2fa84e8b74ebb4f1da0424d7c61c309901a26ffc952636fc2c36f6",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In3.Cu"
+        ],
+        [
+          "uuid",
+          "3358a157-e904-45f3-ad0c-740e6229acf1"
+        ],
+        [
+          "name",
+          "Core downstream of R9"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "1"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.1",
+              "4.5"
+            ],
+            [
+              "xy",
+              "29.15",
+              "4.5"
+            ],
+            [
+              "xy",
+              "29.15",
+              "35.5"
+            ],
+            [
+              "xy",
+              "7.1",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCINT_1V0"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In5.Cu"
+        ],
+        [
+          "uuid",
+          "3358a157-e904-45f3-ad0c-740e6229acf1"
+        ],
+        [
+          "name",
+          "Core downstream of R9"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "1"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.1",
+              "4.5"
+            ],
+            [
+              "xy",
+              "29.15",
+              "4.5"
+            ],
+            [
+              "xy",
+              "29.15",
+              "35.5"
+            ],
+            [
+              "xy",
+              "7.1",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCINT_1V0"
+        ]
+      ]
+    },
+    {
+      "uuid": "37ed3d67-8190-481a-914c-0b8151c93014",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "1ed720e5f26fbbcfdad304a068787395526b4c5fad7bcbfe1ce32ee733cdd6a7",
+      "after_definition_sha256": "69c5f5d421d26de6b55bc3212d0315f2bee530d96450364a293df061b547ccfe",
+      "before_filled_geometry_sha256": "a0129710e661e58bd885b82fbe637acf1a39d5a042981ed4e5a56ec0402be391",
+      "after_filled_geometry_sha256": "645847e4a87f8381d10a4544d8d0c9ed615299e15334d6c62d6b038e809bfc59",
+      "before_filled_geometry_blocks": 3,
+      "after_filled_geometry_blocks": 3,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "37ed3d67-8190-481a-914c-0b8151c93014"
+        ],
+        [
+          "name",
+          "Bank16 2V5 source and upper BGA island"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "3"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.9",
+              "9.5"
+            ],
+            [
+              "xy",
+              "21.3",
+              "9.5"
+            ],
+            [
+              "xy",
+              "21.3",
+              "13.1"
+            ],
+            [
+              "xy",
+              "19.5",
+              "13.1"
+            ],
+            [
+              "xy",
+              "19.5",
+              "10.8"
+            ],
+            [
+              "xy",
+              "9.9",
+              "10.8"
+            ],
+            [
+              "xy",
+              "9.9",
+              "15"
+            ],
+            [
+              "xy",
+              "7.9",
+              "15"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_LINK_2V5"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "37ed3d67-8190-481a-914c-0b8151c93014"
+        ],
+        [
+          "name",
+          "Bank16 2V5 source and upper BGA island"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "3"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "7.9",
+              "9.5"
+            ],
+            [
+              "xy",
+              "21.3",
+              "9.5"
+            ],
+            [
+              "xy",
+              "21.3",
+              "13.1"
+            ],
+            [
+              "xy",
+              "19.5",
+              "13.1"
+            ],
+            [
+              "xy",
+              "19.5",
+              "10.8"
+            ],
+            [
+              "xy",
+              "9.9",
+              "10.8"
+            ],
+            [
+              "xy",
+              "9.9",
+              "15"
+            ],
+            [
+              "xy",
+              "7.9",
+              "15"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_LINK_2V5"
+        ]
+      ]
+    },
+    {
+      "uuid": "40370a94-cb5d-4197-bdf5-2b5cc83154dc",
+      "definition_changed": false,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "be4a83b02f0d6d10a5fc7e6e93b4a09247dd6ff0b470b68dd949af2cf99db852",
+      "after_definition_sha256": "be4a83b02f0d6d10a5fc7e6e93b4a09247dd6ff0b470b68dd949af2cf99db852",
+      "before_filled_geometry_sha256": "0db38429a2315a9ae39f1bd52869bdeab0b9e287f44c53980840b43d09c5290b",
+      "after_filled_geometry_sha256": "1b279606190a806b3a3151fbebe04c4209733acb4cbff284856a5c5c921f1b5a",
+      "before_filled_geometry_blocks": 19,
+      "after_filled_geometry_blocks": 24,
+      "before_definition": null,
+      "after_definition": null
+    },
+    {
+      "uuid": "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "c68f68775773483bd93714d376d03bb9d1fc5dc57e158b2f25a29edaefb5b5ae",
+      "after_definition_sha256": "22a94681abe6605b58e6b22eea47f1575ec77a21a60aaff1a69521e152b8a18d",
+      "before_filled_geometry_sha256": "cf9f99600289e4cfc30aa9afb45832fcc9d6b0b90ac7f0fa38a2f96cd284f049",
+      "after_filled_geometry_sha256": "8655699f173f64d4c825c19652507329d0038bc2f16ec32c8378b27a6af7081e",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5"
+        ],
+        [
+          "name",
+          "ASIC banks 15 34 35 distribution study"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_ASIC_1V5"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "69f68c3d-c282-4f0c-95a5-566ab1a5e2f5"
+        ],
+        [
+          "name",
+          "ASIC banks 15 34 35 distribution study"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCC_ASIC_1V5"
+        ]
+      ]
+    },
+    {
+      "uuid": "85b772e2-3ceb-4858-be7e-f749ff6d9583",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "93044e6ee54db3232e90a00fa063f3024caae9eda91e51847715f034c6b18ebb",
+      "after_definition_sha256": "183c3f6c0e85dc5364c1a34cfdf2cb4c8648113e7d90af20162fd19d1da65ca2",
+      "before_filled_geometry_sha256": "de996344700c34bb94298c481b708c4ad8ee5ab3d8b4cf1a9919205241f8c95a",
+      "after_filled_geometry_sha256": "11103317f47f302c59e007d524843baa12394c430747bdcf970af04c878f94bf",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "85b772e2-3ceb-4858-be7e-f749ff6d9583"
+        ],
+        [
+          "name",
+          "AUX downstream of R122"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "2"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "19.1",
+              "14.9"
+            ],
+            [
+              "xy",
+              "23.1",
+              "14.9"
+            ],
+            [
+              "xy",
+              "23.1",
+              "19.35"
+            ],
+            [
+              "xy",
+              "28.6",
+              "19.35"
+            ],
+            [
+              "xy",
+              "28.6",
+              "35.5"
+            ],
+            [
+              "xy",
+              "6.6",
+              "35.5"
+            ],
+            [
+              "xy",
+              "6.6",
+              "29.6"
+            ],
+            [
+              "xy",
+              "19.1",
+              "29.6"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCAUX_1V8"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "85b772e2-3ceb-4858-be7e-f749ff6d9583"
+        ],
+        [
+          "name",
+          "AUX downstream of R122"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "2"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "19.1",
+              "14.9"
+            ],
+            [
+              "xy",
+              "23.1",
+              "14.9"
+            ],
+            [
+              "xy",
+              "23.1",
+              "19.35"
+            ],
+            [
+              "xy",
+              "28.6",
+              "19.35"
+            ],
+            [
+              "xy",
+              "28.6",
+              "35.5"
+            ],
+            [
+              "xy",
+              "6.6",
+              "35.5"
+            ],
+            [
+              "xy",
+              "6.6",
+              "29.6"
+            ],
+            [
+              "xy",
+              "19.1",
+              "29.6"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "VCCAUX_1V8"
+        ]
+      ]
+    },
+    {
+      "uuid": "9e31b35a-f053-4a06-b20c-8e9143ee00dd",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "80676d2d3283767a8f94a5affd5d8a0962d23fab7fa9bf64905e1bdebe42631c",
+      "after_definition_sha256": "172e1a53ac51ba3cedee70d525e3e11955183cbd4844f45071ca6bdaae93d81f",
+      "before_filled_geometry_sha256": "b44bffcbacdd045c1610f01e2a4e6f4989be044e8cdf632f3d59a5bfd7a8d360",
+      "after_filled_geometry_sha256": "8aac748176365259bdbddbff88582d6cc2894def7e31dc5416a2bfd223b70149",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In3.Cu"
+        ],
+        [
+          "uuid",
+          "9e31b35a-f053-4a06-b20c-8e9143ee00dd"
+        ],
+        [
+          "name",
+          "12V input distribution study"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "2"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "16"
+            ],
+            [
+              "xy",
+              "29.5",
+              "16"
+            ],
+            [
+              "xy",
+              "29.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "27.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "27.5",
+              "8.4"
+            ],
+            [
+              "xy",
+              "24.5",
+              "8.4"
+            ],
+            [
+              "xy",
+              "24.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "6.75",
+              "4.2"
+            ],
+            [
+              "xy",
+              "6.75",
+              "10"
+            ],
+            [
+              "xy",
+              "8.4",
+              "10"
+            ],
+            [
+              "xy",
+              "8.4",
+              "13.25"
+            ],
+            [
+              "xy",
+              "6.75",
+              "13.25"
+            ],
+            [
+              "xy",
+              "6.75",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "LINK_12V"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In5.Cu"
+        ],
+        [
+          "uuid",
+          "9e31b35a-f053-4a06-b20c-8e9143ee00dd"
+        ],
+        [
+          "name",
+          "12V input distribution study"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "priority",
+          "2"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "16"
+            ],
+            [
+              "xy",
+              "29.5",
+              "16"
+            ],
+            [
+              "xy",
+              "29.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "27.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "27.5",
+              "8.4"
+            ],
+            [
+              "xy",
+              "24.5",
+              "8.4"
+            ],
+            [
+              "xy",
+              "24.5",
+              "4.2"
+            ],
+            [
+              "xy",
+              "6.75",
+              "4.2"
+            ],
+            [
+              "xy",
+              "6.75",
+              "10"
+            ],
+            [
+              "xy",
+              "8.4",
+              "10"
+            ],
+            [
+              "xy",
+              "8.4",
+              "13.25"
+            ],
+            [
+              "xy",
+              "6.75",
+              "13.25"
+            ],
+            [
+              "xy",
+              "6.75",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "LINK_12V"
+        ]
+      ]
+    },
+    {
+      "uuid": "bab688e8-88b1-40e9-8000-764b2a191b8d",
+      "definition_changed": true,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "421b414a54d24291e7796e8ce7ed2ed98796cab2cd2dd89d8231ddd46d515e46",
+      "after_definition_sha256": "ec7f2fe7f11a8191655554e64bc170ca2675182df8eb6e9e91edfd844bce37db",
+      "before_filled_geometry_sha256": "a19d6c5ead230bb3a2c4f532e09fe231826142384f7eceb68956dd61ec7212a2",
+      "after_filled_geometry_sha256": "4ee18b1b94969204151ccce8750939d0e6d9e915572f94b8d2b82eb2a0336daf",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 1,
+      "before_definition": [
+        "zone",
+        [
+          "layer",
+          "In6.Cu"
+        ],
+        [
+          "uuid",
+          "bab688e8-88b1-40e9-8000-764b2a191b8d"
+        ],
+        [
+          "name",
+          "GND reference In6.Cu"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "GND"
+        ]
+      ],
+      "after_definition": [
+        "zone",
+        [
+          "layer",
+          "In10.Cu"
+        ],
+        [
+          "uuid",
+          "bab688e8-88b1-40e9-8000-764b2a191b8d"
+        ],
+        [
+          "name",
+          "GND reference In6.Cu"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "GND"
+        ]
+      ]
+    },
+    {
+      "uuid": "e3dba91d-d612-44fa-bf70-210961fbbc82",
+      "definition_changed": false,
+      "filled_geometry_changed": true,
+      "before_definition_sha256": "bc058fc13b99ac35bf5135c134f5fc59e6a54d34b73e850560f9d9b92025a91e",
+      "after_definition_sha256": "bc058fc13b99ac35bf5135c134f5fc59e6a54d34b73e850560f9d9b92025a91e",
+      "before_filled_geometry_sha256": "490ef3f25f42e9fcb60449372d911bcd035b6df981533d451eb78a31cd669879",
+      "after_filled_geometry_sha256": "c1fe6b6d8c6b175ee488a69ae7ff34aa867e08a4c969500d684a12e0dce15fbc",
+      "before_filled_geometry_blocks": 1,
+      "after_filled_geometry_blocks": 17,
+      "before_definition": null,
+      "after_definition": null
+    }
+  ],
+  "added_zone_definitions": [
+    {
+      "uuid": "66b0dfa2-82a1-42b4-b3fc-9fa0ec6824bd",
+      "definition": [
+        "zone",
+        [
+          "layer",
+          "In4.Cu"
+        ],
+        [
+          "uuid",
+          "66b0dfa2-82a1-42b4-b3fc-9fa0ec6824bd"
+        ],
+        [
+          "name",
+          "Additional continuous GND reference"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "GND"
+        ]
+      ],
+      "definition_sha256": "da21b7c7af594246ecc57c6987dc5e0c66dfea70fdc2556033f5167bb7d170d4"
+    },
+    {
+      "uuid": "7b0a97b8-1817-49eb-8248-fd14fe302e4f",
+      "definition": [
+        "zone",
+        [
+          "layer",
+          "In7.Cu"
+        ],
+        [
+          "uuid",
+          "7b0a97b8-1817-49eb-8248-fd14fe302e4f"
+        ],
+        [
+          "name",
+          "Additional continuous GND reference"
+        ],
+        [
+          "hatch",
+          "edge",
+          "0.5"
+        ],
+        [
+          "connect_pads",
+          "yes",
+          [
+            "clearance",
+            "0.15"
+          ]
+        ],
+        [
+          "min_thickness",
+          "0.1"
+        ],
+        [
+          "fill",
+          "yes",
+          [
+            "thermal_gap",
+            "0.5"
+          ],
+          [
+            "thermal_bridge_width",
+            "0.5"
+          ],
+          [
+            "island_removal_mode",
+            "0"
+          ]
+        ],
+        [
+          "polygon",
+          [
+            "pts",
+            [
+              "xy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "0.5"
+            ],
+            [
+              "xy",
+              "32.5",
+              "35.5"
+            ],
+            [
+              "xy",
+              "0.5",
+              "35.5"
+            ]
+          ]
+        ],
+        [
+          "functional_net",
+          "GND"
+        ]
+      ],
+      "definition_sha256": "d7c3ca14a5c39bc607b814a728d735144e92480281e463b9e191d758b2204988"
+    }
+  ],
+  "removed_zone_definitions": [],
+  "added_copper_by_net": {
+    "ASIC4_DATA5": 38,
+    "ASIC6_DATA2": 13,
+    "FLASH_CS_B": 27,
+    "ASIC6_READ": 20,
+    "ASIC2_DATA7": 28,
+    "STIM_START_SHARED": 19,
+    "ASIC6_DATA6": 14,
+    "ASIC4_DATA6": 8,
+    "ASIC2_SYNC": 43,
+    "STIM_EN_SHARED": 17,
+    "ASIC7_DATA6": 7,
+    "FLASH_SCLK": 21,
+    "ASIC8_DATA5": 12,
+    "FLASH_DQ1": 18,
+    "ASIC3_DATA8": 41,
+    "ASIC3_DATA6": 26,
+    "ASIC8_DATA2": 25,
+    "FPGA_INIT_B": 55,
+    "ASIC8_DATA7": 13,
+    "ASIC7_DATA5": 11,
+    "ASIC2_CLK32MHz_Out": 37,
+    "ASIC8_DATA1": 28,
+    "ASIC1_DATA2": 26,
+    "ASIC1_DATA5": 12,
+    "ASIC4_DATA8": 8,
+    "FLASH_DQ0": 29,
+    "ASIC2_READ": 8,
+    "ASIC8_DATA4": 19,
+    "ASIC3_DATA4": 28,
+    "STIM_CHIP2_SPI_DR": 19,
+    "ASIC5_CLK32MHz_Out": 18,
+    "ASIC1_DATA4": 15,
+    "ASIC1_DATA7": 12,
+    "JTAG_TDI": 43,
+    "ASIC4_DATA2": 6,
+    "FE_RESET_SHARED": 20,
+    "CLK_32MHZ": 37,
+    "FPGA_CFG_DQ1": 35,
+    "CFG_PUDC_B": 14,
+    "ASIC2_DATA1": 32,
+    "NONSTIM_BOARD1_SPI_DL": 9,
+    "ASIC8_DATA8": 19,
+    "ASIC1_DATA3": 16,
+    "ASIC3_DATA3": 10,
+    "BOARD4_SPI_CLK": 21,
+    "ASIC8_READ": 10,
+    "ASIC2_DATA6": 16,
+    "ASIC3_READ": 39,
+    "ASIC4_READ": 8,
+    "ASIC7_SYNC": 12,
+    "BOARD3_CLK": 14,
+    "STIM_CHIP3_SPI_DL": 14,
+    "STIM_CHIP3_SPI_DR": 20,
+    "ASIC8_SYNC": 18,
+    "ASIC6_DATA8": 20,
+    "STIM_CHIP1_SPI_DR": 13,
+    "ASIC6_DATA1": 14,
+    "ASIC5_DATA4": 8,
+    "ASIC1_READ": 10,
+    "ASIC4_DATA1": 26,
+    "BOARD3_SPI_CLK": 12,
+    "FPGA_TDO": 5,
+    "ASIC5_DATA5": 18,
+    "NONSTIM_BOARD1_SPI_DR": 10,
+    "STIM_CHB_SHARED": 14,
+    "ASIC4_SYNC": 50,
+    "ASIC6_SYNC": 9,
+    "ASIC3_DATA2": 23,
+    "ASIC4_DATA7": 40,
+    "PG_AUX": 27,
+    "JTAG_TMS": 37,
+    "ASIC7_DATA4": 12,
+    "ASIC4_DATA3": 30,
+    "ASIC7_DATA8": 4,
+    "CFG_M0": 9,
+    "ASIC2_DATA4": 19,
+    "ASIC6_DATA5": 16,
+    "BOARD1_CLK": 16,
+    "ASIC1_DATA8": 20,
+    "FPGA_CFG_DQ0": 32,
+    "ASIC1_SYNC": 16,
+    "ASIC1_DATA6": 21,
+    "FLASH_DQ2": 22,
+    "ASIC4_CLK32MHz_Out": 34,
+    "CHIP_RESET_SHARED": 14,
+    "VCCAUX_1V8": 6,
+    "ASIC6_DATA4": 18,
+    "FPGA_CCLK": 9,
+    "ASIC3_CLK32MHz_Out": 8,
+    "ASIC2_DATA2": 20,
+    "ASIC8_CLK32MHz_Out": 19,
+    "ASIC5_DATA1": 5,
+    "STIM_CLK_SHARED": 17,
+    "JTAG_TDO": 12,
+    "ASIC5_SYNC": 12,
+    "ASIC7_DATA3": 4,
+    "ASIC6_CLK32MHz_Out": 11,
+    "ASIC2_DATA3": 32,
+    "BOARD2_CLK": 8,
+    "FPGA_DONE": 18,
+    "ASIC7_DATA2": 8,
+    "ASIC8_DATA6": 12,
+    "STIM_CHIP4_SPI_DR": 13,
+    "ASIC5_DATA6": 6,
+    "STIM_CHIP2_SPI_DL": 8,
+    "VCC_LINK_2V5": 5,
+    "ASIC3_DATA5": 6,
+    "ASIC4_DATA4": 9,
+    "ASIC5_READ": 6,
+    "ASIC8_DATA3": 14,
+    "ASIC7_CLK32MHz_Out": 18,
+    "BOARD4_CLK": 18,
+    "ASIC6_DATA7": 12,
+    "ASIC3_SYNC": 18,
+    "ASIC3_DATA1": 18,
+    "GND": 25,
+    "ASIC2_DATA5": 25,
+    "ASIC3_DATA7": 14,
+    "ASIC7_DATA7": 19,
+    "ASIC2_DATA8": 8,
+    "ASIC7_DATA1": 12,
+    "STIM_CHIP1_SPI_DL": 7,
+    "ASIC5_DATA8": 6,
+    "BOARD2_SPI_CLK": 14,
+    "STIM_CHIP4_SPI_DL": 6,
+    "JTAG_TCK": 22,
+    "ASIC6_DATA3": 8,
+    "NONSTIM_BOARD2_SPI_DR": 11,
+    "ASIC1_CLK32MHz_Out": 8,
+    "BOARD1_SPI_CLK": 14,
+    "ASIC5_DATA7": 12,
+    "FPGA_PROGRAM_B": 8,
+    "SPI_LATCH_SHARED": 4,
+    "NONSTIM_BOARD2_SPI_DL": 8,
+    "ASIC5_DATA2": 3,
+    "IMP_TST_SHARED": 8,
+    "ASIC7_READ": 7,
+    "FLASH_DQ3": 3,
+    "ASIC1_DATA1": 10,
+    "ASIC5_DATA3": 6
+  },
+  "unexpected_added_copper": [],
+  "removed_copper_by_net": {
+    "FLASH_DQ3": 20,
+    "ASIC7_READ": 1,
+    "FLASH_DQ1": 4,
+    "VCCAUX_1V8": 16,
+    "FLASH_DQ2": 13,
+    "ASIC4_DATA4": 1,
+    "GND": 32,
+    "ASIC7_DATA8": 1,
+    "FLASH_DQ0": 12,
+    "FPGA_CFG_DQ2": 2,
+    "ASIC5_DATA2": 1,
+    "FPGA_CFG_DQ3": 2,
+    "VCC_LINK_2V5": 4,
+    "CFG_M0": 1,
+    "ASIC1_DATA4": 1
+  },
+  "errors": [],
+  "review_items": [],
+  "checks_pass": true,
+  "review_gate_clear": true,
+  "cad_modified": false,
+  "vivado_placement_verified": false,
+  "electrical_operation_verified": false,
+  "fabrication_ready": false,
+  "limits": [
+    "Distances use native transformed pad shapes with <=1 um outside approximation; nominal mask expansion only.",
+    "Opposite-side bounds include artwork and courtyards, not a manufacturer worst-case 3D body.",
+    "Connector hole-to-mask margins are reported without inventing vendor acceptance tolerances.",
+    "Mask graphicals/zones are not included in the pad/via mask-opening screen; inspect Gerber for final process review.",
+    "J4 recessed shell tails at the selected finished board thickness still require solder-process acceptance; Samtec peg dimensions are REF.",
+    "Clock-capable package assignments do not prove dedicated clock routing or capture timing.",
+    "Reference comparison does not infer authorization: explicit retained-copper change review remains required."
+  ]
+}
