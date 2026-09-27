@@ -147,7 +147,7 @@ try {
   assert((await page.locator('#size-study').innerText()).includes('33 × 36 mm') && (await page.locator('#size-study').innerText()).includes('current audit records its component count'), 'Current smallest board keeps the current component population without enlarging the outline');
   assert((await page.locator('#size-study').innerText()).includes(String(data.unconnectedItems)) && (await page.locator('#size-study').innerText()).includes('116 mezzanine contacts'), 'Current board reports measured connectivity and provisional application assignment');
   const sizeText = await page.locator('#size-study').innerText();
-  assert(['Three contacts remain reserved','1.8 V','2.5 V','0.010 mm','33.65 × 36 mm','unqualified'].every(text=>sizeText.includes(text)), 'Current board shows corrected rail voltages, assignment and mechanical limits');
+  assert(['Three contacts remain reserved','1.8 V','2.5 V','0.010 mm','manufacturer edge datum','mating and plug-access checks remain open','unqualified'].every(text=>sizeText.includes(text)), 'Current board shows corrected rail voltages, assignment and mechanical limits');
   assert(await page.locator('#size-study a[href="viewer/?board=compact-routed"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact-v2"]').count() > 0 && await page.locator('#design-history a[href="viewer/?board=compact"]').count() > 0, 'Current routing and historical placements remain correctly linked');
   await page.locator('#circled-explanation summary').click();
   await page.locator('#circled-image').evaluate(image => image.decode());
