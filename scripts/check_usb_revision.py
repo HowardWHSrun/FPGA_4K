@@ -124,6 +124,10 @@ def check():
 
     registry = read(ROOT / 'presentation/fpga/viewer/boards.json')
     assert registry['default_board'] == 'usb-c'
+    active_source = read(ROOT / 'sources/manifest.json')['fpga_presentation']
+    assert active_source['board_id'] == 'usb-c' and active_source['board_sha256'] == audit['board_sha256']
+    assert ROOT / active_source['source'] == PACKAGE
+    assert ROOT / active_source['manifest'] == PACKAGE / 'Package_Manifest.json'
     board = next(b for b in registry['boards'] if b['id'] == 'usb-c')
     assert board['sha256'] == audit['board_sha256'] and board['manufacturing_ready'] is False
     assert board['unconnected_items'] == audit['assigned_net_open_count']

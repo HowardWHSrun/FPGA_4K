@@ -34,8 +34,10 @@ jobs:
           path = Path('sources/manifest.json')
           data = json.loads(path.read_text())
           data['presentation_derivation'] = {'manifest': 'presentation/compact/manifest.json', 'branch': 'presentation', 'source': 'hardware/assembly/stacked_headboard_compact_B_v1.stl', 'status': 'supplied compact assembly; exact source bytes preserved; no geometric changes'}
-          fpga = json.loads(Path('presentation/fpga/manifest.json').read_text())
-          data['fpga_presentation'] = {'manifest': 'presentation/fpga/manifest.json', 'entry': 'presentation/fpga/index.html', 'source': fpga['source'], 'status': 'current smallest 33x36 routing development; not fabrication-ready'}
+          registry = json.loads(Path('presentation/fpga/viewer/boards.json').read_text())
+          active = next(board for board in registry['boards'] if board['id'] == registry['default_board'])
+          source = (Path('presentation/fpga/viewer') / active['native']).resolve().parent.parent.relative_to(Path.cwd()).as_posix()
+          data['fpga_presentation'] = {'manifest': source + '/Package_Manifest.json', 'entry': 'presentation/fpga/index.html', 'source': source, 'board_id': active['id'], 'board_sha256': active['sha256'], 'status': 'USB-C development; unfinished routing; not for manufacture'}
           path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
           PY
           git config user.name 'github-actions[bot]'

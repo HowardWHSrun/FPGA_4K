@@ -16,7 +16,9 @@ try {
   const usbResponse = await page.request.get(base + 'hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json');
   assert(usbResponse.ok(), 'USB-C audit available');
   const usbAudit = await usbResponse.json();
+  await page.getByText('Snapshot identity and evidence', {exact:true}).click();
   assert((await page.locator('#board-hash').innerText()).includes(usbAudit.board_sha256), 'USB-C visible identity matches native audit');
+  await page.getByText('Snapshot identity and evidence', {exact:true}).click();
   assert((await page.locator('#status-summary').innerText()).includes(String(usbAudit.assigned_net_open_count)), 'USB-C page reports its own open-copper count');
   assert(usbAudit.fabrication_ready === false && (await page.locator('.status').innerText()).includes('not for manufacture'), 'USB-C manufacturing gate remains explicit');
   await page.locator('#board-image').evaluate(image => image.decode());
