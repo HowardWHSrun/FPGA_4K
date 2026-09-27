@@ -5,7 +5,7 @@ const out='fpga-browser-check/3d';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
 const report={checks:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
-const check=(test,message)=>{if(!test)throw new Error(message);report.checks.push(message);};
+const check=(test,message)=>{if(!test)throw new Error(message);report.checks.push(message);console.log("PASS",message);};
 try{
  for(const [board,count,simple] of [['usb-c',151,27],['micro-hdmi',112,13]]){
   await page.goto(base+'presentation/fpga/3d/?board='+board);await page.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});

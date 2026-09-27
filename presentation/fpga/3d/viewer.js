@@ -6,12 +6,13 @@ const params=new URLSearchParams(location.search);
 if(params.get('locked')==='1')document.querySelector('.revision').hidden=true;
 let board=params.get('board')==='micro-hdmi'?'micro-hdmi':'usb-c', data, request=0, assembly, simpleGroup, labelEntries=[], selected=null;
 const state={ready:false,board,view:'iso',labels:true,simplified:true};
-let renderer;
+let renderer, dirty=true;
 try {renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});} catch(e) {$('loading').textContent='3D needs WebGL. Use the Front / Back views or open the native KiCad file.';throw e;}
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;
 const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(34,1,0.1,1000);
 const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.09;controls.minDistance=23;controls.maxDistance=200;controls.target.set(0,0,0);
+controls.addEventListener('change',()=>{dirty=true;});
 scene.add(new THREE.HemisphereLight(0xffffff,0x71849a,3));
 const key=new THREE.DirectionalLight(0xfff6e8,4);key.position.set(-30,65,30);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-35;key.shadow.camera.right=35;key.shadow.camera.top=35;key.shadow.camera.bottom=-35;key.shadow.normalBias=.06;scene.add(key);
 const fill=new THREE.DirectionalLight(0xe3efff,2.5);fill.position.set(35,25,-45);scene.add(fill);
@@ -60,18 +61,18 @@ async function load(id){
   $('title').textContent=data.title;$('coverage').textContent=`${data.library_model_count} library models · ${data.simplified_body_count} simplified bodies`;
   $('model-note').textContent=`Simplified: ${data.simplified_refs.join(', ')}. The bare SWD fixture, when present, is pads only.`;
   $('native-link').href=`../viewer/?board=${id==='usb-c'?'usb-c':'compact-routed'}`;
-  $('loading').hidden=true;state.ready=true;setView('iso');
+  $('loading').hidden=true;state.ready=true;dirty=true;setView('iso');
   const url=new URL(location.href);url.searchParams.set('board',id);history.replaceState(null,'',url);window.parent.postMessage({type:'fpga-3d-ready',board:id},location.origin);
  }catch(e){if(token===request){$('loading').textContent='The model could not load. Reload or inspect the native KiCad board.';console.error(e);}}
 }
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}}
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();dirty=true;}}
 new ResizeObserver(resize).observe(stage);
 function zoom(f){camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);controls.update();}
 $('in').onclick=()=>zoom(.82);$('out').onclick=()=>zoom(1.22);$('reset').onclick=()=>setView('iso');
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 $('revision').onchange=e=>load(e.target.value);
-$('simplified').onchange=e=>{state.simplified=e.target.checked;if(simpleGroup)simpleGroup.visible=state.simplified;};
-$('label-toggle').onclick=()=>{state.labels=!state.labels;$('label-toggle').setAttribute('aria-pressed',String(state.labels));};
+$('simplified').onchange=e=>{state.simplified=e.target.checked;if(simpleGroup)simpleGroup.visible=state.simplified;dirty=true;};
+$('label-toggle').onclick=()=>{state.labels=!state.labels;$('label-toggle').setAttribute('aria-pressed',String(state.labels));dirty=true;};
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down;
 canvas.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY];});
 canvas.addEventListener('pointerup',e=>{
@@ -85,5 +86,5 @@ canvas.addEventListener('keydown',e=>{
 });
 window.addEventListener('message',e=>{if(e.origin!==location.origin)return;if(e.data?.type==='fpga-3d-camera')setView(e.data.view);if(e.data?.type==='fpga-3d-labels')$('label-toggle').click();});
 window.FPGA_3D={getState:()=>({...state,libraryModels:data?.library_model_count,simplifiedBodies:data?.simplified_body_count,boardSha:data?.board_sha256,camera:camera.position.toArray()}),setView};
-function animate(){requestAnimationFrame(animate);controls.update();for(const {p,point,el} of labelEntries){const v=point.clone().project(camera);el.hidden=!state.labels||v.z>1||(p.back?camera.position.y>0:camera.position.y<0);el.style.left=`${(v.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-v.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
+function animate(){requestAnimationFrame(animate);controls.update();if(!dirty||document.hidden)return;dirty=false;for(const {p,point,el} of labelEntries){const v=point.clone().project(camera);el.hidden=!state.labels||v.z>1||(p.back?camera.position.y>0:camera.position.y<0);el.style.left=`${(v.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-v.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
 resize();setView('iso');load(board);animate();

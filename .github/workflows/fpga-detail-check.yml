@@ -85,10 +85,14 @@ jobs:
           PY
       - name: Install browser test driver
         run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
-      - name: Test review, downloads, history and system entry
+      - name: Test 3D models, camera and embedded views
+        timeout-minutes: 4
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           node scripts/check_fpga_3d.mjs
+      - name: Test review, downloads, history and system entry
+        run: |
+          export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           node scripts/check_fpga_presentation.mjs
           VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
       - uses: actions/upload-artifact@v4
