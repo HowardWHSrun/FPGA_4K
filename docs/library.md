@@ -101,6 +101,10 @@ The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. 
 
 [Meeting hub](../presentation/meetings/index.html) · [Review template](../presentation/meetings/template.html) · [Editing guide](../presentation/meetings/README.md). Fixed review order and dated records keep each meeting easy to find.
 
+## September 28 recorded review
+
+[FPGA board meeting summary and actions](../presentation/meetings/2026-09-28.html). The private Voice Memo was summarized; the source audio and automatic transcript are retained only in the local dated handoff. Procurement, micro-HDMI pin allocation and manufacturing remain open.
+
 ## September 24 meeting preparation
 
 [Review page](../presentation/meetings/2026-09-24.html) · [Original choices PDF](../sources/meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf). Proposal dated September 23, supplied for the September 24 meeting; no outcomes recorded.

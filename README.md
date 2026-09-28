@@ -88,6 +88,10 @@ AI agents should start with [AGENTS.md](AGENTS.md). Source credits, versions and
 
 [Preparation and review questions](presentation/meetings/2026-09-24.html) · [Original proposal PDF](sources/meetings/2026-09-24-FPGA_4K_Meeting_Choices.pdf). Proposed choices; no outcomes recorded.
 
-### Latest meeting record — 23 September 2026
+### Latest meeting record — 28 September 2026
+
+[Read the FPGA board review and actions](presentation/meetings/2026-09-28.html). The recording discusses a 50T candidate, block-by-block schematic review and an MCU link plan. Its proposed part choice and pin allocation do not supersede the active design status above; the private recording is not in this repository.
+
+### Earlier meeting record — 23 September 2026
 
 [Read the dated meeting and actions](presentation/meetings/2026-09-23.html) · [Original notes](sources/meetings/2026-09-23-notes.txt) · [System diagram](sources/meetings/2026-09-23-system-view.png). These are the questions recorded at that meeting; the current 100T/XEM8310 uncertainty list above supersedes them as the active status.
