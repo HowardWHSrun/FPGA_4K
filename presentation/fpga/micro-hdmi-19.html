@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive 19-contact micro-HDMI Type-D pin proposal for the XC7A50T FPGA board, compared with the manufacturer drawing and standard HDMI assignments.">
+  <title>19-contact micro-HDMI proposal | FPGA 4K</title>
+  <link rel="icon" href="review-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="micro-hdmi-19.css">
+  <script src="micro-hdmi-19.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#pin-diagram">Skip to the pin diagram</a>
+  <header class="site-header">
+    <a class="brand" href="../../#fpga" aria-label="FPGA 4K system overview"><span class="brand-mark">4K</span><span class="brand-text">FPGA PCB<small>Hardware design in progress</small></span></a>
+    <nav aria-label="This connector review"><a href="micro-hdmi.html#interfaces">Earlier micro-HDMI board</a><a href="#comparison">All 19 contacts</a></nav>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">28 September 2026 · connector study</p>
+        <h1 id="page-title">19 pins. <em>One custom link.</em></h1>
+        <p class="lede">Select a contact to see its proposed job on the XC7A50T board, beside Molex’s original Type-D drawing.</p>
+        <div class="intro-actions"><a class="button button-primary" href="#pin-diagram">Explore the 19 pins <span aria-hidden="true">↘</span></a><a class="button button-quiet" href="#molex-drawing">See Molex drawing <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <aside class="scope-note" aria-label="Proposal status">
+        <span class="scope-index">DESIGN STATUS / 01</span>
+        <strong>Proposed for the 50T board</strong>
+        <p>Eight data contacts are still unconnected in the latest 50T schematic. The preserved 100T checkpoint is a separate design.</p>
+      </aside>
+    </section>
+
+    <section class="safety-callout" aria-label="Custom-link compatibility warning">
+      <div class="safety-mark" aria-hidden="true">!</div>
+      <div><strong>This is a custom electrical link, not an HDMI video port.</strong><p>Contact 19 is a candidate <b>12 V input</b>; conventional Type-D HDMI uses that contact for <b>+5 V</b>. Never connect ordinary HDMI equipment. Cable, mating orientation, protection and current capacity still need qualification.</p></div>
+    </section>
+
+    <section id="pin-diagram" class="diagram-section" aria-labelledby="diagram-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / PHYSICAL CONTACTS</p><h2 id="diagram-title">The 19-contact plan</h2></div><p>Look straight into the board receptacle’s mating opening. The numbered front view follows Molex sheet 2; this is a contact guide, not a fabrication footprint.</p></div>
+      <div class="diagram-grid">
+        <article class="pin-card" aria-labelledby="custom-title">
+          <div class="card-top"><div><span class="tag tag-proposal">CUSTOM LINK · PROPOSAL</span><h3 id="custom-title">Our proposed use</h3></div><span class="card-date">XC7A50T · 2026-09-28</span></div>
+          <p class="view-label">Front view <span aria-hidden="true">·</span> looking into the board receptacle’s mating opening</p>
+          <div class="diagram-wrap">
+            <div class="connector-body" role="group" aria-label="Front view looking into the board receptacle mating opening. Upper row left to right: pins 19, 17, 15, 13, 11, 9, 7, 5, 3, 1. Lower row left to right: pins 18, 16, 14, 12, 10, 8, 6, 4, 2.">
+              <div class="pin-row upper-row" aria-label="Upper row, odd contact numbers">
+                <button class="pin pin-power" type="button" data-pin="19" aria-label="Pin 19, candidate 12 volt input" aria-pressed="false">19</button>
+                <button class="pin pin-jtag" type="button" data-pin="17" aria-label="Pin 17, JTAG clock input" aria-pressed="false">17</button>
+                <button class="pin pin-jtag" type="button" data-pin="15" aria-label="Pin 15, JTAG data input" aria-pressed="false">15</button>
+                <button class="pin pin-ground" type="button" data-pin="13" aria-label="Pin 13, ground return" aria-pressed="false">13</button>
+                <button class="pin pin-control" type="button" data-pin="11" aria-label="Pin 11, control receive lane zero negative" aria-pressed="false">11</button>
+                <button class="pin pin-control" type="button" data-pin="9" aria-label="Pin 9, control receive lane zero positive" aria-pressed="false">9</button>
+                <button class="pin pin-ground" type="button" data-pin="7" aria-label="Pin 7, ground return" aria-pressed="false">7</button>
+                <button class="pin pin-record" type="button" data-pin="5" aria-label="Pin 5, recording transmit lane zero negative" aria-pressed="false">5</button>
+                <button class="pin pin-record" type="button" data-pin="3" aria-label="Pin 3, recording transmit lane zero positive" aria-pressed="false">3</button>
+                <button class="pin pin-reference" type="button" data-pin="1" aria-label="Pin 1, 1.8 volt JTAG target reference" aria-pressed="false">1</button>
+              </div>
+              <div class="pin-row lower-row" aria-label="Lower row, even contact numbers">
+                <button class="pin pin-jtag" type="button" data-pin="18" aria-label="Pin 18, JTAG data output" aria-pressed="false">18</button>
+                <button class="pin pin-ground" type="button" data-pin="16" aria-label="Pin 16, ground return" aria-pressed="false">16</button>
+                <button class="pin pin-control" type="button" data-pin="14" aria-label="Pin 14, control receive lane one negative" aria-pressed="false">14</button>
+                <button class="pin pin-control" type="button" data-pin="12" aria-label="Pin 12, control receive lane one positive" aria-pressed="false">12</button>
+                <button class="pin pin-ground" type="button" data-pin="10" aria-label="Pin 10, ground return" aria-pressed="false">10</button>
+                <button class="pin pin-record" type="button" data-pin="8" aria-label="Pin 8, recording transmit lane one negative" aria-pressed="false">8</button>
+                <button class="pin pin-record" type="button" data-pin="6" aria-label="Pin 6, recording transmit lane one positive" aria-pressed="false">6</button>
+                <button class="pin pin-ground" type="button" data-pin="4" aria-label="Pin 4, ground return" aria-pressed="false">4</button>
+                <button class="pin pin-jtag" type="button" data-pin="2" aria-label="Pin 2, JTAG mode select input" aria-pressed="false">2</button>
+              </div>
+              <span class="connector-notch" aria-hidden="true"></span>
+            </div>
+            <div class="board-edge"><span></span>board receptacle · mating face<span></span></div>
+          </div>
+          <div class="legend" aria-label="Pin role colors"><span class="legend-record">Recording TX</span><span class="legend-control">Control RX</span><span class="legend-jtag">JTAG</span><span class="legend-ground">Ground</span><span class="legend-reference">1.8 V reference</span><span class="legend-power">12 V candidate</span></div>
+          <div class="direction-note"><span class="arrow-pair record-arrow">TX →</span> recording leaves the FPGA board <span class="arrow-pair control-arrow">← RX</span> control enters the FPGA board</div>
+          <div class="pin-detail" id="pin-detail" aria-live="polite" aria-atomic="true"><span class="detail-kicker">SELECTED CONTACT</span><strong>19 · Candidate 12 V input</strong><p>Power from a protected matching receiver is proposed on this single contact. Current and cable limits have not been qualified.</p><span class="detail-status">Candidate · unqualified</span></div>
+        </article>
+
+        <article class="datasheet-card" id="molex-drawing" aria-labelledby="datasheet-title">
+          <div class="card-top"><div><span class="tag tag-source">MANUFACTURER REFERENCE</span><h3 id="datasheet-title">Molex reference pinout</h3></div><span class="card-date">46765 series · sheets 2 and 4</span></div>
+          <p class="datasheet-explain">Front view, looking into the board receptacle’s mating opening. This simplified redraw follows the contact numbering on Molex sheet 2; the manufacturer’s original is linked below.</p>
+          <div class="reference-face" role="group" aria-label="Simplified redraw of Molex Type-D receptacle front view. Upper row left to right: 19, 17, 15, 13, 11, 9, 7, 5, 3, 1. Lower row left to right: 18, 16, 14, 12, 10, 8, 6, 4, 2.">
+            <div class="std-row std-upper">
+              <button type="button" class="std-pin std-power" data-pin="19" aria-label="Standard HDMI pin 19, plus 5 volt power" aria-pressed="false">19</button>
+              <button type="button" class="std-pin std-control" data-pin="17" aria-label="Standard HDMI pin 17, SCL" aria-pressed="false">17</button>
+              <button type="button" class="std-pin std-control" data-pin="15" aria-label="Standard HDMI pin 15, CEC" aria-pressed="false">15</button>
+              <button type="button" class="std-pin std-shield" data-pin="13" aria-label="Standard HDMI pin 13, TMDS clock shield" aria-pressed="false">13</button>
+              <button type="button" class="std-pin std-data" data-pin="11" aria-label="Standard HDMI pin 11, TMDS Data0 negative" aria-pressed="false">11</button>
+              <button type="button" class="std-pin std-data" data-pin="9" aria-label="Standard HDMI pin 9, TMDS Data0 positive" aria-pressed="false">9</button>
+              <button type="button" class="std-pin std-shield" data-pin="7" aria-label="Standard HDMI pin 7, TMDS Data1 shield" aria-pressed="false">7</button>
+              <button type="button" class="std-pin std-data" data-pin="5" aria-label="Standard HDMI pin 5, TMDS Data2 negative" aria-pressed="false">5</button>
+              <button type="button" class="std-pin std-data" data-pin="3" aria-label="Standard HDMI pin 3, TMDS Data2 positive" aria-pressed="false">3</button>
+              <button type="button" class="std-pin std-control" data-pin="1" aria-label="Standard HDMI pin 1, Hot Plug Detect" aria-pressed="false">1</button>
+            </div>
+            <div class="std-row std-lower">
+              <button type="button" class="std-pin std-control" data-pin="18" aria-label="Standard HDMI pin 18, SDA" aria-pressed="false">18</button>
+              <button type="button" class="std-pin std-shield" data-pin="16" aria-label="Standard HDMI pin 16, DDC and CEC ground" aria-pressed="false">16</button>
+              <button type="button" class="std-pin std-data" data-pin="14" aria-label="Standard HDMI pin 14, TMDS clock negative" aria-pressed="false">14</button>
+              <button type="button" class="std-pin std-data" data-pin="12" aria-label="Standard HDMI pin 12, TMDS clock positive" aria-pressed="false">12</button>
+              <button type="button" class="std-pin std-shield" data-pin="10" aria-label="Standard HDMI pin 10, TMDS Data0 shield" aria-pressed="false">10</button>
+              <button type="button" class="std-pin std-data" data-pin="8" aria-label="Standard HDMI pin 8, TMDS Data1 negative" aria-pressed="false">8</button>
+              <button type="button" class="std-pin std-data" data-pin="6" aria-label="Standard HDMI pin 6, TMDS Data1 positive" aria-pressed="false">6</button>
+              <button type="button" class="std-pin std-shield" data-pin="4" aria-label="Standard HDMI pin 4, TMDS Data2 shield" aria-pressed="false">4</button>
+              <button type="button" class="std-pin std-control" data-pin="2" aria-label="Standard HDMI pin 2, Utility" aria-pressed="false">2</button>
+            </div>
+          </div>
+          <div class="std-key"><span><i class="key-data"></i>TMDS pairs</span><span><i class="key-shield"></i>Shields / ground</span><span><i class="key-control"></i>Control</span><span><i class="key-power"></i>+5 V</span></div>
+          <div class="std-callouts"><p><strong>Data and clock:</strong> 3/5, 6/8, 9/11 and 12/14 form four TMDS pairs; 4, 7, 10 and 13 are their shields.</p><p><strong>Other contacts:</strong> 1 is Hot Plug Detect; 2 Utility; 15 CEC; 16 DDC/CEC ground; 17 SCL; 18 SDA; 19 +5 V.</p></div>
+          <p class="original-links"><strong>See Molex’s original sheets:</strong> <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf#page=2" target="_blank" rel="noopener">sheet 2 front-view diagram ↗</a> · <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf#page=4" target="_blank" rel="noopener">sheet 4 pin table / PCB layout ↗</a></p>
+          <details class="pdf-details"><summary>Preview the original Molex PDF here</summary><p>Some browsers block embedded PDFs. Use the direct sheet links above if this preview is blank.</p><div class="pdf-controls" role="group" aria-label="Manufacturer drawing sheet"><button type="button" data-pdf-page="2" aria-pressed="true">Sheet 2 · mating-face diagram</button><button type="button" data-pdf-page="4" aria-pressed="false">Sheet 4 · pin table and PCB layout</button></div><div class="pdf-shell"><iframe id="molex-pdf" title="Molex 46765 original sales drawing, sheet 2 front mating-face view" data-src="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf#page=2&amp;view=FitH" loading="lazy"></iframe></div></details>
+          <div class="source-note"><strong>Source and reading direction</strong><p>Molex sales drawing SD-46765-001 for its Type-D receptacle family. The original PDF is linked from Molex’s website; this project does not host a copy. Check the exact J4 part and footprint against its approved drawing before layout release.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="comparison-section" id="comparison" aria-labelledby="comparison-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / CONTACT-BY-CONTACT</p><h2 id="comparison-title">What changes on every pin</h2></div><p>Directions are relative to the FPGA board. “Existing” means a named connection in the latest 50T schematic, not verified operation.</p></div>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Pin</th><th scope="col">Proposed use on FPGA board</th><th scope="col">Conventional Type-D HDMI</th><th scope="col">50T design status</th></tr></thead><tbody>
+        <tr data-pin="1"><th scope="row">01</th><td><span class="role role-reference">Reference</span><strong>VTREF 1.8 V</strong><small>Output reference for a matching JTAG probe; no load supply.</small></td><td>Hot Plug Detect</td><td>Existing · VCCAUX_1V8</td></tr>
+        <tr data-pin="2"><th scope="row">02</th><td><span class="role role-jtag">JTAG</span><strong>TMS</strong><small>Mode select into the FPGA.</small></td><td>Utility</td><td>Existing · JTAG_TMS</td></tr>
+        <tr data-pin="3"><th scope="row">03</th><td><span class="role role-record">Recording TX</span><strong>TX0+</strong><small>Positive half of recording lane 0, out.</small></td><td>TMDS Data2+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="4"><th scope="row">04</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data2 shield</td><td>Existing · GND</td></tr>
+        <tr data-pin="5"><th scope="row">05</th><td><span class="role role-record">Recording TX</span><strong>TX0−</strong><small>Negative half of recording lane 0, out.</small></td><td>TMDS Data2−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="6"><th scope="row">06</th><td><span class="role role-record">Recording TX</span><strong>TX1+</strong><small>Positive half of recording lane 1, out.</small></td><td>TMDS Data1+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="7"><th scope="row">07</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data1 shield</td><td>Existing · GND</td></tr>
+        <tr data-pin="8"><th scope="row">08</th><td><span class="role role-record">Recording TX</span><strong>TX1−</strong><small>Negative half of recording lane 1, out.</small></td><td>TMDS Data1−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="9"><th scope="row">09</th><td><span class="role role-control">Control RX</span><strong>RX0+</strong><small>Positive half of control lane 0, in.</small></td><td>TMDS Data0+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="10"><th scope="row">10</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data0 shield</td><td>Existing · GND</td></tr>
+        <tr data-pin="11"><th scope="row">11</th><td><span class="role role-control">Control RX</span><strong>RX0−</strong><small>Negative half of control lane 0, in.</small></td><td>TMDS Data0−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="12"><th scope="row">12</th><td><span class="role role-control">Control RX</span><strong>RX1+</strong><small>Positive half of control lane 1, in.</small></td><td>TMDS Clock+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="13"><th scope="row">13</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Clock shield</td><td>Existing · GND</td></tr>
+        <tr data-pin="14"><th scope="row">14</th><td><span class="role role-control">Control RX</span><strong>RX1−</strong><small>Negative half of control lane 1, in.</small></td><td>TMDS Clock−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="15"><th scope="row">15</th><td><span class="role role-jtag">JTAG</span><strong>TDI</strong><small>Programming data into the FPGA.</small></td><td>CEC</td><td>Existing · JTAG_TDI</td></tr>
+        <tr data-pin="16"><th scope="row">16</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Common return for JTAG and power.</small></td><td>DDC/CEC ground</td><td>Existing · GND</td></tr>
+        <tr data-pin="17"><th scope="row">17</th><td><span class="role role-jtag">JTAG</span><strong>TCK</strong><small>Programming clock into the FPGA.</small></td><td>SCL</td><td>Existing · JTAG_TCK</td></tr>
+        <tr data-pin="18"><th scope="row">18</th><td><span class="role role-jtag">JTAG</span><strong>TDO</strong><small>Programming data out of the FPGA.</small></td><td>SDA</td><td>Existing · JTAG_TDO</td></tr>
+        <tr data-pin="19"><th scope="row">19</th><td><span class="role role-power">Power candidate</span><strong>12 V input</strong><small>Protected supply from a matching receiver, subject to qualification.</small></td><td><strong>+5 V power</strong></td><td>Candidate · LINK_12V</td></tr>
+      </tbody></table></div>
+      <p class="shell-note"><strong>Connector shell:</strong> separate from the 19 numbered contacts; proposed SHELL_GND, currently tied to GND. Its cable and chassis grounding still need review.</p>
+    </section>
+
+    <section class="next-section" aria-labelledby="next-title"><div><p class="eyebrow">03 / BEFORE THIS IS A CABLE CONTRACT</p><h2 id="next-title">What still needs to be checked</h2></div><div class="next-grid"><div><strong>Electrical link</strong><p>Assign the eight data contacts in the schematic, define the transmitter/receiver endpoints, coupling, protection, timing and receiver firmware.</p></div><div><strong>Power path</strong><p>Measure the board-plus-ASIC load and qualify one positive contact, cable current, return path, voltage drop, faults and startup.</p></div><div><strong>Physical continuity</strong><p>Confirm the exact receptacle and cable part numbers, mating orientation, every contact, shell and PCB footprint against manufacturer drawings.</p></div></div></section>
+
+    <footer class="page-footer"><div><strong>19-contact proposal · 28 September 2026</strong><p>Source map: <a href="../../sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv">J4 proposed contacts CSV</a>. Original connector drawing: <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf" target="_blank" rel="noopener">Molex SD-46765-001 ↗</a>.</p></div><a href="../../#fpga">Return to FPGA 4K <span aria-hidden="true">↗</span></a></footer>
+  </main>
+</body>
+</html>
