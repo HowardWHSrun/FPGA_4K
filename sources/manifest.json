@@ -10817,6 +10817,44 @@
       "sha256": "21e197176ef4c0dbfeb9b25d147a87de8c0f33227b605c331a729d6cf7bdc797"
     },
     {
+      "path": "sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv",
+      "origin": "Howard's 2026-09-28 FPGA PCB planning file: 2026-09-28_FPGA_Work/05_Micro_HDMI_FPGA_Board_Plan/J4_Proposed_19_Contacts.csv",
+      "status": "proposed custom 50T micro-HDMI pinout; unqualified",
+      "transformation": "unchanged copy",
+      "source_sha256": "72ecd52503f9aa6b29f525e586f9440dec89166e1b6dfe8c82f56312a8690410",
+      "note": "Eight high-speed contacts are unconnected in the native 50T schematic; contact 19 is a candidate 12 V input, not a qualified power path. See sources/engineering/2026-09-28/README.md.",
+      "bytes": 895,
+      "sha256": "72ecd52503f9aa6b29f525e586f9440dec89166e1b6dfe8c82f56312a8690410",
+      "source_id": "micro-hdmi-50t-proposal-2026-09-28"
+    },
+    {
+      "path": "presentation/fpga/micro-hdmi-19.html",
+      "origin": "2026-09-28 custom J4 contact proposal and Molex SD-46765-001 sheets 2 and 4",
+      "status": "authored visual proposal; not native CAD or a qualified cable contract",
+      "transformation": "independently drawn interactive Type-D views and sourced contact comparison; manufacturer PDF linked, not copied",
+      "note": "Historical 100T and USB-C design files are separate; contact 19's candidate 12 V input is nonstandard and unqualified.",
+      "bytes": 20731,
+      "sha256": "61dfd2d624422c213545eb286b1c83c69aae8c85db721d2ac83567b1332d5f57"
+    },
+    {
+      "path": "presentation/fpga/micro-hdmi-19.css",
+      "origin": "2026-09-28 custom J4 contact proposal website visual",
+      "status": "authored visual proposal",
+      "transformation": "new responsive styling",
+      "note": "Styles the independent redraws, table, interaction states and print view.",
+      "bytes": 15727,
+      "sha256": "5ff82646e90247a20e7efbf547f0a8ebd9546f095c772183d5477bb081b55d09"
+    },
+    {
+      "path": "presentation/fpga/micro-hdmi-19.js",
+      "origin": "2026-09-28 custom J4 contact proposal website visual",
+      "status": "authored visual proposal",
+      "transformation": "new pin selection and manufacturer PDF sheet switch",
+      "note": "Selection synchronizes the two diagrams and 19-row comparison; static table remains visible without scripts.",
+      "bytes": 3639,
+      "sha256": "8ff4ccda38aef55cc85260210b4827e91f014bd054b6f3b1788aac3f59df3d50"
+    },
+    {
       "path": "presentation/fpga/3d/assets/usb-c.glb",
       "origin": "KiCad 10.0.6 export and documented 2026-09-27 board metadata; see presentation/fpga/3d/assets/provenance.json",
       "status": "3D presentation derivative; not mechanical qualification",

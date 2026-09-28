@@ -13,6 +13,8 @@ The original files are stored in this repository. Use the editable formats for f
 
 ## Team workflow and editable design
 
+**28 September 50T connector proposal:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [download the proposed contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv) · [provenance and limits](../sources/engineering/2026-09-28/README.md). This is for the unrouted XC7A50T review board; it does not change the preserved 100T or current USB-C CAD.
+
 <!-- CURRENT_FPGA_ROUTING -->
 - [Current USB-C revision](../presentation/fpga/index.html): [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip), [native audit](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) and [every pin](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv). USB-C development around the retained 100T and ASIC assignments; not a manufacturing release.
 - [Preserved micro-HDMI checkpoint](../presentation/fpga/micro-hdmi.html): the earlier 125-component design and its reports.

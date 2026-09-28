@@ -64,3 +64,7 @@ The [USB-C revision](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-rev
 The full newly supplied private discussion, downloaded manufacturer documents, intermediate placements and rejected routing candidates are excluded. The earlier micro-HDMI reports remain separate. Zero native errors, if reported, do not demonstrate firmware, powered operation, cable performance or manufacturing acceptance. No order has been placed.
 
 The USB-C project carries a [library attribution note](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/libraries/README.md) and the unchanged upstream KiCad library license with its bundled library subset. Manufacturer references remain linked to their original publishers.
+
+## 28 September 50T micro-HDMI contact proposal
+
+The [contact CSV and provenance note](engineering/2026-09-28/README.md) are an unchanged copy of Howard's dated planning map for the unrouted XC7A50T-CSG325 review board. The [new website diagram](../presentation/fpga/micro-hdmi-19.html) is a visual derivative of that proposal. It places an independently drawn connector view beside the official [Molex 46765 sales drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf), which remains hosted by Molex. The proposal does not establish data-lane wiring, a qualified 12 V cable feed or standard HDMI compatibility.
