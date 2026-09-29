@@ -828,6 +828,7 @@ def update_summary_links(summary, meta):
             ("131-part draft list", f"{n}-part draft list"),
         ],
         "presentation/fpga/viewer/index.html": [
+            ("50t-gtp-power/project/hardware", "50t-two-60-compact/project/hardware"),
             ("50T micro-HDMI · 43 × 49 mm · unrouted review",
              f"50T micro-HDMI · {dims} mm · unrouted review"),
             ("viewer.js?v=20260928-fpga50t-445d3a8c",
