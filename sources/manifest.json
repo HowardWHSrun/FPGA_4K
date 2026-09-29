@@ -10819,22 +10819,33 @@
     {
       "path": "sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv",
       "origin": "Howard's 2026-09-28 FPGA PCB planning file: 2026-09-28_FPGA_Work/05_Micro_HDMI_FPGA_Board_Plan/J4_Proposed_19_Contacts.csv",
-      "status": "proposed custom 50T micro-HDMI pinout; unqualified",
+      "status": "historical R1 custom 50T micro-HDMI pinout; unqualified",
       "transformation": "unchanged copy",
       "source_sha256": "72ecd52503f9aa6b29f525e586f9440dec89166e1b6dfe8c82f56312a8690410",
-      "note": "Eight high-speed contacts are unconnected in the native 50T schematic; contact 19 is a candidate 12 V input, not a qualified power path. See sources/engineering/2026-09-28/README.md.",
+      "note": "R1 preserves the earlier candidate 12 V input for traceability; R2 proposes 5 V instead. The eight high-speed contacts remain unconnected in native 50T CAD.",
       "bytes": 895,
       "sha256": "72ecd52503f9aa6b29f525e586f9440dec89166e1b6dfe8c82f56312a8690410",
       "source_id": "micro-hdmi-50t-proposal-2026-09-28"
     },
     {
+      "path": "sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv",
+      "origin": "Howard's 2026-09-28 FPGA PCB planning revision: 2026-09-28_FPGA_Work/05_Micro_HDMI_FPGA_Board_Plan/J4_Proposed_19_Contacts_R2_5V.csv",
+      "status": "R2 proposed custom 50T micro-HDMI pinout; 5 V source and load unqualified",
+      "transformation": "unchanged copy",
+      "source_sha256": "706c8c7c1936b860df557e8e6b4f275737ee885d21c28385d75b777244e0ff8b",
+      "note": "J4.19 is proposed as a protected 5 V input from an MCU-side board, but native 50T CAD still labels it LINK_12V; no current budget or source rating is established.",
+      "bytes": 910,
+      "sha256": "706c8c7c1936b860df557e8e6b4f275737ee885d21c28385d75b777244e0ff8b",
+      "source_id": "micro-hdmi-50t-proposal-r2-5v-2026-09-28"
+    },
+    {
       "path": "presentation/fpga/micro-hdmi-19.html",
-      "origin": "2026-09-28 custom J4 contact proposal and Molex SD-46765-001 sheets 2 and 4",
+      "origin": "2026-09-28 R2 custom J4 contact proposal, meeting voltage review and Molex SD-46765-001 sheets 2 and 4",
       "status": "authored visual proposal; not native CAD or a qualified cable contract",
       "transformation": "independently drawn interactive Type-D views and sourced contact comparison; manufacturer PDF linked, not copied",
-      "note": "Historical 100T and USB-C design files are separate; contact 19's candidate 12 V input is nonstandard and unqualified.",
-      "bytes": 20731,
-      "sha256": "61dfd2d624422c213545eb286b1c83c69aae8c85db721d2ac83567b1332d5f57"
+      "note": "R2 proposes 5 V at J4.19; native 50T CAD still labels it LINK_12V. MCU-side source current, cable and full-system load are unqualified.",
+      "bytes": 21616,
+      "sha256": "af11eb3c44382803ac95ca47be44be9769dda3224943b754d81508df39f47eef"
     },
     {
       "path": "presentation/fpga/micro-hdmi-19.css",

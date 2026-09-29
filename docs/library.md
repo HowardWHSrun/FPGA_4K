@@ -13,7 +13,7 @@ The original files are stored in this repository. Use the editable formats for f
 
 ## Team workflow and editable design
 
-**28 September 50T connector proposal:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [download the proposed contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv) · [provenance and limits](../sources/engineering/2026-09-28/README.md). This is for the unrouted XC7A50T review board; it does not change the preserved 100T or current USB-C CAD.
+**28 September 50T connector proposal, R2:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [5 V candidate contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv) · [provenance and R1 history](../sources/engineering/2026-09-28/README.md). The meeting questioned 12 V, but no supply or final pinout was approved; the unrouted 50T CAD still labels J4.19 `LINK_12V`.
 
 <!-- CURRENT_FPGA_ROUTING -->
 - [Current USB-C revision](../presentation/fpga/index.html): [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip), [native audit](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) and [every pin](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv). USB-C development around the retained 100T and ASIC assignments; not a manufacturing release.
