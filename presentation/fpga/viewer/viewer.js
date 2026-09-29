@@ -26,7 +26,7 @@ function showError(error) {
   const alert = $('#load-error');
   alert.replaceChildren(document.createTextNode('The interactive board could not load. '));
   const fallback = document.createElement('a');
-  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-interface-study/dated/2026-09-26/asic117-routing/FPGA100T_33x36_Routing.zip';
+  fallback.href = board?.svg || board?.zip || '../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip';
   fallback.textContent = board?.svg ? 'Open the static vector view' : 'Download the complete KiCad project';
   alert.append(fallback, document.createTextNode(' or use the native files below. Reload this page to retry.'));
   alert.hidden = false;
@@ -65,9 +65,9 @@ async function loadBoard(selected) {
   $('#load-error').hidden = true;
   $('#board-choice').value = board.id;
   $('#board-description').textContent = board.description;
-  $('#pin-guide').href = board.id === 'usb-c' ? '../#validation' : '../pins/';
-  $('#pin-guide').textContent = board.id === 'usb-c' ? 'USB-C pin status' : 'Historical pin labels';
-  $('#component-guide').href = board.id === 'usb-c' ? '../#architecture' : '../micro-hdmi.html#architecture';
+  $('#pin-guide').href = board.id === 'fpga50t' ? '../micro-hdmi-19.html' : board.id === 'usb-c' ? '../usb-c.html#validation' : '../pins/';
+  $('#pin-guide').textContent = board.id === 'fpga50t' ? '50T contact proposal' : board.id === 'usb-c' ? 'USB-C pin status' : 'Historical pin labels';
+  $('#component-guide').href = board.id === 'fpga50t' ? '../#parts' : board.id === 'usb-c' ? '../usb-c.html#architecture' : '../micro-hdmi.html#architecture';
   $('#native-file').href = board.native;
   $('#project-zip').href = board.zip;
   const pathname = new URL(board.native, location.href).pathname;
@@ -149,13 +149,13 @@ if (!document.fullscreenEnabled) $('#fullscreen').hidden = true;
 try {
   const response = await fetch('./boards.json');
   if (!response.ok) throw new Error('Board index unavailable.');
-  const {boards, default_board = 'compact-routed'} = await response.json();
+  const {boards, default_board = 'fpga50t'} = await response.json();
   for (const item of boards) {
     const option = [...$('#board-choice').options].find(option => option.value === item.id);
     if (option) option.textContent = item.title;
   }
   const selected = boards.find(item => item.id === params.get('board')) || boards.find(item => item.id === default_board);
-  if (!selected) throw new Error('The current smallest-board index is unavailable.');
+  if (!selected) throw new Error('The default board index is unavailable.');
   $('#board-choice').addEventListener('change', () => {
     const choice = boards.find(item => item.id === $('#board-choice').value);
     const url = new URL(location.href);

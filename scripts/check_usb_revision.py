@@ -123,8 +123,8 @@ def check():
             assert not re.search(r'/Users/|/Volumes/|/home/', path.read_text()), path
 
     registry = read(ROOT / 'presentation/fpga/viewer/boards.json')
-    assert registry['default_board'] == 'usb-c'
-    active_source = read(ROOT / 'sources/manifest.json')['fpga_presentation']
+    assert registry['default_board'] == 'fpga50t'
+    active_source = read(ROOT / 'sources/manifest.json')['fpga_usb_c_revision']
     assert active_source['board_id'] == 'usb-c' and active_source['board_sha256'] == audit['board_sha256']
     assert ROOT / active_source['source'] == PACKAGE
     assert ROOT / active_source['manifest'] == PACKAGE / 'Package_Manifest.json'
@@ -134,8 +134,9 @@ def check():
     for viewer_key, audit_key in [('footprints', 'footprints'), ('pads', 'pads'), ('segments', 'tracks'),
                                   ('vias', 'vias'), ('zones', 'zones'), ('nets', 'nets'), ('copperLayers', 'copper_layers')]:
         assert board['expected'][viewer_key] == audit[audit_key], viewer_key
-    page = ROOT / 'presentation/fpga/index.html'
-    assert page.read_bytes() == page.with_name('usb-c.html').read_bytes()
+    page = ROOT / 'presentation/fpga/usb-c.html'
+    assert 'XC7A50T micro-HDMI PCB and parts' in page.with_name('index.html').read_text()
+    assert '33 × 36 mm · micro-HDMI checkpoint' in page.with_name('micro-hdmi.html').read_text()
     for name in re.findall(r'data-file="([^"]+)"', page.read_text()):
         assert (PACKAGE / name).is_file(), name
     assert page.with_name('micro-hdmi.html').is_file()

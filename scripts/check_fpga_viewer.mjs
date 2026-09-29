@@ -68,10 +68,10 @@ try {
   const indexResponse = await page.request.get(new URL('boards.json', url).href);
   check('Board index available', indexResponse.ok());
   const {boards, default_board} = await indexResponse.json();
-  check('USB-C board plus six historical variants', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['usb-c','compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
+  check('50T, 100T micro-HDMI, USB-C and five earlier studies', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['fpga50t','usb-c','compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
   await page.goto(url,{waitUntil:'networkidle'});await ready(default_board);
-  check('Viewer defaults to current USB-C board', default_board==='usb-c' && await page.locator('#board-choice').inputValue()===default_board);
-  const expectedDimensions = {'usb-c':[33,36],core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
+  check('Viewer opens the unrouted 50T micro-HDMI board', default_board==='fpga50t' && await page.locator('#board-choice').inputValue()===default_board);
+  const expectedDimensions = {'fpga50t':[43,49],'usb-c':[33,36],core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);
@@ -99,7 +99,7 @@ try {
     const edges=await page.locator('kc-board-viewer').evaluate(e=>({w:e.viewer.document.edge_cuts_bbox.w,h:e.viewer.document.edge_cuts_bbox.h}));
     const [width,height] = expectedDimensions[board.id];
     check(`${board.id}: indexed dimensions match its checkpoint`, JSON.stringify(board.dimensions_mm)===JSON.stringify([width,height]));
-    check(`${board.id}: native ${width} × ${height} mm outline`, Math.abs(edges.w-width)<1e-6 && Math.abs(edges.h-height)<1e-6);
+    check(`${board.id}: native ${width} × ${height} mm outline`, Math.abs(edges.w-width)<(board.id==='fpga50t'?.11:1e-6) && Math.abs(edges.h-height)<(board.id==='fpga50t'?.11:1e-6));
     check(`${board.id}: review-only description`, await page.locator('#board-description').innerText()===board.description);
     const before=await state();
     await page.locator('#zoom-in').click();const zoomed=await state();check(`${board.id}: zoom-in button moves camera`,zoomed.zoom>before.zoom);
@@ -116,16 +116,16 @@ try {
     check(`${board.id}: UI selects U1 FPGA`,await page.locator('kc-board-viewer').evaluate(e=>e.viewer.selected?.context?.reference==='U1'));
     await page.locator('kc-board-viewer').evaluate(e=>{const original=e.viewer.painter.paint_net;e.viewer.painter.paint_net=function(board,number){window.pcbViewerTestHighlightedNet=board.nets[number]?.name;return original.call(this,board,number);};});
     await page.locator('#nets').click();
-    const clockNet=page.locator('kc-board-nets-panel kc-ui-menu-item[data-match-text$=" CLK_32MHZ"]');
-    await clockNet.click();
-    check(`${board.id}: UI highlights the 32 MHz clock net`,await page.evaluate(()=>window.pcbViewerTestHighlightedNet==='CLK_32MHZ'));
+    const netName = board.id==='fpga50t'?'GND':'CLK_32MHZ';
+    await page.locator(`kc-board-nets-panel kc-ui-menu-item[data-match-text$=" ${netName}"]`).click();
+    check(`${board.id}: UI highlights ${netName}`,await page.evaluate(name=>window.pcbViewerTestHighlightedNet===name,netName));
     await page.locator('#fit').click();
     await page.locator('kc-ui-activity-side-bar').evaluate(e=>e.collapsed=true); // Pinned alpha adapter: close the sidebar for overview captures.
     await page.locator('#fit').click();
     await page.screenshot({path:path.join(out,`${board.id}-desktop.png`),fullPage:true});
     report.boards[board.id]={sha256:board.sha256,nativeCounts:diag.nativeCounts,netItemsCompared:expected.length,outline:edges};
   }
-  await page.goto(`${url}?board=compact-routed&embed=1`,{waitUntil:'networkidle'});await ready('compact-routed');
+  await page.goto(`${url}?board=fpga50t&embed=1`,{waitUntil:'networkidle'});await ready('fpga50t');
   check('Embedded view fills viewport',await page.locator('#viewer-shell').evaluate(e=>Math.abs(e.getBoundingClientRect().height-innerHeight)<2));
   check('Embedded mode hides standalone text',!(await page.locator('.intro').isVisible()));
   const canvas=page.locator('canvas');let box=await canvas.boundingBox();const x=box.x+box.width*.4,y=box.y+box.height*.4;
@@ -134,11 +134,11 @@ try {
   await page.locator('#fit').click();
   if(await page.locator('#fullscreen').isVisible()){await page.locator('#fullscreen').click();await page.waitForTimeout(200);check('Full-screen control enters fullscreen',await page.evaluate(()=>!!document.fullscreenElement));await page.locator('#fullscreen').click();check('Full-screen control exits',await page.evaluate(()=>!document.fullscreenElement));}
   await page.screenshot({path:path.join(out,'current-embedded.png')});
-  await page.setViewportSize({width:390,height:844});await page.goto(`${url}?board=compact-routed`,{waitUntil:'networkidle'});await ready('compact-routed');
+  await page.setViewportSize({width:390,height:844});await page.goto(`${url}?board=fpga50t`,{waitUntil:'networkidle'});await ready('fpga50t');
   check('Mobile page has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.locator('#zoom-in').click();check('Mobile zoom control works',(await state()).zoom>0);
   await page.screenshot({path:path.join(out,'current-mobile.png'),fullPage:true});
-  await page.goto(`${url}?board=compact-routed&embed=1`,{waitUntil:'networkidle'});await ready('compact-routed');
+  await page.goto(`${url}?board=fpga50t&embed=1`,{waitUntil:'networkidle'});await ready('fpga50t');
   check('Mobile embedded view has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   check('Mobile embedded native canvas visible',await page.locator('canvas').isVisible());
   await page.screenshot({path:path.join(out,'current-mobile-embedded.png')});

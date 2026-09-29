@@ -1,16 +1,16 @@
-# USB-C FPGA review — 27 September 2026
+# FPGA board website — 28 September 2026
 
-[Open the presentation](index.html) · [inspect the native PCB](viewer/?board=usb-c) · [complete KiCad ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) · [26-sheet schematic](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Schematics.pdf).
+[Featured 50T micro-HDMI PCB](index.html) · [131 fitted parts](index.html#parts) · [native PCB viewer](viewer/?board=fpga50t) · [preserved 100T checkpoint](micro-hdmi.html) · [USB-C development revision](usb-c.html) · [50T 19-contact proposal](micro-hdmi-19.html).
 
-The active revision replaces micro-HDMI with a full-featured USB-C connector, negotiated/protected power, a USB2 control/JTAG device and a four-pair orientation switch. The 100T, two ASIC mezzanines and 116 digital ASIC assignments are retained. AC_IN remains a separate external 0–1.5 V analog source requirement.
+The website opens with the **unrouted XC7A50T micro-HDMI review board**. Its native PCB has a 43 × 49 mm outline and 145 footprints. The [38-line grouped parts CSV](../../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) covers all 131 fitted buyable references for one PCB; six DNP items, four copper test pads and four mounting holes are excluded. It is a purchasing draft, not an approved cart or entire-system BOM. The native J4 input says `LINK_12V` while the separate R2 proposal evaluates protected 5 V; J5's CAD footprint remains DF40C while the later direction is DF40T.
 
-**Engineering development, not for manufacture.** The page loads the exact [native audit](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json); it displays actual open connections and native findings instead of inheriting the earlier board's results. [Every numbered pin](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv) and [the circuit explanation](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/USB_C_Design_Explanation.md) accompany the project. Firmware, the matching source/host/receiver adapter, power and cable qualification, ASIC timing and manufacturing acceptance remain unfinished.
+The [preserved routed 100T micro-HDMI checkpoint](micro-hdmi.html) and [separate USB-C revision](usb-c.html) remain available with their own source files and counts. The [50T 19-contact proposal](micro-hdmi-19.html) is a cable plan for the featured 50T board, not an implemented native link. None of these boards is released for manufacture.
 
 ## Website and native files
 
-`index.html` and `usb-c.html` present the USB-C revision. `usb-c.js` reads its audit and supports front/back pan/zoom plus a native viewer. [viewer/boards.json](viewer/boards.json) binds each native file to its SHA-256 and parser counts. Static views use the same frozen CAD; only display colors, viewport and overview annotations change. KiCanvas is a read-only review viewer, with [documented limits](viewer/README.md).
+`index.html` presents the 50T board first. `micro-hdmi.html` preserves the routed 100T checkpoint, and `usb-c.html` preserves the separate USB-C review. [viewer/boards.json](viewer/boards.json) binds each native file to its SHA-256 and parser counts; the 50T board is the first/default entry. KiCanvas is a read-only review viewer, with [documented limits](viewer/README.md).
 
-The complete native folder includes its project, PCB, 26 schematic sheets and local libraries. Extract the entire ZIP before opening the `.kicad_pro` file. The native basename remains stable to preserve dependencies.
+The complete [50T KiCad ZIP](../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip) includes the PCB, 13 schematic sheets and local libraries. The preserved [100T micro-HDMI ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) and [USB-C ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) remain separate. Extract a whole project before opening its `.kicad_pro` file.
 
 ## Verification before publication
 
@@ -24,7 +24,7 @@ python3 scripts/check_hardware.py
 git diff --check
 ```
 
-Use the browser to verify current data loading, front/back selection, zoom/fit, native layer inspection, downloads and mobile layout. The older teaching/presentation check scripts target the preserved micro-HDMI page and data; their success does not validate the USB-C design. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
+Use the browser to verify the default 50T board, native layers, 3D switch, 38-line/131-reference parts filter, CSV downloads and mobile layout. Run the separate 100T and USB-C checks for those revisions. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
 
 ## Preserved earlier material
 

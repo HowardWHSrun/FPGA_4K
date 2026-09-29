@@ -1,0 +1,23 @@
+{
+  "baseline": "/Users/howardwang/Desktop/Rice Research/FPGA PCB/2026-09-27_FPGA_Work/19_Large_Text_Schematic",
+  "new_regulator": "U7 TPS62135 dedicated GTP1.0",
+  "repurposed": "U4 2.5V -> dedicated GTP1.2V",
+  "removed": [
+    "C57",
+    "C58",
+    "C59",
+    "C60",
+    "C61",
+    "C62",
+    "C63",
+    "#FLG005"
+  ],
+  "filters": [
+    "FB1",
+    "FB2"
+  ],
+  "startup": "PG_CORE -> U3; PG_AUX -> U7 and U5; PG_GTP_AVCC -> U4",
+  "configuration": "J6 manual INIT_B hold; install before power, measure all rails before removal",
+  "routing": "Matched unrouted PCB complete: eight copper layers, zero routed tracks/vias/pours; 499 native unrouted connections.",
+  "limits": "Noise/current/transient/thermal/shutdown/input protection and GTP clock/link remain unqualified"
+}

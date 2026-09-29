@@ -11,7 +11,9 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Current FPGA review — USB-C, 2026-09-27:** [Concise presentation](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=usb-c) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) · [exact revision audit](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json). Power negotiation, USB2 control/JTAG, cable-orientation switching and protection are added around the retained 100T and ASIC mezzanines. The page reports actual routing gaps and findings. Firmware, receiver adapter and electrical/manufacturing qualification remain unfinished. **Not for manufacture.**
+**Featured FPGA PCB — unrouted 50T micro-HDMI review:** [Board and purchasing list](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=fpga50t) · [38-line purchasing draft](sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip). The list covers 131 fitted components per board; unresolved order codes and external system items remain open. **Not for manufacture or purchase.**
+
+**Separate 100T revisions:** [Preserved routed micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) with its [125-part list](sources/engineering/2026-09-28/Micro_HDMI_100T_Grouped_Purchasing_Draft.csv); [USB-C development revision](presentation/fpga/usb-c.html) with its [native audit](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json). Neither replaces the featured 50T review. The [50T 19-contact proposal](presentation/fpga/micro-hdmi-19.html) is still unimplemented in its native PCB.
 
 ## Start working with the team
 
@@ -19,7 +21,9 @@ Shared PCB development for the 4K neural-recording system: working designs, inte
 
 | Work | Start here | Status |
 |---|---|---|
-| Current FPGA review | [Open the 100T review](presentation/fpga/index.html) | 116 FPGA signals + one analog reservation; XEM8310 link remains part of the full system; **not for manufacture** |
+| Featured FPGA review | [Open the unrouted 50T micro-HDMI board](presentation/fpga/index.html) | 131 fitted component candidates; 499 unrouted connections; power, cable and receiver pending |
+| Preserved routed 100T | [Open the earlier micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) | 125 placed parts; separate routing and population evidence |
+| Separate USB-C revision | [Open the development board](presentation/fpga/usb-c.html) | 116 provisional FPGA signals + one analog reservation; unfinished routing; **not for manufacture** |
 | Earlier FPGA team draft | [September 21 import](hardware/fpga-board/README.md) | Preserved earlier electrical draft; superseded device/interface choices; **not for manufacture** |
 | Carrier and routing boards | [Original reference projects](hardware/README.md) | Preserved references; active baselines and owners to confirm |
 | Tasks and layout ownership | [Create a PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) | One active layout editor per board |
@@ -63,7 +67,7 @@ For the full folder, use GitHub's **Code → Download ZIP** or clone the reposit
 
 ## Project context
 
-The current direction is **recording chips → routing board → XC7A100T board → XEM8310 receiver → PC**. Complete electrical pin assignments, the powered cable and receiver implementation remain unfinished. Earlier meeting records retain their original **KR260** direction as dated history; they do not override the current review.
+The featured review direction is **recording chips → routing board → XC7A50T micro-HDMI board → compatible receiver → PC**. The 50T board is unrouted; its powered cable, GTP link, receiver implementation and complete electrical pin assignments remain unfinished. The 100T/XEM8310 and earlier KR260 directions remain in dated records and separate board revisions.
 
 The included FPGA_512 code is an earlier **ECP5/FT600** implementation. It provides acquisition RTL, host software and testbenches; it is not a completed 4K Artix-7 implementation.
 

@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "generator": "KiCad 10.0.6 native GLB export + separately identified presentation body approximations",
   "limitations": [
     "Body heights for simplified parts are illustrative, not mechanical clearance evidence.",
@@ -85,6 +85,68 @@
       "model": "micro-hdmi.glb",
       "routing_status": "0 open items in checkpoint \u00b7 hardware not verified",
       "glb_sha256": "fcc34f06304f3ba7d8bf3ae31266fd39ba6121c0d9be002073f10fd6ea5e0d63"
+    },
+    "fpga50t": {
+      "id": "fpga50t",
+      "title": "XC7A50T \u00b7 unrouted micro-HDMI review",
+      "source": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+      "board_sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
+      "dimensions_mm": [
+        43,
+        49,
+        1.6
+      ],
+      "board_center_mm": [
+        21.5,
+        24.5
+      ],
+      "library_model_count": 123,
+      "simplified_body_count": 14,
+      "bare_fixture_count": 8,
+      "simplified_refs": [
+        "L3",
+        "U1",
+        "U3",
+        "L2",
+        "U4",
+        "U7",
+        "Y1",
+        "J5",
+        "L5",
+        "U5",
+        "C20",
+        "L1",
+        "U2",
+        "L4"
+      ],
+      "bare_refs": [
+        "TP127",
+        "TP124",
+        "TP126",
+        "TP125",
+        "H2",
+        "H4",
+        "H3",
+        "H1"
+      ],
+      "missing_step_models": [
+        {
+          "reference": "U1",
+          "declared_model": "Package_BGA.3dshapes/Xilinx_CSG325.step"
+        },
+        {
+          "reference": "Y1",
+          "declared_model": "Oscillator.3dshapes/Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm.step"
+        },
+        {
+          "reference": "J5",
+          "declared_model": "Connector_Hirose_DF40.3dshapes/Hirose_DF40C-120DS-0.4V_2x60_P0.4mm.step"
+        }
+      ],
+      "model": "fpga50t.glb",
+      "routing_status": "499 unrouted connections \u00b7 0 tracks/vias \u00b7 not for manufacture",
+      "glb_sha256": "749a081d412362841da784fd5f0208d6897696d3a1493b93c1c95aaa1807294b",
+      "model_source": "KiCad 10.0.6 installed package models; missing STEP models are identified by reference and represented by simplified bodies."
     }
   },
   "libraries": [

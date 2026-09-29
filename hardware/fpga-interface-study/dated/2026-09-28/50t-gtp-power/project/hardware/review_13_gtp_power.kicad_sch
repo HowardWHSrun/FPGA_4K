@@ -1,0 +1,4362 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid df9ca8e3-9786-5e78-a419-4c233a2d65e3)
+  (paper "A2")
+  (title_block
+    (title "13 / Dedicated GTP 1.0 V and 1.2 V power - review proposal")
+    (date "2026-09-28")
+    (rev "R5 GTP power")
+    (comment 1 "UNROUTED POWER PROPOSAL - NOT QUALIFIED"))
+  (lib_symbols
+    (symbol "CoreSupport:PowerDraft__TPS62135RGX"
+      (pin_names
+        (offset 0.254))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0 12.7 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "TPS62135RGX"
+        (at 0 10.16 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" "PowerDraft:Texas_VQFN_RGX0011A_2x3mm"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62135.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Description" "TI TPS62135RGX 4A adjustable synchronous buck; pins from SLVSBH3B page3; RGX0011A 11-pad package"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "PowerDraft__TPS62135RGX_0_1"
+        (rectangle
+          (start -7.62 8.89)
+          (end 7.62 -8.89)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "PowerDraft__TPS62135RGX_1_1"
+        (pin power_in line
+          (at 0 11.43 270)
+          (length 2.54)
+          (name "VIN"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin output line
+          (at 10.16 6.35 180)
+          (length 2.54)
+          (name "SW"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 0 -11.43 90)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at 10.16 -6.35 180)
+          (length 2.54)
+          (name "FB2"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at 10.16 1.27 180)
+          (length 2.54)
+          (name "FB"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at 10.16 3.81 180)
+          (length 2.54)
+          (name "VOS"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at 10.16 -3.81 180)
+          (length 2.54)
+          (name "PG"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 6.35 0)
+          (length 2.54)
+          (name "EN"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 1.27 0)
+          (length 2.54)
+          (name "SS/TR"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 -3.81 0)
+          (length 2.54)
+          (name "MODE"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "10"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 -6.35 0)
+          (length 2.54)
+          (name "VSEL"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "11"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1210_3225Metric Capacitor_SMD__C_1206_3216Metric Murata_GRT15_0402_Recommended"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__L"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "L"
+        (at -1.27 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "L"
+        (at 1.905 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Inductor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "inductor choke coil reactor magnetic"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "PowerDraft__L_Coilcraft_XFL4020"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__L_0_1"
+        (arc
+          (start 0 2.54)
+          (mid 0.6323 1.905)
+          (end 0 1.27)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 1.27)
+          (mid 0.6323 0.635)
+          (end 0 0)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 0)
+          (mid 0.6323 -0.635)
+          (end 0 -1.27)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 -1.27)
+          (mid 0.6323 -1.905)
+          (end 0 -2.54)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__L_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name "2"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__FerriteBead"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "FB"
+        (at -3.81 0.635 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "FerriteBead"
+        (at 3.81 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Ferrite bead"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "L ferrite bead inductor filter"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Inductor_* L_* *Ferrite* TDK_MPZ2012_Recommended"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__FerriteBead_0_1"
+        (polyline
+          (pts
+            (xy -2.7686 0.4064)
+            (xy -1.7018 2.2606)
+            (xy 2.7686 -0.3048)
+            (xy 1.6764 -2.159)
+            (xy -2.7686 0.4064))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0 1.27)
+            (xy 0 1.2954))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0 -1.27)
+            (xy 0 -1.2192))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__FerriteBead_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.54)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.54)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Connector__TestPoint"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.762)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "TP"
+        (at 0 6.858 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "TestPoint"
+        (at 0 5.08 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 5.08 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 5.08 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "test point"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "test point tp"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Pin* Test*"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Connector__TestPoint_0_1"
+        (circle
+          (center 0 3.302)
+          (radius 0.762)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Connector__TestPoint_1_1"
+        (pin passive line
+          (at 0 0 90)
+          (length 2.54)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (embedded_fonts no)
+  (text "13 / Dedicated GTP power - core supply remains separate"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 3.8 3.8))
+      (justify left))
+    (uuid 4d8a0bad-aa62-5b91-a67d-bf9af635a01c))
+  (text "U7 is new. U4 is reused from the old 2.5 V circuit. These are populated circuit proposals, not measured power rails."
+    (at 15.24 30.48 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 47e0f92e-b166-561d-980a-c970850d7e3a))
+  (symbol
+    (lib_id "CoreSupport:PowerDraft__TPS62135RGX")
+    (at 257.81 124.46 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b937bb38-754b-53ea-ab2d-a924325a5e24)
+    (property "Reference" "U7"
+      (at 270.51 104.14 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TPS62135RGXR"
+      (at 270.51 109.22 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:PowerDraft__Texas_VQFN_RGX0011A_2x3mm"
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62135.pdf"
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TPS62135RGXR"
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP MGTAVCC regulator"
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "PowerDraft:TPS62135RGX"
+      (at 257.81 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 924b860f-2736-5f93-a8c5-a8d333b214c4))
+    (pin "2"
+      (uuid 83ba2c72-236a-537f-a410-2e4f3a37da38))
+    (pin "3"
+      (uuid 6a4de46b-b986-5c8c-bb3e-8970cfea4af6))
+    (pin "4"
+      (uuid a43b79b3-856b-54a2-a587-e7b83ce9acfe))
+    (pin "5"
+      (uuid 121e24ff-a8be-50b5-b5ec-a684fff7dd0c))
+    (pin "6"
+      (uuid cad98738-87fb-52c8-9b53-043ff98ee2db))
+    (pin "7"
+      (uuid c7250cf7-b6e3-5d4c-b778-3e884dc1e8df))
+    (pin "8"
+      (uuid dcf4960a-9980-5890-88be-bca2d9d5f751))
+    (pin "9"
+      (uuid 7f9e2834-2dc5-5a86-b1cb-8fc516550835))
+    (pin "10"
+      (uuid 017831b8-31ae-5268-8738-b8d5b0bb3ebb))
+    (pin "11"
+      (uuid 83a3dc5a-3cd1-509a-8f10-6c2acf2a4873))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "U7")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 194.31 114.3 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid aca84f8f-ef7a-54f8-bd8d-256f36c7dc2f)
+    (property "Reference" "C124"
+      (at 199.39 111.76 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 25V X5R"
+      (at 199.39 116.84 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1206_3216Metric"
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST31LBB5226MTNA01&u=M"
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "MSAST31LBB5226MTNA01"
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 194.31 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 3280b466-05d4-5b4e-82ed-faa4ceb177f9))
+    (pin "2"
+      (uuid 0eb7be61-81f7-5389-9191-81a34124f94f))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C124")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 226.06 114.3 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 24ca88f6-3bff-58e4-8512-662481f163f3)
+    (property "Reference" "C125"
+      (at 223.06 121.8 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify right)))
+    (property "Value" "100n 100V X7R"
+      (at 223.06 127.8 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify right)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23"
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R72A104KA35D"
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 226.06 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 3073825b-3e8e-5dba-80f4-228609ea3059))
+    (pin "2"
+      (uuid 7ce6afbf-116c-50a2-b0f2-3f2104b42d39))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C125")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 323.85 147.32 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1a0d80f9-3ee9-5562-9675-3c835215f987)
+    (property "Reference" "C126"
+      (at 328.93 144.78 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 16V X5R"
+      (at 328.93 149.86 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSASE21GBB5226MTNA01&u=M"
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "EMK212BBJ226MG-T"
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 323.85 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e4a60800-e296-5c87-85b6-a601606dac54))
+    (pin "2"
+      (uuid ea2911a6-2ec8-53d3-a56d-9fcac0747615))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C126")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 234.95 147.32 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 59b270ac-efff-5a4a-8488-123798312b50)
+    (property "Reference" "C127"
+      (at 240.03 144.78 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "10n 50V X7R"
+      (at 240.03 149.86 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM188R71H103KA01%23"
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R71H103KA01D"
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 234.95 147.32 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e09b2088-692c-5dcf-a550-e5908c4ebd2c))
+    (pin "2"
+      (uuid cfc18e1a-17df-5329-b5cf-7f73e3ed25f4))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C127")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 361.95 140.97 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid bfe2821c-33dd-59cd-b623-5c8a07e87460)
+    (property "Reference" "R124"
+      (at 367.03 138.43 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "3.10k 0.1%"
+      (at 367.03 143.51 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD - exact 0603 0.1% <=25ppm/K ordering code"
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP voltage feedback"
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Selected resistance requirement, exact manufacturer ordering code pending. See GTP_Filter_DC_Budget.json."
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 361.95 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid b3e22548-d8e1-53a4-a00f-0dc96100d56e))
+    (pin "2"
+      (uuid 8c92baa6-39e0-52cc-90c0-5537d8fa9120))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R124")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 361.95 163.83 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 69a7c301-61e4-5f8d-a0f0-c487497fa4fa)
+    (property "Reference" "R125"
+      (at 367.03 161.29 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "6.98k 0.1%"
+      (at 367.03 166.37 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD - exact 0603 0.1% <=25ppm/K ordering code"
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP voltage feedback"
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Selected resistance requirement, exact manufacturer ordering code pending. See GTP_Filter_DC_Budget.json."
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 361.95 163.83 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 8c14c22b-4069-51d9-99be-4ba38c98c793))
+    (pin "2"
+      (uuid 7f222c04-a00f-5f07-bdb5-847d92e23227))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R125")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__L")
+    (at 298.45 118.11 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid d3fe98ea-23ed-514d-a9d5-781671982ce1)
+    (property "Reference" "L5"
+      (at 298.45 107.95 90)
+      (effects
+        (font
+          (size 1.7 1.7))))
+    (property "Value" "1uH 5.4A Isat30%"
+      (at 298.45 113.03 90)
+      (effects
+        (font
+          (size 1.3 1.3))))
+    (property "Footprint" "CoreSupport:PowerDraft__L_Coilcraft_XFL4020"
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.coilcraft.com/getmedia/50632d43-da1b-4cdb-8ab4-3029cab51df3/xfl4020.pdf"
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "XFL4020-102MEC"
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:L"
+      (at 298.45 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 0ae1c916-c19c-5365-ad7c-6d6d2b8326cb))
+    (pin "2"
+      (uuid 74d204d4-0a6f-5b75-9d7a-5103620da769))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "L5")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 93.98)
+      (xy 257.81 93.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0259c059-47bf-5cee-a200-8cdb31705f08))
+  (wire
+    (pts
+      (xy 257.81 93.98)
+      (xy 257.81 113.03))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2b90ce83-d432-5190-9c92-91f54ba759e3))
+  (global_label "LINK_12V"
+    (shape bidirectional)
+    (at 168.91 93.98 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid b132bc15-5bec-55e2-8776-08fe58283068)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 169.1 94.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 194.31 110.49)
+      (xy 194.31 93.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3f47bda8-81ef-51b0-adcc-ec63b817111e))
+  (junction
+    (at 194.31 93.98)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7314b8e4-ba70-51cf-9b88-5d6f2749d8cc))
+  (wire
+    (pts
+      (xy 194.31 118.11)
+      (xy 194.31 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ca6b9c3f-dc7a-56b7-a825-73cd0e4cbedb))
+  (wire
+    (pts
+      (xy 226.06 110.49)
+      (xy 226.06 93.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ccfb8b5e-eebf-550b-a039-fa75a4126c0e))
+  (junction
+    (at 226.06 93.98)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid cdbedcdf-3c4b-5510-a9b0-6b29ceee5656))
+  (wire
+    (pts
+      (xy 226.06 118.11)
+      (xy 226.06 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid cb528302-161e-5471-b28a-dadced1fef80))
+  (wire
+    (pts
+      (xy 194.31 182.88)
+      (xy 361.95 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 366291da-6ad0-52bc-82fe-d1be094ea165))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 194.31 182.88 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid e1316096-e8c3-5fdc-b238-39c7fa122e9f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 194.5 183.42 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 247.65 118.11)
+      (xy 242.57 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9ba8125f-8b4d-5a33-8575-df4fbb85f9a2))
+  (wire
+    (pts
+      (xy 242.57 118.11)
+      (xy 242.57 104.14))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5b99ba1c-f5fc-5d72-81b4-1763296a127b))
+  (global_label "PG_AUX"
+    (shape bidirectional)
+    (at 242.57 104.14 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 21b63774-fac4-5ea0-bf34-f3082dd04ab6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 242.76 104.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 247.65 128.27)
+      (xy 240.03 128.27))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d6763183-d75e-5e81-882d-7cf48f543b7e))
+  (wire
+    (pts
+      (xy 240.03 128.27)
+      (xy 240.03 93.98))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 812abef2-481a-55a0-b9a5-5440c1151572))
+  (junction
+    (at 240.03 93.98)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 02943eb1-9938-521b-bfee-771058ccd67f))
+  (wire
+    (pts
+      (xy 247.65 123.19)
+      (xy 234.95 123.19))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b67f91c8-af64-538d-8cb8-c2b554527ce6))
+  (wire
+    (pts
+      (xy 234.95 123.19)
+      (xy 234.95 143.51))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e76b3d21-b826-53bc-8e43-64c772958c59))
+  (wire
+    (pts
+      (xy 234.95 151.13)
+      (xy 234.95 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3e98a3e9-83d0-5832-b3ef-f582e1b2c7fc))
+  (junction
+    (at 234.95 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 5638b300-5e0b-5b30-96fe-fe375835668f))
+  (wire
+    (pts
+      (xy 247.65 130.81)
+      (xy 245.11 130.81))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a81c129c-5d9c-5562-a13e-6eed3aff8fe1))
+  (wire
+    (pts
+      (xy 245.11 130.81)
+      (xy 245.11 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 45b1b69b-d5ce-540f-a174-fba462fdf871))
+  (junction
+    (at 245.11 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 455cfb50-a60d-5add-a4ad-abb5886aeef4))
+  (wire
+    (pts
+      (xy 257.81 135.89)
+      (xy 257.81 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 97aa34de-1387-594a-b1c1-04744402bf82))
+  (junction
+    (at 257.81 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7b905e45-9db6-5444-a1b9-452650bcb830))
+  (wire
+    (pts
+      (xy 267.97 130.81)
+      (xy 273.05 130.81))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f66201d7-373d-5a73-822d-fc512bae33ac))
+  (wire
+    (pts
+      (xy 273.05 130.81)
+      (xy 273.05 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1e145cbf-26aa-549d-be4e-f5226a1bb748))
+  (junction
+    (at 273.05 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid ef8b3de6-f01c-5758-af3c-dcc7cc0b88eb))
+  (wire
+    (pts
+      (xy 267.97 118.11)
+      (xy 294.64 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 505ab726-c6ba-5f46-9e05-41d0b6530dd1))
+  (wire
+    (pts
+      (xy 302.26 118.11)
+      (xy 417.83 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 37b6dabc-6420-5287-a035-fe3a6cc09d6c))
+  (global_label "MGTAVCC_REG_1V011"
+    (shape bidirectional)
+    (at 417.83 118.11 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 1512be52-f97c-5f08-a96c-84a88d486329)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 418.02 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 323.85 143.51)
+      (xy 323.85 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e93284c1-bc37-552d-90ea-9bcd35f305a6))
+  (junction
+    (at 323.85 118.11)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid f8607d6b-8071-51dc-8c66-54668b8f94be))
+  (wire
+    (pts
+      (xy 361.95 137.16)
+      (xy 361.95 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 358f0650-eb84-5f6e-9bcb-3457ea4eaa4c))
+  (junction
+    (at 361.95 118.11)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 99c220c0-ae93-547d-92d0-bceb2aa1eab9))
+  (wire
+    (pts
+      (xy 323.85 151.13)
+      (xy 323.85 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 361b410f-a202-5601-bfd2-5499c5a4041d))
+  (junction
+    (at 323.85 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 55c66af2-d41f-531e-afa0-6b99c7c51f99))
+  (wire
+    (pts
+      (xy 267.97 120.65)
+      (xy 283.21 120.65))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c3f524ab-e76f-565e-8ee9-5a3f33c3bd3e))
+  (wire
+    (pts
+      (xy 283.21 120.65)
+      (xy 283.21 134.62))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b08c2d56-c8c1-5512-af62-d1e521921dbe))
+  (wire
+    (pts
+      (xy 283.21 134.62)
+      (xy 308.61 134.62))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 17695192-da4d-539f-b886-15e42a3cd349))
+  (wire
+    (pts
+      (xy 308.61 134.62)
+      (xy 308.61 118.11))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 82ed0e62-5b6b-5ce7-801c-b88fde892ed0))
+  (junction
+    (at 308.61 118.11)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 3ae5fb6e-f70c-5926-8775-5f21e27d1fb1))
+  (wire
+    (pts
+      (xy 361.95 144.78)
+      (xy 361.95 152.4))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 73a46883-f6c2-50cb-a8dc-856bd14cea2d))
+  (wire
+    (pts
+      (xy 361.95 152.4)
+      (xy 361.95 160.02))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c48c82bd-5912-5474-a262-f13b7bfb1535))
+  (wire
+    (pts
+      (xy 267.97 123.19)
+      (xy 280.67 123.19))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f15f9e04-2981-59bf-9ecd-0a430dc013f9))
+  (wire
+    (pts
+      (xy 280.67 123.19)
+      (xy 280.67 152.4))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 45d236c2-d6a5-57cf-bc30-b244a3351172))
+  (wire
+    (pts
+      (xy 280.67 152.4)
+      (xy 361.95 152.4))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ed192505-6c8a-5c18-b84d-0295e3f2ac19))
+  (junction
+    (at 361.95 152.4)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid b7a82721-8309-57a3-9a88-741d274bdb7d))
+  (global_label "FB_GTP_AVCC"
+    (shape bidirectional)
+    (at 361.95 152.4 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid dd1c6c95-35a9-504c-9183-628d3eb91027)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 362.14 152.94 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 361.95 167.64)
+      (xy 361.95 182.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d0195cfd-6f80-5382-a939-d65beabf76d4))
+  (junction
+    (at 361.95 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid e9c3a616-57a7-5e91-8e2e-24d84585244b))
+  (global_label "SW_GTP_AVCC"
+    (shape bidirectional)
+    (at 294.64 118.11 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 5506e85a-18b6-5d17-b9c7-904ceb4e340d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 294.64 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (global_label "SS_GTP_AVCC"
+    (shape bidirectional)
+    (at 234.95 143.51 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 6f59a605-b746-5a12-8e94-f58c9ec6be3e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 234.95 143.51 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__FerriteBead")
+    (at 422.91 140.97 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0e15b816-6e7b-5b8b-9c66-68788a3d5f39)
+    (property "Reference" "FB1"
+      (at 422.91 130.81 90)
+      (effects
+        (font
+          (size 1.7 1.7))))
+    (property "Value" "30R@100MHz / DCR<=10m"
+      (at 422.91 135.89 90)
+      (effects
+        (font
+          (size 1.3 1.3))))
+    (property "Footprint" "CoreSupport:TDK_MPZ2012_Recommended"
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ2012S300AT000"
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "MPZ2012S300AT000"
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:FerriteBead"
+      (at 422.91 140.97 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 60444129-cbf6-5131-ab25-8be9f1613be5))
+    (pin "2"
+      (uuid fccc3273-04ce-5e32-9c8f-0b8cab4969f6))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "FB1")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 394.97 118.11)
+      (xy 394.97 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3f83ee0d-8eda-5e2c-94c8-61adedde1b0e))
+  (wire
+    (pts
+      (xy 394.97 140.97)
+      (xy 419.1 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8d5b9fef-03b6-520f-aa2f-f9b39c218c1b))
+  (junction
+    (at 394.97 118.11)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid ba3a67df-7960-54a0-b2b4-6172e30570dd))
+  (wire
+    (pts
+      (xy 426.72 140.97)
+      (xy 463.55 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 97b7189d-af1e-5482-be0b-6e1d27e3c428))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 402.59 187.96 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid dc68055a-5c6e-57d4-ab93-61c1d6e2574f)
+    (property "Reference" "R126"
+      (at 407.67 185.42 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100k"
+      (at 407.67 190.5 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "CRCW0603100KFKEA"
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 402.59 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 1ffde8e2-b5a0-5891-b15d-da60a526340b))
+    (pin "2"
+      (uuid 1ada8f71-396e-5f97-8373-5f1e1d6dd17c))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R126")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 402.59 184.15)
+      (xy 402.59 175.26))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 92c5e14f-8def-5cd9-af05-4e1e1993f28d))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 402.59 175.26 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid f29b51ab-e487-5062-ab5d-94bd71dfe1bf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 402.78 175.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 267.97 128.27)
+      (xy 278.13 128.27))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 423e73f4-938d-533c-aa20-3a86739b01b6))
+  (wire
+    (pts
+      (xy 278.13 128.27)
+      (xy 278.13 200.66))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2c828bb7-d158-5dce-a637-2259805c6448))
+  (wire
+    (pts
+      (xy 278.13 200.66)
+      (xy 402.59 200.66))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4920a6c0-bd75-59cc-a9fd-65211506145f))
+  (wire
+    (pts
+      (xy 402.59 200.66)
+      (xy 402.59 191.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d173df7e-3f62-5a80-97c1-83c4cac8e360))
+  (global_label "PG_GTP_AVCC"
+    (shape bidirectional)
+    (at 402.59 200.66 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 2eb0e8b2-2e26-5a14-9f63-361b579ba502)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 402.78 201.2 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (junction
+    (at 194.31 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 9cde53b3-09ee-52a3-85b8-ea163ea88f2c))
+  (junction
+    (at 226.06 182.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid c2d0c422-723b-50d0-bcc3-72425fe581a5))
+  (symbol
+    (lib_id "CoreSupport:PowerDraft__TPS62135RGX")
+    (at 257.81 294.64 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1496ae4d-ac42-55c6-af88-936eb1e44985)
+    (property "Reference" "U4"
+      (at 270.51 274.32 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TPS62135RGXR"
+      (at 270.51 279.4 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:PowerDraft__Texas_VQFN_RGX0011A_2x3mm"
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62135.pdf"
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TPS62135RGXR"
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP MGTAVTT regulator"
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Repurposed from unused 2.5V to dedicated MGTAVTT regulator. Nominal1.206447V before FB2. Qualification pending."
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "PowerDraft:TPS62135RGX"
+      (at 257.81 294.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 95effec1-e8b0-5108-ae0f-a5b514fe37b1))
+    (pin "2"
+      (uuid 26d8c5b9-610a-54af-8888-48c9e9e59957))
+    (pin "3"
+      (uuid 62cea105-3cb0-5d62-8e74-50d5e683ea25))
+    (pin "4"
+      (uuid 721ff352-06a3-5e2d-b492-678ed7c0d047))
+    (pin "5"
+      (uuid 32adb2d2-5248-51fa-807c-393224499f65))
+    (pin "6"
+      (uuid 45451632-ce17-559f-bf29-1e1432dfd018))
+    (pin "7"
+      (uuid 04ba201d-8ac6-55d0-95de-fdac00476945))
+    (pin "8"
+      (uuid 61fef7c7-e46c-5c4d-81a8-bbfcfdbe621f))
+    (pin "9"
+      (uuid ab4e2369-9aba-547f-a046-bdd81b820882))
+    (pin "10"
+      (uuid 7dc131be-9c0d-5f09-87ca-2240c8894d00))
+    (pin "11"
+      (uuid 7197fd50-2ee0-50cd-b560-7cbda2223078))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "U4")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 194.31 284.48 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 023c03cb-4517-5d37-b7f4-e339a26bb39e)
+    (property "Reference" "C11"
+      (at 199.39 281.94 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 25V X5R"
+      (at 199.39 287.02 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1206_3216Metric"
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST31LBB5226MTNA01&u=M"
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "MSAST31LBB5226MTNA01"
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_cfg"
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima."
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 194.31 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid feea6ca5-a0a0-5281-8154-cd6f344e7c32))
+    (pin "2"
+      (uuid 796be35d-1d13-5258-83f1-495a9678a131))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C11")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 226.06 284.48 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 75f16ef6-85f9-54da-affd-70d79bb2318e)
+    (property "Reference" "C12"
+      (at 223.06 291.98 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify right)))
+    (property "Value" "100n 100V X7R"
+      (at 223.06 297.98 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify right)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23"
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R72A104KA35D"
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_cfg"
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 226.06 284.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 29698dc5-7cc1-5335-b327-64c927f7ec2f))
+    (pin "2"
+      (uuid 00fd84c6-e928-52cc-a33c-95336aa98066))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C12")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 323.85 317.5 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 551d4d64-116b-547b-827f-de581d6dd097)
+    (property "Reference" "C13"
+      (at 328.93 314.96 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 16V X5R"
+      (at 328.93 320.04 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSASE21GBB5226MTNA01&u=M"
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "EMK212BBJ226MG-T"
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_cfg"
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Independent review: X5R, rated -55 to +85 C; manufacturer renamed alias MSASE21GBB5226MTNA01; effective capacitance and sourcing not qualified."
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 323.85 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 2546f6ad-f362-546b-ba2d-5906dc71c276))
+    (pin "2"
+      (uuid 9d3bed2a-301d-52dd-a4ab-7c138460e8cd))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C13")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 234.95 317.5 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid e92b02c9-bfac-5198-abe1-d65ecb7384d0)
+    (property "Reference" "C14"
+      (at 240.03 314.96 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "10n 50V X7R"
+      (at 240.03 320.04 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM188R71H103KA01%23"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R71H103KA01D"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_cfg"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 234.95 317.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 5c790d73-f786-59e2-aae8-11e22b1a6c56))
+    (pin "2"
+      (uuid 2a0f637c-68a2-5973-87ab-a01259588356))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C14")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 361.95 311.15 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f454e88f-a89a-55b5-8705-31c529e350bd)
+    (property "Reference" "R5"
+      (at 367.03 308.61 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "5.05k 0.1%"
+      (at 367.03 313.69 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD - exact 0603 0.1% <=25ppm/K ordering code"
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP voltage feedback"
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Selected resistance requirement, exact manufacturer ordering code pending. See GTP_Filter_DC_Budget.json."
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 361.95 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid b710d3df-87e2-5f4d-9215-3254b917c3cf))
+    (pin "2"
+      (uuid 017ec9da-665a-51b3-95dd-e2ddb0d2c66f))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R5")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 361.95 334.01 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 348cd99c-82c1-556d-b73d-90b7c2fbce9a)
+    (property "Reference" "R6"
+      (at 367.03 331.47 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "6.98k 0.1%"
+      (at 367.03 336.55 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TBD - exact 0603 0.1% <=25ppm/K ordering code"
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP voltage feedback"
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Selected resistance requirement, exact manufacturer ordering code pending. See GTP_Filter_DC_Budget.json."
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 361.95 334.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 7868e3d9-9f09-5b2b-8e4a-0f00ae0e5f0e))
+    (pin "2"
+      (uuid 5e8201e3-80ca-5e91-8ff6-6af2fdc13b00))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R6")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__L")
+    (at 298.45 288.29 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 7417d3cf-3cca-5092-8d16-e0c1cb22e437)
+    (property "Reference" "L3"
+      (at 298.45 278.13 90)
+      (effects
+        (font
+          (size 1.7 1.7))))
+    (property "Value" "1uH 5.4A Isat30%"
+      (at 298.45 283.21 90)
+      (effects
+        (font
+          (size 1.3 1.3))))
+    (property "Footprint" "CoreSupport:PowerDraft__L_Coilcraft_XFL4020"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.coilcraft.com/getmedia/50632d43-da1b-4cdb-8ab4-3029cab51df3/xfl4020.pdf"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "XFL4020-102MEC"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_cfg"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:L"
+      (at 298.45 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 90403aae-0bd6-528f-b6ff-ab7a6c798427))
+    (pin "2"
+      (uuid e0aa7103-14de-5722-8b7c-ed41ff54c7bb))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "L3")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 168.91 264.16)
+      (xy 257.81 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d1f78cec-122f-53d3-83f9-1141d5d00de5))
+  (wire
+    (pts
+      (xy 257.81 264.16)
+      (xy 257.81 283.21))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4576c863-b134-5c90-bc16-a0dc9ee93938))
+  (global_label "LINK_12V"
+    (shape bidirectional)
+    (at 168.91 264.16 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 602ec71d-88f0-5845-8a9f-8c910b727241)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 169.1 264.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 194.31 280.67)
+      (xy 194.31 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 95013a20-ecdc-5ff6-a5c5-62bef635973a))
+  (junction
+    (at 194.31 264.16)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid cef23a07-6782-5d92-9b4e-4da2d50be935))
+  (wire
+    (pts
+      (xy 194.31 288.29)
+      (xy 194.31 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f18c9e48-c5b3-581b-bccf-d978472153c5))
+  (wire
+    (pts
+      (xy 226.06 280.67)
+      (xy 226.06 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid aaacceaa-64bb-53da-8fc5-21da6fdc2f68))
+  (junction
+    (at 226.06 264.16)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid d084d039-6674-5d4b-904e-37d8986acfeb))
+  (wire
+    (pts
+      (xy 226.06 288.29)
+      (xy 226.06 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e8a103e7-a8bc-55dd-bfbd-53a4ca4bd5a1))
+  (wire
+    (pts
+      (xy 194.31 353.06)
+      (xy 361.95 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 58a5ae05-0c59-5882-9584-61f8f9ec068b))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 194.31 353.06 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 6289e957-1cf9-5356-ab70-5ab14f9649f0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 194.5 353.42 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 247.65 288.29)
+      (xy 242.57 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d2455e1d-24ee-58fb-9b4b-a2622c043453))
+  (wire
+    (pts
+      (xy 242.57 288.29)
+      (xy 242.57 274.32))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 39ded841-efbc-5776-a6ed-e731459dd8ce))
+  (global_label "PG_GTP_AVCC"
+    (shape bidirectional)
+    (at 242.57 274.32 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 02923e45-8d3d-5146-bdd5-b7a1b3e34f3e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 242.76 274.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 247.65 298.45)
+      (xy 240.03 298.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 24d9d462-029c-5309-bed8-9eabed0dffef))
+  (wire
+    (pts
+      (xy 240.03 298.45)
+      (xy 240.03 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d7dc49ce-0025-5f0a-a09a-672730d279c2))
+  (junction
+    (at 240.03 264.16)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid f5935a8f-267e-5f52-b3c3-92b299166156))
+  (wire
+    (pts
+      (xy 247.65 293.37)
+      (xy 234.95 293.37))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7eadd12c-2be0-5db2-b002-0e5ddd2c9cea))
+  (wire
+    (pts
+      (xy 234.95 293.37)
+      (xy 234.95 313.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e52ae805-770f-5b5d-a00b-867a6c7b872b))
+  (wire
+    (pts
+      (xy 234.95 321.31)
+      (xy 234.95 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 05277f6f-921d-535e-bd6d-bb4ae2310517))
+  (junction
+    (at 234.95 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid b335347e-3e45-53ce-8c1e-7f361dae3a57))
+  (wire
+    (pts
+      (xy 247.65 300.99)
+      (xy 245.11 300.99))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d7e57b48-e080-5a6b-96d4-89599a4a5998))
+  (wire
+    (pts
+      (xy 245.11 300.99)
+      (xy 245.11 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ccc49935-6ac9-5a30-b1fd-f403b7e573c3))
+  (junction
+    (at 245.11 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid d2dcac60-f23e-54ce-a22f-6f026c6746ed))
+  (wire
+    (pts
+      (xy 257.81 306.07)
+      (xy 257.81 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9ce87cc0-9b3e-5cc8-9be8-1063f29895bc))
+  (junction
+    (at 257.81 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 788f62d8-8127-53d4-9937-560334dc1cfa))
+  (wire
+    (pts
+      (xy 267.97 300.99)
+      (xy 273.05 300.99))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid aee660bc-d1bc-5316-8618-83827ca24c29))
+  (wire
+    (pts
+      (xy 273.05 300.99)
+      (xy 273.05 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 01d12279-a313-5c0e-ba6e-a5db1fd96c1d))
+  (junction
+    (at 273.05 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 64dea4c4-54e9-5014-91a5-96bb98797a60))
+  (wire
+    (pts
+      (xy 267.97 288.29)
+      (xy 294.64 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5a3b2285-603e-50a1-93b2-17b75f0ff67e))
+  (wire
+    (pts
+      (xy 302.26 288.29)
+      (xy 417.83 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a12dde9f-a40a-5bbe-8a71-6463aae22801))
+  (global_label "MGTAVTT_REG_1V206"
+    (shape bidirectional)
+    (at 417.83 288.29 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid c509107d-c65c-542c-a2a2-1e43aedfb6be)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 418.02 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 323.85 313.69)
+      (xy 323.85 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 894ce158-1f5b-54d0-9ce3-84ccb5c4cc8d))
+  (junction
+    (at 323.85 288.29)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 5e523499-d9f4-5e24-87dc-de8f4e4a2d51))
+  (wire
+    (pts
+      (xy 361.95 307.34)
+      (xy 361.95 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 40a5b232-1fd3-5fab-84a1-5a8d0e549b99))
+  (junction
+    (at 361.95 288.29)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 08d393d1-9b14-519a-8637-354b33bcf78d))
+  (wire
+    (pts
+      (xy 323.85 321.31)
+      (xy 323.85 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dfaa4057-b406-536b-a9fd-d02127f2ab65))
+  (junction
+    (at 323.85 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid e4b74186-6cf6-50ce-ba27-12e2aed2638e))
+  (wire
+    (pts
+      (xy 267.97 290.83)
+      (xy 283.21 290.83))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 079609b1-a01c-5efb-b944-62277c6cc59b))
+  (wire
+    (pts
+      (xy 283.21 290.83)
+      (xy 283.21 304.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ec5981c9-48d2-5648-bf3b-87b552f59729))
+  (wire
+    (pts
+      (xy 283.21 304.8)
+      (xy 308.61 304.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dc520f5a-04f7-5862-b06d-5744dce2ebdc))
+  (wire
+    (pts
+      (xy 308.61 304.8)
+      (xy 308.61 288.29))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3f06c6f0-700e-5763-8c62-041d953de4fd))
+  (junction
+    (at 308.61 288.29)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 178499ce-430e-5a25-b1d5-43b8f1a703ee))
+  (wire
+    (pts
+      (xy 361.95 314.96)
+      (xy 361.95 322.58))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid aceff733-e83b-5ed9-84fb-38e3a71a587f))
+  (wire
+    (pts
+      (xy 361.95 322.58)
+      (xy 361.95 330.2))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f82c0b60-b914-5bda-8bd2-503d44dafafc))
+  (wire
+    (pts
+      (xy 267.97 293.37)
+      (xy 280.67 293.37))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c6b063a7-9d36-5983-a50d-8c509138886f))
+  (wire
+    (pts
+      (xy 280.67 293.37)
+      (xy 280.67 322.58))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d195b8d6-7767-5143-a4a3-13cced20b78c))
+  (wire
+    (pts
+      (xy 280.67 322.58)
+      (xy 361.95 322.58))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7336904f-8f0e-5f97-aabc-7cf14987aed9))
+  (junction
+    (at 361.95 322.58)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid cdd42616-2abc-551c-8dd7-1f0bef13e5a0))
+  (global_label "FB_GTP_AVTT"
+    (shape bidirectional)
+    (at 361.95 322.58 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 88e5aa23-0e3e-566b-8a30-d55bfc0798cd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 362.14 322.94 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 361.95 337.82)
+      (xy 361.95 353.06))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5a9bf500-401d-5040-a8cc-5516dc3acaf1))
+  (junction
+    (at 361.95 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid dfc71e72-205e-54df-8e51-93b5b41de5a9))
+  (global_label "SW_GTP_AVTT"
+    (shape bidirectional)
+    (at 294.64 288.29 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 5c3b515c-e327-553d-850d-5f7563f1160c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 294.64 288.29 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (global_label "SS_GTP_AVTT"
+    (shape bidirectional)
+    (at 234.95 313.69 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid cadcd90d-dc60-5cab-827c-661357210802)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 234.95 313.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__FerriteBead")
+    (at 422.91 311.15 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid a3cc1d24-a156-50aa-a9f2-ff70e093473a)
+    (property "Reference" "FB2"
+      (at 422.91 300.99 90)
+      (effects
+        (font
+          (size 1.7 1.7))))
+    (property "Value" "30R@100MHz / DCR<=10m"
+      (at 422.91 306.07 90)
+      (effects
+        (font
+          (size 1.3 1.3))))
+    (property "Footprint" "CoreSupport:TDK_MPZ2012_Recommended"
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ2012S300AT000"
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "MPZ2012S300AT000"
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:FerriteBead"
+      (at 422.91 311.15 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 73b94ab1-69d3-579c-95db-8dfee42804ef))
+    (pin "2"
+      (uuid 96d1e4be-60e2-58c5-9ba7-074a6b46bdb3))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "FB2")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 394.97 288.29)
+      (xy 394.97 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9efa959f-2624-5d53-b7f0-90bf1f126d38))
+  (wire
+    (pts
+      (xy 394.97 311.15)
+      (xy 419.1 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d1335a9a-8b63-5c90-b143-7daefd5f9d95))
+  (junction
+    (at 394.97 288.29)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7bad7a47-ea53-5fef-9e97-0fedea34f4d9))
+  (wire
+    (pts
+      (xy 426.72 311.15)
+      (xy 463.55 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 1b5435d8-55b4-5e2e-b9f0-acdebf85703f))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 402.59 358.14 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid c4ffd9d0-a2b0-54d7-97ec-b4dd6c415a1d)
+    (property "Reference" "R127"
+      (at 407.67 355.6 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100k"
+      (at 407.67 360.68 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "CRCW0603100KFKEA"
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 402.59 358.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a81377c1-a9ab-518f-9ab2-0dec95d2fe69))
+    (pin "2"
+      (uuid 5d98380b-5dae-571c-9911-c493b15efedd))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "R127")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 402.59 354.33)
+      (xy 402.59 345.44))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b3011784-829b-5fa7-aaf5-0e1e2c6fbacd))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 402.59 345.44 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 2584bcad-960c-5749-9ad9-2f72437746a2)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 402.78 345.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 267.97 298.45)
+      (xy 278.13 298.45))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid da0ce325-2e20-5996-98bd-d21b90fe6876))
+  (wire
+    (pts
+      (xy 278.13 298.45)
+      (xy 278.13 370.84))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0a3e37ee-bb8c-54d7-980d-aa94a82120b9))
+  (wire
+    (pts
+      (xy 278.13 370.84)
+      (xy 402.59 370.84))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 339b5b80-009d-537e-9326-5a8902c84357))
+  (wire
+    (pts
+      (xy 402.59 370.84)
+      (xy 402.59 361.95))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6bf8bfd5-b02a-5534-bb2c-02d1b7dee867))
+  (global_label "PG_GTP_AVTT"
+    (shape bidirectional)
+    (at 402.59 370.84 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 28fa2424-cf13-524e-a3fc-f167ab525514)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 402.78 371.2 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (junction
+    (at 194.31 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 6e2f70f1-d6fd-56ea-afd6-0760a4ebc6e6))
+  (junction
+    (at 226.06 353.06)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 4e122258-872e-540a-bbff-4479c667908d))
+  (wire
+    (pts
+      (xy 463.55 140.97)
+      (xy 553.72 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 585e9bef-f462-5409-895f-951a13edb7fc))
+  (global_label "MGTAVCC_1V0"
+    (shape bidirectional)
+    (at 553.72 140.97 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid b9117874-f702-5bb3-bba9-dd8e0cff512e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 554.0 141.51 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 477.52 172.72 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2b0e9fb6-bff0-5f1a-b6a7-222e80a3fc16)
+    (property "Reference" "C128"
+      (at 482.6 170.18 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 482.6 175.26 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 477.52 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid ae671480-78f1-53ba-b8b1-9b19af578024))
+    (pin "2"
+      (uuid f078f0e9-3730-5966-bcb5-24d8bacbcd65))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C128")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 477.52 168.91)
+      (xy 477.52 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6b732ec5-16b9-52d2-917d-c642cfed7657))
+  (junction
+    (at 477.52 140.97)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 0e8a8924-f952-502a-909d-85fe90d33d8e))
+  (wire
+    (pts
+      (xy 477.52 176.53)
+      (xy 477.52 193.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6b2e4630-62af-513b-b0d5-76e767414382))
+  (junction
+    (at 477.52 193.04)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 6e9c7198-c4ab-5aa2-b18c-5cb1aac12219))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 510.54 172.72 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 278b24ef-777f-53c2-8d76-dbe09eaab9ee)
+    (property "Reference" "C129"
+      (at 515.62 170.18 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 515.62 175.26 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 510.54 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 34051b32-d070-54d7-8220-a6f57d5b8dc8))
+    (pin "2"
+      (uuid 691511ac-5ba6-5baf-8dd5-f957b1496360))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C129")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 510.54 168.91)
+      (xy 510.54 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5d2b0351-30c6-51b4-9074-017113933c68))
+  (junction
+    (at 510.54 140.97)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 2f0e2cda-392a-554f-8fcf-e8776f94f02b))
+  (wire
+    (pts
+      (xy 510.54 176.53)
+      (xy 510.54 193.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a5291e47-2c5c-57b3-a5e8-c8262a8b4312))
+  (junction
+    (at 510.54 193.04)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid c7f2e960-b365-5bf3-a7e7-934ccd6f0e68))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 544.83 172.72 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 5d847c0f-7f3c-51e4-8621-20b6a828a1f0)
+    (property "Reference" "C130"
+      (at 549.91 170.18 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 549.91 175.26 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 544.83 172.72 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid beca615c-d4e4-59b8-b20b-7f4b82683b03))
+    (pin "2"
+      (uuid b4bf8da6-ee1f-56ba-baed-1601447db133))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C130")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 544.83 168.91)
+      (xy 544.83 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b3869091-b50a-547e-9580-1f8ae311db4a))
+  (junction
+    (at 544.83 140.97)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 05e209a2-7f81-5ef9-b9cb-98f85bd66bc9))
+  (wire
+    (pts
+      (xy 544.83 176.53)
+      (xy 544.83 193.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c16d24e5-a25d-5e0b-b8c7-76c400567579))
+  (junction
+    (at 544.83 193.04)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid ee6cfab1-64b6-59ed-9fa9-8943640db7af))
+  (wire
+    (pts
+      (xy 477.52 193.04)
+      (xy 544.83 193.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 076a37ca-6cd8-5721-aa96-f3f708d3cccf))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 544.83 193.04 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 9d334476-84cd-5db3-ac87-e320ebdd1db3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 545.0 193.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Connector__TestPoint")
+    (at 553.72 130.81 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 80a72cda-44d3-5e6c-b6cc-fca1b8b21857)
+    (property "Reference" "TP124"
+      (at 553.72 128.27 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TP124"
+      (at 553.72 133.35 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:TestPoint__TestPoint_Pad_D1_0mm"
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "PCB test pad"
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Connector:TestPoint"
+      (at 553.72 130.81 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 1c6e0302-66fc-5f44-9e70-0c0f8721cfb0))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "TP124")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 553.72 130.81)
+      (xy 553.72 140.97))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 4e222750-2988-5d2b-ad73-193d41883bb1))
+  (junction
+    (at 553.72 140.97)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 6a631c7e-af56-5169-8c93-5aa5669447ca))
+  (wire
+    (pts
+      (xy 463.55 311.15)
+      (xy 553.72 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2b10adfb-236a-5c35-8896-118d934154b0))
+  (global_label "MGTAVTT_1V2"
+    (shape bidirectional)
+    (at 553.72 311.15 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 9c459d99-ac04-53b9-8f95-68c668d21ee8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 554.0 311.51 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 477.52 342.9 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 10cf2650-1837-52bd-acab-3eb9115fc300)
+    (property "Reference" "C131"
+      (at 482.6 340.36 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 482.6 345.44 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 477.52 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e76bf5fc-c2f9-5207-b29f-fb06603e1fe0))
+    (pin "2"
+      (uuid a0633136-3042-5a07-90ea-a44177d761c3))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C131")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 477.52 339.09)
+      (xy 477.52 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 346653d6-a721-570d-95db-c049c8030db4))
+  (junction
+    (at 477.52 311.15)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid ec01b629-7da7-5bb9-bbc5-68c2c249a164))
+  (wire
+    (pts
+      (xy 477.52 346.71)
+      (xy 477.52 363.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d685b699-71c1-54bf-bb31-97e94d61a771))
+  (junction
+    (at 477.52 363.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid f00c6e0c-a7f9-5608-beb7-84a2bfd0b2b9))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 510.54 342.9 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid bd4ce97b-0c76-5deb-abfe-9314b18293f3)
+    (property "Reference" "C132"
+      (at 515.62 340.36 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 515.62 345.44 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 510.54 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 80ff9f62-9ec7-5922-a823-3cbe062361ab))
+    (pin "2"
+      (uuid 17df63ce-d268-5d1f-bba8-5d6012692176))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C132")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 510.54 339.09)
+      (xy 510.54 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8e29e818-90ea-57d7-8fe3-30a09d4e646c))
+  (junction
+    (at 510.54 311.15)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 921e6151-6a77-5e9e-b462-aa6006c735b6))
+  (wire
+    (pts
+      (xy 510.54 346.71)
+      (xy 510.54 363.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 9342e160-ba4b-5611-ab4b-72f1b58e3b28))
+  (junction
+    (at 510.54 363.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid d32d6553-c840-58c3-b204-f07da855cd52))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 544.83 342.9 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid c64a88cb-5352-5d95-aee4-01d4b3e99a83)
+    (property "Reference" "C133"
+      (at 549.91 340.36 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 549.91 345.44 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP local bypass"
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 544.83 342.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 86bafecd-9f60-52b3-9c27-f0e609858a5b))
+    (pin "2"
+      (uuid 01431f2a-5816-57bb-abe9-5fdbb70aa875))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "C133")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 544.83 339.09)
+      (xy 544.83 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 672e0a08-c878-5fc5-9251-cc1736b0e0b9))
+  (junction
+    (at 544.83 311.15)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7bacfddb-29aa-520d-9a4d-bf2d9db82fe1))
+  (wire
+    (pts
+      (xy 544.83 346.71)
+      (xy 544.83 363.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f4627cef-a634-5f1e-8289-0e88baa43a32))
+  (junction
+    (at 544.83 363.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 47838588-d341-54cc-8457-a014d5cdee58))
+  (wire
+    (pts
+      (xy 477.52 363.22)
+      (xy 544.83 363.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 64d6b99f-d417-5e81-b775-1751aae766bf))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 544.83 363.22 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left))
+    (uuid 5fd7b524-b67c-5368-8c5c-8b4411b2bf8e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 545.0 363.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Connector__TestPoint")
+    (at 553.72 300.99 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 419f5eb0-9587-5455-bf94-862fd5e0270a)
+    (property "Reference" "TP125"
+      (at 553.72 298.45 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TP125"
+      (at 553.72 303.53 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:TestPoint__TestPoint_Pad_D1_0mm"
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "PCB test pad"
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Connector:TestPoint"
+      (at 553.72 300.99 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid ed296614-bd81-5ad3-ad1c-bceb6169697f))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "TP125")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 553.72 300.99)
+      (xy 553.72 311.15))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid caf3ccd5-e2a6-5a4d-9a2c-21b6d6310694))
+  (junction
+    (at 553.72 311.15)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 3d207e84-2a6a-5bdf-ba5d-18e02acb2eeb))
+  (symbol
+    (lib_id "CoreSupport:Connector__TestPoint")
+    (at 554.99 223.52 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 22df0468-8611-56a8-a9c4-fcf6288ddc24)
+    (property "Reference" "TP126"
+      (at 554.99 220.98 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TP126"
+      (at 554.99 226.06 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:TestPoint__TestPoint_Pad_D1_0mm"
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "PCB test pad"
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Connector:TestPoint"
+      (at 554.99 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 58e48882-22fd-55a9-9d90-61797a35cf00))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "TP126")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 554.99 223.52)
+      (xy 542.29 223.52))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a89fb35d-3ffe-5a99-afc6-fe024975b1c4))
+  (global_label "PG_GTP_AVCC"
+    (shape bidirectional)
+    (at 542.29 223.52 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid a4d6b4fc-f24e-5105-b2c8-ce6ba5839658)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 542.29 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Connector__TestPoint")
+    (at 449.58 383.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 251b40c7-0572-5cc8-a982-f1ee3b801246)
+    (property "Reference" "TP127"
+      (at 449.58 381.0 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TP127"
+      (at 449.58 386.08 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:TestPoint__TestPoint_Pad_D1_0mm"
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" ""
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "PCB test pad"
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP power review"
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "R5 GTP supply proposal. Current/noise/thermal/layout and exact ordered parts require validation."
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Connector:TestPoint"
+      (at 449.58 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e08d072d-bb8b-5e05-a829-b92e98020e15))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3"
+          (reference "TP127")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 449.58 383.54)
+      (xy 436.88 383.54))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ceef8f10-c6ed-5bac-aff0-c43966363025))
+  (global_label "PG_GTP_AVTT"
+    (shape bidirectional)
+    (at 436.88 383.54 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 59483371-af71-5dfb-ae28-704580fd8142)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 436.88 383.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (text "U7 / GTP ANALOG 1.0 V"
+    (at 191.77 54.61 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 0c0a4426-6eae-5517-b644-5f80b43732ad))
+  (text "Regulator setpoint: ~1.0109 V before FB1."
+    (at 191.77 60.96 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 3dcee388-838e-54e2-95f6-c19201237297))
+  (text "FB1 feeds C128 / C129 / C130 at the FPGA."
+    (at 191.77 67.31 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid bce45f83-71fc-528c-97ba-265b4978bbd6))
+  (text "U4 / GTP TERMINATION 1.2 V"
+    (at 191.77 237.49 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 6ec6613c-d0ff-5d4b-bce7-d5288d789879))
+  (text "Regulator setpoint: ~1.2064 V before FB2."
+    (at 191.77 243.84 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 6b8c2f14-4da3-5a87-ae7d-0dafd2aace53))
+  (text "FB2 feeds C131 / C132 / C133 and R123."
+    (at 191.77 250.19 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 914c053e-adf5-587b-b4c1-3b7ce56aade8))
+  (text "WHY TWO DEDICATED RAILS"
+    (at 15.24 54.61 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 4442f8c2-ac65-5e90-9e28-6e03a458c151))
+  (text "AMD recommends no sharing"
+    (at 15.24 60.96 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 0cd7abe9-02ce-5b56-ba98-9c7caeb301cc))
+  (text "with non-transceiver loads."
+    (at 15.24 67.31 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 706be8dc-20ac-572c-8bb6-baf86034b2f2))
+  (text "U2 still powers core/BRAM."
+    (at 15.24 72.39 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid bcbb6e2e-3f7e-5a85-b9f4-81a5556a8203))
+  (text "The common INPUT can be shared."
+    (at 15.24 78.74 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid f0aa89c6-2a30-578c-8677-fa738682e879))
+  (text "STARTUP CONNECTIONS"
+    (at 15.24 120.65 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 3fe10690-752d-5b5a-8b13-8f6b4adcb8de))
+  (text "Core PG starts auxiliary U3."
+    (at 15.24 128.27 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 9bf8ed27-1ac5-50cb-9ee9-a6311f0c5c23))
+  (text "PG_AUX starts U7 and I/O U5."
+    (at 15.24 133.35 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 58b4d574-dec9-57ec-a76d-70434dd6520b))
+  (text "U7 PG then starts U4."
+    (at 15.24 139.7 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 09755c2f-afa4-5ae0-aa44-534c5f099619))
+  (text "New PG pull-ups use 1.8 V."
+    (at 15.24 144.78 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid e68b815d-18c1-5959-8d64-433a0a103c11))
+  (text "Power-down order is not qualified."
+    (at 15.24 151.13 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 8ac17b6e-71c1-5fbb-935b-ab356df3598f))
+  (text "AT EACH GTP SUPPLY GROUP"
+    (at 15.24 195.58 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 8aabd965-0f16-5d11-a6ee-b1e59375ac1f))
+  (text "One 4.7 uF + two 100 nF caps."
+    (at 15.24 201.93 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 67c52b0f-a855-56aa-abae-88fd67d5425f))
+  (text "Place at assigned supply balls."
+    (at 15.24 208.28 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 7919affe-4aeb-5fee-8524-98e525526e9d))
+  (text "FB1/FB2: 10 milliohm max DCR"
+    (at 15.24 213.36 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 80971d59-cb87-50eb-bb93-ea7df2464b33))
+  (text "at the specified test condition."
+    (at 15.24 219.71 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid e1a09680-050c-558e-81dd-7fea576942df))
+  (text "Verify hot/DC-biased performance."
+    (at 15.24 224.79 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 541d1776-46e0-562f-bd8e-bf763683e267))
+  (text "VOLTAGE / NOISE ACCEPTANCE"
+    (at 15.24 270.51 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 99f8b876-002a-5278-b875-b10d4826b380))
+  (text "MGTAVCC: 0.97-1.03 V."
+    (at 15.24 276.86 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid d70a04bf-51ec-5c96-878a-aac8eaa9fb08))
+  (text "MGTAVTT: 1.17-1.23 V."
+    (at 15.24 283.21 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid cf279b94-1279-5f6f-8482-6b3cf48770bf))
+  (text "Noise target: below 10 mV p-p"
+    (at 15.24 288.29 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 01ad314f-1378-58ef-9d79-0c41b1b82f6e))
+  (text "at FPGA pins, 10 kHz-80 MHz."
+    (at 15.24 294.64 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 62841ff2-58cd-50c8-9d0f-1e2d99145c73))
+  (text "Filtering is NOT yet measured."
+    (at 15.24 299.72 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 6e5c344a-5134-5381-ad30-5b50a02cb431))
+  (text "J6 HOLD: SHEET 12"
+    (at 15.24 345.44 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 57cbab0c-1d5a-5828-9441-f8c37e2f0daa))
+  (text "PG is not precision validation."
+    (at 15.24 351.79 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid ae148df4-609a-57b9-9315-ea8573ec30b2))
+  (text "Measure all rails before JTAG."
+    (at 15.24 358.14 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 4a486426-7469-50c7-83c9-55b2963c5c45))
+  (text "XPE load and thermal budget TBD."
+    (at 15.24 363.22 0)
+    (effects
+      (font
+        (size 2.8 2.8))
+      (justify left))
+    (uuid 259d90e3-9d07-5ee6-91f8-7382353b4d93))
+  (text "Nominal setpoints allow for filter drop. 1 A per rail is a calculation case only; current capacity is not approved."
+    (at 191.77 397.51 0)
+    (effects
+      (font
+        (size 2.4 2.4))
+      (justify left))
+    (uuid 3bc85479-b84a-56c4-b759-1266d13e499e)))

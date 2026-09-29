@@ -1,0 +1,2153 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 20e92dc1-bb67-56a7-908e-2c9abe118590)
+  (paper "A2")
+  (title_block
+    (title "Auxiliary and configuration bypass")
+    (date "2026-09-28")
+    (rev "R5 GTP power")
+    (comment 1 "UNROUTED POWER PROPOSAL - NOT QUALIFIED"))
+  (lib_symbols
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1210_3225Metric Capacitor_SMD__C_1206_3216Metric Murata_GRT15_0402_Recommended"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (embedded_fonts no)
+  (text "09 / Auxiliary and configuration bypass"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 3.8 3.8))
+      (justify left))
+    (uuid 857ca179-8df2-5d7b-a871-32c190d83f37))
+  (text "Capacitor groups show placement intent; equal net names are one electrical supply across the board."
+    (at 15.24 31 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 4f9a5a60-de5b-55d9-a8b8-b2b3e29c97b3))
+  (text "1.8 V / AUXILIARY GROUP"
+    (at 20 44 0)
+    (effects
+      (font
+        (size 3.1 3.1))
+      (justify left))
+    (uuid 8b0728e9-8ef9-5fe9-9da3-b0e7b0aefe10))
+  (text "CONFIGURATION / SHARED 1.8 V GROUP"
+    (at 20 183 0)
+    (effects
+      (font
+        (size 3.1 3.1))
+      (justify left))
+    (uuid b3783936-d051-5d74-b969-c22bbdb07ea5))
+  (text "C40-C46 + C90/C91 / 1.8 V"
+    (at 376 59 0)
+    (effects
+      (font
+        (size 3.5 3.5))
+      (justify left))
+    (uuid 15103268-823a-5d8c-8453-e1297772e48d))
+  (text "These all connect to VCCAUX_1V8."
+    (at 376 68 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 9cccf751-bf11-57f6-9330-537423715277))
+  (text "Large capacitors hold local charge;"
+    (at 376 76 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 2546252c-f88c-5c9e-abec-0a98344406ba))
+  (text "smaller values support fast changes."
+    (at 376 84 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid b64e43a8-6fb4-5f39-bd78-bb65d5564103))
+  (text "Review placement near auxiliary/XADC"
+    (at 376 92 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid e5f29576-469b-5fc5-9cac-cfa3af4bf61b))
+  (text "power pins rather than treating this"
+    (at 376 100 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid aac588e7-2da3-53cc-b32d-251be8bf74ac))
+  (text "as an already isolated analog supply."
+    (at 376 108 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 48780ec0-75e9-5bcb-8dc0-da6a6267af4c))
+  (text "C50-C56 + C92 / ALSO 1.8 V"
+    (at 376 167 0)
+    (effects
+      (font
+        (size 3.5 3.5))
+      (justify left))
+    (uuid 833b67b2-a5f6-5985-a664-2a34985b9cdf))
+  (text "These use the same auxiliary net."
+    (at 376 176 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 273744fb-162c-5724-b537-95f18dbfde98))
+  (text "The configuration bank now uses 1.8 V."
+    (at 376 184 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 3aee015a-0deb-5a9a-a112-046a45060279))
+  (text "The three user I/O banks use 1.5 V."
+    (at 376 192 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 3352cab6-ba28-5d91-aa5b-cc0c347fb1af))
+  (text "Redistribute inherited bank capacitors"
+    (at 376 200 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 41afe953-4249-59e0-aef0-43a57e527157))
+  (text "after reviewing the CSG325 pin map."
+    (at 376 208 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid adc680e9-3161-5edf-a33e-cbc6d1ec4485))
+  (text "NEXT: assign each bypass group to its actual power balls and check the complete power-distribution network."
+    (at 20 384 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid bda92380-5486-5a81-8ee5-71ff41695e77))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid dbdb18d2-5a26-5e33-b1a8-b471892730d9)
+    (property "Reference" "C40"
+      (at 43.18 66.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "47u 6.3V X7R"
+      (at 43.18 71.12 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1210_3225Metric"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM32ER70J476ME20L"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid dc947a29-efa1-55d5-bc8e-12c8988c1aa4))
+    (pin "2"
+      (uuid 80cf42f7-7655-5f46-b44a-52d2b8b6f995))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C40")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 64.77)
+      (xy 25.4 64.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f2836fdf-1593-551c-8c00-dc650999fa16))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 25.4 64.77 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid f15e54cb-3fbd-518a-b18b-33186050209b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 64.77 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 72.39)
+      (xy 25.4 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ae95ac87-5a90-5d56-ab13-495943eeba5a))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 72.39 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 57e83d7c-04d8-5e6c-a5af-f87ac2d41c6b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid dbee7cdc-4fb7-53cb-8870-9c2cb22eb5b0)
+    (property "Reference" "C41"
+      (at 109.22 66.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 109.22 71.12 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 266d211e-2251-531d-8257-ee5ec02300ca))
+    (pin "2"
+      (uuid eb9f8d06-4ed7-514f-a317-782bacad5845))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C41")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 64.77)
+      (xy 91.44 64.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 125411fb-ae1f-5be0-baa4-18471cef873d))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 91.44 64.77 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid a056146d-2758-574c-8283-9346a796169c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 64.77 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 72.39)
+      (xy 91.44 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 513a9834-5b9c-5147-b475-2aab94f02183))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 91.44 72.39 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 5dccc564-c1ec-5555-8af2-cb2eff4d13ac)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 8bd594e6-56dd-5cf6-9a98-ba9fa7d1bcfc)
+    (property "Reference" "C42"
+      (at 175.26 66.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 175.26 71.12 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid ff26c10e-d915-5a9b-adc5-abc86320a527))
+    (pin "2"
+      (uuid f8554164-c5d5-5905-b240-6ded33175072))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C42")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 64.77)
+      (xy 157.48 64.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 49d9a6e4-e078-5643-9cff-aa1bdfbf1c0d))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 157.48 64.77 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 9cfffdaa-cc32-5a20-993b-11632c96ea18)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 64.77 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 72.39)
+      (xy 157.48 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6bf4716e-6416-5a40-a1b8-a91486ee573f))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 157.48 72.39 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid d0f94727-ed76-547d-ab1f-79ab321887d6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid edd4e325-100c-50d6-844a-f8ac1a42f2e2)
+    (property "Reference" "C43"
+      (at 241.3 66.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 241.3 71.12 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid fb910994-fcf7-50ab-a3c3-f37f3d3a5225))
+    (pin "2"
+      (uuid 4f32ddd3-7e56-5218-b868-ffd5887a2540))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C43")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 64.77)
+      (xy 223.52 64.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fd916980-a7f4-5c77-b1fe-8d519b7f7c48))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 223.52 64.77 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 9b371e88-b5a3-5a07-a39f-f29a3f673222)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 64.77 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 72.39)
+      (xy 223.52 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d0440eaf-de4a-5325-9d3c-495b8c32d43e))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 223.52 72.39 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid d319cd97-1590-5735-8aca-be886ff25e1d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 302.26 68.58 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 4752514c-fd55-523c-a448-1d0010e4a2dd)
+    (property "Reference" "C44"
+      (at 307.34 66.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 307.34 71.12 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 302.26 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid c6894577-15a5-5438-8f66-70e07a0a5078))
+    (pin "2"
+      (uuid ee5127ba-aace-560d-97f2-24df456e9d8b))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C44")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 302.26 64.77)
+      (xy 289.56 64.77))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid dcee9feb-e7c3-5ad1-a336-da4070bb35b8))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 289.56 64.77 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid df4dd9e3-d867-5733-bf1e-e604b0817729)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 64.77 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 302.26 72.39)
+      (xy 289.56 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 052b8a04-7f8f-5c55-ba5e-753a12d1d8da))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 289.56 72.39 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid f5a43c28-b7b1-5687-ab79-224b7f8132f3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 72.39 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f5d12604-14bd-5698-b35e-d201e085a8e2)
+    (property "Reference" "C45"
+      (at 43.18 115.57 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 43.18 120.65 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d1da5419-1645-517e-bd13-fc2a3233fdb2))
+    (pin "2"
+      (uuid bbce9dce-ae8b-551d-bacb-3de0bb7b3315))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C45")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 114.3)
+      (xy 25.4 114.3))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c94ca32e-661c-5cea-9b33-e4da1f3ab4e5))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 25.4 114.3 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid ec9a5d62-f2c4-551a-ad04-7eec5defe229)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 121.92)
+      (xy 25.4 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0eb5a075-04d0-59ff-a1c2-8b0fc62b026c))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 121.92 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 803faa24-074b-539f-a37b-ff7cbe014882)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 12b829ab-be2c-517e-8bcd-9a6fa8425d50)
+    (property "Reference" "C46"
+      (at 109.22 115.57 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 109.22 120.65 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_aux"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d7da3e46-08ed-5774-8ee4-bff4b85d96ea))
+    (pin "2"
+      (uuid f4776c12-1777-5e22-88e0-43bbb537dee8))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C46")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 114.3)
+      (xy 91.44 114.3))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b412ba6d-2d5b-55f5-8f8f-8029976a6c4c))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 91.44 114.3 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 2067111d-5d6b-5ec1-8e96-8698710f6aed)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 121.92)
+      (xy 91.44 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 6582d550-69be-5583-9bfc-f2ccc45c8671))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 91.44 121.92 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid fcfced9e-c420-533a-8c5d-044f6cf82cf5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f678e200-f9f6-5ad1-8ded-e1ced6a380c2)
+    (property "Reference" "C90"
+      (at 175.26 115.57 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 120.65 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71C104KE01-01.pdf"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71C104KE01D"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_xadc"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 06992a64-86b9-54d0-9be1-9846c9ac3592))
+    (pin "2"
+      (uuid 2accc821-3ef8-5271-aa0a-36557cc0b437))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C90")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 114.3)
+      (xy 157.48 114.3))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 88f22200-7865-5a64-89f6-3de742ceeb15))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 157.48 114.3 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid a214f51f-1f4a-5dd8-a6f9-ae93aacf5f8e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 121.92)
+      (xy 157.48 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7cfe6a43-bc94-5c68-bddd-ad64339c5dc7))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 157.48 121.92 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 2eafce97-4d35-510c-bfe0-8d980c37683c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 118.11 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 523e0505-e420-5055-bd54-e27ecd8876fe)
+    (property "Reference" "C91"
+      (at 241.3 115.57 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "1u 10V X7R"
+      (at 241.3 120.65 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM188R71A105KA61%23"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R71A105KA61D"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_xadc"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 118.11 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e34f29cb-1bbf-5b85-9d79-67e0f2f18239))
+    (pin "2"
+      (uuid 5908b763-009f-5c1d-a00d-c8a1ab20f342))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C91")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 114.3)
+      (xy 223.52 114.3))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0ab3a733-5b9b-5317-bbe8-a0895d4ed23e))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 223.52 114.3 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid b2ddce53-12bc-5933-9334-9add140576c9)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 121.92)
+      (xy 223.52 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 701df6bf-c40e-52be-8150-197f5cd577cb))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 223.52 121.92 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 8feea817-8e7f-58f6-96d4-e860fd6bd52a)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 121.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 210.82 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 5a7f0313-cffd-51a4-8dc6-0423dd093eb5)
+    (property "Reference" "C50"
+      (at 43.18 208.28 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "47u 6.3V X7R"
+      (at 43.18 213.36 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1210_3225Metric"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM32ER70J476ME20L"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank0"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 9608296f-d455-575b-8907-34894e9a4e99))
+    (pin "2"
+      (uuid 6a3ef592-d3b0-5bcd-aedb-3ed295025d7d))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C50")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 207.01)
+      (xy 25.4 207.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 55e66f36-46b2-5a82-8b32-3d30b8007f55))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 25.4 207.01 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid d42cf446-a256-5420-8255-1ecf6a26e6ee)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 207.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 214.63)
+      (xy 25.4 214.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8dc41c3e-57f9-5687-915c-d505d65eff26))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 214.63 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid d36a128e-d171-5358-9448-27aa9f99d7ba)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 214.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 210.82 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 048035be-509b-5d19-b0e9-b3f6e23c997c)
+    (property "Reference" "C51"
+      (at 109.22 208.28 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 109.22 213.36 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 5c3693e6-d75c-5b46-95f1-b7b2d6d21ce2))
+    (pin "2"
+      (uuid bafd796c-06ca-59f2-afaf-f15bbad3c9a6))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C51")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 207.01)
+      (xy 91.44 207.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2ebfc25b-6413-5018-a32b-72d684771e5f))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 91.44 207.01 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 02d8cff0-1f0a-516f-a455-1a2c569351e6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 207.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 214.63)
+      (xy 91.44 214.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b6e2d3bb-f72d-52cd-bf58-8a761a19dec3))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 91.44 214.63 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid ade055fc-f34a-5642-83fa-bff3390b85d4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 214.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 170.18 210.82 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2aacffd6-b609-5d2a-9e6e-7e74e02bb097)
+    (property "Reference" "C52"
+      (at 175.26 208.28 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "4.7u 10V X7R"
+      (at 175.26 213.36 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM21BR71A475KA73L"
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 170.18 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 16030beb-e656-597c-a49d-76713d38c2e1))
+    (pin "2"
+      (uuid 52bb4c38-6df7-5c09-abe9-9790ab962220))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C52")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 170.18 207.01)
+      (xy 157.48 207.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 7a952666-4413-5c61-b5e3-a5a0ac4a60f7))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 157.48 207.01 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid c20d44b8-26c3-5d6e-a21c-c5ac290f81af)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 207.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 170.18 214.63)
+      (xy 157.48 214.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a7727415-f1e4-5840-97db-cfee107b5d04))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 157.48 214.63 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 616936b4-1d6a-5c7a-b2d9-891e29a5267e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 157.48 214.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 236.22 210.82 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 4f8bcd28-0662-5438-adaa-0ba8ceed034b)
+    (property "Reference" "C53"
+      (at 241.3 208.28 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 241.3 213.36 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 236.22 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid c59697c4-128f-536e-879d-cad2ee44ad79))
+    (pin "2"
+      (uuid e1b88cd8-b419-5e40-a246-b382a3ce905b))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C53")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 236.22 207.01)
+      (xy 223.52 207.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f5486110-3c2c-557e-b969-fdb279434438))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 223.52 207.01 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid dd07675f-41e1-5781-93f6-22627afc1d5e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 207.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 236.22 214.63)
+      (xy 223.52 214.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 95c90a16-2dd3-54db-a9c2-a6066fc28b7f))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 223.52 214.63 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid c061ade6-658a-5c72-b5a0-dce66c7de9d2)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 223.52 214.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 302.26 210.82 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 116ba21b-3438-5c59-aa8a-a22671741aae)
+    (property "Reference" "C54"
+      (at 307.34 208.28 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 307.34 213.36 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 302.26 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 2eabfa42-b34e-5f71-a5e6-6becf5aabf2c))
+    (pin "2"
+      (uuid 2d64ded4-8cf0-5f55-a356-262b2f0fdeba))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C54")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 302.26 207.01)
+      (xy 289.56 207.01))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e00279fb-ab0b-5cab-8b03-5f924dc0116a))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 289.56 207.01 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid dfb9fa0d-d3d2-55bd-b43e-a44b72210a17)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 207.01 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 302.26 214.63)
+      (xy 289.56 214.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid aea79c53-3c9f-5d94-a156-2d99affe8a57))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 289.56 214.63 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 27d28506-7dc1-5285-ac93-dc912fb19c4f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 214.63 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 38.1 260.35 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid a95a896d-8c04-5e98-86f9-b895e1621da1)
+    (property "Reference" "C55"
+      (at 43.18 257.81 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 43.18 262.89 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 38.1 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 56cdc023-021f-5f1d-b546-55f46659d0d4))
+    (pin "2"
+      (uuid f86247af-04ce-50e4-a56d-e176434608f5))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C55")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 38.1 256.54)
+      (xy 25.4 256.54))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b7a14e79-590c-5024-9178-7b71c9111ba8))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 25.4 256.54 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 39c2ba5f-456a-544e-8b87-5c5d5c0a8868)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 256.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 38.1 264.16)
+      (xy 25.4 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 59454c03-4e5d-5955-bdd4-ac9ddecfb24d))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 25.4 264.16 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid bf8d52b5-3e0e-55bd-b204-9116a6ec9671)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 25.4 264.16 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 104.14 260.35 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 6e8b9c6d-cfc3-5e3d-b842-c107d22029ee)
+    (property "Reference" "C56"
+      (at 109.22 257.81 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "470n 10V X7R"
+      (at 109.22 262.89 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Murata_GRT15_0402_Recommended"
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRT155R71A474KE01-01A.pdf"
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRT155R71A474KE01D"
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14"
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Reel suffix selected for draft BOM; availability and fitted performance not qualified."
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 104.14 260.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 52360702-08e1-5b25-ab10-51601c963680))
+    (pin "2"
+      (uuid 439feebf-d0a1-53a5-8351-1856cb88344c))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C56")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 104.14 256.54)
+      (xy 91.44 256.54))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 710ada97-5f22-5854-a62c-0772080c2e22))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 91.44 256.54 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 9f2e02a9-b206-5ee0-a502-f27762b71c7b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 256.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 104.14 264.16)
+      (xy 91.44 264.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0c83c90f-0961-564c-be5d-bd3c9bef339d))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 91.44 264.16 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 0442c600-cd58-5af2-9890-f78e76d3e4a0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 91.44 264.16 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 340.36 353.06 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 17023d08-20f1-53d1-82f4-95011dd28473)
+    (property "Reference" "C92"
+      (at 345.44 350.52 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "47u 6.3V X7R"
+      (at 345.44 355.6 0)
+      (effects
+        (font
+          (size 1.3 1.3))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1210_3225Metric"
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://docs.amd.com/api/khub/documents/6L8DUUei7ZCE78qwQafC3A/content"
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM32ER70J476ME20L"
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "decoupling_bank14_bulk"
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Inherited 1.8V rail bypass. CSG325 bank14 is 1.5V; redistribute decoupling after power review."
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 340.36 353.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 19649760-4133-515e-96b1-881eea27df37))
+    (pin "2"
+      (uuid 4b1cfe69-407e-5688-be8a-76e7abcc44db))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590"
+          (reference "C92")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 340.36 349.25)
+      (xy 327.66 349.25))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ecf2c248-6fe0-5791-b8a2-fb68343f26dd))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 327.66 349.25 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 5b5e0faa-e709-53f0-8484-5f3731dfa518)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 327.66 349.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 340.36 356.87)
+      (xy 327.66 356.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 19f48ce2-da47-56f6-ba62-9ac09458a5e0))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 327.66 356.87 180)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify right))
+    (uuid 8ef8b8c2-8258-512e-aece-9515e4fbffab)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 327.66 356.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (text "UNUSED 2.5 V GROUP REMOVED"
+    (at 375.92 270.51 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid f8dd6b35-834d-5474-9898-5ac49d695475))
+  (text "C57-C63 are no longer fitted."
+    (at 375.92 276.86 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 6bf053ef-4474-5c8e-814f-40ecbc42a0c5))
+  (text "U4 now feeds GTP1.2 V on sheet13."
+    (at 375.92 283.21 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 7979f1bd-804e-522a-a812-7fa8df8e9ad3))
+  (text "New GTP bypass capacitors have"
+    (at 375.92 288.29 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 9d865791-f4b6-5b17-8452-3025af84af6c))
+  (text "separate analog supply nets."
+    (at 375.92 294.64 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 9f4ce7fd-c0aa-58d6-a049-ed58174a01b4)))

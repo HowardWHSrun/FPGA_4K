@@ -3,31 +3,30 @@
   "audit": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json",
   "boards": [
     {
-      "id": "usb-c",
-      "title": "USB-C revision \u00b7 33 \u00d7 36 mm \u00b7 development",
-      "description": "178 fitted parts plus one copper-only recovery fixture. 91/116 ASIC FPGA-to-connector paths connected; 268 total assigned-net open items, 0 DRC errors and 394 warnings. USB-C power/control and custom four-pair data link require matching firmware and receiver. Not for manufacture.",
-      "native": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pcb",
-      "project": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pro",
-      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip",
-      "svg": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/output/FPGA100T_33x36_Routing.svg",
-      "audit": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json",
-      "sha256": "c2bb9d1de754b65ebb3076b0b2c97529bc77afb4e5efad52e5762c3a9af2ac76",
-      "expected": {
-        "footprints": 179,
-        "pads": 1064,
-        "segments": 3480,
-        "vias": 549,
-        "zones": 13,
-        "fpgaPads": 324,
-        "copperLayers": 12,
-        "nets": 320
-      },
-      "unconnected_items": 268,
-      "manufacturing_ready": false,
+      "id": "fpga50t",
+      "title": "50T micro-HDMI \u00b7 43 \u00d7 49 mm \u00b7 unrouted review",
+      "description": "Unrouted XC7A50T headstage review: 145 footprints, 8 copper layers, 0 tracks/vias, 499 open connections. J4 is a custom micro-HDMI power/JTAG connector; its data contacts are unconnected. Native CAD still labels input LINK_12V; the separate 5 V contact proposal is not implemented. Not for manufacture.",
+      "native": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+      "project": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pro",
+      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip",
+      "svg": "fpga50t-front.svg",
+      "sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
       "dimensions_mm": [
-        33.0,
-        36.0
-      ]
+        43,
+        49
+      ],
+      "expected": {
+        "footprints": 145,
+        "pads": 841,
+        "segments": 0,
+        "vias": 0,
+        "zones": 4,
+        "fpgaPads": 324,
+        "copperLayers": 8,
+        "nets": 233
+      },
+      "unconnected_items": 499,
+      "manufacturing_ready": false
     },
     {
       "id": "compact-routed",
@@ -54,6 +53,33 @@
         36.0
       ],
       "project": "../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/hardware/FPGA100T_33x36_Routing.kicad_pro"
+    },
+    {
+      "id": "usb-c",
+      "title": "USB-C revision \u00b7 33 \u00d7 36 mm \u00b7 development",
+      "description": "178 fitted parts plus one copper-only recovery fixture. 91/116 ASIC FPGA-to-connector paths connected; 268 total assigned-net open items, 0 DRC errors and 394 warnings. USB-C power/control and custom four-pair data link require matching firmware and receiver. Not for manufacture.",
+      "native": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pcb",
+      "project": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pro",
+      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip",
+      "svg": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/output/FPGA100T_33x36_Routing.svg",
+      "audit": "../../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json",
+      "sha256": "c2bb9d1de754b65ebb3076b0b2c97529bc77afb4e5efad52e5762c3a9af2ac76",
+      "expected": {
+        "footprints": 179,
+        "pads": 1064,
+        "segments": 3480,
+        "vias": 549,
+        "zones": 13,
+        "fpgaPads": 324,
+        "copperLayers": 12,
+        "nets": 320
+      },
+      "unconnected_items": 268,
+      "manufacturing_ready": false,
+      "dimensions_mm": [
+        33.0,
+        36.0
+      ]
     },
     {
       "id": "core",
@@ -182,5 +208,5 @@
       "manufacturing_ready": false
     }
   ],
-  "default_board": "usb-c"
+  "default_board": "fpga50t"
 }
