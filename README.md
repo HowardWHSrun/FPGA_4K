@@ -11,7 +11,7 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Featured FPGA PCB — unrouted 50T micro-HDMI review:** [Board and purchasing list](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=fpga50t) · [38-line purchasing draft](sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip). The list covers 131 fitted components per board; unresolved order codes and external system items remain open. **Not for manufacture or purchase.**
+**Featured FPGA PCB — unrouted 50T micro-HDMI review:** [Board and purchasing list](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=fpga50t) · [48-line purchasing draft](sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/FPGA50T_Two_60_Compact_Review_2026-09-28.zip). The list covers 158 fitted components per board; unresolved order codes and external system items remain open. **Not for manufacture or purchase.**
 
 **Separate 100T revisions:** [Preserved routed micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) with its [125-part list](sources/engineering/2026-09-28/Micro_HDMI_100T_Grouped_Purchasing_Draft.csv); [USB-C development revision](presentation/fpga/usb-c.html) with its [native audit](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json). Neither replaces the featured 50T review. The [50T 19-contact proposal](presentation/fpga/micro-hdmi-19.html) is still unimplemented in its native PCB.
 
@@ -21,7 +21,7 @@ Shared PCB development for the 4K neural-recording system: working designs, inte
 
 | Work | Start here | Status |
 |---|---|---|
-| Featured FPGA review | [Open the unrouted 50T micro-HDMI board](presentation/fpga/index.html) | 131 fitted component candidates; 499 unrouted connections; power, cable and receiver pending |
+| Featured FPGA review | [Open the unrouted 50T micro-HDMI board](presentation/fpga/index.html) | 158 fitted component candidates; 625 native ratsnest links; power, cable and receiver pending |
 | Preserved routed 100T | [Open the earlier micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) | 125 placed parts; separate routing and population evidence |
 | Separate USB-C revision | [Open the development board](presentation/fpga/usb-c.html) | 116 provisional FPGA signals + one analog reservation; unfinished routing; **not for manufacture** |
 | Earlier FPGA team draft | [September 21 import](hardware/fpga-board/README.md) | Preserved earlier electrical draft; superseded device/interface choices; **not for manufacture** |

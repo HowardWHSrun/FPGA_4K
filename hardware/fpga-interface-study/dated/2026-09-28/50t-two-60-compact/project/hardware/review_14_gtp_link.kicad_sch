@@ -1,0 +1,1773 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid "8853cbfd-04d0-5c22-a672-a0c90d2eb9c5")
+  (paper "A3")
+  (title_block
+    (title "14 / GTP coupling and 125 MHz LVDS reference - review")
+    (date "2026-09-28")
+    (rev "R9b GTP link")
+    (comment 1 "UNROUTED CANDIDATE; CABLE / SI / JITTER NOT QUALIFIED"))
+  (lib_symbols
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1210_3225Metric Capacitor_SMD__C_1206_3216Metric Murata_GRT15_0402_Recommended"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "GTPLink:SiT9396AA_02A3_1800_125MHz"
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Y"
+        (at 0 17.78 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "SiT9396AA"
+        (at 0 15.24 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" "GTPLink:SiTime_SiT9396_6L_2.5x2.0mm"
+        (at 0 0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" "https://www.sitime.com/api/gated/SiT9396-datasheet.pdf"
+        (at 0 0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "125 MHz, 1.8 V, LVDS, 6 lead 2.5x2.0 mm SiTime oscillator"
+        (at 0 0 0)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "SiT9396AA_02A3_1800_125MHz_0_1"
+        (rectangle
+          (start -10.16 12.7)
+          (end 10.16 -12.7)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "SiT9396AA_02A3_1800_125MHz_1_1"
+        (pin no_connect line
+          (at -15.24 7.62 0)
+          (length 5.08)
+          (name "NF1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at -15.24 -7.62 0)
+          (length 5.08)
+          (name "NF2_THERMAL_GND"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at 0 -17.78 90)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin output line
+          (at 15.24 5.08 180)
+          (length 5.08)
+          (name "OUTP"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin output line
+          (at 15.24 -5.08 180)
+          (length 5.08)
+          (name "OUTN"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "5"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at 0 17.78 270)
+          (length 5.08)
+          (name "VDD_1V8"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "6"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (embedded_fonts no)
+  (text "Ten 100 nF AC caps: TX0/1/2 x2, RX1 x2, LVDS REFCLK0 x2.  Single coupling stage per conductor."
+    (at 30.48 17.78 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left))
+    (uuid "24c982ea-db2b-5221-ba56-4ec9d17136f0"))
+  (text "Connector TX uses contacts 3/5, 6/8, 9/11; control RX uses 12/14.  Preserve JTAG and J4 pin19 12 V candidate."
+    (at 30.48 25.4 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left))
+    (uuid "df15b4a3-cd3e-5ad2-9231-7667c3721457"))
+  (text "Four-conductor cable channel, 100 ohm differential routing, receiver ownership and 125 MHz jitter need signoff."
+    (at 30.48 33.02 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left))
+    (uuid "173f0581-6049-50e1-80ab-f42d8babe1c9"))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 53.34 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "deb7a8f5-6ddd-5898-b864-cef0ed121351")
+    (property "Reference" "C137"
+      (at 175.26 48.260000000000005 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 58.42 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX0_P"
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "6e10a5b0-3234-503b-96d4-72a464f9c2b6"))
+    (pin "2"
+      (uuid "1cca1c50-a660-512e-98f6-44ce5abcba68"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C137")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 53.34)
+      (xy 146.05 53.34))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f0ed48e6-6550-5867-8601-331e9cca04d6"))
+  (global_label "GTP_TX0_P_FPGA"
+    (shape bidirectional)
+    (at 146.05 53.34 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "78e5c196-a22d-54b0-a389-e24b8be8860d")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 53.34)
+      (xy 205.74 53.34))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b98f0506-f44e-5aac-9759-ac82d970c3fc"))
+  (global_label "GTP_TX0_P_J4"
+    (shape bidirectional)
+    (at 205.74 53.34 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "d00ecb30-11a7-5e0e-98a7-6f99165a5093")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 53.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 71.12 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a2e37a3f-9191-58a3-a0a0-73299e7ebd62")
+    (property "Reference" "C138"
+      (at 175.26 66.04 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 76.2 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX0_N"
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "7b00e110-f8e8-513d-9d95-1eea17b61f6e"))
+    (pin "2"
+      (uuid "9eca9cd5-2386-51c4-a23a-01e3f4b8cf59"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C138")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 71.12)
+      (xy 146.05 71.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "41113859-a149-59fc-aac9-8ae5662e3638"))
+  (global_label "GTP_TX0_N_FPGA"
+    (shape bidirectional)
+    (at 146.05 71.12 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "a02a768c-62bc-525e-8c38-e500fa2cf474")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 71.12)
+      (xy 205.74 71.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "cf8f8a3f-2fe5-5a76-8d5e-2d4736d3d1fb"))
+  (global_label "GTP_TX0_N_J4"
+    (shape bidirectional)
+    (at 205.74 71.12 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "032c00ec-4a41-5792-bb4d-5d1200bcab65")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 71.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 88.9 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "2fe38668-f75b-58a1-b6fd-1b110ffac1f2")
+    (property "Reference" "C139"
+      (at 175.26 83.82000000000001 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 93.98 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX1_P"
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "1d3495ae-f4fd-5b35-87cb-4d00405618a5"))
+    (pin "2"
+      (uuid "82dd0a7b-0d84-5b54-b11d-fd719be5d980"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C139")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 88.9)
+      (xy 146.05 88.9))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "07ae0d9e-9f61-5d6d-a46e-a7d030b0287f"))
+  (global_label "GTP_TX1_P_FPGA"
+    (shape bidirectional)
+    (at 146.05 88.9 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "005629cb-cdc3-5486-a402-f0c2a39a6792")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 88.9)
+      (xy 205.74 88.9))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ff69ffeb-f374-5d0e-acbc-c7f10dcbf670"))
+  (global_label "GTP_TX1_P_J4"
+    (shape bidirectional)
+    (at 205.74 88.9 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "2406b973-7616-502b-91be-467227b3833c")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 106.68 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "93028a43-3635-5605-8ae9-2c2b6d58bcc9")
+    (property "Reference" "C140"
+      (at 175.26 101.60000000000001 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 111.76 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX1_N"
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "7518a6df-0c07-5ff9-b52d-6c9005bd8758"))
+    (pin "2"
+      (uuid "8c9cdb63-5c83-5ec1-9d47-741ca8c6dfc9"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C140")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 106.68)
+      (xy 146.05 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "453606df-fe6b-5ad6-8404-2812b261802f"))
+  (global_label "GTP_TX1_N_FPGA"
+    (shape bidirectional)
+    (at 146.05 106.68 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "547fa52c-e361-5ce6-99b6-59b6b812d792")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 106.68)
+      (xy 205.74 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ed191e94-6bb7-507b-b04b-0d48ef23d34b"))
+  (global_label "GTP_TX1_N_J4"
+    (shape bidirectional)
+    (at 205.74 106.68 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "3eca6514-e27c-5a6f-8661-d8e3414013bf")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 106.68 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 124.46 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "4739b5b0-711d-538f-82d3-a1a52c73fe96")
+    (property "Reference" "C141"
+      (at 175.26 119.38 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 129.54 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX2_P"
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "e1772731-7de1-57bd-93a1-04994a61f6b3"))
+    (pin "2"
+      (uuid "0c17e859-2d6e-57b2-910b-e1b1c104406f"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C141")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 124.46)
+      (xy 146.05 124.46))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "482a4661-f800-5fe2-9121-8c8ac1341f88"))
+  (global_label "GTP_TX2_P_FPGA"
+    (shape bidirectional)
+    (at 146.05 124.46 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "8da255c6-6bfb-58e1-812e-b5f641caa385")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 124.46)
+      (xy 205.74 124.46))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "a98c4ee4-dca8-51fc-9382-4485e20b8748"))
+  (global_label "GTP_TX2_P_J4"
+    (shape bidirectional)
+    (at 205.74 124.46 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "c85d5aee-dc08-5d2b-bb31-2ac2e13385ab")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 124.46 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 142.24 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a27e0695-ec98-5c66-bee3-d99a1f968640")
+    (property "Reference" "C142"
+      (at 175.26 137.16 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 147.32000000000002 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling TX2_N"
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "9f2100a6-725e-5edb-a149-80ced433d34e"))
+    (pin "2"
+      (uuid "625333db-dd02-57d6-8ebe-621e84c1b565"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C142")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 142.24)
+      (xy 146.05 142.24))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f4153cad-b6fc-59ee-bcf0-02e8f01b60f3"))
+  (global_label "GTP_TX2_N_FPGA"
+    (shape bidirectional)
+    (at 146.05 142.24 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "f9145b4b-fc22-5090-af42-a1732c512db2")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 142.24)
+      (xy 205.74 142.24))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "0126c672-1dbf-5000-86a9-9b4d68d811db"))
+  (global_label "GTP_TX2_N_J4"
+    (shape bidirectional)
+    (at 205.74 142.24 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "3cb46d3f-c73f-530e-af91-035becfd6923")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 142.24 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 160.02 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "3b84b79e-5260-5a78-b92a-d01fa2c73d08")
+    (property "Reference" "C143"
+      (at 175.26 154.94 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 165.10000000000002 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling RX1_P"
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "a9eb0631-fd7f-527b-855f-4d0ba59bf224"))
+    (pin "2"
+      (uuid "9fbd29c7-4a82-5920-bd74-40e7b2246829"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C143")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 160.02)
+      (xy 146.05 160.02))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "fc0c1f14-6ad9-5ab5-9115-8343bbe6d6e2"))
+  (global_label "GTP_RX1_P_FPGA"
+    (shape bidirectional)
+    (at 146.05 160.02 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "1afcd6fa-1c55-5aca-a438-1ab4e7872832")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 160.02)
+      (xy 205.74 160.02))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "eb7bdcd2-3e8d-581b-b889-03a3153ec8f8"))
+  (global_label "GTP_RX1_P_J4"
+    (shape bidirectional)
+    (at 205.74 160.02 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "69dea263-9d3a-5dd7-8283-e18c7ea2fda5")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 177.8 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "04e3705b-31d4-5538-b6cc-34839eeaba85")
+    (property "Reference" "C144"
+      (at 175.26 172.72 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 182.88000000000002 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling RX1_N"
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "5ead2f5e-bdc4-58b9-ae20-02a2281d64d8"))
+    (pin "2"
+      (uuid "5b8210c3-d98b-5344-99b3-5bf92f8f56b0"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C144")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 177.8)
+      (xy 146.05 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "33868230-2da9-5b91-a3d6-6a2a01469862"))
+  (global_label "GTP_RX1_N_FPGA"
+    (shape bidirectional)
+    (at 146.05 177.8 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "604aa2e6-276a-55e6-b7ec-b5973f222635")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 177.8)
+      (xy 205.74 177.8))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f8c03754-082a-5efd-932e-2f9c31db27c5"))
+  (global_label "GTP_RX1_N_J4"
+    (shape bidirectional)
+    (at 205.74 177.8 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "5ef9fe5f-e157-5bbb-b61a-8475f2aa5012")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 177.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 195.58 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "61f745ec-73cc-5fbd-941e-fa8d212ed2b0")
+    (property "Reference" "C145"
+      (at 175.26 190.5 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 200.66000000000003 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling REF0_P"
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "0d2575e1-9603-5576-b8e4-364049bba622"))
+    (pin "2"
+      (uuid "844e237a-fe4c-50b1-84c2-2a0050639866"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C145")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 195.58)
+      (xy 146.05 195.58))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "0284feac-ccbc-519b-8361-3c1db475208c"))
+  (global_label "GTP_REFCLK0_P_SRC"
+    (shape bidirectional)
+    (at 146.05 195.58 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "a9bdaaf9-c5a0-5625-8f90-b0fbcfc7b143")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 195.58)
+      (xy 205.74 195.58))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "85eacd1f-a3e6-57c3-bc48-982fbeea4710"))
+  (global_label "GTP_REFCLK0_P_FPGA"
+    (shape bidirectional)
+    (at 205.74 195.58 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "49e283e4-7c53-5bba-b83e-9d9c6761b78f")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 175.26 213.36 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "5f4281a8-f4a8-51d7-85fb-5739806b4520")
+    (property "Reference" "C146"
+      (at 175.26 208.28 90)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 175.26 218.44000000000003 90)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP AC coupling REF0_N"
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 100 nF series AC coupling, 0402; one cap per conductor; location and channel SI pending."
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 175.26 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "79108f71-2173-5146-9941-d022682f33ea"))
+    (pin "2"
+      (uuid "a83b9596-5461-5027-b0ae-120cf307f8cc"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C146")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 171.45 213.36)
+      (xy 146.05 213.36))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "c116f8ee-640f-5363-9b0a-b7fed14c9b3b"))
+  (global_label "GTP_REFCLK0_N_SRC"
+    (shape bidirectional)
+    (at 146.05 213.36 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "c9164a7d-09d1-59f6-98f8-e34667d6ea73")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 146.05 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 179.07 213.36)
+      (xy 205.74 213.36))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "367da034-8abd-5c1b-8e2a-0fc0cf7a720c"))
+  (global_label "GTP_REFCLK0_N_FPGA"
+    (shape bidirectional)
+    (at 205.74 213.36 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "2887af66-8589-57d9-8e6c-79719c58d6e8")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 205.74 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "GTPLink:SiT9396AA_02A3_1800_125MHz")
+    (at 330.2 162.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "71b28834-a364-5982-bfc5-5a64f2532c85")
+    (property "Reference" "Y2"
+      (at 330.2 142.24 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Value" "SiT9396AA-02A3-1800-125.000000"
+      (at 330.2 146.05 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Footprint" "GTPLink:SiTime_SiT9396_6L_2.5x2.0mm"
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.sitime.com/api/gated/SiT9396-datasheet.pdf"
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "SiT9396AA-02A3-1800-125.000000"
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "GTP 125 MHz LVDS reference oscillator"
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: 1.8 V 125 MHz LVDS, NF1 open and NF2 grounded; phase noise, power noise and link budget pending."
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "GTPLink:SiT9396AA_02A3_1800_125MHz"
+      (at 330.2 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "fcfa4170-0f08-5e50-a7e9-4c877fa04be9"))
+    (pin "2"
+      (uuid "183ab364-0cd2-570f-9f3e-7df5203e1376"))
+    (pin "3"
+      (uuid "dd0cb884-36be-5deb-963d-a70fd50db5d1"))
+    (pin "4"
+      (uuid "6db5d997-b815-583e-94b8-07310383c321"))
+    (pin "5"
+      (uuid "53e5a80d-390b-5fac-b127-b5df0e99b9ff"))
+    (pin "6"
+      (uuid "40ca5a11-6973-5506-8dc6-c761eeb3da7f"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "Y2")
+          (unit 1)))))
+  (no_connect
+    (at 314.96 154.94)
+    (uuid "4a2eb3a1-2e90-5360-8d44-2af0c663f7cd"))
+  (wire
+    (pts
+      (xy 314.96 170.18)
+      (xy 299.72 170.18))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "be2f3a01-c6fc-5c03-99fc-9936ff1b5d6f"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 299.72 170.18 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "9667f905-3214-5262-b1eb-6be965db49ad")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 299.72 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 330.2 180.34)
+      (xy 330.2 186.69))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "c169145a-0080-5134-96e0-954b035a744e"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 330.2 186.69 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "659ac10e-7c31-5c20-90dc-a8b888aae94f")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 330.2 186.69 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 330.2 144.78)
+      (xy 330.2 137.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "34275eb8-feee-5822-96d8-eccf0b5d7a34"))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 330.2 137.16 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "c6dbdfc7-4420-55af-8a80-4d01e9e3cebe")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 330.2 137.16 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 345.44 157.48)
+      (xy 365.76 157.48))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "a77a4bc2-c951-573a-837f-7120efc1cb7d"))
+  (global_label "GTP_REFCLK0_P_SRC"
+    (shape bidirectional)
+    (at 365.76 157.48 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "7467b92f-ced0-5e61-b906-f982962f5fdc")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 157.48 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 345.44 167.64)
+      (xy 365.76 167.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b226a867-ffd8-5be0-81ff-026326254c4a"))
+  (global_label "GTP_REFCLK0_N_SRC"
+    (shape bidirectional)
+    (at 365.76 167.64 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "df76b74c-fe08-564b-9583-e98dc7a16aed")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 330.2 222.25 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "eca339ab-2a1a-5f46-bfbe-ee568f4796b1")
+    (property "Reference" "C147"
+      (at 330.2 217.17 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "100n 16V X7R"
+      (at 330.2 227.33 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0402_1005Metric"
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM155R71C104KA88%23"
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM155R71C104KA88D"
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "SiT9396 1.8 V local bypass"
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: C147 required 100 nF; C148 extra 10 uF for best phase jitter; effective capacitance and placement pending."
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 330.2 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "7799d5a8-7e88-5f7b-8edb-00944c374433"))
+    (pin "2"
+      (uuid "a1fdef80-596f-5467-9b49-4b0dc65d25ae"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C147")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 330.2 218.44)
+      (xy 330.2 209.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ec844cb4-3dc8-5e1f-bb99-a5faeb58c986"))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 330.2 209.55 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "c02ebc3c-03c7-54e9-bbfd-5c023c174282")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 330.2 209.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 330.2 226.06)
+      (xy 330.2 234.95))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "26907f4c-137a-56de-a59d-fddc261f3ab5"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 330.2 234.95 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "2b66214e-84ff-5696-ba40-108ae954744f")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 330.2 234.95 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 365.76 222.25 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "97e6e486-0d0f-5115-ad2b-87cbe8d6a69a")
+    (property "Reference" "C148"
+      (at 365.76 217.17 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "10u 10V X5R"
+      (at 365.76 227.33 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/products/productdetail?partno=GRM188R61A106MAAL%23"
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R61A106MAALD"
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "SiT9396 1.8 V local bypass"
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "REVIEW: C147 required 100 nF; C148 extra 10 uF for best phase jitter; effective capacitance and placement pending."
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 365.76 222.25 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid "a27e19b1-8aef-5cef-b72c-ed6c34b4d687"))
+    (pin "2"
+      (uuid "12cf3873-df13-56bc-a3a3-01c87d0b1e48"))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5"
+          (reference "C148")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 365.76 218.44)
+      (xy 365.76 209.55))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "8efc2cd6-4060-5ab8-89e3-6ed1b612a286"))
+  (global_label "VCCAUX_1V8"
+    (shape bidirectional)
+    (at 365.76 209.55 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "19e0b8cb-6335-542c-a7cc-916159716606")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 209.55 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 365.76 226.06)
+      (xy 365.76 234.95))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "75105441-9c38-5879-b58a-a038aa24d03e"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 365.76 234.95 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid "8b9535c7-8190-5deb-a7bc-02781e163a03")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 234.95 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (text "Y2: exact SiTime order code; pin1 NF open, pin2 NF to GND, pin3 GND, 4 OUTP, 5 OUTN, 6 VDD."
+    (at 30.48 251.46 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left))
+    (uuid "3aee5105-5c95-59ac-bb55-28fb085bd32b"))
+  (text "C147 required local 100 nF. C148 follows SiTime best-jitter 10 uF note. Refclock-to-fabric remains Vivado TBD."
+    (at 30.48 259.08 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left))
+    (uuid "11b2ccfe-d4bb-5f7e-931a-199f32d4e972")))

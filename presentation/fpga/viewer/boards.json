@@ -4,29 +4,32 @@
   "boards": [
     {
       "id": "fpga50t",
-      "title": "50T micro-HDMI \u00b7 43 \u00d7 49 mm \u00b7 unrouted review",
-      "description": "Unrouted XC7A50T headstage review: 145 footprints, 8 copper layers, 0 tracks/vias, 499 open connections. J4 is a custom micro-HDMI power/JTAG connector; its data contacts are unconnected. Native CAD still labels input LINK_12V; the separate 5 V contact proposal is not implemented. Not for manufacture.",
-      "native": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
-      "project": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pro",
-      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip",
+      "title": "50T micro-HDMI \u00b7 36 \u00d7 38 mm \u00b7 unrouted review",
+      "description": "Compact XC7A50T review with two 60-contact DF40T ASIC connectors, 174 footprints and 625 native ratsnest links. Eight copper layers, no tracks or vias; mechanical mating, power, link and manufacturing checks remain open.",
+      "native": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+      "project": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/project/hardware/FPGA50T_8L_Unrouted.kicad_pro",
+      "zip": "../../../hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/FPGA50T_Two_60_Compact_Review_2026-09-28.zip",
       "svg": "fpga50t-front.svg",
-      "sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
+      "sha256": "6bafa7f2b19bca1b78f083b53e7d6f9c46c5619e1202761e4f698e362bb01a54",
       "dimensions_mm": [
-        43,
-        49
+        36.0,
+        38.0
       ],
       "expected": {
-        "footprints": 145,
-        "pads": 841,
+        "footprints": 174,
+        "pads": 911,
         "segments": 0,
         "vias": 0,
-        "zones": 4,
+        "zones": 0,
         "fpgaPads": 324,
         "copperLayers": 8,
-        "nets": 233
+        "nets": 236
       },
-      "unconnected_items": 499,
-      "manufacturing_ready": false
+      "unconnected_items": 625,
+      "manufacturing_ready": false,
+      "drc_reported_unconnected_items": 499,
+      "package_manifest": "hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/manifest.json",
+      "publication_status": "Compact 50T unrouted engineering review; not for manufacture"
     },
     {
       "id": "compact-routed",

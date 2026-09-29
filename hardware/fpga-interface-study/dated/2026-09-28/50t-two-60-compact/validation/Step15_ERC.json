@@ -1,0 +1,480 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-28T23:20:34",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c",
+            "violations": [
+                {
+                    "description": "Label connected to only one pin",
+                    "items": [
+                        {
+                            "description": "Global Label 'FABRIC_CLK_1V5_TBD'",
+                            "pos": {
+                                "x": 3.683,
+                                "y": 1.4224
+                            },
+                            "uuid": "f1e2be87-dfbb-5cf4-b4b7-43eb58493c9b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "isolated_pin_label"
+                },
+                {
+                    "description": "Label connected to only one pin",
+                    "items": [
+                        {
+                            "description": "Global Label 'AC_IN_ANALOG_RESERVED'",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 1.4605
+                            },
+                            "uuid": "5bacf5b8-a7b2-538c-962e-3b6907f117b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "isolated_pin_label"
+                }
+            ]
+        },
+        {
+            "path": "/02 / 50T I/O banks 14 / 15 / 34/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/7bbbc310-932c-58e6-ac27-a0f0769a287b",
+            "violations": []
+        },
+        {
+            "path": "/03 / Master SPI x1 mode and clock hold/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/021eedc2-3ea1-5581-9bbb-7cd07162fb71",
+            "violations": [
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin R11 [M1_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.3462
+                            },
+                            "uuid": "6b783daa-5076-5e60-8786-8702cb9057cf"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin F13 [M2_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.3716
+                            },
+                            "uuid": "48aead6b-735d-542a-bd89-821d2b70a39e"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin E12 [CFGBVS_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.524
+                            },
+                            "uuid": "3854b576-5835-59ae-b1ee-d12cb46c3eb2"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin K10 [VP_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.5748
+                            },
+                            "uuid": "abb53914-30c5-5b83-892d-d8abde891cd0"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin L9 [VN_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.6002
+                            },
+                            "uuid": "efbad239-ccca-5c43-b6b2-84897e233d47"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin L10 [VREFP_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.651
+                            },
+                            "uuid": "cfd7cff4-f627-5a76-95d3-be7b9ab33201"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin K9 [VREFN_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.6764
+                            },
+                            "uuid": "ed06e4c1-e75e-565b-ad06-63e7647fe0bc"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin M10 [DXP_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.7272
+                            },
+                            "uuid": "20d5ec3d-8ea3-55a8-bd42-65dd72a70db5"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin M9 [DXN_0, Bidirectional, Line]",
+                            "pos": {
+                                "x": 4.6482,
+                                "y": 1.7526
+                            },
+                            "uuid": "5c04b0d1-081d-5fd5-983c-a88d74190cb3"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/04 / 50T core / auxiliary / ground/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1f39844f-13af-548a-bd92-c999e60f105e",
+            "violations": []
+        },
+        {
+            "path": "/05 / two DF40T-60 ASIC connectors/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/d9a0bdcf-20e9-500c-be7d-b2a0c5b9936b",
+            "violations": []
+        },
+        {
+            "path": "/06 / Actual J4 input + core/AUX power/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/25fb730d-bf7c-581f-9a06-f46424a3b313",
+            "violations": []
+        },
+        {
+            "path": "/07 / I/O power; U4 now on sheet 13/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8",
+            "violations": []
+        },
+        {
+            "path": "/08 / Core / BRAM decoupling review/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/aa86edd1-de1a-522a-bc8e-92f9e3c48d16",
+            "violations": []
+        },
+        {
+            "path": "/09 / Auxiliary / configuration decoupling/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/20e92dc1-bb67-56a7-908e-2c9abe118590",
+            "violations": []
+        },
+        {
+            "path": "/10 / ASIC bank decoupling review/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/eb331b84-f425-5a7e-b404-481a74029726",
+            "violations": []
+        },
+        {
+            "path": "/11 / 32 Mbit flash boot candidate/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/d2fd6b74-4a05-59a4-a651-f0ab8a2f56d6",
+            "violations": []
+        },
+        {
+            "path": "/12 / GTP pins + manual INIT_B hold/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/9d136528-4721-5462-8a9d-cddfb3688d6b",
+            "violations": [
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin E4 [MGTPRXP0_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.0668
+                            },
+                            "uuid": "c86d2726-54c3-5d69-bd55-b805208292f7"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin E3 [MGTPRXN0_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.0922
+                            },
+                            "uuid": "390ca381-9b0a-5cd1-bf75-81493c73ddb7"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin C4 [MGTPRXP2_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.1684
+                            },
+                            "uuid": "922e2102-012a-5afb-99d8-85dcf3211c33"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin C3 [MGTPRXN2_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.1938
+                            },
+                            "uuid": "447d314f-475e-5542-849d-f23c04949910"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin G4 [MGTPRXP3_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.2192
+                            },
+                            "uuid": "fa1a775f-598a-56f4-ba70-c78ef90a2aff"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin G3 [MGTPRXN3_216, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.6858,
+                                "y": 1.2446
+                            },
+                            "uuid": "fe1066a8-802e-53aa-bd9c-37963610e245"
+                        },
+                        {
+                            "description": "Symbol #FLG002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 2.9972,
+                                "y": 1.9558
+                            },
+                            "uuid": "5d062e2e-b548-5283-ad5a-4d9f98a60765"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/13 / Dedicated GTP 1.0 V + 1.2 V power/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/df9ca8e3-9786-5e78-a419-4c233a2d65e3",
+            "violations": []
+        },
+        {
+            "path": "/14 / GTP AC coupling and 125 MHz reference/",
+            "uuid_path": "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/8853cbfd-04d0-5c22-a672-a0c90d2eb9c5",
+            "violations": []
+        }
+    ],
+    "source": "FPGA50T_8L_Unrouted.kicad_sch"
+}

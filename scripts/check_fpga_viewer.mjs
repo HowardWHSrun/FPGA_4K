@@ -71,7 +71,7 @@ try {
   check('50T, 100T micro-HDMI, USB-C and five earlier studies', JSON.stringify(boards.map(b=>b.id).sort()) === JSON.stringify(['fpga50t','usb-c','compact-routed','core','rail','mezzanine','compact','compact-v2'].sort()));
   await page.goto(url,{waitUntil:'networkidle'});await ready(default_board);
   check('Viewer opens the unrouted 50T micro-HDMI board', default_board==='fpga50t' && await page.locator('#board-choice').inputValue()===default_board);
-  const expectedDimensions = {'fpga50t':[43,49],'usb-c':[33,36],core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
+  const expectedDimensions = {'fpga50t':boards.find(b=>b.id==='fpga50t').dimensions_mm,'usb-c':[33,36],core:[40,36],rail:[40,36],mezzanine:[40,36],compact:[37.5,36],'compact-v2':[33,36],'compact-routed':[33,36]};
   for (const board of boards) {
     await page.goto(`${url}?board=${board.id}`, {waitUntil:'networkidle'});
     const diag = await ready(board.id);
@@ -136,11 +136,19 @@ try {
   await page.screenshot({path:path.join(out,'current-embedded.png')});
   await page.setViewportSize({width:390,height:844});await page.goto(`${url}?board=fpga50t`,{waitUntil:'networkidle'});await ready('fpga50t');
   check('Mobile page has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-  await page.locator('#zoom-in').click();check('Mobile zoom control works',(await state()).zoom>0);
+  const mobileBefore=await state();await page.locator('#zoom-in').click();
+  check('Mobile zoom control works',(await state()).zoom>mobileBefore.zoom);
   await page.screenshot({path:path.join(out,'current-mobile.png'),fullPage:true});
   await page.goto(`${url}?board=fpga50t&embed=1`,{waitUntil:'networkidle'});await ready('fpga50t');
   check('Mobile embedded view has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   check('Mobile embedded native canvas visible',await page.locator('canvas').isVisible());
+  const mobileFraming=await page.locator('kc-board-viewer').evaluate(e=>{
+    const viewer=e.viewer,bbox=viewer.layers.by_name('Edge.Cuts').bbox,camera=viewer.viewport.camera;
+    const a=camera.world_to_screen(bbox.start),b=camera.world_to_screen(bbox.end);
+    const canvas=e.shadowRoot.querySelector('canvas').getBoundingClientRect();
+    return {widthRatio:Math.abs(b.x-a.x)/canvas.width,heightRatio:Math.abs(b.y-a.y)/canvas.height};
+  });
+  check('Mobile 50T outline is visibly framed',mobileFraming.widthRatio>.72&&mobileFraming.widthRatio<.98&&mobileFraming.heightRatio<.98,mobileFraming);
   await page.screenshot({path:path.join(out,'current-mobile-embedded.png')});
   check('No external runtime requests',report.externalRequests.length===0,report.externalRequests);
   check('No normal-load resource failures',report.failedResources.length===0,report.failedResources);

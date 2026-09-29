@@ -35,11 +35,13 @@ function addSimple(p){
   box(g,w,.2,d,0,h-.1,0,materials.metal);box(g,w,.2,d,0,.15,0,materials.metal);
   box(g,w,h,.22,0,h/2,-d/2+.11,materials.metal);box(g,w,h,.22,0,h/2,d/2-.11,materials.metal);
   box(g,.5,h,d,-w/2+.25,h/2,0,materials.body);box(g,w*.72,.45,d*.62,-w*.06,h*.46,0,materials.body);
- } else if(p.ref==='J5'||p.ref==='J6'){
+ } else if(p.ref==='J5'||p.ref==='J6'||p.ref==='J7'){
   box(g,w,.6,d,0,.3,0,materials.body);box(g,w,h,d*.18,0,h/2,-d*.41,materials.body);box(g,w,h,d*.18,0,h/2,d*.41,materials.body);
   box(g,.8,h,d,-w/2+.4,h/2,0,materials.body);box(g,.8,h,d,w/2-.4,h/2,0,materials.body);
-  const count=data.id==='fpga50t'?60:30,pitch=data.id==='fpga50t'?.4:.5;
-  for(let n=0;n<count;n++)for(const s of [-1,1])box(g,.18,.15,.8,(n-(count-1)/2)*pitch,h-.05,s*d*.32,materials.gold);
+  const pinGrid=p.footprint.match(/_(\d+)x(\d+)_P([\d.]+)mm/);
+  const rows=Number(pinGrid?.[1]||2),count=Number(pinGrid?.[2]||30),pitch=Number(pinGrid?.[3]||.5);
+  for(let n=0;n<count;n++)for(let row=0;row<rows;row++)
+   box(g,.18,.15,.8,(n-(count-1)/2)*pitch,h-.05,(row-(rows-1)/2)*d*.64,materials.gold);
  } else {box(g,w,h,d,0,h/2,0,p.ref.startsWith('L')?materials.inductor:p.ref.startsWith('C')?materials.cap:materials.body);}
  simpleGroup.add(g);
 }
@@ -58,7 +60,7 @@ async function load(id){
   if(assembly)dispose(assembly);data=next;assembly=new THREE.Group();const native=gltf.scene;const [centerX,centerY]=boardCenter();native.scale.setScalar(1000);native.position.set(-centerX,-.8,-centerY);
   native.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;for(const m of (Array.isArray(o.material)?o.material:[o.material])){m.metalness=.12;m.roughness=.55;if(m.opacity>.8&&m.opacity<.85){m.color.set(0x185c48);m.opacity=1;m.transparent=false;m.depthWrite=true;}else if(m.opacity>.95&&m.opacity<1){m.opacity=1;m.transparent=false;m.depthWrite=true;}}}});assembly.add(native);
   simpleGroup=new THREE.Group();assembly.add(simpleGroup);data.parts.filter(p=>p.model==='simplified body').forEach(addSimple);simpleGroup.visible=state.simplified;scene.add(assembly);
-  labelEntries=[];$('labels').replaceChildren();for(const [ref,text] of [['U1',id==='fpga50t'?'50T · FPGA':'100T · FPGA'],['J4',id==='usb-c'?'USB-C':'Micro-HDMI'],['J5',id==='fpga50t'?'ASIC connector':'ASIC mezzanine'],['J6',id==='fpga50t'?'INIT_B hold':'ASIC mezzanine']]){
+  labelEntries=[];$('labels').replaceChildren();for(const [ref,text] of [['U1',id==='fpga50t'?'50T · FPGA':'100T · FPGA'],['J4',id==='usb-c'?'USB-C':'Micro-HDMI'],['J5',id==='fpga50t'?'ASIC A · 60':'ASIC mezzanine'],['J7','ASIC B · 60'],['J6',id==='fpga50t'?'INIT_B hold':'ASIC mezzanine']]){
    const p=data.parts.find(p=>p.ref===ref);if(!p)continue;const el=document.createElement('span');el.className='label';el.textContent=text;$('labels').append(el);labelEntries.push({p,el,point:new THREE.Vector3(p.x-centerX,p.back?-4.3:4.3,p.y-centerY)});
   }
   $('title').textContent=data.title;$('coverage').textContent=`${data.library_model_count} library models · ${data.simplified_body_count} simplified bodies`;

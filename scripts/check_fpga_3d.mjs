@@ -7,7 +7,11 @@ const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleF
 const report={checks:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
 const check=(test,message)=>{if(!test)throw new Error(message);report.checks.push(message);console.log("PASS",message);};
 try{
- for(const [board,count,simple] of [['fpga50t',123,14],['usb-c',151,27],['micro-hdmi',112,13]]){
+ for(const board of ['fpga50t','usb-c','micro-hdmi']){
+  const metadata=await (await page.request.get(base+'presentation/fpga/3d/assets/'+board+'.json')).json();
+  const count=metadata.parts.filter(p=>p.model==='KiCad library').length;
+  const simple=metadata.parts.filter(p=>p.model==='simplified body').length;
+  check(metadata.library_model_count===count&&metadata.simplified_body_count===simple&&new Set(metadata.parts.map(p=>p.ref)).size===metadata.parts.length,board+' metadata coverage');
   await page.goto(base+'presentation/fpga/3d/?board='+board);await page.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});
   let s=await page.evaluate(()=>FPGA_3D.getState());check(s.board===board&&s.libraryModels===count&&s.simplifiedBodies===simple,board+' source coverage');
   await page.screenshot({path:`${out}/${board}-3d.png`});
@@ -23,12 +27,22 @@ try{
   check(await page.locator('#three-panel').isVisible()&&!(await page.locator('#viewport').isVisible())&&!(await page.locator('#native-panel').isVisible()),path+' exclusive 3D tab');check(!(await frame.locator('.revision').isVisible()),path+' revision locked to surrounding review');
   await page.screenshot({path:`${out}/${path.includes('micro')?'micro':'usb'}-review.png`});await page.locator('#back').click();check(await page.locator('#viewport').isVisible()&&!(await page.locator('#three-panel').isVisible()),path+' back layout restored');
  }
- await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});check((await page.locator('#facts').innerText()).includes('43 × 49 mm'),'system facts feature 50T');check((await system.evaluate(()=>FPGA_3D.getState().board))==='fpga50t','system features 50T first');await page.screenshot({path:`out/system.png`.replace('out',out)});
+ await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});const featured=await (await page.request.get(base+'presentation/fpga/3d/assets/fpga50t.json')).json();check((await page.locator('#facts').innerText()).includes(featured.dimensions_mm.slice(0,2).join(' × ')+' mm'),'system facts feature 50T');check((await system.evaluate(()=>FPGA_3D.getState().board))==='fpga50t','system features 50T first');await page.screenshot({path:`out/system.png`.replace('out',out)});
  await system.locator('#revision').selectOption('usb-c');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('USB-C'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('usb-c.html'),'system links to separate USB-C revision');
  await system.locator('#revision').selectOption('micro-hdmi');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('100T checkpoint'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('micro-hdmi.html#board'),'system link follows preserved 100T micro-HDMI');
  await system.locator('#revision').selectOption('fpga50t');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('50T review'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('presentation/fpga/#board'),'system link returns to featured 50T');
  await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'original overview preserved');
- await page.setViewportSize({width:390,height:844});await page.goto(base+'presentation/fpga/3d/?board=usb-c');await page.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'3D mobile fits width');await page.screenshot({path:`${out}/mobile.png`});
+ await page.setViewportSize({width:390,height:844});
+ for(const board of ['fpga50t','usb-c']){
+  await page.goto(base+'presentation/fpga/3d/?board='+board);
+  await page.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});
+  check(await page.evaluate(expected=>document.documentElement.scrollWidth<=innerWidth&&FPGA_3D.getState().board===expected,board),board+' 3D mobile fits width and loads the selected board');
+  const before=await page.evaluate(()=>Math.hypot(...FPGA_3D.getState().camera));
+  await page.locator('#in').click();
+  check(await page.evaluate(previous=>Math.hypot(...FPGA_3D.getState().camera)<previous,before),board+' mobile zoom control moves closer');
+  await page.locator('#reset').click();
+  await page.screenshot({path:`${out}/${board}-mobile.png`});
+ }
  check(report.errors.length===0,'no JavaScript page errors');report.status='passed';
 }catch(e){report.status='failed';report.failure=e.stack;await page.screenshot({path:`${out}/failure.png`});process.exitCode=1;}
 await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser.close();

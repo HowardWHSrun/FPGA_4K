@@ -1,0 +1,869 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 6a8fb060-cc9f-59ba-8e4c-5d123da4552c)
+  (paper "A3")
+  (title_block
+    (title "FPGA board - overall signal and power connections")
+    (date "2026-09-28")
+    (rev "R6 connector split")
+    (comment 1 "UNROUTED POWER PROPOSAL - NOT QUALIFIED"))
+  (lib_symbols)
+  (text "FPGA BOARD / OVERALL CONNECTIONS"
+    (at 15 16 0)
+    (effects
+      (font
+        (size 3.4 3.4))
+      (justify left))
+    (uuid e58a0a25-1de1-5424-adb9-a88853a526c6))
+  (text "Meeting: 28 September 2026 | 50T CSG325 | Eight copper layers | Unrouted review"
+    (at 15 25 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 1194d266-3ac1-5328-b9f3-d30c36652d98))
+  (text "Data / returned clocks enter FPGA; generated clocks / SPI / reset / control return toward ASICs. AC_IN has no FPGA path."
+    (at 15 35 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid d538a0bf-77bd-5316-9d39-77a0026ea796))
+  (polyline
+    (pts
+      (xy 15 43)
+      (xy 93 43)
+      (xy 93 81)
+      (xy 15 81)
+      (xy 15 43))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid d575a89d-14d4-5636-b63e-bec7079fd903))
+  (text "ASICs / carriers / routing board"
+    (at 18 48 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 7affc636-cc56-507e-987b-37b61129ef0d))
+  (text "Eight ASICs: working scope"
+    (at 18 55 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid ee82bdfd-466a-5c9d-b332-717456ceb147))
+  (text "Carrier pin map and timing: TBD"
+    (at 18 60 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 81b3596a-db12-5648-8ac0-20cdf639c99f))
+  (text "ASIC supply ownership: TBD"
+    (at 18 65 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid cc7be7a3-824a-5bb2-8597-f42a6a7dd715))
+  (polyline
+    (pts
+      (xy 116 43)
+      (xy 198 43)
+      (xy 198 81)
+      (xy 116 81)
+      (xy 116 43))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 9488515b-f5a8-5cdb-ad47-691814e5eb2f))
+  (text "J5 + J7 / TWO DF40T-60 [5]"
+    (at 119 48 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid a3af0034-cce5-5e5b-90ff-5ea093e54888))
+  (text "116 digital + AC_IN analog"
+    (at 119 55 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 199fd27e-2367-524d-9583-91c66ed57b7d))
+  (text "34 / 97 / 119: proposed GND"
+    (at 119 60 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 1d15e7fa-4bec-5330-953a-695d8b9c2a85))
+  (text "No ASIC supply contacts"
+    (at 119 65 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid dfb3c3c6-0c6e-53b7-aa60-75ac79adb1b1))
+  (polyline
+    (pts
+      (xy 222 43)
+      (xy 314 43)
+      (xy 314 81)
+      (xy 222 81)
+      (xy 222 43))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 34489bb9-01ac-5f6e-944b-46084c0476b2))
+  (text "U1 / FPGA [2-4]"
+    (at 225 48 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 15156e0c-dc93-5d2a-8ef0-497123228c70))
+  (text "50T CSG325 / 15 x 15 mm"
+    (at 225 55 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 3ea50fd9-77c5-5c6b-a12e-768c95d99fcc))
+  (text "4 GTP channels / 150 HR I/O"
+    (at 225 60 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid d0557276-aee9-52a2-96b4-9d1c6abbcd06))
+  (text "New pin map: PROPOSED"
+    (at 225 65 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid e744322c-4668-576e-9f55-6e6dde525001))
+  (polyline
+    (pts
+      (xy 335 43)
+      (xy 404 43)
+      (xy 404 81)
+      (xy 335 81)
+      (xy 335 43))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 98c9678b-af48-5e46-9872-66d83692a13a))
+  (text "Downstream / PC"
+    (at 338 48 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 3a29730b-7e0e-50ae-9726-9de4e67d8161))
+  (text "Receiver + protocol TBD"
+    (at 338 55 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 8156c26e-6b52-5b8d-9cf4-804758ecf769))
+  (text "4 serial channels / rate TBD"
+    (at 338 60 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid ba67588e-6da5-5f20-aa8e-63162078faf5))
+  (text "No serial link implemented"
+    (at 338 65 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 72ca04ff-51b4-5685-9af0-4b3e6b0c6ecd))
+  (polyline
+    (pts
+      (xy 93 61)
+      (xy 116 61))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 2be846c4-2f3e-5ff2-a1e1-ffb5d8fd00b0))
+  (polyline
+    (pts
+      (xy 111 58)
+      (xy 116 61)
+      (xy 111 64))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 0b99f4a7-d54c-57fb-bdad-11701ad5301d))
+  (polyline
+    (pts
+      (xy 98 58)
+      (xy 93 61)
+      (xy 98 64))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 3c29e438-7072-5787-8c51-f32fa66584a6))
+  (polyline
+    (pts
+      (xy 198 61)
+      (xy 222 61))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 3406441c-4f1c-56ee-a9d1-cb996d27d24c))
+  (polyline
+    (pts
+      (xy 203 58)
+      (xy 198 61)
+      (xy 203 64))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid e4f0d795-089d-5f65-8468-a6a65b501d2b))
+  (polyline
+    (pts
+      (xy 217 58)
+      (xy 222 61)
+      (xy 217 64))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid d720067b-faf2-5de1-ae6b-7fa660bc9f12))
+  (polyline
+    (pts
+      (xy 314 61)
+      (xy 335 61))
+    (stroke
+      (width 0.3)
+      (type dash))
+    (fill
+      (type none))
+    (uuid dbcef800-fadd-52b9-99f4-53f5697195c1))
+  (text "TBD"
+    (at 316 56 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 23342778-b8da-52f3-9fee-77b998e0420d))
+  (polyline
+    (pts
+      (xy 15 104)
+      (xy 110 104)
+      (xy 110 144)
+      (xy 15 144)
+      (xy 15 104))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid c5eee0e3-b252-5e69-82ec-f2e3c8629dce))
+  (text "J4 / custom power + JTAG [6]"
+    (at 18 109 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 8a74709f-7502-5459-91fd-b91683271ae1))
+  (text "Custom J4 supply / GND; voltage TBD"
+    (at 18 116 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 42ed5847-b905-5905-a21f-2351be1ba09e))
+  (text "Programming signals + voltage reference"
+    (at 18 121 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 0b9f3a4c-5451-566e-a144-f6bd5d46bc40))
+  (text "Cable and source protection: TBD"
+    (at 18 126 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 5d87062e-0cef-533f-a350-aa0d375c917b))
+  (polyline
+    (pts
+      (xy 135 104)
+      (xy 244 104)
+      (xy 244 144)
+      (xy 135 144)
+      (xy 135 104))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid f6fa2829-7c45-548a-b3dd-7c69c56730c9))
+  (text "U2-U5 / power distribution [6-10]"
+    (at 138 109 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 5e5f955f-8435-537d-8413-cb961da5b8ae))
+  (text "1.0 V core; 1.8 V AUX / configuration"
+    (at 138 116 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 3dbfa9a7-a14b-5d9b-a4aa-ada2a404f10d))
+  (text "1.5 V I/O; dedicated GTP 1.0 / 1.2 V"
+    (at 138 121 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 7018d03b-280d-5f1c-b5db-2d6e838fe769))
+  (text "GTP power proposal on sheets 12-13"
+    (at 138 126 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 1f13ee7a-4063-50de-9f13-65807373ff27))
+  (polyline
+    (pts
+      (xy 270 104)
+      (xy 404 104)
+      (xy 404 144)
+      (xy 270 144)
+      (xy 270 104))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 75347d22-abfb-5318-819b-d4bcddc90a56))
+  (text "Clock / boot / recovery [3,11]"
+    (at 273 109 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 904d98b2-78f6-5314-9e38-4f094c4eef6f))
+  (text "32 MHz ASIC clock and fabric-clock source: TBD"
+    (at 273 116 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid e63619e5-1b78-5fdd-9de4-08e482ecc3d3))
+  (text "~100 MHz fabric candidate != ASIC clock decision"
+    (at 273 121 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid ac75430d-c48a-5e4e-a9f5-afb588db6f07))
+  (text "Master SPI x1 candidate; JTAG recovery retained"
+    (at 273 126 0)
+    (effects
+      (font
+        (size 2.295 2.295))
+      (justify left))
+    (uuid 69d186dc-9d36-5b32-835f-593bd5a177bd))
+  (polyline
+    (pts
+      (xy 110 118)
+      (xy 135 118))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid e1a10d74-72b4-5602-93c3-fa7b257943b6))
+  (polyline
+    (pts
+      (xy 130 115)
+      (xy 135 118)
+      (xy 130 121))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 824af91b-6f8e-52ad-964e-9709c43e5a5c))
+  (polyline
+    (pts
+      (xy 244 119)
+      (xy 255 119)
+      (xy 255 81))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 2b5b30fc-02e1-5097-9559-9c7787793481))
+  (polyline
+    (pts
+      (xy 252 86)
+      (xy 255 81)
+      (xy 258 86))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 9fa770cd-f6cb-5f76-9e9e-9d424a553cb9))
+  (polyline
+    (pts
+      (xy 300 104)
+      (xy 300 81))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 8632fa55-c394-5373-8e6e-9682271d97ba))
+  (polyline
+    (pts
+      (xy 297 86)
+      (xy 300 81)
+      (xy 303 86))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 2f7a66f8-7b14-58de-8385-5548140c3713))
+  (polyline
+    (pts
+      (xy 65 104)
+      (xy 65 91)
+      (xy 233 91)
+      (xy 233 81))
+    (stroke
+      (width 0.3)
+      (type default))
+    (fill
+      (type none))
+    (uuid 30f168bd-4ed4-5501-8f83-ad0e3228c6de))
+  (text "JTAG control / reference [3,6]"
+    (at 100 88 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 582b6ff0-ee86-5b21-87e7-0424bcb7aca8))
+  (text "SIGNAL PRIORITIES"
+    (at 15 158 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 92284dd6-e7fb-5a4a-81bb-b10d30d6dd5d))
+  (text "1  Capture data + returned clocks: derive per-ASIC setup/hold/skew groups. Include carrier and connector delay."
+    (at 15 167 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 55121dee-cf30-560c-9127-1c70aab473ad))
+  (text "2  GTP and reference pairs, if selected: impedance, intra-pair skew, loss, reference continuity and rail filtering."
+    (at 15 174 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 98ac7a1a-8996-5b85-a0d7-19db09a88971))
+  (text "3  SPI / resets / record control: mode, pulse widths, safe defaults and startup order. Slow does not mean optional."
+    (at 15 181 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid ba4dff3a-735f-54f3-803a-8f10bb91071c))
+  (text "4  Power and ground: load/return paths, sequencing, decoupler loop area, connector budget and cable transients."
+    (at 15 188 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid e9817dea-b715-5630-9e07-ef8765d67843))
+  (text "SCHEMATIC NAVIGATION - one overview plus thirteen direct detail sheets"
+    (at 15 202 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid acdd25f8-d236-5bd9-93fa-fca2b8c5e605))
+  (text "Overview lines explain functional paths. Detailed electrical connectivity uses identical global net names across sheets."
+    (at 15 266.0 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid 93b01403-de78-510c-8c80-37930e27aec8))
+  (text "8 Cu layers; two DF40T-60; no holes; no routed copper. Board outline 36 x 38 mm; J4 courtyard overhang 1.245 mm."
+    (at 15 273.0 0)
+    (effects
+      (font
+        (size 2.2275 2.2275))
+      (justify left))
+    (uuid a7cfa7f8-9ab9-5cdb-8c97-3ff6b9830276))
+  (sheet_instances
+    (path "/"
+      (page "1")))
+  (embedded_fonts no)
+  (sheet
+    (at 15 207.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 7bbbc310-932c-58e6-ac27-a0f0769a287b)
+    (property "Sheetname" "02 / 50T I/O banks 14 / 15 / 34"
+      (at 17.0 210.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_02_fpga_io.kicad_sch"
+      (at 15.0 207.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "2")))))
+  (sheet
+    (at 211 207.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 021eedc2-3ea1-5581-9bbb-7cd07162fb71)
+    (property "Sheetname" "03 / Master SPI x1 mode and clock hold"
+      (at 213.0 210.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_03_configuration_clock.kicad_sch"
+      (at 211.0 207.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "3")))))
+  (sheet
+    (at 15 215.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 1f39844f-13af-548a-bd92-c999e60f105e)
+    (property "Sheetname" "04 / 50T core / auxiliary / ground"
+      (at 17.0 218.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_04_fpga_power.kicad_sch"
+      (at 15.0 215.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "4")))))
+  (sheet
+    (at 211 215.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid d9a0bdcf-20e9-500c-be7d-b2a0c5b9936b)
+    (property "Sheetname" "05 / two DF40T-60 ASIC connectors"
+      (at 213.0 218.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_05_df40.kicad_sch"
+      (at 211.0 215.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "5")))))
+  (sheet
+    (at 15 223.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 25fb730d-bf7c-581f-9a06-f46424a3b313)
+    (property "Sheetname" "06 / Actual J4 input + core/AUX power"
+      (at 17.0 226.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_06_core_aux_regulators.kicad_sch"
+      (at 15.0 223.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "6")))))
+  (sheet
+    (at 211 223.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 1e302fbf-00a1-592d-9596-4b2584431cf8)
+    (property "Sheetname" "07 / I/O power; U4 now on sheet 13"
+      (at 213.0 226.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_07_io_regulators.kicad_sch"
+      (at 211.0 223.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "7")))))
+  (sheet
+    (at 15 231.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid aa86edd1-de1a-522a-bc8e-92f9e3c48d16)
+    (property "Sheetname" "08 / Core / BRAM decoupling review"
+      (at 17.0 234.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_08_core_decoupling.kicad_sch"
+      (at 15.0 231.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "8")))))
+  (sheet
+    (at 211 231.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 20e92dc1-bb67-56a7-908e-2c9abe118590)
+    (property "Sheetname" "09 / Auxiliary / configuration decoupling"
+      (at 213.0 234.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_09_aux_link_decoupling.kicad_sch"
+      (at 211.0 231.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "9")))))
+  (sheet
+    (at 15 239.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid eb331b84-f425-5a7e-b404-481a74029726)
+    (property "Sheetname" "10 / ASIC bank decoupling review"
+      (at 17.0 242.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_10_asic_decoupling.kicad_sch"
+      (at 15.0 239.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "10")))))
+  (sheet
+    (at 211 239.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid d2fd6b74-4a05-59a4-a651-f0ab8a2f56d6)
+    (property "Sheetname" "11 / 32 Mbit flash boot candidate"
+      (at 213.0 242.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_11_boot_cable.kicad_sch"
+      (at 211.0 239.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "11")))))
+  (sheet
+    (at 15 247.0)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid 9d136528-4721-5462-8a9d-cddfb3688d6b)
+    (property "Sheetname" "12 / GTP pins + manual INIT_B hold"
+      (at 17.0 250.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_12_gtp.kicad_sch"
+      (at 15.0 247.0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "12")))))
+  (sheet
+    (at 211 247)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid df9ca8e3-9786-5e78-a419-4c233a2d65e3)
+    (property "Sheetname" "13 / Dedicated GTP 1.0 V + 1.2 V power"
+      (at 213 250.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_13_gtp_power.kicad_sch"
+      (at 211 247 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "13")))))
+  (sheet
+    (at 15 255)
+    (size 188 6.5)
+    (stroke
+      (width 0.2)
+      (type default))
+    (fill
+      (color 0 0 0 0))
+    (uuid "8853cbfd-04d0-5c22-a672-a0c90d2eb9c5")
+    (property "Sheetname" "14 / GTP AC coupling and 125 MHz reference"
+      (at 17 258.25 0)
+      (effects
+        (font
+          (size 1.9 1.9))
+        (justify left)))
+    (property "Sheetfile" "review_14_gtp_link.kicad_sch"
+      (at 15 255 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c"
+          (page "14"))))))

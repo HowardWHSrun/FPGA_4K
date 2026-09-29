@@ -37,7 +37,14 @@ jobs:
           registry = json.loads(Path('presentation/fpga/viewer/boards.json').read_text())
           active = next(board for board in registry['boards'] if board['id'] == registry['default_board'])
           source = (Path('presentation/fpga/viewer') / active['native']).resolve().parent.parent.relative_to(Path.cwd()).as_posix()
-          data['fpga_presentation'] = {'manifest': source + '/Package_Manifest.json', 'entry': 'presentation/fpga/index.html', 'source': source, 'board_id': active['id'], 'board_sha256': active['sha256'], 'status': 'USB-C development; unfinished routing; not for manufacture'}
+          data['fpga_presentation'] = {
+              'manifest': active.get('package_manifest', source + '/manifest.json'),
+              'entry': 'presentation/fpga/index.html',
+              'source': source,
+              'board_id': active['id'],
+              'board_sha256': active['sha256'],
+              'status': active.get('publication_status', 'Unrouted engineering review; not for manufacture'),
+          }
           path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
           PY
           git config user.name 'github-actions[bot]'

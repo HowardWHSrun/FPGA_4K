@@ -121,7 +121,8 @@ async function loadBoard(selected) {
     fitBoard();
     document.querySelectorAll('[data-needs-board]').forEach(button => button.disabled = false);
     $('#canvas-host').setAttribute('aria-busy', 'false');
-    setStatus(`${board.title} · ${counts.footprints} parts · ${counts.segments} tracks · Ctrl + scroll to zoom`);
+    const zoomHint = matchMedia('(pointer: coarse)').matches ? 'Use + / − to zoom' : 'Ctrl + scroll to zoom';
+    setStatus(`${board.title} · ${counts.footprints} parts · ${counts.segments} tracks · ${zoomHint}`);
     diagnostics.ready = true;
     document.dispatchEvent(new CustomEvent('pcbviewer:ready', {detail: diagnostics}));
   } catch (error) { if (token === generation) showError(error); }

@@ -1,1733 +1,2331 @@
 {
   "id": "fpga50t",
-  "title": "XC7A50T \u00b7 unrouted micro-HDMI review",
-  "source": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
-  "board_sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
+  "title": "XC7A50T \u00b7 compact two-60 unrouted review",
+  "source": "hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+  "board_sha256": "6bafa7f2b19bca1b78f083b53e7d6f9c46c5619e1202761e4f698e362bb01a54",
   "dimensions_mm": [
-    43,
-    49,
+    36.0,
+    38.0,
     1.6
   ],
   "board_center_mm": [
-    21.5,
-    24.5
+    22.5,
+    23.5
   ],
   "parts": [
     {
-      "ref": "C14",
-      "value": "10n 50V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 7.125,
-      "y": 26.21,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "C8",
-      "value": "100n 100V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 6.975,
-      "y": 40.534999,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "R109",
-      "value": "4.7k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 25.05,
-      "y": 16.3,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
       "ref": "C1",
       "value": "47u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 36.1,
-      "y": 19.3,
+      "x": 37.4,
+      "y": 32.0,
       "back": false,
       "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "R114",
-      "value": "1k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 34.970001,
-      "y": 28.18,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "R117",
-      "value": "10k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 29.430001,
-      "y": 16.469999,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "L3",
-      "value": "1uH 5.4A Isat30%",
-      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
-      "x": 10.125,
-      "y": 22.235,
-      "back": false,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.125,
-        20.235,
-        4.0,
-        4.0
-      ],
-      "height": 2
-    },
-    {
-      "ref": "J4",
-      "value": "CUSTOM 12 V + JTAG",
-      "footprint": "LinkPort__MicroHDMI_46765_1xxx",
-      "x": 41.3,
-      "y": 12.5,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Connector_Video.3dshapes/HDMI_Micro-D_Molex_46765-1xxx.step"
-    },
-    {
-      "ref": "TP127",
-      "value": "TP127",
-      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
-      "x": 33.5,
-      "y": 42.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "TP124",
-      "value": "TP124",
-      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
-      "x": 22.5,
-      "y": 36.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "U1",
-      "value": "XC7A50T-CSG325",
-      "footprint": "Xilinx_CSG325",
-      "x": 25.0,
-      "y": 25.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        17.5,
-        18.0,
-        15.0,
-        15.0
-      ],
-      "height": 1.4
-    },
-    {
-      "ref": "R126",
-      "value": "100k",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 31.5,
-      "y": 42.0,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "R3",
-      "value": "110k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 12.925,
-      "y": 37.935,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "R5",
-      "value": "5.05k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 12.925,
-      "y": 26.685,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "TP126",
-      "value": "TP126",
-      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
-      "x": 32.5,
-      "y": 45.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "R111",
-      "value": "1k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 36.43,
-      "y": 27.720001,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "R110",
-      "value": "4.7k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 36.43,
-      "y": 28.720001,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "R123",
-      "value": "100R 1%",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 22.5,
-      "y": 15.5,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "FB1",
-      "value": "30R@100MHz / DCR<=10m",
-      "footprint": "TDK_MPZ2012_Recommended",
-      "x": 17.0,
-      "y": 36.0,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Inductor_SMD.3dshapes/L_0805_2012Metric.step"
-    },
-    {
-      "ref": "C12",
-      "value": "100n 100V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 6.975,
-      "y": 29.285,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "U3",
-      "value": "TPS62135RGXR",
-      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
-      "x": 10.125,
-      "y": 37.485,
-      "back": false,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.625,
-        36.485,
-        3.0,
-        2.0
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "TP125",
-      "value": "TP125",
-      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
-      "x": 32.0,
-      "y": 39.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "R108",
-      "value": "4.7k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 36.43,
-      "y": 26.720001,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "R115",
-      "value": "10k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 36.43,
-      "y": 25.72,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C102",
-      "value": "10n",
-      "footprint": "Capacitor_SMD__C_0402_1005Metric",
-      "x": 6.96,
-      "y": 17.250001,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C82",
-      "value": "47u 6.3V X7R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 36.100001,
-      "y": 31.55,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "C127",
-      "value": "10n 50V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 22.5,
-      "y": 38.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "L2",
-      "value": "1uH 5.4A Isat30%",
-      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
-      "x": 10.125,
-      "y": 33.485,
-      "back": false,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.125,
-        31.485,
-        4.0,
-        4.0
-      ],
-      "height": 2
-    },
-    {
-      "ref": "H2",
-      "value": "M2 PROPOSED / NPTH 2.2",
-      "footprint": "MountingHole_2.2mm_M2",
-      "x": 39.5,
-      "y": 3.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "FB2",
-      "value": "30R@100MHz / DCR<=10m",
-      "footprint": "TDK_MPZ2012_Recommended",
-      "x": 19.0,
-      "y": 36.0,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Inductor_SMD.3dshapes/L_0805_2012Metric.step"
-    },
-    {
-      "ref": "U4",
-      "value": "TPS62135RGXR",
-      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
-      "x": 10.125,
-      "y": 26.235,
-      "back": false,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.625,
-        25.235,
-        3.0,
-        2.0
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "R125",
-      "value": "6.98k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 29.5,
-      "y": 46.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "R4",
-      "value": "69.8k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 14.475,
-      "y": 37.935,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C9",
-      "value": "22u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 13.625,
-      "y": 33.485,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "U7",
-      "value": "TPS62135RGXR",
-      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
-      "x": 26.0,
-      "y": 42.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        25.0,
-        40.5,
-        2.0,
-        3.0
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "Y1",
-      "value": "ASE3 32MHz 1.8V",
-      "footprint": "Oscillator__Oscillator_SMD_Abracon_ASE-4Pin_3_2x2_5mm",
-      "x": 9.96,
-      "y": 18.000001,
-      "back": false,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        8.360000000000001,
-        16.750001,
-        3.2,
-        2.5
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "R116",
-      "value": "10k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 20.55,
-      "y": 16.3,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "H4",
-      "value": "M2 PROPOSED / NPTH 2.2",
-      "footprint": "MountingHole_2.2mm_M2",
-      "x": 39.5,
-      "y": 45.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "J5",
-      "value": "DF40C-120DS-0.4V(51)",
-      "footprint": "Hirose_DF40C-120DS-0.4V_2x60_P0.4mm",
-      "x": 21.5,
-      "y": 10.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        8.2,
-        8.56,
-        26.599999999999998,
-        2.879999999999999
-      ],
-      "height": 2.5
-    },
-    {
-      "ref": "C126",
-      "value": "22u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 26.0,
-      "y": 38.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C7",
-      "value": "22u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1206_3216Metric",
-      "x": 10.125,
-      "y": 40.684999,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
-    },
-    {
-      "ref": "R119",
-      "value": "33",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 12.96,
-      "y": 17.250001,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "H3",
-      "value": "M2 PROPOSED / NPTH 2.2",
-      "footprint": "MountingHole_2.2mm_M2",
-      "x": 3.5,
-      "y": 45.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "H1",
-      "value": "M2 PROPOSED / NPTH 2.2",
-      "footprint": "MountingHole_2.2mm_M2",
-      "x": 3.5,
-      "y": 3.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "bare pad or mounting hole"
-    },
-    {
-      "ref": "C125",
-      "value": "100n 100V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 29.0,
-      "y": 38.0,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "J6",
-      "value": "INIT_B HOLD - shunt before power",
-      "footprint": "Connector_PinHeader_2_54mm__PinHeader_1x02_P2_54mm_Vertical",
-      "x": 35.5,
-      "y": 38.0,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
     },
     {
       "ref": "C10",
       "value": "10n 50V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 7.125,
-      "y": 37.46,
+      "x": 7.525,
+      "y": 11.96,
       "back": false,
       "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "R11",
-      "value": "100k",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 14.025,
-      "y": 40.685,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "L5",
-      "value": "1uH 5.4A Isat30%",
-      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
-      "x": 21.5,
-      "y": 42.0,
-      "back": false,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        19.5,
-        40.0,
-        4.0,
-        4.0
-      ],
-      "height": 2
-    },
-    {
-      "ref": "R6",
-      "value": "6.98k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 14.475,
-      "y": 26.685,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C13",
-      "value": "22u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 13.625,
-      "y": 22.235,
-      "back": false,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C124",
-      "value": "22u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1206_3216Metric",
-      "x": 29.0,
-      "y": 42.5,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
-    },
-    {
-      "ref": "C103",
-      "value": "100n",
-      "footprint": "Capacitor_SMD__C_0402_1005Metric",
-      "x": 6.96,
-      "y": 19.500001,
-      "back": false,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C2",
-      "value": "100n 100V X7R",
       "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 35.73,
-      "y": 22.48,
-      "back": false,
-      "rotation": 0.0,
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "R124",
-      "value": "3.10k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 26.0,
-      "y": 36.5,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C11",
-      "value": "22u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1206_3216Metric",
-      "x": 10.125,
-      "y": 29.435,
-      "back": false,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
-    },
-    {
-      "ref": "R2",
-      "value": "69.8k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 6.53,
-      "y": 29.779999,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C16",
-      "value": "100n 100V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 13.729999,
-      "y": 18.95,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "C25",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 25.05,
-      "y": 35.35,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "R104",
-      "value": "0",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 18.8,
-      "y": 15.8,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C23",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 21.0,
-      "y": 34.2,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C79",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 19.3,
-      "y": 20.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C37",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 25.4,
-      "y": 20.45,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C56",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 31.4,
-      "y": 29.25,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C27",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 28.8,
-      "y": 34.4,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "R127",
-      "value": "100k",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 26.0,
-      "y": 42.0,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C77",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 15.55,
-      "y": 19.55,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "U5",
-      "value": "TPS62135RGXR",
-      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
-      "x": 10.579999,
-      "y": 15.9,
-      "back": true,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        9.079999,
-        14.9,
-        3.0,
-        1.9999999999999982
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "C80",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 17.55,
-      "y": 21.8,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R122",
-      "value": "15m 1% 1W",
-      "footprint": "Resistor_SMD__R_1206_3216Metric",
-      "x": 10.5,
-      "y": 37.7,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_1206_3216Metric.step"
-    },
-    {
-      "ref": "C65",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 35.65,
-      "y": 24.5,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C22",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 16.15,
-      "y": 27.0,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C53",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 31.8,
-      "y": 32.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C33",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 21.0,
-      "y": 21.85,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C36",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 27.15,
-      "y": 24.2,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C20",
-      "value": "330u 2.5V POSCAP ESR9m@300kHz",
-      "footprint": "Panasonic_POSCAP_B2_Recommended",
-      "x": 16.9,
-      "y": 39.15,
-      "back": true,
-      "rotation": 0.0,
-      "model": "simplified body",
-      "body": [
-        15.15,
-        37.75,
-        3.4999999999999982,
-        2.799999999999997
-      ],
-      "height": 1.9
-    },
-    {
-      "ref": "C129",
-      "value": "100n 16V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 19.5,
-      "y": 22.0,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C45",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 25.25,
-      "y": 27.5,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R103",
-      "value": "33",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 24.6,
-      "y": 21.9,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C44",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 29.0,
-      "y": 25.8,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C43",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 27.0,
-      "y": 27.5,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R7",
-      "value": "80.6k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 7.779999,
-      "y": 16.35,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C34",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 20.25,
-      "y": 25.05,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R9",
-      "value": "12m 1% 1W",
-      "footprint": "Resistor_SMD__R_1206_3216Metric",
-      "x": 10.88,
-      "y": 21.629999,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_1206_3216Metric.step"
-    },
-    {
-      "ref": "C90",
-      "value": "100n 16V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 25.4,
-      "y": 24.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C91",
-      "value": "1u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 23.65,
-      "y": 24.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "C51",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 33.75,
-      "y": 32.2,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
     },
     {
       "ref": "C100",
       "value": "100n",
-      "footprint": "Capacitor_SMD__C_0402_1005Metric",
       "x": 28.05,
       "y": 11.3,
       "back": true,
       "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C40",
-      "value": "47u 6.3V X7R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 35.3,
-      "y": 13.1,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "C50",
-      "value": "47u 6.3V X7R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 25.85,
-      "y": 38.05,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "C55",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 29.25,
-      "y": 31.7,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C76",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 15.55,
-      "y": 23.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C28",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 23.0,
-      "y": 28.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C132",
-      "value": "100n 16V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 20.0,
-      "y": 23.5,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R102",
-      "value": "4.7k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 28.05,
-      "y": 9.049999,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C21",
-      "value": "100u 6.3V X5R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 29.85,
-      "y": 14.8,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "C75",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 18.85,
-      "y": 28.15,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C92",
-      "value": "47u 6.3V X7R",
-      "footprint": "Capacitor_SMD__C_1210_3225Metric",
-      "x": 30.55,
-      "y": 39.5,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
-    },
-    {
-      "ref": "C78",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 18.2,
-      "y": 25.1,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C31",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 22.7,
-      "y": 21.1,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C17",
-      "value": "22u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 7.079999,
-      "y": 11.9,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C70",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 17.05,
-      "y": 31.05,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "R100",
-      "value": "2.4k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 18.7,
-      "y": 14.55,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C6",
-      "value": "10n 50V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 13.88,
-      "y": 29.304999,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "R1",
-      "value": "32.4k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 8.08,
-      "y": 29.779999,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-    },
-    {
-      "ref": "C3",
-      "value": "22u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1206_3216Metric",
-      "x": 9.505,
-      "y": 32.529999,
-      "back": true,
-      "rotation": 180.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
-    },
-    {
-      "ref": "C30",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 26.6,
-      "y": 29.95,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C54",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 31.0,
-      "y": 26.7,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C15",
-      "value": "22u 25V X5R",
-      "footprint": "Capacitor_SMD__C_1206_3216Metric",
-      "x": 10.579999,
-      "y": 19.1,
-      "back": true,
-      "rotation": 180.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
-    },
-    {
-      "ref": "C29",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 21.95,
-      "y": 25.1,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "R118",
-      "value": "33",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 27.8,
-      "y": 21.9,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "L1",
-      "value": "1uH 5.4A Isat30%",
-      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
-      "x": 10.88,
-      "y": 25.329999,
-      "back": true,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.88,
-        23.329999,
-        4.0,
-        4.0
-      ],
-      "height": 2
-    },
-    {
-      "ref": "C69",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 33.48,
-      "y": 17.98,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C18",
-      "value": "10n 50V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 13.579999,
-      "y": 15.875,
-      "back": true,
-      "rotation": -90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "C52",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 31.75,
-      "y": 35.2,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C81",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 21.45,
-      "y": 17.85,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C130",
-      "value": "100n 16V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 20.5,
-      "y": 20.0,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C67",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 32.2,
-      "y": 24.1,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C133",
-      "value": "100n 16V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 18.0,
-      "y": 23.5,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "C131",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 27.0,
-      "y": 18.0,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C128",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 16.5,
-      "y": 14.5,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C42",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 33.5,
-      "y": 21.4,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C24",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 33.7,
-      "y": 26.95,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C64",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 35.73,
-      "y": 18.199999,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "C4",
-      "value": "100n 100V X7R",
-      "footprint": "Capacitor_SMD__C_0603_1608Metric",
-      "x": 10.405,
-      "y": 34.529999,
-      "back": true,
-      "rotation": 180.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-    },
-    {
-      "ref": "U2",
-      "value": "TPS62135RGXR",
-      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
-      "x": 10.88,
-      "y": 29.329999,
-      "back": true,
-      "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        9.38,
-        28.329999,
-        3.0,
-        2.0
-      ],
-      "height": 0.7
-    },
-    {
-      "ref": "C41",
-      "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 26.5,
-      "y": 32.65,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
-    },
-    {
-      "ref": "R105",
-      "value": "33",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 17.05,
-      "y": 11.5,
-      "back": true,
-      "rotation": 0.0,
-      "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
-    },
-    {
-      "ref": "C32",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 21.3,
-      "y": 28.3,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-    },
-    {
-      "ref": "U6",
-      "value": "MX25U12835FM2I-10G",
-      "footprint": "Package_SO__SOIC-8_5_3x5_3mm_P1_27mm",
-      "x": 22.55,
-      "y": 11.9,
-      "back": true,
-      "rotation": 90.0,
-      "model": "KiCad library",
-      "library": "Package_SO.3dshapes/SOIC-8_5.3x5.3mm_P1.27mm.step"
-    },
-    {
-      "ref": "C73",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 19.0,
-      "y": 30.7,
-      "back": true,
-      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
       "ref": "C101",
       "value": "1u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0402_1005Metric",
       "x": 29.3,
       "y": 11.3,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "C26",
-      "value": "4.7u 10V X7R",
+      "ref": "C11",
+      "value": "22u 25V X5R",
+      "x": 10.125,
+      "y": 29.435,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
+    },
+    {
+      "ref": "C12",
+      "value": "100n 100V X7R",
+      "x": 6.975,
+      "y": 29.285,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C124",
+      "value": "22u 25V X5R",
+      "x": 32.0,
+      "y": 36.5,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
+    },
+    {
+      "ref": "C125",
+      "value": "100n 100V X7R",
+      "x": 32.0,
+      "y": 40.4,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C126",
+      "value": "22u 16V X5R",
+      "x": 29.0,
+      "y": 41.1,
+      "back": false,
+      "rotation": 0,
       "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 18.75,
-      "y": 17.6,
-      "back": true,
-      "rotation": 0.0,
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
     },
     {
-      "ref": "C68",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 31.45,
-      "y": 21.35,
+      "ref": "C127",
+      "value": "10n 50V X7R",
+      "x": 23.5,
+      "y": 41.2,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C128",
+      "value": "4.7u 10V X7R",
+      "x": 16.5,
+      "y": 14.5,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C129",
+      "value": "100n 16V X7R",
+      "x": 19.5,
+      "y": 22.0,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "R10",
-      "value": "100k",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 6.98,
-      "y": 34.529999,
+      "ref": "C13",
+      "value": "22u 16V X5R",
+      "x": 13.625,
+      "y": 22.235,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C130",
+      "value": "100n 16V X7R",
+      "x": 20.5,
+      "y": 20.0,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C131",
+      "value": "4.7u 10V X7R",
+      "x": 27.0,
+      "y": 18.0,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C132",
+      "value": "100n 16V X7R",
+      "x": 20.0,
+      "y": 23.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C133",
+      "value": "100n 16V X7R",
+      "x": 18.0,
+      "y": 23.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C134",
+      "value": "100n",
+      "x": 25.8,
+      "y": 14.2,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        25.4,
+        13.55,
+        0.8,
+        1.3
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C135",
+      "value": "100n",
+      "x": 27.4,
+      "y": 14.2,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        27.0,
+        13.55,
+        0.8,
+        1.3
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C136",
+      "value": "100n",
+      "x": 15.5,
+      "y": 10.1,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        15.1,
+        9.45,
+        0.8,
+        1.3
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C137",
+      "value": "100n 16V X7R",
+      "x": 37.0,
+      "y": 22.65,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        36.35,
+        22.25,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C138",
+      "value": "100n 16V X7R",
+      "x": 39.0,
+      "y": 22.65,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        38.35,
+        22.25,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C139",
+      "value": "100n 16V X7R",
+      "x": 37.0,
+      "y": 23.58,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        36.35,
+        23.18,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C14",
+      "value": "10n 50V X7R",
+      "x": 7.125,
+      "y": 26.21,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C140",
+      "value": "100n 16V X7R",
+      "x": 39.0,
+      "y": 23.58,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        38.35,
+        23.18,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C141",
+      "value": "100n 16V X7R",
+      "x": 37.0,
+      "y": 24.51,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        36.35,
+        24.11,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C142",
+      "value": "100n 16V X7R",
+      "x": 39.0,
+      "y": 24.51,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        38.35,
+        24.11,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C143",
+      "value": "100n 16V X7R",
+      "x": 37.0,
+      "y": 25.44,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        36.35,
+        25.04,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C144",
+      "value": "100n 16V X7R",
+      "x": 39.0,
+      "y": 25.44,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        38.35,
+        25.04,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C145",
+      "value": "100n 16V X7R",
+      "x": 37.0,
+      "y": 26.37,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        36.35,
+        25.97,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C146",
+      "value": "100n 16V X7R",
+      "x": 39.0,
+      "y": 26.37,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        38.35,
+        25.97,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C147",
+      "value": "100n 16V X7R",
+      "x": 36.0,
+      "y": 33.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        35.35,
+        33.1,
+        1.3,
+        0.8
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C148",
+      "value": "10u 10V X5R",
+      "x": 38.5,
+      "y": 33.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "simplified body",
+      "body": [
+        37.55,
+        32.95,
+        1.9,
+        1.1
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "C15",
+      "value": "22u 25V X5R",
+      "x": 10.579999,
+      "y": 19.1,
       "back": true,
       "rotation": 180.0,
+      "footprint": "Capacitor_SMD__C_1206_3216Metric",
       "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
     },
     {
-      "ref": "C74",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 21.399999,
-      "y": 31.5,
+      "ref": "C16",
+      "value": "100n 100V X7R",
+      "x": 13.729999,
+      "y": 18.95,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C17",
+      "value": "22u 16V X5R",
+      "x": 7.079999,
+      "y": 11.9,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C18",
+      "value": "10n 50V X7R",
+      "x": 13.579999,
+      "y": 15.875,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C2",
+      "value": "100n 100V X7R",
+      "x": 37.8,
+      "y": 18.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C20",
+      "value": "330u 2.5V POSCAP ESR9m@300kHz",
+      "x": 16.9,
+      "y": 39.15,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Panasonic_POSCAP_B2_Recommended",
+      "model": "simplified body",
+      "body": [
+        15.0,
+        37.6,
+        3.8,
+        3.1
+      ],
+      "height": 1.9
+    },
+    {
+      "ref": "C21",
+      "value": "100u 6.3V X5R",
+      "x": 29.85,
+      "y": 14.8,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
+    },
+    {
+      "ref": "C22",
+      "value": "4.7u 10V X7R",
+      "x": 16.15,
+      "y": 27.0,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C23",
+      "value": "4.7u 10V X7R",
+      "x": 21.0,
+      "y": 34.2,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C24",
+      "value": "4.7u 10V X7R",
+      "x": 13.8,
+      "y": 34.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C25",
+      "value": "4.7u 10V X7R",
+      "x": 25.05,
+      "y": 35.35,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C26",
+      "value": "4.7u 10V X7R",
+      "x": 18.75,
+      "y": 17.6,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C27",
+      "value": "4.7u 10V X7R",
+      "x": 28.8,
+      "y": 34.4,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C28",
+      "value": "470n 10V X7R",
+      "x": 23.0,
+      "y": 28.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "R101",
-      "value": "4.7k",
-      "footprint": "Resistor_SMD__R_0402_1005Metric",
-      "x": 17.05,
-      "y": 9.3,
+      "ref": "C29",
+      "value": "470n 10V X7R",
+      "x": 21.95,
+      "y": 25.1,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "C66",
-      "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 31.0,
-      "y": 18.7,
+      "ref": "C3",
+      "value": "22u 25V X5R",
+      "x": 9.505,
+      "y": 32.529999,
       "back": true,
-      "rotation": 0.0,
+      "rotation": 180.0,
+      "footprint": "Capacitor_SMD__C_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
+    },
+    {
+      "ref": "C30",
+      "value": "470n 10V X7R",
+      "x": 26.6,
+      "y": 29.95,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C31",
+      "value": "470n 10V X7R",
+      "x": 22.7,
+      "y": 21.1,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C32",
+      "value": "470n 10V X7R",
+      "x": 21.3,
+      "y": 28.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C33",
+      "value": "470n 10V X7R",
+      "x": 21.0,
+      "y": 21.85,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C34",
+      "value": "470n 10V X7R",
+      "x": 20.25,
+      "y": 25.05,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
       "ref": "C35",
       "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
       "x": 28.9,
       "y": 29.0,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "L4",
-      "value": "1uH 5.4A Isat30%",
-      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
-      "x": 10.579999,
-      "y": 11.9,
+      "ref": "C36",
+      "value": "470n 10V X7R",
+      "x": 27.15,
+      "y": 24.2,
       "back": true,
       "rotation": 90.0,
-      "model": "simplified body",
-      "body": [
-        8.579999,
-        9.9,
-        4.0,
-        4.0
-      ],
-      "height": 2
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
-      "ref": "C5",
-      "value": "22u 16V X5R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
-      "x": 7.38,
-      "y": 25.329999,
+      "ref": "C37",
+      "value": "470n 10V X7R",
+      "x": 25.4,
+      "y": 20.45,
       "back": true,
-      "rotation": -90.0,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C4",
+      "value": "100n 100V X7R",
+      "x": 10.405,
+      "y": 34.529999,
+      "back": true,
+      "rotation": 180.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C40",
+      "value": "47u 6.3V X7R",
+      "x": 35.3,
+      "y": 13.1,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
+    },
+    {
+      "ref": "C41",
+      "value": "4.7u 10V X7R",
+      "x": 26.5,
+      "y": 32.65,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
     },
     {
-      "ref": "R8",
-      "value": "69.8k 0.1%",
-      "footprint": "Resistor_SMD__R_0603_1608Metric",
-      "x": 6.229999,
-      "y": 19.015,
+      "ref": "C42",
+      "value": "4.7u 10V X7R",
+      "x": 33.1,
+      "y": 21.4,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
       "model": "KiCad library",
-      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
     },
     {
-      "ref": "C46",
+      "ref": "C43",
       "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
-      "x": 29.75,
-      "y": 22.55,
+      "x": 27.0,
+      "y": 27.5,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
     },
     {
+      "ref": "C44",
+      "value": "470n 10V X7R",
+      "x": 29.0,
+      "y": 25.8,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C45",
+      "value": "470n 10V X7R",
+      "x": 25.25,
+      "y": 27.5,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C46",
+      "value": "470n 10V X7R",
+      "x": 29.75,
+      "y": 22.55,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C5",
+      "value": "22u 16V X5R",
+      "x": 7.38,
+      "y": 25.329999,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C50",
+      "value": "47u 6.3V X7R",
+      "x": 25.85,
+      "y": 38.05,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
+    },
+    {
+      "ref": "C51",
+      "value": "4.7u 10V X7R",
+      "x": 33.75,
+      "y": 32.2,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C52",
+      "value": "4.7u 10V X7R",
+      "x": 31.75,
+      "y": 35.2,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C53",
+      "value": "470n 10V X7R",
+      "x": 31.8,
+      "y": 32.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C54",
+      "value": "470n 10V X7R",
+      "x": 31.0,
+      "y": 26.7,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C55",
+      "value": "470n 10V X7R",
+      "x": 29.25,
+      "y": 31.7,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C56",
+      "value": "470n 10V X7R",
+      "x": 31.4,
+      "y": 29.25,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C6",
+      "value": "10n 50V X7R",
+      "x": 13.88,
+      "y": 29.304999,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C64",
+      "value": "4.7u 10V X7R",
+      "x": 35.73,
+      "y": 18.199999,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C65",
+      "value": "4.7u 10V X7R",
+      "x": 35.7,
+      "y": 35.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C66",
+      "value": "470n 10V X7R",
+      "x": 31.0,
+      "y": 18.7,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C67",
+      "value": "470n 10V X7R",
+      "x": 32.2,
+      "y": 24.1,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C68",
+      "value": "470n 10V X7R",
+      "x": 31.45,
+      "y": 21.35,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C69",
+      "value": "470n 10V X7R",
+      "x": 33.48,
+      "y": 17.98,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C7",
+      "value": "22u 25V X5R",
+      "x": 10.525,
+      "y": 15.185,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
+    },
+    {
+      "ref": "C70",
+      "value": "4.7u 10V X7R",
+      "x": 17.05,
+      "y": 31.05,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
       "ref": "C71",
       "value": "4.7u 10V X7R",
-      "footprint": "Capacitor_SMD__C_0805_2012Metric",
       "x": 17.3,
       "y": 34.05,
       "back": true,
-      "rotation": 0.0,
+      "rotation": 0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
     },
     {
       "ref": "C72",
       "value": "470n 10V X7R",
-      "footprint": "Murata_GRT15_0402_Recommended",
       "x": 23.8,
       "y": 32.3,
       "back": true,
       "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
       "model": "KiCad library",
       "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C73",
+      "value": "470n 10V X7R",
+      "x": 19.0,
+      "y": 30.7,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C74",
+      "value": "470n 10V X7R",
+      "x": 21.399999,
+      "y": 31.5,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C75",
+      "value": "470n 10V X7R",
+      "x": 18.85,
+      "y": 28.15,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C76",
+      "value": "4.7u 10V X7R",
+      "x": 15.55,
+      "y": 23.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C77",
+      "value": "4.7u 10V X7R",
+      "x": 15.55,
+      "y": 19.55,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C78",
+      "value": "470n 10V X7R",
+      "x": 18.2,
+      "y": 25.1,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C79",
+      "value": "470n 10V X7R",
+      "x": 19.3,
+      "y": 20.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C8",
+      "value": "100n 100V X7R",
+      "x": 7.375,
+      "y": 15.035,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C80",
+      "value": "470n 10V X7R",
+      "x": 17.55,
+      "y": 21.8,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C81",
+      "value": "470n 10V X7R",
+      "x": 21.45,
+      "y": 17.85,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C82",
+      "value": "47u 6.3V X7R",
+      "x": 34.05,
+      "y": 31.55,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
+    },
+    {
+      "ref": "C9",
+      "value": "22u 16V X5R",
+      "x": 14.025,
+      "y": 7.985,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Capacitor_SMD__C_0805_2012Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+    },
+    {
+      "ref": "C90",
+      "value": "100n 16V X7R",
+      "x": 25.4,
+      "y": 24.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Murata_GRT15_0402_Recommended",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "ref": "C91",
+      "value": "1u 10V X7R",
+      "x": 23.65,
+      "y": 24.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+    },
+    {
+      "ref": "C92",
+      "value": "47u 6.3V X7R",
+      "x": 30.55,
+      "y": 39.5,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Capacitor_SMD__C_1210_3225Metric",
+      "model": "KiCad library",
+      "library": "Capacitor_SMD.3dshapes/C_1210_3225Metric.step"
+    },
+    {
+      "ref": "D1",
+      "value": "RED INPUT PRESENT",
+      "x": 17.0,
+      "y": 12.4,
+      "back": false,
+      "rotation": 0,
+      "footprint": "LED_SMD__LED_0603_1608Metric",
+      "model": "simplified body",
+      "body": [
+        16.05,
+        11.85,
+        1.9,
+        1.1
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "D2",
+      "value": "GREEN FPGA DONE",
+      "x": 21.0,
+      "y": 12.4,
+      "back": false,
+      "rotation": 0,
+      "footprint": "LED_SMD__LED_0603_1608Metric",
+      "model": "simplified body",
+      "body": [
+        20.05,
+        11.85,
+        1.9,
+        1.1
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "FB1",
+      "value": "30R@100MHz / DCR<=10m",
+      "x": 12.0,
+      "y": 33.2,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "TDK_MPZ2012_Recommended",
+      "model": "KiCad library",
+      "library": "Inductor_SMD.3dshapes/L_0805_2012Metric.step"
+    },
+    {
+      "ref": "FB2",
+      "value": "30R@100MHz / DCR<=10m",
+      "x": 14.0,
+      "y": 33.2,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "TDK_MPZ2012_Recommended",
+      "model": "KiCad library",
+      "library": "Inductor_SMD.3dshapes/L_0805_2012Metric.step"
+    },
+    {
+      "ref": "J4",
+      "value": "CUSTOM 12 V + JTAG + GTP",
+      "x": 38.8,
+      "y": 24.5,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "LinkPort__MicroHDMI_46765_1xxx",
+      "model": "KiCad library",
+      "library": "Connector_Video.3dshapes/HDMI_Micro-D_Molex_46765-1xxx.step"
+    },
+    {
+      "ref": "J5",
+      "value": "DF40TC-60DS-0.4V(51)",
+      "x": 13.0,
+      "y": 39.3,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Hirose_DF40TC-60DS-0.4V_2x30_P0.4mm",
+      "model": "simplified body",
+      "body": [
+        5.55,
+        37.71,
+        14.9,
+        3.18
+      ],
+      "height": 2.5
+    },
+    {
+      "ref": "J6",
+      "value": "INIT_B HOLD - shunt before power",
+      "x": 35.5,
+      "y": 38.0,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Connector_PinHeader_2_54mm__PinHeader_1x02_P2_54mm_Vertical",
+      "model": "KiCad library",
+      "library": "Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
+    },
+    {
+      "ref": "J7",
+      "value": "DF40TC-60DS-0.4V(51)",
+      "x": 30.5,
+      "y": 8.0,
+      "back": false,
+      "rotation": 0.0,
+      "footprint": "Hirose_DF40TC-60DS-0.4V_2x30_P0.4mm",
+      "model": "simplified body",
+      "body": [
+        23.05,
+        6.41,
+        14.9,
+        3.18
+      ],
+      "height": 1.3
+    },
+    {
+      "ref": "L1",
+      "value": "1uH 5.4A Isat30%",
+      "x": 10.88,
+      "y": 25.329999,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
+      "model": "simplified body",
+      "body": [
+        8.73,
+        23.18,
+        4.3,
+        4.3
+      ],
+      "height": 2
+    },
+    {
+      "ref": "L2",
+      "value": "1uH 5.4A Isat30%",
+      "x": 10.525,
+      "y": 7.985,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
+      "model": "simplified body",
+      "body": [
+        8.375,
+        5.835,
+        4.3,
+        4.3
+      ],
+      "height": 2
+    },
+    {
+      "ref": "L3",
+      "value": "1uH 5.4A Isat30%",
+      "x": 10.125,
+      "y": 22.235,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
+      "model": "simplified body",
+      "body": [
+        7.975,
+        20.085,
+        4.3,
+        4.3
+      ],
+      "height": 2
+    },
+    {
+      "ref": "L4",
+      "value": "1uH 5.4A Isat30%",
+      "x": 10.579999,
+      "y": 11.9,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
+      "model": "simplified body",
+      "body": [
+        8.43,
+        9.75,
+        4.3,
+        4.3
+      ],
+      "height": 2
+    },
+    {
+      "ref": "L5",
+      "value": "1uH 5.4A Isat30%",
+      "x": 23.5,
+      "y": 37.7,
+      "back": false,
+      "rotation": 0,
+      "footprint": "PowerDraft__L_Coilcraft_XFL4020",
+      "model": "simplified body",
+      "body": [
+        21.35,
+        35.55,
+        4.3,
+        4.3
+      ],
+      "height": 2
+    },
+    {
+      "ref": "Q1",
+      "value": "DMN52D0U",
+      "x": 28.5,
+      "y": 12.4,
+      "back": false,
+      "rotation": 0,
+      "footprint": "SOT-23_DMN52D0U",
+      "model": "simplified body",
+      "body": [
+        27.4125,
+        11.3,
+        2.175,
+        2.2
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R1",
+      "value": "32.4k 0.1%",
+      "x": 8.08,
+      "y": 29.779999,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R10",
+      "value": "100k",
+      "x": 6.98,
+      "y": 34.529999,
+      "back": true,
+      "rotation": 180.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R100",
+      "value": "2.4k",
+      "x": 18.7,
+      "y": 14.55,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R101",
+      "value": "4.7k",
+      "x": 17.05,
+      "y": 9.3,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R102",
+      "value": "4.7k",
+      "x": 28.05,
+      "y": 9.049999,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R103",
+      "value": "33",
+      "x": 24.6,
+      "y": 21.9,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R108",
+      "value": "4.7k",
+      "x": 38.0,
+      "y": 13.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R109",
+      "value": "4.7k",
+      "x": 33.3,
+      "y": 15.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R11",
+      "value": "100k",
+      "x": 13.4,
+      "y": 17.8,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R110",
+      "value": "4.7k",
+      "x": 38.0,
+      "y": 15.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R111",
+      "value": "1k",
+      "x": 38.0,
+      "y": 16.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R114",
+      "value": "1k",
+      "x": 34.97,
+      "y": 18.8,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R115",
+      "value": "10k",
+      "x": 38.0,
+      "y": 12.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R116",
+      "value": "10k",
+      "x": 31.5,
+      "y": 11.6,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R117",
+      "value": "10k",
+      "x": 31.5,
+      "y": 13.6,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R118",
+      "value": "33",
+      "x": 27.8,
+      "y": 21.9,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R122",
+      "value": "15m 1% 1W",
+      "x": 10.5,
+      "y": 37.7,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+    },
+    {
+      "ref": "R123",
+      "value": "100R 1%",
+      "x": 31.5,
+      "y": 15.55,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "ref": "R124",
+      "value": "3.10k 0.1%",
+      "x": 28.0,
+      "y": 34.95,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R125",
+      "value": "6.98k 0.1%",
+      "x": 24.5,
+      "y": 14.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R126",
+      "value": "100k",
+      "x": 35.4,
+      "y": 13.6,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R127",
+      "value": "100k",
+      "x": 35.2,
+      "y": 39.5,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R128",
+      "value": "4.7k",
+      "x": 20.5,
+      "y": 16.0,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        19.825,
+        15.58,
+        1.35,
+        0.84
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R129",
+      "value": "10k",
+      "x": 14.0,
+      "y": 13.6,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        13.325,
+        13.18,
+        1.35,
+        0.84
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R130",
+      "value": "3.3k",
+      "x": 16.0,
+      "y": 15.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "simplified body",
+      "body": [
+        15.05,
+        14.4375,
+        1.9,
+        1.125
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R131",
+      "value": "3.3k",
+      "x": 21.0,
+      "y": 15.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "simplified body",
+      "body": [
+        20.05,
+        14.4375,
+        1.9,
+        1.125
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R132",
+      "value": "470k",
+      "x": 29.0,
+      "y": 15.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_0402_1005Metric",
+      "model": "simplified body",
+      "body": [
+        28.325,
+        14.58,
+        1.35,
+        0.84
+      ],
+      "height": 0.8
+    },
+    {
+      "ref": "R2",
+      "value": "69.8k 0.1%",
+      "x": 6.53,
+      "y": 29.779999,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R3",
+      "value": "110k 0.1%",
+      "x": 13.075,
+      "y": 12.435,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R4",
+      "value": "69.8k 0.1%",
+      "x": 14.625,
+      "y": 12.435,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R5",
+      "value": "5.05k 0.1%",
+      "x": 12.93,
+      "y": 26.68,
+      "back": false,
+      "rotation": -90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R6",
+      "value": "6.98k 0.1%",
+      "x": 14.47,
+      "y": 26.68,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R7",
+      "value": "80.6k 0.1%",
+      "x": 7.779999,
+      "y": 16.35,
+      "back": true,
+      "rotation": -90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R8",
+      "value": "69.8k 0.1%",
+      "x": 6.229999,
+      "y": 19.015,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Resistor_SMD__R_0603_1608Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "ref": "R9",
+      "value": "12m 1% 1W",
+      "x": 10.88,
+      "y": 21.629999,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Resistor_SMD__R_1206_3216Metric",
+      "model": "KiCad library",
+      "library": "Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+    },
+    {
+      "ref": "TP124",
+      "value": "TP124",
+      "x": 19.3,
+      "y": 35.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP125",
+      "value": "TP125",
+      "x": 34.2,
+      "y": 40.9,
+      "back": false,
+      "rotation": 0,
+      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP126",
+      "value": "TP126",
+      "x": 39.0,
+      "y": 41.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP127",
+      "value": "TP127",
+      "x": 36.8,
+      "y": 41.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "TestPoint__TestPoint_Pad_D1_0mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP128",
+      "value": "GND PROBE",
+      "x": 5.8,
+      "y": 6.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP129",
+      "value": "DBG_IO_B34_0 / 1V5",
+      "x": 5.8,
+      "y": 8.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP130",
+      "value": "DBG_IO_B34_1 / 1V5",
+      "x": 5.8,
+      "y": 9.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP131",
+      "value": "DBG_IO_B34_2 / 1V5",
+      "x": 5.8,
+      "y": 11.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP132",
+      "value": "DBG_IO_B34_3 / 1V5",
+      "x": 5.8,
+      "y": 12.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP133",
+      "value": "DBG_IO_B34_4 / 1V5",
+      "x": 5.8,
+      "y": 14.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP134",
+      "value": "DBG_IO_B34_5 / 1V5",
+      "x": 5.8,
+      "y": 15.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP135",
+      "value": "DBG_IO_B34_6 / 1V5",
+      "x": 5.8,
+      "y": 17.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP136",
+      "value": "GND PROBE",
+      "x": 5.8,
+      "y": 18.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP137",
+      "value": "DBG_IO_B15_0 / 1V5",
+      "x": 5.8,
+      "y": 20.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP138",
+      "value": "DBG_IO_B15_1 / 1V5",
+      "x": 5.8,
+      "y": 21.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "TP139",
+      "value": "DBG_IO_B15_2 / 1V5",
+      "x": 5.8,
+      "y": 23.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "EdgeProbePad_1.0mm_P1.5mm",
+      "model": "bare pad or mounting hole"
+    },
+    {
+      "ref": "U1",
+      "value": "XC7A50T-CSG325",
+      "x": 23.8,
+      "y": 25.5,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Xilinx_CSG325",
+      "model": "simplified body",
+      "body": [
+        16.15,
+        17.85,
+        15.3,
+        15.3
+      ],
+      "height": 1.4
+    },
+    {
+      "ref": "U2",
+      "value": "TPS62135RGXR",
+      "x": 10.88,
+      "y": 29.329999,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
+      "model": "simplified body",
+      "body": [
+        9.23,
+        28.18,
+        3.3,
+        2.3
+      ],
+      "height": 0.7
+    },
+    {
+      "ref": "U3",
+      "value": "TPS62135RGXR",
+      "x": 10.225,
+      "y": 11.985,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
+      "model": "simplified body",
+      "body": [
+        8.575,
+        10.835,
+        3.3,
+        2.3
+      ],
+      "height": 0.7
+    },
+    {
+      "ref": "U4",
+      "value": "TPS62135RGXR",
+      "x": 10.125,
+      "y": 26.235,
+      "back": false,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
+      "model": "simplified body",
+      "body": [
+        8.475,
+        25.085,
+        3.3,
+        2.3
+      ],
+      "height": 0.7
+    },
+    {
+      "ref": "U5",
+      "value": "TPS62135RGXR",
+      "x": 10.579999,
+      "y": 15.9,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
+      "model": "simplified body",
+      "body": [
+        8.93,
+        14.75,
+        3.3,
+        2.3
+      ],
+      "height": 0.7
+    },
+    {
+      "ref": "U6",
+      "value": "MX25U3232FZBI02",
+      "x": 22.55,
+      "y": 11.9,
+      "back": true,
+      "rotation": 90.0,
+      "footprint": "Macronix_USON8_4x3mm_P0.8mm",
+      "model": "simplified body",
+      "body": [
+        20.9,
+        9.75,
+        3.3,
+        4.3
+      ],
+      "height": 1.3
+    },
+    {
+      "ref": "U7",
+      "value": "TPS62135RGXR",
+      "x": 28.0,
+      "y": 38.0,
+      "back": false,
+      "rotation": 0,
+      "footprint": "PowerDraft__Texas_VQFN_RGX0011A_2x3mm",
+      "model": "simplified body",
+      "body": [
+        26.85,
+        36.35,
+        2.3,
+        3.3
+      ],
+      "height": 0.7
+    },
+    {
+      "ref": "U8",
+      "value": "TXU0304RUTR",
+      "x": 23.25,
+      "y": 15.6,
+      "back": true,
+      "rotation": 0,
+      "footprint": "Texas_RUT0012A_UQFN12_2x1.7mm_P0.4mm",
+      "model": "simplified body",
+      "body": [
+        22.1,
+        14.6,
+        2.3,
+        2.0
+      ],
+      "height": 1.3
+    },
+    {
+      "ref": "U9",
+      "value": "TLV803EA17DPWR",
+      "x": 10.0,
+      "y": 18.2,
+      "back": false,
+      "rotation": 0,
+      "footprint": "Texas_X2SON-5_0.8x0.8mm_P0.48mm",
+      "model": "simplified body",
+      "body": [
+        9.45,
+        17.65,
+        1.1,
+        1.1
+      ],
+      "height": 1.3
+    },
+    {
+      "ref": "Y2",
+      "value": "SiT9396AA-02A3-1800-125.000000",
+      "x": 37.0,
+      "y": 30.9,
+      "back": true,
+      "rotation": 0,
+      "footprint": "SiTime_SiT9396_6L_2.5x2.0mm",
+      "model": "simplified body",
+      "body": [
+        35.85,
+        29.5,
+        2.3,
+        2.8
+      ],
+      "height": 1.3
     }
   ],
-  "library_model_count": 123,
-  "simplified_body_count": 14,
-  "bare_fixture_count": 8,
+  "library_model_count": 117,
+  "simplified_body_count": 41,
+  "bare_fixture_count": 16,
   "simplified_refs": [
-    "L3",
-    "U1",
-    "U3",
-    "L2",
-    "U4",
-    "U7",
-    "Y1",
-    "J5",
-    "L5",
-    "U5",
+    "C134",
+    "C135",
+    "C136",
+    "C137",
+    "C138",
+    "C139",
+    "C140",
+    "C141",
+    "C142",
+    "C143",
+    "C144",
+    "C145",
+    "C146",
+    "C147",
+    "C148",
     "C20",
+    "D1",
+    "D2",
+    "J5",
+    "J7",
     "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "Q1",
+    "R128",
+    "R129",
+    "R130",
+    "R131",
+    "R132",
+    "U1",
     "U2",
-    "L4"
+    "U3",
+    "U4",
+    "U5",
+    "U6",
+    "U7",
+    "U8",
+    "U9",
+    "Y2"
   ],
   "bare_refs": [
-    "TP127",
     "TP124",
-    "TP126",
     "TP125",
-    "H2",
-    "H4",
-    "H3",
-    "H1"
+    "TP126",
+    "TP127",
+    "TP128",
+    "TP129",
+    "TP130",
+    "TP131",
+    "TP132",
+    "TP133",
+    "TP134",
+    "TP135",
+    "TP136",
+    "TP137",
+    "TP138",
+    "TP139"
   ],
   "missing_step_models": [
     {
       "reference": "U1",
-      "declared_model": "Package_BGA.3dshapes/Xilinx_CSG325.step"
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Package_BGA.3dshapes/Xilinx_CSG325.step"
     },
     {
-      "reference": "Y1",
-      "declared_model": "Oscillator.3dshapes/Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm.step"
+      "reference": "Q1",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
     },
     {
-      "reference": "J5",
-      "declared_model": "Connector_Hirose_DF40.3dshapes/Hirose_DF40C-120DS-0.4V_2x60_P0.4mm.step"
+      "reference": "R131",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "reference": "R132",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "reference": "D2",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+    },
+    {
+      "reference": "U9",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/Texas_X2SON-5_0.8x0.8mm_P0.48mm_Via.step"
+    },
+    {
+      "reference": "R130",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+    },
+    {
+      "reference": "D1",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+    },
+    {
+      "reference": "R129",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "reference": "C144",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C140",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C146",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C136",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C139",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C135",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C138",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "R128",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+    },
+    {
+      "reference": "C134",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C145",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C137",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C142",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C147",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C143",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C141",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+    },
+    {
+      "reference": "C148",
+      "declared_model": "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
     }
   ],
   "model": "fpga50t.glb",
-  "routing_status": "499 unrouted connections \u00b7 0 tracks/vias \u00b7 not for manufacture"
+  "routing_status": "625 native ratsnest links \u00b7 0 tracks/vias \u00b7 not for manufacture",
+  "glb_sha256": "cf02930f65f4834618965de9db92b2a1dee63e0c66fd2f5a107f5f1ab1e16f45",
+  "model_source": "KiCad 10 installed models for known references; changed or missing models use labeled simplified bodies for review."
 }

@@ -1,0 +1,1688 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 1e302fbf-00a1-592d-9596-4b2584431cf8)
+  (paper "A2")
+  (title_block
+    (title "FPGA I/O supply; GTP supplies on sheet13")
+    (date "2026-09-28")
+    (rev "R5 GTP power")
+    (comment 1 "UNROUTED POWER PROPOSAL - NOT QUALIFIED"))
+  (lib_symbols
+    (symbol "CoreSupport:PowerDraft__TPS62135RGX"
+      (pin_names
+        (offset 0.254))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0 12.7 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "TPS62135RGX"
+        (at 0 10.16 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" "PowerDraft:Texas_VQFN_RGX0011A_2x3mm"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62135.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Description" "TI TPS62135RGX 4A adjustable synchronous buck; pins from SLVSBH3B page3; RGX0011A 11-pad package"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "PowerDraft__TPS62135RGX_0_1"
+        (rectangle
+          (start -7.62 8.89)
+          (end 7.62 -8.89)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "PowerDraft__TPS62135RGX_1_1"
+        (pin power_in line
+          (at 0 11.43 270)
+          (length 2.54)
+          (name "VIN"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "1"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin output line
+          (at 10.16 6.35 180)
+          (length 2.54)
+          (name "SW"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "2"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin power_in line
+          (at 0 -11.43 90)
+          (length 2.54)
+          (name "GND"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "3"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at 10.16 -6.35 180)
+          (length 2.54)
+          (name "FB2"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "4"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at 10.16 1.27 180)
+          (length 2.54)
+          (name "FB"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "5"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at 10.16 3.81 180)
+          (length 2.54)
+          (name "VOS"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "6"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin open_collector line
+          (at 10.16 -3.81 180)
+          (length 2.54)
+          (name "PG"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "7"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 6.35 0)
+          (length 2.54)
+          (name "EN"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "8"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 1.27 0)
+          (length 2.54)
+          (name "SS/TR"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "9"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 -3.81 0)
+          (length 2.54)
+          (name "MODE"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "10"
+            (effects
+              (font
+                (size 1.0 1.0)))))
+        (pin input line
+          (at -10.16 -6.35 0)
+          (length 2.54)
+          (name "VSEL"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "11"
+            (effects
+              (font
+                (size 1.0 1.0)))))))
+    (symbol "CoreSupport:Device__C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Capacitor_SMD__C_0402_1005Metric Capacitor_SMD__C_0603_1608Metric Capacitor_SMD__C_0805_2012Metric Capacitor_SMD__C_1210_3225Metric Capacitor_SMD__C_1206_3216Metric Murata_GRT15_0402_Recommended"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "Resistor_SMD__R_0402_1005Metric Resistor_SMD__R_0603_1608Metric Resistor_SMD__R_1206_3216Metric"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "CoreSupport:Device__L"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "L"
+        (at -1.27 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "L"
+        (at 1.905 0 90)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Inductor"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "inductor choke coil reactor magnetic"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "PowerDraft__L_Coilcraft_XFL4020"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Device__L_0_1"
+        (arc
+          (start 0 2.54)
+          (mid 0.6323 1.905)
+          (end 0 1.27)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 1.27)
+          (mid 0.6323 0.635)
+          (end 0 0)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 0)
+          (mid 0.6323 -0.635)
+          (end 0 -1.27)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (arc
+          (start 0 -1.27)
+          (mid 0.6323 -1.905)
+          (end 0 -2.54)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Device__L_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name "2"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no)))
+  (embedded_fonts no)
+  (symbol
+    (lib_id "CoreSupport:PowerDraft__TPS62135RGX")
+    (at 304.8 139.7 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid f737f8b3-95e4-58e7-a773-e9577b619437)
+    (property "Reference" "U5"
+      (at 317.5 119.38 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "TPS62135RGXR"
+      (at 317.5 124.46 0)
+      (effects
+        (font
+          (size 1.4 1.4))
+        (justify left)))
+    (property "Footprint" "CoreSupport:PowerDraft__Texas_VQFN_RGX0011A_2x3mm"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62135.pdf"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TPS62135RGXR"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "PowerDraft:TPS62135RGX"
+      (at 304.8 139.7 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 53781bed-f5a0-5ddd-901f-21e683ef1f72))
+    (pin "2"
+      (uuid 47d860bc-0e95-5eb4-af83-2342bb5fdf53))
+    (pin "3"
+      (uuid 9184fdf7-0bf6-5f74-9a7a-e62ff1d291e4))
+    (pin "4"
+      (uuid ced47337-bc46-5366-a13e-f557098e1770))
+    (pin "5"
+      (uuid a43123db-4f62-57fe-a970-1d7fffbaf451))
+    (pin "6"
+      (uuid c04b49b9-c1c8-56cb-89b1-7f762837078f))
+    (pin "7"
+      (uuid 45c9204e-79ff-56cb-a68b-27dcdeaa05b6))
+    (pin "8"
+      (uuid aa819358-cbea-5cc7-8106-d87e10fc37a4))
+    (pin "9"
+      (uuid b373991d-2978-5854-b9d2-0250be24b678))
+    (pin "10"
+      (uuid 88fdc2ab-f004-52d0-9a67-fef30f7ca4ea))
+    (pin "11"
+      (uuid 589533c7-074a-5dc4-a01d-14d86acd0561))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "U5")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 241.3 129.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 4601b62f-6e47-520b-be60-aa84d01c6913)
+    (property "Reference" "C15"
+      (at 246.38 127.0 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 25V X5R"
+      (at 246.38 132.08 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_1206_3216Metric"
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=MSAST31LBB5226MTNA01&u=M"
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "MSAST31LBB5226MTNA01"
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "12 V design: 22 uF 25 V X5R 1206 correction. Manufacturer typical bias curve gives 6.62332 uF at 12.6 V; 0.8 tolerance and 0.85 temperature screening factors give 4.5038576 uF before aging. Local placement checked; routing integration pending in this separate revision. Typical curves are not guaranteed production minima."
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 241.3 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid e091e0a6-d12e-5b4c-ae77-c17af9b4f415))
+    (pin "2"
+      (uuid 31d1ceb6-d467-5b70-9842-0726e21666e0))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "C15")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 273.05 129.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 1f11d980-9423-5d61-9e4d-5c00d67dc203)
+    (property "Reference" "C16"
+      (at 270.05 137.04 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify right)))
+    (property "Value" "100n 100V X7R"
+      (at 270.05 143.04 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify right)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/products/productdetail?partno=GRM188R72A104KA35%23"
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R72A104KA35D"
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "12V candidate: manufacturer confirms 100nF +/-10%, 100V X7R, 0603, -55 to +125C and D packing suffix. Input bypass only; this voltage rating does not protect the 17V-rated converter input from cable transients."
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 273.05 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid b4a0902f-d335-5499-b53c-7cff150f3b9b))
+    (pin "2"
+      (uuid 92234aa5-ac44-586f-a818-d4777180fafe))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "C16")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 370.84 162.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 08de4bcf-164f-5789-b919-b8660a501d99)
+    (property "Reference" "C17"
+      (at 375.92 160.02 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "22u 16V X5R"
+      (at 375.92 165.1 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0805_2012Metric"
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://ds-origin.yuden.co.jp/TYCOMPAS/eu/detail?pn=MSASE21GBB5226MTNA01&u=M"
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "EMK212BBJ226MG-T"
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication Independent review: X5R, rated -55 to +85 C; manufacturer renamed alias MSASE21GBB5226MTNA01; effective capacitance and sourcing not qualified."
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 370.84 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid d9998183-287d-5f64-adf7-066fb9b859b7))
+    (pin "2"
+      (uuid 4bdec739-8167-5a65-9675-f1c2621aca59))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "C17")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__C")
+    (at 281.94 162.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid d336b3c6-2e55-5785-afcb-c64b94f03984)
+    (property "Reference" "C18"
+      (at 287.02 160.02 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "10n 50V X7R"
+      (at 287.02 165.1 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Capacitor_SMD__C_0603_1608Metric"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GRM188R71H103KA01%23"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "GRM188R71H103KA01D"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:C"
+      (at 281.94 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 2f97a08c-f358-5542-8c3e-47a60e5582d4))
+    (pin "2"
+      (uuid bb36b9b7-1f78-5160-b8da-6d64dbfd750f))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "C18")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 408.94 156.21 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 9c576ca0-b5e3-5823-9b01-e09ef9673e03)
+    (property "Reference" "R7"
+      (at 414.02 153.67 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "80.6k 0.1%"
+      (at 414.02 158.75 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TNPW060380K6BEEA"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 408.94 156.21 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a7d7684a-6ab5-53c0-9742-89278622c68a))
+    (pin "2"
+      (uuid d089e2a4-a2bc-5556-88b3-0c1033e19e41))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "R7")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__R")
+    (at 408.94 179.07 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0188e001-e7e4-5daf-92e3-73dad550969e)
+    (property "Reference" "R8"
+      (at 414.02 176.53 0)
+      (effects
+        (font
+          (size 1.7 1.7))
+        (justify left)))
+    (property "Value" "69.8k 0.1%"
+      (at 414.02 181.61 0)
+      (effects
+        (font
+          (size 1.5 1.5))
+        (justify left)))
+    (property "Footprint" "CoreSupport:Resistor_SMD__R_0603_1608Metric"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "TNPW060369K8BEEA"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:R"
+      (at 408.94 179.07 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid 4d41edd7-e25b-5bf8-85d7-9c201b620f0b))
+    (pin "2"
+      (uuid de459241-88ac-574b-8bea-abc1245984c5))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "R8")
+          (unit 1)))))
+  (symbol
+    (lib_id "CoreSupport:Device__L")
+    (at 345.44 133.35 90)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid df791c1d-161d-52e7-aa76-9ce44d1e6243)
+    (property "Reference" "L4"
+      (at 345.44 123.19 90)
+      (effects
+        (font
+          (size 1.7 1.7))))
+    (property "Value" "1uH 5.4A Isat30%"
+      (at 345.44 128.27 90)
+      (effects
+        (font
+          (size 1.5 1.5))))
+    (property "Footprint" "CoreSupport:PowerDraft__L_Coilcraft_XFL4020"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Datasheet" "https://www.coilcraft.com/getmedia/50632d43-da1b-4cdb-8ab4-3029cab51df3/xfl4020.pdf"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "MPN" "XFL4020-102MEC"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Function" "power_asic"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Status" "Engineering draft; verify ordered part and layout before fabrication"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (property "Source symbol" "Device:L"
+      (at 345.44 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0))))
+    (pin "1"
+      (uuid a8b0d653-5ef1-560c-9b0d-69355b3a48bc))
+    (pin "2"
+      (uuid 40eb42ff-eee9-5ae4-94fd-6ef38e5e821e))
+    (instances
+      (project "FPGA50T_8L_Unrouted"
+        (path "/6a8fb060-cc9f-59ba-8e4c-5d123da4552c/1e302fbf-00a1-592d-9596-4b2584431cf8"
+          (reference "L4")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 215.9 109.22)
+      (xy 304.8 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 212a3285-e1c3-5f35-9d44-551598e5c446))
+  (wire
+    (pts
+      (xy 304.8 109.22)
+      (xy 304.8 128.27))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid adc31e01-15c8-527a-bac1-4654e07f051b))
+  (global_label "LINK_12V"
+    (shape bidirectional)
+    (at 215.9 109.22 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid ecccd9d2-be02-58ed-9920-04808b5d0f5c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 215.9 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 241.3 125.73)
+      (xy 241.3 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid bff40067-455c-5b2a-83a0-460c799477b7))
+  (junction
+    (at 241.3 109.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 607cb776-ed37-511a-9ebd-c5b8be4c3923))
+  (wire
+    (pts
+      (xy 241.3 133.35)
+      (xy 241.3 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d19f4286-c78b-5483-8c61-01b76a0b9f6c))
+  (wire
+    (pts
+      (xy 273.05 125.73)
+      (xy 273.05 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 04438407-4e66-586d-ab23-afa855499d92))
+  (junction
+    (at 273.05 109.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 0928f954-a668-5753-a6af-956a0b508245))
+  (wire
+    (pts
+      (xy 273.05 133.35)
+      (xy 273.05 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b5a141ce-67be-5fc7-8bf5-ab6026477ade))
+  (wire
+    (pts
+      (xy 241.3 198.12)
+      (xy 408.94 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid fef5db0c-573d-5632-9009-4ff6ce7d5c95))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 241.3 198.12 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid 8206e6a4-0ce0-5add-aada-30b853058dd8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 241.3 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 294.64 133.35)
+      (xy 289.56 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0df758d0-a23c-5663-b6d4-69452cbc8107))
+  (wire
+    (pts
+      (xy 289.56 133.35)
+      (xy 289.56 119.38))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 8e07c384-58e9-5530-b564-575cad529f52))
+  (global_label "PG_AUX"
+    (shape bidirectional)
+    (at 289.56 119.38 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid a39120eb-1163-59a2-80e9-6ab5c5e11114)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 289.56 119.38 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 294.64 143.51)
+      (xy 287.02 143.51))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 51106dbd-38e9-5a25-9ec4-b7caab86e4d3))
+  (wire
+    (pts
+      (xy 287.02 143.51)
+      (xy 287.02 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ba69a5a1-59e0-5037-9545-a25938be74e9))
+  (junction
+    (at 287.02 109.22)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 941dce4d-afc3-5d17-93db-5bdb79323fe0))
+  (wire
+    (pts
+      (xy 294.64 138.43)
+      (xy 281.94 138.43))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 72b54886-e0b5-59ee-bcdd-5b923998493d))
+  (wire
+    (pts
+      (xy 281.94 138.43)
+      (xy 281.94 158.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e7ce317c-810e-588b-b6c5-54039774e835))
+  (wire
+    (pts
+      (xy 281.94 166.37)
+      (xy 281.94 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f3409aed-8470-591d-bf08-564b52b1cde0))
+  (junction
+    (at 281.94 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 4e0102a9-fb05-50ec-be67-2c59c9a6e0ff))
+  (wire
+    (pts
+      (xy 294.64 146.05)
+      (xy 292.1 146.05))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 15929d08-2404-58ac-b58a-7c2b0c897e98))
+  (wire
+    (pts
+      (xy 292.1 146.05)
+      (xy 292.1 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5cb773d7-d7ec-508f-9384-ab1df35d8bc7))
+  (junction
+    (at 292.1 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7451bed0-815e-5345-8684-3a27594df7b7))
+  (wire
+    (pts
+      (xy 304.8 151.13)
+      (xy 304.8 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 96af8ea8-e718-5002-ad3d-faf1f95e8712))
+  (junction
+    (at 304.8 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid d383859a-6a7c-57f2-a43f-eafc812dbfe8))
+  (wire
+    (pts
+      (xy 314.96 133.35)
+      (xy 341.63 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3a255feb-2436-53ff-a8cb-2db52c276f9a))
+  (wire
+    (pts
+      (xy 349.25 133.35)
+      (xy 464.82 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5bbaae95-da1a-5c09-9c91-59372a312b31))
+  (global_label "VCC_ASIC_1V5"
+    (shape bidirectional)
+    (at 464.82 133.35 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid 261b41ed-94ae-5f66-90ae-5c05a0e886b9)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 464.82 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 370.84 158.75)
+      (xy 370.84 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e79cedac-8c00-5e5d-aa17-9cb791e0279b))
+  (junction
+    (at 370.84 133.35)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid a912e72c-4a67-5117-899d-b7cc49d39adc))
+  (wire
+    (pts
+      (xy 408.94 152.4)
+      (xy 408.94 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 0ea0ff32-d006-53ea-9511-6c1d25af2077))
+  (junction
+    (at 408.94 133.35)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 0c6f1c23-0bd5-5cd4-be3c-42d8c388f47f))
+  (wire
+    (pts
+      (xy 370.84 166.37)
+      (xy 370.84 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ea7b514e-6b4b-5be6-b304-1a0bf6135230))
+  (junction
+    (at 370.84 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 7669e06b-a188-59b6-858e-9577878de97d))
+  (wire
+    (pts
+      (xy 314.96 135.89)
+      (xy 330.2 135.89))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 3f7e5010-9e7b-5a8e-a5f1-b2a48bb9fe95))
+  (wire
+    (pts
+      (xy 330.2 135.89)
+      (xy 330.2 149.86))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e349d4b6-bb33-5aba-85c4-8bd0404b5be3))
+  (wire
+    (pts
+      (xy 330.2 149.86)
+      (xy 355.6 149.86))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid f122203e-674c-5ee5-a25d-cf2e9fca517e))
+  (wire
+    (pts
+      (xy 355.6 149.86)
+      (xy 355.6 133.35))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 90ab8165-d559-592c-a260-2c945ab37a9e))
+  (junction
+    (at 355.6 133.35)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid ed07ac91-52d5-5679-913d-b8e0a9d63c2b))
+  (wire
+    (pts
+      (xy 408.94 160.02)
+      (xy 408.94 167.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 596b98b5-b37b-5019-aa78-a617ab734a25))
+  (wire
+    (pts
+      (xy 408.94 167.64)
+      (xy 408.94 175.26))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 731310f2-fd2e-5104-a1ea-47107b72995b))
+  (wire
+    (pts
+      (xy 314.96 138.43)
+      (xy 327.66 138.43))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 447be247-f965-5603-8597-f7411ecc9a55))
+  (wire
+    (pts
+      (xy 327.66 138.43)
+      (xy 327.66 167.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid bf0351c8-cf9c-5d24-9ea0-c9d9014515c6))
+  (wire
+    (pts
+      (xy 327.66 167.64)
+      (xy 408.94 167.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 84c0d0e4-b2c3-5a79-93db-a8b042e02ca4))
+  (junction
+    (at 408.94 167.64)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 1422db7a-d387-5fbc-9ad1-147a45311abd))
+  (global_label "FB_ASIC"
+    (shape bidirectional)
+    (at 408.94 167.64 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid a7475e89-240d-5956-8693-1b992ee78312)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 408.94 167.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (wire
+    (pts
+      (xy 408.94 182.88)
+      (xy 408.94 198.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 699b6230-52ed-5d9b-93b3-cf73183a0170))
+  (junction
+    (at 408.94 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid e5132a4f-6d7a-5ab3-a9e4-db9f925c64dc))
+  (global_label "SW_ASIC"
+    (shape bidirectional)
+    (at 341.63 133.35 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid 8ee8070b-77d6-5414-9910-5cc9f4f78c01)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 341.63 133.35 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (global_label "SS_ASIC"
+    (shape bidirectional)
+    (at 281.94 158.75 180)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify right))
+    (uuid 8bc509b3-24a7-5885-b8d2-24443b1bd333)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 281.94 158.75 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (junction
+    (at 241.3 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid db6e096f-da79-530b-9719-9e9007e9ed35))
+  (junction
+    (at 273.05 198.12)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid 928cdb0c-d616-58a9-9f89-12034911c05b))
+  (text "07 / FPGA I/O supply - U4 repurposed on sheet 13"
+    (at 15.24 17.78 0)
+    (effects
+      (font
+        (size 3.8 3.8))
+      (justify left))
+    (uuid 5d96e041-c1f5-5eaa-a082-84058f0b0504))
+  (text "U5 receives the common input bus. Its output powers FPGA I/O only."
+    (at 15.24 31 0)
+    (effects
+      (font
+        (size 2.7 2.7))
+      (justify left))
+    (uuid 1442ca4c-e51f-5d21-88c7-33e97f1548d8))
+  (text "1.5 V / FPGA I/O BANK POWER"
+    (at 15 62 0)
+    (effects
+      (font
+        (size 3.4 3.4))
+      (justify left))
+    (uuid 50d56b50-ba9e-5e98-b851-f9fae91175da))
+  (text "U5 sets the electrical supply for banks"
+    (at 15 71.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid bdf36e73-b917-5e55-8fb6-55fe0916376e))
+  (text "14, 15 and 34, which face the ASICs."
+    (at 15 78.5 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 3a018750-280c-5989-ab38-baa4897d4f86))
+  (text "This rail does not power the ASIC chips."
+    (at 15 86.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 57b9d259-e6e3-51fe-85b8-526af1e3fb59))
+  (text "J5 has no assigned ASIC supply contact."
+    (at 15 93.5 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 17475ce6-c432-5964-8fb1-8cfbfbb0ca73))
+  (text "HOW A BUCK SECTION WORKS"
+    (at 15 126 0)
+    (effects
+      (font
+        (size 3.4 3.4))
+      (justify left))
+    (uuid 6a8a8a41-69e1-5267-abd2-4713d88567c9))
+  (text "The IC switches energy into its inductor."
+    (at 15 135.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 7b087212-8a67-5568-ace8-6d484b47f554))
+  (text "The inductor and output capacitor smooth it."
+    (at 15 142.5 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 48b3b475-75ea-5cb1-b028-4f43e270e6b1))
+  (text "The feedback divider tells the IC the voltage."
+    (at 15 150.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid fefe64cd-f4b9-59fa-a3bd-bcf4479254ed))
+  (text "Input bypass supplies short current pulses."
+    (at 15 157.5 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 763f7c24-c9b6-5d7a-9772-16ac15e18d5a))
+  (text "EN / PG / SOFT START"
+    (at 15 190 0)
+    (effects
+      (font
+        (size 3.4 3.4))
+      (justify left))
+    (uuid 51cc3e8b-5c79-5a82-9211-7b5baa91ceef))
+  (text "EN starts the regulator when PG_AUX rises."
+    (at 15 199.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid f85ed55b-f92f-57bf-bd59-1c57be1e5eb5))
+  (text "The soft-start capacitor controls the ramp."
+    (at 15 206.5 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 27ebc837-6775-503f-86e2-5cbd8df885b4))
+  (text "U5 PG remains unconnected; U4 PG is on sheet 13."
+    (at 15 214.0 0)
+    (effects
+      (font
+        (size 2.9 2.9))
+      (justify left))
+    (uuid 891baac8-4f3b-59fb-a45f-9a236094f442))
+  (text "U5 / ~1.5083 V / I/O BANKS 14, 15 AND 34"
+    (at 228 57 0)
+    (effects
+      (font
+        (size 3.5 3.5))
+      (justify left))
+    (uuid d91dce7d-cc7c-56cf-a501-8690b0ac2d5c))
+  (text "L4/C17: output filter. R7/R8: voltage feedback."
+    (at 228 66.0 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 350fefa6-33f6-555b-bc43-634d346fb374))
+  (text "C15/C16: input bypass. C18: soft-start capacitor."
+    (at 228 73.5 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 17d7a0d2-4c8c-5df8-8e51-99e6b45e56e5))
+  (text "U4 HAS MOVED TO THE GTP POWER CIRCUIT"
+    (at 15.24 257.81 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid da87866f-5c6b-5831-bce8-a6be873cbfe7))
+  (text "The unused 2.5 V rail and C57-C63 have been removed."
+    (at 15.24 265.43 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 8884e8e1-46d5-5d1e-8ad5-e15f999c1b98))
+  (text "U4 now supplies GTP 1.2 V through its own filter on sheet 13."
+    (at 15.24 270.51 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 1c6faf8b-0957-5a2a-a1bd-e01bc7d646c5))
+  (text "The FPGA I/O supply U5 above remains 1.5 V."
+    (at 15.24 276.86 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid b647e735-5e99-5a96-a622-352022d9d3e0))
+  (text "CONFIGURATION IS MANUALLY HELD DURING INITIAL TESTS"
+    (at 15.24 309.88 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 678c238d-6cb7-5980-b13d-5c701f4c56d8))
+  (text "Close J6 before applying power; it holds INIT_B low."
+    (at 15.24 317.5 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid 6f9bba07-5c2b-5434-9260-c209be035d23))
+  (text "Check ALL rails at the FPGA before removing the shunt."
+    (at 15.24 322.58 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid d59a54b7-9b9c-5b8c-8635-90622cc3b0d1))
+  (text "Regulator PG signals alone do not prove GTP voltage tolerance."
+    (at 15.24 328.93 0)
+    (effects
+      (font
+        (size 3.0 3.0))
+      (justify left))
+    (uuid d5bfac27-6fd4-5d9d-8dc7-8593c8897630))
+  (wire
+    (pts
+      (xy 314.96 143.51)
+      (xy 320.04 143.51))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "0a78cc05-82a9-56e7-bb56-cb50bd389df3"))
+  (global_label "PG_ASIC_1V5"
+    (shape bidirectional)
+    (at 320.04 143.51 0)
+    (effects
+      (font
+        (size 1.35 1.35))
+      (justify left))
+    (uuid "8ef4dc61-6df7-5ff5-8854-c28d459e2349")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 320.04 143.51 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.0 1.0)))))
+  (no_connect
+    (at 314.96 146.05)
+    (uuid "e7ebb22d-0df1-421b-9a59-1ef15d48ae04")))

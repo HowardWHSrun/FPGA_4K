@@ -1,0 +1,79 @@
+{
+  "board_sha256": "6bafa7f2b19bca1b78f083b53e7d6f9c46c5619e1202761e4f698e362bb01a54",
+  "status": "planning items; do not order",
+  "quantity_basis": "one prototype system; TBD rows require selection",
+  "rows": [
+    {
+      "additional_item": "Routing-board mating plugs",
+      "quantity": "2",
+      "current_candidate": "Hirose DF40TC-60DP-0.4V(51)",
+      "open_item": "Pair with J5/J7 receptacles; rigid-board spacing, alignment and assembly approval pending.",
+      "source_url": "https://www.hirose.com/en/product/p/CL0684-4281-0-51",
+      "review_report": ""
+    },
+    {
+      "additional_item": "Routing-board PCB and ASICs",
+      "quantity": "1 routing board; 8 ASICs proposed; spares TBD",
+      "current_candidate": "Matching routing design and ASIC ordering code TBD",
+      "open_item": "The FPGA board BOM cannot specify the ASIC or routing-board parts; obtain the carrier design and approved ASIC code.",
+      "source_url": "",
+      "review_report": "reports/DF40T_Ground_Return_Review.md"
+    },
+    {
+      "additional_item": "Custom micro-HDMI cable and strain relief",
+      "quantity": "1 cable set; spares TBD",
+      "current_candidate": "Custom 19-contact wiring, not standard HDMI",
+      "open_item": "Confirm 3 TX/1 RX channel map, shield, length, supply voltage, contact current and 100% continuity test.",
+      "source_url": "",
+      "review_report": ""
+    },
+    {
+      "additional_item": "Receiver adapter / downstream interface",
+      "quantity": "1 prototype; exact electronics TBD",
+      "current_candidate": "Compatible GTP receiver and control link",
+      "open_item": "Confirm receiver input, reference clock, AC coupling, ESD and firmware.",
+      "source_url": "",
+      "review_report": ""
+    },
+    {
+      "additional_item": "JTAG programmer and voltage adapter",
+      "quantity": "1 tool set",
+      "current_candidate": "1.8 V compatible JTAG candidate",
+      "open_item": "Select exact probe, keyed adapter and bring-up cable; confirm I/O voltage before use.",
+      "source_url": "",
+      "review_report": ""
+    },
+    {
+      "additional_item": "Edge I/O test fixture and J6 shunt",
+      "quantity": "1 fixture; 1 shunt; spares TBD",
+      "current_candidate": "1.5 V compatible probes, ground return and keyed INIT_B jumper",
+      "open_item": "Match the final edge-pad pitch and J6 header before ordering; fixture and jumper are outside the fitted PCB BOM.",
+      "source_url": "",
+      "review_report": ""
+    },
+    {
+      "additional_item": "Routing-board ASIC LDO power feed",
+      "quantity": "TBD",
+      "current_candidate": "Separate supply/return path and routing-board rail parts",
+      "open_item": "No DF40T supply contacts are spare. Select feed hardware, LDOs and protection after load budgets; J4.19 0.8 A is only a contact rating.",
+      "source_url": "",
+      "review_report": "reports/Power_Budget_and_Routing_Feed_Audit.md"
+    },
+    {
+      "additional_item": "Input supply and protection",
+      "quantity": "1 source; protection BOM TBD",
+      "current_candidate": "Supply voltage, connector protection, current limiting and backfeed control TBD",
+      "open_item": "Neither 5 V nor 12 V whole-headstage power is qualified. Verify total FPGA plus ASIC load, inrush, cable loss and startup sequence.",
+      "source_url": "",
+      "review_report": "reports/Power_Budget_and_Routing_Feed_Audit.md"
+    },
+    {
+      "additional_item": "PCB fabrication and assembly",
+      "quantity": "1 prototype lot; spares TBD",
+      "current_candidate": "Eight-layer board, stencil and assembly",
+      "open_item": "Fabricator stackup, controlled impedance, via process, thermal and assembly reviews pending.",
+      "source_url": "",
+      "review_report": ""
+    }
+  ]
+}

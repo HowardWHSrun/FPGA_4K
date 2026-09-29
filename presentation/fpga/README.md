@@ -1,16 +1,16 @@
 # FPGA board website — 28 September 2026
 
-[Featured 50T micro-HDMI PCB](index.html) · [131 fitted parts](index.html#parts) · [native PCB viewer](viewer/?board=fpga50t) · [preserved 100T checkpoint](micro-hdmi.html) · [USB-C development revision](usb-c.html) · [50T 19-contact proposal](micro-hdmi-19.html).
+[Featured 50T micro-HDMI PCB](index.html) · [158 fitted parts](index.html#parts) · [native PCB viewer](viewer/?board=fpga50t) · [preserved 100T checkpoint](micro-hdmi.html) · [USB-C development revision](usb-c.html) · [50T 19-contact proposal](micro-hdmi-19.html).
 
-The website opens with the **unrouted XC7A50T micro-HDMI review board**. Its native PCB has a 43 × 49 mm outline and 145 footprints. The [38-line grouped parts CSV](../../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) covers all 131 fitted buyable references for one PCB; six DNP items, four copper test pads and four mounting holes are excluded. It is a purchasing draft, not an approved cart or entire-system BOM. The native J4 input says `LINK_12V` while the separate R2 proposal evaluates protected 5 V; J5's CAD footprint remains DF40C while the later direction is DF40T.
+The website opens with the **unrouted XC7A50T micro-HDMI review board**. Its native PCB has a 36 × 38 mm outline and 174 footprints. The [48-line grouped parts CSV](../../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) covers all 158 fitted buyable references for one PCB; 0 DNP items and copper-only test pads are excluded. It is a purchasing draft, not an approved cart or entire-system BOM. The J4.19 `LINK_12V` label is inherited; neither 12 V nor the earlier 5 V proposal is a qualified supply. The cable and receiver still need electrical approval; Two DF40T 60-contact connector pairs are a mechanical review candidate.
 
-The [preserved routed 100T micro-HDMI checkpoint](micro-hdmi.html) and [separate USB-C revision](usb-c.html) remain available with their own source files and counts. The [50T 19-contact proposal](micro-hdmi-19.html) is a cable plan for the featured 50T board, not an implemented native link. None of these boards is released for manufacture.
+The [preserved routed 100T micro-HDMI checkpoint](micro-hdmi.html) and [separate USB-C revision](usb-c.html) remain available with their own source files and counts. The [50T 19-contact proposal](micro-hdmi-19.html) records the candidate cable plan; the current native schematic and unrouted PCB remain the engineering review. None of these boards is released for manufacture.
 
 ## Website and native files
 
 `index.html` presents the 50T board first. `micro-hdmi.html` preserves the routed 100T checkpoint, and `usb-c.html` preserves the separate USB-C review. [viewer/boards.json](viewer/boards.json) binds each native file to its SHA-256 and parser counts; the 50T board is the first/default entry. KiCanvas is a read-only review viewer, with [documented limits](viewer/README.md).
 
-The complete [50T KiCad ZIP](../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip) includes the PCB, 13 schematic sheets and local libraries. The preserved [100T micro-HDMI ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) and [USB-C ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) remain separate. Extract a whole project before opening its `.kicad_pro` file.
+The complete [50T KiCad ZIP](../../hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/FPGA50T_Two_60_Compact_Review_2026-09-28.zip) includes the PCB, 14 schematic sheets (overview + 13 detail) and local libraries. The preserved [100T micro-HDMI ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) and [USB-C ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) remain separate. Extract a whole project before opening its `.kicad_pro` file.
 
 ## Verification before publication
 
@@ -24,7 +24,7 @@ python3 scripts/check_hardware.py
 git diff --check
 ```
 
-Use the browser to verify the default 50T board, native layers, 3D switch, 38-line/131-reference parts filter, CSV downloads and mobile layout. Run the separate 100T and USB-C checks for those revisions. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
+Use the browser to verify the default 50T board, native layers, 3D switch, 48-line/158-reference parts filter, CSV downloads and mobile layout. Run the separate 100T and USB-C checks for those revisions. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
 
 ## Preserved earlier material
 

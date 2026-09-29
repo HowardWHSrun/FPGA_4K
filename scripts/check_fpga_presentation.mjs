@@ -46,15 +46,92 @@ try {
   }
   await page.goto(base + 'presentation/fpga/', {waitUntil:'networkidle'});
   assert((await page.locator('#page-title').innerText()) === 'Micro-HDMI FPGA board' && (await page.locator('#board-title').innerText()) === '50T board first', 'Featured FPGA page starts with the 50T review');
+  const boardRegistry = await (await page.request.get(base + 'presentation/fpga/viewer/boards.json')).json();
+  const featuredBoard = boardRegistry.boards.find(board => board.id === 'fpga50t');
+  const currentReview = await (await page.request.get(base + 'presentation/fpga/current.json')).json();
+  assert(featuredBoard.sha256 === currentReview.board_sha256 && featuredBoard.unconnected_items === currentReview.unconnected,
+    'Featured board identity and native connectivity match the current review audit');
+  const compactPackage=base+'hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/';
+  const compactManifest=await (await page.request.get(compactPackage+'manifest.json')).json();
+  assert(compactManifest.files.every(item=>!item.path.toLowerCase().includes('private_source/')&&
+    !/\.(mp3|m4a|wav|aac|mp4|mov)$/i.test(item.path)),
+    'Public dated import excludes meeting audio and private source files');
+  await page.locator('.escape-figure img').scrollIntoViewIfNeeded();
+  await page.locator('.escape-figure img').evaluate(image => image.decode());
+  assert((await page.locator('.escape-figure figcaption').innerText()).includes('no routed copper') &&
+    (await page.locator('.escape-figure img').getAttribute('src')).includes('Step14_North_South_Escape_Overview.svg')&&
+    await page.locator('.escape-figure img').evaluate(image => image.complete && image.naturalWidth > 0),
+    'Proposed layer escape figure loads and is labeled as unrouted');
+  assert((await page.locator('.board-story').innerText()).includes(String(currentReview.drc_reported_unconnected)) &&
+    (await page.locator('.board-story').innerText()).includes(String(currentReview.unconnected)),
+    'Website distinguishes capped DRC listing from native ratsnest count');
+  assert((await page.locator('.board-story').innerText()).includes(`${currentReview.erc_error_count} errors`) &&
+    (await page.locator('.board-story').innerText()).includes(`${currentReview.erc_warning_count} warnings`) &&
+    (await page.locator('.board-story a[href*="ERC"]').count()) === 1,
+    'Featured page shows native ERC error and warning totals with its report');
+  assert((await page.locator('.board-story').innerText()).includes('F13 (M2_0)') &&
+    (await page.locator('.board-story a[href*="Step11_Parity_Handoff.md"]').count()) === 1,
+    'Inherited parity correction and provisional U9 assembly note remain visible');
+  assert((await page.locator('.board-story').innerText()).includes('Step15 schematic labels')&&
+    (await page.locator('.board-story a[href*="Step15_Overview_Annotation_Handoff.md"]').count())===1,
+    'Corrected Step15 overview annotations are linked without claiming an electrical redesign');
+  assert((await page.locator('.board-story').innerText()).includes('three recording TX pairs') &&
+    (await page.locator('.board-story a[href*="Step09_GTP_Link_Handoff.md"]').count()) === 1,
+    'Custom micro-HDMI GTP plan has a source-linked review summary');
+  assert((await page.locator('.board-story a[href*="ASIC_Clock_Source_Candidate.md"]').count())===1&&
+    (await page.locator('.board-story').innerText()).includes('not implemented HDL'),
+    '32 MHz ASIC clock calculation is linked and remains explicitly unimplemented');
+  assert((await page.locator('.board-story a[href*="DF40T_Ground_Return_Review.md"]').count())===1&&
+    (await page.locator('.board-story').innerText()).includes('all 116 digital signals allocated'),
+    'Ground return review is linked without altering the current ASIC contact map');
+  assert((await page.locator('.board-story').innerText()).includes('81 physical DRC findings') &&
+    (await page.locator('.board-story a[href*="MicroHDMI_East_West_Placement_Study.md"]').count()) === 1,
+    'Rejected west-side placement trial is labeled invalid and linked as history');
+  assert((await page.locator('.board-story').innerText()).includes('1.245 mm beyond the east board edge') &&
+    (await page.locator('.board-story a[href*="Step14_Compact_Geometry_Handoff.md"]').count()) === 1,
+    '36 by 38 outline and the separate J4 courtyard overhang are linked without claiming routability');
+  assert((await page.locator('.board-story').innerText()).includes('72 to 44 of 116')&&
+    (await page.locator('.board-story').innerText()).includes('39 to 77')&&
+    (await page.locator('.board-story a[href*="Step14_Layer_By_Layer_Escape_Study.md"]').count())===1,
+    'North/south improvement and east/west detour tradeoff remain visible as geometry warnings');
+  const purchasingCSV = await (await page.request.get(base + 'sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv')).text();
+  const purchaseLines = purchasingCSV.trim().split(/\r?\n/).slice(1);
+  const purchasedRefs = purchaseLines.reduce((sum, line) => sum + Number(line.split(',')[0]), 0);
   const fitted = await page.locator('#purchase-parts tbody tr').evaluateAll(items => items.map(item => ({qty:Number(item.dataset.qty), refs:item.dataset.refs.split(';').map(ref => ref.trim())})));
-  assert(fitted.length === 38 && fitted.reduce((sum,item) => sum + item.qty, 0) === 131, '50T purchasing table covers 38 lines and 131 fitted references');
-  assert(new Set(fitted.flatMap(item=>item.refs)).size === 131 && fitted.every(item => item.qty === item.refs.length), '50T purchasing references are unique and match quantities');
-  await page.locator('#parts-search').fill('DF40C');
-  assert(await page.locator('#purchase-parts tbody tr:visible').count() === 1 && (await page.locator('#purchase-parts tbody tr:visible').innerText()).includes('Revision mismatch'), '50T search exposes the J5 connector conflict');
+  assert(fitted.length === purchaseLines.length && fitted.reduce((sum,item) => sum + item.qty, 0) === purchasedRefs, '50T purchasing table matches the downloadable grouped CSV');
+  assert(new Set(fitted.flatMap(item=>item.refs)).size === purchasedRefs && fitted.every(item => item.qty === item.refs.length), '50T purchasing references are unique and match quantities');
+  const purchaseBase=base+'hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/purchasing/';
+  const fittedJSON=await (await page.request.get(purchaseBase+'Fitted_50T_Grouped_BOM.json')).json();
+  assert(fittedJSON.board_sha256===featuredBoard.sha256&&fittedJSON.grouped_lines===fitted.length&&
+    fittedJSON.fitted_buyable_references===purchasedRefs&&fittedJSON.rows.length===fitted.length,
+    'Dated fitted BOM CSV/JSON and website table share one native board identity');
+  assert(!currentReview.legacy_clock_island_removed||
+    !fittedJSON.rows.some(row=>row.references.split('; ').some(ref=>['Y1','R119','C102','C103'].includes(ref))),
+    'When the legacy clock island is removed, its parts are excluded from the fitted purchase list');
+  const systemJSON=await (await page.request.get(purchaseBase+'System_Purchasing_Plan.json')).json();
+  assert(systemJSON.board_sha256===featuredBoard.sha256&&systemJSON.rows.length===await page.locator('#system-parts tbody tr').count(),
+    'Dated system purchasing JSON matches the website table');
+  assert((await page.request.get(purchaseBase+'Fitted_50T_Grouped_BOM.csv')).ok()&&
+    (await page.request.get(purchaseBase+'System_Purchasing_Plan.csv')).ok(),
+    'Dated fitted and system purchasing CSVs are downloadable');
+  const systemText = await page.locator('#system-parts').innerText();
+  assert(systemText.includes('DF40TC-60DP-0.4V(51)') && systemText.includes('Custom micro-HDMI cable') &&
+    systemText.includes('JTAG programmer') && systemText.includes('ASIC LDO power feed'),
+    'System purchasing list includes the mating plugs, custom cable, programming and routing-board power');
+  assert((await page.locator('#files').innerText()).includes('68-file portable derivative')&&
+    (await page.locator('#files a[href$="/README.md"]').count())===1,
+    'Public project ZIP omission is explicit and points to the package provenance');
+  assert(systemText.includes('Neither 5 V nor 12 V')&&
+    (await page.locator('.board-story').innerText()).includes('neither whole-headstage supply is qualified'),
+    'Supply voltage remains explicitly unqualified despite inherited LINK_12V net name');
+  await page.locator('#parts-search').fill('DF40');
+  const connectorRows = await page.locator('#purchase-parts tbody tr:visible').allInnerTexts();
+  assert(connectorRows.some(row => row.includes('J5')) && connectorRows.some(row => row.includes('J7')),
+    '50T search exposes both 60-contact ASIC connector rows');
   await page.locator('#parts-search').fill('');
   const fiftyFrame = await (await page.locator('#native-board').elementHandle()).contentFrame();
   await fiftyFrame.waitForFunction(() => window.pcbViewerDiagnostics?.ready === true, null, {timeout:60000});
-  assert(await fiftyFrame.evaluate(() => pcbViewerDiagnostics.board === 'fpga50t' && pcbViewerDiagnostics.sourceHash === '445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff' && pcbViewerDiagnostics.nativeCounts.footprints === 145), 'Featured iframe reads the exact 50T native board');
+  assert(await fiftyFrame.evaluate(expected => pcbViewerDiagnostics.board === 'fpga50t' && pcbViewerDiagnostics.sourceHash === expected.sha256 && pcbViewerDiagnostics.nativeCounts.footprints === expected.expected.footprints, featuredBoard), 'Featured iframe reads the exact 50T native board');
   for (const [width,height] of [[1440,1000],[390,844]]) {
     await page.setViewportSize({width,height});
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), '50T featured page has no overflow at '+width);
@@ -67,7 +144,7 @@ try {
   assert(await page.locator('#three-board').isVisible(), 'Featured 50T 3D tab opens');
   await page.locator('[data-view="native"]').click();
   assert(await page.locator('#native-board').isVisible(), 'Featured 50T native tab returns');
-  for (const url of [base+'sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv',base+'hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip']) {
+  for (const url of [base+'sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv',await page.locator('.parts-actions a').nth(1).getAttribute('href').then(href=>new URL(href,page.url()).href)]) {
     assert((await page.request.get(url)).ok(), 'Featured 50T evidence is downloadable');
   }
   await page.setViewportSize({width:1440,height:1000});
