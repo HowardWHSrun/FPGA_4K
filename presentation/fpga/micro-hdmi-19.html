@@ -27,7 +27,7 @@
       <aside class="scope-note" aria-label="Proposal status">
         <span class="scope-index">DESIGN STATUS / 01</span>
         <strong>Proposed for the 50T board</strong>
-        <p>Eight data contacts are still unconnected in the latest 50T schematic. A matching MCU-side board is proposed to supply the protected 5 V input; its available current is unknown. The preserved 100T checkpoint is a separate design.</p>
+        <p>The current proposal uses three high-speed recording TX pairs and one high-speed control RX pair. All eight data contacts are still unconnected in the latest 50T schematic. A matching MCU-side board is proposed to supply the 5 V input; its available current is unknown. The preserved 100T checkpoint is a separate design.</p>
       </aside>
     </section>
 
@@ -49,21 +49,21 @@
                 <button class="pin pin-jtag" type="button" data-pin="17" aria-label="Pin 17, JTAG clock input" aria-pressed="false">17</button>
                 <button class="pin pin-jtag" type="button" data-pin="15" aria-label="Pin 15, JTAG data input" aria-pressed="false">15</button>
                 <button class="pin pin-ground" type="button" data-pin="13" aria-label="Pin 13, ground return" aria-pressed="false">13</button>
-                <button class="pin pin-control" type="button" data-pin="11" aria-label="Pin 11, control receive lane zero negative" aria-pressed="false">11</button>
-                <button class="pin pin-control" type="button" data-pin="9" aria-label="Pin 9, control receive lane zero positive" aria-pressed="false">9</button>
+                <button class="pin pin-record" type="button" data-pin="11" aria-label="Pin 11, high-speed recording transmit lane two negative" aria-pressed="false">11</button>
+                <button class="pin pin-record" type="button" data-pin="9" aria-label="Pin 9, high-speed recording transmit lane two positive" aria-pressed="false">9</button>
                 <button class="pin pin-ground" type="button" data-pin="7" aria-label="Pin 7, ground return" aria-pressed="false">7</button>
-                <button class="pin pin-record" type="button" data-pin="5" aria-label="Pin 5, recording transmit lane zero negative" aria-pressed="false">5</button>
-                <button class="pin pin-record" type="button" data-pin="3" aria-label="Pin 3, recording transmit lane zero positive" aria-pressed="false">3</button>
+                <button class="pin pin-record" type="button" data-pin="5" aria-label="Pin 5, high-speed recording transmit lane zero negative" aria-pressed="false">5</button>
+                <button class="pin pin-record" type="button" data-pin="3" aria-label="Pin 3, high-speed recording transmit lane zero positive" aria-pressed="false">3</button>
                 <button class="pin pin-reference" type="button" data-pin="1" aria-label="Pin 1, 1.8 volt JTAG target reference" aria-pressed="false">1</button>
               </div>
               <div class="pin-row lower-row" aria-label="Lower row, even contact numbers">
                 <button class="pin pin-jtag" type="button" data-pin="18" aria-label="Pin 18, JTAG data output" aria-pressed="false">18</button>
                 <button class="pin pin-ground" type="button" data-pin="16" aria-label="Pin 16, ground return" aria-pressed="false">16</button>
-                <button class="pin pin-control" type="button" data-pin="14" aria-label="Pin 14, control receive lane one negative" aria-pressed="false">14</button>
-                <button class="pin pin-control" type="button" data-pin="12" aria-label="Pin 12, control receive lane one positive" aria-pressed="false">12</button>
+                <button class="pin pin-control" type="button" data-pin="14" aria-label="Pin 14, high-speed control receive lane zero negative" aria-pressed="false">14</button>
+                <button class="pin pin-control" type="button" data-pin="12" aria-label="Pin 12, high-speed control receive lane zero positive" aria-pressed="false">12</button>
                 <button class="pin pin-ground" type="button" data-pin="10" aria-label="Pin 10, ground return" aria-pressed="false">10</button>
-                <button class="pin pin-record" type="button" data-pin="8" aria-label="Pin 8, recording transmit lane one negative" aria-pressed="false">8</button>
-                <button class="pin pin-record" type="button" data-pin="6" aria-label="Pin 6, recording transmit lane one positive" aria-pressed="false">6</button>
+                <button class="pin pin-record" type="button" data-pin="8" aria-label="Pin 8, high-speed recording transmit lane one negative" aria-pressed="false">8</button>
+                <button class="pin pin-record" type="button" data-pin="6" aria-label="Pin 6, high-speed recording transmit lane one positive" aria-pressed="false">6</button>
                 <button class="pin pin-ground" type="button" data-pin="4" aria-label="Pin 4, ground return" aria-pressed="false">4</button>
                 <button class="pin pin-jtag" type="button" data-pin="2" aria-label="Pin 2, JTAG mode select input" aria-pressed="false">2</button>
               </div>
@@ -72,7 +72,7 @@
             <div class="board-edge"><span></span>board receptacle · mating face<span></span></div>
           </div>
           <div class="legend" aria-label="Pin role colors"><span class="legend-record">Recording TX</span><span class="legend-control">Control RX</span><span class="legend-jtag">JTAG</span><span class="legend-ground">Ground</span><span class="legend-reference">1.8 V reference</span><span class="legend-power">5 V proposal</span></div>
-          <div class="direction-note"><span class="arrow-pair record-arrow">TX →</span> recording leaves the FPGA board <span class="arrow-pair control-arrow">← RX</span> control enters the FPGA board</div>
+          <div class="direction-note"><span class="arrow-pair record-arrow">3 high-speed TX pairs →</span> recording leaves the FPGA board <span class="arrow-pair control-arrow">← 1 high-speed RX pair</span> control enters the FPGA board</div>
           <div class="pin-detail" id="pin-detail" aria-live="polite" aria-atomic="true"><span class="detail-kicker">SELECTED CONTACT</span><strong>19 · Proposed protected 5 V input</strong><p>One positive contact would receive power from a matching MCU-side board. The native 50T schematic still says LINK_12V; source current and cable limits remain unqualified.</p><span class="detail-status">Proposed 5 V · native LINK_12V mismatch</span></div>
         </article>
 
@@ -112,7 +112,7 @@
         </article>
       </div>
       <aside class="clock-brief" id="clocking" aria-labelledby="clock-title">
-        <div class="clock-heading"><p class="eyebrow">CLOCKING / PROPOSED SERIAL LINK</p><h3 id="clock-title">Where does the clock go?</h3><p>Standard HDMI uses pins 12/14 as a TMDS clock pair. In this custom four-pair draft, those same contacts carry <strong>RX1 data</strong>; there is no dedicated clock pair in the cable.</p></div>
+        <div class="clock-heading"><p class="eyebrow">CLOCKING / PROPOSED SERIAL LINK</p><h3 id="clock-title">Where does the clock go?</h3><p>Standard HDMI uses pins 12/14 as a TMDS clock pair. In this custom three-TX/one-RX proposal, those same contacts carry <strong>high-speed RX0 control data</strong>; there is no dedicated clock pair in the cable.</p></div>
         <div class="clock-grid">
           <div><strong>Across the cable</strong><p>A GTP receiver recovers bit timing from each incoming high-speed data stream. That alone does not synchronize ASIC sampling; capture sync and timestamps remain open.</p></div>
           <div><strong>On the FPGA board</strong><p>The GTP still needs a qualified differential reference clock at its MGTREFCLK inputs. Its frequency and jitter limits depend on the selected line rate. Those 50T connections are marked TBD; the legacy 32 MHz Y1 oscillator is disconnected and is not the GTP reference.</p></div>
@@ -127,18 +127,18 @@
       <div class="table-wrap"><table><thead><tr><th scope="col">Pin</th><th scope="col">Proposed use on FPGA board</th><th scope="col">Conventional Type-D HDMI</th><th scope="col">50T design status</th></tr></thead><tbody>
         <tr data-pin="1"><th scope="row">01</th><td><span class="role role-reference">Reference</span><strong>VTREF 1.8 V</strong><small>Output reference for a matching JTAG probe; no load supply.</small></td><td>Hot Plug Detect</td><td>Existing · VCCAUX_1V8</td></tr>
         <tr data-pin="2"><th scope="row">02</th><td><span class="role role-jtag">JTAG</span><strong>TMS</strong><small>Mode select into the FPGA.</small></td><td>Utility</td><td>Existing · JTAG_TMS</td></tr>
-        <tr data-pin="3"><th scope="row">03</th><td><span class="role role-record">Recording TX</span><strong>TX0+</strong><small>Positive half of recording lane 0, out.</small></td><td>TMDS Data2+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="3"><th scope="row">03</th><td><span class="role role-record">Recording TX</span><strong>TX0+</strong><small>Positive half of high-speed recording lane 0, out.</small></td><td>TMDS Data2+</td><td>Proposed · unconnected</td></tr>
         <tr data-pin="4"><th scope="row">04</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data2 shield</td><td>Existing · GND</td></tr>
-        <tr data-pin="5"><th scope="row">05</th><td><span class="role role-record">Recording TX</span><strong>TX0−</strong><small>Negative half of recording lane 0, out.</small></td><td>TMDS Data2−</td><td>Proposed · unconnected</td></tr>
-        <tr data-pin="6"><th scope="row">06</th><td><span class="role role-record">Recording TX</span><strong>TX1+</strong><small>Positive half of recording lane 1, out.</small></td><td>TMDS Data1+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="5"><th scope="row">05</th><td><span class="role role-record">Recording TX</span><strong>TX0−</strong><small>Negative half of high-speed recording lane 0, out.</small></td><td>TMDS Data2−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="6"><th scope="row">06</th><td><span class="role role-record">Recording TX</span><strong>TX1+</strong><small>Positive half of high-speed recording lane 1, out.</small></td><td>TMDS Data1+</td><td>Proposed · unconnected</td></tr>
         <tr data-pin="7"><th scope="row">07</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data1 shield</td><td>Existing · GND</td></tr>
-        <tr data-pin="8"><th scope="row">08</th><td><span class="role role-record">Recording TX</span><strong>TX1−</strong><small>Negative half of recording lane 1, out.</small></td><td>TMDS Data1−</td><td>Proposed · unconnected</td></tr>
-        <tr data-pin="9"><th scope="row">09</th><td><span class="role role-control">Control RX</span><strong>RX0+</strong><small>Positive half of control lane 0, in.</small></td><td>TMDS Data0+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="8"><th scope="row">08</th><td><span class="role role-record">Recording TX</span><strong>TX1−</strong><small>Negative half of high-speed recording lane 1, out.</small></td><td>TMDS Data1−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="9"><th scope="row">09</th><td><span class="role role-record">Recording TX</span><strong>TX2+</strong><small>Positive half of high-speed recording lane 2, out.</small></td><td>TMDS Data0+</td><td>Proposed · unconnected</td></tr>
         <tr data-pin="10"><th scope="row">10</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Data0 shield</td><td>Existing · GND</td></tr>
-        <tr data-pin="11"><th scope="row">11</th><td><span class="role role-control">Control RX</span><strong>RX0−</strong><small>Negative half of control lane 0, in.</small></td><td>TMDS Data0−</td><td>Proposed · unconnected</td></tr>
-        <tr data-pin="12"><th scope="row">12</th><td><span class="role role-control">Control RX</span><strong>RX1+</strong><small>Positive half of control lane 1, in.</small></td><td>TMDS Clock+</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="11"><th scope="row">11</th><td><span class="role role-record">Recording TX</span><strong>TX2−</strong><small>Negative half of high-speed recording lane 2, out.</small></td><td>TMDS Data0−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="12"><th scope="row">12</th><td><span class="role role-control">Control RX</span><strong>RX0+</strong><small>Positive half of high-speed control lane 0, in.</small></td><td>TMDS Clock+</td><td>Proposed · unconnected</td></tr>
         <tr data-pin="13"><th scope="row">13</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Return and nearby pair reference.</small></td><td>TMDS Clock shield</td><td>Existing · GND</td></tr>
-        <tr data-pin="14"><th scope="row">14</th><td><span class="role role-control">Control RX</span><strong>RX1−</strong><small>Negative half of control lane 1, in.</small></td><td>TMDS Clock−</td><td>Proposed · unconnected</td></tr>
+        <tr data-pin="14"><th scope="row">14</th><td><span class="role role-control">Control RX</span><strong>RX0−</strong><small>Negative half of high-speed control lane 0, in.</small></td><td>TMDS Clock−</td><td>Proposed · unconnected</td></tr>
         <tr data-pin="15"><th scope="row">15</th><td><span class="role role-jtag">JTAG</span><strong>TDI</strong><small>Programming data into the FPGA.</small></td><td>CEC</td><td>Existing · JTAG_TDI</td></tr>
         <tr data-pin="16"><th scope="row">16</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Common return for JTAG and power.</small></td><td>DDC/CEC ground</td><td>Existing · GND</td></tr>
         <tr data-pin="17"><th scope="row">17</th><td><span class="role role-jtag">JTAG</span><strong>TCK</strong><small>Programming clock into the FPGA.</small></td><td>SCL</td><td>Existing · JTAG_TCK</td></tr>
@@ -150,7 +150,7 @@
 
     <section class="next-section" aria-labelledby="next-title"><div><p class="eyebrow">03 / BEFORE THIS IS A CABLE CONTRACT</p><h2 id="next-title">What still needs to be checked</h2></div><div class="next-grid"><div><strong>Electrical link</strong><p>Assign the eight data contacts in the schematic, define the transmitter/receiver endpoints, coupling, protection, timing and receiver firmware.</p></div><div><strong>Power path</strong><p>Revise the native LINK_12V assignment before adopting 5 V. Measure the board-plus-ASIC load and qualify the source, cable, return path, voltage drop, faults and startup. <a href="https://www.molex.com/en-us/products/part-detail/467651001" target="_blank" rel="noopener">Molex rates this receptacle at 0.8 A maximum per contact</a>: one 5 V positive contact allows at most 4 W ideal connector-only, before cable or conversion losses. System current is unknown.</p></div><div><strong>Physical continuity</strong><p>Confirm the exact receptacle and cable part numbers, mating orientation, every contact, shell and PCB footprint against manufacturer drawings.</p></div></div></section>
 
-    <footer class="page-footer"><div><strong>19-contact proposal · 28 September 2026</strong><p>Source map: <a href="../../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv">J4 proposed contacts R2 CSV</a>. Original connector drawing: <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf" target="_blank" rel="noopener">Molex SD-46765-001 ↗</a>.</p></div><a href="../../#fpga">Return to FPGA 4K <span aria-hidden="true">↗</span></a></footer>
+    <footer class="page-footer"><div><strong>19-contact proposal · 28 September 2026</strong><p>Source map: <a href="../../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R3_3TX_1RX_5V.csv">J4 proposed contacts R3 CSV</a>. Original connector drawing: <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf" target="_blank" rel="noopener">Molex SD-46765-001 ↗</a>.</p></div><a href="../../#fpga">Return to FPGA 4K <span aria-hidden="true">↗</span></a></footer>
   </main>
 </body>
 </html>
