@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-29",
+  "status": "Three-port exploded architecture view. Board separation and cable paths are illustrative; no mating, collision or signal-integrity proof.",
+  "fpga25t": {
+    "source": "2026-09-29_FPGA_Work/10_XC7A25T_Final_Device_Review/project/hardware/FPGA25T_8L_Unrouted.kicad_pcb",
+    "source_sha256": "60244ee83bc00677245521e385cefbeb689a4519190349c38d34f51c7f970c82",
+    "derived_asset": "fpga25t.glb",
+    "derived_sha256": "76a179349775b31decf219f8d0d7acbfba5b5b5585fec8f8d9784adab921ba41",
+    "export": "KiCad 10.0.6 pcb export glb; unavailable U1/U9 package bodies omitted from native export. Viewer adds an illustrative 15 x 15 mm U1 body. Board contains no routed tracks."
+  },
+  "xem8310": {
+    "source": "https://www.opalkelly.com/products/models/",
+    "step_download": "https://assets00.opalkelly.com/models/XEM8310-STEP.zip",
+    "source_file": "XEM8310.STEP",
+    "derived_asset": "xem8310-official.glb",
+    "derived_sha256": "009e8f106c3f06d6efba4659bc271a322b4a95c47edba8832dd53f0e1c368ad4",
+    "conversion": "OpenCascade STEP tessellation to glTF binary, official CAD geometry in mm and CAD Z-up; board and mating connectors kept at full tessellation, other components simplified for the browser; illustrative colors",
+    "mating_transform_in_brk_cad_mm": "rotate 180 degrees around CAD Z, then translate (+167.65,+96.90,+6.395) for the nominal direct XEM-on-BRK stack",
+    "viewer": "Both models are centered independently for an exploded architecture view. XEM is rotated 180 degrees in-plane and centered about (+34.825,-3.85) relative to BRK in viewer X/Z. Vertical gap is illustrative."
+  },
+  "brk8310": {
+    "source": "https://www.opalkelly.com/products/models/",
+    "step_download": "https://assets00.opalkelly.com/models/BRK8310-STEP.zip",
+    "source_file": "BRK8310.STEP",
+    "derived_asset": "brk8310-official.glb",
+    "derived_sha256": "2db5cc50361182e78305aa4bca188c03fd5e32590e18c2453a34d690dd0080c3",
+    "conversion": "OpenCascade STEP tessellation to glTF binary, official CAD geometry in mm and CAD Z-up; board and mating connectors kept at full tessellation, other components simplified for the browser; illustrative colors"
+  },
+  "interposer": {
+    "source": "2026-09-29_FPGA_Work/12_BRK8310_Three_Port_Interposer_R8_PCB_Study/project/BRK8310_Three_Port_Interposer_R8_PCB_Study.kicad_pcb",
+    "source_sha256": "08dbc083b1a5abd51512d8d1b9d628381bc118a5c199b9bdcc2753c339353b7e",
+    "derived_asset": "r8-interposer-partial.glb",
+    "derived_sha256": "d874603b6ce04e715f94608c04994ab4102641cd8c6cc1cacfb938cd41d24322",
+    "export": "KiCad 10.0.6 pcb export glb --include-tracks --include-pads --include-silkscreen; native project is partial: 160 MC1/MC2 contacts and one MC3-to-Type-D pair routed; 119 unconnected items; 61 conservative 0.20 mm physical DRC violations, zero geometry violations only under conditional 0.15 mm study rule. The 12 V protection/JTAG circuits are schematic placeholders, not placed. Six stack connector 3D bodies are missing from this export.",
+    "frame": "KiCad export is in metres and Y-up. Viewer scales by 1000 and independently centers the geometry. In imported BRK KiCad XY, board outline x124.4..232.3261, y65.1536..135.1536 mm; subtract (64.676,38.254) mm to map to official BRK STEP XY. In viewer, its center sits x+29.86 mm, z-3.85 mm relative to BRK center; vertical exploded gap is illustrative.",
+    "public_package": "hardware/xem8310-adapter/dated/2026-09-29/r8-partial-pcb/R8_Three_Port_Interposer_Public_Study.zip"
+  }
+}

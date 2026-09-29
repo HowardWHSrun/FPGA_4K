@@ -27,11 +27,12 @@ try{
   check(await page.locator('#three-panel').isVisible()&&!(await page.locator('#viewport').isVisible())&&!(await page.locator('#native-panel').isVisible()),path+' exclusive 3D tab');check(!(await frame.locator('.revision').isVisible()),path+' revision locked to surrounding review');
   await page.screenshot({path:`${out}/${path.includes('micro')?'micro':'usb'}-review.png`});await page.locator('#back').click();check(await page.locator('#viewport').isVisible()&&!(await page.locator('#three-panel').isVisible()),path+' back layout restored');
  }
- await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.FPGA_3D?.getState().ready,{},{timeout:60000});const featured=await (await page.request.get(base+'presentation/fpga/3d/assets/fpga50t.json')).json();check((await page.locator('#facts').innerText()).includes(featured.dimensions_mm.slice(0,2).join(' × ')+' mm'),'system facts feature 50T');check((await system.evaluate(()=>FPGA_3D.getState().board))==='fpga50t','system features 50T first');await page.screenshot({path:`out/system.png`.replace('out',out)});
- await system.locator('#revision').selectOption('usb-c');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('USB-C'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('usb-c.html'),'system links to separate USB-C revision');
- await system.locator('#revision').selectOption('micro-hdmi');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('100T checkpoint'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('micro-hdmi.html#board'),'system link follows preserved 100T micro-HDMI');
- await system.locator('#revision').selectOption('fpga50t');await page.waitForFunction(()=>document.querySelector('#facts').textContent.includes('50T review'));check((await page.locator('#open-fpga-design').getAttribute('href')).includes('presentation/fpga/#board'),'system link returns to featured 50T');
- await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'original overview preserved');
+ await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.RECEIVER_3D?.getState().ready,{},{timeout:60000});
+ check((await system.evaluate(()=>RECEIVER_3D.getState().focus))==='fpga','system focuses the selected three 25T boards');
+ check((await page.locator('#facts').innerText()).includes('25T'),'system facts name selected 25T');
+ check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-25t.html'),'system links to selected 25T section');
+ await page.screenshot({path:`${out}/system.png`});
+ await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the FPGA focus hidden');
  await page.setViewportSize({width:390,height:844});
  for(const board of ['fpga50t','usb-c']){
   await page.goto(base+'presentation/fpga/3d/?board='+board);

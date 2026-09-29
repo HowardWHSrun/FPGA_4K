@@ -1,14 +1,14 @@
-# FPGA board website — 28 September 2026
+# Custom FPGA board website — 29 September 2026
 
-[Featured 50T micro-HDMI PCB](index.html) · [158 fitted parts](index.html#parts) · [native PCB viewer](viewer/?board=fpga50t) · [preserved 100T checkpoint](micro-hdmi.html) · [USB-C development revision](usb-c.html) · [50T 19-contact proposal](micro-hdmi-19.html).
+[Selected XC7A25T board](current-25t.html) · [three-port adapter and exact MC3 map](../adapter/) · [XEM8310 / BRK8310 receiver](../xem/) · [earlier XC7A50T review](index.html).
 
-The website opens with the **unrouted XC7A50T micro-HDMI review board**. Its native PCB has a 36 × 38 mm outline and 174 footprints. The [48-line grouped parts CSV](../../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) covers all 158 fitted buyable references for one PCB; 0 DNP items and copper-only test pads are excluded. It is a purchasing draft, not an approved cart or entire-system BOM. The J4.19 `LINK_12V` label is inherited; neither 12 V nor the earlier 5 V proposal is a qualified supply. The cable and receiver still need electrical approval; Two DF40T 60-contact connector pairs are a mechanical review candidate.
+The selected device is **XC7A25T-2CSG325I**. The proposed system uses **three separate custom FPGA PCBs and three custom 19-contact µHDMI cables** to one XEM8310 receiver. The current 25T native PCB is an unrouted 36 × 38 mm placement; its inherited DF40 interface is under redesign. The ASIC/carrier partition across these three boards is unresolved. The [25T section](current-25t.html) shows three copies of its native-derived 3D placement, with missing package bodies clearly simplified.
 
-The [preserved routed 100T micro-HDMI checkpoint](micro-hdmi.html) and [separate USB-C revision](usb-c.html) remain available with their own source files and counts. The [50T 19-contact proposal](micro-hdmi-19.html) records the candidate cable plan; the current native schematic and unrouted PCB remain the engineering review. None of these boards is released for manufacture.
+The [28 September 50T board and 158-part purchasing draft](index.html) remain an **earlier review**, not the selected device, current BOM or a manufacturing release. The [routed 100T micro-HDMI checkpoint](micro-hdmi.html), [USB-C development revision](usb-c.html) and [28 September 5 V contact proposal](micro-hdmi-19.html) are separate historical studies. The 29 September R7/R8 interface study selects 12 V on each cable contact 19, but the protected receiver-side source, current budget and power branch hardware are not implemented.
 
 ## Website and native files
 
-`index.html` presents the 50T board first. `micro-hdmi.html` preserves the routed 100T checkpoint, and `usb-c.html` preserves the separate USB-C review. [viewer/boards.json](viewer/boards.json) binds each native file to its SHA-256 and parser counts; the 50T board is the first/default entry. KiCanvas is a read-only review viewer, with [documented limits](viewer/README.md).
+`current-25t.html` presents the selected 25T direction. `index.html` preserves the historical 50T board and its native parts review. `micro-hdmi.html` preserves the routed 100T checkpoint, and `usb-c.html` preserves the separate USB-C review. [viewer/boards.json](viewer/boards.json) binds each native file to its SHA-256 and parser counts; the 50T board is the first/default entry. KiCanvas is a read-only review viewer, with [documented limits](viewer/README.md).
 
 The complete [50T KiCad ZIP](../../hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/FPGA50T_Two_60_Compact_Review_2026-09-28.zip) includes the PCB, 14 schematic sheets (overview + 13 detail) and local libraries. The preserved [100T micro-HDMI ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/FPGA100T_33x36_Routing.zip) and [USB-C ZIP](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip) remain separate. Extract a whole project before opening its `.kicad_pro` file.
 
@@ -24,7 +24,7 @@ python3 scripts/check_hardware.py
 git diff --check
 ```
 
-Use the browser to verify the default 50T board, native layers, 3D switch, 48-line/158-reference parts filter, CSV downloads and mobile layout. Run the separate 100T and USB-C checks for those revisions. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
+Use the browser to verify the current 25T section and R8 adapter view. The earlier 50T page retains its native layers, 3D switch, 48-line/158-reference historical parts filter, CSV downloads and mobile layout. Run the separate 100T and USB-C checks for those revisions. GitHub Pages uses the `presentation` branch. Verify deployment and deployed asset hashes after publication.
 
 ## Preserved earlier material
 

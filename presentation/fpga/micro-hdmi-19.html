@@ -16,6 +16,8 @@
     <nav aria-label="This connector review"><a href="./#board">Featured 50T board</a><a href="./#parts">50T parts list</a><a href="#clocking">Clock plan</a><a href="#comparison">All 19 contacts</a><a href="micro-hdmi.html#board">Preserved 100T</a></nav>
   </header>
 
+  <aside class="revision-notice"><strong>Historical 28 September proposal:</strong> this interactive diagram records the earlier 5 V candidate. The 29 September direction selects <strong>12 V on contact 19</strong> and a proposed <strong>three-port interposer between XEM8310 and BRK8310</strong>. Its R7 schematic includes branch placeholders, but no protected source is implemented. <a href="../adapter/">Open the current connector plan ↗</a></aside>
+
   <main>
     <section class="intro" aria-labelledby="page-title">
       <div class="intro-copy">
@@ -27,13 +29,13 @@
       <aside class="scope-note" aria-label="Proposal status">
         <span class="scope-index">DESIGN STATUS / 01</span>
         <strong>Proposed for the 50T board</strong>
-        <p>The current proposal uses three high-speed recording TX pairs and one high-speed control RX pair. All eight data contacts are still unconnected in the latest 50T schematic. A matching MCU-side board is proposed to supply the 5 V input; its available current is unknown. The preserved 100T checkpoint is a separate design.</p>
+        <p>This 28 September proposal used three high-speed recording TX pairs and one high-speed control RX pair, with a 5 V candidate input. It is preserved for contact-numbering review; the later XEM8310 adapter plan and 12 V selection are linked above. The preserved 100T checkpoint is a separate design.</p>
       </aside>
     </section>
 
     <section class="safety-callout" aria-label="Custom-link compatibility warning">
       <div class="safety-mark" aria-hidden="true">!</div>
-      <div><strong>This is a custom electrical link, not an HDMI video port.</strong><p>Contact 19 is proposed as a <b>protected 5 V input</b>, while the native 50T schematic still labels its net <b>LINK_12V</b>. The <a href="../meetings/2026-09-28.html#interfaces">28 September review questioned the inherited 12 V label</a> but approved no final cable voltage. Resolve that mismatch before implementation. Conventional Type-D HDMI also assigns +5 V to contact 19, but an ordinary HDMI port is not a qualified power source for this custom map. Never connect ordinary HDMI equipment.</p></div>
+      <div><strong>This is a custom electrical link, not an HDMI video port.</strong><p>This historical page proposed a <b>protected 5 V input</b> on contact 19 while the native 50T schematic labeled its net <b>LINK_12V</b>. Howard later selected 12 V for the custom cable; the <a href="../adapter/">R7/R8 interposer study</a> still lacks an implemented, protected source. Conventional Type-D HDMI assigns +5 V to contact 19, but an ordinary HDMI port is not a source for this custom map. Never connect ordinary HDMI equipment.</p></div>
     </section>
 
     <section id="pin-diagram" class="diagram-section" aria-labelledby="diagram-title">

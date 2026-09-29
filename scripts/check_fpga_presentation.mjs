@@ -312,9 +312,9 @@ try {
     await page.waitForFunction(() => window.PRESENTATION?.getState().loaded);
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
-    await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/') && url.hash === '#board');
-    await page.waitForFunction(() => document.getElementById('page-title')?.textContent === 'Micro-HDMI FPGA board');
-    report.checks.push('Root system view opens featured 50T micro-HDMI review');
+    await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/current-25t.html'));
+    await page.waitForFunction(() => document.title.includes('Selected XC7A25T'));
+    report.checks.push('Root system view opens selected 25T board section');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
   assert(report.consoleErrors.length === 0, 'No browser console errors');

@@ -1,19 +1,19 @@
 # Owners and open work
 
-Updated 2026-09-27 for **XC7A100T-1CSG324I / 116 digital ASIC nets + one analog contact / XEM8310**. Roles are proposed; no personal acceptance or review approval is implied.
+Updated 2026-09-29 for the proposed **three XC7A25T boards → three custom µHDMI cables → XEM8310–BRK8310 interposer → XEM8310 receiver** plan. Roles are proposed; no personal acceptance or review approval is implied.
 
-The [USB-C review](../../presentation/fpga/usb-c.html) and [remaining work](../../presentation/fpga/usb-c.html#release) describe the separate 100T development revision. It preserves the ASIC assignment and adds negotiated/protected power, USB2 control/JTAG and a reversible four-pair custom link. Its own native audit reports actual copper and findings. The website now features the [unrouted 50T micro-HDMI board and its 158-part draft list](../../presentation/fpga/index.html); the routed 100T micro-HDMI checkpoint remains [separate](../../presentation/fpga/micro-hdmi.html). This display choice does not change any board's engineering status.
+The website features the [selected 25T board section](../../presentation/fpga/current-25t.html) and [R7 three-port connection map with an R8 PCB study](../../presentation/adapter/). The 25T native PCB is unrouted and its DF40 interface is under redesign; R8 has incomplete routing and unresolved DRC. The [28 September 50T parts draft](../../presentation/fpga/index.html), one-port R3, direct-XEM R2, 100T [USB-C development revision](../../presentation/fpga/usb-c.html), and [routed micro-HDMI checkpoint](../../presentation/fpga/micro-hdmi.html) remain historical paths.
 
 | Workstream | Remaining result | Proposed owner / reviewer |
 |---|---|---|
-| ASIC and carrier | Current payload/generator, chip/contact map, guaranteed pad timing/levels, ASIC supplies and analog AC_IN source | ASIC + carrier/routing designers; Howard coordinates |
-| FPGA firmware | Local-clock startup, bounded SPI commands, JTAG capture transport, Vivado pin/CDC/timing proof | Jiaao / FPGA implementation, subject to agreement |
-| Power | PD source/sink contract, workload estimate, final copper/return review, PDN, startup/fault and thermal margin | FPGA power + source/carrier design |
-| Mechanical and manufacturing | Mating connectors and orientation, precision J4 slots, assembled clearances, stackup/process acceptance | Mechanical/layout + fabricator/assembler |
-| XEM8310 and host | Matching USB-C source/USB2-host adapter, lane orientation/training, receiver contacts/voltages, data format and bounded host-stall behavior | Receiver carrier / FPGA / host software |
-| Prototype acceptance | Rail/JTAG/boot checks, known-pattern capture, eight-ASIC mapping, sustained acquisition and recovery | Lab integration after design release and assembly |
+| ASIC and carrier | Authoritative chip/contact map and timing; resolve 12 FPGA data outputs versus 16 carrier data-input contacts; ASIC supplies and analog AC_IN source | Gerald / ASIC team with Zitong and Howard, subject to agreement |
+| Custom FPGA firmware | Two planned active recording TX streams plus one assigned spare per board, one reverse command RX stream, local ASIC CLK/DATA/LATCH generation, startup/JTAG and Vivado pin/CDC/timing proof for all three boards | FPGA implementation assignment pending |
+| Power | Three protected 12 V cable sources and contact/return budgets; XEM/BRK input, FPGA conversion, ASIC rail/feed design, startup/fault and thermal margin | FPGA power + receiver carrier + ASIC routing team |
+| Mechanical and manufacturing | XEM-facing and BRK-facing MC1/MC2/MC3 footprints, mirrored connector numbering, three cable fits and retention, increased stack height, assembled clearances, high-speed integrity and R8 DRC closure | Adapter/layout designer + fabricator/assembler |
+| XEM8310 and host | MC3 banks 226/225/224 GTY lane clock/IP/polarity, point-to-point diversion away from BRK GTY contacts, framed command paths, aggregate FrontPanel USB capture, XEM USB-to-custom-FPGA JTAG bridge or separate probe | Interposer / FPGA / host software assignment pending |
+| After-fab acceptance | Rail/JTAG/boot checks, known-pattern link capture, eight-ASIC mapping, sustained acquisition and recovery | Lab integration after design review, fabrication and assembly |
 
-Finite raw capture has simulation/synthesis evidence; startup, JTAG transport and a complete bitstream are unfinished. The XEM8310 is an FPGA/USB module, not a conventional MCU or an automatic PD source/USB host. The [USB-C circuit explanation](../../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/USB_C_Design_Explanation.md) separates the headboard revision from required receiver and firmware work. No order or supplier submission has been made.
+Finite raw capture has simulation/synthesis evidence in a separate earlier 100T study; startup, the 25T/XEM transceiver build, JTAG transport and a complete three-link bitstream are unfinished. The XEM8310 is an FPGA/USB module serving the downstream controller role, not a conventional MCU. R7 is a logical schematic; R8 is a partially routed physical study. Neither implements a qualified three-branch 12 V path. The three-link mode and BRK J6 PCIe cannot operate simultaneously on the assigned GTY lanes. No order or supplier submission has been made.
 
 ## Layout ownership record
 

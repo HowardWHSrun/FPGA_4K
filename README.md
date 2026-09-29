@@ -11,9 +11,11 @@
 
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
-**Featured FPGA PCB — unrouted 50T micro-HDMI review:** [Board and purchasing list](presentation/fpga/index.html) · [native zoomable PCB](presentation/fpga/viewer/?board=fpga50t) · [48-line purchasing draft](sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) · [complete KiCad project](hardware/fpga-interface-study/dated/2026-09-28/50t-two-60-compact/FPGA50T_Two_60_Compact_Review_2026-09-28.zip). The list covers 158 fitted components per board; unresolved order codes and external system items remain open. **Not for manufacture or purchase.**
+**Selected custom FPGA — XC7A25T-2CSG325I:** [Current board section and native-derived 3D placement](presentation/fpga/current-25t.html). Three separate boards and three cables are proposed. The 25T PCB is unrouted and its inherited rigid DF40 interface is under redesign. The [28 September 50T placement and parts review](presentation/fpga/index.html) remains available as a historical checkpoint; its 48-line purchasing draft is not a 25T order list. **No board is released for fabrication or purchase.**
 
-**Separate 100T revisions:** [Preserved routed micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) with its [125-part list](sources/engineering/2026-09-28/Micro_HDMI_100T_Grouped_Purchasing_Draft.csv); [USB-C development revision](presentation/fpga/usb-c.html) with its [native audit](hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json). Neither replaces the featured 50T review. The [50T 19-contact proposal](presentation/fpga/micro-hdmi-19.html) is still unimplemented in its native PCB.
+**Three-port receiver interface — 29 September:** [Adapter overview, exact pin map and interactive 3D](presentation/adapter/) · [R7 five-page KiCad schematic](hardware/xem8310-adapter/dated/2026-09-29/r7-three-port/BRK8310_Three_Port_Adapter_R7_Candidate.pdf) · [editable R7 project](hardware/xem8310-adapter/dated/2026-09-29/r7-three-port/BRK8310_Three_Port_Adapter_R7_KiCad_Project.zip). XEM8310 currently sits directly on BRK8310. The proposed interposer would fit between them and connect three custom FPGA cables to MC3 GTY banks 226, 225 and 224 simultaneously. Matching BRK GTY contacts would be isolated; BRK J6 PCIe is unavailable during three-link acquisition and is only an alternate future mode. [R8 native PCB placement and partial copper](hardware/xem8310-adapter/dated/2026-09-29/r8-partial-pcb/README.md) is available as an editable KiCad ZIP; 119 items remain unconnected, so it is not a finished routed board. The three protected 12 V cable branches, physical fit, clock/link, USB capture and programming remain unresolved. Earlier [one-port R3/R4](hardware/xem8310-adapter/dated/2026-09-29/r3-interposer-candidate/README.md) and [direct-XEM R2](hardware/xem8310-adapter/dated/2026-09-29/r2-12v/README.md) remain separate history.
+
+**Earlier FPGA revisions:** [28 September unrouted 50T placement and parts](presentation/fpga/index.html), [preserved routed 100T micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) and [USB-C development revision](presentation/fpga/usb-c.html) remain separate historical studies. The [28 September 5 V contact proposal](presentation/fpga/micro-hdmi-19.html) is dated history; the [current three-port adapter page](presentation/adapter/) shows the proposed 12 V contact and selected 25T link allocation.
 
 ## Start working with the team
 
@@ -21,7 +23,9 @@ Shared PCB development for the 4K neural-recording system: working designs, inte
 
 | Work | Start here | Status |
 |---|---|---|
-| Featured FPGA review | [Open the unrouted 50T micro-HDMI board](presentation/fpga/index.html) | 158 fitted component candidates; 625 native ratsnest links; power, cable and receiver pending |
+| Selected custom FPGA | [Open the 25T board section](presentation/fpga/current-25t.html) | Three identical board links proposed; PCB unrouted; DF40 interface under redesign |
+| Three-port receiver adapter | [Open the schematic, pin map and 3D](presentation/adapter/) | R7 logical schematic checked; R8 native PCB study has 119 unconnected items and 61 conservative-rule physical DRC findings; 12 V branches unimplemented |
+| Earlier 50T placement | [Open the 28 September board and parts review](presentation/fpga/index.html) | Historical 50T candidate; not the current selected device or BOM |
 | Preserved routed 100T | [Open the earlier micro-HDMI checkpoint](presentation/fpga/micro-hdmi.html) | 125 placed parts; separate routing and population evidence |
 | Separate USB-C revision | [Open the development board](presentation/fpga/usb-c.html) | 116 provisional FPGA signals + one analog reservation; unfinished routing; **not for manufacture** |
 | Earlier FPGA team draft | [September 21 import](hardware/fpga-board/README.md) | Preserved earlier electrical draft; superseded device/interface choices; **not for manufacture** |
@@ -67,7 +71,7 @@ For the full folder, use GitHub's **Code → Download ZIP** or clone the reposit
 
 ## Project context
 
-The featured review direction is **recording chips → routing board → XC7A50T micro-HDMI board → compatible receiver → PC**. The 50T board is unrouted; its powered cable, GTP link, receiver implementation and complete electrical pin assignments remain unfinished. The 100T/XEM8310 and earlier KR260 directions remain in dated records and separate board revisions.
+The current interface direction is **recording chips → routing/power → three separate XC7A25T PCBs → three custom µHDMI cables → one proposed interposer → XEM8310 → USB → PC**. The interposer would sit between XEM8310 and the separate BRK8310 breakout. Each cable gets one MC3 GTY bank; the custom FPGA would decode reverse-link commands and generate ASIC controls locally. The three-link mode uses GTY lanes otherwise routed to BRK J6, so PCIe is an alternate future configuration, not a simultaneous PC path. The 25T PCB is unrouted, and R8 is a connector/placement study; cable power, GTP/GTY operation, USB throughput, connector fit and ASIC fanout remain unresolved. Earlier 50T, 100T and KR260 material remains dated history.
 
 The included FPGA_512 code is an earlier **ECP5/FT600** implementation. It provides acquisition RTL, host software and testbenches; it is not a completed 4K Artix-7 implementation.
 

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Exploded interactive study of the XEM8310, proposed three-port interposer, BRK8310, and three custom XC7A25T FPGA boards.">
+<title>Three-port interposer · 3D assembly study</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assembly.css">
+<script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
+<script type="module" src="assembly.js"></script>
+</head>
+<body>
+<main>
+<header class="viewer-head"><div><p>THREE-PORT RECEIVER STUDY</p><h1>XEM · interposer · BRK</h1></div><a href="index.html">Connector and pin map ↗</a></header>
+<section class="stage" id="stage"><canvas id="scene" tabindex="0" aria-label="Exploded 3D view. Drag to rotate; scroll to zoom. Buttons focus the XEM8310, proposed adapter, BRK8310, or the three remote custom FPGA boards."></canvas><p class="loading" id="loading" role="status">Loading board models…</p><div class="stage-note">Exploded architecture view · mating fit and cable routing unverified</div><div class="labels" id="labels" aria-hidden="true"></div><div class="selected-info" id="selected-info"><strong>Three separate cables</strong><span>Each custom FPGA gets one XEM GTY bank.</span></div></section>
+<div class="controls"><div class="focus" role="group" aria-label="Focus a board"><button data-focus="all" aria-pressed="true">All</button><button data-focus="fpga" aria-pressed="false">3 FPGA boards</button><button data-focus="receiver" aria-pressed="false">Receiver stack</button><button data-focus="xem" aria-pressed="false">XEM8310</button><button data-focus="adapter" aria-pressed="false">Interposer</button><button data-focus="brk" aria-pressed="false">BRK8310</button></div><div class="views" role="group" aria-label="Camera view"><button data-view="iso" aria-pressed="true">3D</button><button data-view="top" aria-pressed="false">Top</button><button data-view="side" aria-pressed="false">Side</button><button id="reset">Reset</button></div></div>
+<footer><p id="geometry-status">Loading source information…</p><p><a href="https://www.opalkelly.com/products/models/">Opal Kelly model source ↗</a> · <a href="assets/provenance.json">Geometry provenance ↗</a> · <a href="index.html#status">Engineering status ↗</a></p></footer>
+</main>
+</body>
+</html>

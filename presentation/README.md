@@ -1,5 +1,7 @@
 # Assembly-first presentation
 
+**Current 29 September direction:** The active root deck separates the [selected XC7A25T board](fpga/current-25t.html), [three-port XEM–BRK interposer study](adapter/) and [purchased XEM8310/BRK8310 receiver](xem/). The viewer uses Opal Kelly-derived XEM/BRK geometry, a native-derived but unrouted 25T placement, and a partially routed R8 adapter candidate. The original compact headboard model and the September 23 starter notes below remain historical presentation provenance. The three-link system, 12 V distribution, mechanical fit and board fabrication readiness are unverified.
+
 Starter for the September 23, 2026 PI review. Presentation changes stay on the `presentation` branch; this is not a hardware release.
 
 ## Open
@@ -36,7 +38,7 @@ For compact mode, with x in source-model coordinates:
 
 Default L = 5 model units is an illustrative presentation assumption, adjustable from 3 to 15. The stack stays fixed; right-hand board geometry is translated without scaling. Original mode restores all source positions. No native CAD is modified. The original X envelope is 65 model units; the default compact envelope is 55. Do not relabel them as millimeters. Fit, clearance, pinout and manufacturing suitability have not been verified.
 
-The [presentation manifest](manifest.json) records derivation and the original SHA-256. Source roles and the intended downstream path are documented in the [hardware overview](../hardware/overview.md). KR260 and PC are outside the CAD model.
+The [presentation manifest](manifest.json) records derivation and the original SHA-256. Source roles and the selected XEM8310 downstream path are documented in the [hardware overview](../hardware/overview.md) and [adapter visualization](adapter/). The XEM8310/carrier illustration and PC are outside the supplied headboard CAD model. The earlier KR260 proposal remains in dated history.
 
 ## Validation
 

@@ -12,17 +12,20 @@ The earlier model discussion identified **A** as four ASIC-carrier boards with t
 
 ## Where the boards fit
 
-The current [100T review](../presentation/fpga/index.html) uses the following path. The [September 17 meeting](../docs/meetings/2026-09-17.md#system-and-responsibilities) used KR260; that receiver choice is historical:
+The selected [25T custom FPGA section](../presentation/fpga/current-25t.html) and [three-port adapter study](../presentation/adapter/) use the following proposed data path. There are three separate custom FPGA boards and cables, sharing one XEM8310 receiver. The [September 17 meeting](../docs/meetings/2026-09-17.md#system-and-responsibilities) used KR260; that receiver choice is historical:
 
 ```mermaid
 flowchart LR
-    A[Recording chips] --> B[Routing board]
-    B --> C[XC7A100T board]
-    C --> D[XEM8310 receiver]
-    D --> E[PC]
+    A[Earlier four-carrier ASIC concept] --> B[Earlier routing and power concept]
+    B -.->|ASIC-to-board partition TBD| C[Three separate XC7A25T boards]
+    C <-->|Three custom micro-HDMI cables| D[Proposed three-port interposer]
+    D <-->|MC3 GTY banks 226, 225, 224| E[XEM8310 module]
+    E <-->|FrontPanel USB| F[PC]
+    D <-->|Selected MC1/MC2 pass-throughs| G[BRK8310 board]
+    G -.->|Future alternate PCIe mode| F
 ```
 
-The chip carrier supports the recording chips and their connections. Routing brings chip signals toward the FPGA, which receives and organizes data for the downstream platform. The diagram shows the intended data path, not a mechanical stack or final connector map. The [current remaining work](../presentation/fpga/index.html#release) covers the unresolved electrical, power, timing and mechanical contract.
+Each custom FPGA would receive and organize ASIC data, but the partition from the earlier four-carrier concept across three FPGA boards has not been defined. Its two planned active recording pairs enter XEM GTY RX, with a third pair assigned but reserved. One reverse GTY pair carries commands so that FPGA can generate ASIC CLK, DATA and LATCH locally. The proposed interposer is a distinct board between XEM and BRK. The [R7 schematic](../hardware/xem8310-adapter/dated/2026-09-29/r7-three-port/BRK8310_Three_Port_Adapter_R7_Candidate.pdf) diverts MC3 bank 226/225/224 pairs to three µHDMI ports and isolates the matching BRK GTY contacts. The [R8 native PCB study](../presentation/adapter/) is only partially routed and still has unconnected items and DRC findings. XEM USB is the initial PC path. BRK PCIe is an alternate future configuration, since the three-link layout occupies GTY lanes used by J6. Stack fit, power-source protection and current budget for three 12 V cables, routing-board power, GTY clocking/link, custom-FPGA JTAG, ASIC fanout and host throughput remain open. The older [50T board review](../presentation/fpga/index.html) is historical.
 
 ## Original assembled-board photograph
 

@@ -4,7 +4,10 @@ body{font-family:var(--font);-webkit-font-smoothing:antialiased}
 body[data-section=carriers]{--section-accent:#477caa}
 body[data-section=routing]{--section-accent:#3b8b81}
 body[data-section=fpga]{--section-accent:#6e79ad}
-body[data-section=kr260]{--section-accent:#9a723a}
+body[data-section=adapter]{--section-accent:#9a723a}
+body[data-section=receiver]{--section-accent:#476a7f}
+.team-dot.f{background:#56778b}
+.markers [data-region=F] i{background:#e0eaf0;color:#476a7f}
 body .heading h1{letter-spacing:-1.05px;line-height:1.16}
 body .story h2{font-size:26px;line-height:1.23;letter-spacing:-.6px;font-weight:600;max-width:350px}
 body .panel-kicker{letter-spacing:.5px;color:var(--section-accent)}
@@ -30,3 +33,22 @@ body .story .fpga-entry{font-size:12px;font-weight:550}
 @media(max-width:850px){body .story h2{font-size:25px;max-width:none}body .description{font-size:14px}body .system-nav button{min-height:58px}body .viewer-controls .text-button{padding:8px 0}body .scene-caption{font-size:9px!important}}
 @media(max-width:450px){body .scene-caption{font-size:8px!important}body .detail-button{min-height:44px}body .markers button{min-height:34px}body .story h2{font-size:24px}}
 @media(prefers-reduced-motion:reduce){body .markers button{transition:none}}
+
+/* Current receiver path; the interposer and XEM/BRK stage are explanatory meshes. */
+.adapter-overview{border-top:1px solid var(--line);margin-top:17px;padding:14px 0 0}
+.adapter-overview-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.adapter-overview-head .eyebrow{margin-bottom:5px;font-size:9px;color:#526b83}
+.adapter-overview h2{font-size:17px;letter-spacing:-.25px;line-height:1.25;margin:0;font-weight:600}
+.adapter-overview h2 span{font-weight:450;color:var(--muted)}
+.adapter-overview-head>a{font-size:11px;font-weight:550;color:#315f83;white-space:nowrap}
+.adapter-overview-head>a span{margin-left:6px}
+.adapter-overview-flow{display:flex;align-items:center;gap:7px;margin-top:12px}
+.adapter-overview-flow span{flex:1;text-align:center;border-top:2px solid #a8bacc;background:#fff;padding:8px 5px;font-size:10px;font-weight:600;white-space:nowrap}
+.adapter-overview-flow span:nth-of-type(2){border-color:#6e79ad}
+.adapter-overview-flow span:nth-of-type(4){border-color:#3b8b81}
+.adapter-overview-flow span:nth-of-type(5){border-color:#56778b}
+.adapter-overview-flow b{font-size:13px;color:#8194a8;font-weight:400}
+.adapter-overview>p{font-size:10px;line-height:1.55;color:var(--muted);margin:9px 0 0}
+.adapter-overview>p strong{color:var(--ink);font-weight:650}
+@media(max-width:850px){.adapter-overview{margin-top:23px}.adapter-overview-flow{flex-wrap:wrap}.adapter-overview-flow span{flex:1 0 29%}.adapter-overview-flow b{display:none}.adapter-overview>p{font-size:11px}}
+@media(max-width:540px){.adapter-overview-head{align-items:flex-start;flex-direction:column;gap:9px}.adapter-overview-flow span{flex:1 0 46%;white-space:normal}}

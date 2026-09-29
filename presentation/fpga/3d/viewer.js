@@ -4,6 +4,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 const $=id=>document.getElementById(id), canvas=$('scene'), stage=$('stage');
 const params=new URLSearchParams(location.search);
 if(params.get('locked')==='1')document.querySelector('.revision').hidden=true;
+if(params.get('embed')==='1')document.body.classList.add('embed');
 const boardIds=new Set(['fpga50t','micro-hdmi','usb-c']);
 let board=boardIds.has(params.get('board'))?params.get('board'):'fpga50t', data, request=0, assembly, simpleGroup, labelEntries=[], selected=null;
 const state={ready:false,board,view:'iso',labels:true,simplified:true};

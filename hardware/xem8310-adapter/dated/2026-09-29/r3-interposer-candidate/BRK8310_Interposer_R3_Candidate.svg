@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1540" viewBox="0 0 1600 1540" role="img" aria-labelledby="title desc">
+  <title id="title">R3 proposed XEM8310 to BRK8310 micro-HDMI interposer</title>
+  <desc id="desc">Conceptual physical stack and point-to-point signal diagram. The XEM8310 is above an interposer, which is above the BRK8310. Eight GTY bank-226 data conductors route only from XEM to the micro-HDMI cable, while the matching BRK J1 pads are isolated. Other contacts pass through and BRK J6 remains available. Power, JTAG and reference-clock alternatives are conditional.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fbfcfa"/><stop offset="1" stop-color="#eff4f2"/></linearGradient>
+    <linearGradient id="xem" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#194c48"/><stop offset="1" stop-color="#28635b"/></linearGradient>
+    <linearGradient id="brk" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#315b42"/><stop offset="1" stop-color="#487458"/></linearGradient>
+    <linearGradient id="adapter" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#e8f4f0"/><stop offset="1" stop-color="#cfe7df"/></linearGradient>
+    <pattern id="dotgrid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d9e2de"/></pattern>
+    <marker id="arrow-teal" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L8 4.5 L0 9" fill="none" stroke="#07847d" stroke-width="1.8"/></marker>
+    <marker id="arrow-orange" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L8 4.5 L0 9" fill="none" stroke="#cc792f" stroke-width="1.8"/></marker>
+    <marker id="arrow-gray" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L8 4.5 L0 9" fill="none" stroke="#667f78" stroke-width="1.8"/></marker>
+    <style>
+      text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+      .eyebrow{font-size:17px;font-weight:800;letter-spacing:3px;fill:#18766c}
+      .title{font-size:43px;font-weight:790;letter-spacing:-1.7px}
+      .subtitle{font-size:18px;fill:#60716d}
+      .sect{font-size:24px;font-weight:760}
+      .board-title{font-size:25px;font-weight:760;fill:white}
+      .board-detail{font-size:15px;fill:#d7ede5}
+      .board-small{font-size:13px;font-weight:680;fill:#e6f6ee}
+      .small{font-size:15px;fill:#526662}
+      .tiny{font-size:13px;fill:#617470}
+      .label{font-size:16px;font-weight:720}
+      .tag{font-size:13px;font-weight:800;letter-spacing:.8px}
+      .table-head{font-size:15px;font-weight:760;fill:#42605a}
+      .table-cell{font-size:18px;font-weight:700}
+      .table-small{font-size:15px;fill:#546b65}
+      .line{stroke:#ccd9d3;stroke-width:1.5}
+      .white-text{fill:#fff}
+    </style>
+  </defs>
+  <rect width="1600" height="1540" fill="url(#paper)"/>
+  <rect x="0" y="0" width="1600" height="10" fill="#11897e"/>
+  <text x="62" y="58" class="eyebrow">29 SEPTEMBER 2026  /  R3 CANDIDATE</text>
+  <text x="62" y="109" class="title">The adapter sits between XEM and BRK</text>
+  <text x="64" y="140" class="subtitle">Separate boards · selected GTY226 lanes go only to the µHDMI cable · BRK J6 remains available</text>
+  <rect x="1320" y="37" width="218" height="39" rx="19" fill="#fff0e4" stroke="#e9bf97"/>
+  <text x="1429" y="62" text-anchor="middle" class="tag" fill="#a76027">CONCEPT ONLY · NO PCB</text>
+
+  <!-- System field -->
+  <rect x="53" y="166" width="1494" height="816" rx="20" fill="#fff" stroke="#dce7e2" stroke-width="2"/>
+  <rect x="54" y="167" width="1492" height="814" rx="20" fill="url(#dotgrid)" opacity=".39"/>
+  <text x="82" y="213" class="sect">Physical stack and signal route</text>
+  <text x="82" y="239" class="tiny">Geometry is explanatory. Connector placement, mounting and clearances are not validated CAD.</text>
+
+  <!-- Custom board -->
+  <rect x="80" y="403" width="332" height="283" rx="16" fill="url(#brk)" stroke="#234d3c" stroke-width="3"/>
+  <circle cx="100" cy="425" r="6" fill="#b8d4bf"/><circle cx="392" cy="425" r="6" fill="#b8d4bf"/>
+  <circle cx="100" cy="664" r="6" fill="#b8d4bf"/><circle cx="392" cy="664" r="6" fill="#b8d4bf"/>
+  <text x="103" y="448" class="board-title">Custom FPGA board</text>
+  <text x="103" y="473" class="board-detail">XC7A50T GTP → recording stream</text>
+  <rect x="112" y="506" width="95" height="91" rx="7" fill="#213432" stroke="#7aa999"/>
+  <text x="159" y="550" text-anchor="middle" class="board-small">Artix-7</text>
+  <text x="159" y="571" text-anchor="middle" class="board-small">GTP216</text>
+  <rect x="243" y="515" width="129" height="30" rx="5" fill="#285b49" stroke="#8eb9a1"/>
+  <text x="307" y="535" text-anchor="middle" class="board-small">CLK / DATA / LATCH</text>
+  <rect x="243" y="558" width="129" height="30" rx="5" fill="#285b49" stroke="#8eb9a1"/>
+  <text x="307" y="579" text-anchor="middle" class="board-small">local power rails</text>
+  <path d="M 406 524 h 18 v 44 h -18" fill="#c1cac7" stroke="#818e89" stroke-width="2"/>
+  <text x="104" y="628" class="board-detail">3 TX pairs → · ← 1 RX command pair</text>
+  <text x="104" y="653" class="board-detail">1.8 V JTAG reference + 12 V input</text>
+
+  <!-- Cable -->
+  <rect x="443" y="489" width="155" height="80" rx="12" fill="#eef3ef" stroke="#b3c8bf" stroke-width="2"/>
+  <text x="520" y="520" text-anchor="middle" class="label">µHDMI cable</text>
+  <text x="520" y="543" text-anchor="middle" class="tiny">custom 19-pin use</text>
+  <path d="M425 512 h18 M425 528 h18 M425 544 h18 M425 560 h18 M598 512 h25 M598 528 h25 M598 544 h25 M598 560 h25" stroke="#278e86" stroke-width="5" stroke-linecap="round"/>
+  <text x="521" y="590" text-anchor="middle" class="small">3 recording → / control ←</text>
+  <text x="521" y="614" text-anchor="middle" class="tiny">Not an HDMI-video interface</text>
+
+  <!-- XEM board -->
+  <rect x="658" y="271" width="581" height="164" rx="14" fill="url(#xem)" stroke="#15423e" stroke-width="3"/>
+  <circle cx="680" cy="293" r="6" fill="#b8d4bf"/><circle cx="1217" cy="293" r="6" fill="#b8d4bf"/>
+  <text x="687" y="309" class="board-title">XEM8310</text>
+  <text x="687" y="331" class="board-detail">FPGA receiver module · Artix UltraScale+ GTY · FrontPanel USB</text>
+  <rect x="788" y="345" width="103" height="55" rx="7" fill="#203532" stroke="#81a79b"/>
+  <text x="839" y="376" text-anchor="middle" class="board-small">XCAU25P</text>
+  <rect x="908" y="352" width="57" height="44" rx="5" fill="#294740" stroke="#83a69a"/>
+  <text x="936" y="379" text-anchor="middle" class="board-small">DDR</text>
+  <rect x="979" y="352" width="57" height="44" rx="5" fill="#294740" stroke="#83a69a"/>
+  <text x="1007" y="379" text-anchor="middle" class="board-small">DDR</text>
+  <rect x="1224" y="336" width="27" height="42" rx="5" fill="#cbd3d1" stroke="#829390"/>
+  <text x="1082" y="386" class="board-small">125 MHz reference onboard</text>
+  <rect x="713" y="422" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <rect x="881" y="422" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <rect x="1049" y="422" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <text x="765" y="440" text-anchor="middle" class="board-small">MC1</text>
+  <text x="933" y="440" text-anchor="middle" class="board-small">MC2</text>
+  <text x="1101" y="440" text-anchor="middle" class="board-small">MC3</text>
+
+  <!-- PC USB -->
+  <path d="M1250 356 H1361 V331" fill="none" stroke="#3b827d" stroke-width="4" marker-end="url(#arrow-gray)"/>
+  <rect x="1350" y="271" width="166" height="65" rx="12" fill="#e8f1ef" stroke="#b8cfca" stroke-width="2"/>
+  <text x="1433" y="300" text-anchor="middle" class="label">PC</text>
+  <text x="1433" y="321" text-anchor="middle" class="tiny">USB 3 + FrontPanel</text>
+
+  <!-- connector interface upper -->
+  <path d="M765 449 V484 M933 449 V484" stroke="#64857b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1101 449 V484" stroke="#07847d" stroke-width="7" stroke-linecap="round"/>
+  <text x="1237" y="462" class="tiny">XEM-facing mates</text>
+  <text x="1237" y="480" class="tiny">BTE / QTH</text>
+
+  <!-- Interposer -->
+  <rect x="658" y="483" width="581" height="206" rx="13" fill="url(#adapter)" stroke="#5ca69a" stroke-width="3"/>
+  <text x="688" y="523" class="sect" fill="#174e48">R3 proposed interposer</text>
+  <text x="688" y="546" class="small">A distinct board between XEM and BRK</text>
+  <rect x="688" y="565" width="282" height="46" rx="7" fill="#fff" stroke="#a5c8be"/>
+  <text x="704" y="584" class="tag" fill="#07847d">SELECTED MC3 · BANK 226</text>
+  <text x="704" y="601" class="tiny">RX0 / RX1 / RX2 + TX0 → cable only</text>
+  <rect x="990" y="565" width="214" height="46" rx="7" fill="#e8f3ed" stroke="#a5c8be"/>
+  <text x="1003" y="584" class="tag" fill="#52776a">PASS-THROUGH</text>
+  <text x="1003" y="601" class="tiny">MC1/MC2 + other MC3</text>
+  <text x="688" y="642" class="small">µHDMI · separate custom-FPGA JTAG probe · proposed 12 V cable branch</text>
+  <path d="M622 512 H658 M622 528 H658 M622 544 H658 M622 560 H658" stroke="#07847d" stroke-width="5" stroke-linecap="round"/>
+  <rect x="713" y="678" width="105" height="27" rx="4" fill="#324a45" stroke="#203638"/>
+  <rect x="881" y="678" width="105" height="27" rx="4" fill="#324a45" stroke="#203638"/>
+  <rect x="1049" y="678" width="105" height="27" rx="4" fill="#324a45" stroke="#203638"/>
+  <text x="765" y="696" text-anchor="middle" class="board-small">MC1</text>
+  <text x="933" y="696" text-anchor="middle" class="board-small">MC2</text>
+  <text x="1101" y="696" text-anchor="middle" class="board-small">MC3</text>
+
+  <!-- Lower connector selectively isolated -->
+  <path d="M765 705 V768 M933 705 V768" stroke="#64857b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1063 705 V768" stroke="#64857b" stroke-width="6" stroke-linecap="round"/>
+  <text x="1094" y="733" text-anchor="middle" class="tag" fill="#a33e3c">×</text>
+  <path d="M1083 711 l23 23 M1106 711 l-23 23" stroke="#b44441" stroke-width="5" stroke-linecap="round"/>
+  <text x="1120" y="729" class="tiny" fill="#a33e3c">8 selected pins only</text>
+  <text x="1237" y="705" class="tiny">BRK-facing mates</text>
+  <text x="1237" y="723" class="tiny">BSE / QSH</text>
+
+  <!-- BRK board -->
+  <rect x="658" y="768" width="581" height="167" rx="13" fill="url(#brk)" stroke="#2b5440" stroke-width="3"/>
+  <rect x="713" y="754" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <rect x="881" y="754" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <rect x="1049" y="754" width="105" height="27" rx="4" fill="#314545" stroke="#203638"/>
+  <text x="765" y="772" text-anchor="middle" class="board-small">MC1</text>
+  <text x="933" y="772" text-anchor="middle" class="board-small">MC2</text>
+  <text x="1101" y="772" text-anchor="middle" class="board-small">MC3</text>
+  <text x="689" y="821" class="board-title">BRK8310</text>
+  <text x="689" y="844" class="board-detail">Separate breakout PCB · XEM mounted above through R3</text>
+  <rect x="694" y="869" width="113" height="35" rx="5" fill="#e8dfbd" stroke="#c7b681"/>
+  <text x="750" y="891" text-anchor="middle" class="tag" fill="#5a5843">J3 XEM JTAG</text>
+  <rect x="834" y="869" width="113" height="35" rx="5" fill="#e8dfbd" stroke="#c7b681"/>
+  <text x="890" y="891" text-anchor="middle" class="tag" fill="#5a5843">J1 BULLS EYE</text>
+  <rect x="969" y="869" width="165" height="35" rx="5" fill="#e8dfbd" stroke="#c7b681"/>
+  <text x="1051" y="891" text-anchor="middle" class="tag" fill="#5a5843">J6 PCIE EDGE FREE</text>
+  <text x="1253" y="810" class="label" fill="#416e59">J6 available</text>
+  <text x="1253" y="832" class="tiny">GTY224/225 pass through</text>
+  <text x="1253" y="854" class="tiny">PCIe use still requires</text>
+  <text x="1253" y="874" class="tiny">separate design proof</text>
+
+  <!-- Notes at left -->
+  <rect x="80" y="735" width="504" height="200" rx="12" fill="#f9fbf8" stroke="#d1dfd8"/>
+  <text x="105" y="772" class="label">Three independent jobs</text>
+  <circle cx="111" cy="805" r="5" fill="#07847d"/><text x="129" y="811" class="small">GTY226: selected data pairs, point to point only.</text>
+  <circle cx="111" cy="842" r="5" fill="#9861a7"/><text x="129" y="848" class="small">Custom JTAG: cable → probe header, separate</text>
+  <text x="129" y="867" class="tiny">from XEM JTAG at BRK J3. USB bridge is future work.</text>
+  <circle cx="111" cy="896" r="5" fill="#d08034"/><text x="129" y="902" class="small">Cable 19: protected external 12 V branch TBD;</text>
+  <text x="129" y="921" class="tiny">BRK power input is separate. No power circuit built.</text>
+
+  <!-- Map -->
+  <text x="62" y="1032" class="eyebrow">SELECTED DATA PATHS</text>
+  <text x="62" y="1065" class="sect">Exact electrical mapping at the interposer</text>
+  <text x="63" y="1092" class="small">A/B labels at right are BRK J1 references for the <tspan font-weight="760" fill="#a33e3c">isolated</tspan> lower contacts.</text>
+  <rect x="61" y="1120" width="1478" height="323" rx="14" fill="#fff" stroke="#d1dfda" stroke-width="2"/>
+  <rect x="62" y="1121" width="1476" height="51" rx="13" fill="#e7f1ec"/>
+  <text x="90" y="1154" class="table-head">µHDMI pair</text>
+  <text x="324" y="1154" class="table-head">Custom FPGA GTP balls</text>
+  <text x="683" y="1154" class="table-head">XEM MC3 upper contacts</text>
+  <text x="1090" y="1154" class="table-head">XEM GTY226</text>
+  <text x="1335" y="1154" class="table-head">BRK J1 isolated</text>
+  <path d="M62 1172 H1538 M62 1239 H1538 M62 1306 H1538 M62 1373 H1538" class="line"/>
+  <path d="M297 1121 V1442 M656 1121 V1442 M1060 1121 V1442 M1307 1121 V1442" class="line"/>
+  <rect x="86" y="1193" width="87" height="29" rx="14" fill="#dff2ed"/><text x="129" y="1214" text-anchor="middle" class="table-cell" fill="#057b75">3 / 5</text>
+  <text x="324" y="1213" class="table-cell">TX0 P/N · H2/H1</text><text x="683" y="1213" class="table-cell">41 / 43</text><text x="1090" y="1213" class="table-small">RX0 · M2/M1</text><text x="1335" y="1213" class="table-small" fill="#a33e3c">B05 / B06</text>
+  <rect x="86" y="1260" width="87" height="29" rx="14" fill="#dff2ed"/><text x="129" y="1281" text-anchor="middle" class="table-cell" fill="#057b75">6 / 8</text>
+  <text x="324" y="1280" class="table-cell">TX1 P/N · F2/F1</text><text x="683" y="1280" class="table-cell">45 / 47</text><text x="1090" y="1280" class="table-small">RX1 · K2/K1</text><text x="1335" y="1280" class="table-small" fill="#a33e3c">B07 / B08</text>
+  <rect x="86" y="1327" width="94" height="29" rx="14" fill="#dff2ed"/><text x="133" y="1348" text-anchor="middle" class="table-cell" fill="#057b75">9 / 11</text>
+  <text x="324" y="1347" class="table-cell">TX2 P/N · D2/D1</text><text x="683" y="1347" class="table-cell">49 / 51</text><text x="1090" y="1347" class="table-small">RX2 · H2/H1</text><text x="1335" y="1347" class="table-small" fill="#a33e3c">B09 / B10</text>
+  <rect x="86" y="1394" width="102" height="29" rx="14" fill="#fff0e2"/><text x="137" y="1415" text-anchor="middle" class="table-cell" fill="#b66c2e">12 / 14</text>
+  <text x="324" y="1414" class="table-cell">RX1 P/N · A4/A3</text><text x="683" y="1414" class="table-cell">42 / 44</text><text x="1090" y="1414" class="table-small">TX0 · N5/N4</text><text x="1335" y="1414" class="table-small" fill="#a33e3c">A05 / A06</text>
+
+  <text x="63" y="1480" class="small">Clock: onboard 125 MHz bank225 → bank226 needs Vivado proof; external MC3.38/40 clock is an alternative and would isolate BRK J1.B01/B02.</text>
+  <text x="63" y="1507" class="tiny">Open: connector stack and footprint pin numbering · SI and cable · ground/current paths · 12 V protection/load · JTAG probe · FPGA implementation. Source: Opal Kelly XEM8310 pin list and BRK8310 docs.</text>
+</svg>

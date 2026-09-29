@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-29",
+  "passed": true,
+  "checks": {
+    "all_connector_connections_identical_to_R1": true,
+    "only_power_label_renamed": true,
+    "pin19_selected_12V_without_connected_source": true,
+    "R1_still_has_original_power_label": true
+  },
+  "renamed_nets": [
+    {
+      "nodes": [
+        [
+          "J2",
+          "19"
+        ]
+      ],
+      "before": "CABLE_PWR_TBD",
+      "after": "CABLE_12V_RESERVED"
+    }
+  ],
+  "net_count_R1": 231,
+  "net_count_R2": 231,
+  "source_netlist_sha256": {
+    "02_XEM8310_Adapter_R1/validation/Adapter_R1.net": "86e9d0a7325ab316afc41dd0e206410a42c95c42bade7432a7d13c21b7e9ee9d",
+    "03_XEM8310_Adapter_R2_12V/validation/Adapter_R2_12V.net": "9beb5240fb6a85373f0076a1b0d064762a8a4736795d741280d31c711889fb9c"
+  },
+  "scope": "Voltage-decision and static connectivity revision only; power circuit and hardware operation remain unverified"
+}

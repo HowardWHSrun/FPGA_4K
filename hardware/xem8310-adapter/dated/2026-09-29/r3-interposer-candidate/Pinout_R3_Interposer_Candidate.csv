@@ -1,0 +1,21 @@
+cable_TypeD_contact,function,direction_at_custom_FPGA,custom_FPGA_ball,custom_board_series_part,interposer_cable_port,interposer_internal_destination,XEM_MC3_contact,XEM_FPGA_ball,BRK_MC3_lower_contact,BRK_exposed_reference,BRK_path,status_or_open_check
+1,VTREF_1V8,sense,,,µHDMI J2.1,"custom-FPGA JTAG probe VREF sense, interface TBD",,,,,,Probe input loading and 1.8 V reference current not qualified
+2,JTAG_TMS,input,R8,,µHDMI J2.2,"custom-FPGA JTAG probe TMS, separate from BRK J3",,,,,,Probe header/level handling TBD
+3,RECORD_TX0_P,output,H2,C137,µHDMI J2.3,exclusive XEM MC3 bank226 high-speed trace,41,M2,41,J1-B05,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+4,GND,return,,,µHDMI J2.4,adapter DGND; interposer ground planes/ground contacts,,,,,ground passthrough intended,"Exact ground-pin and shield current path, cable qualification TBD"
+5,RECORD_TX0_N,output,H1,C138,µHDMI J2.5,exclusive XEM MC3 bank226 high-speed trace,43,M1,43,J1-B06,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+6,RECORD_TX1_P,output,F2,C139,µHDMI J2.6,exclusive XEM MC3 bank226 high-speed trace,45,K2,45,J1-B07,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+7,GND,return,,,µHDMI J2.7,adapter DGND; interposer ground planes/ground contacts,,,,,ground passthrough intended,"Exact ground-pin and shield current path, cable qualification TBD"
+8,RECORD_TX1_N,output,F1,C140,µHDMI J2.8,exclusive XEM MC3 bank226 high-speed trace,47,K1,47,J1-B08,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+9,RECORD_TX2_P,output,D2,C141,µHDMI J2.9,exclusive XEM MC3 bank226 high-speed trace,49,H2,49,J1-B09,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+10,GND,return,,,µHDMI J2.10,adapter DGND; interposer ground planes/ground contacts,,,,,ground passthrough intended,"Exact ground-pin and shield current path, cable qualification TBD"
+11,RECORD_TX2_N,output,D1,C142,µHDMI J2.11,exclusive XEM MC3 bank226 high-speed trace,51,H1,51,J1-B10,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+12,CONTROL_RX1_P,input,A4,C143,µHDMI J2.12,exclusive XEM MC3 bank226 high-speed trace,42,N5,42,J1-A05,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+13,GND,return,,,µHDMI J2.13,adapter DGND; interposer ground planes/ground contacts,,,,,ground passthrough intended,"Exact ground-pin and shield current path, cable qualification TBD"
+14,CONTROL_RX1_N,input,A3,C144,µHDMI J2.14,exclusive XEM MC3 bank226 high-speed trace,44,N4,44,J1-A06,ISOLATED from XEM by R3 interposer,Official XEM/BRK mapping; interposer footprint/SI/clock/cable unverified
+15,JTAG_TDI,input,T9,,µHDMI J2.15,"custom-FPGA JTAG probe TDI, separate from BRK J3",,,,,,Probe header/level handling TBD
+16,GND,return,,,µHDMI J2.16,adapter DGND; interposer ground planes/ground contacts,,,,,ground passthrough intended,"Exact ground-pin and shield current path, cable qualification TBD"
+17,JTAG_TCK,input,F8,,µHDMI J2.17,"custom-FPGA JTAG probe TCK, separate from BRK J3",,,,,,Probe header/level handling TBD
+18,JTAG_TDO,output,T8,R118,µHDMI J2.18,"custom-FPGA JTAG probe TDO, separate from BRK J3",,,,,,Probe header/level handling TBD
+19,CABLE_12V_SELECTED,power input,,,µHDMI J2.19,PROPOSED protected 12 V branch from common source; unimplemented,,,,,,"Full custom FPGA + routing + ASIC load; source, current limit, cable/return rating and protection TBD"
+SH,SHELL_GND,shield,,,µHDMI J2.shell,adapter shield/chassis/DGND strategy TBD,,,,,,"Shell bond, ESD and cable shield grounding TBD"

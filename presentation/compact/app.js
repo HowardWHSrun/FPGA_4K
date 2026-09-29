@@ -8,8 +8,8 @@
   const state = {slide:0,azimuth:-1.10,elevation:.57,zoom:1,labels:true,center:[36.5,0,7.5]};
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let animation=0, pickBuffer=null, pickWidth=0, pickHeight=0;
-  const colors = {A:[80,133,178],C:[74,151,137],D:[119,132,184],E:[194,154,95]};
-  const anchors = {A:[-10,-5,14.1],C:[32,-12,6.95],D:[25,1,14.25],E:[75,0,8]};
+  const colors = {A:[80,133,178],C:[74,151,137],D:[119,132,184],E:[194,154,95],F:[86,119,139]};
+  const anchors = {A:[-10,-5,14.1],C:[32,-12,6.95],D:[25,1,14.25],E:[63,0,4.5],F:[91,0,9.8]};
   const markerEls = Object.fromEntries(Object.keys(anchors).map(r=>[r,document.querySelector(`[data-region="${r}"]`)]));
   const dot = (a,b) => a.reduce((sum,x,i)=>sum+x*b[i],0);
   const sub = (a,b) => a.map((x,i)=>x-b[i]);
@@ -29,11 +29,11 @@
     $('panel-kicker').textContent=state.slide===0?'Architecture & responsibility':slide.section;
     $('slide-description').textContent=slide.description;
     $('note-label').textContent=slide.noteLabel;$('slide-note').textContent=slide.note;
-    $('view-label').textContent=state.slide===0?'System architecture':slide.id==='kr260'?'Downstream stage · schematic view':'Compact headboard · '+slide.title;
+    $('view-label').textContent=state.slide===0?'System architecture':slide.id==='adapter'||slide.id==='receiver'?'Receiver stack · schematic view':'Compact headboard · '+slide.title;
     $('owners').replaceChildren();
     slide.owners.forEach(([name,role])=>{const e=document.createElement('div');e.className='owner';const n=document.createElement('strong'),r=document.createElement('span');n.textContent=name;r.textContent=role;e.append(n,r);$('owners').append(e);});
     $('facts').replaceChildren();slide.facts.forEach(([value,label])=>{const e=document.createElement('div');e.className='fact';const n=document.createElement('strong'),r=document.createElement('span');n.textContent=value;r.textContent=label;e.append(n,r);$('facts').append(e);});
-    $('overview-team').hidden=state.slide!==0;document.querySelector('.slide-note').hidden=state.slide===0;
+    $('overview-team').hidden=state.slide!==0;$('adapter-overview').hidden=state.slide!==0;$('open-adapter-design').hidden=slide.id!=='adapter';$('open-receiver-design').hidden=slide.id!=='receiver';document.querySelector('.slide-note').hidden=state.slide===0;
     $('current-page').textContent=String(state.slide+1).padStart(2,'0');$('total-pages').textContent=String(slides.length).padStart(2,'0');
     $('previous').disabled=state.slide===0;$('next').disabled=state.slide===slides.length-1;
     document.querySelectorAll('[data-slide]').forEach(b=>{const on=b.dataset.slide===slide.id;b.setAttribute('aria-pressed',String(on));b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
@@ -94,16 +94,20 @@
       regions.push(Math.min(...xs)>=7.99999?(z>=11.44999?'D':'C'):(z>=6.4499&&z<=7.4501&&x>=-3.2501?'C':'A'));
     }
     const sourceVertexCount=vertices.length;
-    // Separate schematic downstream stage. These boxes are not manufacturer CAD.
-    function box(x,y,z,w,d,h,tone=1){
+    // Separate explanatory receiver stack. These boxes are not manufacturer CAD.
+    function box(x,y,z,w,d,h,region='E'){
       const base=vertices.length;
       vertices.push([x,y,z],[x+w,y,z],[x+w,y+d,z],[x,y+d,z],[x,y,z+h],[x+w,y,z+h],[x+w,y+d,z+h],[x,y+d,z+h]);
-      [[0,2,1],[0,3,2],[4,5,6],[4,6,7],[0,1,5],[0,5,4],[1,2,6],[1,6,5],[2,3,7],[2,7,6],[3,0,4],[3,4,7]].forEach(f=>{const ff=f.map(i=>base+i);faces.push(ff);const pp=ff.map(i=>vertices[i]);normals.push(normalize(cross(sub(pp[1],pp[0]),sub(pp[2],pp[0]))));regions.push('E');});
+      [[0,2,1],[0,3,2],[4,5,6],[4,6,7],[0,1,5],[0,5,4],[1,2,6],[1,6,5],[2,3,7],[2,7,6],[3,0,4],[3,4,7]].forEach(f=>{const ff=f.map(i=>base+i);faces.push(ff);const pp=ff.map(i=>vertices[i]);normals.push(normalize(cross(sub(pp[1],pp[0]),sub(pp[2],pp[0]))));regions.push(region);});
     }
-    box(61,-11,3,27,22,1.2);
-    box(67,-5,4.2,13,10,3);
-    box(63,7,4.2,6,3,2.5);box(72,7,4.2,6,3,2.5);box(81,4,4.2,5,6,2.5);
-    for(let j=0;j<5;j++)box(67+j*2.6,-5,7.2,.7,10,1);
+    box(61,-14,1.6,39,28,1.1,'F');       // existing BRK8310, schematic scale
+    box(65,-12,3.7,31,24,.8,'E');        // proposed pass-through interposer
+    box(67,-10,6.3,27,20,.8,'F');        // existing XEM8310, schematic scale
+    box(75,-5,7.1,10,9,2.8,'F');         // XEM FPGA package
+    for(let j=0;j<3;j++)box(63,-8+j*8,4.5,5,3,1.9,'E'); // three proposed µHDMI receptacles
+    box(86,8,7.1,5,3,2.1,'F');           // XEM USB to PC
+    box(94,-4,2.7,5,8,1.5,'F');          // BRK J6 PCIe edge, illustrative
+    for(let j=0;j<3;j++)box(69+j*7,-7,4.5,3.2,1,1.8,'E'); // mating corridor, not verified placement
     const edges=new Map();
     faces.forEach((f,i)=>{for(let j=0;j<3;j++){const a=f[j],b=f[(j+1)%3],key=a<b?`${a},${b}`:`${b},${a}`;if(!edges.has(key))edges.set(key,{a,b,faces:[]});edges.get(key).faces.push(i);}});
     const sharp=[...edges.values()].filter(e=>e.faces.length!==2||Math.abs(dot(normals[e.faces[0]],normals[e.faces[1]]))<.96||regions[e.faces[0]]!==regions[e.faces[1]]);
@@ -176,14 +180,14 @@
     }
     rasterize(visible.filter(t=>active(mesh.regions[t.i])),points,light,active);
     if(state.slide===0){
-      const a=project([40,-4,11.8]),b=project([61,-4,5]),mid=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+      const a=project([40,-4,11.8]),b=project([65,-4,5]),mid=[(a[0]+b[0])/2,(a[1]+b[1])/2];
       ctx.strokeStyle='#7c90a799';ctx.lineWidth=1.25;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.bezierCurveTo(mid[0],a[1]-22,mid[0],b[1]-22,b[0],b[1]);ctx.stroke();ctx.setLineDash([]);
-      ctx.font='10px '+getComputedStyle(document.body).fontFamily;ctx.fillStyle='#74879a';ctx.textAlign='center';ctx.fillText('data / control',mid[0],mid[1]-23);ctx.textAlign='left';
+      ctx.font='10px '+getComputedStyle(document.body).fontFamily;ctx.fillStyle='#74879a';ctx.textAlign='center';ctx.fillText('custom µHDMI · 3 recording + 1 command pairs',mid[0],mid[1]-23);ctx.textAlign='left';
     }
     const labelPositions=[];
     Object.entries(anchors).forEach(([region,anchor])=>{
       const at=project(anchor),el=markerEls[region],show=state.labels&&(state.slide===0||active(region));el.hidden=!show;if(!show)return;
-      const offsets={A:[-15,-72],C:[-4,58],D:[-2,-70],E:[15,72]};
+      const offsets={A:[-15,-72],C:[-4,58],D:[-2,-70],E:[-24,72],F:[25,-72]};
       const [dx,dy]=offsets[region],box=el.getBoundingClientRect(),half=box.width/2+10;
       let x=Math.max(half,Math.min(width-half,at[0]+dx)),y=Math.max(30,Math.min(height-32,at[1]+dy));
       for(let j=0;j<4;j++){const clash=labelPositions.some(p=>Math.abs(p.x-x)<(p.w+box.width)/2+8&&Math.abs(p.y-y)<53);if(!clash)break;y=Math.max(30,Math.min(height-32,y+(dy<0?-56:56)));x=Math.max(half,Math.min(width-half,x+(j>1?35:0)));}
@@ -191,7 +195,7 @@
       ctx.strokeStyle='rgba(85,109,135,.4)';ctx.lineWidth=.9;ctx.beginPath();ctx.moveTo(at[0],at[1]);ctx.lineTo(x,y);ctx.stroke();
       ctx.fillStyle=colors[region]?'rgb('+colors[region].join(',')+')':'#617086';ctx.beginPath();ctx.arc(at[0],at[1],2.3,0,Math.PI*2);ctx.fill();
     });
-    canvas.dataset.rendered='true';canvas.dataset.triangles=String(mesh.sourceTriangles);canvas.dataset.model='compact_B_v1';canvas.dataset.controller='KR260_schematic';
+    canvas.dataset.rendered='true';canvas.dataset.triangles=String(mesh.sourceTriangles);canvas.dataset.model='compact_B_v1';canvas.dataset.controller='XEM8310_interposer_BRK8310_schematic';
   }
   async function loadModel(){
     try{
@@ -235,11 +239,11 @@
     if(pointers.size===2){const p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);if(lastDistance>0)state.zoom=Math.max(.65,Math.min(5,state.zoom*d/lastDistance));lastDistance=d;}
     else if(moved){state.azimuth+=(e.clientX-old[0])*.007;state.elevation=Math.max(-1.2,Math.min(1.56,state.elevation+(e.clientY-old[1])*.007));$('camera-name').textContent='CUSTOM VIEW';document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed','false'));}queue();
   });
-  canvas.addEventListener('pointerup',e=>{if(pointers.size===1&&!moved&&pickBuffer){const r=canvas.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/width*pickWidth),y=Math.floor((e.clientY-r.top)/height*pickHeight);if(x>=0&&x<pickWidth&&y>=0&&y<pickHeight){const region=String.fromCharCode(pickBuffer[y*pickWidth+x]);const id={A:'carriers',C:'routing',D:'fpga',E:'kr260'}[region];if(id)setSlide(id);}}pointers.delete(e.pointerId);lastDistance=0;});
+  canvas.addEventListener('pointerup',e=>{if(pointers.size===1&&!moved&&pickBuffer){const r=canvas.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/width*pickWidth),y=Math.floor((e.clientY-r.top)/height*pickHeight);if(x>=0&&x<pickWidth&&y>=0&&y<pickHeight){const region=String.fromCharCode(pickBuffer[y*pickWidth+x]);const id={A:'carriers',C:'routing',D:'fpga',E:'adapter',F:'receiver'}[region];if(id)setSlide(id);}}pointers.delete(e.pointerId);lastDistance=0;});
   ['pointercancel','lostpointercapture'].forEach(type=>canvas.addEventListener(type,e=>{pointers.delete(e.pointerId);lastDistance=0;}));
   canvas.addEventListener('wheel',e=>{e.preventDefault();cancelAnimationFrame(animation);state.zoom=Math.max(.65,Math.min(5,state.zoom*Math.exp(-e.deltaY*.001)));queue();},{passive:false});
   const readHash=()=>{const i=slides.findIndex(s=>'#'+s.id===location.hash);setSlide(i<0?0:i,false);};
   window.addEventListener('hashchange',readHash);window.addEventListener('popstate',readHash);
   $('markers').hidden=true;readHash();new ResizeObserver(resize).observe(wrap);resize();loadModel();
-  window.PRESENTATION={getState:()=>({...state,slideId:current()?.id,loaded:!!mesh,sourceVerified,sourceSHA256:source?.sha256,triangles:mesh?.sourceTriangles,sourceVertexCount:mesh?.sourceVertexCount,controller:'KR260 schematic; not to scale',regions:mesh?[...new Set(mesh.regions)]:[],sourceGeometryUnchanged:!!mesh&&mesh.faces.slice(0,source.triangles).every((f,i)=>f.every((j,k)=>mesh.vertices[j].every((v,n)=>v===new DataView(rawBytes).getFloat32(84+50*i+12+12*k+4*n,true)))),bounds:mesh?[mesh.min,mesh.max]:null}),setSlide,setCamera};
+  window.PRESENTATION={getState:()=>({...state,slideId:current()?.id,loaded:!!mesh,sourceVerified,sourceSHA256:source?.sha256,triangles:mesh?.sourceTriangles,sourceVertexCount:mesh?.sourceVertexCount,controller:'XEM8310 / interposer / BRK8310 schematic; not to scale',regions:mesh?[...new Set(mesh.regions)]:[],sourceGeometryUnchanged:!!mesh&&mesh.faces.slice(0,source.triangles).every((f,i)=>f.every((j,k)=>mesh.vertices[j].every((v,n)=>v===new DataView(rawBytes).getFloat32(84+50*i+12+12*k+4*n,true)))),bounds:mesh?[mesh.min,mesh.max]:null}),setSlide,setCamera};
 })();
