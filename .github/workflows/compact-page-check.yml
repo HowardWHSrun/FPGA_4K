@@ -71,8 +71,8 @@ jobs:
           grep -q 'data-model="compact_B_v1"' live-rendered.html
           grep -q 'data-triangles="650"' live-rendered.html
           grep -q 'data-presentation-revision="review-v2.1"' live-rendered.html
-          grep -q 'data-controller="KR260_schematic"' live-rendered.html
-          echo 'LIVE BROWSER VERIFIED: compact_B_v1, KR260 schematic, and review-v2.1 finishing layer rendered.'
+          grep -q 'data-controller="XEM8310_interposer_BRK8310_schematic"' live-rendered.html
+          echo 'LIVE BROWSER VERIFIED: compact_B_v1, XEM8310 interposer and BRK8310 schematic, and review-v2.1 finishing layer rendered.'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
