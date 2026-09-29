@@ -4,9 +4,10 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
+const revision = params.get('revision') === 'r8' ? 'r8' : 'r9';
 if (params.get('embed') === '1') document.body.classList.add('embed');
 const canvas = $('scene'), stage = $('stage');
-const state = {focus:'all', view:'iso', ready:false, officialModels:0, candidateBoard:false};
+const state = {focus:'all', view:'iso', revision, ready:false, officialModels:0, candidateBoard:false};
 let renderer;
 try {renderer = new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}
 catch (error) {$('loading').textContent='WebGL is unavailable. The connector route and exact pin table are on the main adapter page.'; throw error;}
@@ -25,7 +26,9 @@ const mat={xem:new THREE.MeshStandardMaterial({color:0x345e6b,metalness:.08,roug
 const parts={};
 const descriptions={
   xem:['XEM8310 · existing','Artix UltraScale+ module. Its MC3 exposes the three proposed GTY banks; USB is the initial PC link.'],
-  adapter:['R8 interposer · partial PCB','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and one MC3 pair. Most high-speed and power paths remain unconnected.'],
+  adapter:revision==='r9'
+    ? ['R9 interposer · partial PCB','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and six GTY pairs. TX1 and control remain open on every cable.']
+    : ['R8 interposer · earlier PCB study','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and one GTY pair. Most signal and power paths remain open.'],
   brk:['BRK8310 · existing','Breakout board below the proposed adapter. Its J6 PCIe lanes are unavailable while all three cable links use banks 224 and 225.'],
   fpga1:['FPGA PCB A · bank 226','Separate XC7A25T board and cable J201; two recording pairs active, third physically reserved.'],
   fpga2:['FPGA PCB B · bank 225','Separate XC7A25T board and cable J202; two recording pairs active, third physically reserved.'],
@@ -85,6 +88,15 @@ function setView(view){state.view=view;const target=controls.target.clone();cons
 }
 document.querySelectorAll('[data-focus]').forEach(button=>button.addEventListener('click',()=>setFocus(button.dataset.focus)));
 document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>setView(button.dataset.view)));
+document.querySelectorAll('[data-revision]').forEach(button=>{
+  button.setAttribute('aria-pressed',String(button.dataset.revision===revision));
+  button.addEventListener('click',()=>{
+    if(button.dataset.revision===revision)return;
+    const next=new URLSearchParams(location.search);
+    next.set('revision',button.dataset.revision);
+    location.search=next.toString();
+  });
+});
 $('reset').addEventListener('click',()=>{setFocus('all');setView('iso');});
 const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let down;
 canvas.addEventListener('pointerdown',event=>{down=[event.clientX,event.clientY];});
@@ -112,15 +124,16 @@ async function loadAssets(){
   try{
     const response=await fetch('assets/models.json');if(!response.ok)throw new Error('model manifest unavailable');const cfg=await response.json();
     const results=await Promise.all([
-      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',cfg.adapter),
+      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',revision==='r8'?cfg.adapter_r8:cfg.adapter),
       ...['fpga1','fpga2','fpga3'].map(name=>loadModel(name,cfg.fpga))
     ]);
     state.ready=true;
     const native25T=results.slice(3).every(Boolean);
     $('loading').hidden=true;
-    $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?'R8 partial-route PCB loaded: 119 unconnected, DRC open':'interposer placement shell only'} · ${native25T?'native unrouted 25T placement repeated three times':'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
+    const routeStatus=revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
+    $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'} · ${native25T?'native unrouted 25T placement repeated three times':'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
     document.querySelectorAll('.label.xem,.label.brk').forEach(el=>{if(state.officialModels<2)el.textContent=el.textContent.replace('OFFICIAL MODEL','ILLUSTRATIVE SHELL');});
-    if(state.candidateBoard)document.querySelector('.label.adapter').textContent='INTERPOSER · R8 PCB STUDY';
+    if(state.candidateBoard)document.querySelector('.label.adapter').textContent=`INTERPOSER · ${revision.toUpperCase()} PCB STUDY`;
     setFocus(state.focus);
   }catch(error){$('loading').textContent='Model assets could not load; the schematic route remains on the adapter page.';console.warn(error);}
 }

@@ -27,6 +27,15 @@
     "conversion": "OpenCascade STEP tessellation to glTF binary, official CAD geometry in mm and CAD Z-up; board and mating connectors kept at full tessellation, other components simplified for the browser; illustrative colors"
   },
   "interposer": {
+    "source": "2026-09-29_FPGA_Work/16_BRK8310_Three_Port_Interposer_R9_GTY_Routing/project/BRK8310_Three_Port_Interposer_R9_GTY_Routing.kicad_pcb",
+    "source_sha256": "28d8eee28226b8d2d575e136a41de9970fb336ba30b03f3bbaf79022fc3c5a60",
+    "derived_asset": "r9-interposer-six-pair.glb",
+    "derived_sha256": "560787b93a5bc7eef4bd8e8b50a52116f99485a928c5ebf92e3d10c58a581979",
+    "export": "KiCad 10.0.6 PCB GLB export with native copper, pads and silkscreen. R9 is partial: 160 MC1/MC2 contacts and six GTY pairs routed (TX0 plus reserved TX2 per cable); TX1 and control remain open on every cable; 109 unconnected items. Physical DRC is clear only under provisional 0.15 mm study rules; 19 schematic-parity warnings remain. Power and JTAG circuits are not placed. Six custom stack connector 3D bodies are missing.",
+    "frame": "KiCad export is in metres and Y-up. Viewer scales by 1000 and independently centers the geometry. In imported BRK KiCad XY, board outline x124.4..232.3261, y65.1536..135.1536 mm; subtract (64.676,38.254) mm to map to official BRK STEP XY. In viewer, its center sits x+29.86 mm, z-3.85 mm relative to BRK center; vertical exploded gap is illustrative.",
+    "public_package": "hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/R9_Three_Port_Interposer_Public_Study.zip"
+  },
+  "interposer_r8": {
     "source": "2026-09-29_FPGA_Work/12_BRK8310_Three_Port_Interposer_R8_PCB_Study/project/BRK8310_Three_Port_Interposer_R8_PCB_Study.kicad_pcb",
     "source_sha256": "08dbc083b1a5abd51512d8d1b9d628381bc118a5c199b9bdcc2753c339353b7e",
     "derived_asset": "r8-interposer-partial.glb",
