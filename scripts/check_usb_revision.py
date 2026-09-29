@@ -135,7 +135,9 @@ def check():
                                   ('vias', 'vias'), ('zones', 'zones'), ('nets', 'nets'), ('copperLayers', 'copper_layers')]:
         assert board['expected'][viewer_key] == audit[audit_key], viewer_key
     page = ROOT / 'presentation/fpga/usb-c.html'
-    assert 'XC7A50T micro-HDMI PCB and parts' in page.with_name('index.html').read_text()
+    historical_index = page.with_name('index.html').read_text()
+    assert 'Historical XC7A50T PCB review' in historical_index
+    assert 'current-25t.html' in historical_index
     assert '33 × 36 mm · micro-HDMI checkpoint' in page.with_name('micro-hdmi.html').read_text()
     for name in re.findall(r'data-file="([^"]+)"', page.read_text()):
         assert (PACKAGE / name).is_file(), name
