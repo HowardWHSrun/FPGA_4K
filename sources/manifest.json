@@ -10833,19 +10833,30 @@
       "status": "R2 proposed custom 50T micro-HDMI pinout; 5 V source and load unqualified",
       "transformation": "unchanged copy",
       "source_sha256": "706c8c7c1936b860df557e8e6b4f275737ee885d21c28385d75b777244e0ff8b",
-      "note": "J4.19 is proposed as a protected 5 V input from an MCU-side board, but native 50T CAD still labels it LINK_12V; no current budget or source rating is established.",
+      "note": "R2 preserves the earlier two-TX/two-RX split with proposed 5 V input; R3 records the newer three-TX/one-RX working allocation. Native 50T CAD still labels J4.19 LINK_12V.",
       "bytes": 910,
       "sha256": "706c8c7c1936b860df557e8e6b4f275737ee885d21c28385d75b777244e0ff8b",
       "source_id": "micro-hdmi-50t-proposal-r2-5v-2026-09-28"
     },
     {
+      "path": "sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R3_3TX_1RX_5V.csv",
+      "origin": "Howard's 2026-09-28 FPGA PCB planning revision: 2026-09-28_FPGA_Work/05_Micro_HDMI_FPGA_Board_Plan/J4_Proposed_19_Contacts_R3_3TX_1RX_5V.csv",
+      "status": "R3 working proposal for custom 50T micro-HDMI; three high-speed recording TX pairs, one high-speed control RX pair, proposed 5 V input; unqualified",
+      "transformation": "unchanged copy",
+      "source_sha256": "2f6dd474e1d785ac219d778f261089215b32f1b3f3056908c87f51b3882e1028",
+      "note": "Reassigns only data contacts 9/11 to TX2 and 12/14 to RX0 relative to R2. All eight data contacts remain unconnected in native 50T CAD; 5 V source and load remain unqualified.",
+      "bytes": 912,
+      "sha256": "2f6dd474e1d785ac219d778f261089215b32f1b3f3056908c87f51b3882e1028",
+      "source_id": "micro-hdmi-50t-proposal-r3-3tx-1rx-5v-2026-09-28"
+    },
+    {
       "path": "presentation/fpga/micro-hdmi-19.html",
-      "origin": "2026-09-28 R2 custom J4 contact proposal, meeting voltage review and Molex SD-46765-001 sheets 2 and 4",
+      "origin": "2026-09-28 R3 custom J4 contact proposal, meeting interface review and Molex SD-46765-001 sheets 2 and 4",
       "status": "authored visual proposal; not native CAD or a qualified cable contract",
       "transformation": "independently drawn interactive Type-D views, sourced contact comparison and a GTP clock explainer; manufacturer PDF linked, not copied",
-      "note": "R2 proposes 5 V at J4.19; native 50T CAD still labels it LINK_12V. MCU-side source current, cable and full-system load are unqualified. GTP reference and ASIC capture synchronization remain open.",
-      "bytes": 23638,
-      "sha256": "a29e5af65a4894cf22b2718eb92300819ba4bf39d55be3c4c255d5d557865fdb"
+      "note": "R3 proposes three recording TX pairs and one control RX pair, with 5 V at J4.19; native 50T CAD still leaves all eight data contacts unconnected and labels J4.19 LINK_12V. GTP reference, MCU-side current, cable and full-system load remain unqualified.",
+      "bytes": 23991,
+      "sha256": "61c625ad81efd601153b0b8e2091d16c4ec73cb917dd83b4e382ea8e18de1a83"
     },
     {
       "path": "presentation/fpga/micro-hdmi-19.css",

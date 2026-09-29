@@ -13,7 +13,7 @@ The original files are stored in this repository. Use the editable formats for f
 
 ## Team workflow and editable design
 
-**28 September 50T connector proposal, R2:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [5 V candidate contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv) · [provenance and R1 history](../sources/engineering/2026-09-28/README.md). The meeting questioned 12 V, but no supply or final pinout was approved; the unrouted 50T CAD still labels J4.19 `LINK_12V`.
+**28 September 50T connector proposal, R3:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [three-TX/one-RX, 5 V candidate contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R3_3TX_1RX_5V.csv) · [provenance and R1/R2 history](../sources/engineering/2026-09-28/README.md). This is Howard's working allocation, not an approved cable contract. The meeting questioned 12 V, but no supply or final pinout was approved; the unrouted 50T CAD still labels J4.19 `LINK_12V`.
 
 <!-- CURRENT_FPGA_ROUTING -->
 - [Featured unrouted 50T micro-HDMI review](../presentation/fpga/index.html): 131 fitted parts, [38-line purchasing draft](../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv), [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip) and 499 unrouted connections. This display order is not a manufacturing or order release.
