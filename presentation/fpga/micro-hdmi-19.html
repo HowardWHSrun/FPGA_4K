@@ -27,13 +27,13 @@
       <aside class="scope-note" aria-label="Proposal status">
         <span class="scope-index">DESIGN STATUS / 01</span>
         <strong>Proposed for the 50T board</strong>
-        <p>Eight data contacts are still unconnected in the latest 50T schematic. The preserved 100T checkpoint is a separate design.</p>
+        <p>Eight data contacts are still unconnected in the latest 50T schematic. A matching MCU-side board is proposed to supply the protected 5 V input; its available current is unknown. The preserved 100T checkpoint is a separate design.</p>
       </aside>
     </section>
 
     <section class="safety-callout" aria-label="Custom-link compatibility warning">
       <div class="safety-mark" aria-hidden="true">!</div>
-      <div><strong>This is a custom electrical link, not an HDMI video port.</strong><p>Contact 19 is a candidate <b>12 V input</b>; conventional Type-D HDMI uses that contact for <b>+5 V</b>. Never connect ordinary HDMI equipment. Cable, mating orientation, protection and current capacity still need qualification.</p></div>
+      <div><strong>This is a custom electrical link, not an HDMI video port.</strong><p>Contact 19 is proposed as a <b>protected 5 V input</b>, while the native 50T schematic still labels its net <b>LINK_12V</b>. The <a href="../meetings/2026-09-28.html#interfaces">28 September review questioned the inherited 12 V label</a> but approved no final cable voltage. Resolve that mismatch before implementation. Conventional Type-D HDMI also assigns +5 V to contact 19, but an ordinary HDMI port is not a qualified power source for this custom map. Never connect ordinary HDMI equipment.</p></div>
     </section>
 
     <section id="pin-diagram" class="diagram-section" aria-labelledby="diagram-title">
@@ -45,7 +45,7 @@
           <div class="diagram-wrap">
             <div class="connector-body" role="group" aria-label="Front view looking into the board receptacle mating opening. Upper row left to right: pins 19, 17, 15, 13, 11, 9, 7, 5, 3, 1. Lower row left to right: pins 18, 16, 14, 12, 10, 8, 6, 4, 2.">
               <div class="pin-row upper-row" aria-label="Upper row, odd contact numbers">
-                <button class="pin pin-power" type="button" data-pin="19" aria-label="Pin 19, candidate 12 volt input" aria-pressed="false">19</button>
+                <button class="pin pin-power" type="button" data-pin="19" aria-label="Pin 19, proposed protected 5 volt input; native schematic still says LINK 12V" aria-pressed="false">19</button>
                 <button class="pin pin-jtag" type="button" data-pin="17" aria-label="Pin 17, JTAG clock input" aria-pressed="false">17</button>
                 <button class="pin pin-jtag" type="button" data-pin="15" aria-label="Pin 15, JTAG data input" aria-pressed="false">15</button>
                 <button class="pin pin-ground" type="button" data-pin="13" aria-label="Pin 13, ground return" aria-pressed="false">13</button>
@@ -71,9 +71,9 @@
             </div>
             <div class="board-edge"><span></span>board receptacle · mating face<span></span></div>
           </div>
-          <div class="legend" aria-label="Pin role colors"><span class="legend-record">Recording TX</span><span class="legend-control">Control RX</span><span class="legend-jtag">JTAG</span><span class="legend-ground">Ground</span><span class="legend-reference">1.8 V reference</span><span class="legend-power">12 V candidate</span></div>
+          <div class="legend" aria-label="Pin role colors"><span class="legend-record">Recording TX</span><span class="legend-control">Control RX</span><span class="legend-jtag">JTAG</span><span class="legend-ground">Ground</span><span class="legend-reference">1.8 V reference</span><span class="legend-power">5 V proposal</span></div>
           <div class="direction-note"><span class="arrow-pair record-arrow">TX →</span> recording leaves the FPGA board <span class="arrow-pair control-arrow">← RX</span> control enters the FPGA board</div>
-          <div class="pin-detail" id="pin-detail" aria-live="polite" aria-atomic="true"><span class="detail-kicker">SELECTED CONTACT</span><strong>19 · Candidate 12 V input</strong><p>Power from a protected matching receiver is proposed on this single contact. Current and cable limits have not been qualified.</p><span class="detail-status">Candidate · unqualified</span></div>
+          <div class="pin-detail" id="pin-detail" aria-live="polite" aria-atomic="true"><span class="detail-kicker">SELECTED CONTACT</span><strong>19 · Proposed protected 5 V input</strong><p>One positive contact would receive power from a matching MCU-side board. The native 50T schematic still says LINK_12V; source current and cable limits remain unqualified.</p><span class="detail-status">Proposed 5 V · native LINK_12V mismatch</span></div>
         </article>
 
         <article class="datasheet-card" id="molex-drawing" aria-labelledby="datasheet-title">
@@ -134,14 +134,14 @@
         <tr data-pin="16"><th scope="row">16</th><td><span class="role role-ground">Ground</span><strong>GND</strong><small>Common return for JTAG and power.</small></td><td>DDC/CEC ground</td><td>Existing · GND</td></tr>
         <tr data-pin="17"><th scope="row">17</th><td><span class="role role-jtag">JTAG</span><strong>TCK</strong><small>Programming clock into the FPGA.</small></td><td>SCL</td><td>Existing · JTAG_TCK</td></tr>
         <tr data-pin="18"><th scope="row">18</th><td><span class="role role-jtag">JTAG</span><strong>TDO</strong><small>Programming data out of the FPGA.</small></td><td>SDA</td><td>Existing · JTAG_TDO</td></tr>
-        <tr data-pin="19"><th scope="row">19</th><td><span class="role role-power">Power candidate</span><strong>12 V input</strong><small>Protected supply from a matching receiver, subject to qualification.</small></td><td><strong>+5 V power</strong></td><td>Candidate · LINK_12V</td></tr>
+        <tr data-pin="19"><th scope="row">19</th><td><span class="role role-power">Power proposal</span><strong>Protected 5 V input</strong><small>One positive contact from a matching MCU-side board; source current, load and cable are unqualified.</small></td><td><strong>+5 V power</strong></td><td>Proposed 5 V · native LINK_12V mismatch</td></tr>
       </tbody></table></div>
       <p class="shell-note"><strong>Connector shell:</strong> separate from the 19 numbered contacts; proposed SHELL_GND, currently tied to GND. Its cable and chassis grounding still need review.</p>
     </section>
 
-    <section class="next-section" aria-labelledby="next-title"><div><p class="eyebrow">03 / BEFORE THIS IS A CABLE CONTRACT</p><h2 id="next-title">What still needs to be checked</h2></div><div class="next-grid"><div><strong>Electrical link</strong><p>Assign the eight data contacts in the schematic, define the transmitter/receiver endpoints, coupling, protection, timing and receiver firmware.</p></div><div><strong>Power path</strong><p>Measure the board-plus-ASIC load and qualify one positive contact, cable current, return path, voltage drop, faults and startup.</p></div><div><strong>Physical continuity</strong><p>Confirm the exact receptacle and cable part numbers, mating orientation, every contact, shell and PCB footprint against manufacturer drawings.</p></div></div></section>
+    <section class="next-section" aria-labelledby="next-title"><div><p class="eyebrow">03 / BEFORE THIS IS A CABLE CONTRACT</p><h2 id="next-title">What still needs to be checked</h2></div><div class="next-grid"><div><strong>Electrical link</strong><p>Assign the eight data contacts in the schematic, define the transmitter/receiver endpoints, coupling, protection, timing and receiver firmware.</p></div><div><strong>Power path</strong><p>Revise the native LINK_12V assignment before adopting 5 V. Measure the board-plus-ASIC load and qualify the source, cable, return path, voltage drop, faults and startup. <a href="https://www.molex.com/en-us/products/part-detail/467651001" target="_blank" rel="noopener">Molex rates this receptacle at 0.8 A maximum per contact</a>: one 5 V positive contact allows at most 4 W ideal connector-only, before cable or conversion losses. System current is unknown.</p></div><div><strong>Physical continuity</strong><p>Confirm the exact receptacle and cable part numbers, mating orientation, every contact, shell and PCB footprint against manufacturer drawings.</p></div></div></section>
 
-    <footer class="page-footer"><div><strong>19-contact proposal · 28 September 2026</strong><p>Source map: <a href="../../sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv">J4 proposed contacts CSV</a>. Original connector drawing: <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf" target="_blank" rel="noopener">Molex SD-46765-001 ↗</a>.</p></div><a href="../../#fpga">Return to FPGA 4K <span aria-hidden="true">↗</span></a></footer>
+    <footer class="page-footer"><div><strong>19-contact proposal · 28 September 2026</strong><p>Source map: <a href="../../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv">J4 proposed contacts R2 CSV</a>. Original connector drawing: <a href="https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/467/46765/467650301_sd.pdf" target="_blank" rel="noopener">Molex SD-46765-001 ↗</a>.</p></div><a href="../../#fpga">Return to FPGA 4K <span aria-hidden="true">↗</span></a></footer>
   </main>
 </body>
 </html>
