@@ -1,4 +1,12 @@
-# Proposed 50T micro-HDMI contact maps — 28 September 2026
+# 50T micro-HDMI board parts and contact maps — 28 September 2026
+
+## Featured 50T fitted-parts inventory
+
+The [50T grouped purchasing draft](Micro_HDMI_50T_Grouped_Purchasing_Draft.csv) is an unchanged copy of the dated 28 September handoff. Its 38 grouped lines cover all 131 fitted buyable electronic references on the [unrouted 50T board](../../../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/README.md), with every reference counted once. Six DNP items, four copper-only test pads and four board mounting holes are excluded. The [featured website page](../../../presentation/fpga/index.html#parts) shows all 38 lines. Exact codes remain TBD for six lines covering seven references, and J5's CAD DF40C part conflicts with the later DF40T direction. The native J4 power net is `LINK_12V`, while R2 proposes protected 5 V. This is a review draft, not an approved purchase cart.
+
+## Separate 100T placed-parts inventory
+
+The [100T grouped purchasing draft](Micro_HDMI_100T_Grouped_Purchasing_Draft.csv) is an unchanged copy of the dated 28 September handoff. It groups the preserved 100T micro-HDMI board's [125 placed-component rows](../../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/reports/Component_List.csv) into 36 value + manufacturer part number + footprint lines. Quantities are per board, with every physical reference included once. The [preserved 100T page](../../../presentation/fpga/micro-hdmi.html#purchase-list) displays every line. This population list is separate from the 50T proposal below and excludes the cable, carrier, power source, receiver, PCB fabrication, spares and build yield. It does not authorize ordering.
 
 The [R2 19-contact CSV](J4_Proposed_19_Contacts_R2_5V.csv) is an unchanged copy of Howard's dated `2026-09-28_FPGA_Work/05_Micro_HDMI_FPGA_Board_Plan/J4_Proposed_19_Contacts_R2_5V.csv`. It changes the working proposal for J4.19 to a protected **5 V input**. The [R1 CSV](J4_Proposed_19_Contacts.csv) preserves the earlier 12 V candidate for review history. The [visual page](../../../presentation/fpga/micro-hdmi-19.html) displays R2.
 

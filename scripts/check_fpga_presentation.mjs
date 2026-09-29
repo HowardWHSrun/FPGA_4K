@@ -11,7 +11,7 @@ page.on('pageerror', e => report.pageErrors.push(e.message));
 page.on('console', e => {if (e.type() === 'error') report.consoleErrors.push({message: e.text(), location: e.location()});});
 const assert = (condition, label) => {if (!condition) throw new Error(label); report.checks.push(label);};
 try {
-  await page.goto(base + 'presentation/fpga/', {waitUntil: 'networkidle'});
+  await page.goto(base + 'presentation/fpga/usb-c.html', {waitUntil: 'networkidle'});
   await page.waitForFunction(() => document.documentElement.dataset.usbReady === 'true');
   const usbResponse = await page.request.get(base + 'hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json');
   assert(usbResponse.ok(), 'USB-C audit available');
@@ -44,6 +44,32 @@ try {
     const response = await page.request.get(new URL(await a.getAttribute('href'), page.url()).href);
     assert(response.ok(), 'USB-C linked evidence/download is available');
   }
+  await page.goto(base + 'presentation/fpga/', {waitUntil:'networkidle'});
+  assert((await page.locator('#page-title').innerText()) === 'Micro-HDMI FPGA board' && (await page.locator('#board-title').innerText()) === '50T board first', 'Featured FPGA page starts with the 50T review');
+  const fitted = await page.locator('#purchase-parts tbody tr').evaluateAll(items => items.map(item => ({qty:Number(item.dataset.qty), refs:item.dataset.refs.split(';').map(ref => ref.trim())})));
+  assert(fitted.length === 38 && fitted.reduce((sum,item) => sum + item.qty, 0) === 131, '50T purchasing table covers 38 lines and 131 fitted references');
+  assert(new Set(fitted.flatMap(item=>item.refs)).size === 131 && fitted.every(item => item.qty === item.refs.length), '50T purchasing references are unique and match quantities');
+  await page.locator('#parts-search').fill('DF40C');
+  assert(await page.locator('#purchase-parts tbody tr:visible').count() === 1 && (await page.locator('#purchase-parts tbody tr:visible').innerText()).includes('Revision mismatch'), '50T search exposes the J5 connector conflict');
+  await page.locator('#parts-search').fill('');
+  const fiftyFrame = await (await page.locator('#native-board').elementHandle()).contentFrame();
+  await fiftyFrame.waitForFunction(() => window.pcbViewerDiagnostics?.ready === true, null, {timeout:60000});
+  assert(await fiftyFrame.evaluate(() => pcbViewerDiagnostics.board === 'fpga50t' && pcbViewerDiagnostics.sourceHash === '445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff' && pcbViewerDiagnostics.nativeCounts.footprints === 145), 'Featured iframe reads the exact 50T native board');
+  for (const [width,height] of [[1440,1000],[390,844]]) {
+    await page.setViewportSize({width,height});
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), '50T featured page has no overflow at '+width);
+    await page.screenshot({path:`${out}/fpga50t-${width}.png`,fullPage:true});
+  }
+  await page.setViewportSize({width:1440,height:1000});
+  await page.locator('[data-view="3d"]').click();
+  const fiftyThree = await (await page.locator('#three-board').elementHandle()).contentFrame();
+  await fiftyThree.waitForFunction(() => document.body && document.body.innerText.includes('50T'), null, {timeout:60000});
+  assert(await page.locator('#three-board').isVisible(), 'Featured 50T 3D tab opens');
+  await page.locator('[data-view="native"]').click();
+  assert(await page.locator('#native-board').isVisible(), 'Featured 50T native tab returns');
+  for (const url of [base+'sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv',base+'hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip']) {
+    assert((await page.request.get(url)).ok(), 'Featured 50T evidence is downloadable');
+  }
   await page.setViewportSize({width:1440,height:1000});
   await page.goto(base + 'presentation/fpga/micro-hdmi.html', {waitUntil:'networkidle'});
   await page.waitForFunction(() => window.FPGA_REVIEW?.getState().loaded);
@@ -52,9 +78,15 @@ try {
   const data = await page.evaluate(() => FPGA_REVIEW.data);
   const teaching = await page.evaluate(() => FPGA_TEACHING.data);
   assert(teaching.boardSha256 === data.boardSha256 && teaching.cadModified === false, 'Component explanations identify the unchanged current native board');
+  const parts = await page.locator('#purchase-parts tbody tr').evaluateAll(items => items.map(item => ({qty:Number(item.dataset.qty),refs:item.dataset.refs.split(';').map(ref=>ref.trim())})));
+  assert(parts.length === 36 && parts.reduce((n,item)=>n+item.qty,0) === 125, 'Purchasing table covers 36 lines and 125 placed parts');
+  assert(new Set(parts.flatMap(item=>item.refs)).size === 125 && parts.every(item=>item.qty===item.refs.length), 'Purchasing references are unique and match line quantities');
+  await page.locator('#parts-search').fill('TPS62135RGXR');
+  assert(await page.locator('#purchase-parts tbody tr:visible').count() === 1, 'Parts search filters to the four converter instances');
+  await page.locator('#parts-search').fill('');
   const defaultWords = await page.evaluate(() => document.body.innerText.split(/\s+/).filter(Boolean).length);
   report.defaultVisibleWords = defaultWords;
-  assert(defaultWords < 1100, 'Default view contains fewer than 1,100 words (previously 2,287)');
+  assert(defaultWords < 1900, 'Featured page includes the full parts table while remaining below 1,900 visible words');
   for (const id of ['board-evidence','architecture-reference','interface-reference','validation-reference','engineering-questions','all-downloads','presenter-notes']) {
     assert(await page.locator('#' + id).evaluate(e => !e.open), 'Detailed evidence collapsed initially: ' + id);
   }
@@ -99,7 +131,7 @@ try {
   await pinFrame.locator('[data-ref="U1"]').click();
   assert(await page.locator('#interfaces a[href="pins/"]').count() === 1 && await page.locator('#interfaces a[href="pins/All_Pin_Labels.csv"]').count() === 1, 'Full pin map and complete labeled CSV remain directly linked');
   assert(data.fabricationReady === false && data.fullBoardComplete === false, 'Full-board manufacture gate remains closed');
-  assert(await page.locator('.section-nav a').count() === 6, 'Six review sections present');
+  assert(await page.locator('.section-nav a').count() === 7, 'Seven review sections include the parts list');
   assert(await page.locator('#revision-table tbody tr').count() === 5, 'Five historical design revisions are preserved');
   assert(await page.locator('a[href$="fourth_check/Uncertainty_Register.md"]').count() >= 1, 'Historical fourth-pass findings remain downloadable');
   const uncertaintyResponse = await page.request.get(base + 'presentation/fpga/data/Review_Decisions.json');
@@ -147,7 +179,7 @@ try {
   await page.locator('#interface-reference > summary').click();
   assert((await page.locator('#validation .check-strip [data-field="unconnectedItems"]').innerText()) === String(data.unconnectedItems), 'Displayed connectivity matches snapshot');
   assert(!(await page.locator('#load-error').isVisible()), 'No stale-data load warning');
-  for (const anchor of ['architecture', 'interfaces', 'validation', 'release', 'files']) {
+  for (const anchor of ['purchase-list', 'architecture', 'interfaces', 'validation', 'release', 'files']) {
     await page.locator(`.section-nav a[href="#${anchor}"]`).click();
     assert(new URL(page.url()).hash === '#' + anchor, 'Section navigation: ' + anchor);
   }
@@ -203,9 +235,9 @@ try {
     await page.waitForFunction(() => window.PRESENTATION?.getState().loaded);
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
-    await page.waitForURL('**/presentation/fpga/');
-    await page.waitForFunction(() => document.documentElement.dataset.usbReady === 'true');
-    report.checks.push('Root system view opens current USB-C review');
+    await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/') && url.hash === '#board');
+    await page.waitForFunction(() => document.getElementById('page-title')?.textContent === 'Micro-HDMI FPGA board');
+    report.checks.push('Root system view opens featured 50T micro-HDMI review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
   assert(report.consoleErrors.length === 0, 'No browser console errors');

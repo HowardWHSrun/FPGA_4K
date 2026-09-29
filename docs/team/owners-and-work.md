@@ -2,7 +2,7 @@
 
 Updated 2026-09-27 for **XC7A100T-1CSG324I / 116 digital ASIC nets + one analog contact / XEM8310**. Roles are proposed; no personal acceptance or review approval is implied.
 
-The [current USB-C review](../../presentation/fpga/index.html) and [remaining work](../../presentation/fpga/index.html#release) are the active status. The new revision preserves the ASIC assignment and adds negotiated/protected power, USB2 control/JTAG and a reversible four-pair custom link. Its own native audit reports actual copper and findings. The earlier micro-HDMI zero-gap result and all older checkpoints remain historical.
+The [USB-C review](../../presentation/fpga/usb-c.html) and [remaining work](../../presentation/fpga/usb-c.html#release) describe the separate 100T development revision. It preserves the ASIC assignment and adds negotiated/protected power, USB2 control/JTAG and a reversible four-pair custom link. Its own native audit reports actual copper and findings. The website now features the [unrouted 50T micro-HDMI board and its 131-part draft list](../../presentation/fpga/index.html); the routed 100T micro-HDMI checkpoint remains [separate](../../presentation/fpga/micro-hdmi.html). This display choice does not change any board's engineering status.
 
 | Workstream | Remaining result | Proposed owner / reviewer |
 |---|---|---|

@@ -1,8 +1,8 @@
 # Project files and documents
 
-## 27 September · PCB 3D review
+## 28 September · PCB 3D review
 
-[Rotate and inspect both revisions](../presentation/fpga/3d/index.html) · [Geometry sources and limitations](../presentation/fpga/3d/README.md). Also available in the overall FPGA section and the new 3D board tab. The 33 × 36 mm geometry comes from unchanged native CAD; missing component models are explicitly identified as simplified bodies.
+[Rotate and inspect the 50T and both 100T revisions](../presentation/fpga/3d/index.html) · [Geometry sources and limitations](../presentation/fpga/3d/README.md). Also available in the overall FPGA section and the board pages. The 50T 43 × 49 mm and separate 100T 33 × 36 mm geometry come from unchanged native CAD; missing component models are identified as simplified bodies.
 
 <!-- CURRENT_FPGA_LEARNING_REPORT -->
 **Preserved micro-HDMI learning report:** [PDF · 45 pages](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.pdf) · [editable LaTeX](../hardware/fpga-interface-study/dated/2026-09-27/completion-report/FPGA100T_Current_Learning_Review.tex). Explains the earlier 125-component / 752-endpoint checkpoint. It does not cover the USB-C additions.
@@ -16,8 +16,9 @@ The original files are stored in this repository. Use the editable formats for f
 **28 September 50T connector proposal, R2:** [interactive view of all 19 micro-HDMI contacts](../presentation/fpga/micro-hdmi-19.html) · [5 V candidate contact CSV](../sources/engineering/2026-09-28/J4_Proposed_19_Contacts_R2_5V.csv) · [provenance and R1 history](../sources/engineering/2026-09-28/README.md). The meeting questioned 12 V, but no supply or final pinout was approved; the unrouted 50T CAD still labels J4.19 `LINK_12V`.
 
 <!-- CURRENT_FPGA_ROUTING -->
-- [Current USB-C revision](../presentation/fpga/index.html): [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip), [native audit](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) and [every pin](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv). USB-C development around the retained 100T and ASIC assignments; not a manufacturing release.
-- [Preserved micro-HDMI checkpoint](../presentation/fpga/micro-hdmi.html): the earlier 125-component design and its reports.
+- [Featured unrouted 50T micro-HDMI review](../presentation/fpga/index.html): 131 fitted parts, [38-line purchasing draft](../sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv), [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip) and 499 unrouted connections. This display order is not a manufacturing or order release.
+- [Preserved routed 100T micro-HDMI checkpoint](../presentation/fpga/micro-hdmi.html): [separate 125-part purchasing draft](../sources/engineering/2026-09-28/Micro_HDMI_100T_Grouped_Purchasing_Draft.csv) and its own source files.
+- [Separate USB-C development revision](../presentation/fpga/usb-c.html): [complete KiCad project](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip), [native audit](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) and [every pin](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_All_Pin_Connections.csv). Its unfinished routing and receiver remain separate from the micro-HDMI checkpoint.
 <!-- /CURRENT_FPGA_ROUTING -->
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
@@ -89,7 +90,7 @@ The presentation branch uses the compact B v1 assembly supplied on September 22.
 
 [Learning and professor report · 33-page PDF](../hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_And_Professor_Review.pdf) · [Editable LaTeX and source ledgers](../hardware/fpga-interface-study/dated/2026-09-26/learning-report/FPGA100T_Learning_Report_Source.zip) · [Report provenance](../hardware/fpga-interface-study/dated/2026-09-26/learning-report/README.md). Historical visual explanations, professor questions and a 130-component / 762-endpoint reference explain the previous snapshot and its then-required NC corrections. They do not report current routing. The [earlier 26-page report](../hardware/fpga-interface-study/dated/2026-09-26/routing-33x36/report/output/pdf/FPGA100T_33x36_Routing_Component_Pin_Report.pdf) remains historical evidence.
 
-The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. Its pin tables, open-copper counts and proposed receiver sequence are historical. For the active USB-C circuit, current routing counts and required receiver adapter, use the [USB-C review](../presentation/fpga/) and [dated USB-C package](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/README.md). Neither connector version is a manufacturing release.
+The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. Its pin tables, open-copper counts and proposed receiver sequence are historical. For the USB-C development circuit, its own routing counts and required receiver adapter, use the [USB-C review](../presentation/fpga/usb-c.html) and [dated USB-C package](../hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/README.md). Neither connector version is a manufacturing release.
 
 [Gerald's complete slide review](../hardware/fpga-interface-study/slide_review/Gerald_ASIC_Slide_Review.md) documents tutorial framing and conflicting timing/channel labels. The [fourth-review uncertainty register](../hardware/fpga-interface-study/fourth_check/Uncertainty_Register.md) remains dated evidence; current integration observations are stated on the current page.
 

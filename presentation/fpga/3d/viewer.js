@@ -4,7 +4,8 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 const $=id=>document.getElementById(id), canvas=$('scene'), stage=$('stage');
 const params=new URLSearchParams(location.search);
 if(params.get('locked')==='1')document.querySelector('.revision').hidden=true;
-let board=params.get('board')==='micro-hdmi'?'micro-hdmi':'usb-c', data, request=0, assembly, simpleGroup, labelEntries=[], selected=null;
+const boardIds=new Set(['fpga50t','micro-hdmi','usb-c']);
+let board=boardIds.has(params.get('board'))?params.get('board'):'fpga50t', data, request=0, assembly, simpleGroup, labelEntries=[], selected=null;
 const state={ready:false,board,view:'iso',labels:true,simplified:true};
 let renderer, dirty=true;
 try {renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});} catch(e) {$('loading').textContent='3D needs WebGL. Use the Front / Back views or open the native KiCad file.';throw e;}
@@ -20,10 +21,11 @@ const underside=new THREE.DirectionalLight(0xffffff,2.5);underside.position.set(
 const ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),new THREE.ShadowMaterial({opacity:.10}));ground.rotation.x=-Math.PI/2;ground.position.y=-7;ground.receiveShadow=true;scene.add(ground);
 const materials={body:new THREE.MeshStandardMaterial({color:0x252b32,roughness:.68,metalness:.05}),substrate:new THREE.MeshStandardMaterial({color:0x273b32,roughness:.68}),metal:new THREE.MeshStandardMaterial({color:0xaab5c0,roughness:.3,metalness:.4}),gold:new THREE.MeshStandardMaterial({color:0xc6a857,roughness:.37,metalness:.35}),cap:new THREE.MeshStandardMaterial({color:0xa98e69,roughness:.66}),inductor:new THREE.MeshStandardMaterial({color:0x3d4247,roughness:.76})};
 function box(group,w,h,d,x,y,z,mat){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m;}
+function boardCenter(){return data?.board_center_mm||[(data?.dimensions_mm?.[0]||43)/2,(data?.dimensions_mm?.[1]||49)/2];}
 function addSimple(p){
  const [x,z,w,d]=p.body,h=p.height,g=new THREE.Group();g.userData.ref=p.ref;
  // Extents come from native F/B.Fab. Heights and interiors are explicitly illustrative.
- g.position.set(x+w/2-16.5,p.back?-.8:.8,z+d/2-18);if(p.back)g.rotation.z=Math.PI;
+ const [centerX,centerY]=boardCenter();g.position.set(x+w/2-centerX,p.back?-.8:.8,z+d/2-centerY);if(p.back)g.rotation.z=Math.PI;
  if(p.ref==='U1'){
   box(g,w,.18,d,0,.43,0,materials.substrate);box(g,w-.3,.9,d-.3,0,.97,0,materials.body);
   const balls=new THREE.InstancedMesh(new THREE.SphereGeometry(.21,8,6),materials.metal,324);const m=new THREE.Matrix4();let i=0;
@@ -36,13 +38,14 @@ function addSimple(p){
  } else if(p.ref==='J5'||p.ref==='J6'){
   box(g,w,.6,d,0,.3,0,materials.body);box(g,w,h,d*.18,0,h/2,-d*.41,materials.body);box(g,w,h,d*.18,0,h/2,d*.41,materials.body);
   box(g,.8,h,d,-w/2+.4,h/2,0,materials.body);box(g,.8,h,d,w/2-.4,h/2,0,materials.body);
-  for(let n=0;n<30;n++)for(const s of [-1,1])box(g,.18,.15,.8,(n-14.5)*.5,h-.05,s*d*.32,materials.gold);
+  const count=data.id==='fpga50t'?60:30,pitch=data.id==='fpga50t'?.4:.5;
+  for(let n=0;n<count;n++)for(const s of [-1,1])box(g,.18,.15,.8,(n-(count-1)/2)*pitch,h-.05,s*d*.32,materials.gold);
  } else {box(g,w,h,d,0,h/2,0,p.ref.startsWith('L')?materials.inductor:p.ref.startsWith('C')?materials.cap:materials.body);}
  simpleGroup.add(g);
 }
 function dispose(group){group.traverse(o=>{if(o.isMesh){o.geometry.dispose();if(!Object.values(materials).includes(o.material)){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}}});scene.remove(group);}
 function setView(view){
- const aspect=stage.clientWidth/Math.max(1,stage.clientHeight);const k=Math.max(1,1/aspect);
+ const aspect=stage.clientWidth/Math.max(1,stage.clientHeight);const size=Math.max(1,(data?.dimensions_mm?.[0]||43)/33,(data?.dimensions_mm?.[1]||49)/36),k=Math.max(1,1/aspect)*size;
  const poses={iso:[46,60,62],top:[0,95,.01],bottom:[0,-95,.01],side:[95,3,0]};if(!poses[view])return;
  camera.up.set(0,1,0);camera.position.fromArray(poses[view]).multiplyScalar(k);controls.target.set(0,0,0);controls.update();state.view=view;
  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
@@ -52,15 +55,17 @@ async function load(id){
  try{
   const r=await fetch(`assets/${id}.json`);if(!r.ok)throw new Error('Metadata unavailable');const next=await r.json();
   const gltf=await new GLTFLoader().loadAsync(`assets/${id}.glb`);if(token!==request){dispose(gltf.scene);return;}
-  if(assembly)dispose(assembly);data=next;assembly=new THREE.Group();const native=gltf.scene;native.scale.setScalar(1000);native.position.set(-16.5,-.8,-18);
+  if(assembly)dispose(assembly);data=next;assembly=new THREE.Group();const native=gltf.scene;const [centerX,centerY]=boardCenter();native.scale.setScalar(1000);native.position.set(-centerX,-.8,-centerY);
   native.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;for(const m of (Array.isArray(o.material)?o.material:[o.material])){m.metalness=.12;m.roughness=.55;if(m.opacity>.8&&m.opacity<.85){m.color.set(0x185c48);m.opacity=1;m.transparent=false;m.depthWrite=true;}else if(m.opacity>.95&&m.opacity<1){m.opacity=1;m.transparent=false;m.depthWrite=true;}}}});assembly.add(native);
   simpleGroup=new THREE.Group();assembly.add(simpleGroup);data.parts.filter(p=>p.model==='simplified body').forEach(addSimple);simpleGroup.visible=state.simplified;scene.add(assembly);
-  labelEntries=[];$('labels').replaceChildren();for(const [ref,text] of [['U1','100T · FPGA'],['J4',id==='usb-c'?'USB-C':'Micro-HDMI'],['J5','ASIC mezzanine'],['J6','ASIC mezzanine']]){
-   const p=data.parts.find(p=>p.ref===ref);if(!p)continue;const el=document.createElement('span');el.className='label';el.textContent=text;$('labels').append(el);labelEntries.push({p,el,point:new THREE.Vector3(p.x-16.5,p.back?-4.3:4.3,p.y-18)});
+  labelEntries=[];$('labels').replaceChildren();for(const [ref,text] of [['U1',id==='fpga50t'?'50T · FPGA':'100T · FPGA'],['J4',id==='usb-c'?'USB-C':'Micro-HDMI'],['J5',id==='fpga50t'?'ASIC connector':'ASIC mezzanine'],['J6',id==='fpga50t'?'INIT_B hold':'ASIC mezzanine']]){
+   const p=data.parts.find(p=>p.ref===ref);if(!p)continue;const el=document.createElement('span');el.className='label';el.textContent=text;$('labels').append(el);labelEntries.push({p,el,point:new THREE.Vector3(p.x-centerX,p.back?-4.3:4.3,p.y-centerY)});
   }
   $('title').textContent=data.title;$('coverage').textContent=`${data.library_model_count} library models · ${data.simplified_body_count} simplified bodies`;
-  $('model-note').textContent=`Simplified: ${data.simplified_refs.join(', ')}. The bare SWD fixture, when present, is pads only.`;
-  $('native-link').href=`../viewer/?board=${id==='usb-c'?'usb-c':'compact-routed'}`;
+  $('model-note').textContent=`Simplified: ${data.simplified_refs.join(', ')}. ${data.bare_fixture_count} test pads or mounting holes are shown by KiCad board geometry only. Body heights and connector interiors are illustrative.`;
+  $('board-dimension').textContent=`${data.dimensions_mm[0]} × ${data.dimensions_mm[1]} mm`;
+  $('board-package').textContent=`${id==='fpga50t'?'50T':'100T'} · 15 × 15 mm package`;
+  $('native-link').href=`../viewer/?board=${id==='fpga50t'?'fpga50t':id==='usb-c'?'usb-c':'compact-routed'}`;
   $('loading').hidden=true;state.ready=true;dirty=true;setView('iso');
   const url=new URL(location.href);url.searchParams.set('board',id);history.replaceState(null,'',url);window.parent.postMessage({type:'fpga-3d-ready',board:id},location.origin);
  }catch(e){if(token===request){$('loading').textContent='The model could not load. Reload or inspect the native KiCad board.';console.error(e);}}

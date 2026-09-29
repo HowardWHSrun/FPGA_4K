@@ -1,0 +1,7 @@
+(version 1)
+# UNAPPROVED inherited geometric constraint; 8-layer fabrication, impedance and via rules TBD.
+# Molex467651001 mounting datum, JLC routed edge copper minimum0.2mm.
+# Explicitly scoped to J4 shield pads; global0.50mm remains elsewhere.
+(rule "J4_SH_manufacturer_edge_geometry"
+  (condition "(A.Type == 'Pad' && A.Reference == 'J4' && A.Pad_Number == 'SH') || (B.Type == 'Pad' && B.Reference == 'J4' && B.Pad_Number == 'SH')")
+  (constraint edge_clearance (min 0.40mm)))

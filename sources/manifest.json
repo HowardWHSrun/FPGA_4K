@@ -10809,12 +10809,12 @@
     },
     {
       "path": "presentation/fpga/3d/assets/provenance.json",
-      "origin": "KiCad 10.0.6 export and documented 2026-09-27 board metadata; see presentation/fpga/3d/assets/provenance.json",
-      "status": "3D presentation derivative; not mechanical qualification",
-      "transformation": "Exterior native PCB geometry or source/coverage metadata; simplified component bodies are separately generated in viewer.js",
-      "note": "Both native CAD snapshots remain byte-identical. Library licensing recorded with export.",
-      "bytes": 7550,
-      "sha256": "21e197176ef4c0dbfeb9b25d147a87de8c0f33227b605c331a729d6cf7bdc797"
+      "origin": "28 September XC7A50T KiCad PCB; see presentation/fpga/3d/assets/provenance.json",
+      "status": "50T board visual derivative; not mechanical qualification",
+      "transformation": "KiCad export, viewer metadata or provenance from unchanged native board",
+      "note": "Three missing STEP bodies are identified as simplified/pad-only where applicable.",
+      "bytes": 9317,
+      "sha256": "c40fe659f1b2821d49245c2f6d6185f5a231e8156e38b52e879b1ce5ed7bb752"
     },
     {
       "path": "sources/engineering/2026-09-28/J4_Proposed_19_Contacts.csv",
@@ -10844,8 +10844,8 @@
       "status": "authored visual proposal; not native CAD or a qualified cable contract",
       "transformation": "independently drawn interactive Type-D views, sourced contact comparison and a GTP clock explainer; manufacturer PDF linked, not copied",
       "note": "R2 proposes 5 V at J4.19; native 50T CAD still labels it LINK_12V. MCU-side source current, cable and full-system load are unqualified. GTP reference and ASIC capture synchronization remain open.",
-      "bytes": 23575,
-      "sha256": "22d4a951d9f761486b11ac950370c66b6e95944f4b7942f00eb76d13b21d3ca4"
+      "bytes": 23638,
+      "sha256": "a29e5af65a4894cf22b2718eb92300819ba4bf39d55be3c4c255d5d557865fdb"
     },
     {
       "path": "presentation/fpga/micro-hdmi-19.css",
@@ -10882,9 +10882,719 @@
       "note": "Both native CAD snapshots remain byte-identical. Library licensing recorded with export.",
       "bytes": 54643,
       "sha256": "53530f3166000ea7973793cf66f0bb8dbed90d1637321afb2d42147bb3d65d27"
+    },
+    {
+      "path": "sources/engineering/2026-09-28/Micro_HDMI_100T_Grouped_Purchasing_Draft.csv",
+      "origin": "2026-09-28 dated handoff derived from preserved 100T board Component_List.csv",
+      "status": "draft 100T per-board population, 36 lines / 125 fitted references; no purchase approval",
+      "transformation": "unchanged copy of grouped dated CSV",
+      "note": "The preserved 100T PCB and newer unrouted 50T proposal are separate designs.",
+      "bytes": 10641,
+      "sha256": "eb9f0966061fb74981fc4aca8c66da59403950b4bcc8067cb68bca63fa0ed746"
+    },
+    {
+      "path": "presentation/fpga/micro-hdmi-parts.css",
+      "origin": "2026-09-28 featured 100T micro-HDMI parts list",
+      "status": "authored website styling",
+      "transformation": "responsive parts table and sourcing sections",
+      "note": "The preserved 100T PCB and newer unrouted 50T proposal are separate designs.",
+      "bytes": 2547,
+      "sha256": "9820c17519f4c4338e6952c6d0d4656f2e327081ca9531148a7c6ffde80367c6"
+    },
+    {
+      "path": "presentation/fpga/micro-hdmi-parts.js",
+      "origin": "2026-09-28 featured 100T micro-HDMI parts list",
+      "status": "authored website interaction",
+      "transformation": "client-side table filter; static HTML remains complete without JavaScript",
+      "note": "The preserved 100T PCB and newer unrouted 50T proposal are separate designs.",
+      "bytes": 630,
+      "sha256": "2885ca15ba2e74c76a615038c65d779c5627cf150b8dd841a9e1eb8764707648"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/FPGA50T_GTP_Power_Review_2026-09-28.zip",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/FPGA50T_GTP_Power_Review_2026-09-28.zip",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 868742,
+      "sha256": "5fa698139442a9fc605aa8f5f785348d5f2d5ab82f9238e165076c79059003dc",
+      "source_sha256": "5fa698139442a9fc605aa8f5f785348d5f2d5ab82f9238e165076c79059003dc"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/README.md",
+      "origin": "28 September 50T website handoff",
+      "status": "authored source explanation and identity",
+      "transformation": "new website handoff index/manifest",
+      "note": "Native design is unrouted and not released.",
+      "bytes": 1285,
+      "sha256": "1f281a3b219323fee671d376110d6551a2113f5fb74c7d7d72173ae230040302"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/manifest.json",
+      "origin": "28 September 50T website handoff",
+      "status": "authored source explanation and identity",
+      "transformation": "new website handoff index/manifest",
+      "note": "Native design is unrouted and not released.",
+      "bytes": 882,
+      "sha256": "8d47dfcc236b90d3e8bebeb7965ec78e2723217c04e5cddfdace0037fac92f71"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/output/FPGA50T_GTP_Power_Review.pdf",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/output/FPGA50T_GTP_Power_Review.pdf",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1198631,
+      "sha256": "1516a38b612a96989bca990a7860a13845fca5672892057de35470b72fc15c26",
+      "source_sha256": "1516a38b612a96989bca990a7860a13845fca5672892057de35470b72fc15c26"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_dru",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/FPGA50T_8L_Unrouted.kicad_dru",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 482,
+      "sha256": "78c28e638c186403e7274517f4dd4e73bb9b0d2c856bc71277af7c3120620248",
+      "source_sha256": "78c28e638c186403e7274517f4dd4e73bb9b0d2c856bc71277af7c3120620248"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/FPGA50T_8L_Unrouted.kicad_pcb",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 750208,
+      "sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
+      "source_sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_pro",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/FPGA50T_8L_Unrouted.kicad_pro",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 10248,
+      "sha256": "ace96bdd8acd68d7b13a30e9d1ed21b26b0b070495292b33175e760fcf6e4f3c",
+      "source_sha256": "ace96bdd8acd68d7b13a30e9d1ed21b26b0b070495292b33175e760fcf6e4f3c"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/FPGA50T_8L_Unrouted.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/FPGA50T_8L_Unrouted.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 20744,
+      "sha256": "59b8ec37571bb12f6b7738d6dfbe1cfbf75322c35c776b37f84deae27d455f4e",
+      "source_sha256": "59b8ec37571bb12f6b7738d6dfbe1cfbf75322c35c776b37f84deae27d455f4e"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/fp-lib-table",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/fp-lib-table",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 881,
+      "sha256": "c47fff76322530d4e95b7f03b8ccc95800fde32d4956059027bc38eb301dd060",
+      "source_sha256": "c47fff76322530d4e95b7f03b8ccc95800fde32d4956059027bc38eb301dd060"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_02_fpga_io.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_02_fpga_io.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 210292,
+      "sha256": "2b0ca211550591081f678e2ae1a681897e26d42ed6a2d5e0671e5f3f87c90c59",
+      "source_sha256": "2b0ca211550591081f678e2ae1a681897e26d42ed6a2d5e0671e5f3f87c90c59"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_03_configuration_clock.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_03_configuration_clock.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 167840,
+      "sha256": "bfbcd66a47f05af4a1ce3cc8cec9d706aaf08ca63f1b735db448e217810dfe0c",
+      "source_sha256": "bfbcd66a47f05af4a1ce3cc8cec9d706aaf08ca63f1b735db448e217810dfe0c"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_04_fpga_power.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_04_fpga_power.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 173480,
+      "sha256": "0dee6bda870454a6f1eddb959282ef4345e0b3e6e77576cfe1c71f012d6c515d",
+      "source_sha256": "0dee6bda870454a6f1eddb959282ef4345e0b3e6e77576cfe1c71f012d6c515d"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_05_df40.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_05_df40.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 131972,
+      "sha256": "81485ec6d148ca83f7cc2c05eccaa96c68edf85d2ef15ffbb8ce62c6d83c1ce6",
+      "source_sha256": "81485ec6d148ca83f7cc2c05eccaa96c68edf85d2ef15ffbb8ce62c6d83c1ce6"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_06_core_aux_regulators.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_06_core_aux_regulators.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 104841,
+      "sha256": "72db06b26efee59c2d87e647af0dcda25c557df8e22f80d027af60c67abf6c38",
+      "source_sha256": "72db06b26efee59c2d87e647af0dcda25c557df8e22f80d027af60c67abf6c38"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_07_io_regulators.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_07_io_regulators.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 43800,
+      "sha256": "fbd894d95e4cf8c092cecc3c778a05687898c85d1047f3f561048a5a6e4a212a",
+      "source_sha256": "fbd894d95e4cf8c092cecc3c778a05687898c85d1047f3f561048a5a6e4a212a"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_08_core_decoupling.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_08_core_decoupling.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 67462,
+      "sha256": "1989582829b96364bc1d13d96500024a80ce515b1c09a9eb03e257c5cf86410d",
+      "source_sha256": "1989582829b96364bc1d13d96500024a80ce515b1c09a9eb03e257c5cf86410d"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_09_aux_link_decoupling.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_09_aux_link_decoupling.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 56973,
+      "sha256": "5ae41f00ee6eda7296c66383b9b540c61edefe70d140f8811fa92fe1949b4aec",
+      "source_sha256": "5ae41f00ee6eda7296c66383b9b540c61edefe70d140f8811fa92fe1949b4aec"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_10_asic_decoupling.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_10_asic_decoupling.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 67523,
+      "sha256": "7f2979c9662f0e21560f038583516be7de5ddf52cbbfda086d7d6ab09338cc52",
+      "source_sha256": "7f2979c9662f0e21560f038583516be7de5ddf52cbbfda086d7d6ab09338cc52"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_11_boot_cable.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_11_boot_cable.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 53252,
+      "sha256": "270c80d61f81c5af1ea76d9cdc321554d7b445dc7dd9a8551cb0342990e652df",
+      "source_sha256": "270c80d61f81c5af1ea76d9cdc321554d7b445dc7dd9a8551cb0342990e652df"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_12_gtp.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_12_gtp.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 143116,
+      "sha256": "2ada6ef78fd57ae1ec22e68c75df22aac09444cec7356e776b14b60e5ef36adc",
+      "source_sha256": "2ada6ef78fd57ae1ec22e68c75df22aac09444cec7356e776b14b60e5ef36adc"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/review_13_gtp_power.kicad_sch",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/review_13_gtp_power.kicad_sch",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 112563,
+      "sha256": "2212bd37ccc1e3b170f63d1edd34593744ea7e5a12c1f84589b8e0f4cbe8aa5b",
+      "source_sha256": "2212bd37ccc1e3b170f63d1edd34593744ea7e5a12c1f84589b8e0f4cbe8aa5b"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/hardware/sym-lib-table",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/hardware/sym-lib-table",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 758,
+      "sha256": "64299d379cd6fb9810380f3fced4075d5e9a32245009981f4a0ecf37e0accdb2",
+      "source_sha256": "64299d379cd6fb9810380f3fced4075d5e9a32245009981f4a0ecf37e0accdb2"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 38520,
+      "sha256": "9eee719ca7db289cd9b3163c38b2cd7067c130ed7baf59e16b4721d44d7c27e1",
+      "source_sha256": "9eee719ca7db289cd9b3163c38b2cd7067c130ed7baf59e16b4721d44d7c27e1"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Button_Switch_SMD__SW_SPST_TL3305A.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Button_Switch_SMD__SW_SPST_TL3305A.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 7956,
+      "sha256": "afa3d01b24c8f8a4ea3e420e7b501396f108da8f581ccd2ff446c91f47eab7bb",
+      "source_sha256": "afa3d01b24c8f8a4ea3e420e7b501396f108da8f581ccd2ff446c91f47eab7bb"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0402_1005Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0402_1005Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2059,
+      "sha256": "339a5633867092245db2024991d5d28b3b8da42d59b93ebf48b9a9ba43835749",
+      "source_sha256": "339a5633867092245db2024991d5d28b3b8da42d59b93ebf48b9a9ba43835749"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0603_1608Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0603_1608Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2051,
+      "sha256": "54e2c36f84c13c22e1a5a083ea736aa69fa353091ff4682d0e58ac7ecd4332f6",
+      "source_sha256": "54e2c36f84c13c22e1a5a083ea736aa69fa353091ff4682d0e58ac7ecd4332f6"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0805_2012Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_0805_2012Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2153,
+      "sha256": "1f58029fad823f4d5e7ce39852e1cf4975d934e56e06a7669790cad15ace8537",
+      "source_sha256": "1f58029fad823f4d5e7ce39852e1cf4975d934e56e06a7669790cad15ace8537"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_1206_3216Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_1206_3216Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1953,
+      "sha256": "37be28732bb35c5c7471e92db0e8308cbe1ebe0ac36fa2757ab616b4e22fe448",
+      "source_sha256": "37be28732bb35c5c7471e92db0e8308cbe1ebe0ac36fa2757ab616b4e22fe448"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_1210_3225Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_SMD__C_1210_3225Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2059,
+      "sha256": "c7106ae0f427419e2c0ca79979acf5b2058581ff5547515a5a643711fa3b8dcb",
+      "source_sha256": "c7106ae0f427419e2c0ca79979acf5b2058581ff5547515a5a643711fa3b8dcb"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Capacitor_Tantalum_SMD__CP_EIA-7343-20_Kemet-V.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Capacitor_Tantalum_SMD__CP_EIA-7343-20_Kemet-V.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2659,
+      "sha256": "92c4cd5a16bc2c031108780db8cf477de7b4f5fd8a4c25551013c894f7f91d89",
+      "source_sha256": "92c4cd5a16bc2c031108780db8cf477de7b4f5fd8a4c25551013c894f7f91d89"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Connector_JST__JST_XH_B2B-XH-A_1x02_P2_50mm_Vertical.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Connector_JST__JST_XH_B2B-XH-A_1x02_P2_50mm_Vertical.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 3609,
+      "sha256": "114dbdf9ddce15c986f3efca653bc557f65c51b6942c56749367b658f8087134",
+      "source_sha256": "114dbdf9ddce15c986f3efca653bc557f65c51b6942c56749367b658f8087134"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Connector_PinHeader_2_54mm__PinHeader_1x02_P2_54mm_Vertical.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Connector_PinHeader_2_54mm__PinHeader_1x02_P2_54mm_Vertical.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 3027,
+      "sha256": "7f3f7f87f4ce95c772a78d9c06333ef42daf68b3627f55392f3774a22c6fae36",
+      "source_sha256": "7f3f7f87f4ce95c772a78d9c06333ef42daf68b3627f55392f3774a22c6fae36"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Connector_PinHeader_2_54mm__PinHeader_1x06_P2_54mm_Vertical.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Connector_PinHeader_2_54mm__PinHeader_1x06_P2_54mm_Vertical.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 3586,
+      "sha256": "06bdd7a5bb317915b25c9234961f42ecadda1a354ce3842abb9e0a9d44e07f8f",
+      "source_sha256": "06bdd7a5bb317915b25c9234961f42ecadda1a354ce3842abb9e0a9d44e07f8f"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Inductor_SMD__L_0805_2012Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Inductor_SMD__L_0805_2012Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2053,
+      "sha256": "b63ee9c5781b0c67ebdb7f23fb4f4807c5d8e9f248f02d564a9c68270053483a",
+      "source_sha256": "b63ee9c5781b0c67ebdb7f23fb4f4807c5d8e9f248f02d564a9c68270053483a"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/LED_SMD__LED_0603_1608Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/LED_SMD__LED_0603_1608Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2602,
+      "sha256": "890f6d7153777c2d639a65f85bb0c0b5f9c037b600f000ccf17086e06214d476",
+      "source_sha256": "890f6d7153777c2d639a65f85bb0c0b5f9c037b600f000ccf17086e06214d476"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/LinkPort__MicroHDMI_46765_1xxx.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/LinkPort__MicroHDMI_46765_1xxx.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 8274,
+      "sha256": "ca94fea0948e084563597a058f7d30dc41e67857a2eefdd5a8f6c257cc703a08",
+      "source_sha256": "ca94fea0948e084563597a058f7d30dc41e67857a2eefdd5a8f6c257cc703a08"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Murata_GRT15_0402_Recommended.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Murata_GRT15_0402_Recommended.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2012,
+      "sha256": "a3a29e50dfb7fd2d69e661a30165d9c6fcab169b7b2895988139c7d4d86b748a",
+      "source_sha256": "a3a29e50dfb7fd2d69e661a30165d9c6fcab169b7b2895988139c7d4d86b748a"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Oscillator__Oscillator_SMD_Abracon_ASE-4Pin_3_2x2_5mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Oscillator__Oscillator_SMD_Abracon_ASE-4Pin_3_2x2_5mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2536,
+      "sha256": "c6f877fcab27b8f8875c3a28fcb039f1bfb7b4e2473f002d1d29baa2dacbf8f5",
+      "source_sha256": "c6f877fcab27b8f8875c3a28fcb039f1bfb7b4e2473f002d1d29baa2dacbf8f5"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Package_SO__SOIC-8_5_3x5_3mm_P1_27mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Package_SO__SOIC-8_5_3x5_3mm_P1_27mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 5239,
+      "sha256": "6aa414264a3bd4bf903b78f799fb49420f3cd5febedf5a7cb107caaf21a2b2c4",
+      "source_sha256": "6aa414264a3bd4bf903b78f799fb49420f3cd5febedf5a7cb107caaf21a2b2c4"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Panasonic_POSCAP_B2_Recommended.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Panasonic_POSCAP_B2_Recommended.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1901,
+      "sha256": "f7286ac6deea7b9cd3e5e232b06f45447991889590f7f156981ba2b67c302083",
+      "source_sha256": "f7286ac6deea7b9cd3e5e232b06f45447991889590f7f156981ba2b67c302083"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/PowerDraft__L_Coilcraft_XFL4020.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/PowerDraft__L_Coilcraft_XFL4020.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1518,
+      "sha256": "ef700e30671465110dc2604ee6adac98d4ec4eb03d77691da636f1fc09e1eb78",
+      "source_sha256": "ef700e30671465110dc2604ee6adac98d4ec4eb03d77691da636f1fc09e1eb78"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/PowerDraft__Texas_VQFN_RGX0011A_2x3mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/PowerDraft__Texas_VQFN_RGX0011A_2x3mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 3829,
+      "sha256": "d6e07fc1bbf3feb998a3f68ee0513ad06d88b4c28e9c63f5adc965c2a4c73308",
+      "source_sha256": "d6e07fc1bbf3feb998a3f68ee0513ad06d88b4c28e9c63f5adc965c2a4c73308"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Resistor_SMD__R_0402_1005Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Resistor_SMD__R_0402_1005Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2059,
+      "sha256": "3992d1edfbbd2e75a832578f60fd5b9d6cb33e19b3b506a6bbc3fdd5cbc5127d",
+      "source_sha256": "3992d1edfbbd2e75a832578f60fd5b9d6cb33e19b3b506a6bbc3fdd5cbc5127d"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Resistor_SMD__R_0603_1608Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Resistor_SMD__R_0603_1608Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2065,
+      "sha256": "8c159d14456904f935f35e29f77b8c0774412822af4654c0280fb56d8a3c1bb1",
+      "source_sha256": "8c159d14456904f935f35e29f77b8c0774412822af4654c0280fb56d8a3c1bb1"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/Resistor_SMD__R_1206_3216Metric.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/Resistor_SMD__R_1206_3216Metric.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2065,
+      "sha256": "d2228e45f09c0e31972e508a5a4cfc7026bb169fffa642a65113f286ad45f26f",
+      "source_sha256": "d2228e45f09c0e31972e508a5a4cfc7026bb169fffa642a65113f286ad45f26f"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/TDK_MPZ2012_Recommended.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/TDK_MPZ2012_Recommended.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2035,
+      "sha256": "ebdb89c76899a84c99565fbcd412b74bf936614b35348fa10445221733f88128",
+      "source_sha256": "ebdb89c76899a84c99565fbcd412b74bf936614b35348fa10445221733f88128"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/CoreSupport.pretty/TestPoint__TestPoint_Pad_D1_0mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/CoreSupport.pretty/TestPoint__TestPoint_Pad_D1_0mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1865,
+      "sha256": "4c8f963491dc773f4767c2b8f08252e1afaaf5b8428892d514eea893bf6ccc5e",
+      "source_sha256": "4c8f963491dc773f4767c2b8f08252e1afaaf5b8428892d514eea893bf6ccc5e"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/FPGA100T.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/FPGA100T.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 90770,
+      "sha256": "5cdfd262a0ea2330f63cf180e64870565efc75d80dbc41e40111e2243dabf659",
+      "source_sha256": "5cdfd262a0ea2330f63cf180e64870565efc75d80dbc41e40111e2243dabf659"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/FPGA100T.pretty/Xilinx_CSG324.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/FPGA100T.pretty/Xilinx_CSG324.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 41570,
+      "sha256": "46c771c82cdbbd1ecc44b73aab8d780c07faaaeade74bbea9a7ada50b855d8f7",
+      "source_sha256": "46c771c82cdbbd1ecc44b73aab8d780c07faaaeade74bbea9a7ada50b855d8f7"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/FPGA50T.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/FPGA50T.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 85217,
+      "sha256": "3b0cc7dc28c87e74c8be6261a5ae1751a302b25d2474535b92bf81436848a506",
+      "source_sha256": "3b0cc7dc28c87e74c8be6261a5ae1751a302b25d2474535b92bf81436848a506"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/FPGA50T.pretty/Xilinx_CSG325.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/FPGA50T.pretty/Xilinx_CSG325.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 41570,
+      "sha256": "8e0fdbb59bb4184291647a60ec4de30a9eb8f1a876f29ab2b6066549495aad34",
+      "source_sha256": "8e0fdbb59bb4184291647a60ec4de30a9eb8f1a876f29ab2b6066549495aad34"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/LinkPort.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/LinkPort.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 7082,
+      "sha256": "aacf9c3ea64bc54e988667a05b403d553c243075f7ceb47420374fade70fd1fd",
+      "source_sha256": "aacf9c3ea64bc54e988667a05b403d553c243075f7ceb47420374fade70fd1fd"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/LinkPort.pretty/MicroHDMI_46765_1xxx.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/LinkPort.pretty/MicroHDMI_46765_1xxx.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 8264,
+      "sha256": "27c4fdfe9303df050c78f47d50e6cbde4e12becaa292ad517713842d61d3d8c6",
+      "source_sha256": "27c4fdfe9303df050c78f47d50e6cbde4e12becaa292ad517713842d61d3d8c6"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/Mezzanine.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/Mezzanine.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 48912,
+      "sha256": "402619345b2c2b4db426352d5a5b0918905fdf32b25dd0b71ca0ee3f216ab277",
+      "source_sha256": "402619345b2c2b4db426352d5a5b0918905fdf32b25dd0b71ca0ee3f216ab277"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/Mezzanine.pretty/Samtec_QSH-030-01-L-D-A.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/Mezzanine.pretty/Samtec_QSH-030-01-L-D-A.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 6868,
+      "sha256": "3ef6bd78877855d6d0f5de32395f8b6c01367e6839d2f04881ff9fe96d1e0953",
+      "source_sha256": "3ef6bd78877855d6d0f5de32395f8b6c01367e6839d2f04881ff9fe96d1e0953"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/PowerDraft.kicad_sym",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/PowerDraft.kicad_sym",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 2558,
+      "sha256": "adac248c305533c4fd7def81b2bd759c4d6979f888ab930e42da3aaa18396e31",
+      "source_sha256": "adac248c305533c4fd7def81b2bd759c4d6979f888ab930e42da3aaa18396e31"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/PowerDraft.pretty/L_Coilcraft_XFL4020.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/PowerDraft.pretty/L_Coilcraft_XFL4020.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1237,
+      "sha256": "a77704b64aa4907371a3e5cd05b9c702ed14cb6e776ce0507c1d8b4eb03ce812",
+      "source_sha256": "a77704b64aa4907371a3e5cd05b9c702ed14cb6e776ce0507c1d8b4eb03ce812"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/PowerDraft.pretty/Texas_VQFN_RGX0011A_2x3mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/PowerDraft.pretty/Texas_VQFN_RGX0011A_2x3mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 3256,
+      "sha256": "96af4211dca75b93cda3569ad2383f4dee7842f8bdefc488598a8ec24c703ab0",
+      "source_sha256": "96af4211dca75b93cda3569ad2383f4dee7842f8bdefc488598a8ec24c703ab0"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/ReviewMechanical.pretty/Hirose_DF40C-120DS-0.4V_2x60_P0.4mm.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/ReviewMechanical.pretty/Hirose_DF40C-120DS-0.4V_2x60_P0.4mm.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 18178,
+      "sha256": "7a0df5366505881a233b73c25dbb6b05c894239cc4374c88791845658b54824e",
+      "source_sha256": "7a0df5366505881a233b73c25dbb6b05c894239cc4374c88791845658b54824e"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/project/libraries/ReviewMechanical.pretty/MountingHole_2.2mm_M2.kicad_mod",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/project/libraries/ReviewMechanical.pretty/MountingHole_2.2mm_M2.kicad_mod",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 1287,
+      "sha256": "1b38bd9b2279c528f6e6bd4cf43f4aea04facae04f4afb1649dae640330a7178",
+      "source_sha256": "1b38bd9b2279c528f6e6bd4cf43f4aea04facae04f4afb1649dae640330a7178"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/validation/Design_Changes.json",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/validation/Design_Changes.json",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 778,
+      "sha256": "920c15abf542648d8feea22ba21a124c4097048472d1a17a6f18a87776080dff",
+      "source_sha256": "920c15abf542648d8feea22ba21a124c4097048472d1a17a6f18a87776080dff"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/validation/GTP_Final_DRC.json",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/validation/GTP_Final_DRC.json",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 419631,
+      "sha256": "2fca35a9d2964d38045f6cd884f04ddbbeb34730a4df4a15d6953c08743c7850",
+      "source_sha256": "2fca35a9d2964d38045f6cd884f04ddbbeb34730a4df4a15d6953c08743c7850"
+    },
+    {
+      "path": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/validation/GTP_PCB_Final_Audit.json",
+      "origin": "2026-09-28_FPGA_Work/02_GTP_Power_Revision/validation/GTP_PCB_Final_Audit.json",
+      "status": "28 September unrouted XC7A50T source project",
+      "transformation": "unchanged copy, except workstation-local .kicad_prl omitted from published folder",
+      "note": "Keep hardware and libraries together; no fabrication or purchase release.",
+      "bytes": 772,
+      "sha256": "c395de4ee2ba829b984f29ebe2cfab7b3d936eeebddd9bc16d3205aa87e749d0",
+      "source_sha256": "c395de4ee2ba829b984f29ebe2cfab7b3d936eeebddd9bc16d3205aa87e749d0"
+    },
+    {
+      "path": "sources/engineering/2026-09-28/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv",
+      "origin": "2026-09-28_FPGA_Work/07_Micro_HDMI_Web_Parts/Micro_HDMI_50T_Grouped_Purchasing_Draft.csv",
+      "status": "draft 50T per-board population, 38 lines / 131 fitted references; no purchase approval",
+      "transformation": "unchanged copy of grouped dated CSV",
+      "note": "Six DNP, four copper test pads and four mounting holes excluded; unresolved order codes and J5 revision conflict remain.",
+      "bytes": 11703,
+      "sha256": "562034183418f639c4e803766c467f0358c8e30ef5c9dd6c90e4052a94e41c4a",
+      "source_sha256": "562034183418f639c4e803766c467f0358c8e30ef5c9dd6c90e4052a94e41c4a"
+    },
+    {
+      "path": "presentation/fpga/fpga50t.css",
+      "origin": "28 September featured 50T micro-HDMI PCB website",
+      "status": "authored website asset",
+      "transformation": "responsive page styling or interactive view and table filter",
+      "note": "The 50T native board remains an unrouted review.",
+      "bytes": 10021,
+      "sha256": "dedab26070927428c1f4eeecded99ef4e15e9b1cdb63bb3bdd51fe6d5e45ed9b"
+    },
+    {
+      "path": "presentation/fpga/fpga50t.js",
+      "origin": "28 September featured 50T micro-HDMI PCB website",
+      "status": "authored website asset",
+      "transformation": "responsive page styling or interactive view and table filter",
+      "note": "The 50T native board remains an unrouted review.",
+      "bytes": 1401,
+      "sha256": "2fcfc320a9060c2eb29811986593f6955e41dab4db41ee02f9258fc8c35ae0de"
+    },
+    {
+      "path": "presentation/fpga/viewer/fpga50t-front.svg",
+      "origin": "28 September XC7A50T KiCad PCB; see presentation/fpga/3d/assets/provenance.json",
+      "status": "50T board visual derivative; not mechanical qualification",
+      "transformation": "KiCad front-view SVG export with trailing export whitespace removed",
+      "note": "Graphic geometry unchanged; not a mechanical or routing qualification.",
+      "bytes": 238185,
+      "sha256": "11b119d76b2c2fca63ac5b071d9b4691c0a50c45636a8ecf5f7bdadcf356650b"
+    },
+    {
+      "path": "presentation/fpga/3d/assets/fpga50t.glb",
+      "origin": "28 September XC7A50T KiCad PCB; see presentation/fpga/3d/assets/provenance.json",
+      "status": "50T board visual derivative; not mechanical qualification",
+      "transformation": "KiCad export, viewer metadata or provenance from unchanged native board",
+      "note": "Three missing STEP bodies are identified as simplified/pad-only where applicable.",
+      "bytes": 7451048,
+      "sha256": "749a081d412362841da784fd5f0208d6897696d3a1493b93c1c95aaa1807294b"
+    },
+    {
+      "path": "presentation/fpga/3d/assets/fpga50t.json",
+      "origin": "28 September XC7A50T KiCad PCB; see presentation/fpga/3d/assets/provenance.json",
+      "status": "50T board visual derivative; not mechanical qualification",
+      "transformation": "KiCad export, viewer metadata or provenance from unchanged native board",
+      "note": "Three missing STEP bodies are identified as simplified/pad-only where applicable.",
+      "bytes": 44138,
+      "sha256": "d51d00123173939144db5b0894aa3a03d2b49ab2f6a77d3b70a50b3f40db0894"
     }
   ],
-  "scope": "Original material shared by Gerald/team and faithful meeting/slide representations; personal studies excluded.",
+  "scope": "Original team material, faithful meeting and slide representations, and dated FPGA review handoffs; source identities and qualification limits recorded per entry.",
   "upstream_snapshots": [
     {
       "path": "firmware/FPGA_512",
@@ -10901,16 +11611,16 @@
     "status": "supplied compact assembly; exact source bytes preserved; no geometric changes"
   },
   "fpga_presentation": {
-    "manifest": "hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/Package_Manifest.json",
+    "manifest": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power/manifest.json",
     "entry": "presentation/fpga/index.html",
-    "source": "hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision",
-    "board_id": "usb-c",
-    "board_sha256": "c2bb9d1de754b65ebb3076b0b2c97529bc77afb4e5efad52e5762c3a9af2ac76",
-    "status": "USB-C development; unfinished routing; not for manufacture"
+    "source": "hardware/fpga-interface-study/dated/2026-09-28/50t-gtp-power",
+    "board_id": "fpga50t",
+    "board_sha256": "445d3a8ce734a84daf4333a161797924e383a986ff35cc3bcbd1b78bca3510ff",
+    "status": "featured unrouted 50T micro-HDMI review; not for manufacture or purchase; 100T micro-HDMI and USB-C remain separate"
   },
   "fpga_interface_study": {
     "manifest": "hardware/fpga-interface-study/manifest.json",
-    "status": "current smallest routing development and preserved earlier unqualified studies"
+    "status": "preserved 100T routing development and earlier unqualified studies; featured 50T review is separate"
   },
   "fpga_component_audit": {
     "manifest": "hardware/fpga-interface-study/dated/2026-09-26/presentation-and-pin-labels/manifest.json",
@@ -10925,5 +11635,13 @@
     "provenance": "presentation/fpga/3d/assets/provenance.json",
     "native_cad_changed": false,
     "assembly_fit_verified": false
+  },
+  "fpga_usb_c_revision": {
+    "manifest": "hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision/Package_Manifest.json",
+    "entry": "presentation/fpga/usb-c.html",
+    "source": "hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision",
+    "board_id": "usb-c",
+    "board_sha256": "c2bb9d1de754b65ebb3076b0b2c97529bc77afb4e5efad52e5762c3a9af2ac76",
+    "status": "USB-C development; unfinished routing; not for manufacture"
   }
 }
