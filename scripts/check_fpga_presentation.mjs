@@ -124,9 +124,10 @@ try {
   assert((await page.locator('#files').innerText()).includes('68-file portable derivative')&&
     (await page.locator('#files a[href$="/README.md"]').count())===1,
     'Public project ZIP omission is explicit and points to the package provenance');
-  assert(systemText.includes('Neither 5 V nor 12 V')&&
-    (await page.locator('.board-story').innerText()).includes('neither whole-headstage supply is qualified'),
-    'Supply voltage remains explicitly unqualified despite inherited LINK_12V net name');
+  assert(systemText.includes('12 V selected; connector protection')&&
+    (await page.locator('.board-story').innerText()).includes('12 V was selected')&&
+    (await page.locator('.board-story').innerText()).includes('no implemented power branch'),
+    'Selected 12 V remains unimplemented and load-unqualified despite inherited LINK_12V net name');
   await page.locator('#parts-search').fill('DF40');
   const connectorRows = await page.locator('#purchase-parts tbody tr:visible').allInnerTexts();
   assert(connectorRows.some(row => row.includes('J5')) && connectorRows.some(row => row.includes('J7')),
