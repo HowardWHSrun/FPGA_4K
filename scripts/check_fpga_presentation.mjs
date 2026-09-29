@@ -45,7 +45,10 @@ try {
     assert(response.ok(), 'USB-C linked evidence/download is available');
   }
   await page.goto(base + 'presentation/fpga/', {waitUntil:'networkidle'});
-  assert((await page.locator('#page-title').innerText()) === 'Micro-HDMI FPGA board' && (await page.locator('#board-title').innerText()) === '50T board first', 'Featured FPGA page starts with the 50T review');
+  assert((await page.locator('#page-title').innerText()) === 'Earlier 50T micro-HDMI board' &&
+    (await page.locator('#board-title').innerText()) === 'Earlier 50T board' &&
+    (await page.locator('.current-choice a[href="current-25t.html"]').count()) === 1,
+    'Historical FPGA page preserves the 50T review and links the selected 25T board');
   const boardRegistry = await (await page.request.get(base + 'presentation/fpga/viewer/boards.json')).json();
   const featuredBoard = boardRegistry.boards.find(board => board.id === 'fpga50t');
   const currentReview = await (await page.request.get(base + 'presentation/fpga/current.json')).json();
