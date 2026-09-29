@@ -13,7 +13,7 @@
   <a class="skip-link" href="#pin-diagram">Skip to the pin diagram</a>
   <header class="site-header">
     <a class="brand" href="../../#fpga" aria-label="FPGA 4K system overview"><span class="brand-mark">4K</span><span class="brand-text">FPGA PCB<small>Hardware design in progress</small></span></a>
-    <nav aria-label="This connector review"><a href="micro-hdmi.html#interfaces">Earlier micro-HDMI board</a><a href="#comparison">All 19 contacts</a></nav>
+    <nav aria-label="This connector review"><a href="micro-hdmi.html#interfaces">Earlier micro-HDMI board</a><a href="#clocking">Clock plan</a><a href="#comparison">All 19 contacts</a></nav>
   </header>
 
   <main>
@@ -111,6 +111,15 @@
           <div class="source-note"><strong>Source and reading direction</strong><p>Molex sales drawing SD-46765-001 for its Type-D receptacle family. The original PDF is linked from Molex’s website; this project does not host a copy. Check the exact J4 part and footprint against its approved drawing before layout release.</p></div>
         </article>
       </div>
+      <aside class="clock-brief" id="clocking" aria-labelledby="clock-title">
+        <div class="clock-heading"><p class="eyebrow">CLOCKING / PROPOSED SERIAL LINK</p><h3 id="clock-title">Where does the clock go?</h3><p>Standard HDMI uses pins 12/14 as a TMDS clock pair. In this custom four-pair draft, those same contacts carry <strong>RX1 data</strong>; there is no dedicated clock pair in the cable.</p></div>
+        <div class="clock-grid">
+          <div><strong>Across the cable</strong><p>A GTP receiver recovers bit timing from each incoming high-speed data stream. That alone does not synchronize ASIC sampling; capture sync and timestamps remain open.</p></div>
+          <div><strong>On the FPGA board</strong><p>The GTP still needs a qualified differential reference clock at its MGTREFCLK inputs. Its frequency and jitter limits depend on the selected line rate. Those 50T connections are marked TBD; the legacy 32 MHz Y1 oscillator is disconnected and is not the GTP reference.</p></div>
+          <div><strong>Other clocks</strong><p>Pin 17 is JTAG TCK for programming only. Eight ASIC 32 MHz clocks return through J5 to the FPGA fabric. A shared ASIC clock and its distribution remain unresolved.</p></div>
+        </div>
+        <p class="clock-choice"><strong>Clock choice changes the pin map:</strong> a forwarded-clock LVDS design would use one of these four cable pairs for clock, so its data-lane assignments must change. The proposed GTP link still needs a compatible serial receiver and protocol. <a href="https://docs.amd.com/api/khub/documents/Xk_zMbXsJj92suJ4_0Akkg/content#page=31" target="_blank" rel="noopener">AMD UG482 reference clocks ↗</a> · <a href="https://docs.amd.com/api/khub/documents/Xk_zMbXsJj92suJ4_0Akkg/content#page=141" target="_blank" rel="noopener">clock recovery ↗</a> · <a href="../meetings/2026-09-28.html#interfaces">meeting clock action ↗</a></p>
+      </aside>
     </section>
 
     <section class="comparison-section" id="comparison" aria-labelledby="comparison-title">
