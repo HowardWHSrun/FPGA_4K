@@ -18,6 +18,6 @@ Historical preparation: [September 24 proposal](2026-09-24.html), based on the s
 
 ## Wednesday presentation - September 30
 
-[Open the preparation page](2026-09-30.html). The six presentation slides focus on the 19-contact cable: contact allocation, purpose, three XEM MC3 banks and next work. The final slide shows three custom FPGA boards with XEM, interposer and BRK. Use Present, arrow keys and Escape; click individual contacts to highlight their functional group. The six existing section IDs remain available. September 28 remains the latest recorded meeting. The new page records no meeting outcome.
+[Open the preparation page](2026-09-30.html). The seven presentation slides focus on the 19-contact cable: contact allocation, purpose, three XEM MC3 banks and next work. The final slide shows three custom FPGA boards with XEM, interposer and BRK. Use Present, arrow keys and Escape; click individual contacts to highlight their functional group. The six existing section IDs remain available, with an additional power-plan slide. Pins 9/11 are labeled Reserved without a proposed future use; historical native sources retain their original net names. September 28 remains the latest recorded meeting. The new page records no meeting outcome.
 
 The [Wednesday visual library](2026-09-30-visuals.html) gathers 99 existing figures, including all 22 current native schematic sheets, previous layouts, adapter revisions, pin diagrams and manufacturer-derived 3D previews. Filters, figure enlargement and detail links preserve revision context.

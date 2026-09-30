@@ -1,0 +1,73 @@
+# R10 µHDMI contact audit — read-only, 2026-09-29
+
+## Conclusion
+
+R10 connects **8 of 19 numbered contacts per port**: all four high-speed pairs. Across three ports, that is 24 connected conductors and **33 open numbered contacts**. All three shields have no bond. The copper graph agrees with the native schematic for the 24 high-speed endpoints; this does not qualify their impedance, return path or pair matching.
+
+No CAD, net assignments, website or previous revisions were modified by this audit. It exports a fresh native logical netlist and reads the actual KiCad PCB connectivity graph.
+
+## Native parts and missing hardware
+
+- On PCB: J10/J11 MC3, J12/J13 MC2, J14/J15 MC1, J201/J202/J203 Type-D connectors and H1..H4.
+- Absent from PCB and blank schematic footprints: **J21/J22/J23**, separate local JTAG probe placeholders; **B1/B2/B3**, unspecified protected 12 V branch placeholders.
+- No JTAG level-translation, arbitration, XEM GPIO link or USB-JTAG bridge circuitry exists in this revision.
+- PCB has **zero copper zones**. All 15 cable ground pads have zero connected tracks/vias and do not connect to the MC2/MC3 system return.
+- Each connector has four physical SH pads. All four have zero copper connections; the schematic explicitly gives SH a no-connect marker (`SHIELD_BOND_TBD`).
+
+## Contact map and current state
+
+Directions are relative to the custom FPGA board. J21/J22/J23 are current logical placeholders, not selected physical programmer connector standards.
+
+| Contact | Assignment | J201 endpoint | J202 endpoint | J203 endpoint | Native copper state |
+|---|---|---|---|---|---|
+| 1 | Target 1.8 V VTREF sense | J21.1 | J22.1 | J23.1 | Open; probe part absent |
+| 2 | TMS into target | J21.2 | J22.2 | J23.2 | Open; probe part absent |
+| 3 | TX0+ out | J10.41, GTY226 RX0+ | J10.21, GTY225 RX0+ | J10.1, GTY224 RX0+ | Connected |
+| 4 | Ground | SYS_GND | SYS_GND | SYS_GND | Open; no trace or plane |
+| 5 | TX0− out | J10.43, GTY226 RX0− | J10.23, GTY225 RX0− | J10.3, GTY224 RX0− | Connected |
+| 6 | TX1+ out | J10.45, GTY226 RX1+ | J10.25, GTY225 RX1+ | J10.5, GTY224 RX1+ | Connected |
+| 7 | Ground | SYS_GND | SYS_GND | SYS_GND | Open; no trace or plane |
+| 8 | TX1− out | J10.47, GTY226 RX1− | J10.27, GTY225 RX1− | J10.7, GTY224 RX1− | Connected |
+| 9 | Reserved TX2+ out | J10.49, GTY226 RX2+ | J10.29, GTY225 RX2+ | J10.9, GTY224 RX2+ | Connected |
+| 10 | Ground | SYS_GND | SYS_GND | SYS_GND | Open; no trace or plane |
+| 11 | Reserved TX2− out | J10.51, GTY226 RX2− | J10.31, GTY225 RX2− | J10.11, GTY224 RX2− | Connected |
+| 12 | RX1+ serial control into target | J10.42, GTY226 TX0+ | J10.22, GTY225 TX0+ | J10.2, GTY224 TX0+ | Connected |
+| 13 | Ground | SYS_GND | SYS_GND | SYS_GND | Open; no trace or plane |
+| 14 | RX1− serial control into target | J10.44, GTY226 TX0− | J10.24, GTY225 TX0− | J10.4, GTY224 TX0− | Connected |
+| 15 | TDI into target | J21.3 | J22.3 | J23.3 | Open; probe part absent |
+| 16 | Ground / power return | SYS_GND | SYS_GND | SYS_GND | Open; no trace or plane |
+| 17 | TCK into target | J21.4 | J22.4 | J23.4 | Open; probe part absent |
+| 18 | TDO from target | J21.5 | J22.5 | J23.5 | Open; probe part absent |
+| 19 | Protected 12 V to target | B1.OUT | B2.OUT | B3.OUT | Open; protection part absent |
+| Shell | Cable shield | SHIELD_BOND_TBD | SHIELD_BOND_TBD | SHIELD_BOND_TBD | Explicit logical no-connect; bond TBD |
+
+## Existing power and ground schematic
+
+- `VDCIN_EXTERNAL_12V_CANDIDATE` joins J12.1..4 and J13.1..4 to B1/B2/B3.IN. This is a **candidate shared externally supplied input bus**, not an XEM-generated 12 V output. The schematic symbol pin label is `FROM_BRK_VDCIN`.
+- B1/B2/B3.OUT each joins only its own Type-D pin19. A real protection circuit, current budget, source path and footprint must replace each placeholder before physical routing of pin19.
+- `SYS_GND` joins J12/J13 contacts5..8, J10/J11 ground paddles0, all three cables' contacts4/7/10/13/16 and J21/J22/J23 contact6 logically. The PCB does not complete that ground network.
+- VTREF nets remain distinct P1/P2/P3 sense-only nets. They are not tied together or used as a supply rail.
+
+## Ground fanout review
+
+- The native `SYS_GND` network contains 39 physical pads in **35 separate copper components**: 15 isolated HDMI ground pads, 16 isolated MC3 ground paddle segments and four existing MC2 through-routed pairs (`J12.5↔J13.5`, `.6↔.6`, `.7↔.7`, `.8↔.8`). There is no shared ground plane/bus connection.
+- The inner-row grounds4/10/16 could use short top-layer escape traces to F.Cu→In1 laser microvias, matching the process class already proposed for data. The current data microvia x coordinate129.90 mm is unsuitable at three ground positions: J201.4, J202.10 and J203.4 would leave only approximately0.083 mm to existing In1 data copper.
+- An **unimplemented local geometry candidate** at x129.80 mm, centered on each ground pad's y coordinate, with the same0.25/0.10 mm laser microvia, yields0.1536–0.1623 mm analytic edge clearance to existing F/In1 tracks and vias. Its left copper edge129.675 mm also remains outside the generic connector keepout's right edge129.64 mm. This is only3.6 µm extra nominal copper-clearance margin at the tightest points, so it is not a comfortable production geometry and still needs native DRC, pad/keepout scope and fab checks.
+- Those microvias would reach In1 only. They do **not** create a system-return or reference plane automatically. Any further ground route/transition must be planned around the existing In1 fanout, and current signals on every layer prevent declaring any whole layer a continuous ground reference without reviewing/rerouting signal layers.
+- Grounds7/13 are on the outer pad row and can start with short outward top-layer escapes. Their chosen stitching-via location must clear nearby data escapes on all traversed layers. No whole-network ground route has been approved by this read-only review.
+
+## Recommendations for the next revision
+
+1. Preserve the current cable contact assignment and high-speed TX→RX mappings, including routed reserved TX2. Do not move a data pair to GPIO.
+2. Add a real independent 1.8 V-compatible recovery JTAG access connector per target. If XEM-over-USB programming is chosen, design XEM GPIO allocation, buffering/level translation and ownership arbitration explicitly; it cannot be inferred from present J21/J22/J23 placeholders.
+3. Replace B1/B2/B3 with a concrete power circuit after settling actual board+ASIC current, startup/inrush, cable/contact rating, supply budget, source voltage range and backfeed policy. Route three separate protected branches to contacts19.
+4. Complete all15 cable ground contacts to low-inductance return/reference copper with stitching near differential transitions. Stackup and signal-layer allocation need revision because current R10 has signals on every copper layer and no defined reference planes.
+5. Add an explicit shield net and bond circuit/policy at each connector. User's table fixes shell=shield but does not specify direct system-ground versus chassis/RC coupling. This cannot truthfully be called fully routed while marked no-connect.
+6. Re-run schematic/PCB parity, copper reachability for all57 numbered contacts and all shield anchors, ERC/DRC, power-width/thermal checks, then impedance/skew/reference/cable checks. A missing PCB destination can escape a basic unrouted-net count, so use the complete schematic node set as the endpoint checklist.
+
+## Evidence
+
+- Fresh KiCad XML netlist: `R10_Fresh_Logical_Netlist.xml`.
+- Contact rows: `R10_All_Contacts_Read_Only_Audit.csv`.
+- Actual PCB pad connectivity, coordinates and graph items: `R10_All_Contacts_Raw_Connectivity.json`.
+- Original PCB SHA-256: `6189239b3ee924bd9c2bc462f03491311253ff9f56e6a609af200e6002dca1cf`.
