@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Three visual slides for Wednesday: 117 ASIC interface signals, the 19-contact custom micro-HDMI arrangement and the three-FPGA / XEM / BRK system plan; current routing focuses on one R12 link.">
-<title>Wednesday · 117 pins, 19 contacts, XEM layout | 4K Meetings</title>
+<meta name="description" content="Four slides for Wednesday: 117 ASIC interface signals, the 19-contact custom micro-HDMI arrangement, proposed FPGA components and the three-FPGA / XEM / BRK system plan; current routing focuses on one R12 link.">
+<title>Wednesday · pin maps, components, XEM assembly | 4K Meetings</title>
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="meetings.css"><link rel="stylesheet" href="wednesday.css"><link rel="stylesheet" href="pins-focus.css?v=contact-face-r6">
+<link rel="stylesheet" href="meetings.css"><link rel="stylesheet" href="wednesday.css"><link rel="stylesheet" href="pins-focus.css?v=components-r7">
 <script src="wednesday.js" defer></script><script src="pins-focus.js?v=three-topics-final1" defer></script>
 </head>
-<body class="wednesday pin-talk three-topics">
+<body class="wednesday pin-talk four-topics">
 <a class="skip-link" href="#asic-pins">Skip to presentation</a>
 <header><a class="brand" href="./">4K / Meetings</a><nav aria-label="Project navigation"><a href="../adapter/">Interposer</a><button class="button primary" id="present" type="button" aria-pressed="false">Present ↗</button></nav></header>
 <div class="layout">
-<aside aria-label="Presentation sections"><p class="eyebrow">Wednesday · 30 Sep</p><a href="#asic-pins"><span>01</span>117 ASIC pins</a><a href="#cable-pins"><span>02</span>19-contact link</a><a href="#xem-layout"><span>03</span>Full assembly</a></aside>
+<aside aria-label="Presentation sections"><p class="eyebrow">Wednesday · 30 Sep</p><a href="#asic-pins"><span>01</span>117 ASIC pins</a><a href="#cable-pins"><span>02</span>19-contact link</a><a href="#component-proposal"><span>03</span>FPGA components</a><a href="#xem-layout"><span>04</span>Full assembly</a></aside>
 <main id="meeting">
 <section class="review-section" id="asic-pins"><div class="talk-slide" data-title="117 ASIC interface pins">
 <p class="section-number">01 / ASIC → FPGA</p><h1><em>117</em> interface pins.</h1>
@@ -28,8 +28,21 @@
 <div class="slide-bottom"><a class="schematic-ready" href="../schematic/simple.html" target="_blank" rel="noopener"><span aria-hidden="true">✓</span> I have the schematic. <small>All 19 contacts mapped ↗</small></a><a class="text-link" href="../schematic/simple.html#programming" target="_blank" rel="noopener">JTAG ↗</a><a class="text-link" href="../schematic/simple.html#power" target="_blank" rel="noopener">12 V ↗</a></div>
 <p class="essential-note cable-note">VTREF supplies translator bias. 12 V protection is drawn in the schematic; JTAG and ground routing remain open.</p>
 </div></section>
+<section class="review-section" id="component-proposal"><div class="talk-slide" data-title="Proposed FPGA board components">
+<p class="section-number">03 / Proposed components</p><h2>FPGA board components</h2>
+<p class="proposal-attribution">Zitong’s proposal · review pending</p>
+<table class="component-table" aria-label="Proposed FPGA board components"><thead><tr><th scope="col">Role</th><th scope="col">Proposed part</th><th scope="col">Key specification</th></tr></thead><tbody>
+<tr><th scope="row">FPGA</th><td><a href="https://www.digikey.com/en/products/detail/amd/XC7A25T-2CSG325I/8258224" target="_blank" rel="noopener">XC7A25T-2CSG325I ↗</a></td><td>CSG325 · 15 × 15 mm</td></tr>
+<tr><th scope="row">Status LEDs</th><td>2 LEDs</td><td>Power · configuration</td></tr>
+<tr><th scope="row">Fabric clock</th><td><a href="https://abracon.com/datasheets/AX3-0006-T.pdf" target="_blank" rel="noopener">Abracon AX3-0006-T ↗</a></td><td>100 MHz · 1.8 V HCSL</td></tr>
+<tr><th scope="row">Boot flash</th><td><a href="https://www.digikey.com/en/products/detail/macronix/MX25U1632FZUI02/16304570" target="_blank" rel="noopener">Macronix MX25U1632FZUI02 ↗</a></td><td>16 Mbit · 1.8 V · USON-8</td></tr>
+<tr><th scope="row">GTP reference clock</th><td><a href="https://www.sitime.com/parts/sit9507ai-02p1-1800-125000000" target="_blank" rel="noopener">SiTime SiT9507AI-02P1-1800-125.000000 ↗</a></td><td>125 MHz · 1.8 V LVDS</td></tr>
+<tr><th scope="row">Other parts</th><td>Micro-HDMI · connectors · test points</td><td>LDOs · regulators · inductors</td></tr>
+</tbody></table>
+<div class="slide-bottom"><p class="essential-note component-review"><strong>Review:</strong> clock input / termination and flash bank voltages.</p><a class="text-link" href="../../sources/meetings/2026-09-30-review/Component_Proposal_Review.md" target="_blank" rel="noopener">Part review ↗</a><a class="text-link" href="../fpga/current-25t.html" target="_blank" rel="noopener">Current FPGA board ↗</a></div>
+</div></section>
 <section class="review-section" id="xem-layout"><div class="talk-slide" data-title="3 FPGA boards + XEM + BRK">
-<p class="section-number">03 / Full system plan</p><h2>3 FPGA boards + XEM + BRK.</h2>
+<p class="section-number">04 / Full system plan</p><h2>3 FPGA boards + XEM + BRK.</h2>
 <figure class="model-figure layout-model"><div class="model-header"><span><b>R10 architecture study</b> · three separate FPGA boards</span><strong class="layout-status">Layout in progress</strong><a href="../adapter/assembly.html?revision=r10&amp;focus=all" target="_blank" rel="noopener">Open system 3D ↗</a></div><iframe class="talk-model interposer-model" src="../adapter/assembly.html?revision=r10&amp;embed=1&amp;presentation=1&amp;labels=boards&amp;focus=all" title="Preserved R10 architecture study: three separate XC7A25T FPGA boards and cables, a three-port interposer, XEM8310 above and BRK8310 below" loading="eager"></iframe></figure>
 <div class="slide-bottom"><p class="essential-note"><strong>System plan</strong> · finishing one 19-pin link first.</p><a class="text-link" href="../adapter/assembly.html?revision=r12&amp;focus=adapter" target="_blank" rel="noopener">Current R12 layout ↗</a><a class="text-link" href="../schematic/simple.html" target="_blank" rel="noopener">Interposer schematic ↗</a><a class="text-link" href="../xem/" target="_blank" rel="noopener">XEM + BRK ↗</a></div>
 </div></section>

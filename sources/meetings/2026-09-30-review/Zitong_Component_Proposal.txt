@@ -1,0 +1,13 @@
+Zitong Xu [10:42 PM]
+Provided by Howard, 29 September 2026.
+
+Here's proposed components for FPGA board if we decide to do it finally, please lmk your comments on it:
+
+- FPGA+Package: XC7A25T-CSG325, linked to XC7A25T-2CSG325I https://www.digikey.com/en/products/detail/amd/XC7A25T-2CSG325I/8258224
+- LEDs: 2 in total, one for power, one for FPGA configuration
+- Reference clock: Abracon AX3-0006-T https://www.digikey.com/en/products/detail/abracon-llc/AX3-0006-T/16400291 : 100.000 MHz, 1.8V, Crystal XO, 3.2 x 2.5 x 1.0 mm, +/-20 ppm frequency stability, Period Jitter: Cycle to Cycle =350 fs =0.35 ps max, differential (needs termination and coupling)
+- Flash: Macronix MX25U1632FZUI02 https://www.digikey.com/en/products/detail/macronix/MX25U1632FZUI02/16304570 : 16 Mbit (2MB) (for25T),1.65-2.0V (need level shifter), up to133MHz,2x3mmUSON8
+- GTP reference clock: SiTime SiT9507AI-02P1-1800-125.000000 https://www.sitime.com/parts/sit9507ai-02p1-1800-125000000 :125MHz,1.8V,LVDS differential XO,2.0x1.6mm,+/-20ppm,29fsRMSphasejittertyp.
+- Others: connectors,LDOs,regulators and inductors,microHDMI,test points.
+
+These are proposed parts, not procurement or fabrication approval. Full source values remain preserved here; slide text is condensed after primary-source review.
