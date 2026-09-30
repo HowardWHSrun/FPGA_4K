@@ -129,10 +129,14 @@ The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. 
 
 ## Wednesday presentation - September 30, 2026
 
-[Dedicated presentation](../presentation/meetings/2026-09-30.html): exactly three slides. The first groups the 117 ASIC interface positions; the second lists all 19 custom micro-HDMI contacts with the 25T native 3D view and schematic link; the last shows the proposed three-FPGA + XEM + BRK assembly, with a short note that the current R12 one-link layout is in progress and a link to that native layout. Preparation only; meeting outcomes pending.
+[Dedicated presentation](../presentation/meetings/2026-09-30.html): exactly three slides. The first groups the 117 ASIC interface positions; the second lists all 19 custom micro-HDMI contacts with a colour-matched socket contact diagram and schematic link; the last shows the proposed three-FPGA + XEM + BRK assembly, with a short note that the current R12 one-link layout is in progress and a link to that native layout. Preparation only; meeting outcomes pending.
 
 [Wednesday visual library](../presentation/meetings/2026-09-30-visuals.html): 99 existing figures, 22 native schematic sheets, dated layout and adapter progress, pin maps and interactive model links.
 
 ## Simple interposer schematic view · 29 September
 
 [Easy connection overview](../presentation/schematic/simple.html) separates recording/commands, programming and 12 V power into three selectable diagrams. It labels cable contacts and signal directions, and links each view to its native KiCad sheet. The three-slide Wednesday deck opens this overview from its schematic links; native circuit files and audits retain their separate engineering status.
+
+## Wednesday slide 2 · connector contact view
+
+The [19-contact slide](../presentation/meetings/2026-09-30.html#cable-pins) now uses an enlarged, colour-matched [micro-HDMI receptacle contact diagram](../presentation/meetings/assets/2026-09-30/R6_Micro_HDMI_Contacts.svg). Its front-view numbering follows Molex sheet 2; electrical functions retain the current R12 list. The full system assembly remains on slide 3.
