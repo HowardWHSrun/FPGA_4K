@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="jtag-title jtag-desc">
+  <title id="jtag-title">R12 programming source selection</title>
+  <desc id="jtag-desc">The recovery probe is the default source and bypasses translation. XEM 1.2 V fabric GPIO uses a 1.2 to 1.8 V translator, then the same three TMS, TDI and TCK selectors. Contacts 2, 15 and 17 go to the target. TDO 18 returns to both the probe receiver and the translated XEM receiver. Target VTREF 1 supplies translator B bias and probe reference. ARM defaults open and XEM bridge gateware is pending.</desc>
+  <!-- R12 sheet 9: probe does not pass through AXC; TDO fans out to both receivers. -->
+  <defs><marker id="jtag-arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#785697"/></marker><marker id="jtag-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#347b99"/></marker><marker id="jtag-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ad7736"/></marker></defs>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#294252}.title{font:27px Palatino,Georgia,serif}.small{font-size:17px;fill:#687883}.signal{font-size:19px;font-weight:500}.box{fill:#f3f6f3;stroke:#cddbdc;stroke-width:1.5}.wire{fill:none;stroke-width:3;stroke-linejoin:round}.purple{fill:#785697}.gold{fill:#ad7736}</style>
+  <path d="M1110 196V51H160V91" class="wire" stroke="#ad7736" marker-end="url(#jtag-arrow-gold)"/>
+  <path d="M585 51V283" class="wire" stroke="#ad7736" marker-end="url(#jtag-arrow-gold)"/>
+  <circle cx="585" cy="51" r="4" fill="#ad7736"/>
+  <text x="686" y="30" class="signal gold">VTREF · 1 · target 1.8 V</text>
+  <text x="670" y="82" class="small">Translator bias + probe reference</text>
+  <rect x="40" y="99" width="230" height="112" rx="14" class="box"/>
+  <text x="155" y="136" text-anchor="middle" class="title">Recovery probe</text>
+  <text x="155" y="167" text-anchor="middle" class="signal purple">Default source</text>
+  <text x="155" y="193" text-anchor="middle" class="small">Bypasses translator</text>
+  <path d="M575 160Q585 140 595 160" fill="none" stroke="#fffefa" stroke-width="11"/>
+  <path d="M270 160H575Q585 140 595 160H682" class="wire" stroke="#785697" marker-end="url(#jtag-arrow-purple)"/>
+  <text x="350" y="143" class="signal purple">TMS / TDI / TCK</text>
+  <rect x="40" y="306" width="230" height="145" rx="14" class="box"/>
+  <text x="155" y="344" text-anchor="middle" class="title">XEM fabric GPIO</text>
+  <text x="155" y="378" text-anchor="middle" class="signal">1.2 V</text>
+  <text x="155" y="430" text-anchor="middle" class="small">Bridge gateware pending</text>
+  <rect x="350" y="291" width="260" height="166" rx="14" fill="#f4eff7" stroke="#d8cde3" stroke-width="1.5"/>
+  <text x="480" y="328" text-anchor="middle" class="title">Level translator</text>
+  <text x="480" y="363" text-anchor="middle" class="signal purple">1.2 V ⇄ 1.8 V</text>
+  <text x="480" y="431" text-anchor="middle" class="signal purple">ARM · default open</text>
+  <path d="M270 350H342M610 350H682" class="wire" stroke="#785697" marker-end="url(#jtag-arrow-purple)"/>
+  <rect x="690" y="119" width="200" height="300" rx="14" fill="#fffefa" stroke="#d8cde3" stroke-width="1.5"/>
+  <text x="790" y="201" text-anchor="middle" class="title">3 selectors</text>
+  <text x="790" y="239" text-anchor="middle" class="signal purple">TMS · TDI · TCK</text>
+  <text x="790" y="277" text-anchor="middle" class="small">Choose one source</text>
+  <text x="790" y="314" text-anchor="middle" class="signal purple">PROBE by default</text>
+  <text x="790" y="387" text-anchor="middle" class="small">Move all 3 for XEM</text>
+  <path d="M890 271H972" class="wire" stroke="#785697" marker-end="url(#jtag-arrow-purple)"/>
+  <rect x="980" y="196" width="200" height="243" rx="14" class="box"/>
+  <text x="1080" y="238" text-anchor="middle" class="title">Custom FPGA</text>
+  <text x="1080" y="284" text-anchor="middle" class="signal purple">TMS · 2</text>
+  <text x="1080" y="318" text-anchor="middle" class="signal purple">TDI · 15</text>
+  <text x="1080" y="352" text-anchor="middle" class="signal purple">TCK · 17</text>
+  <text x="1080" y="405" text-anchor="middle" class="signal" fill="#347b99">TDO · 18</text>
+  <path d="M1080 439V529H20V245H160V219" class="wire" stroke="#347b99" marker-end="url(#jtag-arrow-blue)"/>
+  <path d="M480 529V465" class="wire" stroke="#347b99" marker-end="url(#jtag-arrow-blue)"/>
+  <circle cx="480" cy="529" r="4" fill="#347b99"/>
+  <path d="M350 409H278" class="wire" stroke="#347b99" marker-end="url(#jtag-arrow-blue)"/>
+  <text x="714" y="512" class="signal" fill="#347b99">TDO returns to both receivers</text>
+  <text x="43" y="277" class="small">Probe TDO input</text>
+  <text x="60" y="588" class="small">Interposer J201 · programming contacts 1 / 2 / 15 / 17 / 18</text>
+</svg>

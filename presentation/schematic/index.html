@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Browse and zoom native KiCad schematic sheets for the three-port XEM interposer and selected XC7A25T custom FPGA.">
+<meta name="description" content="Browse and zoom detailed native KiCad sheets for the current single-link interposer, preserved three-port studies and selected XC7A25T FPGA.">
 <title>KiCad schematic viewer | FPGA 4K</title>
-<link rel="icon" href="data:,"><link rel="stylesheet" href="viewer.css">
-<script type="module" src="viewer.js"></script>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="viewer.css?v=simple1">
+<script type="module" src="viewer.js?v=simple1"></script>
 </head>
 <body>
 <main>
-<header class="viewer-head"><div><p>NATIVE KICAD SCHEMATIC · 29 SEPTEMBER 2026</p><h1 id="title">Schematic sheets</h1></div><a id="back" href="../adapter/#schematic">Back to board ↗</a></header>
+<header class="viewer-head"><div><p>NATIVE KICAD SCHEMATIC · 29 SEPTEMBER 2026</p><h1 id="title">Schematic sheets</h1></div><nav class="view-links" aria-label="Schematic views"><a id="simple" href="simple.html" hidden>Simple overview ↗</a><a id="back" href="../adapter/#schematic">Back to board ↗</a></nav></header>
 <div class="toolbar">
 <div class="sheet-controls"><button id="previous" aria-label="Previous sheet">‹</button><label for="sheet">Sheet</label><select id="sheet" aria-label="Choose a schematic sheet"></select><button id="next" aria-label="Next sheet">›</button></div>
 <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><output id="zoom-value">100%</output><button id="zoom-in" aria-label="Zoom in">+</button><button id="fit">Fit sheet</button><a id="pdf" href="../adapter/" target="_blank" rel="noopener">Open PDF ↗</a></div>

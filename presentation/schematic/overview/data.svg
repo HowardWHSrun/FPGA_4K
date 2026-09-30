@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="data-title data-desc">
+  <title id="data-title">R12 single-link data connections</title>
+  <desc id="data-desc">Custom FPGA recording pairs 3/5 and 6/8 pass through interposer J201 to XEM GTY Bank 226. Commands return on 12/14. Contacts 9/11 are Reserved. Ground contacts are 4/7/10/13/16.</desc>
+  <!-- Functional overview from R12 native sheets 2 and 5; not a routing drawing. -->
+  <defs><marker id="data-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#347b99"/></marker><marker id="data-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#32816e"/></marker></defs>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#294252}.title{font-family:Palatino,Georgia,serif;font-size:30px}.small{font-size:18px;fill:#687883}.signal{font-size:22px;font-weight:500}.blue{fill:#347b99}.green{fill:#32816e}.box{fill:#f3f6f3;stroke:#cddbdc;stroke-width:1.5}.line{fill:none;stroke-width:3}</style>
+  <text x="165" y="79" text-anchor="middle" class="title">Custom FPGA</text>
+  <text x="580" y="79" text-anchor="middle" class="title">Interposer</text>
+  <text x="1015" y="79" text-anchor="middle" class="title">XEM8310</text>
+  <rect x="40" y="112" width="250" height="268" rx="14" class="box"/>
+  <rect x="410" y="112" width="340" height="268" rx="14" fill="#fffefa" stroke="#cddbdc" stroke-width="1.5"/>
+  <rect x="870" y="112" width="290" height="268" rx="14" class="box"/>
+  <text x="580" y="143" text-anchor="middle" class="small">J201 · cable contacts</text>
+  <text x="1015" y="143" text-anchor="middle" class="small">GTY · Bank 226</text>
+  <text x="165" y="201" text-anchor="middle" class="signal blue">Recording 0</text>
+  <text x="580" y="201" text-anchor="middle" class="signal blue">3 / 5 · TX0 + / −</text>
+  <text x="1015" y="201" text-anchor="middle" class="signal blue">RX0</text>
+  <path d="M290 194H402M750 194H862" class="line" stroke="#347b99" marker-end="url(#data-arrow-blue)"/>
+  <path d="M430 228H730M890 228H1140M60 228H270" stroke="#dce3df"/>
+  <text x="165" y="269" text-anchor="middle" class="signal blue">Recording 1</text>
+  <text x="580" y="269" text-anchor="middle" class="signal blue">6 / 8 · TX1 + / −</text>
+  <text x="1015" y="269" text-anchor="middle" class="signal blue">RX1</text>
+  <path d="M290 262H402M750 262H862" class="line" stroke="#347b99" marker-end="url(#data-arrow-blue)"/>
+  <path d="M430 296H730M890 296H1140M60 296H270" stroke="#dce3df"/>
+  <text x="165" y="337" text-anchor="middle" class="signal green">Commands</text>
+  <text x="580" y="337" text-anchor="middle" class="signal green">12 / 14 · RX1 + / −</text>
+  <text x="1015" y="337" text-anchor="middle" class="signal green">TX0</text>
+  <path d="M410 330H298M870 330H758" class="line" stroke="#32816e" marker-end="url(#data-arrow-green)"/>
+  <rect x="260" y="418" width="270" height="48" rx="24" fill="#f4efe5"/>
+  <text x="395" y="448" text-anchor="middle" font-size="19" fill="#8b683a">9 / 11 · Reserved</text>
+  <rect x="555" y="418" width="405" height="48" rx="24" fill="#eef1ef"/>
+  <text x="757" y="448" text-anchor="middle" font-size="19">Ground · 4 / 7 / 10 / 13 / 16</text>
+</svg>

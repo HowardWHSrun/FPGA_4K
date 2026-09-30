@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="power-title power-desc">
+  <title id="power-title">R12 external 12 V distribution</title>
+  <desc id="power-desc">Regulated external 12 V splits into a direct BRK and MC2 pass-through feed to XEM, and a separately enabled eFuse branch to cable contact 19 and the remote FPGA and ASIC regulators. ARM controls the eFuse enable and defaults open, leaving the branch off. This is schematic intent; ground routing and power qualification remain open.</desc>
+  <!-- R12 sheet 10 and MC2 power pass-through: ARM controls EN, not series load current. -->
+  <defs><marker id="power-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ad7736"/></marker><marker id="power-arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#785697"/></marker></defs>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#294252}.title{font:28px Palatino,Georgia,serif}.small{font-size:18px;fill:#687883}.signal{font-size:22px;font-weight:500}.box{fill:#f3f6f3;stroke:#cddbdc;stroke-width:1.5}.wire{fill:none;stroke-width:3;stroke-linejoin:round}.gold{fill:#ad7736}.purple{fill:#785697}</style>
+  <rect x="35" y="228" width="235" height="140" rx="14" fill="#f6f0e6" stroke="#dfd1bb" stroke-width="1.5"/>
+  <text x="152" y="269" text-anchor="middle" class="title">External source</text>
+  <text x="152" y="312" text-anchor="middle" class="signal gold">Regulated 12 V</text>
+  <path d="M270 298H325V154H382M325 298V391H382" class="wire" stroke="#ad7736" marker-end="url(#power-arrow-gold)"/>
+  <circle cx="325" cy="298" r="5" fill="#ad7736"/>
+  <rect x="390" y="87" width="250" height="140" rx="14" class="box"/>
+  <text x="515" y="130" text-anchor="middle" class="title">BRK + MC2</text>
+  <text x="515" y="172" text-anchor="middle" class="signal gold">12 V pass-through</text>
+  <text x="515" y="206" text-anchor="middle" class="small">Direct XEM feed</text>
+  <path d="M640 154H892" class="wire" stroke="#ad7736" marker-end="url(#power-arrow-gold)"/>
+  <rect x="900" y="87" width="265" height="140" rx="14" class="box"/>
+  <text x="1032" y="143" text-anchor="middle" class="title">XEM8310</text>
+  <text x="1032" y="185" text-anchor="middle" class="small">On-board regulators</text>
+  <rect x="390" y="309" width="250" height="165" rx="14" fill="#f6f0e6" stroke="#dfd1bb" stroke-width="1.5"/>
+  <text x="515" y="351" text-anchor="middle" class="title">eFuse branch</text>
+  <text x="515" y="393" text-anchor="middle" class="signal gold">Protected 12 V</text>
+  <text x="515" y="426" text-anchor="middle" class="small">Defaults off</text>
+  <text x="515" y="458" text-anchor="middle" class="small">EN</text>
+  <path d="M640 391H692M840 391H892" class="wire" stroke="#ad7736" marker-end="url(#power-arrow-gold)"/>
+  <rect x="700" y="340" width="140" height="104" rx="14" fill="#fffefa" stroke="#dfd1bb" stroke-width="1.5"/>
+  <text x="770" y="371" text-anchor="middle" class="small">Cable</text>
+  <text x="770" y="407" text-anchor="middle" class="signal gold">Pin 19</text>
+  <rect x="900" y="309" width="265" height="165" rx="14" class="box"/>
+  <text x="1032" y="351" text-anchor="middle" class="title">Remote regulators</text>
+  <text x="1032" y="387" text-anchor="middle" class="small">↓</text>
+  <text x="1032" y="422" text-anchor="middle" class="signal">FPGA + ASICs</text>
+  <text x="1032" y="455" text-anchor="middle" class="small">Entry under review</text>
+  <path d="M515 524V482" class="wire" stroke="#785697" stroke-dasharray="5 5" marker-end="url(#power-arrow-purple)"/>
+  <rect x="390" y="532" width="250" height="48" rx="24" fill="#f4eff7"/>
+  <text x="515" y="562" text-anchor="middle" font-size="18" class="purple">ARM · default open</text>
+  <text x="675" y="560" class="small">Enable control · separate from the power path</text>
+</svg>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A simple visual guide to data, programming and 12 V power in the R12 single-link XEM interposer schematic.">
+  <title>One 19-pin link · simple schematic | FPGA 4K</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="simple.css?v=r5-simple1">
+  <script src="simple.js?v=r5-simple1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#overview">Skip to diagram</a>
+  <main>
+    <header class="page-head">
+      <div><p class="eyebrow">R12 · CONNECTION OVERVIEW · 29 SEP 2026</p><h1>One 19-pin link.</h1></div>
+      <nav aria-label="Related views"><a href="../meetings/2026-09-30.html#cable-pins">Presentation ↗</a><a href="./?board=adapter-r12">Full KiCad ↗</a></nav>
+    </header>
+    <div class="tabs" role="tablist" aria-label="Connection views">
+      <button id="tab-data" role="tab" type="button" aria-selected="true" aria-controls="panel-data" tabindex="0" data-view="data">Data</button>
+      <button id="tab-programming" role="tab" type="button" aria-selected="false" aria-controls="panel-programming" tabindex="-1" data-view="programming">Programming</button>
+      <button id="tab-power" role="tab" type="button" aria-selected="false" aria-controls="panel-power" tabindex="-1" data-view="power">12 V power</button>
+    </div>
+    <div id="overview">
+      <section id="panel-data" class="view-panel" role="tabpanel" aria-labelledby="tab-data" tabindex="0">
+        <div class="view-head"><div><h2>Recording goes to XEM.</h2><p>Commands return to the custom FPGA.</p></div><div class="sheet-links"><a href="./?board=adapter-r12&amp;sheet=2">Pin sheet ↗</a><a href="../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/R12_Full_Schematic.pdf">PDF ↗</a></div></div>
+        <figure><div class="diagram-stage" tabindex="0" role="region" aria-label="Data connection diagram; scroll horizontally on a small screen"><img src="overview/data.svg" alt="Two recording differential pairs, contacts 3/5 and 6/8, go from the custom FPGA through interposer J201 to XEM GTY Bank 226. Commands on contacts 12/14 travel back. Contacts 9/11 are Reserved; contacts 4/7/10/13/16 are ground." width="1200" height="500"></div><figcaption>Arrows show signal direction. <span class="mobile-help">Scroll diagram ↔</span></figcaption></figure>
+      </section>
+      <section id="panel-programming" class="view-panel" role="tabpanel" aria-labelledby="tab-programming" tabindex="0" hidden>
+        <div class="view-head"><div><h2>Choose the programming source.</h2><p>Probe by default. XEM uses a level translator.</p></div><div class="sheet-links"><a href="./?board=adapter-r12&amp;sheet=9">JTAG sheet ↗</a><a href="../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/R12_Full_Schematic.pdf">PDF ↗</a></div></div>
+        <figure><div class="diagram-stage" tabindex="0" role="region" aria-label="Programming connection diagram; scroll horizontally on a small screen"><img src="overview/jtag.svg" alt="A recovery probe bypasses the translator. XEM 1.2 V fabric GPIO uses a 1.2 to 1.8 V translator. Three source selectors choose TMS contact 2, TDI 15 and TCK 17 to the target. TDO contact 18 returns to the probe input and, through the translator, the XEM receiver. Target VTREF contact 1 supplies the translator B-side bias and the probe reference. ARM defaults open; XEM bridge gateware is pending." width="1200" height="650"></div><figcaption>VTREF supplies translator bias; the host never drives that rail. XEM bridge gateware and ARM enable remain pending. <span class="mobile-help">Scroll diagram ↔</span></figcaption></figure>
+      </section>
+      <section id="panel-power" class="view-panel" role="tabpanel" aria-labelledby="tab-power" tabindex="0" hidden>
+        <div class="view-head"><div><h2>One source, two power paths.</h2><p>XEM feed and cable protection are separate.</p></div><div class="sheet-links"><a href="./?board=adapter-r12&amp;sheet=10">Power sheet ↗</a><a href="../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/R12_Full_Schematic.pdf">PDF ↗</a></div></div>
+        <figure><div class="diagram-stage" tabindex="0" role="region" aria-label="Power connection diagram; scroll horizontally on a small screen"><img src="overview/power.svg" alt="External regulated 12 V splits into a direct XEM feed through BRK and MC2 pass-through, and a separate eFuse cable branch. The branch goes through contact 19 to remote regulators supplying the FPGA and ASICs. ARM is an enable control and defaults open, so the eFuse branch defaults off. The remote regulator entry remains under review; ground routing is unfinished." width="1200" height="600"></div><figcaption>Return: GND 4 / 7 / 10 / 13 / 16. Power branch and remote regulators remain under review. <span class="mobile-help">Scroll diagram ↔</span></figcaption></figure>
+      </section>
+    </div>
+    <footer><strong>Schematic overview · routing in progress</strong><span>JTAG and ground routing remain open.</span></footer>
+  </main>
+</body>
+</html>

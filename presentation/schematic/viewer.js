@@ -1,6 +1,7 @@
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
 const board = ['fpga25t','adapter','adapter-r12'].includes(params.get('board')) ? params.get('board') : 'adapter-r12';
+$('simple').hidden = board !== 'adapter-r12';
 if (params.get('embed') === '1') document.body.classList.add('embed');
 const stage = $('stage'), paper = $('paper'), wrap = $('paper-wrap');
 let config, page = 0, zoom = 1, ratio = 420 / 297, pointer;

@@ -1,6 +1,6 @@
 # Project files and documents
 
-[Wednesday’s three slides](../presentation/meetings/2026-09-30.html) · [R12 single-link schematic](../presentation/schematic/?board=adapter-r12) · [current native 3D](../presentation/adapter/assembly.html?revision=r12) · [editable R12 package and audit](../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/README.md). Current focus is one 19-contact link. All 19 contacts are mapped in a 10-sheet schematic with ERC 0; the PCB is still in progress: 10/19 contacts reach all intended copper endpoints, with 9 open connections and 11 dangling warnings. R8/R9/R10 three-port studies remain preserved. No fabrication release.
+[Wednesday’s three slides](../presentation/meetings/2026-09-30.html) · [R12 simple connection overview](../presentation/schematic/simple.html) · [current native 3D](../presentation/adapter/assembly.html?revision=r12) · [editable R12 package and audit](../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/README.md). Current focus is one 19-contact link. All 19 contacts are mapped in a 10-sheet schematic with ERC 0; the PCB is still in progress: 10/19 contacts reach all intended copper endpoints, with 9 open connections and 11 dangling warnings. R8/R9/R10 three-port studies remain preserved. No fabrication release.
 
 ## Preserved three-port architecture · 29 September
 
@@ -132,3 +132,7 @@ The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. 
 [Dedicated presentation](../presentation/meetings/2026-09-30.html): exactly three slides. The first groups the 117 ASIC interface positions; the second lists all 19 custom micro-HDMI contacts with the 25T native 3D view and schematic link; the last shows the proposed three-FPGA + XEM + BRK assembly, with a short note that the current R12 one-link layout is in progress and a link to that native layout. Preparation only; meeting outcomes pending.
 
 [Wednesday visual library](../presentation/meetings/2026-09-30-visuals.html): 99 existing figures, 22 native schematic sheets, dated layout and adapter progress, pin maps and interactive model links.
+
+## Simple interposer schematic view · 29 September
+
+[Easy connection overview](../presentation/schematic/simple.html) separates recording/commands, programming and 12 V power into three selectable diagrams. It labels cable contacts and signal directions, and links each view to its native KiCad sheet. The three-slide Wednesday deck opens this overview from its schematic links; native circuit files and audits retain their separate engineering status.
