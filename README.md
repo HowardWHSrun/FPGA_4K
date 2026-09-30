@@ -108,6 +108,6 @@ AI agents should start with [AGENTS.md](AGENTS.md). Source credits, versions and
 
 ### Wednesday presentation - September 30, 2026
 
-[Open the dedicated meeting presentation](presentation/meetings/2026-09-30.html). Pin organization, selected 25T direction, three-port receiver and next design decisions, with presentation controls and links to the current schematics and 3D views. Preparation only; outcomes pending.
+[Open the dedicated meeting presentation](presentation/meetings/2026-09-30.html). Six visual slides focused on the 19-contact cable, why the contacts are needed and the three XEM MC3 banks. The three-FPGA / XEM / BRK assembly is the final slide. Includes clickable pin groups, presentation controls and links to native schematics and 3D views. Preparation only; outcomes pending.
 
 [Open the Wednesday visual library](presentation/meetings/2026-09-30-visuals.html): 99 existing figures, schematic sheets, pin diagrams and preserved board revisions.

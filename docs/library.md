@@ -129,6 +129,6 @@ The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. 
 
 ## Wednesday presentation - September 30, 2026
 
-[Dedicated presentation](../presentation/meetings/2026-09-30.html): the 117-signal ASIC interface, current 25T bank split, custom cable contacts, three-port XEM map and next decisions. Includes presentation mode, speaker cues and source evidence dated September 29. Preparation only; meeting outcomes pending.
+[Dedicated presentation](../presentation/meetings/2026-09-30.html): six visual slides on the 19-contact cable allocation, each group's purpose, the three XEM MC3 banks and next work. The final slide shows three custom FPGA boards with XEM, interposer and BRK. Includes clickable pin groups, presentation mode and source evidence dated September 29. Preparation only; meeting outcomes pending.
 
 [Wednesday visual library](../presentation/meetings/2026-09-30-visuals.html): 99 existing figures, 22 native schematic sheets, dated layout and adapter progress, pin maps and interactive model links.
