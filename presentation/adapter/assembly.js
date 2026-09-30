@@ -4,7 +4,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
-const revision = params.get('revision') === 'r8' ? 'r8' : 'r9';
+const revision = ['r8','r10'].includes(params.get('revision')) ? params.get('revision') : 'r9';
 if (params.get('embed') === '1') document.body.classList.add('embed');
 const canvas = $('scene'), stage = $('stage');
 const state = {focus:'all', view:'iso', revision, ready:false, officialModels:0, candidateBoard:false};
@@ -26,7 +26,9 @@ const mat={xem:new THREE.MeshStandardMaterial({color:0x345e6b,metalness:.08,roug
 const parts={};
 const descriptions={
   xem:['XEM8310 · existing','Artix UltraScale+ module. Its MC3 exposes the three proposed GTY banks; USB is the initial PC link.'],
-  adapter:revision==='r9'
+  adapter:revision==='r10'
+    ? ['R10 interposer · HDI feasibility','All 12 selected signal pairs traced using proposed laser microvias. 97 items remain open; power, JTAG, return planes and impedance are unfinished.']
+    : revision==='r9'
     ? ['R9 interposer · partial PCB','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and six GTY pairs. TX1 and control remain open on every cable.']
     : ['R8 interposer · earlier PCB study','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and one GTY pair. Most signal and power paths remain open.'],
   brk:['BRK8310 · existing','Breakout board below the proposed adapter. Its J6 PCIe lanes are unavailable while all three cable links use banks 224 and 225.'],
@@ -63,12 +65,34 @@ for(const name of Object.keys(loc)){
   fallback(name,group);scene.add(group);parts[name]=group;
 }
 const cableGroup=new THREE.Group();scene.add(cableGroup);
-const cableColors=[0x4f8e9e,0x8574b2,0xcc8a5a];
+// Cable jackets are illustrative. Their ends meet the exposed Type-D mouths
+// in the R8/R9/R10 placement; the intermediate bend is not a cable-fit model.
+// Matching X control points make every path depart and arrive along the
+// receptacle axis. Ordered Z values keep the three cables from crossing.
+const cableColors=[0x5b91a0,0x8a80a8,0xb89169];
+const fpgaPortZ=[-85,1,87];
+const adapterPortZ=[-26,-4,18];
+const cableTags=[];
 for(let i=0;i<3;i++){
-  const start=new THREE.Vector3(-127,2,(i-1)*86),end=new THREE.Vector3(-12,3,(i-1)*22);
-  const curve=new THREE.CatmullRomCurve3([start,new THREE.Vector3(-91,4,(i-1)*89),new THREE.Vector3(-42,1,(i-1)*30),end]);
-  const cable=new THREE.Mesh(new THREE.TubeGeometry(curve,48,1.25,7,false),new THREE.MeshStandardMaterial({color:cableColors[i],roughness:.85}));
+  const start=new THREE.Vector3(-129.5,3,fpgaPortZ[i]);
+  const end=new THREE.Vector3(-27.1,4.2,adapterPortZ[i]);
+  const curve=new THREE.CubicBezierCurve3(
+    start,
+    new THREE.Vector3(-99,7,fpgaPortZ[i]),
+    new THREE.Vector3(-55,7,adapterPortZ[i]),
+    end
+  );
+  const cable=new THREE.Mesh(
+    new THREE.TubeGeometry(curve,76,1.25,10,false),
+    new THREE.MeshStandardMaterial({color:cableColors[i],roughness:.74,metalness:.03})
+  );
+  cable.name=`Illustrative cable J20${i+1}`;
   cableGroup.add(cable);
+  const el=document.createElement('span');
+  el.className=`cable-label cable-${i+1}`;
+  el.textContent=`J20${i+1} · µHDMI`;
+  $('labels').append(el);
+  cableTags.push({el,point:curve.getPoint(.54)});
 }
 const labelData=[['fpga1','FPGA A · 226','fpga'],['fpga2','FPGA B · 225','fpga'],['fpga3','FPGA C · 224','fpga'],['adapter','INTERPOSER · CANDIDATE','adapter'],['xem','XEM8310 · OFFICIAL MODEL','xem'],['brk','BRK8310 · OFFICIAL MODEL','brk']];
 const labels=labelData.map(([name,title,kind])=>{const el=document.createElement('span');el.className=`label ${kind}`;el.textContent=title;$('labels').append(el);return{name,el};});
@@ -81,7 +105,9 @@ function setFocus(focus){state.focus=focus;const chosen=focus==='fpga'?['fpga1',
   const target=focus==='all'?new THREE.Vector3(-45,0,0):focus==='fpga'?new THREE.Vector3(-150,0,0):focus==='receiver'?new THREE.Vector3(18,0,0):parts[focus].position.clone();
   controls.target.copy(target);setView(state.view);
 }
-function setView(view){state.view=view;const target=controls.target.clone();const range=state.focus==='all'?350:state.focus==='fpga'?245:state.focus==='receiver'?250:state.focus==='brk'?235:165;
+function setView(view){state.view=view;const target=controls.target.clone();const baseRange=state.focus==='all'?375:state.focus==='fpga'?245:state.focus==='receiver'?250:state.focus==='brk'?235:165;
+  const aspect=Math.max(.55,stage.clientWidth/Math.max(stage.clientHeight,1));
+  const range=baseRange*(view==='top'?1.2:1)*(aspect<1.2?1.45/aspect:1);
   const dir=view==='top'?new THREE.Vector3(.001,1,.001):view==='side'?new THREE.Vector3(-1,.13,.05):new THREE.Vector3(-.8,.6,1);
   camera.up.set(0,1,0);camera.position.copy(target).addScaledVector(dir.normalize(),range);controls.update();
   document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
@@ -124,13 +150,13 @@ async function loadAssets(){
   try{
     const response=await fetch('assets/models.json');if(!response.ok)throw new Error('model manifest unavailable');const cfg=await response.json();
     const results=await Promise.all([
-      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',revision==='r8'?cfg.adapter_r8:cfg.adapter),
+      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',revision==='r10'?cfg.adapter_r10:revision==='r8'?cfg.adapter_r8:cfg.adapter),
       ...['fpga1','fpga2','fpga3'].map(name=>loadModel(name,cfg.fpga))
     ]);
     state.ready=true;
     const native25T=results.slice(3).every(Boolean);
     $('loading').hidden=true;
-    const routeStatus=revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
+    const routeStatus=revision==='r10'?'R10 HDI feasibility loaded: all 12 selected pairs traced; 97 open items; proposed laser microvias, return planes and impedance unqualified':revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
     $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'} · ${native25T?'native unrouted 25T placement repeated three times':'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
     document.querySelectorAll('.label.xem,.label.brk').forEach(el=>{if(state.officialModels<2)el.textContent=el.textContent.replace('OFFICIAL MODEL','ILLUSTRATIVE SHELL');});
     if(state.candidateBoard)document.querySelector('.label.adapter').textContent=`INTERPOSER · ${revision.toUpperCase()} PCB STUDY`;
@@ -139,6 +165,6 @@ async function loadAssets(){
 }
 function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}}
 new ResizeObserver(resize).observe(stage);
-function animate(){requestAnimationFrame(animate);controls.update();if(document.hidden)return;for(const {name,el} of labels){const pos=parts[name].position.clone();pos.y+=name==='brk'?13:name==='xem'?12:name==='adapter'?9:22;const p=pos.project(camera);el.hidden=!parts[name].visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-p.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
+function animate(){requestAnimationFrame(animate);controls.update();if(document.hidden)return;for(const {name,el} of labels){const pos=parts[name].position.clone();pos.y+=name==='brk'?13:name==='xem'?12:name==='adapter'?9:22;const p=pos.project(camera);el.hidden=!parts[name].visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-p.y*.5+.5)*stage.clientHeight}px`;}for(const {el,point} of cableTags){const p=point.clone().project(camera);el.hidden=!cableGroup.visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-p.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
 window.RECEIVER_3D={getState:()=>({...state,position:camera.position.toArray()}),setFocus,setView};
 setFocus(['all','fpga','receiver','xem','adapter','brk'].includes(params.get('focus'))?params.get('focus'):'all');resize();animate();loadAssets();

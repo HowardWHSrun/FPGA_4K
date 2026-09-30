@@ -1,0 +1,2500 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-29T19:10:37",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [
+        {
+            "description": "Missing footprint B1 (REQUIRED / circuit and rating TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J10",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 100.15361
+                    },
+                    "uuid": "fcad9d37-64c1-4219-9e7a-5e688ed9fa09"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J11",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 100.15361
+                    },
+                    "uuid": "27c83767-cd5d-4d7d-805d-87f3f21bf8f4"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing footprint J21 (PORT 1 / LOCAL PROBE TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J201",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 78.0
+                    },
+                    "uuid": "e562cf9f-df92-45f2-8298-2c18025a9f92"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing footprint B2 (REQUIRED / circuit and rating TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing footprint J22 (PORT 2 / LOCAL PROBE TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J202",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 100.0
+                    },
+                    "uuid": "6f64df83-19b8-471d-acc3-1e4a13b8c82b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing footprint B3 (REQUIRED / circuit and rating TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing footprint J23 (PORT 3 / LOCAL PROBE TBD)",
+            "items": [],
+            "severity": "warning",
+            "type": "missing_footprint"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J203",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 122.0
+                    },
+                    "uuid": "e464f844-38e2-4e82-9380-5c9e07a5d83f"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J12",
+                    "pos": {
+                        "x": 174.3261,
+                        "y": 71.15359
+                    },
+                    "uuid": "80a9b8be-fb5d-4f34-a312-c72c88c2fd1f"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J13",
+                    "pos": {
+                        "x": 174.3261,
+                        "y": 71.15359
+                    },
+                    "uuid": "8145d0f8-161c-4ead-baa6-966035e61ed7"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J14",
+                    "pos": {
+                        "x": 174.3261,
+                        "y": 129.15359
+                    },
+                    "uuid": "5698ff4f-2117-43fd-94c8-2cc0375ff275"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'Status' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J15",
+                    "pos": {
+                        "x": 174.3261,
+                        "y": 129.15359
+                    },
+                    "uuid": "696a0c41-f2f6-43c5-9121-0fbf4a6806ee"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H3",
+                    "pos": {
+                        "x": 147.8261,
+                        "y": 131.1536
+                    },
+                    "uuid": "27ba175c-cc07-45e2-95b5-3e0e33ef6341"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H4",
+                    "pos": {
+                        "x": 223.3261,
+                        "y": 131.1536
+                    },
+                    "uuid": "28a133ca-cfc7-4a15-8ed6-462d09c30e6e"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H1",
+                    "pos": {
+                        "x": 147.8261,
+                        "y": 69.1536
+                    },
+                    "uuid": "69f4e814-1d97-42a3-a0ca-dd6858c0c019"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H2",
+                    "pos": {
+                        "x": 223.3261,
+                        "y": 69.1536
+                    },
+                    "uuid": "a6530091-724f-457f-9bbf-bbdacd3284f5"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        }
+    ],
+    "source": "BRK8310_Three_Port_Interposer_R10_Full_Pair_Feasibility.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 16 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 76.8
+                    },
+                    "uuid": "b2ffc7c6-b71b-45a7-aff0-3c1ece73e12c"
+                },
+                {
+                    "description": "Pad 10 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 78.0
+                    },
+                    "uuid": "5656ede0-370f-4fbe-83c5-74fbd5aa5ea1"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 16 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 76.8
+                    },
+                    "uuid": "b2ffc7c6-b71b-45a7-aff0-3c1ece73e12c"
+                },
+                {
+                    "description": "Pad 13 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 77.4
+                    },
+                    "uuid": "b94dba92-5ccf-44f9-8e02-856ffa43f73e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 10 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 78.0
+                    },
+                    "uuid": "5656ede0-370f-4fbe-83c5-74fbd5aa5ea1"
+                },
+                {
+                    "description": "Pad 4 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 79.2
+                    },
+                    "uuid": "3a3d1dd3-954c-4227-ac1f-be33eadfcd12"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 16 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 98.8
+                    },
+                    "uuid": "792aba9b-34f8-4cbc-b905-28f885930ba4"
+                },
+                {
+                    "description": "Pad 10 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 100.0
+                    },
+                    "uuid": "9bb215bd-a4db-4e03-abcd-2cb417858898"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 10 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 100.0
+                    },
+                    "uuid": "9bb215bd-a4db-4e03-abcd-2cb417858898"
+                },
+                {
+                    "description": "Pad 4 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 101.2
+                    },
+                    "uuid": "de2dbc01-2e65-430a-a5b1-fed5abcbc535"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 16 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 120.8
+                    },
+                    "uuid": "863d01d3-11ba-4ee6-999d-6f2124491586"
+                },
+                {
+                    "description": "Pad 10 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 122.0
+                    },
+                    "uuid": "da5c1fa0-ab97-49b4-a3bd-cbc803097e7e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 10 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 122.0
+                    },
+                    "uuid": "da5c1fa0-ab97-49b4-a3bd-cbc803097e7e"
+                },
+                {
+                    "description": "Pad 4 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 123.2
+                    },
+                    "uuid": "e85cae36-6337-4c33-b7e0-1a0d033cf87b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 7 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 78.6
+                    },
+                    "uuid": "24fbefb6-89c3-4d4f-a6e7-f377818b5d8c"
+                },
+                {
+                    "description": "Pad 13 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 77.4
+                    },
+                    "uuid": "b94dba92-5ccf-44f9-8e02-856ffa43f73e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 7 [SYS_GND] of J201 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 78.6
+                    },
+                    "uuid": "24fbefb6-89c3-4d4f-a6e7-f377818b5d8c"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 81.71361
+                    },
+                    "uuid": "583a417c-86cd-42d1-96a6-8821792c99ea"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 13 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 99.4
+                    },
+                    "uuid": "155e985c-fd07-4e17-8fbf-be4b489fece0"
+                },
+                {
+                    "description": "Pad 16 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 98.8
+                    },
+                    "uuid": "792aba9b-34f8-4cbc-b905-28f885930ba4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 13 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 99.4
+                    },
+                    "uuid": "155e985c-fd07-4e17-8fbf-be4b489fece0"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 98.59361
+                    },
+                    "uuid": "1118bfda-c184-4b24-8703-a284d8725d0c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 7 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 100.6
+                    },
+                    "uuid": "07836de7-4506-407f-952a-feddcb3e21fb"
+                },
+                {
+                    "description": "Pad 13 [SYS_GND] of J202 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 99.4
+                    },
+                    "uuid": "155e985c-fd07-4e17-8fbf-be4b489fece0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 13 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 121.4
+                    },
+                    "uuid": "50bce90f-24aa-447f-bd19-4831917c8e30"
+                },
+                {
+                    "description": "Pad 16 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 130.55,
+                        "y": 120.8
+                    },
+                    "uuid": "863d01d3-11ba-4ee6-999d-6f2124491586"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 13 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 121.4
+                    },
+                    "uuid": "50bce90f-24aa-447f-bd19-4831917c8e30"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 118.59361
+                    },
+                    "uuid": "e41d7ec7-783d-4748-952d-617d108c7278"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 7 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 122.6
+                    },
+                    "uuid": "32d02b45-ba50-4e47-b026-cb7c1ac95f53"
+                },
+                {
+                    "description": "Pad 13 [SYS_GND] of J203 on F.Cu",
+                    "pos": {
+                        "x": 131.775,
+                        "y": 121.4
+                    },
+                    "uuid": "50bce90f-24aa-447f-bd19-4831917c8e30"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 81.71361
+                    },
+                    "uuid": "89842dee-105a-469e-bc10-701c0cfc7791"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 81.71361
+                    },
+                    "uuid": "583a417c-86cd-42d1-96a6-8821792c99ea"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 81.71361
+                    },
+                    "uuid": "583a417c-86cd-42d1-96a6-8821792c99ea"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 86.97361
+                    },
+                    "uuid": "d0804e1f-fc73-40e9-a528-415533505ea3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 86.97361
+                    },
+                    "uuid": "a78c3ec6-fe99-4377-b2c2-7a99788eb91c"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 86.97361
+                    },
+                    "uuid": "d0804e1f-fc73-40e9-a528-415533505ea3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 93.32361
+                    },
+                    "uuid": "9849d498-ce3a-484f-b60a-1ef4513f6221"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 93.32361
+                    },
+                    "uuid": "e55b97a8-852e-488d-99b6-8a055d08f4c1"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 93.32361
+                    },
+                    "uuid": "e55b97a8-852e-488d-99b6-8a055d08f4c1"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 98.59361
+                    },
+                    "uuid": "1118bfda-c184-4b24-8703-a284d8725d0c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 93.32361
+                    },
+                    "uuid": "e55b97a8-852e-488d-99b6-8a055d08f4c1"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 86.97361
+                    },
+                    "uuid": "d0804e1f-fc73-40e9-a528-415533505ea3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 98.59361
+                    },
+                    "uuid": "0f30021d-a89e-4312-8ee4-33dcd6d9f1ff"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 98.59361
+                    },
+                    "uuid": "1118bfda-c184-4b24-8703-a284d8725d0c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 101.71361
+                    },
+                    "uuid": "67865d30-3e3c-4cbb-af25-22583d92f1c3"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 101.71361
+                    },
+                    "uuid": "bb9d82c4-1c0c-4175-905f-7029d4f6085f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 101.71361
+                    },
+                    "uuid": "bb9d82c4-1c0c-4175-905f-7029d4f6085f"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 98.59361
+                    },
+                    "uuid": "1118bfda-c184-4b24-8703-a284d8725d0c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 101.71361
+                    },
+                    "uuid": "bb9d82c4-1c0c-4175-905f-7029d4f6085f"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 106.97361
+                    },
+                    "uuid": "8f85f93e-5328-4817-be01-af23adab65c6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 106.97361
+                    },
+                    "uuid": "a0464937-23d3-46f8-a59f-6c24652cca9c"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 106.97361
+                    },
+                    "uuid": "8f85f93e-5328-4817-be01-af23adab65c6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 106.97361
+                    },
+                    "uuid": "8f85f93e-5328-4817-be01-af23adab65c6"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 113.32361
+                    },
+                    "uuid": "c80ab56a-381f-4c13-9b9d-4e6523dff92f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 113.32361
+                    },
+                    "uuid": "e76e2b5d-9c30-4f73-8023-bafd73e3d4d2"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 113.32361
+                    },
+                    "uuid": "c80ab56a-381f-4c13-9b9d-4e6523dff92f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 113.32361
+                    },
+                    "uuid": "c80ab56a-381f-4c13-9b9d-4e6523dff92f"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 118.59361
+                    },
+                    "uuid": "e41d7ec7-783d-4748-952d-617d108c7278"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 0 [SYS_GND] of J10 on F.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 118.59361
+                    },
+                    "uuid": "4fea4e5d-939f-4284-8555-f8ea5d2749b7"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 118.59361
+                    },
+                    "uuid": "e41d7ec7-783d-4748-952d-617d108c7278"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Via [SYS_GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 187.5261,
+                        "y": 69.35359
+                    },
+                    "uuid": "4daa3ddc-b998-4188-9109-14955a0ead52"
+                },
+                {
+                    "description": "Via [SYS_GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 187.5261,
+                        "y": 72.95359
+                    },
+                    "uuid": "533761c4-598f-4441-be76-8de444d0d492"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [SYS_GND] on F.Cu, length 1.2850 mm",
+                    "pos": {
+                        "x": 187.5261,
+                        "y": 74.23859
+                    },
+                    "uuid": "c55d5e88-e8ac-4ec1-8ffe-f7faea6a430e"
+                },
+                {
+                    "description": "Track [SYS_GND] on F.Cu, length 1.2850 mm",
+                    "pos": {
+                        "x": 188.3261,
+                        "y": 74.23859
+                    },
+                    "uuid": "a0be9d9d-4a46-4812-861b-4cd0254d50b3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [SYS_GND] on B.Cu, length 2.2000 mm",
+                    "pos": {
+                        "x": 187.5261,
+                        "y": 75.15359
+                    },
+                    "uuid": "1fd16628-b932-4a1d-9ab9-19b5b102b111"
+                },
+                {
+                    "description": "Pad 0 [SYS_GND] of J11 on B.Cu",
+                    "pos": {
+                        "x": 149.8261,
+                        "y": 81.71361
+                    },
+                    "uuid": "583a417c-86cd-42d1-96a6-8821792c99ea"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [SYS_GND] on B.Cu, length 2.2000 mm",
+                    "pos": {
+                        "x": 188.3261,
+                        "y": 67.15359
+                    },
+                    "uuid": "5d2106c0-6f22-4bf5-9cb3-2cf63d7a29e0"
+                },
+                {
+                    "description": "Track [SYS_GND] on B.Cu, length 2.2000 mm",
+                    "pos": {
+                        "x": 187.5261,
+                        "y": 67.15359
+                    },
+                    "uuid": "65426f74-8259-4ce1-8223-00f9371f2942"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 96.9
+                    },
+                    "uuid": "7275249e-4a58-4c53-9365-1382c503ea8c"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 103.1
+                    },
+                    "uuid": "9a6b1af6-5851-40ca-b64a-6552942216c1"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 103.1
+                    },
+                    "uuid": "9a6b1af6-5851-40ca-b64a-6552942216c1"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 103.1
+                    },
+                    "uuid": "55ccfc20-8375-4b82-aea9-4c56c27bea80"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 96.9
+                    },
+                    "uuid": "f77459bb-3c7a-466b-934d-2e0e07c35abb"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J202B-SHIELD_BOND_TBD-PadSH)] of J202",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 96.9
+                    },
+                    "uuid": "7275249e-4a58-4c53-9365-1382c503ea8c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.1261,
+                        "y": 69.35359
+                    },
+                    "uuid": "66376d12-e01d-4921-8273-f051777a6c4d"
+                },
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.9261,
+                        "y": 69.35359
+                    },
+                    "uuid": "1fa8591a-7873-44f1-b546-1a21c64b4641"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.9261,
+                        "y": 72.95359
+                    },
+                    "uuid": "7c792fa9-d552-4289-a8ac-aa2eda092cd9"
+                },
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.1261,
+                        "y": 72.95359
+                    },
+                    "uuid": "8963c062-5b39-4caf-aa48-e6353339b1ca"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.9261,
+                        "y": 72.95359
+                    },
+                    "uuid": "7c792fa9-d552-4289-a8ac-aa2eda092cd9"
+                },
+                {
+                    "description": "Via [VDCIN_EXTERNAL_12V_CANDIDATE] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 189.9261,
+                        "y": 69.35359
+                    },
+                    "uuid": "1fa8591a-7873-44f1-b546-1a21c64b4641"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 118.9
+                    },
+                    "uuid": "442f75fc-8c73-454e-a9b2-93d086f40a2d"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 125.1
+                    },
+                    "uuid": "ed0643b0-c977-4a37-b817-fc413ddf52e6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 125.1
+                    },
+                    "uuid": "ed0643b0-c977-4a37-b817-fc413ddf52e6"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 125.1
+                    },
+                    "uuid": "ab0c8afc-aaf4-4c83-b7e6-e718cb1354bf"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 118.9
+                    },
+                    "uuid": "9213739b-31e9-4ac2-ab22-c8d5797daf8d"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J203B-SHIELD_BOND_TBD-PadSH)] of J203",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 118.9
+                    },
+                    "uuid": "442f75fc-8c73-454e-a9b2-93d086f40a2d"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 74.9
+                    },
+                    "uuid": "db5a35d2-c052-413d-87d3-9ad2b0358554"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 81.1
+                    },
+                    "uuid": "c8a15fda-47f7-4ff9-9313-778ca2f942ee"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 81.1
+                    },
+                    "uuid": "c8a15fda-47f7-4ff9-9313-778ca2f942ee"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 81.1
+                    },
+                    "uuid": "a645772a-431b-417b-b225-2ecc51868ac5"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 130.36,
+                        "y": 74.9
+                    },
+                    "uuid": "b429ed41-6d84-4c37-bc64-7e5f3254d9de"
+                },
+                {
+                    "description": "PTH pad SH [unconnected-(J201B-SHIELD_BOND_TBD-PadSH)] of J201",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 74.9
+                    },
+                    "uuid": "db5a35d2-c052-413d-87d3-9ad2b0358554"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 6 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_06] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 115.90361
+                    },
+                    "uuid": "f0166b21-5734-4059-ba21-f6274355015d"
+                },
+                {
+                    "description": "Pad 6 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_06] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 115.90361
+                    },
+                    "uuid": "8f3cd799-a463-41e2-8207-87dbfba71f77"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 8 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_08] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 115.40361
+                    },
+                    "uuid": "e124ab6a-6aac-4960-adc9-31daa397401b"
+                },
+                {
+                    "description": "Pad 8 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_08] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 115.40361
+                    },
+                    "uuid": "c3006b7a-3a3b-4b59-82d9-28dec43bb57a"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 10 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_10] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 114.40361
+                    },
+                    "uuid": "72eb1859-f891-44d5-a313-2a6d60c96a8f"
+                },
+                {
+                    "description": "Pad 10 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_10] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 114.40361
+                    },
+                    "uuid": "29350337-2d0d-4255-b2b4-18c98fb36c08"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 12 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_12] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 113.90361
+                    },
+                    "uuid": "f71e2ebd-9b62-4e2a-8b07-e64ec7545775"
+                },
+                {
+                    "description": "Pad 12 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_12] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 113.90361
+                    },
+                    "uuid": "e982ec7f-05f4-4c44-a9c8-8c882fe7a382"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 13 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_13] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 112.90361
+                    },
+                    "uuid": "96b0dc32-77ef-4f69-80c9-f6ce66e8e377"
+                },
+                {
+                    "description": "Pad 13 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_13] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 112.90361
+                    },
+                    "uuid": "fd7f03c9-bdf1-4832-ab27-3d7852744a43"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 14 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_14] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 112.90361
+                    },
+                    "uuid": "40c5065b-9c22-4b2f-97eb-24ed379eeed0"
+                },
+                {
+                    "description": "Pad 14 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_14] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 112.90361
+                    },
+                    "uuid": "91429b2a-30ad-488a-a9c3-39d02660bc9b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 15 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_15] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 112.40361
+                    },
+                    "uuid": "f67de113-209c-4bc1-a775-a6b4e5ab8c3b"
+                },
+                {
+                    "description": "Pad 15 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_15] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 112.40361
+                    },
+                    "uuid": "d7e3465e-f9d5-4974-b226-d0c710feeb65"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 16 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_16] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 112.40361
+                    },
+                    "uuid": "36fcce4b-cfff-4824-8f77-b7c5eef243a3"
+                },
+                {
+                    "description": "Pad 16 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_16] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 112.40361
+                    },
+                    "uuid": "f18b7eae-40f5-49f4-8e80-a63ea8ed3476"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 17 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_17] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 111.40361
+                    },
+                    "uuid": "5f1229ef-6c59-4ce6-b341-782269469202"
+                },
+                {
+                    "description": "Pad 17 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_17] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 111.40361
+                    },
+                    "uuid": "e8138592-d081-4d2e-bef7-0107c47b1fa2"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 18 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_18] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 111.40361
+                    },
+                    "uuid": "17854da9-7f25-4c17-9390-d1c673bdbac8"
+                },
+                {
+                    "description": "Pad 18 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_18] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 111.40361
+                    },
+                    "uuid": "eba3958e-2511-4c74-b3d1-c442be5d286b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 19 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_19] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 110.90361
+                    },
+                    "uuid": "534c2cfc-2d71-4473-a8f4-28698c6796f0"
+                },
+                {
+                    "description": "Pad 19 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_19] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 110.90361
+                    },
+                    "uuid": "e65d3c0e-8c40-4468-954d-b40810b0c588"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 20 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_20] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 110.90361
+                    },
+                    "uuid": "07b169a0-3cdd-4aa2-87d6-d3ef734d31c7"
+                },
+                {
+                    "description": "Pad 20 [/04 / PORT 3 - MC3 BANK 224 - TYPE-D J203/PT_MC3_20] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 110.90361
+                    },
+                    "uuid": "f9c03c5a-978e-4aed-bf6a-911b23594714"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 26 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_26] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 108.40361
+                    },
+                    "uuid": "e8e692d2-f26a-48b6-8c51-ef7b265e6329"
+                },
+                {
+                    "description": "Pad 26 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_26] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 108.40361
+                    },
+                    "uuid": "748a1f79-81f5-43d6-af19-7e5adef090ed"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 28 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_28] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 107.90361
+                    },
+                    "uuid": "b40cade1-bbfb-4725-9db8-c5cc05b458dc"
+                },
+                {
+                    "description": "Pad 28 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_28] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 107.90361
+                    },
+                    "uuid": "d236ab2a-5425-4867-9127-0e1690bb411e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 30 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_30] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 106.90361
+                    },
+                    "uuid": "bc6f1779-2308-425c-aa34-ad1bfd89a33d"
+                },
+                {
+                    "description": "Pad 30 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_30] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 106.90361
+                    },
+                    "uuid": "3677fa72-d262-4270-9560-9403f0d5856d"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 32 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_32] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 106.40361
+                    },
+                    "uuid": "261d43db-2072-4061-b53c-899e9cb51d50"
+                },
+                {
+                    "description": "Pad 32 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_32] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 106.40361
+                    },
+                    "uuid": "71bffcae-220c-4eb4-9c79-6205a75c6054"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 33 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_33] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 105.40361
+                    },
+                    "uuid": "c77bbdf9-4df4-44ca-8782-a637cd63c0d8"
+                },
+                {
+                    "description": "Pad 33 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_33] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 105.40361
+                    },
+                    "uuid": "39713836-81cf-4879-be88-6434167bb85b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 34 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_34] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 105.40361
+                    },
+                    "uuid": "3ec9e052-0f29-4c91-8771-b54b29613e95"
+                },
+                {
+                    "description": "Pad 34 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_34] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 105.40361
+                    },
+                    "uuid": "9b70e282-172e-4a05-b66f-b1483079b7b1"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 35 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_35] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 104.90361
+                    },
+                    "uuid": "8a6cce55-3f0e-4276-903a-b578deaa02e8"
+                },
+                {
+                    "description": "Pad 35 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_35] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 104.90361
+                    },
+                    "uuid": "614eea4d-8c47-4ad6-b731-357bf9a4aed6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 36 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_36] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 104.90361
+                    },
+                    "uuid": "90af5a27-02c6-41a6-a91e-ad3a75a692ed"
+                },
+                {
+                    "description": "Pad 36 [/03 / PORT 2 - MC3 BANK 225 - TYPE-D J202/PT_MC3_36] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 104.90361
+                    },
+                    "uuid": "64212562-4e27-4971-8e10-e3d12d481d37"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 37 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_37] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 103.90361
+                    },
+                    "uuid": "9561a08c-bf97-44c9-a63b-3e231d961585"
+                },
+                {
+                    "description": "Pad 37 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_37] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 103.90361
+                    },
+                    "uuid": "51807a03-6191-4a7f-9301-d9c5b9a53369"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 38 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_38] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 103.90361
+                    },
+                    "uuid": "d2bdf277-5d71-4cf9-88fd-89d1090f5a34"
+                },
+                {
+                    "description": "Pad 38 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_38] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 103.90361
+                    },
+                    "uuid": "0a603ba4-52a3-44a3-a479-520605fee0e7"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 39 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_39] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 103.40361
+                    },
+                    "uuid": "83f4a82a-0082-45fe-9b23-41984fd5592c"
+                },
+                {
+                    "description": "Pad 39 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_39] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 103.40361
+                    },
+                    "uuid": "a7fcc23c-cba8-4840-8a9e-a962ace8afec"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 40 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_40] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 103.40361
+                    },
+                    "uuid": "4ae49e7c-6289-4085-b407-2ce441f8658b"
+                },
+                {
+                    "description": "Pad 40 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_40] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 103.40361
+                    },
+                    "uuid": "a9a2fa88-ff0f-4131-b6c0-f32e60e8b3f6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 46 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_46] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 95.90361
+                    },
+                    "uuid": "a2bf4c73-5aa2-4ecb-97a2-900be3611ad3"
+                },
+                {
+                    "description": "Pad 46 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_46] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 95.90361
+                    },
+                    "uuid": "4f1b8df0-1e85-49c4-abbe-29e1ef71c89b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 48 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_48] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 95.40361
+                    },
+                    "uuid": "8eefc038-533f-41fb-a0f7-f7340d3445f9"
+                },
+                {
+                    "description": "Pad 48 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_48] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 95.40361
+                    },
+                    "uuid": "d99483b0-14ce-46f0-aa36-50e97d724dc4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 50 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_50] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 94.40361
+                    },
+                    "uuid": "16aa1379-58a8-48aa-a042-c6306d922a7a"
+                },
+                {
+                    "description": "Pad 50 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_50] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 94.40361
+                    },
+                    "uuid": "03f7e5f4-affd-4e01-a2b5-d6c4b8159106"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 52 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_52] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 93.90361
+                    },
+                    "uuid": "7d271be8-0d12-420f-84cb-9548e3e016f5"
+                },
+                {
+                    "description": "Pad 52 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_52] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 93.90361
+                    },
+                    "uuid": "c4422331-43ac-4845-ae8f-3d844d1ad551"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 53 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_53] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 92.90361
+                    },
+                    "uuid": "722f312c-d48b-4e2c-9ece-aff8c3ef76d8"
+                },
+                {
+                    "description": "Pad 53 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_53] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 92.90361
+                    },
+                    "uuid": "004172a9-7d2c-4c03-8a0e-7b5bc413ac78"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 54 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_54] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 92.90361
+                    },
+                    "uuid": "c01cf9e2-fecf-44d3-94b4-0e263ef74a7f"
+                },
+                {
+                    "description": "Pad 54 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_54] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 92.90361
+                    },
+                    "uuid": "5a4babcc-69b6-4d08-8f05-8b03e321f4de"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 55 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_55] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 92.40361
+                    },
+                    "uuid": "e4c1a03a-3451-4cd3-8679-266a0e0f25c6"
+                },
+                {
+                    "description": "Pad 55 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_55] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 92.40361
+                    },
+                    "uuid": "cc8c5292-4d37-41d4-81df-4d2608f514d0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 56 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_56] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 92.40361
+                    },
+                    "uuid": "d35f95c6-52b5-4878-ba22-9ddb0bd1b1be"
+                },
+                {
+                    "description": "Pad 56 [/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_56] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 92.40361
+                    },
+                    "uuid": "bf7f682f-23df-4094-ad9c-44327e39b571"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 58 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_58] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 91.40361
+                    },
+                    "uuid": "b7e877f3-2897-4db5-8cb4-03387e0353ae"
+                },
+                {
+                    "description": "Pad 58 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_58] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 91.40361
+                    },
+                    "uuid": "e44fb51c-01a8-4c97-a332-4826da6ef346"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 60 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_60] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 90.90361
+                    },
+                    "uuid": "96775ab1-9af1-4d29-a12d-0047d49eb1bc"
+                },
+                {
+                    "description": "Pad 60 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_60] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 90.90361
+                    },
+                    "uuid": "1169bede-1730-409b-a680-b0b87d2b9c82"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 62 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_62] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 89.90361
+                    },
+                    "uuid": "48ba9ae3-5047-4303-9b2b-4427968a8d90"
+                },
+                {
+                    "description": "Pad 62 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_62] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 89.90361
+                    },
+                    "uuid": "ee3e726a-2b21-40f3-9649-fdefbab954c6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 64 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_64] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 89.40361
+                    },
+                    "uuid": "37bccd89-cc79-4867-8fa0-5aa0c7add9dd"
+                },
+                {
+                    "description": "Pad 64 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_64] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 89.40361
+                    },
+                    "uuid": "903a443b-b816-49f6-a812-a358f148c11e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 66 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_66] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 88.40361
+                    },
+                    "uuid": "52ab8a1b-a089-4676-8a79-4fa40e30f2a0"
+                },
+                {
+                    "description": "Pad 66 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_66] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 88.40361
+                    },
+                    "uuid": "d37c055c-5770-461e-b9ad-61c8f3f0ed4e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 67 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_67] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 87.90361
+                    },
+                    "uuid": "61581871-9faa-4b39-9bbe-c2ba4d8dd0c7"
+                },
+                {
+                    "description": "Pad 67 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_67] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 87.90361
+                    },
+                    "uuid": "bc84a7f1-1be7-4e0b-8450-5298c56fde46"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 68 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_68] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 87.90361
+                    },
+                    "uuid": "c64dc0ba-ec66-48e0-a9dc-8f7f11e97d84"
+                },
+                {
+                    "description": "Pad 68 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_68] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 87.90361
+                    },
+                    "uuid": "1332d08a-8186-4740-bbd5-333e983ce435"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 69 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_69] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 86.90361
+                    },
+                    "uuid": "7b1d321a-125b-446d-bed1-c6ecc585c870"
+                },
+                {
+                    "description": "Pad 69 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_69] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 86.90361
+                    },
+                    "uuid": "227e37ef-820d-4cda-8316-2f629d7c45f6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 70 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_70] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 86.90361
+                    },
+                    "uuid": "94202e5d-81c4-4c99-b0ea-edb3480fbc7a"
+                },
+                {
+                    "description": "Pad 70 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_70] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 86.90361
+                    },
+                    "uuid": "9868561e-e37e-4054-bf0e-b67d743030c8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 71 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_71] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 86.40361
+                    },
+                    "uuid": "5032ae45-3a9f-4da4-9af6-0972107bc2fe"
+                },
+                {
+                    "description": "Pad 71 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_71] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 86.40361
+                    },
+                    "uuid": "b1b428c9-1677-446c-811d-13b53d7f31c0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 72 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_72] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 86.40361
+                    },
+                    "uuid": "1b704bcf-7b44-4143-b909-3c6d0d443eaf"
+                },
+                {
+                    "description": "Pad 72 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_72] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 86.40361
+                    },
+                    "uuid": "c58f8802-e9eb-4f2e-8cdc-6b107231bec3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 73 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_73] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 85.40361
+                    },
+                    "uuid": "a7528748-cdef-4a07-ba17-dcbc98a84520"
+                },
+                {
+                    "description": "Pad 73 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_73] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 85.40361
+                    },
+                    "uuid": "a5cad00d-ca48-4dc3-a04a-00fb2925ec96"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 74 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_74] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 85.40361
+                    },
+                    "uuid": "a1e52da7-79d8-475d-9d6c-ac523857cf47"
+                },
+                {
+                    "description": "Pad 74 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_74] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 85.40361
+                    },
+                    "uuid": "9a46145a-bc1d-4fff-ad62-44a584a8c686"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 75 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_75] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 84.90361
+                    },
+                    "uuid": "05ad0119-7f27-474e-a5c0-ca46220c2df6"
+                },
+                {
+                    "description": "Pad 75 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_75] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 84.90361
+                    },
+                    "uuid": "3c51cbf4-c976-424f-b23a-2cd80ef09c36"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 76 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_76] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 84.90361
+                    },
+                    "uuid": "d35bab08-c9f3-49eb-89b6-6c9f0886a35d"
+                },
+                {
+                    "description": "Pad 76 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_76] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 84.90361
+                    },
+                    "uuid": "5dae6ef7-b90d-4674-8c9d-65766204f271"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 77 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_77] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 83.90361
+                    },
+                    "uuid": "8ce25967-7163-451c-8640-e2c675410bbb"
+                },
+                {
+                    "description": "Pad 77 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_77] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 83.90361
+                    },
+                    "uuid": "aa6d5309-32ee-477b-8c8d-2486390082a8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 78 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_78] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 83.90361
+                    },
+                    "uuid": "6851948c-0ab0-46e4-a258-5098ec7b02dd"
+                },
+                {
+                    "description": "Pad 78 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_78] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 83.90361
+                    },
+                    "uuid": "60e60949-5419-488f-b295-7ed3fe86d8a4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 79 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_79] of J10 on F.Cu",
+                    "pos": {
+                        "x": 146.7361,
+                        "y": 83.40361
+                    },
+                    "uuid": "0a5a4be6-12a9-4f20-87ab-dbb75f5d7cc1"
+                },
+                {
+                    "description": "Pad 79 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_79] of J11 on B.Cu",
+                    "pos": {
+                        "x": 146.9561,
+                        "y": 83.40361
+                    },
+                    "uuid": "4c14978c-75dd-41f5-84e4-6330a19218fd"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 80 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_80] of J11 on B.Cu",
+                    "pos": {
+                        "x": 152.6961,
+                        "y": 83.40361
+                    },
+                    "uuid": "91d18060-f2c4-4636-afd3-bef54b37c94a"
+                },
+                {
+                    "description": "Pad 80 [/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_80] of J10 on F.Cu",
+                    "pos": {
+                        "x": 152.9161,
+                        "y": 83.40361
+                    },
+                    "uuid": "001e7699-67bb-4746-a239-da547e6fa8d5"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": []
+}
