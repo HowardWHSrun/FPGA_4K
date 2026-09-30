@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Shared questions and answers for the 4K neural-recording project. Track who asked, the reasoning, replies and decisions in one saved history.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Questions | 4K PCB design</title>
+  <link rel="stylesheet" href="../meetings/meetings.css">
+  <link rel="stylesheet" href="questions.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">4K / Questions</a>
+    <nav aria-label="Project navigation">
+      <a href="../../">System overview</a>
+      <a href="../meetings/">Meetings</a>
+      <a href="../fpga/current-25t.html">Selected 25T FPGA</a>
+    </nav>
+  </header>
+  <main class="hub questions-hub">
+    <p class="eyebrow">Shared team workspace</p>
+    <h1>Every question, with its answer<br class="desktop-break"> and the reasoning behind it.</h1>
+    <p class="lead">Keep pending questions, named replies and decisions together, so the next person can follow the discussion without searching through chat.</p>
+    <div class="board-entry">
+      <a class="button primary board-button" href="https://fpga-team-questions.hwr.chatgpt.site">Open shared board <span aria-hidden="true">↗</span></a>
+      <p class="caption">Questions and replies are saved on the shared board. Everyone uses the same history.</p>
+    </div>
+    <section class="question-section" aria-labelledby="workflow-title">
+      <p class="eyebrow">From question to decision</p>
+      <h2 id="workflow-title">Add your name, then join the discussion.</h2>
+      <ol class="question-workflow">
+        <li><div><h3>Identify yourself</h3><p>Enter your name so teammates can see who raised a question and who responded.</p></div></li>
+        <li><div><h3>Raise one clear question</h3><p>Give it a title, describe the uncertainty and add the relevant board, pin, source or proposed option. Name the person who needs to review it when known.</p></div></li>
+        <li><div><h3>Answer in the same thread</h3><p>Explain the reasoning and include supporting references. Follow-up questions stay with the original discussion.</p></div></li>
+        <li><div><h3>Record the outcome</h3><p>Update the status as the question progresses. When it is resolved, record the decision and who confirmed it; the thread remains available for later reviews.</p></div></li>
+      </ol>
+    </section>
+    <section class="question-section current-discussion" aria-labelledby="discussion-title">
+      <p class="eyebrow">Current interface discussion</p>
+      <h2 id="discussion-title">Start with the custom 19-contact link.</h2>
+      <p>The current questions include whether VTREF needs a cable contact, where ASIC CLK / DATA / LATCH are generated, what the reverse control link carries, and which power voltage pin 19 should use.</p>
+      <p class="caption">Proposed answers remain open until the responsible reviewers confirm the reasoning and implementation.</p>
+      <div class="links">
+        <a class="button" href="../meetings/2026-09-30.html#cable-pins">Review the pin discussion →</a>
+        <a class="button" href="../schematic/simple.html">Open the connection overview →</a>
+      </div>
+    </section>
+    <footer class="questions-footer">
+      <p>Before adding a question, search the shared board for an existing thread. Keep supporting evidence and unresolved assumptions alongside the answer.</p>
+      <a href="../meetings/">Back to meeting records →</a>
+    </footer>
+  </main>
+</body>
+</html>
+
