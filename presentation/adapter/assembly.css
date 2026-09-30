@@ -8,3 +8,10 @@
 .cable-label{position:absolute;transform:translate(-50%,-135%);padding:3px 6px;background:#ffffffdb;border:1px solid #bdd3d8;border-left:3px solid #5b91a0;border-radius:3px;color:#355466;font-size:9px;font-weight:650;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 8px #33546b12}
 .cable-label.cable-2{border-left-color:#8a80a8}.cable-label.cable-3{border-left-color:#b89169}
 @media(max-width:450px){.cable-label{display:none}}
+
+/* Compact controls for a slide-sized native 3D illustration. */
+.presentation-view .focus,.presentation-view .revisions,.presentation-view .stage-note,.presentation-view .selected-info,.presentation-view .labels{display:none}.embed.presentation-view .stage{height:calc(100vh - 40px);min-height:200px}.embed.presentation-view .controls{height:40px;min-height:40px;padding:4px 12px;justify-content:flex-end}.presentation-view .controls .views{margin:0}.presentation-view .controls button{padding:5px 9px}
+
+.embed.presentation-view .controls{display:none}.embed.presentation-view .stage{height:100vh}
+
+.presentation-view.board-labels .labels{display:block}.presentation-view.board-labels .cable-label{display:none}.presentation-view.board-labels .label{font-size:11px;padding:5px 9px}

@@ -4,8 +4,18 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
-const revision = ['r8','r10'].includes(params.get('revision')) ? params.get('revision') : 'r9';
+const revision = ['r8','r9','r10','r12'].includes(params.get('revision')) ? params.get('revision') : 'r12';
+const singleLink = revision === 'r12';
+const presentationView = params.get('presentation') === '1';
+const boardLabels = params.get('labels') === 'boards';
+const fpgaNames = singleLink ? ['fpga1'] : ['fpga1','fpga2','fpga3'];
+$('architecture-subtitle').textContent=singleLink?'SINGLE-LINK RECEIVER STUDY':'THREE-PORT RECEIVER STUDY';
+$('fpga-focus-label').textContent=singleLink?'1 FPGA board':'3 FPGA boards';
+if(!singleLink){$('current-schematic').href='index.html#schematic';$('footer-schematic').href='../schematic/?board=adapter';$('engineering-status-link').href='index.html#status';}
+document.title=singleLink?'Single-link interposer · R12 3D study':`${revision.toUpperCase()} three-port interposer · 3D study`;
 if (params.get('embed') === '1') document.body.classList.add('embed');
+if (presentationView) document.body.classList.add('presentation-view');
+if (boardLabels) document.body.classList.add('board-labels');
 const canvas = $('scene'), stage = $('stage');
 const state = {focus:'all', view:'iso', revision, ready:false, officialModels:0, candidateBoard:false};
 let renderer;
@@ -26,13 +36,15 @@ const mat={xem:new THREE.MeshStandardMaterial({color:0x345e6b,metalness:.08,roug
 const parts={};
 const descriptions={
   xem:['XEM8310 · existing','Artix UltraScale+ module. Its MC3 exposes the three proposed GTY banks; USB is the initial PC link.'],
-  adapter:revision==='r10'
+  adapter:singleLink
+    ? ['R12 interposer · one 19-contact link','Schematic includes translated JTAG and a protected 12 V branch. Ground/JTAG copper remains unfinished; fabrication qualification remains open.']
+    : revision==='r10'
     ? ['R10 interposer · HDI feasibility','All 12 selected signal pairs traced using proposed laser microvias. 97 items remain open; power, JTAG, return planes and impedance are unfinished.']
     : revision==='r9'
     ? ['R9 interposer · partial PCB','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and six GTY pairs. TX1 and control remain open on every cable.']
     : ['R8 interposer · earlier PCB study','Native PCB with three Type-D receptacles, 160 MC1/MC2 contact routes and one GTY pair. Most signal and power paths remain open.'],
-  brk:['BRK8310 · existing','Breakout board below the proposed adapter. Its J6 PCIe lanes are unavailable while all three cable links use banks 224 and 225.'],
-  fpga1:['FPGA PCB A · bank 226','Separate XC7A25T board and cable J201; two recording pairs active, third physically reserved.'],
+  brk:['BRK8310 · existing',singleLink?'Breakout board below the interposer. Banks 224 and 225 pass through in R12; BRK PCIe operation remains unverified.':'Breakout board below the proposed adapter. Its J6 PCIe lanes are unavailable while all three cable links use banks 224 and 225.'],
+  fpga1:['FPGA PCB A · bank 226','XC7A25T board and J201 cable: two recording pairs, one control pair, Reserved.'],
   fpga2:['FPGA PCB B · bank 225','Separate XC7A25T board and cable J202; two recording pairs active, third physically reserved.'],
   fpga3:['FPGA PCB C · bank 224','Separate XC7A25T board and cable J203; two recording pairs active, third physically reserved.'],
   receiver:['XEM8310 + proposed adapter + BRK8310','The XEM and BRK are purchased boards. Their model geometry comes from Opal Kelly; the inserted adapter remains a design study.']
@@ -40,7 +52,9 @@ const descriptions={
 // The vendor STEP frame places XEM at 180 degrees in-plane over BRK. Their
 // centers differ by approximately +34.8 mm X and -3.9 mm scene Z after that
 // rotation. Vertical separation below is deliberately exploded, not mated.
-const loc={brk:[0,-23,0],adapter:[29.86,2,-3.85],xem:[35,34,-4],fpga1:[-150,0,-86],fpga2:[-150,0,0],fpga3:[-150,0,86]};
+const loc=singleLink
+  ? {brk:[0,-23,0],adapter:[29.86,2,-3.85],xem:[35,34,-4],fpga1:[-125,0,-26]}
+  : {brk:[0,-23,0],adapter:[29.86,2,-3.85],xem:[35,34,-4],fpga1:[-150,0,-86],fpga2:[-150,0,0],fpga3:[-150,0,86]};
 const sizes={brk:[167.65,1.6,116.1],xem:[100,1.6,70],adapter:[110,1.6,70],fpga:[36,1.6,38]};
 function box(group,w,h,d,x,y,z,material){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material.clone());m.position.set(x,y,z);group.add(m);return m;}
 function fallback(name,group){
@@ -66,15 +80,15 @@ for(const name of Object.keys(loc)){
 }
 const cableGroup=new THREE.Group();scene.add(cableGroup);
 // Cable jackets are illustrative. Their ends meet the exposed Type-D mouths
-// in the R8/R9/R10 placement; the intermediate bend is not a cable-fit model.
+// in the selected R8/R9/R10/R12 placement; the intermediate bend is not a cable-fit model.
 // Matching X control points make every path depart and arrive along the
 // receptacle axis. Ordered Z values keep the three cables from crossing.
 const cableColors=[0x5b91a0,0x8a80a8,0xb89169];
-const fpgaPortZ=[-85,1,87];
+const fpgaPortZ=singleLink?[-26]:[-85,1,87];
 const adapterPortZ=[-26,-4,18];
 const cableTags=[];
-for(let i=0;i<3;i++){
-  const start=new THREE.Vector3(-129.5,3,fpgaPortZ[i]);
+for(let i=0;i<fpgaNames.length;i++){
+  const start=new THREE.Vector3(singleLink?-104.5:-129.5,3,fpgaPortZ[i]);
   const end=new THREE.Vector3(-27.1,4.2,adapterPortZ[i]);
   const curve=new THREE.CubicBezierCurve3(
     start,
@@ -95,17 +109,17 @@ for(let i=0;i<3;i++){
   cableTags.push({el,point:curve.getPoint(.54)});
 }
 const labelData=[['fpga1','FPGA A · 226','fpga'],['fpga2','FPGA B · 225','fpga'],['fpga3','FPGA C · 224','fpga'],['adapter','INTERPOSER · CANDIDATE','adapter'],['xem','XEM8310 · OFFICIAL MODEL','xem'],['brk','BRK8310 · OFFICIAL MODEL','brk']];
-const labels=labelData.map(([name,title,kind])=>{const el=document.createElement('span');el.className=`label ${kind}`;el.textContent=title;$('labels').append(el);return{name,el};});
-function setDetail(name){const [title,detail]=descriptions[name]||['Three separate cables','Each custom FPGA gets one XEM GTY bank.'];$('selected-info').replaceChildren();const strong=document.createElement('strong'),span=document.createElement('span');strong.textContent=title;span.textContent=detail;$('selected-info').append(strong,span);}
-function setFocus(focus){state.focus=focus;const chosen=focus==='fpga'?['fpga1','fpga2','fpga3']:focus==='receiver'?['xem','adapter','brk']:[focus];
+const labels=labelData.filter(([name])=>parts[name]).map(([name,title,kind])=>{const el=document.createElement('span');el.className=`label ${kind}`;el.textContent=boardLabels?{fpga1:'FPGA A',fpga2:'FPGA B',fpga3:'FPGA C',adapter:'Interposer',xem:'XEM8310',brk:'BRK8310'}[name]:title;$('labels').append(el);return{name,el};});
+function setDetail(name){const [title,detail]=descriptions[name]||(singleLink?['One 19-contact link','J201 connects the custom FPGA to XEM bank 226.']:['Three separate cables','Each custom FPGA gets one XEM GTY bank.']);$('selected-info').replaceChildren();const strong=document.createElement('strong'),span=document.createElement('span');strong.textContent=title;span.textContent=detail;$('selected-info').append(strong,span);}
+function setFocus(focus){state.focus=focus;const chosen=focus==='fpga'?fpgaNames:focus==='receiver'?['xem','adapter','brk']:[focus];
   for(const [name,group] of Object.entries(parts)){const active=focus==='all'||chosen.includes(name);group.visible=!(focus==='fpga'||focus==='receiver')||active;group.traverse(obj=>{if(obj.isMesh&&obj.material){const materials=Array.isArray(obj.material)?obj.material:[obj.material];for(const m of materials){if(!m.userData.original){m.userData.original={opacity:m.opacity,transparent:m.transparent};}m.transparent=!active||m.userData.original.transparent;m.opacity=active?m.userData.original.opacity:.22;m.depthWrite=active;}}});}
   cableGroup.visible=focus==='all'||focus==='adapter';
   document.querySelectorAll('[data-focus]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.focus===focus)));
   setDetail(focus==='fpga'?'fpga1':focus==='all'?null:focus);
-  const target=focus==='all'?new THREE.Vector3(-45,0,0):focus==='fpga'?new THREE.Vector3(-150,0,0):focus==='receiver'?new THREE.Vector3(18,0,0):parts[focus].position.clone();
+  const target=focus==='all'?new THREE.Vector3(singleLink?-20:-45,0,0):focus==='fpga'?parts.fpga1.position.clone():focus==='receiver'?new THREE.Vector3(18,0,0):parts[focus].position.clone();
   controls.target.copy(target);setView(state.view);
 }
-function setView(view){state.view=view;const target=controls.target.clone();const baseRange=state.focus==='all'?375:state.focus==='fpga'?245:state.focus==='receiver'?250:state.focus==='brk'?235:165;
+function setView(view){state.view=view;const target=controls.target.clone();const baseRange=state.focus==='all'?(singleLink?310:375):state.focus==='fpga'?(singleLink?(presentationView?80:135):245):state.focus==='receiver'?250:state.focus==='brk'?235:state.focus==='adapter'&&singleLink?210:165;
   const aspect=Math.max(.55,stage.clientWidth/Math.max(stage.clientHeight,1));
   const range=baseRange*(view==='top'?1.2:1)*(aspect<1.2?1.45/aspect:1);
   const dir=view==='top'?new THREE.Vector3(.001,1,.001):view==='side'?new THREE.Vector3(-1,.13,.05):new THREE.Vector3(-.8,.6,1);
@@ -133,7 +147,9 @@ function loadModel(name,spec){if(!spec?.file)return Promise.resolve(false);retur
   root.updateMatrixWorld(true);const bounds=new THREE.Box3().setFromObject(root),size=bounds.getSize(new THREE.Vector3());
   if(Math.max(size.x,size.y,size.z)>450||Math.max(size.x,size.y,size.z)<10)throw new Error(`unexpected ${name} model size`);
   const center=bounds.getCenter(new THREE.Vector3());root.position.sub(center);root.updateMatrixWorld(true);
-  const group=parts[name];while(group.children.length)group.remove(group.children[0]);
+  const group=parts[name];
+  if(spec.position_offset_mm)group.position.add(new THREE.Vector3(...spec.position_offset_mm));
+  while(group.children.length)group.remove(group.children[0]);
   if(spec.in_plane_rotation_deg)group.rotation.y=THREE.MathUtils.degToRad(spec.in_plane_rotation_deg);
   root.traverse(obj=>{if(obj.isMesh){obj.material=Array.isArray(obj.material)?obj.material.map(m=>m.clone()):obj.material.clone();obj.userData.part=name;}});
   group.add(root);
@@ -150,16 +166,22 @@ async function loadAssets(){
   try{
     const response=await fetch('assets/models.json');if(!response.ok)throw new Error('model manifest unavailable');const cfg=await response.json();
     const results=await Promise.all([
-      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',revision==='r10'?cfg.adapter_r10:revision==='r8'?cfg.adapter_r8:cfg.adapter),
-      ...['fpga1','fpga2','fpga3'].map(name=>loadModel(name,cfg.fpga))
+      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',singleLink?cfg.adapter_r12:revision==='r10'?cfg.adapter_r10:revision==='r8'?cfg.adapter_r8:cfg.adapter),
+      ...fpgaNames.map(name=>loadModel(name,cfg.fpga))
     ]);
     state.ready=true;
     const native25T=results.slice(3).every(Boolean);
     $('loading').hidden=true;
-    const routeStatus=revision==='r10'?'R10 HDI feasibility loaded: all 12 selected pairs traced; 97 open items; proposed laser microvias, return planes and impedance unqualified':revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
-    $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'} · ${native25T?'native unrouted 25T placement repeated three times':'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
+    let r12Audit=null;
+    if(singleLink&&cfg.adapter_r12?.audit_file){try{const a=await fetch(cfg.adapter_r12.audit_file);if(a.ok)r12Audit=await a.json();}catch(error){console.warn('R12 audit metadata unavailable',error);}}
+    const contactStatus=Number.isInteger(r12Audit?.cable_contacts_connected)?`${r12Audit.cable_contacts_connected}/19 contacts reach all required copper endpoints`:'19/19 contacts mapped in schematic; copper audit pending';
+    const drcStatus=Number.isInteger(r12Audit?.physical_drc_errors)&&Number.isInteger(r12Audit?.physical_drc_warnings)?`; ${r12Audit.physical_drc_errors} physical errors; ${r12Audit.physical_drc_warnings} warnings`:'';
+    const openStatus=Number.isInteger(r12Audit?.unconnected)?`; ${r12Audit.unconnected} open items`:'';
+    if(singleLink)descriptions.adapter=['R12 interposer · one 19-contact link',`${contactStatus}${openStatus}. Schematic includes translated JTAG and a protected 12 V branch. Ground/JTAG copper remains unfinished; fabrication qualification remains open.`];
+    const routeStatus=singleLink?`R12 native single-link PCB: ${contactStatus}${drcStatus}${openStatus}; HDI, cable-current and channel qualification remain open`:revision==='r10'?'R10 HDI feasibility loaded: all 12 selected pairs traced; 97 open items; proposed laser microvias, return planes and impedance unqualified':revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
+    $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'} · ${native25T?(singleLink?'one native unrouted 25T placement':'native unrouted 25T placement repeated three times'):'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
     document.querySelectorAll('.label.xem,.label.brk').forEach(el=>{if(state.officialModels<2)el.textContent=el.textContent.replace('OFFICIAL MODEL','ILLUSTRATIVE SHELL');});
-    if(state.candidateBoard)document.querySelector('.label.adapter').textContent=`INTERPOSER · ${revision.toUpperCase()} PCB STUDY`;
+    if(state.candidateBoard&&!boardLabels)document.querySelector('.label.adapter').textContent=`INTERPOSER · ${revision.toUpperCase()} PCB STUDY`;
     setFocus(state.focus);
   }catch(error){$('loading').textContent='Model assets could not load; the schematic route remains on the adapter page.';console.warn(error);}
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "status": "Three-port exploded architecture view. Board separation and cable paths are illustrative; no mating, collision or signal-integrity proof.",
+  "status": "Current R12 single-link layout study with preserved R8, R9 and R10 views. Exploded separation and cable paths are illustrative; fit and powered operation are unqualified.",
   "fpga25t": {
     "source": "2026-09-29_FPGA_Work/10_XC7A25T_Final_Device_Review/project/hardware/FPGA25T_8L_Unrouted.kicad_pcb",
     "source_sha256": "60244ee83bc00677245521e385cefbeb689a4519190349c38d34f51c7f970c82",
@@ -49,8 +49,17 @@
     "source_sha256": "6189239b3ee924bd9c2bc462f03491311253ff9f56e6a609af200e6002dca1cf",
     "derived_asset": "r10-interposer-hdi-feasibility.glb",
     "derived_sha256": "6a2a37485d4fa7b93b291b613ec28e8af2ed6972a700bac2d6d9ceca975b8d1e",
-    "export": "KiCad 10.0.6 GLB with tracks, pads, inner copper and silkscreen. All 12 selected GTY pairs and 160 MC1/MC2 contact paths connected. Requires 12 proposed 0.25/0.10 mm F→In1 microvias; provisional 0.15 mm clearance and 0.20 mm hole-copper. 0 physical DRC only under R10 study rules, 97 unconnected items, 19 parity issues. Pair coupling/impedance/length/skew and returnplanes unqualified. Power/JTAG incomplete. Six custom stack connector bodies missing. HDI process not selected. Optional feasibility view, not a selected fabrication process.",
+    "export": "KiCad 10.0.6 GLB with tracks, pads, inner copper and silkscreen. All 12 selected GTY pairs and 160 MC1/MC2 contact paths connected. Requires 12 proposed 0.25/0.10 mm F\u2192In1 microvias; provisional 0.15 mm clearance and 0.20 mm hole-copper. 0 physical DRC only under R10 study rules, 97 unconnected items, 19 parity issues. Pair coupling/impedance/length/skew and returnplanes unqualified. Power/JTAG incomplete. Six custom stack connector bodies missing. HDI process not selected. Optional feasibility view, not a selected fabrication process.",
     "frame": "KiCad export is in metres and Y-up. Viewer scales by 1000 and independently centers the geometry. In imported BRK KiCad XY, board outline x124.4..232.3261, y65.1536..135.1536 mm; subtract (64.676,38.254) mm to map to official BRK STEP XY. In viewer, its center sits x+29.86 mm, z-3.85 mm relative to BRK center; vertical exploded gap is illustrative.",
     "public_package": "hardware/xem8310-adapter/dated/2026-09-29/r10-hdi-feasibility/R10_Three_Port_Interposer_Public_Study.zip"
+  },
+  "interposer_r12": {
+    "source": "2026-09-29_FPGA_Work/22_BRK8310_Single_Link_Interposer_R12/project/BRK8310_Single_Link_Interposer_R12.kicad_pcb",
+    "source_sha256": "a1c2edf7554c58e6b5763d82b714bedd78e23a68d02884bb31c5cb4047131257",
+    "derived_asset": "r12-interposer-single-link-study.glb",
+    "derived_sha256": "e1f0f4affb1dae6b05fc4936f0bc045c83d0d6ef426aca75b80d72b4b54323a7",
+    "export": "KiCad 10.0.6 native GLB export including tracks, pads, zones, inner copper and silkscreen. Single-link schematic maps all 19 numbered contacts with ERC 0; PCB retains 45 physical components. Independent copper audit: 10/19 contacts complete to all intended native endpoints, 8/8 serial conductors, 160 MC1/MC2 and 67 remaining MC3 pass-throughs, 13 isolated BRK contacts, no shorts. Current unsuppressed DRC: 0 physical errors, 11 dangling warnings, 9 opens, 0 parity issues. Four JTAG nets and ground branches remain open, including eFuse ground. Six custom stack connector 3D bodies are absent. Provisional HDI rules; no fabrication release.",
+    "frame": "KiCad export in metres and Y-up; viewer scales by 1000. L-shaped outline extends x124.4..260 and y65.1536..135.1536 mm. The added right service wing shifts independently centered native geometry +13.837 mm in viewer X relative to historical outlines; existing stack connector centers are unchanged. Vertical separation and cable paths are illustrative, not mating/fit proof.",
+    "public_package": "hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/R12_Single_Link_Interposer_Public_Study.zip"
   }
 }

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+<rect width="1440" height="820" fill="#f7fafb"/>
+<style>text{font-family:Arial,sans-serif;fill:#172934}.title{font-size:37px;font-weight:700}.sub{font-size:21px;fill:#526570}.head{font-size:22px;font-weight:700}.body{font-size:20px}.small{font-size:17px;fill:#526570}.mono{font-family:Menlo,monospace;font-size:16px;fill:#526570}</style>
+<text class="title" x="60" y="70">R12 · ground routing review</text>
+<text class="sub" x="60" y="108">One cable link · native schematic endpoints checked against stored PCB copper</text>
+<rect x="60" y="140" width="1320" height="64" rx="12" fill="#a64826"/>
+<text x="85" y="181" style="fill:white;font-size:25px;font-weight:700">Copper continuity still open</text>
+<text x="1355" y="181" text-anchor="end" style="fill:white;font-size:21px">54 ground pads · 6 copper component(s)</text>
+<rect x="60" y="245" width="390" height="148" rx="12" fill="white" stroke="#cbd8df" stroke-width="2"/>
+<text class="head" x="82" y="284">MC3 ground paddles</text>
+<text class="body" x="82" y="320">J10.0 + J11.0</text>
+<text class="body" x="82" y="350">16 separate physical pad instances</text>
+<text class="small" x="82" y="373">Every paddle is included in the graph</text>
+<rect x="60" y="425" width="390" height="148" rx="12" fill="white" stroke="#cbd8df" stroke-width="2"/>
+<text class="head" x="82" y="464">MC2 power returns</text>
+<text class="body" x="82" y="500">J12 / J13 contacts 5, 6, 7, 8</text>
+<text class="body" x="82" y="530">8 physical return pads</text>
+<rect x="990" y="245" width="390" height="148" rx="12" fill="white" stroke="#cbd8df" stroke-width="2"/>
+<text class="head" x="1012" y="284">Five cable return contacts</text>
+<text class="body" x="1012" y="320">Main return: 13 · 16</text>
+<text class="body" x="1012" y="350">Open: 4 · 7 · 10</text>
+<rect x="990" y="425" width="390" height="148" rx="12" fill="white" stroke="#cbd8df" stroke-width="2"/>
+<text class="head" x="1012" y="464">Recovery probe + local circuits</text>
+<text class="body" x="1012" y="500">7 probe-header ground pads</text>
+<text class="body" x="1012" y="530">Open: R132.2 + U301.8</text>
+<path d="M450 320 H520 M450 500 H520 V320 M990 320 H920 M990 500 H920 V320" stroke="#a64826" stroke-width="6" fill="none"/>
+<rect x="520" y="265" width="400" height="130" rx="18" fill="#a64826"/>
+<text x="720" y="311" text-anchor="middle" style="fill:white;font-size:25px;font-weight:700">Main ground component</text>
+<text x="720" y="352" text-anchor="middle" style="fill:white;font-size:24px">49 connected physical pads</text>
+<rect x="520" y="425" width="400" height="148" rx="12" fill="white" stroke="#cbd8df" stroke-width="2"/>
+<text class="head" x="542" y="464">Connector shell bond</text>
+<text class="body" x="542" y="500">J201 shell → R132 0 Ω → ground</text>
+<text class="small" x="542" y="553">Ground-side pad R132.2 open</text>
+<text class="sub" x="60" y="630">5 ground pads remain outside the main return. The eFuse ground U301.8 is open; the 12 V branch is incomplete.</text>
+<text class="body" x="60" y="674">Other graph checks: 10/19 cable contacts · 8/8 serial conductors · 227/227 pass-throughs</text>
+<text class="mono" x="60" y="717">PCB SHA-256: a1c2edf7554c58e6b5763d82b714bedd78e23a68d02884bb31c5cb4047131257</text>
+<text class="mono" x="60" y="751">XML SHA-256: e0571d340fa2a3f22d49ec2255a61a708f7f97875977283bbd4d0397ace5bfab</text>
+<text class="small" x="60" y="787">Native graph evidence · source hashes unchanged during audit · R12 study / not fabrication-qualified</text>
+</svg>

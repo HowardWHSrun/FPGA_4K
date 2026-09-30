@@ -1,7 +1,7 @@
 {
   "adapter": {
     "title": "Three-port XEM interposer",
-    "status": "Logical circuit map · power and JTAG branches remain placeholders",
+    "status": "Logical circuit map \u00b7 power and JTAG branches remain placeholders",
     "back": "../adapter/#schematic",
     "pdf": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/R9_logical_schematic_unchanged_from_R8.pdf",
     "sheets": [
@@ -10,15 +10,15 @@
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-01.svg"
       },
       {
-        "title": "Port 1 · bank 226 · J201",
+        "title": "Port 1 \u00b7 bank 226 \u00b7 J201",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-02.svg"
       },
       {
-        "title": "Port 2 · bank 225 · J202",
+        "title": "Port 2 \u00b7 bank 225 \u00b7 J202",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-03.svg"
       },
       {
-        "title": "Port 3 · bank 224 · J203",
+        "title": "Port 3 \u00b7 bank 224 \u00b7 J203",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-04.svg"
       },
       {
@@ -26,22 +26,22 @@
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-05.svg"
       },
       {
-        "title": "MC1 contacts 1–40",
+        "title": "MC1 contacts 1\u201340",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-06.svg"
       },
       {
-        "title": "MC1 contacts 41–80",
+        "title": "MC1 contacts 41\u201380",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-07.svg"
       },
       {
-        "title": "MC2 contacts 21–80",
+        "title": "MC2 contacts 21\u201380",
         "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r9-six-pair/sheets/sheet-08.svg"
       }
     ]
   },
   "fpga25t": {
     "title": "XC7A25T custom FPGA",
-    "status": "29 September review schematic · PCB unrouted; DF40 interface under redesign",
+    "status": "29 September review schematic \u00b7 PCB unrouted; DF40 interface under redesign",
     "back": "../fpga/current-25t.html#schematic",
     "pdf": "../../hardware/fpga-interface-study/dated/2026-09-29/xc7a25t-schematic/FPGA25T_Review_Schematic.pdf",
     "sheets": [
@@ -100,6 +100,54 @@
       {
         "title": "AC coupling and 125 MHz reference",
         "file": "../../hardware/fpga-interface-study/dated/2026-09-29/xc7a25t-schematic/sheets/sheet-14.svg"
+      }
+    ]
+  },
+  "adapter-r12": {
+    "title": "R12 single-link XEM interposer",
+    "status": "19 contacts mapped \u00b7 JTAG and 12 V protection circuits implemented as a study \u00b7 not for fabrication",
+    "back": "../adapter/assembly.html?revision=r12",
+    "pdf": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/R12_Full_Schematic.pdf",
+    "sheets": [
+      {
+        "title": "Single-link system overview",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-01.svg"
+      },
+      {
+        "title": "J201 \u00b7 19 contacts \u00b7 bank 226",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-02.svg"
+      },
+      {
+        "title": "MC3 bank 225 \u00b7 pass-through",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-03.svg"
+      },
+      {
+        "title": "MC3 bank 224 \u00b7 pass-through",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-04.svg"
+      },
+      {
+        "title": "MC2 power and XEM JTAG GPIO",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-05.svg"
+      },
+      {
+        "title": "MC1 contacts 1\u201340",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-06.svg"
+      },
+      {
+        "title": "MC1 contacts 41\u201380",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-07.svg"
+      },
+      {
+        "title": "MC2 contacts 21\u201380",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-08.svg"
+      },
+      {
+        "title": "JTAG bridge and recovery probe",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-09.svg"
+      },
+      {
+        "title": "Protected 12 V and shield bond",
+        "file": "../../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/sheets/sheet-10.svg"
       }
     ]
   }

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+  <title id="title">R12 single-link planned power flow with a 2 W FPGA rail allowance</title>
+  <desc id="desc">One regulated 12 V source feeds the BRK8310 and MC2 path to XEM8310 plus one TPS259470L current-limited Type-D cable branch at J201 pin 19. A fully populated head with one XC7A25T and eight ASICs has a modeled 12 V input range of 0.24 to 0.32 A under a chosen 2 W FPGA rail allowance. The branch has approximately 0.514 A nominal current limit with a 6.49 kilo-ohm one-percent resistor. This is a planned scenario, not an XPE result or measurement. Source capacity, input overvoltage protection, the actual ASIC power-feed implementation, and ground-return proof remain pending.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#245d74"/></marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #173342; }
+      .eyebrow { font-size: 16px; font-weight: 700; letter-spacing: 1.6px; fill: #50707f; }
+      .title { font-size: 36px; font-weight: 700; }
+      .subtitle { font-size: 20px; fill: #52707f; }
+      .label { font-size: 24px; font-weight: 700; }
+      .body { font-size: 19px; fill: #52707f; }
+      .small { font-size: 16px; fill: #52707f; }
+      .number { font-size: 40px; font-weight: 700; }
+      .power { fill: none; stroke: #245d74; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .box { fill: #fff; stroke: #bdd0d9; stroke-width: 1.5; }
+      .link { fill: #245d74; text-decoration: underline; }
+    </style>
+  </defs>
+  <rect width="1440" height="820" fill="#fff"/>
+  <text class="eyebrow" x="48" y="40">R12 · WEDNESDAY REVIEW · 30 SEPTEMBER 2026</text>
+  <text class="title" x="48" y="86">Power plan for the 2 W FPGA allowance</text>
+  <text class="subtitle" x="48" y="120">One external 12 V source and one protected cable branch</text>
+  <rect x="1113" y="62" width="279" height="36" rx="18" fill="#eaf3f7"/>
+  <text x="1252" y="85" text-anchor="middle" font-size="15" font-weight="700" fill="#245d74">PLANNED SCENARIO</text>
+
+  <!-- One external entry; the XEM input and cable branch share this source. -->
+  <rect class="box" x="48" y="175" width="310" height="150" rx="14"/>
+  <text class="number" x="72" y="225">12 V</text>
+  <text class="label" x="72" y="264">Regulated source</text>
+  <text class="body" x="72" y="298">Capacity pending</text>
+  <path class="power" d="M358 250 H438" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="438" y="175" width="354" height="150" rx="14"/>
+  <text class="label" x="462" y="222">BRK8310 / MC2</text>
+  <text class="body" x="462" y="261">Shared 12 V input path</text>
+  <text class="small" x="462" y="298">Power and return rating pending</text>
+  <path class="power" d="M792 250 H1038" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="1038" y="175" width="354" height="150" rx="14"/>
+  <text class="label" x="1062" y="222">XEM8310 + fansink</text>
+  <text class="body" x="1062" y="261">Receiver / host side</text>
+  <text class="body" x="1062" y="298">Application budget pending</text>
+  <circle cx="900" cy="250" r="6" fill="#245d74"/>
+  <path class="power" d="M900 250 V425" marker-end="url(#arrow)"/>
+  <text class="small" x="926" y="382">12 V branch</text>
+  <text x="48" y="354" font-size="17" fill="#986420">Source OVP gate: keep the XEM input below 15 V</text>
+
+  <!-- Explicit load allowances for one fully populated head. -->
+  <rect x="48" y="392" width="650" height="322" rx="16" fill="#f2f7fa"/>
+  <text class="eyebrow" x="72" y="427">ONE FULLY POPULATED HEAD</text>
+  <text class="number" x="72" y="475">2 W</text>
+  <text class="label" x="181" y="472">FPGA rail allowance</text>
+  <text class="body" x="72" y="505">Includes FPGA static + active logic + GTP</text>
+  <line x1="72" y1="526" x2="674" y2="526" stroke="#cbdbe3"/>
+  <text x="72" y="565" font-size="30" font-weight="700">70.6 mW</text>
+  <text class="body" x="242" y="562">Eight ASICs, nominal recording</text>
+  <text class="small" x="72" y="594">8 × 512 channels · before external LDOs</text>
+  <line x1="72" y1="614" x2="674" y2="614" stroke="#cbdbe3"/>
+  <text class="small" x="72" y="646">LDO models + 80–85% conversion + 0.15 W peripherals + 8 mA overhead</text>
+  <text class="small" x="72" y="674">Upper scenario includes local LDO groups and a stimulation allowance.</text>
+  <text class="small" x="72" y="701">Actual ASIC rail feeds and allowed stimulation concurrency remain open.</text>
+
+  <!-- Exactly one independent protected output; no 5 V replacement. -->
+  <rect x="750" y="425" width="300" height="190" rx="14" fill="#eaf3f7" stroke="#a4c4d3" stroke-width="1.5"/>
+  <text class="label" x="774" y="466">TPS259470L</text>
+  <text x="774" y="510" font-size="31" font-weight="700">≈0.514 A</text>
+  <text class="body" x="774" y="543">Nominal current limit</text>
+  <text class="small" x="774" y="576">6.49 kΩ, 1% · default OFF</text>
+  <text class="small" x="774" y="600">Controlled enable ramp</text>
+  <path class="power" d="M1050 520 H1108" marker-end="url(#arrow)"/>
+  <rect class="box" x="1108" y="425" width="284" height="190" rx="14"/>
+  <text class="label" x="1132" y="466">25T + 8 ASICs</text>
+  <text x="1132" y="510" font-size="31" font-weight="700">0.24–0.32 A</text>
+  <text class="body" x="1132" y="543">12 V input scenario</text>
+  <text class="small" x="1132" y="576">J201 · Type-D pin 19</text>
+  <text class="small" x="1132" y="600">Single remote head</text>
+  <text class="small" x="750" y="660">Branch current is modeled input demand.</text>
+  <text class="small" x="750" y="687">The 2 W value is power at the FPGA rails.</text>
+
+  <line x1="48" y1="738" x2="1392" y2="738" stroke="#cbdbe3"/>
+  <text class="small" x="48" y="765">Planning scenario; no measured power or XPE result. Ground-return proof and power-path qualification remain open.</text>
+  <text class="small" x="48" y="789">The shared TVS does not keep the XEM input below 15 V.</text>
+  <a href="../../21_BRK8310_Three_Port_Interposer_R11_Complete_Contacts/reviewers/XC7A25T_Eight_ASIC_12V_Budget_Candidate.md"><text class="small link" x="646" y="789">Source: XC7A25T_Eight_ASIC_12V_Budget_Candidate.md</text></a>
+</svg>

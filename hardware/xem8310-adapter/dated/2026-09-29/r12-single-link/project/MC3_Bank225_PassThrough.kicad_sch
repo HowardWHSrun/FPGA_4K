@@ -1,0 +1,2603 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 1f5cc98c-cc7d-5710-8c54-2d32422724ff)
+  (paper "A3")
+  (title_block
+    (title "MC3 bank 225: all contacts pass through")
+    (date "2026-09-29")
+    (rev "R12 STUDY")
+    (comment 1 "NOT FOR FABRICATION: load budget, SI, clocks, gateware and qualification pending"))
+  (lib_symbols
+    (symbol "AdapterR12:XEM_MC3_80"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "XEM_MC3_80"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "XEM_MC3_80_1_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "B224_RX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "B224_RX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "B224_RX1_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "B224_RX1_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "B224_RX2_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "B224_RX2_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "11"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "B224_TX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "B224_TX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_6_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_8_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "MC3_10_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "MC3_12_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "12"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "MC3_13_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "13"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "MC3_15_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "15"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "MC3_14_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "14"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "MC3_16_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "16"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "MC3_18_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "18"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "MC3_20_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "20"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "XEM_MC3_80_2_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "B225_RX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "21"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "B225_RX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "23"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "B225_RX1_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "25"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "B225_RX1_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "27"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "B225_RX2_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "29"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "B225_RX2_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "31"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "B225_TX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "22"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "B225_TX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "24"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_26_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "26"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_28_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "28"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "MC3_30_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "30"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "MC3_32_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "32"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "MC3_33_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "33"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "MC3_35_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "35"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "MC3_34_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "34"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "MC3_36_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "36"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "MC3_17_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "17"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "MC3_19_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "19"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "XEM_MC3_80_3_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "B226_RX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "41"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "B226_RX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "43"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "B226_RX1_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "45"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "B226_RX1_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "47"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "B226_RX2_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "49"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "B226_RX2_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "51"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "B226_TX0_P"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "42"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "B226_TX0_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "44"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_46_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "46"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "MC3_48_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "48"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "MC3_50_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "50"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "MC3_52_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "52"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "MC3_53_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "53"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "MC3_55_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "55"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "MC3_54_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "54"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "MC3_56_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "56"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "MC3_38_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "38"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "MC3_40_OTHER_OR_REFCLK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "40"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "XEM_MC3_80_4_1"
+        (rectangle
+          (start -35.56 54.61)
+          (end 35.56 -54.61)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 48.26 0)
+          (length 5.08)
+          (name "B67_GPIO_37"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "37"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 44.449999999999996 0)
+          (length 5.08)
+          (name "B67_GPIO_39"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "39"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 40.64 0)
+          (length 5.08)
+          (name "B67_GPIO_57"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "57"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 36.83 0)
+          (length 5.08)
+          (name "B67_GPIO_58"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "58"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "B67_GPIO_59"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "59"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 29.209999999999997 0)
+          (length 5.08)
+          (name "B67_GPIO_60"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "60"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 25.4 0)
+          (length 5.08)
+          (name "B67_GPIO_61"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "61"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 21.589999999999996 0)
+          (length 5.08)
+          (name "B67_GPIO_62"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "62"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.779999999999998 0)
+          (length 5.08)
+          (name "B67_GPIO_63"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "63"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 13.969999999999999 0)
+          (length 5.08)
+          (name "B67_GPIO_64"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "64"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 10.159999999999997 0)
+          (length 5.08)
+          (name "B67_GPIO_65"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "65"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 6.349999999999994 0)
+          (length 5.08)
+          (name "B67_GPIO_66"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "66"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "B67_GPIO_67"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "67"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -1.2700000000000031 0)
+          (length 5.08)
+          (name "B67_GPIO_68"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "68"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -5.080000000000005 0)
+          (length 5.08)
+          (name "B67_GPIO_69"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "69"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -8.89 0)
+          (length 5.08)
+          (name "B67_GPIO_70"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "70"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "B67_GPIO_71"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "71"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -16.509999999999998 0)
+          (length 5.08)
+          (name "B67_GPIO_72"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "72"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -20.32 0)
+          (length 5.08)
+          (name "B67_GPIO_73"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "73"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -24.130000000000003 0)
+          (length 5.08)
+          (name "B67_GPIO_74"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "74"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "B67_GPIO_75"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "75"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -31.750000000000007 0)
+          (length 5.08)
+          (name "B67_GPIO_76"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "76"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -35.56000000000001 0)
+          (length 5.08)
+          (name "B67_GPIO_77"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "77"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -39.37 0)
+          (length 5.08)
+          (name "B67_GPIO_78"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "78"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "B67_GPIO_79"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "79"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -46.99 0)
+          (length 5.08)
+          (name "XEM_1V2_DDR_RAIL"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "80"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -50.800000000000004 0)
+          (length 5.08)
+          (name "MC3_GROUND_PADDLE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "0"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:BRK_MC3_80"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "BRK_MC3_80"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "BRK_MC3_80_1_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "BRK_J6-B45"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "BRK_J6-B46"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "BRK_J6-B41"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "BRK_J6-B42"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "BRK_J6-B37"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "BRK_J6-B38"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "11"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "BRK_J6-A47"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_J6-A48"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_6"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_8"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_MC3_10"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "BRK_MC3_12"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "12"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "BRK_MC3_13"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "13"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "BRK_MC3_15"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "15"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "BRK_MC3_14"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "14"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "BRK_MC3_16"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "16"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "BRK_MC3_18"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "18"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "BRK_MC3_20"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "20"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "BRK_MC3_80_2_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "BRK_J6-B27"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "21"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "BRK_J6-B28"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "23"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "BRK_J6-B23"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "25"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "BRK_J6-B24"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "27"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "BRK_J6-B19"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "29"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "BRK_J6-B20"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "31"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "BRK_J6-A29"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "22"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_J6-A30"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "24"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_26"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "26"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_28"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "28"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_MC3_30"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "30"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "BRK_MC3_32"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "32"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "BRK_MC3_33"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "33"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "BRK_MC3_35"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "35"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "BRK_MC3_34"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "34"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "BRK_MC3_36"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "36"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "BRK_MC3_17"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "17"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "BRK_MC3_19"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "19"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "BRK_MC3_80_3_1"
+        (rectangle
+          (start -35.56 50.8)
+          (end 35.56 -50.8)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 43.18 0)
+          (length 5.08)
+          (name "BRK_J1-B05"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "41"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 38.1 0)
+          (length 5.08)
+          (name "BRK_J1-B06"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "43"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "BRK_J1-B07"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "45"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 27.939999999999998 0)
+          (length 5.08)
+          (name "BRK_J1-B08"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "47"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 22.86 0)
+          (length 5.08)
+          (name "BRK_J1-B09"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "49"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.78 0)
+          (length 5.08)
+          (name "BRK_J1-B10"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "51"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 12.7 0)
+          (length 5.08)
+          (name "BRK_J1-A05"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "42"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_J1-A06"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "44"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_46"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "46"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_48"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "48"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -7.619999999999997 0)
+          (length 5.08)
+          (name "BRK_MC3_50"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "50"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "BRK_MC3_52"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "52"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -17.78 0)
+          (length 5.08)
+          (name "BRK_MC3_53"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "53"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -22.860000000000007 0)
+          (length 5.08)
+          (name "BRK_MC3_55"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "55"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "BRK_MC3_54"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "54"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -33.02 0)
+          (length 5.08)
+          (name "BRK_MC3_56"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "56"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -38.1 0)
+          (length 5.08)
+          (name "BRK_MC3_38"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "38"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "BRK_MC3_40"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "40"
+            (effects
+              (font
+                (size 1.1 1.1))))))
+      (symbol "BRK_MC3_80_4_1"
+        (rectangle
+          (start -35.56 54.61)
+          (end 35.56 -54.61)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -40.64 48.26 0)
+          (length 5.08)
+          (name "BRK_MC3_37"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "37"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 44.449999999999996 0)
+          (length 5.08)
+          (name "BRK_MC3_39"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "39"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 40.64 0)
+          (length 5.08)
+          (name "BRK_MC3_57"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "57"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 36.83 0)
+          (length 5.08)
+          (name "BRK_MC3_58"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "58"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 33.019999999999996 0)
+          (length 5.08)
+          (name "BRK_MC3_59"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "59"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 29.209999999999997 0)
+          (length 5.08)
+          (name "BRK_MC3_60"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "60"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 25.4 0)
+          (length 5.08)
+          (name "BRK_MC3_61"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "61"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 21.589999999999996 0)
+          (length 5.08)
+          (name "BRK_MC3_62"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "62"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 17.779999999999998 0)
+          (length 5.08)
+          (name "BRK_MC3_63"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "63"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 13.969999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_64"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "64"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 10.159999999999997 0)
+          (length 5.08)
+          (name "BRK_MC3_65"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "65"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 6.349999999999994 0)
+          (length 5.08)
+          (name "BRK_MC3_66"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "66"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 2.539999999999999 0)
+          (length 5.08)
+          (name "BRK_MC3_67"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "67"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -1.2700000000000031 0)
+          (length 5.08)
+          (name "BRK_MC3_68"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "68"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -5.080000000000005 0)
+          (length 5.08)
+          (name "BRK_MC3_69"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "69"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -8.89 0)
+          (length 5.08)
+          (name "BRK_MC3_70"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "70"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -12.700000000000003 0)
+          (length 5.08)
+          (name "BRK_MC3_71"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "71"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -16.509999999999998 0)
+          (length 5.08)
+          (name "BRK_MC3_72"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "72"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -20.32 0)
+          (length 5.08)
+          (name "BRK_MC3_73"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "73"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -24.130000000000003 0)
+          (length 5.08)
+          (name "BRK_MC3_74"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "74"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -27.940000000000005 0)
+          (length 5.08)
+          (name "BRK_MC3_75"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "75"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -31.750000000000007 0)
+          (length 5.08)
+          (name "BRK_MC3_76"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "76"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -35.56000000000001 0)
+          (length 5.08)
+          (name "BRK_MC3_77"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "77"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -39.37 0)
+          (length 5.08)
+          (name "BRK_MC3_78"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "78"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -43.18 0)
+          (length 5.08)
+          (name "BRK_MC3_79"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "79"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -46.99 0)
+          (length 5.08)
+          (name "BRK_MC3_80"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "80"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -40.64 -50.800000000000004 0)
+          (length 5.08)
+          (name "BRK_MC3_GROUND_PADDLE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "0"
+            (effects
+              (font
+                (size 1.1 1.1))))))))
+  (text "MC3 BANK 225  |  COMPLETE PASS-THROUGH"
+    (at 15.24 14.5 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid 5ae057fb-7783-5def-b9cb-afd5d826a689))
+  (text "This bank has no cable branch in R12. Matching contact labels connect the XEM and BRK sides directly."
+    (at 15.24 23 0)
+    (effects
+      (font
+        (size 1.18 1.18))
+      (justify left))
+    (uuid 26a52c55-42d4-5875-822e-816f47e31846))
+  (symbol
+    (lib_id "AdapterR12:XEM_MC3_80")
+    (at 91.44 104.14 0)
+    (unit 2)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid d08d1c0a-9ccf-5082-bf0c-d2fa240d8537)
+    (property "Reference" "J10"
+      (at 91.44 45.14 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "XEM-FACING MC3 / 80 CONTACTS"
+      (at 91.44 49.34 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "AdapterR8:QTH_040_01_Top_OpalKelly"
+      (at 91.44 104.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 91.44 104.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "21"
+      (uuid 3ca4b532-7a68-5a38-b74c-b030076f5379))
+    (pin "23"
+      (uuid ee9a70c5-df2a-5ae7-b183-683d3cb6e092))
+    (pin "25"
+      (uuid 294ee529-4e4e-595b-ad5b-5a702a081102))
+    (pin "27"
+      (uuid b8fd6fb9-0a78-57c9-8c08-67c8b2c654ab))
+    (pin "29"
+      (uuid 824c7d40-c4b5-567d-a2d9-5a0e1ba4bf8f))
+    (pin "31"
+      (uuid 33f9840f-458d-5214-8a1e-d3c7d5c26ded))
+    (pin "22"
+      (uuid a73af135-b4a5-5fce-8b0f-9cfd0059a3b7))
+    (pin "24"
+      (uuid f7ce2d9f-b22f-513d-a5a9-d9ca0cefce6d))
+    (pin "26"
+      (uuid 975f2bf3-94bb-5532-a74b-aa5a8b046fe7))
+    (pin "28"
+      (uuid f86009ca-be97-591c-8b33-7661c9b49807))
+    (pin "30"
+      (uuid 80b57094-e98a-5835-9bad-abf0e6d4d467))
+    (pin "32"
+      (uuid 002a6fac-b6dc-5a3e-b5e7-ec2a831ae604))
+    (pin "33"
+      (uuid 9eccc6c5-bbf5-5962-98fc-cb190224ea6c))
+    (pin "35"
+      (uuid b23a8c80-069f-5073-a8fe-8e7d5ed781e7))
+    (pin "34"
+      (uuid 3320d1fa-ac8f-5893-8867-3d3e5b32c801))
+    (pin "36"
+      (uuid ec569661-3540-5dbc-8316-a65004599a44))
+    (pin "17"
+      (uuid 85548038-cc18-5294-a8b0-3ef6b453c161))
+    (pin "19"
+      (uuid d801a34e-7714-5549-b845-e2859ca87d53))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/1f5cc98c-cc7d-5710-8c54-2d32422724ff"
+          (reference "J10")
+          (unit 2)))))
+  (symbol
+    (lib_id "AdapterR12:BRK_MC3_80")
+    (at 287.02 104.14 0)
+    (unit 2)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 34ba7137-d2ff-577e-9b9d-9467a9561d04)
+    (property "Reference" "J11"
+      (at 287.02 45.14 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "BRK-FACING MC3 / 80 CONTACTS"
+      (at 287.02 49.34 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "AdapterR8:QSH_040_01_Bottom_SamtecDrawing"
+      (at 287.02 104.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 287.02 104.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "21"
+      (uuid 293617ac-4ef6-56ec-8fac-d678db1f59f6))
+    (pin "23"
+      (uuid 0448a774-55be-5f47-b740-3a3900144c8b))
+    (pin "25"
+      (uuid 1aed4c00-1b43-5d00-b6f1-6fdea5df7209))
+    (pin "27"
+      (uuid d55a7628-344a-54f0-bee0-25550fef4c54))
+    (pin "29"
+      (uuid a36db5cb-3a2b-53b2-8ed8-70c92e18bcb5))
+    (pin "31"
+      (uuid 79b98262-ba9f-51d5-bdb2-c85f3f565830))
+    (pin "22"
+      (uuid 9a4159cf-e191-5e24-bd2f-015ab2b523d9))
+    (pin "24"
+      (uuid ae76bf65-5536-58d4-b59d-14aee800a0c4))
+    (pin "26"
+      (uuid c4a20a5c-0fd8-5375-b0d7-97e1e4689375))
+    (pin "28"
+      (uuid fe25d22c-182a-5bcb-bec9-dc4b91373400))
+    (pin "30"
+      (uuid 1201a5a9-ca3e-546a-8a7c-e4813b869c32))
+    (pin "32"
+      (uuid b8b4ac62-1ce3-5dcf-aa39-fc8dec6846e6))
+    (pin "33"
+      (uuid eba1b6a4-5dfb-58e6-af65-5772308b2b0a))
+    (pin "35"
+      (uuid e07988e8-f27c-5c44-b883-e725fffeb051))
+    (pin "34"
+      (uuid 4cc57926-d71b-5784-9aba-32ab6705dd05))
+    (pin "36"
+      (uuid 292507d8-946a-55f4-95fc-7821465a739d))
+    (pin "17"
+      (uuid d7f1726c-f73b-5c5d-82be-cfe019746d34))
+    (pin "19"
+      (uuid 47d823f7-70a6-5c1d-a9f2-01a8b2db8410))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/1f5cc98c-cc7d-5710-8c54-2d32422724ff"
+          (reference "J11")
+          (unit 2)))))
+  (wire
+    (pts
+      (xy 50.8 60.96)
+      (xy 40.64 60.96))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 955f661c-3cb1-54d3-a328-daef753611b6))
+  (wire
+    (pts
+      (xy 246.38 60.96)
+      (xy 236.22 60.96))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 5279556d-e6ec-5e4c-b2da-79a959396c49))
+  (label "PT_MC3_21"
+    (at 40.64 60.96 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid a2b0827d-2c36-55d8-80e0-dec78bb1262a))
+  (label "PT_MC3_21"
+    (at 236.22 60.96 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 302bcc19-8280-525e-86f8-2859ab78d7a4))
+  (wire
+    (pts
+      (xy 50.8 66.04)
+      (xy 40.64 66.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e544e958-e84d-5316-9b18-11ebd7dc1aac))
+  (wire
+    (pts
+      (xy 246.38 66.04)
+      (xy 236.22 66.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ed49779d-39aa-53e9-ba6f-0b68a34c039d))
+  (label "PT_MC3_23"
+    (at 40.64 66.04 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 76a0341b-f35b-57d7-95ed-b80963fa263c))
+  (label "PT_MC3_23"
+    (at 236.22 66.04 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid d5b03b0a-124e-5d6b-bb66-cf67f8760416))
+  (wire
+    (pts
+      (xy 50.8 71.12)
+      (xy 40.64 71.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 01d3210d-83df-5f9c-8340-fa6c7c31b501))
+  (wire
+    (pts
+      (xy 246.38 71.12)
+      (xy 236.22 71.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2ec4519a-16ab-5238-b1ad-33b94b1e7df6))
+  (label "PT_MC3_25"
+    (at 40.64 71.12 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 945a7bcc-c801-587d-94ec-7660e69ee1e0))
+  (label "PT_MC3_25"
+    (at 236.22 71.12 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 902393f4-c293-5d25-874b-2da6896eb90d))
+  (wire
+    (pts
+      (xy 50.8 76.2)
+      (xy 40.64 76.2))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b3f3b477-1edb-59e8-b089-18ff293bbcf8))
+  (wire
+    (pts
+      (xy 246.38 76.2)
+      (xy 236.22 76.2))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 95745b55-7939-59c5-91a3-7b7d0d872508))
+  (label "PT_MC3_27"
+    (at 40.64 76.2 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid bce39c2a-18fd-586b-ad8f-bcb290162231))
+  (label "PT_MC3_27"
+    (at 236.22 76.2 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 368db677-a9b8-5295-93b5-edf2eef2c88c))
+  (wire
+    (pts
+      (xy 50.8 81.28)
+      (xy 40.64 81.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 598971cb-d591-588b-8b4a-4190f7683b07))
+  (wire
+    (pts
+      (xy 246.38 81.28)
+      (xy 236.22 81.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 624bde15-4315-52fb-a073-3330c78acc69))
+  (label "PT_MC3_29"
+    (at 40.64 81.28 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid d92e35e0-6a46-584e-80b0-8e70f0e00f17))
+  (label "PT_MC3_29"
+    (at 236.22 81.28 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 0de1702c-7712-5647-b0da-fd3e1a1e4b2e))
+  (wire
+    (pts
+      (xy 50.8 86.36)
+      (xy 40.64 86.36))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 2f48069b-8f92-5505-b9c8-a1d42b32dcf2))
+  (wire
+    (pts
+      (xy 246.38 86.36)
+      (xy 236.22 86.36))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ff8413c1-9a27-5b8a-b1d3-769ff2c5ab99))
+  (label "PT_MC3_31"
+    (at 40.64 86.36 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 6264e050-b90d-51f1-9b4b-f7353f13792e))
+  (label "PT_MC3_31"
+    (at 236.22 86.36 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 210bbd3b-0234-5d47-8628-755cb493376c))
+  (wire
+    (pts
+      (xy 50.8 91.44)
+      (xy 40.64 91.44))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 102f9537-e440-56ce-b22b-55a9cb6077a6))
+  (wire
+    (pts
+      (xy 246.38 91.44)
+      (xy 236.22 91.44))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 850bf514-b991-5989-9260-0b485d8cf2af))
+  (label "PT_MC3_22"
+    (at 40.64 91.44 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid fa5ba02b-a9c0-5088-8e2f-7d67e1734f6c))
+  (label "PT_MC3_22"
+    (at 236.22 91.44 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 5e2848e5-4c1c-5ec3-aa63-947943dbe6e5))
+  (wire
+    (pts
+      (xy 50.8 96.52)
+      (xy 40.64 96.52))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid adddea45-9f34-5a2e-a1d5-1ec51c47a98d))
+  (wire
+    (pts
+      (xy 246.38 96.52)
+      (xy 236.22 96.52))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 723de95b-acfc-5ea2-9086-03b5cdb9e757))
+  (label "PT_MC3_24"
+    (at 40.64 96.52 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 653eec09-f077-57f7-bc37-4b88cc3e74ee))
+  (label "PT_MC3_24"
+    (at 236.22 96.52 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 72ee8a88-5002-5064-ac0f-a20d53225e77))
+  (wire
+    (pts
+      (xy 50.8 101.6)
+      (xy 40.64 101.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ebf61b46-3171-571a-9deb-d42c91efb518))
+  (wire
+    (pts
+      (xy 246.38 101.6)
+      (xy 236.22 101.6))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 448f8dde-8b48-5e3c-b194-cc1699448944))
+  (label "PT_MC3_26"
+    (at 40.64 101.6 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid a367f406-735a-5814-a381-a0baf616ead2))
+  (label "PT_MC3_26"
+    (at 236.22 101.6 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 9905bf46-83e4-58c4-894e-35d8afbdd746))
+  (wire
+    (pts
+      (xy 50.8 106.68)
+      (xy 40.64 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid af246abd-0db0-574e-a75d-babcebfe42d0))
+  (wire
+    (pts
+      (xy 246.38 106.68)
+      (xy 236.22 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid d82f259e-09f4-5853-bbfc-fd4495c21dd4))
+  (label "PT_MC3_28"
+    (at 40.64 106.68 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 16c926fb-e06b-50ef-a9ed-8fbc581fe265))
+  (label "PT_MC3_28"
+    (at 236.22 106.68 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b327621d-550d-5351-9f1d-5064505e2bc0))
+  (wire
+    (pts
+      (xy 50.8 111.76)
+      (xy 40.64 111.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid bcf6aa9e-c3f9-5cec-b904-1d219fdfd668))
+  (wire
+    (pts
+      (xy 246.38 111.76)
+      (xy 236.22 111.76))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid a4944943-8e0f-5188-8e5a-9f66b5559cca))
+  (label "PT_MC3_30"
+    (at 40.64 111.76 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 61eaa368-11a1-5c19-b678-8d8b5a6a6d57))
+  (label "PT_MC3_30"
+    (at 236.22 111.76 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 3c28bb55-0e51-5874-a2a2-048de6ff5ed6))
+  (wire
+    (pts
+      (xy 50.8 116.84)
+      (xy 40.64 116.84))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b43bbfb6-9d39-5523-8e51-2a2d1a41727c))
+  (wire
+    (pts
+      (xy 246.38 116.84)
+      (xy 236.22 116.84))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid c2e6acdd-6c28-5f80-840c-9d3f10e8b55d))
+  (label "PT_MC3_32"
+    (at 40.64 116.84 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 3117597c-69e6-556f-9fc1-fb4ed647cd56))
+  (label "PT_MC3_32"
+    (at 236.22 116.84 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 7b8897f5-5e8d-5cb0-80f0-6985b2f658ad))
+  (wire
+    (pts
+      (xy 50.8 121.92)
+      (xy 40.64 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 70975ee2-b523-5bc7-99da-855a82113031))
+  (wire
+    (pts
+      (xy 246.38 121.92)
+      (xy 236.22 121.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 60f47108-5dd5-5e4e-8e2f-177a7e0310d8))
+  (label "PT_MC3_33"
+    (at 40.64 121.92 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 3f73d85e-864e-5e13-b043-2c235b751f56))
+  (label "PT_MC3_33"
+    (at 236.22 121.92 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid bab9d68e-72db-5137-aad8-d1abdd529713))
+  (wire
+    (pts
+      (xy 50.8 127.0)
+      (xy 40.64 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 69327900-34f6-5d06-b113-73b8f6042b0e))
+  (wire
+    (pts
+      (xy 246.38 127.0)
+      (xy 236.22 127.0))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid b443d845-62cb-5cea-81c1-78268f1df200))
+  (label "PT_MC3_35"
+    (at 40.64 127.0 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b3979e36-98ba-59c7-ae02-ed439a1684bb))
+  (label "PT_MC3_35"
+    (at 236.22 127.0 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b358e5d5-439b-5ba3-9bdb-dcbf44fd85a1))
+  (wire
+    (pts
+      (xy 50.8 132.08)
+      (xy 40.64 132.08))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid e205ac92-2d38-5f2c-8992-143fcf33d945))
+  (wire
+    (pts
+      (xy 246.38 132.08)
+      (xy 236.22 132.08))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 44970412-1643-5653-a036-c427cd8858b4))
+  (label "PT_MC3_34"
+    (at 40.64 132.08 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 42e7ad14-0e0e-5d25-b898-f7814a69d209))
+  (label "PT_MC3_34"
+    (at 236.22 132.08 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 2fdb0f8d-c900-5d4e-902e-3de2eb802b33))
+  (wire
+    (pts
+      (xy 50.8 137.16)
+      (xy 40.64 137.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 49fcef83-b6be-5c0d-907f-89db03e2c8d7))
+  (wire
+    (pts
+      (xy 246.38 137.16)
+      (xy 236.22 137.16))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid bcd45743-4387-5ee5-8d6a-ced25777669e))
+  (label "PT_MC3_36"
+    (at 40.64 137.16 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 0826ba13-3d1e-5292-b476-2b74191778d4))
+  (label "PT_MC3_36"
+    (at 236.22 137.16 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 8dab04bc-3104-5479-9763-ae110748fafa))
+  (wire
+    (pts
+      (xy 50.8 142.24)
+      (xy 40.64 142.24))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ad9acd0e-9351-5ea7-8dcc-e41395ea8512))
+  (wire
+    (pts
+      (xy 246.38 142.24)
+      (xy 236.22 142.24))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 55b663be-008a-527b-b46b-a7e968ec3962))
+  (label "PT_MC3_17"
+    (at 40.64 142.24 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 7b156ff1-1d39-544f-b502-419fddc91bc0))
+  (label "PT_MC3_17"
+    (at 236.22 142.24 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid f26edbc3-551f-533a-98f7-2bb3147ef373))
+  (wire
+    (pts
+      (xy 50.8 147.32)
+      (xy 40.64 147.32))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid 31fb3087-81d3-5e14-9610-e17bdb3b8e66))
+  (wire
+    (pts
+      (xy 246.38 147.32)
+      (xy 236.22 147.32))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid ec97a54a-6ccf-596c-9476-d27878459b68))
+  (label "PT_MC3_19"
+    (at 40.64 147.32 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b891af27-0858-5478-94a4-df9c215b01c3))
+  (label "PT_MC3_19"
+    (at 236.22 147.32 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 6e731786-309d-5a89-a528-180418acb8c9))
+  (text "All bank GTY and reference-clock contacts are preserved by number. Physical stack and alternate BRK modes need review."
+    (at 15.24 183 0)
+    (effects
+      (font
+        (size 1.14 1.14))
+      (justify left))
+    (uuid 538d7529-788d-5994-8795-a0690712324f)))

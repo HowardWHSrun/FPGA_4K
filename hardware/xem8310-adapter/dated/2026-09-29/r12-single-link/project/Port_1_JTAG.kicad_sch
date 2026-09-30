@@ -1,0 +1,2484 @@
+(kicad_sch
+  (version 20260306)
+  (generator "eeschema")
+  (generator_version "10.0")
+  (uuid 5bc6449e-4bad-551c-8855-f3b45d8600f2)
+  (paper "A3")
+  (title_block
+    (title "Port 1: XEM JTAG bridge and recovery source selection")
+    (date "2026-09-29")
+    (rev "R12 STUDY")
+    (comment 1 "NOT FOR FABRICATION: load budget, SI, clocks, gateware and qualification pending"))
+  (lib_symbols
+    (symbol "AdapterR12:SN74AXC4T774PWR"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "SN74AXC4T774PWR"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "SN74AXC4T774PWR_1_1"
+        (rectangle
+          (start -20.32 40.64)
+          (end 20.32 -40.64)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin input line
+          (at -25.4 35.56 0)
+          (length 5.08)
+          (name "DIR1"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 30.48 0)
+          (length 5.08)
+          (name "DIR2"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 25.4 0)
+          (length 5.08)
+          (name "DIR3"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 20.32 0)
+          (length 5.08)
+          (name "DIR4"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 10.16 0)
+          (length 5.08)
+          (name "A1_TMS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 0 0)
+          (length 5.08)
+          (name "A2_TDI"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 -10.16 0)
+          (length 5.08)
+          (name "A3_TCK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin output line
+          (at -25.4 -20.32 0)
+          (length 5.08)
+          (name "A4_TDO"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at -25.4 -30.48 0)
+          (length 5.08)
+          (name "OE_N"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin power_in line
+          (at 25.4 35.56 180)
+          (length 5.08)
+          (name "VCCA_1V2"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "16"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin power_in line
+          (at 25.4 25.4 180)
+          (length 5.08)
+          (name "VCCB_TARGET_VTREF"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "15"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin output line
+          (at 25.4 10.16 180)
+          (length 5.08)
+          (name "B1_TMS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "14"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin output line
+          (at 25.4 0 180)
+          (length 5.08)
+          (name "B2_TDI"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "13"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin output line
+          (at 25.4 -10.16 180)
+          (length 5.08)
+          (name "B3_TCK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "12"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin input line
+          (at 25.4 -20.32 180)
+          (length 5.08)
+          (name "B4_TDO"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "11"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin power_in line
+          (at 25.4 -35.56 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:R"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "R_1_1"
+        (rectangle
+          (start -6.35 1.27)
+          (end 6.35 -1.27)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -11.43 0 0)
+          (length 5.08)
+          (name ""
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 11.43 0 180)
+          (length 5.08)
+          (name ""
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:Source_Select_1x3"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "JP"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "Source_Select_1x3"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Source_Select_1x3_1_1"
+        (rectangle
+          (start -10.16 10.16)
+          (end 10.16 -10.16)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -15.24 5.08 0)
+          (length 5.08)
+          (name "XEM"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -15.24 0 0)
+          (length 5.08)
+          (name "TARGET"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -15.24 -5.08 0)
+          (length 5.08)
+          (name "PROBE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:Xilinx_JTAG_14pin_2mm"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "Xilinx_JTAG_14pin_2mm"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Xilinx_JTAG_14pin_2mm_1_1"
+        (rectangle
+          (start -20.32 39.37)
+          (end 20.32 -39.37)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at 25.4 33.02 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 27.940000000000005 180)
+          (length 5.08)
+          (name "VTREF_TARGET"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 22.860000000000003 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "3"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 17.78 180)
+          (length 5.08)
+          (name "TMS"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "4"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 12.700000000000003 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "5"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 7.6200000000000045 180)
+          (length 5.08)
+          (name "TCK"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "6"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 2.5400000000000027 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "7"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -2.539999999999999 180)
+          (length 5.08)
+          (name "TDO"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "8"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -7.619999999999997 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "9"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -12.699999999999996 180)
+          (length 5.08)
+          (name "TDI"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "10"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -17.779999999999994 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "11"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -22.86 180)
+          (length 5.08)
+          (name "NC"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "12"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -27.939999999999998 180)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "13"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 25.4 -33.02 180)
+          (length 5.08)
+          (name "NC"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "14"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:Normally_Open_1x2"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "JP"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "Normally_Open_1x2"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "Normally_Open_1x2_1_1"
+        (rectangle
+          (start -10.16 7.62)
+          (end 10.16 -7.62)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at -15.24 2.54 0)
+          (length 5.08)
+          (name "SOURCE"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at -15.24 -2.54 0)
+          (length 5.08)
+          (name "EN_INPUT"
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1)))))))
+    (symbol "AdapterR12:C"
+      (pin_names
+        (offset 1.27))
+      (exclude_from_sim yes)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "C"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "C_1_1"
+        (polyline
+          (pts
+            (xy -1.27 -2.54)
+            (xy -1.27 2.54))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 -2.54)
+            (xy 1.27 2.54))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (pin passive line
+          (at -11.43 0 0)
+          (length 10.16)
+          (name ""
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "1"
+            (effects
+              (font
+                (size 1.1 1.1)))))
+        (pin passive line
+          (at 11.43 0 180)
+          (length 10.16)
+          (name ""
+            (effects
+              (font
+                (size 0.95 0.95))))
+          (number "2"
+            (effects
+              (font
+                (size 1.1 1.1))))))))
+  (text "PORT 1  |  INDEPENDENT 1.2 V / TARGET 1.8 V JTAG"
+    (at 15.24 14.5 0)
+    (effects
+      (font
+        (size 2.0 2.0))
+      (justify left))
+    (uuid d71c01c0-c486-58b8-96a6-a926e2f59ec1))
+  (text "Target-derived VTREF supplies the translator B rail; the host never drives VTREF. The host does not supply the target reference."
+    (at 15.24 23 0)
+    (effects
+      (font
+        (size 1.14 1.14))
+      (justify left))
+    (uuid 505f9a3c-d9c5-517f-9fc3-605ad761aa8e))
+  (text "Default: all three source shunts 2-3 PROBE; ARM jumper open. Move all three to 1-2 for XEM master operation."
+    (at 15.24 30 0)
+    (effects
+      (font
+        (size 1.14 1.14))
+      (justify left))
+    (uuid 28d5b654-65fb-5763-9c19-2da6485baee1))
+  (symbol
+    (lib_id "AdapterR12:SN74AXC4T774PWR")
+    (at 104.14 99.06 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 84c167fd-b144-501c-9927-1d9096095c4d)
+    (property "Reference" "U101"
+      (at 104.14 50.22 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "SN74AXC4T774PWR"
+      (at 104.14 54.42 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
+      (at 104.14 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 104.14 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid a870315e-bf98-5567-864a-f18aa8ab4426))
+    (pin "2"
+      (uuid 9856a1a9-d655-553f-a578-13cfe8aa5f14))
+    (pin "7"
+      (uuid a15fd5ce-4c6f-544d-965c-00935ccb8ef8))
+    (pin "8"
+      (uuid 5a8cee68-c88f-53b4-b866-4748ce5a9134))
+    (pin "3"
+      (uuid 84cf8056-257c-52fa-9b72-b7a70d70db60))
+    (pin "4"
+      (uuid 46273737-1c67-5378-9619-3624dab85099))
+    (pin "5"
+      (uuid 70634ded-2e14-50ab-b3fe-07e88db47eb7))
+    (pin "6"
+      (uuid 6abeaa7a-4828-5aa9-8527-f71d2427689a))
+    (pin "9"
+      (uuid 42f9a684-044f-5f7e-ae99-c65bf6c9ba44))
+    (pin "16"
+      (uuid 9fc59d0a-6731-52a2-b8c1-bdf064ac37d6))
+    (pin "15"
+      (uuid 74dbbd2b-5750-527c-a51c-fd80c0199297))
+    (pin "14"
+      (uuid 48233ac0-da21-5f6e-958d-876a8aca1681))
+    (pin "13"
+      (uuid 37eec379-f4d6-5d30-9687-f49b587059c7))
+    (pin "12"
+      (uuid 3befbd4e-78a6-5d69-938e-afd41100d02d))
+    (pin "11"
+      (uuid 6b3b75a2-cb5d-58ec-94c8-e16c0e2d2366))
+    (pin "10"
+      (uuid db4964aa-4131-50bb-bb5c-794badfbf4c7))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "U101")
+          (unit 1))))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74axc4t774.pdf"
+      (at 104.14 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 78.74 63.5 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid a1ed111c-dee2-5954-bd4e-992e8e3a4b71)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 78.74 68.58 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 09985631-0d74-5f39-a17f-a298d2678294)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 78.74 73.66 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid f3b761bc-7cbb-56a6-a261-811d8fc6a3a9)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 73.66 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 78.74 78.74 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 51a72b5e-ef20-5206-a97a-1a4cbb7e6f13)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 78.74 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS"
+    (shape bidirectional)
+    (at 78.74 88.9 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 75206b4b-ef86-584e-b303-bf11eaf736b8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI"
+    (shape bidirectional)
+    (at 78.74 99.06 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid b652eccb-e837-5f3a-bfa5-a96a7c32547c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK"
+    (shape bidirectional)
+    (at 78.74 109.22 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid f684a665-03ee-55c9-a301-058689109527)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDO"
+    (shape bidirectional)
+    (at 78.74 119.38 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid f64d65a0-a0d6-5edc-83a3-dad87819dcab)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 119.38 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_BRIDGE_OE_N"
+    (shape bidirectional)
+    (at 78.74 129.54 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 09a280e7-b624-51f5-9c1c-46b676ca82a6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 78.74 129.54 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 129.54 134.62 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid ffcb70c9-43ad-5457-a1cc-4d4dad174925)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 134.62 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TDO"
+    (shape bidirectional)
+    (at 129.54 119.38 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid c8f92c83-e10e-5b85-8ec0-29d1c5c2422b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 119.38 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK_1V8_RAW"
+    (shape bidirectional)
+    (at 129.54 109.22 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid ee364399-5018-5e01-9be8-a5f93d306b6f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI_1V8_RAW"
+    (shape bidirectional)
+    (at 129.54 99.06 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid d7d3fe68-c0ad-5110-96cd-b2549c0993a1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS_1V8_RAW"
+    (shape bidirectional)
+    (at 129.54 88.9 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid a9bc2bd4-284a-5730-bb5c-9ea1b0096dfe)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_VTREF_1V8_TARGET"
+    (shape bidirectional)
+    (at 129.54 73.66 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid cf619007-8459-5845-be1f-e658ec98da28)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 73.66 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 129.54 63.5 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid e27a2188-3c40-509c-999f-e40b0c65403e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 129.54 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 224.79 50.8 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid a53af23a-41b1-568f-9b5a-8cc0f5a867f8)
+    (property "Reference" "R121"
+      (at 224.79 41.33 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "33R / source damping"
+      (at 224.79 45.529999999999994 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 224.79 50.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 224.79 50.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 867cd593-253c-5d3a-8554-041af5634188))
+    (pin "2"
+      (uuid c39ca613-6e10-587a-823a-6f941b4a434a))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R121")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 224.79 50.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS_1V8_RAW"
+    (shape bidirectional)
+    (at 213.36 50.8 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 9e71fce0-ea23-5420-938b-8ccd883942e8)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 213.36 50.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS_1V8"
+    (shape bidirectional)
+    (at 236.22 50.8 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 4b7301ae-9b38-527f-9b47-01a859328317)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 236.22 50.8 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:Source_Select_1x3")
+    (at 330.2 63.5 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2a0354f5-0a1c-5cc6-964b-2f9904841a5a)
+    (property "Reference" "JP121"
+      (at 330.2 45.14 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "TMS SOURCE / DEFAULT 2-3"
+      (at 330.2 49.34 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      (at 330.2 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 330.2 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid ce3fc939-693c-52e5-9d85-687b2f5eb436))
+    (pin "2"
+      (uuid daeb44e6-f1f4-5662-97fe-ba65404bb257))
+    (pin "3"
+      (uuid 6bc142dc-c7b3-57f8-9294-bbacdbd8a6a3))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "JP121")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 330.2 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS_1V8"
+    (shape bidirectional)
+    (at 314.96 58.42 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 0de44d7d-16d8-5e5a-8033-ab8c73407854)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 58.42 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TMS"
+    (shape bidirectional)
+    (at 314.96 63.5 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 2d98315d-2e46-5101-9e2e-37859b19d56b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 63.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TMS"
+    (shape bidirectional)
+    (at 314.96 68.58 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 7d9da5f3-3299-5523-8cdb-3c50b5828703)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 68.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 224.79 101.6 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 3fe47378-1063-56d2-aa7a-68e54af8e46f)
+    (property "Reference" "R122"
+      (at 224.79 92.13 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "33R / source damping"
+      (at 224.79 96.33 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 224.79 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 224.79 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 7dbed1ea-43a4-56d0-b202-7337de20349c))
+    (pin "2"
+      (uuid 64b3f289-1242-5370-9df4-ed58d3605be2))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R122")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 224.79 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI_1V8_RAW"
+    (shape bidirectional)
+    (at 213.36 101.6 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 9ae30af2-e21f-5d97-8753-a0e9938369ca)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 213.36 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI_1V8"
+    (shape bidirectional)
+    (at 236.22 101.6 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid a802c089-cad1-5508-a737-892b2838aeb0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 236.22 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:Source_Select_1x3")
+    (at 330.2 114.3 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 11f5da13-e914-500e-bd20-7289aeda1538)
+    (property "Reference" "JP122"
+      (at 330.2 95.94 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "TDI SOURCE / DEFAULT 2-3"
+      (at 330.2 100.14 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      (at 330.2 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 330.2 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 61148f94-72f7-5e4f-8543-4693c94e26ca))
+    (pin "2"
+      (uuid f48ce7cd-e68f-5b0e-a258-d72030ed4e0e))
+    (pin "3"
+      (uuid ec696ab8-d03e-5d8f-b542-fcc5082e19b7))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "JP122")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 330.2 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI_1V8"
+    (shape bidirectional)
+    (at 314.96 109.22 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid d1d7206d-d9df-509d-a416-6460814048bb)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 109.22 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TDI"
+    (shape bidirectional)
+    (at 314.96 114.3 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 79877d9c-5319-57fa-9125-5292eba4366b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 114.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TDI"
+    (shape bidirectional)
+    (at 314.96 119.38 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 0c1c5319-c182-57fc-8022-b63ef807b431)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 119.38 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 224.79 152.4 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 855f074b-84de-5761-be6e-5adce0d462df)
+    (property "Reference" "R123"
+      (at 224.79 142.93 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "33R / source damping"
+      (at 224.79 147.13 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 224.79 152.4 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 224.79 152.4 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 48def23d-8935-59f0-9ef9-5d18e6c9917c))
+    (pin "2"
+      (uuid 52195b80-701e-5436-adc8-51f09dfaffb3))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R123")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 224.79 152.4 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK_1V8_RAW"
+    (shape bidirectional)
+    (at 213.36 152.4 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 9f7667f1-6398-5d72-9518-896bfacebbb0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 213.36 152.4 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK_1V8"
+    (shape bidirectional)
+    (at 236.22 152.4 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 97894537-d773-5783-99fc-f6cd60101014)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 236.22 152.4 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:Source_Select_1x3")
+    (at 330.2 165.1 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 365f6474-df11-533b-9563-3fb7cfdea0b5)
+    (property "Reference" "JP123"
+      (at 330.2 146.74 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "TCK SOURCE / DEFAULT 2-3"
+      (at 330.2 150.94 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      (at 330.2 165.1 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 330.2 165.1 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 01356e52-8291-577e-be8a-426a55ed7569))
+    (pin "2"
+      (uuid 934b3f80-12fa-551b-80da-496edb7490a5))
+    (pin "3"
+      (uuid a9a19a3d-230e-5d04-90c3-9de09efd17d1))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "JP123")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 330.2 165.1 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK_1V8"
+    (shape bidirectional)
+    (at 314.96 160.02 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 395b0d36-dd63-5892-b1e3-4d96167923f5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 160.02 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TCK"
+    (shape bidirectional)
+    (at 314.96 165.1 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 25b0188a-cc0e-5754-a151-b0e45380c262)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 165.1 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TCK"
+    (shape bidirectional)
+    (at 314.96 170.18 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid d5334977-6b72-57cc-8ad6-822de6cb6336)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 314.96 170.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:Xilinx_JTAG_14pin_2mm")
+    (at 50.8 213.36 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 5885b3e9-0322-58b5-82b9-844bb7002343)
+    (property "Reference" "J21"
+      (at 50.8 165.79000000000002 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "XILINX 14-PIN / 2.00 mm"
+      (at 50.8 169.99 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_2x07_P2.00mm_Vertical"
+      (at 50.8 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 50.8 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid c654aa62-52d9-5156-a7fa-1567f85313ec))
+    (pin "2"
+      (uuid 0d33dfda-5809-5ced-9e52-c6bf51001b11))
+    (pin "3"
+      (uuid 005a78e7-f541-5d92-b78a-7efd76a7a16d))
+    (pin "4"
+      (uuid c9a64819-9171-5fbf-80f2-3bbf84abff5c))
+    (pin "5"
+      (uuid a5925027-c1c0-5844-91d7-bf48a3ee55e4))
+    (pin "6"
+      (uuid 5ed9d4d5-86e8-58f3-863b-3e7d28a0aba0))
+    (pin "7"
+      (uuid 78710c35-2af8-52b2-a30f-4ef391e5c639))
+    (pin "8"
+      (uuid b82c0abc-d296-5011-abe7-4f87f0c63750))
+    (pin "9"
+      (uuid 7d4affd2-eb67-536a-a525-89f71e954082))
+    (pin "10"
+      (uuid da8fff6f-596a-501e-8a91-ba6905821b79))
+    (pin "11"
+      (uuid b7fb78b4-a213-506e-8422-5e020f32886e))
+    (pin "12"
+      (uuid 16bde9aa-6f3c-547e-aaf9-07b0b01a049c))
+    (pin "13"
+      (uuid 1dcfa6c1-d7b5-5157-ae1f-e26356303f43))
+    (pin "14"
+      (uuid 5c83a235-a829-5e97-b897-af6d5e6f8b70))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "J21")
+          (unit 1))))
+    (property "Datasheet" "https://docs.amd.com/r/en-US/ug908-vivado-programming-debugging/Hardware-Programming-Connections"
+      (at 50.8 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 180.34 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 1c0e0936-25b5-5c13-8c0d-da3d958732cf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 180.34 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 190.5 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 67c1a96c-f736-5637-ad87-b1bdbfccec31)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 190.5 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 200.66 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 49f753f4-292f-5653-b677-0b0ff0bfb2ab)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 200.66 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 210.82 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 1851238e-dd25-5062-afff-14b539ed415c)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 210.82 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 220.98 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid a168f0f5-2baf-5ac5-bfc1-03a8612b3b4f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 220.98 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 231.14 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 6dd4f642-f533-5ad3-b6f1-c89cca705645)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 231.14 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 76.2 241.3 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 6f797e1b-79eb-52db-8d9d-e5a5fd29a33f)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 241.3 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_VTREF_1V8_TARGET"
+    (shape bidirectional)
+    (at 76.2 185.42 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 8f630f52-cb3a-5349-af23-e41617c77fa4)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 185.42 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TMS"
+    (shape bidirectional)
+    (at 76.2 195.58 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid d17c6507-7d44-58bd-a3e1-aa53348b5437)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 195.58 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TCK"
+    (shape bidirectional)
+    (at 76.2 205.74 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid f967e202-2a93-52ba-932d-b1ce69c166e7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 205.74 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TDO"
+    (shape bidirectional)
+    (at 76.2 215.9 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 1c1c6c7e-6b8b-58ee-9496-e62d89b6f63d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 215.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_PROBE_TDI"
+    (shape bidirectional)
+    (at 76.2 226.06 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b7115922-a376-5f46-acc2-f2788f847bfe)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 76.2 226.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (no_connect
+    (at 76.2 236.22)
+    (uuid 7ccdfdb0-4005-53e8-8dd3-9e702a3d0ba6))
+  (no_connect
+    (at 76.2 246.38)
+    (uuid 2f7f9b4f-5e53-5949-99ad-de9a1b23c3e7))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 144.78 162.56 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid b9704219-afdf-5615-aeec-5d078793dd10)
+    (property "Reference" "R124"
+      (at 144.78 153.09 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / target TMS pull-up"
+      (at 144.78 157.29 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 144.78 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 144.78 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 6daf48a2-2ba3-56cc-94f8-6cc0818cf757))
+    (pin "2"
+      (uuid f116dc48-fa0e-5a71-90f6-cf71c9037cfc))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R124")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 144.78 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TMS"
+    (shape bidirectional)
+    (at 133.35 162.56 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid dc1a8d04-d696-560e-afc5-8876e9981eaf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 133.35 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_VTREF_1V8_TARGET"
+    (shape bidirectional)
+    (at 156.21 162.56 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid fddde071-08da-5d28-b952-ab43054ff3b3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 156.21 162.56 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 144.78 187.96 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid edac7c72-3669-5319-9d55-6729b88959ef)
+    (property "Reference" "R125"
+      (at 144.78 178.49 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / target TDI pull-up"
+      (at 144.78 182.69 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 144.78 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 144.78 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 8c96b12d-836c-56a2-b556-300d28358adb))
+    (pin "2"
+      (uuid bae86469-82c4-5776-bd36-2edde429b47d))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R125")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 144.78 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TDI"
+    (shape bidirectional)
+    (at 133.35 187.96 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid b573f9c8-6649-546e-be05-e1832eb5adb6)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 133.35 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_VTREF_1V8_TARGET"
+    (shape bidirectional)
+    (at 156.21 187.96 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 361eb580-1aac-5b5c-bce4-63b253a6c89b)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 156.21 187.96 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 144.78 213.36 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid e7484b39-2035-5f06-9030-289119ca1ee7)
+    (property "Reference" "R126"
+      (at 144.78 203.89000000000001 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / target TCK pull-down"
+      (at 144.78 208.09 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 144.78 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 144.78 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 1f6bf317-010a-503d-b4e6-f0ba85bd2b3f))
+    (pin "2"
+      (uuid c806342b-31ed-5225-b59b-fe7a744956d3))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R126")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 144.78 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TCK"
+    (shape bidirectional)
+    (at 133.35 213.36 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 95e45f49-8ea0-51cc-a88f-6a2cfda65ea7)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 133.35 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 156.21 213.36 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 741cc9fd-2009-55e2-89a9-5f262d0a9adb)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 156.21 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 246.38 198.12 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid e74d3e95-7056-595c-8df0-2794a46d97d0)
+    (property "Reference" "R127"
+      (at 246.38 188.65 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / A-side TMS idle high"
+      (at 246.38 192.85 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 246.38 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 246.38 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 9333896f-e921-5584-82f5-dc4e7e3fad59))
+    (pin "2"
+      (uuid d1e8a52c-c2b3-5f81-9e05-b4e5eb3a40e4))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R127")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 246.38 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TMS"
+    (shape bidirectional)
+    (at 234.95 198.12 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid b4d9df17-4884-5e08-bdbc-2ac8220d2edd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 234.95 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 257.81 198.12 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid b050a2f2-251a-5806-b852-2e7c79da237d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 257.81 198.12 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 246.38 223.52 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid ea7afa3a-9559-558b-9d65-b802221456e1)
+    (property "Reference" "R128"
+      (at 246.38 214.05 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / A-side TDI idle high"
+      (at 246.38 218.25 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 246.38 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 246.38 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 9af6a471-5b50-53fe-b743-4afa17bb4d5c))
+    (pin "2"
+      (uuid 2871e1bc-237f-5c7a-8973-e0cf726715db))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R128")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 246.38 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TDI"
+    (shape bidirectional)
+    (at 234.95 223.52 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 7b5ccd74-9908-59c0-8183-0b2787b5a342)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 234.95 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 257.81 223.52 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid e167195e-f1d9-544e-b701-893beff8f84d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 257.81 223.52 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 246.38 248.92 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0c36b5ac-fe2f-5947-baff-773690bce4c7)
+    (property "Reference" "R129"
+      (at 246.38 239.45 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / A-side TCK idle low"
+      (at 246.38 243.64999999999998 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 246.38 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 246.38 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 580cc803-a837-51b3-8dcb-34a9f15b2698))
+    (pin "2"
+      (uuid 2b6c6395-ee94-5b95-8789-2cf2dfcfabc1))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R129")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 246.38 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_TCK"
+    (shape bidirectional)
+    (at 234.95 248.92 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 6e9dcd43-c380-5e3c-a99a-878908097edd)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 234.95 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 257.81 248.92 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 8940f470-c9ca-50ee-a492-3038c7ea8ecf)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 257.81 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 360.68 213.36 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid c78a957c-8624-5ac0-983a-d3e694dc54c4)
+    (property "Reference" "R130"
+      (at 360.68 203.89000000000001 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "10k / default disabled"
+      (at 360.68 208.09 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 360.68 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 360.68 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 195dcf86-6922-57b4-bf50-689a5d507acb))
+    (pin "2"
+      (uuid 584570ae-e473-503e-9a06-5df16cb39c83))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R130")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 360.68 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_BRIDGE_OE_N"
+    (shape bidirectional)
+    (at 349.25 213.36 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 19ab5b31-a655-5029-8c20-9ca617a38393)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 349.25 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 372.11 213.36 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 6334d3be-f6ef-5ac9-8bd8-8f35df75e21e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 372.11 213.36 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:R")
+    (at 360.68 248.92 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 43f985c4-759e-53d7-80ea-905aa83e7dee)
+    (property "Reference" "R131"
+      (at 360.68 239.45 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "100k / TDO idle low"
+      (at 360.68 243.64999999999998 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+      (at 360.68 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 360.68 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid d6c661d5-6c02-571e-8486-deb31432c221))
+    (pin "2"
+      (uuid 8f477959-d484-538c-bd1e-a31f6b183481))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "R131")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 360.68 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_TDO"
+    (shape bidirectional)
+    (at 349.25 248.92 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 3d0ab17b-c529-5b99-ba72-a6d3690991ca)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 349.25 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 372.11 248.92 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 85a10d46-9c48-508e-8b3a-39a853d3da78)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 372.11 248.92 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:Normally_Open_1x2")
+    (at 381.0 40.64 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 2fd945d4-7304-580b-97f5-0aa19e1c4aa3)
+    (property "Reference" "JP124"
+      (at 381.0 24.820000000000004 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "XEM ARM / DEFAULT OPEN"
+      (at 381.0 29.020000000000003 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical_SMD_Pin1Left"
+      (at 381.0 40.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 381.0 40.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 3719f85e-96ed-5fbe-9b0d-b5c10203e7d3))
+    (pin "2"
+      (uuid bc47637e-df34-5e68-b957-4c7961cd8c57))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "JP124")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 381.0 40.64 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_XEM_OE_N"
+    (shape bidirectional)
+    (at 365.76 38.1 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 8d2939a5-c65e-5c9a-9eb5-8e8d5ff89bde)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 38.1 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_BRIDGE_OE_N"
+    (shape bidirectional)
+    (at 365.76 43.18 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 246d97fe-a839-5afe-9ca2-36998bcc24b3)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 365.76 43.18 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:C")
+    (at 147.32 243.84 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 6248661a-bc17-5d16-a950-e51dbb5be29f)
+    (property "Reference" "C121"
+      (at 147.32 233.10000000000002 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "100nF / 16V X7R"
+      (at 147.32 237.3 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+      (at 147.32 243.84 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 147.32 243.84 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 37abd25a-c817-5937-b8e6-c5732b500687))
+    (pin "2"
+      (uuid 4f97f9e4-cdd6-5a2c-bcf4-2d13fa71d507))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "C121")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 147.32 243.84 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "XEM_1V2_DDR"
+    (shape bidirectional)
+    (at 135.89 243.84 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 9e317811-5ca5-5392-90f5-19171538ea56)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 135.89 243.84 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 158.75 243.84 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 91e18353-186b-59f3-a9f8-f07e6306bd80)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 158.75 243.84 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (symbol
+    (lib_id "AdapterR12:C")
+    (at 147.32 271.78 0)
+    (unit 1)
+    (exclude_from_sim yes)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid 0d14a6ea-852a-5bc2-83c7-951ab4d1709b)
+    (property "Reference" "C122"
+      (at 147.32 261.03999999999996 0)
+      (effects
+        (font
+          (size 1.45 1.45))))
+    (property "Value" "100nF / 16V X7R"
+      (at 147.32 265.23999999999995 0)
+      (effects
+        (font
+          (size 1.04 1.04))))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+      (at 147.32 271.78 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Status" "R12 SINGLE-LINK STUDY / not fabrication-qualified"
+      (at 147.32 271.78 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (pin "1"
+      (uuid 7e063035-d712-59f9-9b87-b66762720d78))
+    (pin "2"
+      (uuid 3c0e2d38-89df-5363-9227-51eead85c517))
+    (instances
+      (project "BRK8310_Single_Link_Interposer_R12"
+        (path "/dfbd0d61-af6d-5bad-931b-464b63f2bdb6/5bc6449e-4bad-551c-8855-f3b45d8600f2"
+          (reference "C122")
+          (unit 1))))
+    (property "Datasheet" ""
+      (at 147.32 271.78 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "P1_VTREF_1V8_TARGET"
+    (shape bidirectional)
+    (at 135.89 271.78 180)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify right))
+    (uuid 9efb6010-0dd0-5173-910c-933ad7de24ea)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 135.89 271.78 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (global_label "SYS_GND"
+    (shape bidirectional)
+    (at 158.75 271.78 0)
+    (effects
+      (font
+        (size 1.04 1.04))
+      (justify left))
+    (uuid 3da49ce6-e803-5349-a8b0-bfea94cd6462)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 158.75 271.78 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)))))
+  (text "DIR1/2/3 = HIGH: TMS/TDI/TCK to target. DIR4 = LOW: target TDO to XEM. /OE defaults HIGH."
+    (at 15.24 278.13 0)
+    (effects
+      (font
+        (size 1.05 1.05))
+      (justify left))
+    (uuid dee6c42f-e6fb-559b-b00d-6d981ccdff55))
+  (text "MC3.80 is +1.2V_DDR (250 mA shared user budget). Target pin 1 bias/inrush load, signal timing and gateware require review."
+    (at 15.24 284.48 0)
+    (effects
+      (font
+        (size 1.05 1.05))
+      (justify left))
+    (uuid 3b833933-1160-5234-a44a-290c9026069b)))

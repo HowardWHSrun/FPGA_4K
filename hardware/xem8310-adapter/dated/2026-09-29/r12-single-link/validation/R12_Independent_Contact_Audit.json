@@ -1,0 +1,7235 @@
+{
+  "method": "native XML expectations; KiCad loaded-copper connected clusters including stored filled zones; IGNORE_NETS physical isolation check",
+  "scope_limit": "Copper graph and component/pad-net parity only. No semiconductor conduction, selector position, impedance, SI/PI, current/thermal capacity, firmware or fabrication qualification.",
+  "pcb_path": "2026-09-29_FPGA_Work/22_BRK8310_Single_Link_Interposer_R12/project/BRK8310_Single_Link_Interposer_R12.kicad_pcb",
+  "xml_path": "2026-09-29_FPGA_Work/22_BRK8310_Single_Link_Interposer_R12/validation/R12_Full_Netlist.xml",
+  "kicad_version": "10.0.6",
+  "elapsed_seconds": 0.358,
+  "hashes_before": {
+    "pcb": "a1c2edf7554c58e6b5763d82b714bedd78e23a68d02884bb31c5cb4047131257",
+    "xml": "e0571d340fa2a3f22d49ec2255a61a708f7f97875977283bbd4d0397ace5bfab"
+  },
+  "hashes_after": {
+    "pcb": "a1c2edf7554c58e6b5763d82b714bedd78e23a68d02884bb31c5cb4047131257",
+    "xml": "e0571d340fa2a3f22d49ec2255a61a708f7f97875977283bbd4d0397ace5bfab"
+  },
+  "summary": {
+    "passed": false,
+    "failure_count": 14,
+    "expected_physical_components": 45,
+    "pcb_footprints": 45,
+    "component_manifest_parity": true,
+    "cable_contacts_passed": 10,
+    "cable_contacts_total": 19,
+    "serial_conductors_passed": 8,
+    "serial_conductors_total": 8,
+    "mc1_mc2_pass_through_passed": 160,
+    "mc1_mc2_pass_through_total": 160,
+    "mc3_pass_through_passed": 67,
+    "mc3_pass_through_total": 67,
+    "selected_brk_contacts_isolated": 13,
+    "selected_brk_contacts_total": 13,
+    "jtag_gpio_native_map_passed": 5,
+    "jtag_gpio_native_map_total": 5,
+    "sys_gnd_physical_pad_count": 54,
+    "sys_gnd_component_count": 6,
+    "net_pad_assignment_parity_errors": 0,
+    "open_multi_pad_net_count": 5,
+    "physical_net_conflict_count": 0,
+    "source_hashes_unchanged": true,
+    "stored_zone_count": 18,
+    "stored_copper_zone_count": 10,
+    "stored_keepout_rule_area_count": 8,
+    "unfilled_zone_count": 0
+  },
+  "failures": [
+    {
+      "kind": "open_copper_net",
+      "net": "P1_TCK",
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "components": [
+        [
+          "JP123.2",
+          "R126.1"
+        ],
+        [
+          "J201.17"
+        ]
+      ]
+    },
+    {
+      "kind": "open_copper_net",
+      "net": "P1_TDI",
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "components": [
+        [
+          "JP122.2",
+          "R125.1"
+        ],
+        [
+          "J201.15"
+        ]
+      ]
+    },
+    {
+      "kind": "open_copper_net",
+      "net": "P1_TDO",
+      "physical_pad_count": 4,
+      "component_count": 2,
+      "components": [
+        [
+          "J21.8",
+          "R131.1",
+          "U101.11"
+        ],
+        [
+          "J201.18"
+        ]
+      ]
+    },
+    {
+      "kind": "open_copper_net",
+      "net": "P1_TMS",
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "components": [
+        [
+          "JP121.2",
+          "R124.1"
+        ],
+        [
+          "J201.2"
+        ]
+      ]
+    },
+    {
+      "kind": "open_copper_net",
+      "net": "SYS_GND",
+      "physical_pad_count": 54,
+      "component_count": 6,
+      "components": [
+        [
+          "C121.2",
+          "C122.2",
+          "C311.2",
+          "C312.2",
+          "C313.2",
+          "C314.2",
+          "D300.2",
+          "D301.2",
+          "J10.0",
+          "J11.0",
+          "J12.5",
+          "J12.6",
+          "J12.7",
+          "J12.8",
+          "J13.5",
+          "J13.6",
+          "J13.7",
+          "J13.8",
+          "J201.13",
+          "J201.16",
+          "J21.1",
+          "J21.11",
+          "J21.13",
+          "J21.3",
+          "J21.5",
+          "J21.7",
+          "J21.9",
+          "R126.2",
+          "R129.2",
+          "R131.2",
+          "R312.2",
+          "R314.2",
+          "R315.2",
+          "U101.10",
+          "U101.8"
+        ],
+        [
+          "J201.10"
+        ],
+        [
+          "J201.4"
+        ],
+        [
+          "R132.2"
+        ],
+        [
+          "J201.7"
+        ],
+        [
+          "U301.8"
+        ]
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.2",
+      "net": "P1_TMS",
+      "missing_destinations": [
+        "JP121.2",
+        "R124.1"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.4",
+      "net": "SYS_GND",
+      "missing_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.13",
+        "J201.16",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.7",
+      "net": "SYS_GND",
+      "missing_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.13",
+        "J201.16",
+        "J201.4",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.10",
+      "net": "SYS_GND",
+      "missing_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.13",
+        "J201.16",
+        "J201.4",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.13",
+      "net": "SYS_GND",
+      "missing_destinations": [
+        "J201.10",
+        "J201.4",
+        "J201.7",
+        "R132.2",
+        "U301.8"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.15",
+      "net": "P1_TDI",
+      "missing_destinations": [
+        "JP122.2",
+        "R125.1"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.16",
+      "net": "SYS_GND",
+      "missing_destinations": [
+        "J201.10",
+        "J201.4",
+        "J201.7",
+        "R132.2",
+        "U301.8"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.17",
+      "net": "P1_TCK",
+      "missing_destinations": [
+        "JP123.2",
+        "R126.1"
+      ]
+    },
+    {
+      "kind": "cable_contact_destination_open",
+      "contact": "J201.18",
+      "net": "P1_TDO",
+      "missing_destinations": [
+        "J21.8",
+        "R131.1",
+        "U101.11"
+      ]
+    }
+  ],
+  "warnings": [],
+  "component_manifest": [
+    {
+      "reference": "C121",
+      "expected_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "C122",
+      "expected_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "C311",
+      "expected_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0805_2012Metric"
+      ]
+    },
+    {
+      "reference": "C312",
+      "expected_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0805_2012Metric"
+      ]
+    },
+    {
+      "reference": "C313",
+      "expected_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0805_2012Metric"
+      ]
+    },
+    {
+      "reference": "C314",
+      "expected_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pcb_footprints": [
+        "Capacitor_SMD:C_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "D300",
+      "expected_footprint": "Diode_SMD:D_SMB",
+      "pcb_footprints": [
+        "Diode_SMD:D_SMB"
+      ]
+    },
+    {
+      "reference": "D301",
+      "expected_footprint": "Diode_SMD:D_SOD-128",
+      "pcb_footprints": [
+        "Diode_SMD:D_SOD-128"
+      ]
+    },
+    {
+      "reference": "H1",
+      "expected_footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pcb_footprints": [
+        "MountingHole:MountingHole_3.2mm_M3"
+      ]
+    },
+    {
+      "reference": "H2",
+      "expected_footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pcb_footprints": [
+        "MountingHole:MountingHole_3.2mm_M3"
+      ]
+    },
+    {
+      "reference": "H3",
+      "expected_footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pcb_footprints": [
+        "MountingHole:MountingHole_3.2mm_M3"
+      ]
+    },
+    {
+      "reference": "H4",
+      "expected_footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pcb_footprints": [
+        "MountingHole:MountingHole_3.2mm_M3"
+      ]
+    },
+    {
+      "reference": "J10",
+      "expected_footprint": "AdapterR8:QTH_040_01_Top_OpalKelly",
+      "pcb_footprints": [
+        "AdapterR8:QTH_040_01_Top_OpalKelly"
+      ]
+    },
+    {
+      "reference": "J11",
+      "expected_footprint": "AdapterR8:QSH_040_01_Bottom_SamtecDrawing",
+      "pcb_footprints": [
+        "AdapterR8:QSH_040_01_Bottom_SamtecDrawing"
+      ]
+    },
+    {
+      "reference": "J12",
+      "expected_footprint": "AdapterR8:BTE_040_01_Top_OpalKelly",
+      "pcb_footprints": [
+        "AdapterR8:BTE_040_01_Top_OpalKelly"
+      ]
+    },
+    {
+      "reference": "J13",
+      "expected_footprint": "AdapterR8:BSE_040_01_Bottom_SamtecDrawing",
+      "pcb_footprints": [
+        "AdapterR8:BSE_040_01_Bottom_SamtecDrawing"
+      ]
+    },
+    {
+      "reference": "J14",
+      "expected_footprint": "AdapterR8:BTE_040_01_Top_OpalKelly",
+      "pcb_footprints": [
+        "AdapterR8:BTE_040_01_Top_OpalKelly"
+      ]
+    },
+    {
+      "reference": "J15",
+      "expected_footprint": "AdapterR8:BSE_040_01_Bottom_SamtecDrawing",
+      "pcb_footprints": [
+        "AdapterR8:BSE_040_01_Bottom_SamtecDrawing"
+      ]
+    },
+    {
+      "reference": "J21",
+      "expected_footprint": "Connector_PinHeader_2.00mm:PinHeader_2x07_P2.00mm_Vertical",
+      "pcb_footprints": [
+        "Connector_PinHeader_2.00mm:PinHeader_2x07_P2.00mm_Vertical"
+      ]
+    },
+    {
+      "reference": "J201",
+      "expected_footprint": "Connector_Video:HDMI_Micro-D_Molex_46765-1xxx",
+      "pcb_footprints": [
+        "Connector_Video:HDMI_Micro-D_Molex_46765-1xxx"
+      ]
+    },
+    {
+      "reference": "JP121",
+      "expected_footprint": "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left",
+      "pcb_footprints": [
+        "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      ]
+    },
+    {
+      "reference": "JP122",
+      "expected_footprint": "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left",
+      "pcb_footprints": [
+        "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      ]
+    },
+    {
+      "reference": "JP123",
+      "expected_footprint": "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left",
+      "pcb_footprints": [
+        "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left"
+      ]
+    },
+    {
+      "reference": "JP124",
+      "expected_footprint": "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical_SMD_Pin1Left",
+      "pcb_footprints": [
+        "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical_SMD_Pin1Left"
+      ]
+    },
+    {
+      "reference": "JP311",
+      "expected_footprint": "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical_SMD_Pin1Left",
+      "pcb_footprints": [
+        "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical_SMD_Pin1Left"
+      ]
+    },
+    {
+      "reference": "R121",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R122",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R123",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R124",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R125",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R126",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R127",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R128",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R129",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R130",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R131",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R132",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R311",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R312",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R313",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R314",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "R315",
+      "expected_footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pcb_footprints": [
+        "Resistor_SMD:R_0603_1608Metric"
+      ]
+    },
+    {
+      "reference": "TP301",
+      "expected_footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pcb_footprints": [
+        "TestPoint:TestPoint_Pad_D1.0mm"
+      ]
+    },
+    {
+      "reference": "U101",
+      "expected_footprint": "Package_SO:TSSOP-16_4.4x5mm_P0.65mm",
+      "pcb_footprints": [
+        "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
+      ]
+    },
+    {
+      "reference": "U301",
+      "expected_footprint": "AdapterR11:TI_RPW0010A_TPS25947",
+      "pcb_footprints": [
+        "AdapterR11:TI_RPW0010A_TPS25947"
+      ]
+    }
+  ],
+  "cable_contacts": [
+    {
+      "contact": "J201.1",
+      "net": "P1_VTREF_1V8_TARGET",
+      "passed": true,
+      "expected_destinations": [
+        "C122.1",
+        "J21.2",
+        "R124.2",
+        "R125.2",
+        "U101.15"
+      ],
+      "reached_destinations": [
+        "C122.1",
+        "J21.2",
+        "R124.2",
+        "R125.2",
+        "U101.15"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.2",
+      "net": "P1_TMS",
+      "passed": false,
+      "expected_destinations": [
+        "JP121.2",
+        "R124.1"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.3",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_P",
+      "passed": true,
+      "expected_destinations": [
+        "J10.41"
+      ],
+      "reached_destinations": [
+        "J10.41"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.4",
+      "net": "SYS_GND",
+      "passed": false,
+      "expected_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.13",
+        "J201.16",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.5",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_N",
+      "passed": true,
+      "expected_destinations": [
+        "J10.43"
+      ],
+      "reached_destinations": [
+        "J10.43"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.6",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_P",
+      "passed": true,
+      "expected_destinations": [
+        "J10.45"
+      ],
+      "reached_destinations": [
+        "J10.45"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.7",
+      "net": "SYS_GND",
+      "passed": false,
+      "expected_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.13",
+        "J201.16",
+        "J201.4",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.8",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_N",
+      "passed": true,
+      "expected_destinations": [
+        "J10.47"
+      ],
+      "reached_destinations": [
+        "J10.47"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.9",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_P",
+      "passed": true,
+      "expected_destinations": [
+        "J10.49"
+      ],
+      "reached_destinations": [
+        "J10.49"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.10",
+      "net": "SYS_GND",
+      "passed": false,
+      "expected_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.13",
+        "J201.16",
+        "J201.4",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.11",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_N",
+      "passed": true,
+      "expected_destinations": [
+        "J10.51"
+      ],
+      "reached_destinations": [
+        "J10.51"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.12",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_P",
+      "passed": true,
+      "expected_destinations": [
+        "J10.42"
+      ],
+      "reached_destinations": [
+        "J10.42"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.13",
+      "net": "SYS_GND",
+      "passed": false,
+      "expected_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.16",
+        "J201.4",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ],
+      "reached_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.16",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.14",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_N",
+      "passed": true,
+      "expected_destinations": [
+        "J10.44"
+      ],
+      "reached_destinations": [
+        "J10.44"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.15",
+      "net": "P1_TDI",
+      "passed": false,
+      "expected_destinations": [
+        "JP122.2",
+        "R125.1"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.16",
+      "net": "SYS_GND",
+      "passed": false,
+      "expected_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.10",
+        "J201.13",
+        "J201.4",
+        "J201.7",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R132.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8",
+        "U301.8"
+      ],
+      "reached_destinations": [
+        "C121.2",
+        "C122.2",
+        "C311.2",
+        "C312.2",
+        "C313.2",
+        "C314.2",
+        "D300.2",
+        "D301.2",
+        "J10.0",
+        "J11.0",
+        "J12.5",
+        "J12.6",
+        "J12.7",
+        "J12.8",
+        "J13.5",
+        "J13.6",
+        "J13.7",
+        "J13.8",
+        "J201.13",
+        "J21.1",
+        "J21.11",
+        "J21.13",
+        "J21.3",
+        "J21.5",
+        "J21.7",
+        "J21.9",
+        "R126.2",
+        "R129.2",
+        "R131.2",
+        "R312.2",
+        "R314.2",
+        "R315.2",
+        "U101.10",
+        "U101.8"
+      ],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.17",
+      "net": "P1_TCK",
+      "passed": false,
+      "expected_destinations": [
+        "JP123.2",
+        "R126.1"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.18",
+      "net": "P1_TDO",
+      "passed": false,
+      "expected_destinations": [
+        "J21.8",
+        "R131.1",
+        "U101.11"
+      ],
+      "reached_destinations": [],
+      "physical_pad_instances": 1
+    },
+    {
+      "contact": "J201.19",
+      "net": "P1_LINK_12V",
+      "passed": true,
+      "expected_destinations": [
+        "C313.1",
+        "D301.1",
+        "U301.6"
+      ],
+      "reached_destinations": [
+        "C313.1",
+        "D301.1",
+        "U301.6"
+      ],
+      "physical_pad_instances": 1
+    }
+  ],
+  "serial_conductors": [
+    {
+      "source": "J201.3",
+      "destination": "J10.41",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_P",
+      "passed": true
+    },
+    {
+      "source": "J201.5",
+      "destination": "J10.43",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_N",
+      "passed": true
+    },
+    {
+      "source": "J201.6",
+      "destination": "J10.45",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_P",
+      "passed": true
+    },
+    {
+      "source": "J201.8",
+      "destination": "J10.47",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_N",
+      "passed": true
+    },
+    {
+      "source": "J201.9",
+      "destination": "J10.49",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_P",
+      "passed": true
+    },
+    {
+      "source": "J201.11",
+      "destination": "J10.51",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_N",
+      "passed": true
+    },
+    {
+      "source": "J201.12",
+      "destination": "J10.42",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_P",
+      "passed": true
+    },
+    {
+      "source": "J201.14",
+      "destination": "J10.44",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_N",
+      "passed": true
+    }
+  ],
+  "connector_pass_through": [
+    {
+      "source": "J14.1",
+      "destination": "J15.1",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_01",
+      "passed": true
+    },
+    {
+      "source": "J14.2",
+      "destination": "J15.2",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_02",
+      "passed": true
+    },
+    {
+      "source": "J14.3",
+      "destination": "J15.3",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_03",
+      "passed": true
+    },
+    {
+      "source": "J14.4",
+      "destination": "J15.4",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_04",
+      "passed": true
+    },
+    {
+      "source": "J14.5",
+      "destination": "J15.5",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_05",
+      "passed": true
+    },
+    {
+      "source": "J14.6",
+      "destination": "J15.6",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_06",
+      "passed": true
+    },
+    {
+      "source": "J14.7",
+      "destination": "J15.7",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_07",
+      "passed": true
+    },
+    {
+      "source": "J14.8",
+      "destination": "J15.8",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_08",
+      "passed": true
+    },
+    {
+      "source": "J14.9",
+      "destination": "J15.9",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_09",
+      "passed": true
+    },
+    {
+      "source": "J14.10",
+      "destination": "J15.10",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_10",
+      "passed": true
+    },
+    {
+      "source": "J14.11",
+      "destination": "J15.11",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_11",
+      "passed": true
+    },
+    {
+      "source": "J14.12",
+      "destination": "J15.12",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_12",
+      "passed": true
+    },
+    {
+      "source": "J14.13",
+      "destination": "J15.13",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_13",
+      "passed": true
+    },
+    {
+      "source": "J14.14",
+      "destination": "J15.14",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_14",
+      "passed": true
+    },
+    {
+      "source": "J14.15",
+      "destination": "J15.15",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_15",
+      "passed": true
+    },
+    {
+      "source": "J14.16",
+      "destination": "J15.16",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_16",
+      "passed": true
+    },
+    {
+      "source": "J14.17",
+      "destination": "J15.17",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_17",
+      "passed": true
+    },
+    {
+      "source": "J14.18",
+      "destination": "J15.18",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_18",
+      "passed": true
+    },
+    {
+      "source": "J14.19",
+      "destination": "J15.19",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_19",
+      "passed": true
+    },
+    {
+      "source": "J14.20",
+      "destination": "J15.20",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_20",
+      "passed": true
+    },
+    {
+      "source": "J14.21",
+      "destination": "J15.21",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_21",
+      "passed": true
+    },
+    {
+      "source": "J14.22",
+      "destination": "J15.22",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_22",
+      "passed": true
+    },
+    {
+      "source": "J14.23",
+      "destination": "J15.23",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_23",
+      "passed": true
+    },
+    {
+      "source": "J14.24",
+      "destination": "J15.24",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_24",
+      "passed": true
+    },
+    {
+      "source": "J14.25",
+      "destination": "J15.25",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_25",
+      "passed": true
+    },
+    {
+      "source": "J14.26",
+      "destination": "J15.26",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_26",
+      "passed": true
+    },
+    {
+      "source": "J14.27",
+      "destination": "J15.27",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_27",
+      "passed": true
+    },
+    {
+      "source": "J14.28",
+      "destination": "J15.28",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_28",
+      "passed": true
+    },
+    {
+      "source": "J14.29",
+      "destination": "J15.29",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_29",
+      "passed": true
+    },
+    {
+      "source": "J14.30",
+      "destination": "J15.30",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_30",
+      "passed": true
+    },
+    {
+      "source": "J14.31",
+      "destination": "J15.31",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_31",
+      "passed": true
+    },
+    {
+      "source": "J14.32",
+      "destination": "J15.32",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_32",
+      "passed": true
+    },
+    {
+      "source": "J14.33",
+      "destination": "J15.33",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_33",
+      "passed": true
+    },
+    {
+      "source": "J14.34",
+      "destination": "J15.34",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_34",
+      "passed": true
+    },
+    {
+      "source": "J14.35",
+      "destination": "J15.35",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_35",
+      "passed": true
+    },
+    {
+      "source": "J14.36",
+      "destination": "J15.36",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_36",
+      "passed": true
+    },
+    {
+      "source": "J14.37",
+      "destination": "J15.37",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_37",
+      "passed": true
+    },
+    {
+      "source": "J14.38",
+      "destination": "J15.38",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_38",
+      "passed": true
+    },
+    {
+      "source": "J14.39",
+      "destination": "J15.39",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_39",
+      "passed": true
+    },
+    {
+      "source": "J14.40",
+      "destination": "J15.40",
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_40",
+      "passed": true
+    },
+    {
+      "source": "J14.41",
+      "destination": "J15.41",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_41",
+      "passed": true
+    },
+    {
+      "source": "J14.42",
+      "destination": "J15.42",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_42",
+      "passed": true
+    },
+    {
+      "source": "J14.43",
+      "destination": "J15.43",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_43",
+      "passed": true
+    },
+    {
+      "source": "J14.44",
+      "destination": "J15.44",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_44",
+      "passed": true
+    },
+    {
+      "source": "J14.45",
+      "destination": "J15.45",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_45",
+      "passed": true
+    },
+    {
+      "source": "J14.46",
+      "destination": "J15.46",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_46",
+      "passed": true
+    },
+    {
+      "source": "J14.47",
+      "destination": "J15.47",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_47",
+      "passed": true
+    },
+    {
+      "source": "J14.48",
+      "destination": "J15.48",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_48",
+      "passed": true
+    },
+    {
+      "source": "J14.49",
+      "destination": "J15.49",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_49",
+      "passed": true
+    },
+    {
+      "source": "J14.50",
+      "destination": "J15.50",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_50",
+      "passed": true
+    },
+    {
+      "source": "J14.51",
+      "destination": "J15.51",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_51",
+      "passed": true
+    },
+    {
+      "source": "J14.52",
+      "destination": "J15.52",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_52",
+      "passed": true
+    },
+    {
+      "source": "J14.53",
+      "destination": "J15.53",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_53",
+      "passed": true
+    },
+    {
+      "source": "J14.54",
+      "destination": "J15.54",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_54",
+      "passed": true
+    },
+    {
+      "source": "J14.55",
+      "destination": "J15.55",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_55",
+      "passed": true
+    },
+    {
+      "source": "J14.56",
+      "destination": "J15.56",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_56",
+      "passed": true
+    },
+    {
+      "source": "J14.57",
+      "destination": "J15.57",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_57",
+      "passed": true
+    },
+    {
+      "source": "J14.58",
+      "destination": "J15.58",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_58",
+      "passed": true
+    },
+    {
+      "source": "J14.59",
+      "destination": "J15.59",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_59",
+      "passed": true
+    },
+    {
+      "source": "J14.60",
+      "destination": "J15.60",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_60",
+      "passed": true
+    },
+    {
+      "source": "J14.61",
+      "destination": "J15.61",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_61",
+      "passed": true
+    },
+    {
+      "source": "J14.62",
+      "destination": "J15.62",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_62",
+      "passed": true
+    },
+    {
+      "source": "J14.63",
+      "destination": "J15.63",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_63",
+      "passed": true
+    },
+    {
+      "source": "J14.64",
+      "destination": "J15.64",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_64",
+      "passed": true
+    },
+    {
+      "source": "J14.65",
+      "destination": "J15.65",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_65",
+      "passed": true
+    },
+    {
+      "source": "J14.66",
+      "destination": "J15.66",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_66",
+      "passed": true
+    },
+    {
+      "source": "J14.67",
+      "destination": "J15.67",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_67",
+      "passed": true
+    },
+    {
+      "source": "J14.68",
+      "destination": "J15.68",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_68",
+      "passed": true
+    },
+    {
+      "source": "J14.69",
+      "destination": "J15.69",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_69",
+      "passed": true
+    },
+    {
+      "source": "J14.70",
+      "destination": "J15.70",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_70",
+      "passed": true
+    },
+    {
+      "source": "J14.71",
+      "destination": "J15.71",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_71",
+      "passed": true
+    },
+    {
+      "source": "J14.72",
+      "destination": "J15.72",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_72",
+      "passed": true
+    },
+    {
+      "source": "J14.73",
+      "destination": "J15.73",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_73",
+      "passed": true
+    },
+    {
+      "source": "J14.74",
+      "destination": "J15.74",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_74",
+      "passed": true
+    },
+    {
+      "source": "J14.75",
+      "destination": "J15.75",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_75",
+      "passed": true
+    },
+    {
+      "source": "J14.76",
+      "destination": "J15.76",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_76",
+      "passed": true
+    },
+    {
+      "source": "J14.77",
+      "destination": "J15.77",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_77",
+      "passed": true
+    },
+    {
+      "source": "J14.78",
+      "destination": "J15.78",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_78",
+      "passed": true
+    },
+    {
+      "source": "J14.79",
+      "destination": "J15.79",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_79",
+      "passed": true
+    },
+    {
+      "source": "J14.80",
+      "destination": "J15.80",
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_80",
+      "passed": true
+    },
+    {
+      "source": "J12.1",
+      "destination": "J13.1",
+      "net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "passed": true
+    },
+    {
+      "source": "J12.2",
+      "destination": "J13.2",
+      "net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "passed": true
+    },
+    {
+      "source": "J12.3",
+      "destination": "J13.3",
+      "net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "passed": true
+    },
+    {
+      "source": "J12.4",
+      "destination": "J13.4",
+      "net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "passed": true
+    },
+    {
+      "source": "J12.5",
+      "destination": "J13.5",
+      "net": "SYS_GND",
+      "passed": true
+    },
+    {
+      "source": "J12.6",
+      "destination": "J13.6",
+      "net": "SYS_GND",
+      "passed": true
+    },
+    {
+      "source": "J12.7",
+      "destination": "J13.7",
+      "net": "SYS_GND",
+      "passed": true
+    },
+    {
+      "source": "J12.8",
+      "destination": "J13.8",
+      "net": "SYS_GND",
+      "passed": true
+    },
+    {
+      "source": "J12.9",
+      "destination": "J13.9",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_09",
+      "passed": true
+    },
+    {
+      "source": "J12.10",
+      "destination": "J13.10",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_10",
+      "passed": true
+    },
+    {
+      "source": "J12.11",
+      "destination": "J13.11",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_11",
+      "passed": true
+    },
+    {
+      "source": "J12.12",
+      "destination": "J13.12",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_12",
+      "passed": true
+    },
+    {
+      "source": "J12.13",
+      "destination": "J13.13",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_13",
+      "passed": true
+    },
+    {
+      "source": "J12.14",
+      "destination": "J13.14",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_14",
+      "passed": true
+    },
+    {
+      "source": "J12.15",
+      "destination": "J13.15",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_15",
+      "passed": true
+    },
+    {
+      "source": "J12.16",
+      "destination": "J13.16",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_16",
+      "passed": true
+    },
+    {
+      "source": "J12.17",
+      "destination": "J13.17",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_17",
+      "passed": true
+    },
+    {
+      "source": "J12.18",
+      "destination": "J13.18",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_18",
+      "passed": true
+    },
+    {
+      "source": "J12.19",
+      "destination": "J13.19",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_19",
+      "passed": true
+    },
+    {
+      "source": "J12.20",
+      "destination": "J13.20",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_20",
+      "passed": true
+    },
+    {
+      "source": "J12.21",
+      "destination": "J13.21",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_21",
+      "passed": true
+    },
+    {
+      "source": "J12.22",
+      "destination": "J13.22",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_22",
+      "passed": true
+    },
+    {
+      "source": "J12.23",
+      "destination": "J13.23",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_23",
+      "passed": true
+    },
+    {
+      "source": "J12.24",
+      "destination": "J13.24",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_24",
+      "passed": true
+    },
+    {
+      "source": "J12.25",
+      "destination": "J13.25",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_25",
+      "passed": true
+    },
+    {
+      "source": "J12.26",
+      "destination": "J13.26",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_26",
+      "passed": true
+    },
+    {
+      "source": "J12.27",
+      "destination": "J13.27",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_27",
+      "passed": true
+    },
+    {
+      "source": "J12.28",
+      "destination": "J13.28",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_28",
+      "passed": true
+    },
+    {
+      "source": "J12.29",
+      "destination": "J13.29",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_29",
+      "passed": true
+    },
+    {
+      "source": "J12.30",
+      "destination": "J13.30",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_30",
+      "passed": true
+    },
+    {
+      "source": "J12.31",
+      "destination": "J13.31",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_31",
+      "passed": true
+    },
+    {
+      "source": "J12.32",
+      "destination": "J13.32",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_32",
+      "passed": true
+    },
+    {
+      "source": "J12.33",
+      "destination": "J13.33",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_33",
+      "passed": true
+    },
+    {
+      "source": "J12.34",
+      "destination": "J13.34",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_34",
+      "passed": true
+    },
+    {
+      "source": "J12.35",
+      "destination": "J13.35",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_35",
+      "passed": true
+    },
+    {
+      "source": "J12.36",
+      "destination": "J13.36",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_36",
+      "passed": true
+    },
+    {
+      "source": "J12.37",
+      "destination": "J13.37",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_37",
+      "passed": true
+    },
+    {
+      "source": "J12.38",
+      "destination": "J13.38",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_38",
+      "passed": true
+    },
+    {
+      "source": "J12.39",
+      "destination": "J13.39",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_39",
+      "passed": true
+    },
+    {
+      "source": "J12.40",
+      "destination": "J13.40",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_40",
+      "passed": true
+    },
+    {
+      "source": "J12.41",
+      "destination": "J13.41",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_41",
+      "passed": true
+    },
+    {
+      "source": "J12.42",
+      "destination": "J13.42",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_42",
+      "passed": true
+    },
+    {
+      "source": "J12.43",
+      "destination": "J13.43",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_43",
+      "passed": true
+    },
+    {
+      "source": "J12.44",
+      "destination": "J13.44",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_44",
+      "passed": true
+    },
+    {
+      "source": "J12.45",
+      "destination": "J13.45",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_45",
+      "passed": true
+    },
+    {
+      "source": "J12.46",
+      "destination": "J13.46",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_46",
+      "passed": true
+    },
+    {
+      "source": "J12.47",
+      "destination": "J13.47",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_47",
+      "passed": true
+    },
+    {
+      "source": "J12.48",
+      "destination": "J13.48",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_48",
+      "passed": true
+    },
+    {
+      "source": "J12.49",
+      "destination": "J13.49",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_49",
+      "passed": true
+    },
+    {
+      "source": "J12.50",
+      "destination": "J13.50",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_50",
+      "passed": true
+    },
+    {
+      "source": "J12.51",
+      "destination": "J13.51",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_51",
+      "passed": true
+    },
+    {
+      "source": "J12.52",
+      "destination": "J13.52",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_52",
+      "passed": true
+    },
+    {
+      "source": "J12.53",
+      "destination": "J13.53",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_53",
+      "passed": true
+    },
+    {
+      "source": "J12.54",
+      "destination": "J13.54",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_54",
+      "passed": true
+    },
+    {
+      "source": "J12.55",
+      "destination": "J13.55",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_55",
+      "passed": true
+    },
+    {
+      "source": "J12.56",
+      "destination": "J13.56",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_56",
+      "passed": true
+    },
+    {
+      "source": "J12.57",
+      "destination": "J13.57",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_57",
+      "passed": true
+    },
+    {
+      "source": "J12.58",
+      "destination": "J13.58",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_58",
+      "passed": true
+    },
+    {
+      "source": "J12.59",
+      "destination": "J13.59",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_59",
+      "passed": true
+    },
+    {
+      "source": "J12.60",
+      "destination": "J13.60",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_60",
+      "passed": true
+    },
+    {
+      "source": "J12.61",
+      "destination": "J13.61",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_61",
+      "passed": true
+    },
+    {
+      "source": "J12.62",
+      "destination": "J13.62",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_62",
+      "passed": true
+    },
+    {
+      "source": "J12.63",
+      "destination": "J13.63",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_63",
+      "passed": true
+    },
+    {
+      "source": "J12.64",
+      "destination": "J13.64",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_64",
+      "passed": true
+    },
+    {
+      "source": "J12.65",
+      "destination": "J13.65",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_65",
+      "passed": true
+    },
+    {
+      "source": "J12.66",
+      "destination": "J13.66",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_66",
+      "passed": true
+    },
+    {
+      "source": "J12.67",
+      "destination": "J13.67",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_67",
+      "passed": true
+    },
+    {
+      "source": "J12.68",
+      "destination": "J13.68",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_68",
+      "passed": true
+    },
+    {
+      "source": "J12.69",
+      "destination": "J13.69",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_69",
+      "passed": true
+    },
+    {
+      "source": "J12.70",
+      "destination": "J13.70",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_70",
+      "passed": true
+    },
+    {
+      "source": "J12.71",
+      "destination": "J13.71",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_71",
+      "passed": true
+    },
+    {
+      "source": "J12.72",
+      "destination": "J13.72",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_72",
+      "passed": true
+    },
+    {
+      "source": "J12.73",
+      "destination": "J13.73",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_73",
+      "passed": true
+    },
+    {
+      "source": "J12.74",
+      "destination": "J13.74",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_74",
+      "passed": true
+    },
+    {
+      "source": "J12.75",
+      "destination": "J13.75",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_75",
+      "passed": true
+    },
+    {
+      "source": "J12.76",
+      "destination": "J13.76",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_76",
+      "passed": true
+    },
+    {
+      "source": "J12.77",
+      "destination": "J13.77",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_77",
+      "passed": true
+    },
+    {
+      "source": "J12.78",
+      "destination": "J13.78",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_78",
+      "passed": true
+    },
+    {
+      "source": "J12.79",
+      "destination": "J13.79",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_79",
+      "passed": true
+    },
+    {
+      "source": "J12.80",
+      "destination": "J13.80",
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_80",
+      "passed": true
+    },
+    {
+      "source": "J10.1",
+      "destination": "J11.1",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_01",
+      "passed": true
+    },
+    {
+      "source": "J10.2",
+      "destination": "J11.2",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_02",
+      "passed": true
+    },
+    {
+      "source": "J10.3",
+      "destination": "J11.3",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_03",
+      "passed": true
+    },
+    {
+      "source": "J10.4",
+      "destination": "J11.4",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_04",
+      "passed": true
+    },
+    {
+      "source": "J10.5",
+      "destination": "J11.5",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_05",
+      "passed": true
+    },
+    {
+      "source": "J10.6",
+      "destination": "J11.6",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_06",
+      "passed": true
+    },
+    {
+      "source": "J10.7",
+      "destination": "J11.7",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_07",
+      "passed": true
+    },
+    {
+      "source": "J10.8",
+      "destination": "J11.8",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_08",
+      "passed": true
+    },
+    {
+      "source": "J10.9",
+      "destination": "J11.9",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_09",
+      "passed": true
+    },
+    {
+      "source": "J10.10",
+      "destination": "J11.10",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_10",
+      "passed": true
+    },
+    {
+      "source": "J10.11",
+      "destination": "J11.11",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_11",
+      "passed": true
+    },
+    {
+      "source": "J10.12",
+      "destination": "J11.12",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_12",
+      "passed": true
+    },
+    {
+      "source": "J10.13",
+      "destination": "J11.13",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_13",
+      "passed": true
+    },
+    {
+      "source": "J10.14",
+      "destination": "J11.14",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_14",
+      "passed": true
+    },
+    {
+      "source": "J10.15",
+      "destination": "J11.15",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_15",
+      "passed": true
+    },
+    {
+      "source": "J10.16",
+      "destination": "J11.16",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_16",
+      "passed": true
+    },
+    {
+      "source": "J10.17",
+      "destination": "J11.17",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_17",
+      "passed": true
+    },
+    {
+      "source": "J10.18",
+      "destination": "J11.18",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_18",
+      "passed": true
+    },
+    {
+      "source": "J10.19",
+      "destination": "J11.19",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_19",
+      "passed": true
+    },
+    {
+      "source": "J10.20",
+      "destination": "J11.20",
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_20",
+      "passed": true
+    },
+    {
+      "source": "J10.21",
+      "destination": "J11.21",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_21",
+      "passed": true
+    },
+    {
+      "source": "J10.22",
+      "destination": "J11.22",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_22",
+      "passed": true
+    },
+    {
+      "source": "J10.23",
+      "destination": "J11.23",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_23",
+      "passed": true
+    },
+    {
+      "source": "J10.24",
+      "destination": "J11.24",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_24",
+      "passed": true
+    },
+    {
+      "source": "J10.25",
+      "destination": "J11.25",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_25",
+      "passed": true
+    },
+    {
+      "source": "J10.26",
+      "destination": "J11.26",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_26",
+      "passed": true
+    },
+    {
+      "source": "J10.27",
+      "destination": "J11.27",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_27",
+      "passed": true
+    },
+    {
+      "source": "J10.28",
+      "destination": "J11.28",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_28",
+      "passed": true
+    },
+    {
+      "source": "J10.29",
+      "destination": "J11.29",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_29",
+      "passed": true
+    },
+    {
+      "source": "J10.30",
+      "destination": "J11.30",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_30",
+      "passed": true
+    },
+    {
+      "source": "J10.31",
+      "destination": "J11.31",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_31",
+      "passed": true
+    },
+    {
+      "source": "J10.32",
+      "destination": "J11.32",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_32",
+      "passed": true
+    },
+    {
+      "source": "J10.33",
+      "destination": "J11.33",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_33",
+      "passed": true
+    },
+    {
+      "source": "J10.34",
+      "destination": "J11.34",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_34",
+      "passed": true
+    },
+    {
+      "source": "J10.35",
+      "destination": "J11.35",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_35",
+      "passed": true
+    },
+    {
+      "source": "J10.36",
+      "destination": "J11.36",
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_36",
+      "passed": true
+    },
+    {
+      "source": "J10.37",
+      "destination": "J11.37",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_37",
+      "passed": true
+    },
+    {
+      "source": "J10.38",
+      "destination": "J11.38",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_38",
+      "passed": true
+    },
+    {
+      "source": "J10.39",
+      "destination": "J11.39",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_39",
+      "passed": true
+    },
+    {
+      "source": "J10.40",
+      "destination": "J11.40",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_40",
+      "passed": true
+    },
+    {
+      "source": "J10.46",
+      "destination": "J11.46",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_46",
+      "passed": true
+    },
+    {
+      "source": "J10.48",
+      "destination": "J11.48",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_48",
+      "passed": true
+    },
+    {
+      "source": "J10.50",
+      "destination": "J11.50",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_50",
+      "passed": true
+    },
+    {
+      "source": "J10.52",
+      "destination": "J11.52",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_52",
+      "passed": true
+    },
+    {
+      "source": "J10.53",
+      "destination": "J11.53",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_53",
+      "passed": true
+    },
+    {
+      "source": "J10.54",
+      "destination": "J11.54",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_54",
+      "passed": true
+    },
+    {
+      "source": "J10.55",
+      "destination": "J11.55",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_55",
+      "passed": true
+    },
+    {
+      "source": "J10.56",
+      "destination": "J11.56",
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_56",
+      "passed": true
+    },
+    {
+      "source": "J10.58",
+      "destination": "J11.58",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_58",
+      "passed": true
+    },
+    {
+      "source": "J10.60",
+      "destination": "J11.60",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_60",
+      "passed": true
+    },
+    {
+      "source": "J10.62",
+      "destination": "J11.62",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_62",
+      "passed": true
+    },
+    {
+      "source": "J10.64",
+      "destination": "J11.64",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_64",
+      "passed": true
+    },
+    {
+      "source": "J10.66",
+      "destination": "J11.66",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_66",
+      "passed": true
+    },
+    {
+      "source": "J10.67",
+      "destination": "J11.67",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_67",
+      "passed": true
+    },
+    {
+      "source": "J10.68",
+      "destination": "J11.68",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_68",
+      "passed": true
+    },
+    {
+      "source": "J10.69",
+      "destination": "J11.69",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_69",
+      "passed": true
+    },
+    {
+      "source": "J10.70",
+      "destination": "J11.70",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_70",
+      "passed": true
+    },
+    {
+      "source": "J10.71",
+      "destination": "J11.71",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_71",
+      "passed": true
+    },
+    {
+      "source": "J10.72",
+      "destination": "J11.72",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_72",
+      "passed": true
+    },
+    {
+      "source": "J10.73",
+      "destination": "J11.73",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_73",
+      "passed": true
+    },
+    {
+      "source": "J10.74",
+      "destination": "J11.74",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_74",
+      "passed": true
+    },
+    {
+      "source": "J10.75",
+      "destination": "J11.75",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_75",
+      "passed": true
+    },
+    {
+      "source": "J10.76",
+      "destination": "J11.76",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_76",
+      "passed": true
+    },
+    {
+      "source": "J10.77",
+      "destination": "J11.77",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_77",
+      "passed": true
+    },
+    {
+      "source": "J10.78",
+      "destination": "J11.78",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_78",
+      "passed": true
+    },
+    {
+      "source": "J10.79",
+      "destination": "J11.79",
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_79",
+      "passed": true
+    },
+    {
+      "source": "J10.80",
+      "destination": "J11.80",
+      "net": "XEM_1V2_DDR",
+      "passed": true
+    }
+  ],
+  "selected_brk_isolation": [
+    {
+      "contact": "J11.41",
+      "passed": true
+    },
+    {
+      "contact": "J11.42",
+      "passed": true
+    },
+    {
+      "contact": "J11.43",
+      "passed": true
+    },
+    {
+      "contact": "J11.44",
+      "passed": true
+    },
+    {
+      "contact": "J11.45",
+      "passed": true
+    },
+    {
+      "contact": "J11.47",
+      "passed": true
+    },
+    {
+      "contact": "J11.49",
+      "passed": true
+    },
+    {
+      "contact": "J11.51",
+      "passed": true
+    },
+    {
+      "contact": "J11.57",
+      "passed": true
+    },
+    {
+      "contact": "J11.59",
+      "passed": true
+    },
+    {
+      "contact": "J11.61",
+      "passed": true
+    },
+    {
+      "contact": "J11.63",
+      "passed": true
+    },
+    {
+      "contact": "J11.65",
+      "passed": true
+    }
+  ],
+  "jtag_gpio_native_map": [
+    {
+      "source": "J10.57",
+      "destination": "U101.3",
+      "net": "P1_XEM_TMS",
+      "passed": true
+    },
+    {
+      "source": "J10.59",
+      "destination": "U101.4",
+      "net": "P1_XEM_TDI",
+      "passed": true
+    },
+    {
+      "source": "J10.61",
+      "destination": "U101.5",
+      "net": "P1_XEM_TCK",
+      "passed": true
+    },
+    {
+      "source": "J10.63",
+      "destination": "U101.6",
+      "net": "P1_XEM_TDO",
+      "passed": true
+    },
+    {
+      "source": "J10.65",
+      "destination": "JP124.1",
+      "net": "P1_XEM_OE_N",
+      "passed": true
+    }
+  ],
+  "special_nets": {
+    "SYS_GND": {
+      "net": "SYS_GND",
+      "xml_net": "SYS_GND",
+      "nc": false,
+      "logical_pad_count": 40,
+      "physical_pad_count": 54,
+      "component_count": 6,
+      "complete": false,
+      "components": [
+        [
+          "C121.2",
+          "C122.2",
+          "C311.2",
+          "C312.2",
+          "C313.2",
+          "C314.2",
+          "D300.2",
+          "D301.2",
+          "J10.0",
+          "J11.0",
+          "J12.5",
+          "J12.6",
+          "J12.7",
+          "J12.8",
+          "J13.5",
+          "J13.6",
+          "J13.7",
+          "J13.8",
+          "J201.13",
+          "J201.16",
+          "J21.1",
+          "J21.11",
+          "J21.13",
+          "J21.3",
+          "J21.5",
+          "J21.7",
+          "J21.9",
+          "R126.2",
+          "R129.2",
+          "R131.2",
+          "R312.2",
+          "R314.2",
+          "R315.2",
+          "U101.10",
+          "U101.8"
+        ],
+        [
+          "J201.10"
+        ],
+        [
+          "J201.4"
+        ],
+        [
+          "R132.2"
+        ],
+        [
+          "J201.7"
+        ],
+        [
+          "U301.8"
+        ]
+      ]
+    },
+    "P1_VTREF_1V8_TARGET": {
+      "net": "P1_VTREF_1V8_TARGET",
+      "xml_net": "P1_VTREF_1V8_TARGET",
+      "nc": false,
+      "logical_pad_count": 6,
+      "physical_pad_count": 6,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C122.1",
+          "J201.1",
+          "J21.2",
+          "R124.2",
+          "R125.2",
+          "U101.15"
+        ]
+      ]
+    }
+  },
+  "vtref_isolation": [
+    {
+      "reference": "J201.1",
+      "net": "P1_VTREF_1V8_TARGET",
+      "isolated_from_other_rails": true
+    }
+  ],
+  "ground_endpoint_groups": {
+    "MC3 ground paddles": [
+      {
+        "contact": "J10.0",
+        "physical_pad_instances": 8
+      },
+      {
+        "contact": "J11.0",
+        "physical_pad_instances": 8
+      }
+    ],
+    "MC2 power returns": [
+      {
+        "contact": "J12.5",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J12.6",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J12.7",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J12.8",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J13.5",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J13.6",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J13.7",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J13.8",
+        "physical_pad_instances": 1
+      }
+    ],
+    "Five cable return contacts": [
+      {
+        "contact": "J201.4",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J201.7",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J201.10",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J201.13",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J201.16",
+        "physical_pad_instances": 1
+      }
+    ],
+    "Recovery-header grounds": [
+      {
+        "contact": "J21.1",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.3",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.5",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.7",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.9",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.11",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "J21.13",
+        "physical_pad_instances": 1
+      }
+    ],
+    "Circuit ground endpoints": [
+      {
+        "contact": "C121.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "C122.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "C311.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "C312.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "C313.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "C314.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "D300.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "D301.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R126.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R129.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R131.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R132.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R312.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R314.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "R315.2",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "U101.8",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "U101.10",
+        "physical_pad_instances": 1
+      },
+      {
+        "contact": "U301.8",
+        "physical_pad_instances": 1
+      }
+    ]
+  },
+  "net_components": [
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_N",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.44",
+          "J201.14"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_P",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_CONTROL_RX1_P",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.42",
+          "J201.12"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_N",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.43",
+          "J201.5"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_P",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX0_P",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.41",
+          "J201.3"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_N",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.47",
+          "J201.8"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_P",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_REC_TX1_P",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.45",
+          "J201.6"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_N",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.51",
+          "J201.11"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_P",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/P1_RESERVED_P",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.49",
+          "J201.9"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_38",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_38",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.38",
+          "J11.38"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_40",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_40",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.40",
+          "J11.40"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_46",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_46",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.46",
+          "J11.46"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_48",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_48",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.48",
+          "J11.48"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_50",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_50",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.50",
+          "J11.50"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_52",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_52",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.52",
+          "J11.52"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_53",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_53",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.53",
+          "J11.53"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_54",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_54",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.54",
+          "J11.54"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_55",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_55",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.55",
+          "J11.55"
+        ]
+      ]
+    },
+    {
+      "net": "/02 {slash} PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_56",
+      "xml_net": "/02 / PORT 1 - MC3 BANK 226 - TYPE-D J201/PT_MC3_56",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.56",
+          "J11.56"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_17",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_17",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.17",
+          "J11.17"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_19",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_19",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.19",
+          "J11.19"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_21",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_21",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.21",
+          "J11.21"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_22",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_22",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.22",
+          "J11.22"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_23",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_23",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.23",
+          "J11.23"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_24",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_24",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.24",
+          "J11.24"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_25",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_25",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.25",
+          "J11.25"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_26",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_26",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.26",
+          "J11.26"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_27",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_27",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.27",
+          "J11.27"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_28",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_28",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.28",
+          "J11.28"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_29",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_29",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.29",
+          "J11.29"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_30",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_30",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.30",
+          "J11.30"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_31",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_31",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.31",
+          "J11.31"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_32",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_32",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.32",
+          "J11.32"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_33",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_33",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.33",
+          "J11.33"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_34",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_34",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.34",
+          "J11.34"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_35",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_35",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.35",
+          "J11.35"
+        ]
+      ]
+    },
+    {
+      "net": "/03 {slash} MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_36",
+      "xml_net": "/03 / MC3 BANK 225 - COMPLETE PASS-THROUGH/PT_MC3_36",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.36",
+          "J11.36"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_01",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_01",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.1",
+          "J11.1"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_02",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_02",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.2",
+          "J11.2"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_03",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_03",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.3",
+          "J11.3"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_04",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_04",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.4",
+          "J11.4"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_05",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_05",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.5",
+          "J11.5"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_06",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_06",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.6",
+          "J11.6"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_07",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_07",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.7",
+          "J11.7"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_08",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_08",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.8",
+          "J11.8"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_09",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_09",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.9",
+          "J11.9"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_10",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_10",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.10",
+          "J11.10"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_11",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_11",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.11",
+          "J11.11"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_12",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_12",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.12",
+          "J11.12"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_13",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_13",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.13",
+          "J11.13"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_14",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_14",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.14",
+          "J11.14"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_15",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_15",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.15",
+          "J11.15"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_16",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_16",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.16",
+          "J11.16"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_18",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_18",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.18",
+          "J11.18"
+        ]
+      ]
+    },
+    {
+      "net": "/04 {slash} MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_20",
+      "xml_net": "/04 / MC3 BANK 224 - COMPLETE PASS-THROUGH/PT_MC3_20",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.20",
+          "J11.20"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_09",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_09",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.9",
+          "J13.9"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_10",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_10",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.10",
+          "J13.10"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_11",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_11",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.11",
+          "J13.11"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_12",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_12",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.12",
+          "J13.12"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_13",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_13",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.13",
+          "J13.13"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_14",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_14",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.14",
+          "J13.14"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_15",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_15",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.15",
+          "J13.15"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_16",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_16",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.16",
+          "J13.16"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_17",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_17",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.17",
+          "J13.17"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_18",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_18",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.18",
+          "J13.18"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_19",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_19",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.19",
+          "J13.19"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_20",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC2_20",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.20",
+          "J13.20"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_37",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_37",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.37",
+          "J11.37"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_39",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_39",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.39",
+          "J11.39"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_58",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_58",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.58",
+          "J11.58"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_60",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_60",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.60",
+          "J11.60"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_62",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_62",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.62",
+          "J11.62"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_64",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_64",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.64",
+          "J11.64"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_66",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_66",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.66",
+          "J11.66"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_67",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_67",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.67",
+          "J11.67"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_68",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_68",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.68",
+          "J11.68"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_69",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_69",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.69",
+          "J11.69"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_70",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_70",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.70",
+          "J11.70"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_71",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_71",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.71",
+          "J11.71"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_72",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_72",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.72",
+          "J11.72"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_73",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_73",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.73",
+          "J11.73"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_74",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_74",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.74",
+          "J11.74"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_75",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_75",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.75",
+          "J11.75"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_76",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_76",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.76",
+          "J11.76"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_77",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_77",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.77",
+          "J11.77"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_78",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_78",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.78",
+          "J11.78"
+        ]
+      ]
+    },
+    {
+      "net": "/05 {slash} MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_79",
+      "xml_net": "/05 / MC2 POWER + MC3 BANK-67 GPIO/PT_MC3_79",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.79",
+          "J11.79"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_01",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_01",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.1",
+          "J15.1"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_02",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_02",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.2",
+          "J15.2"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_03",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_03",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.3",
+          "J15.3"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_04",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_04",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.4",
+          "J15.4"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_05",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_05",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.5",
+          "J15.5"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_06",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_06",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.6",
+          "J15.6"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_07",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_07",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.7",
+          "J15.7"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_08",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_08",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.8",
+          "J15.8"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_09",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_09",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.9",
+          "J15.9"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_10",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_10",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.10",
+          "J15.10"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_11",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_11",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.11",
+          "J15.11"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_12",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_12",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.12",
+          "J15.12"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_13",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_13",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.13",
+          "J15.13"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_14",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_14",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.14",
+          "J15.14"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_15",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_15",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.15",
+          "J15.15"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_16",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_16",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.16",
+          "J15.16"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_17",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_17",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.17",
+          "J15.17"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_18",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_18",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.18",
+          "J15.18"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_19",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_19",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.19",
+          "J15.19"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_20",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_20",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.20",
+          "J15.20"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_21",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_21",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.21",
+          "J15.21"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_22",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_22",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.22",
+          "J15.22"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_23",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_23",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.23",
+          "J15.23"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_24",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_24",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.24",
+          "J15.24"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_25",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_25",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.25",
+          "J15.25"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_26",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_26",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.26",
+          "J15.26"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_27",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_27",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.27",
+          "J15.27"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_28",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_28",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.28",
+          "J15.28"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_29",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_29",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.29",
+          "J15.29"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_30",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_30",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.30",
+          "J15.30"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_31",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_31",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.31",
+          "J15.31"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_32",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_32",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.32",
+          "J15.32"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_33",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_33",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.33",
+          "J15.33"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_34",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_34",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.34",
+          "J15.34"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_35",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_35",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.35",
+          "J15.35"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_36",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_36",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.36",
+          "J15.36"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_37",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_37",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.37",
+          "J15.37"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_38",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_38",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.38",
+          "J15.38"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_39",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_39",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.39",
+          "J15.39"
+        ]
+      ]
+    },
+    {
+      "net": "/06 {slash} MC1 1-40 PASS-THROUGH/PT_MC1_40",
+      "xml_net": "/06 / MC1 1-40 PASS-THROUGH/PT_MC1_40",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.40",
+          "J15.40"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_41",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_41",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.41",
+          "J15.41"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_42",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_42",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.42",
+          "J15.42"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_43",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_43",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.43",
+          "J15.43"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_44",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_44",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.44",
+          "J15.44"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_45",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_45",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.45",
+          "J15.45"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_46",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_46",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.46",
+          "J15.46"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_47",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_47",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.47",
+          "J15.47"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_48",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_48",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.48",
+          "J15.48"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_49",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_49",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.49",
+          "J15.49"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_50",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_50",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.50",
+          "J15.50"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_51",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_51",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.51",
+          "J15.51"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_52",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_52",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.52",
+          "J15.52"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_53",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_53",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.53",
+          "J15.53"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_54",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_54",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.54",
+          "J15.54"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_55",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_55",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.55",
+          "J15.55"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_56",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_56",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.56",
+          "J15.56"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_57",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_57",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.57",
+          "J15.57"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_58",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_58",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.58",
+          "J15.58"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_59",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_59",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.59",
+          "J15.59"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_60",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_60",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.60",
+          "J15.60"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_61",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_61",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.61",
+          "J15.61"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_62",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_62",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.62",
+          "J15.62"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_63",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_63",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.63",
+          "J15.63"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_64",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_64",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.64",
+          "J15.64"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_65",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_65",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.65",
+          "J15.65"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_66",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_66",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.66",
+          "J15.66"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_67",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_67",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.67",
+          "J15.67"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_68",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_68",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.68",
+          "J15.68"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_69",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_69",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.69",
+          "J15.69"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_70",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_70",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.70",
+          "J15.70"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_71",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_71",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.71",
+          "J15.71"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_72",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_72",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.72",
+          "J15.72"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_73",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_73",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.73",
+          "J15.73"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_74",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_74",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.74",
+          "J15.74"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_75",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_75",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.75",
+          "J15.75"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_76",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_76",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.76",
+          "J15.76"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_77",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_77",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.77",
+          "J15.77"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_78",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_78",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.78",
+          "J15.78"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_79",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_79",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.79",
+          "J15.79"
+        ]
+      ]
+    },
+    {
+      "net": "/07 {slash} MC1 41-80 PASS-THROUGH/PT_MC1_80",
+      "xml_net": "/07 / MC1 41-80 PASS-THROUGH/PT_MC1_80",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J14.80",
+          "J15.80"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_21",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_21",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.21",
+          "J13.21"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_22",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_22",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.22",
+          "J13.22"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_23",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_23",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.23",
+          "J13.23"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_24",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_24",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.24",
+          "J13.24"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_25",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_25",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.25",
+          "J13.25"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_26",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_26",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.26",
+          "J13.26"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_27",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_27",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.27",
+          "J13.27"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_28",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_28",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.28",
+          "J13.28"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_29",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_29",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.29",
+          "J13.29"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_30",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_30",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.30",
+          "J13.30"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_31",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_31",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.31",
+          "J13.31"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_32",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_32",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.32",
+          "J13.32"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_33",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_33",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.33",
+          "J13.33"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_34",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_34",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.34",
+          "J13.34"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_35",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_35",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.35",
+          "J13.35"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_36",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_36",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.36",
+          "J13.36"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_37",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_37",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.37",
+          "J13.37"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_38",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_38",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.38",
+          "J13.38"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_39",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_39",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.39",
+          "J13.39"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_40",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_40",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.40",
+          "J13.40"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_41",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_41",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.41",
+          "J13.41"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_42",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_42",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.42",
+          "J13.42"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_43",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_43",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.43",
+          "J13.43"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_44",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_44",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.44",
+          "J13.44"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_45",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_45",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.45",
+          "J13.45"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_46",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_46",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.46",
+          "J13.46"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_47",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_47",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.47",
+          "J13.47"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_48",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_48",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.48",
+          "J13.48"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_49",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_49",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.49",
+          "J13.49"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_50",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_50",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.50",
+          "J13.50"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_51",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_51",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.51",
+          "J13.51"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_52",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_52",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.52",
+          "J13.52"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_53",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_53",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.53",
+          "J13.53"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_54",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_54",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.54",
+          "J13.54"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_55",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_55",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.55",
+          "J13.55"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_56",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_56",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.56",
+          "J13.56"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_57",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_57",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.57",
+          "J13.57"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_58",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_58",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.58",
+          "J13.58"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_59",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_59",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.59",
+          "J13.59"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_60",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_60",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.60",
+          "J13.60"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_61",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_61",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.61",
+          "J13.61"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_62",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_62",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.62",
+          "J13.62"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_63",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_63",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.63",
+          "J13.63"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_64",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_64",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.64",
+          "J13.64"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_65",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_65",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.65",
+          "J13.65"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_66",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_66",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.66",
+          "J13.66"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_67",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_67",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.67",
+          "J13.67"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_68",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_68",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.68",
+          "J13.68"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_69",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_69",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.69",
+          "J13.69"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_70",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_70",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.70",
+          "J13.70"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_71",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_71",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.71",
+          "J13.71"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_72",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_72",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.72",
+          "J13.72"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_73",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_73",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.73",
+          "J13.73"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_74",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_74",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.74",
+          "J13.74"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_75",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_75",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.75",
+          "J13.75"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_76",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_76",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.76",
+          "J13.76"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_77",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_77",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.77",
+          "J13.77"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_78",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_78",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.78",
+          "J13.78"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_79",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_79",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.79",
+          "J13.79"
+        ]
+      ]
+    },
+    {
+      "net": "/08 {slash} MC2 21-80 PASS-THROUGH/PT_MC2_80",
+      "xml_net": "/08 / MC2 21-80 PASS-THROUGH/PT_MC2_80",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J12.80",
+          "J13.80"
+        ]
+      ]
+    },
+    {
+      "net": "P1_BRIDGE_OE_N",
+      "xml_net": "P1_BRIDGE_OE_N",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "JP124.2",
+          "R130.1",
+          "U101.9"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_DVDT",
+      "xml_net": "P1_EFUSE_DVDT",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C314.1",
+          "U301.7"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_EN",
+      "xml_net": "P1_EFUSE_EN",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R311.2",
+          "R312.1",
+          "U301.1"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_EN_FEED",
+      "xml_net": "P1_EFUSE_EN_FEED",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "JP311.2",
+          "R311.1"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_FLT_N",
+      "xml_net": "P1_EFUSE_FLT_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "TP301.1",
+          "U301.4"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_ILM",
+      "xml_net": "P1_EFUSE_ILM",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R315.1",
+          "U301.9"
+        ]
+      ]
+    },
+    {
+      "net": "P1_EFUSE_OVLO",
+      "xml_net": "P1_EFUSE_OVLO",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R313.2",
+          "R314.1",
+          "U301.2"
+        ]
+      ]
+    },
+    {
+      "net": "P1_LINK_12V",
+      "xml_net": "P1_LINK_12V",
+      "nc": false,
+      "logical_pad_count": 4,
+      "physical_pad_count": 4,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C313.1",
+          "D301.1",
+          "J201.19",
+          "U301.6"
+        ]
+      ]
+    },
+    {
+      "net": "P1_PROBE_TCK",
+      "xml_net": "P1_PROBE_TCK",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J21.6",
+          "JP123.3"
+        ]
+      ]
+    },
+    {
+      "net": "P1_PROBE_TDI",
+      "xml_net": "P1_PROBE_TDI",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J21.10",
+          "JP122.3"
+        ]
+      ]
+    },
+    {
+      "net": "P1_PROBE_TMS",
+      "xml_net": "P1_PROBE_TMS",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J21.4",
+          "JP121.3"
+        ]
+      ]
+    },
+    {
+      "net": "P1_SHIELD",
+      "xml_net": "P1_SHIELD",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 5,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J201.SH",
+          "R132.1"
+        ]
+      ]
+    },
+    {
+      "net": "P1_TCK",
+      "xml_net": "P1_TCK",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "complete": false,
+      "components": [
+        [
+          "JP123.2",
+          "R126.1"
+        ],
+        [
+          "J201.17"
+        ]
+      ]
+    },
+    {
+      "net": "P1_TDI",
+      "xml_net": "P1_TDI",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "complete": false,
+      "components": [
+        [
+          "JP122.2",
+          "R125.1"
+        ],
+        [
+          "J201.15"
+        ]
+      ]
+    },
+    {
+      "net": "P1_TDO",
+      "xml_net": "P1_TDO",
+      "nc": false,
+      "logical_pad_count": 4,
+      "physical_pad_count": 4,
+      "component_count": 2,
+      "complete": false,
+      "components": [
+        [
+          "J21.8",
+          "R131.1",
+          "U101.11"
+        ],
+        [
+          "J201.18"
+        ]
+      ]
+    },
+    {
+      "net": "P1_TMS",
+      "xml_net": "P1_TMS",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 2,
+      "complete": false,
+      "components": [
+        [
+          "JP121.2",
+          "R124.1"
+        ],
+        [
+          "J201.2"
+        ]
+      ]
+    },
+    {
+      "net": "P1_VTREF_1V8_TARGET",
+      "xml_net": "P1_VTREF_1V8_TARGET",
+      "nc": false,
+      "logical_pad_count": 6,
+      "physical_pad_count": 6,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C122.1",
+          "J201.1",
+          "J21.2",
+          "R124.2",
+          "R125.2",
+          "U101.15"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_OE_N",
+      "xml_net": "P1_XEM_OE_N",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.65",
+          "JP124.1"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TCK",
+      "xml_net": "P1_XEM_TCK",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.61",
+          "R129.1",
+          "U101.5"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TCK_1V8",
+      "xml_net": "P1_XEM_TCK_1V8",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "JP123.1",
+          "R123.2"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TCK_1V8_RAW",
+      "xml_net": "P1_XEM_TCK_1V8_RAW",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R123.1",
+          "U101.12"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TDI",
+      "xml_net": "P1_XEM_TDI",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.59",
+          "R128.1",
+          "U101.4"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TDI_1V8",
+      "xml_net": "P1_XEM_TDI_1V8",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "JP122.1",
+          "R122.2"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TDI_1V8_RAW",
+      "xml_net": "P1_XEM_TDI_1V8_RAW",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R122.1",
+          "U101.13"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TDO",
+      "xml_net": "P1_XEM_TDO",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.63",
+          "U101.6"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TMS",
+      "xml_net": "P1_XEM_TMS",
+      "nc": false,
+      "logical_pad_count": 3,
+      "physical_pad_count": 3,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J10.57",
+          "R127.1",
+          "U101.3"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TMS_1V8",
+      "xml_net": "P1_XEM_TMS_1V8",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "JP121.1",
+          "R121.2"
+        ]
+      ]
+    },
+    {
+      "net": "P1_XEM_TMS_1V8_RAW",
+      "xml_net": "P1_XEM_TMS_1V8_RAW",
+      "nc": false,
+      "logical_pad_count": 2,
+      "physical_pad_count": 2,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "R121.1",
+          "U101.14"
+        ]
+      ]
+    },
+    {
+      "net": "SYS_GND",
+      "xml_net": "SYS_GND",
+      "nc": false,
+      "logical_pad_count": 40,
+      "physical_pad_count": 54,
+      "component_count": 6,
+      "complete": false,
+      "components": [
+        [
+          "C121.2",
+          "C122.2",
+          "C311.2",
+          "C312.2",
+          "C313.2",
+          "C314.2",
+          "D300.2",
+          "D301.2",
+          "J10.0",
+          "J11.0",
+          "J12.5",
+          "J12.6",
+          "J12.7",
+          "J12.8",
+          "J13.5",
+          "J13.6",
+          "J13.7",
+          "J13.8",
+          "J201.13",
+          "J201.16",
+          "J21.1",
+          "J21.11",
+          "J21.13",
+          "J21.3",
+          "J21.5",
+          "J21.7",
+          "J21.9",
+          "R126.2",
+          "R129.2",
+          "R131.2",
+          "R312.2",
+          "R314.2",
+          "R315.2",
+          "U101.10",
+          "U101.8"
+        ],
+        [
+          "J201.10"
+        ],
+        [
+          "J201.4"
+        ],
+        [
+          "R132.2"
+        ],
+        [
+          "J201.7"
+        ],
+        [
+          "U301.8"
+        ]
+      ]
+    },
+    {
+      "net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "xml_net": "VDCIN_EXTERNAL_12V_CANDIDATE",
+      "nc": false,
+      "logical_pad_count": 14,
+      "physical_pad_count": 14,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C311.1",
+          "C312.1",
+          "D300.1",
+          "J12.1",
+          "J12.2",
+          "J12.3",
+          "J12.4",
+          "J13.1",
+          "J13.2",
+          "J13.3",
+          "J13.4",
+          "JP311.1",
+          "R313.1",
+          "U301.5"
+        ]
+      ]
+    },
+    {
+      "net": "XEM_1V2_DDR",
+      "xml_net": "XEM_1V2_DDR",
+      "nc": false,
+      "logical_pad_count": 10,
+      "physical_pad_count": 10,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "C121.1",
+          "J10.80",
+          "J11.80",
+          "R127.2",
+          "R128.2",
+          "R130.2",
+          "U101.1",
+          "U101.16",
+          "U101.2",
+          "U101.7"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-A05-Pad42)",
+      "xml_net": "unconnected-(J11C-BRK_J1-A05-Pad42)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.42"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-A06-Pad44)",
+      "xml_net": "unconnected-(J11C-BRK_J1-A06-Pad44)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.44"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B05-Pad41)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B05-Pad41)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.41"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B06-Pad43)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B06-Pad43)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.43"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B07-Pad45)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B07-Pad45)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.45"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B08-Pad47)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B08-Pad47)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.47"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B09-Pad49)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B09-Pad49)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.49"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11C-BRK_J1-B10-Pad51)",
+      "xml_net": "unconnected-(J11C-BRK_J1-B10-Pad51)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.51"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11D-BRK_MC3_57-Pad57)",
+      "xml_net": "unconnected-(J11D-BRK_MC3_57-Pad57)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.57"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11D-BRK_MC3_59-Pad59)",
+      "xml_net": "unconnected-(J11D-BRK_MC3_59-Pad59)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.59"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11D-BRK_MC3_61-Pad61)",
+      "xml_net": "unconnected-(J11D-BRK_MC3_61-Pad61)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.61"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11D-BRK_MC3_63-Pad63)",
+      "xml_net": "unconnected-(J11D-BRK_MC3_63-Pad63)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.63"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J11D-BRK_MC3_65-Pad65)",
+      "xml_net": "unconnected-(J11D-BRK_MC3_65-Pad65)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J11.65"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J21-NC-Pad12)",
+      "xml_net": "unconnected-(J21-NC-Pad12)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J21.12"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(J21-NC-Pad14)",
+      "xml_net": "unconnected-(J21-NC-Pad14)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "J21.14"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(U301-AUXOFF-Pad3)",
+      "xml_net": "unconnected-(U301-AUXOFF-Pad3)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "U301.3"
+        ]
+      ]
+    },
+    {
+      "net": "unconnected-(U301-ITIMER-Pad10)",
+      "xml_net": "unconnected-(U301-ITIMER-Pad10)",
+      "nc": true,
+      "logical_pad_count": 1,
+      "physical_pad_count": 1,
+      "component_count": 1,
+      "complete": true,
+      "components": [
+        [
+          "U301.10"
+        ]
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "uuid": "119bea6f-fe85-4992-beb1-194c3599a0c5",
+      "net": "P1_SHIELD",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "36a8e72e-8ae9-44b3-8307-ec2627033d23",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "5cc88a00-cae8-4c00-98e9-30c7a6faabe6",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "4cd79ee9-2ba6-4892-91be-7bf9cdf28dc7",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "5d496347-f5f8-4bae-a33d-779509b3b55a",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "da0ef870-c704-45a6-b90b-f5d10831dc3c",
+      "net": "P1_SHIELD",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "729ad5b6-8dda-4645-bd64-a82cf0610671",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "e324ce6c-e1b8-449e-a9f2-1ac76b927e69",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "04aa4eb3-a3e2-40e7-804f-a746402b8639",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "61563a0b-27e5-4375-8bfd-306d0919e998",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "6ba8c508-f583-4f7a-91c2-8df003c4b268",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "f666be95-4b4b-4c8b-bb2a-2b4027eafbff",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "88a99cd5-094a-42e8-b680-c1880136485f",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "8c87a3a5-0c04-435f-978c-d7a1de5742d3",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "33ed801c-ef74-4a3d-9a26-49061392d239",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    },
+    {
+      "uuid": "907698d6-0568-4c97-9b48-cb8b42481c86",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "2806595e-0923-457d-b82b-88cd7cf1e0f9",
+      "net": "SYS_GND",
+      "is_rule_area": false,
+      "is_filled": true
+    },
+    {
+      "uuid": "2b42a75e-d11a-44be-81f8-7171b939a1f3",
+      "net": "",
+      "is_rule_area": true,
+      "is_filled": false
+    }
+  ]
+}
