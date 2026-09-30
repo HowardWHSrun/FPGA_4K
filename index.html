@@ -12,12 +12,13 @@
 <style>.fpga-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:13px 14px;border-radius:6px;background:#17273d;color:white;font-size:12px;line-height:1.45;margin-top:7px}.fpga-entry:hover{background:#2c4b69;text-decoration:none}.fpga-entry[hidden]{display:none!important}.current-fpga-notice{padding:9px 22px;background:#fff2df;color:#62400c;font:12px/1.5 system-ui;text-align:center}.current-fpga-notice a{color:inherit;text-decoration:underline}.current-fpga-notice strong{font-weight:650}</style>
 <script defer src="presentation/fpga/entry.js?v=schematics-20260929"></script>
 <link rel="stylesheet" href="presentation/compact/refinements.css?v=brk-interposer-20260929">
+<link rel="stylesheet" href="presentation/questions/navigation.css?v=20260930">
 <script defer src="presentation/compact/interaction.js?v=brk-interposer-20260929"></script>
 </head>
 <body>
-<aside class="current-fpga-notice"><strong>Current hardware:</strong> XEM8310 seated directly on BRK8310. <a href="presentation/adapter/">The R7 circuit map / R10 HDI interposer study connects three separate custom FPGA boards ↗</a>. The selected XC7A25T PCB is unrouted; its DF40 interface is under redesign. XEM USB is the initial PC path.</aside>
+<aside class="current-fpga-notice"><strong>Current confirmed scope:</strong> One XEM8310 ↔ one XC7A25T through the single-link XEM adapter board. <a href="https://fpga-team-questions.hwr.chatgpt.site">Read current decisions ↗</a>. Earlier three-port and assembly figures are preserved review context. The 25T PCB remains unrouted.</aside>
 <div class="shell">
-<header class="masthead"><a href="#overview" class="brand"><span class="brand-mark">4K</span><span>Neural recording<span class="brand-sub">Xie–Luan labs · Team design review</span></span></a><div class="header-tools"><a class="button" href="presentation/meetings/">Meetings</a><a class="button" href="presentation/questions/">Questions</a><span class="review-date">29 September 2026</span><button id="model-notes" class="button">Notes &amp; sources</button><button id="fullscreen" class="button primary" title="Fullscreen (F)">Present <span aria-hidden="true">⛶</span></button></div></header>
+<header class="masthead"><a href="#overview" class="brand"><span class="brand-mark">4K</span><span>Neural recording<span class="brand-sub">Xie–Luan labs · Team design review</span></span></a><div class="header-tools"><a class="button" href="presentation/meetings/">Meetings</a><a class="button primary questions-link" href="https://fpga-team-questions.hwr.chatgpt.site">Questions &amp; answers</a><span class="review-date">29 September 2026</span><button id="model-notes" class="button">Notes &amp; sources</button><button id="fullscreen" class="button primary" title="Fullscreen (F)">Present <span aria-hidden="true">⛶</span></button></div></header>
 <main class="deck">
 <div class="heading"><div><p class="eyebrow" id="section-label">System overview</p><h1 id="slide-title">4K neural recording</h1></div><p class="heading-note">Compact B · v1<span>Assembly-first review</span></p></div>
 <div class="workspace">

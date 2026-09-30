@@ -2,7 +2,7 @@
 
 ## Shared questions and answers
 
-[Open the questions section](../presentation/questions/index.html) for the shared team board and its workflow. Teammates enter their names, raise questions, reply in the same thread and record outcomes; questions, responses and status history are stored on the linked board. Interface proposals remain open until the responsible reviewers confirm them.
+[Open questions and answers](https://fpga-team-questions.hwr.chatgpt.site) directly from the overview or meetings header. The shared decision register opens to resolved items; filters also expose pending questions and the full history. Teammates enter their names, raise questions, reply in the same thread and record outcomes. Questions, responses and status history are saved on the board. [Workflow guidance](../presentation/questions/index.html) remains available. [Confirmed decisions · 30 September 2026](team/current-decisions-2026-09-30.md) preserves 12 owner-confirmed choices and their remaining implementation or qualification limits.
 
 [Wednesday’s presentation](../presentation/meetings/2026-09-30.html) · [R12 simple connection overview](../presentation/schematic/simple.html) · [current native 3D](../presentation/adapter/assembly.html?revision=r12) · [editable R12 package and audit](../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/README.md). Current focus is one 19-contact link. All 19 contacts are mapped in a 10-sheet schematic with ERC 0; the PCB is still in progress: 10/19 contacts reach all intended copper endpoints, with 9 open connections and 11 dangling warnings. R8/R9/R10 three-port studies remain preserved. No fabrication release.
 
