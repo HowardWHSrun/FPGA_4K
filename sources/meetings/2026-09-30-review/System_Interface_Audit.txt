@@ -1,0 +1,43 @@
+# XC7A25T headstage system interface audit — 29 September 2026
+
+**Decision status:** `XC7A25T-2CSG325I` is the selected headstage FPGA. Its CSG325 ball locations support the proposed ASIC, JTAG, and serial-link assignments. This is a pin and architecture review, **not a working-system or fabrication qualification**. The new [native 25T project](../project/README.md) preserves the unrouted 50T placement and its two rigid 60-contact mezzanine connectors; it does not yet implement the requested floating connector, XEM JTAG bridge, cable power entry, or recorder firmware.
+
+## Custom 19-contact cable allocation
+
+Directions are at the headstage. This is a **custom Type-D connector**, not HDMI signaling.
+
+| Contact | Function |
+| --- | --- |
+| 1 | 1.8 V target JTAG `VTREF` output; never drive it from XEM |
+| 2 | JTAG TMS input |
+| 3/5 | GTP TX0 ±, recording data output |
+| 6/8 | GTP TX1 ±, recording data output |
+| 9/11 | GTP TX2 ± physically wired, reserved/disabled in the two-lane design; **not** an incoming clock |
+| 12/14 | GTP RX1 ±, serial control input |
+| 4/7/10/13 | Grounds beside the serial pairs |
+| 15 | JTAG TDI input |
+| 16 | Common JTAG ground and proposed power return, subject to cable/current qualification |
+| 17 | JTAG TCK input |
+| 18 | JTAG TDO output |
+| 19 | Proposed 12 V input from a separately protected source |
+| Shell | Shield; bonding and ESD design required |
+
+The [R7 endpoint audit](../../09_Custom_Link_Pinout_R7/START_HERE.md) checked this allocation against the former 50T netlist and XEM8310 pin records. The [25T package comparison](XC7A25T_CSG325_Ball_Migration_Audit.md) confirms that the relevant GTP, reference-clock, JTAG, power, configuration, and user-I/O balls retain their physical locations. Both ends use **local 125 MHz GTP/GTY references**; the receivers recover serial timing. Two recording lanes at **2.5 Gb/s each with 8b/10b** have 4 Gb/s decoded capacity before framing and idle symbols. This is feasible divider/rate arithmetic, not a closed serial link. The illustrative framed stream is 264 MB/s, so lane alignment, clock correction, framing/CRC, USB transfer, host stalls, and data-loss handling need actual implementations and tests. [25T device review](XC7A25T-2CSG325I_Device_Resource_Clock_Power_Review.md).
+
+XEM-generated JTAG needs a **new bridge**, separate from the XEM's dedicated MC2 JTAG port: XEM MC3 bank-67 GPIO 57/C17 → TMS, 59/B17 → TDI, 61/C21 → TCK, 63/B21 ← TDO, and 65/A19 for bridge enable. These are 1.2 V pins. A direction-controlled 1.2-to-1.8 V translator, rail-valid/default-disabled gating, BRK tap isolation, source selection against a local JTAG probe, XEM gateware, and host transport are **not implemented in adapter R6**. The target's VCCO_0 E10/R10 and cable contact 1 are on 1.8 V in the migrated schematic; contact 1 is a reference, not a supply from XEM. A blank target still needs an independently usable probe/recovery path. [R7 bridge plan](../../09_Custom_Link_Pinout_R7/START_HERE.md) · [AMD configuration guide](https://docs.amd.com/api/khub/documents/FOs3lXmlcWxBhTIFxVKyGA/content) · [TI translator](https://www.ti.com/product/SN74AXC4T774).
+
+## ASIC, mezzanine, and power closure
+
+The existing **120 mating contacts are fully assigned**: 115 assumed digital I/O signals, one provisional `IMP_TST` connection with unresolved analog/digital role, one analog `AC_IN` reservation with **no FPGA ball**, and only three GND contacts. The 25T has 150 HR user I/O; the current FPGA netlist uses 116 for the mating interface, four for configuration-related connections, ten for debug pads, and one proposed fabric-clock input, leaving 19 unconnected. Package capacity therefore does not establish ASIC electrical compatibility or sufficient inter-board return paths. ASIC pad limits, pin directions, returned-clock input timing, eight forwarded 32 MHz clock requirements, programming setup/hold, and safe startup states still need ASIC-owner approval. [ASIC bring-up review](../../../2026-09-26_FPGA_Work/10_ASIC117_Routing/corrections/AC_IN_Analog/project/bringup/Bringup_Requirements.md) · [timing review](../../../2026-09-26_FPGA_Work/03_Reviews/04_Independent_ASIC_Timing_Read.md).
+
+The requested floating interface uses **four 30-contact DF40F plug/DF40TC receptacle pairs** if the 120-contact map is kept. The current 25T CAD still has two **nonfloating 60-contact** connectors. Four pairs alone add no ground or supply contacts; a revised map on **both** boards must provide nearby signal returns and approve footprint orientation, stack height, mating tolerance, support, and routing. A separate, paired supply/return lead to the routing board's ASIC LDO input remains a candidate because the 120 contacts contain no supply contact. [DF40F direction](../../08_DF40F_Floating_Connector_Direction/START_HERE.md) · [return-path review](../../../2026-09-28_FPGA_Work/08_Two_60_Compact_50T/reports/DF40T_Ground_Return_Review.md).
+
+Cable contact 19 is connected to the headstage buck inputs but lacks a qualified 12 V source, input current limit/inrush control, fault protection, and routing-board feed. The XEM MC3 connector does not provide 12 V. The proposed receptacle's **0.8 A/contact at 25 °C** yields only a 9.6 W *contact arithmetic ceiling* at 12 V, not a whole-system allowance; cable conductors, returns, temperature, startup, FPGA load, and eight ASIC/LDO loads may lower it. Contact 2/TMS continuity and every pair's polarity must be measured on the selected passive cable; conventional HDMI equipment must be excluded from this 12 V custom port. [Power audit](../../../2026-09-28_FPGA_Work/08_Two_60_Compact_50T/reports/Power_Budget_and_Routing_Feed_Audit.md) · [Molex connector specification](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/467/46765/PS-46765-003-001.pdf).
+
+## Three owner inputs needed for a build decision
+
+1. **ASIC owner:** signed signal and voltage map, `IMP_TST`/`AC_IN` roles, 32 MHz startup/fanout and returned-clock timing limits, programming timing, and safe reset states.
+2. **Routing-board, power, and mechanical owners:** matching four-pair contact/ground map, stack and support geometry, eight-ASIC/LDO current budget, and the paired supply/return feed from the headstage.
+3. **FPGA/receiver and cable owners:** exact passive cable and protected 12 V source, XEM bridge circuit and gateware, complete 25T/XEM Vivado implementation and timing/resource reports, followed by JTAG recovery, serial BER, and sustained USB/host capture tests.
+
+The current native 25T board remains an **unrouted review revision**. A clean pin comparison or placement check cannot substitute for those circuit, firmware, routing, and hardware results.

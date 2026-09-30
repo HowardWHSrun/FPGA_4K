@@ -126,3 +126,9 @@ The linked September 26 material describes earlier 33 × 36 mm micro-HDMI work. 
 ## 26 September: historical smaller placement and pin report
 
 [Earlier 33 × 36 mm placement](../presentation/fpga/micro-hdmi.html#placement-history) · [Native viewer](../presentation/fpga/viewer/index.html?board=compact-v2) · [Complete KiCad ZIP](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/layout_v2/FPGA100T_33x36_Placement.zip) · [Component and pin report PDF](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/output/pdf/FPGA100T_Size_Components_Pinout.pdf) · [Editable LaTeX source ZIP](../hardware/fpga-interface-study/dated/2026-09-26/size-and-pin-report/FPGA100T_LaTeX_Report_Source.zip). All 128 parts / 807 pad records are retained. Placement only: 0 tracks, vias or zones; 383 unconnected items; all 120 mezzanine signal contacts unassigned. The 0.010 mm courtyard minimum and J4 body overhang of 0.65 mm require assembly qualification; the drawn board-plus-body envelope is 33.65 × 36 mm. Earlier 37.5 × 36 and 40 × 36 mm studies remain separate.
+
+## Wednesday presentation - September 30, 2026
+
+[Dedicated presentation](../presentation/meetings/2026-09-30.html): the 117-signal ASIC interface, current 25T bank split, custom cable contacts, three-port XEM map and next decisions. Includes presentation mode, speaker cues and source evidence dated September 29. Preparation only; meeting outcomes pending.
+
+[Wednesday visual library](../presentation/meetings/2026-09-30-visuals.html): 99 existing figures, 22 native schematic sheets, dated layout and adapter progress, pin maps and interactive model links.

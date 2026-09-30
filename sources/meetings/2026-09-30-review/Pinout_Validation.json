@@ -1,0 +1,356 @@
+{
+  "date": "2026-09-29",
+  "selected_mpn": "XC7A25T-2CSG325I",
+  "status": "PIN ASSIGNMENTS CHECKED; ELECTRICAL IMPLEMENTATION AND HARDWARE PERFORMANCE UNVERIFIED",
+  "interpretation": "Approximately 2 Gb/s continuous payload; local clocks; two used recording lanes; TX2 reserved.",
+  "contacts": [
+    {
+      "contact": "1",
+      "role": "JTAG_VTREF_1V8",
+      "direction_at_headstage": "reference output",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Target VCCO_0 reference; never drive from XEM. Low-current translator supply must be budgeted."
+    },
+    {
+      "contact": "2",
+      "role": "JTAG_TMS",
+      "direction_at_headstage": "input",
+      "headstage_ball": "R8",
+      "xem_mc3": "57",
+      "xem_ball": "C17",
+      "note": "XEM GPIO via 1.2-to-1.8 V translation; passive cable pin 2 continuity required."
+    },
+    {
+      "contact": "3",
+      "role": "RECORD_TX0_P",
+      "direction_at_headstage": "output",
+      "headstage_ball": "H2",
+      "xem_mc3": "41",
+      "xem_ball": "M2",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "4",
+      "role": "GND",
+      "direction_at_headstage": "return",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current."
+    },
+    {
+      "contact": "5",
+      "role": "RECORD_TX0_N",
+      "direction_at_headstage": "output",
+      "headstage_ball": "H1",
+      "xem_mc3": "43",
+      "xem_ball": "M1",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "6",
+      "role": "RECORD_TX1_P",
+      "direction_at_headstage": "output",
+      "headstage_ball": "F2",
+      "xem_mc3": "45",
+      "xem_ball": "K2",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "7",
+      "role": "GND",
+      "direction_at_headstage": "return",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current."
+    },
+    {
+      "contact": "8",
+      "role": "RECORD_TX1_N",
+      "direction_at_headstage": "output",
+      "headstage_ball": "F1",
+      "xem_mc3": "47",
+      "xem_ball": "K1",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "9",
+      "role": "RESERVED_TX2_P",
+      "direction_at_headstage": "output",
+      "headstage_ball": "D2",
+      "xem_mc3": "49",
+      "xem_ball": "H2",
+      "note": "Existing third TX wiring retained; disabled in two-lane firmware. Not a clock input or an unconnected PCB pin."
+    },
+    {
+      "contact": "10",
+      "role": "GND",
+      "direction_at_headstage": "return",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current."
+    },
+    {
+      "contact": "11",
+      "role": "RESERVED_TX2_N",
+      "direction_at_headstage": "output",
+      "headstage_ball": "D1",
+      "xem_mc3": "51",
+      "xem_ball": "H1",
+      "note": "Existing third TX wiring retained; disabled in two-lane firmware. Not a clock input or an unconnected PCB pin."
+    },
+    {
+      "contact": "12",
+      "role": "CONTROL_RX1_P",
+      "direction_at_headstage": "input",
+      "headstage_ball": "A4",
+      "xem_mc3": "42",
+      "xem_ball": "N5",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "13",
+      "role": "GND",
+      "direction_at_headstage": "return",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current."
+    },
+    {
+      "contact": "14",
+      "role": "CONTROL_RX1_N",
+      "direction_at_headstage": "input",
+      "headstage_ball": "A3",
+      "xem_mc3": "44",
+      "xem_ball": "N4",
+      "note": "Dedicated GTP/GTY serial pair; not generic clock/data GPIO."
+    },
+    {
+      "contact": "15",
+      "role": "JTAG_TDI",
+      "direction_at_headstage": "input",
+      "headstage_ball": "T9",
+      "xem_mc3": "59",
+      "xem_ball": "B17",
+      "note": "XEM GPIO through direction-controlled level translator; TCK is the programming clock."
+    },
+    {
+      "contact": "16",
+      "role": "GND",
+      "direction_at_headstage": "return",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current."
+    },
+    {
+      "contact": "17",
+      "role": "JTAG_TCK",
+      "direction_at_headstage": "input",
+      "headstage_ball": "F8",
+      "xem_mc3": "61",
+      "xem_ball": "C21",
+      "note": "XEM GPIO through direction-controlled level translator; TCK is the programming clock."
+    },
+    {
+      "contact": "18",
+      "role": "JTAG_TDO",
+      "direction_at_headstage": "output",
+      "headstage_ball": "T8",
+      "xem_mc3": "63",
+      "xem_ball": "B21",
+      "note": "XEM GPIO through direction-controlled level translator; TCK is the programming clock."
+    },
+    {
+      "contact": "19",
+      "role": "PWR_IN_12V",
+      "direction_at_headstage": "input",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Selected voltage; protected source, inrush, load, cable and return ratings not implemented/qualified. MC3 cannot supply this voltage."
+    },
+    {
+      "contact": "SH",
+      "role": "SHIELD",
+      "direction_at_headstage": "shield",
+      "headstage_ball": "",
+      "xem_mc3": "",
+      "xem_ball": "",
+      "note": "Bonding/ESD design required at adapter. Headstage shell is GND; shell is not the sole power return."
+    }
+  ],
+  "xem_jtag_gpio_proposal": [
+    {
+      "signal": "TMS",
+      "mc3": "57",
+      "ball": "C17",
+      "attribute": "IO_L15P_T2L_N4_AD11P_67",
+      "direction": "XEM output",
+      "brk": "MC7-36"
+    },
+    {
+      "signal": "TDI",
+      "mc3": "59",
+      "ball": "B17",
+      "attribute": "IO_L15N_T2L_N5_AD11N_67",
+      "direction": "XEM output",
+      "brk": "MC7-34"
+    },
+    {
+      "signal": "TCK",
+      "mc3": "61",
+      "ball": "C21",
+      "attribute": "IO_L22P_T3U_N6_DBC_AD0P_67",
+      "direction": "XEM output",
+      "brk": "MC7-32"
+    },
+    {
+      "signal": "TDO",
+      "mc3": "63",
+      "ball": "B21",
+      "attribute": "IO_L22N_T3U_N7_DBC_AD0N_67",
+      "direction": "XEM input",
+      "brk": "MC7-30"
+    },
+    {
+      "signal": "BRIDGE_ENABLE_N",
+      "mc3": "65",
+      "ball": "A19",
+      "attribute": "IO_L18P_T2U_N10_AD2P_67",
+      "direction": "XEM output",
+      "brk": "MC7-28"
+    }
+  ],
+  "rate": {
+    "raw_lane_bps": 2500000000,
+    "used_recording_lanes": 2,
+    "aggregate_raw_bps": 5000000000,
+    "after_8b10b_bps": 4000000000,
+    "sample_payload_bps": 2048000000,
+    "illustrative_framed_bytes_per_second": 264000000,
+    "framed_8b10b_lane_occupancy": 0.528
+  },
+  "passed_checks": [
+    "Native U1 exact selected MPN",
+    "Headstage 3 reaches H2 through C137",
+    "C137 is 100 nF",
+    "AMD package H2 = MGTPTXP0_216",
+    "Opal MC3 41 = M2, MGTYRXP0_226",
+    "R6 cable 3 to XEM MC3 41, no branch",
+    "R6 BRK MC3 41 isolated",
+    "Headstage 5 reaches H1 through C138",
+    "C138 is 100 nF",
+    "AMD package H1 = MGTPTXN0_216",
+    "Opal MC3 43 = M1, MGTYRXN0_226",
+    "R6 cable 5 to XEM MC3 43, no branch",
+    "R6 BRK MC3 43 isolated",
+    "Headstage 6 reaches F2 through C139",
+    "C139 is 100 nF",
+    "AMD package F2 = MGTPTXP1_216",
+    "Opal MC3 45 = K2, MGTYRXP1_226",
+    "R6 cable 6 to XEM MC3 45, no branch",
+    "R6 BRK MC3 45 isolated",
+    "Headstage 8 reaches F1 through C140",
+    "C140 is 100 nF",
+    "AMD package F1 = MGTPTXN1_216",
+    "Opal MC3 47 = K1, MGTYRXN1_226",
+    "R6 cable 8 to XEM MC3 47, no branch",
+    "R6 BRK MC3 47 isolated",
+    "Headstage 9 reaches D2 through C141",
+    "C141 is 100 nF",
+    "AMD package D2 = MGTPTXP2_216",
+    "Opal MC3 49 = H2, MGTYRXP2_226",
+    "R6 cable 9 to XEM MC3 49, no branch",
+    "R6 BRK MC3 49 isolated",
+    "Headstage 11 reaches D1 through C142",
+    "C142 is 100 nF",
+    "AMD package D1 = MGTPTXN2_216",
+    "Opal MC3 51 = H1, MGTYRXN2_226",
+    "R6 cable 11 to XEM MC3 51, no branch",
+    "R6 BRK MC3 51 isolated",
+    "Headstage 12 reaches A4 through C143",
+    "C143 is 100 nF",
+    "AMD package A4 = MGTPRXP1_216",
+    "Opal MC3 42 = N5, MGTYTXP0_226",
+    "R6 cable 12 to XEM MC3 42, no branch",
+    "R6 BRK MC3 42 isolated",
+    "Headstage 14 reaches A3 through C144",
+    "C144 is 100 nF",
+    "AMD package A3 = MGTPRXN1_216",
+    "Opal MC3 44 = N4, MGTYTXN0_226",
+    "R6 cable 14 to XEM MC3 44, no branch",
+    "R6 BRK MC3 44 isolated",
+    "Headstage ground 4",
+    "R6 ground 4",
+    "Headstage ground 7",
+    "R6 ground 7",
+    "Headstage ground 10",
+    "R6 ground 10",
+    "Headstage ground 13",
+    "R6 ground 13",
+    "Headstage ground 16",
+    "R6 ground 16",
+    "JTAG TMS contact 2 to U1 R8",
+    "AMD dedicated JTAG TMS ball R8",
+    "JTAG TDI contact 15 to U1 T9",
+    "AMD dedicated JTAG TDI ball T9",
+    "JTAG TCK contact 17 to U1 F8",
+    "AMD dedicated JTAG TCK ball F8",
+    "TDO through R118",
+    "R118 is 33 ohms",
+    "AMD dedicated TDO T8",
+    "VTREF equals VCCO_0 E10",
+    "VTREF equals VCCO_0 R10",
+    "VTREF uses the 1.8 V rail",
+    "Proposed GPIO TMS matches official MC3 57",
+    "Proposed GPIO TDI matches official MC3 59",
+    "Proposed GPIO TCK matches official MC3 61",
+    "Proposed GPIO TDO matches official MC3 63",
+    "Proposed GPIO BRIDGE_ENABLE_N matches official MC3 65",
+    "Local oscillator to D6 through C145",
+    "AMD reference pin D6 = MGTREFCLK0P_216",
+    "Local oscillator to D5 through C146",
+    "AMD reference pin D5 = MGTREFCLK0N_216",
+    "Y2 is the 125 MHz candidate oscillator",
+    "Native pin 19 feeds LINK_12V",
+    "R6 12 V source is unimplemented",
+    "Headstage shell is GND",
+    "R6 adapter shell currently unconnected",
+    "All 19 contacts and shell accounted for"
+  ],
+  "unresolved": [
+    "25T recorder LUT/BRAM/clock resource fit and timing remain unproven until full Vivado implementation.",
+    "Existing rigid DF40TC placement is a reference; floating DF40F redesign and ASIC power/return map are still required.",
+    "No Vivado implementation of two-lane GTP/GTY or XEM JTAG master.",
+    "The proposed five XEM GPIO taps, translator, enable gating and probe selection are absent from R6.",
+    "XEM bank225-to-226 reference routing is supported by architecture but uncompiled here.",
+    "ASIC clock/data/latch generated locally; exact ASIC clock startup/timing requirements remain owner review.",
+    "No specific passive cable has been continuity/polarity/current/BER qualified, especially contact 2.",
+    "12 V source/protection/load/return path not designed or measured; shell/ESD design remains open.",
+    "No measured sustained USB/PC/storage test at the illustrative 264 MB/s stream rate."
+  ],
+  "sources": [
+    {
+      "path": "2026-09-29_FPGA_Work/10_XC7A25T_Final_Device_Review/validation/FPGA25T.net",
+      "sha256": "7e80b3601d6787d77ad77a256dbb014dffad8075f9f9432e05e40413e7b878b1"
+    },
+    {
+      "path": "2026-09-29_FPGA_Work/07_BRK8310_Adapter_R6_KiCad_Candidate/validation/R6.net",
+      "sha256": "eb4241647d185f07dfd1bee034893a95b99fdbd3a773eea1417ff3c7a14640b5"
+    },
+    {
+      "path": "2026-09-29_FPGA_Work/10_XC7A25T_Final_Device_Review/verification/xc7a25tcsg325pkg.csv",
+      "sha256": "dfa45dc46d0d3915ec4c4fb34ab66d0d33eac0e076ef981c2a645edf672bfc81"
+    },
+    {
+      "path": "2026-09-29_FPGA_Work/02_XEM8310_Adapter_R1/review/evidence/XEM8310_Pin_List_Extract.txt",
+      "sha256": "c48e1c034c950e8131001f2b4720bcb44a55d256e6c36663041559f8ccbeac56"
+    }
+  ]
+}

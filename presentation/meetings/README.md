@@ -15,3 +15,9 @@ The site header links to this permanent hub, so it does not need a new date-spec
 Validation: run `python3 scripts/check_docs.py`, `python3 scripts/check_hardware.py` and `git diff --check` from the repo root, verify local HTML assets, then confirm Pages deployment and published file bytes.
 
 Historical preparation: [September 24 proposal](2026-09-24.html), based on the supplied September 23 PDF. No outcome was supplied for that page. The [September 28 recording summary](2026-09-28.html) is a separate dated review.
+
+## Wednesday presentation - September 30
+
+[Open the preparation page](2026-09-30.html). The six stable sections contain eleven presentation slides. Use Present, arrow keys and Escape; reading mode keeps all sections and speaker cues available. September 28 remains the latest recorded meeting. The new page records no meeting outcome.
+
+The [Wednesday visual library](2026-09-30-visuals.html) gathers 99 existing figures, including all 22 current native schematic sheets, previous layouts, adapter revisions, pin diagrams and manufacturer-derived 3D previews. Filters, figure enlargement and detail links preserve revision context.

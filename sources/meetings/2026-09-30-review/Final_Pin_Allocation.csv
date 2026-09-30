@@ -1,0 +1,21 @@
+contact,role,direction_at_headstage,headstage_ball,xem_mc3,xem_ball,note
+1,JTAG_VTREF_1V8,reference output,,,,Target VCCO_0 reference; never drive from XEM. Low-current translator supply must be budgeted.
+2,JTAG_TMS,input,R8,57,C17,XEM GPIO via 1.2-to-1.8 V translation; passive cable pin 2 continuity required.
+3,RECORD_TX0_P,output,H2,41,M2,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+4,GND,return,,,,Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current.
+5,RECORD_TX0_N,output,H1,43,M1,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+6,RECORD_TX1_P,output,F2,45,K2,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+7,GND,return,,,,Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current.
+8,RECORD_TX1_N,output,F1,47,K1,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+9,RESERVED_TX2_P,output,D2,49,H2,Existing third TX wiring retained; disabled in two-lane firmware. Not a clock input or an unconnected PCB pin.
+10,GND,return,,,,Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current.
+11,RESERVED_TX2_N,output,D1,51,H1,Existing third TX wiring retained; disabled in two-lane firmware. Not a clock input or an unconnected PCB pin.
+12,CONTROL_RX1_P,input,A4,42,N5,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+13,GND,return,,,,Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current.
+14,CONTROL_RX1_N,input,A3,44,N4,Dedicated GTP/GTY serial pair; not generic clock/data GPIO.
+15,JTAG_TDI,input,T9,59,B17,XEM GPIO through direction-controlled level translator; TCK is the programming clock.
+16,GND,return,,,,Continuous signal/JTAG reference and qualified power return; do not rely on shell for load current.
+17,JTAG_TCK,input,F8,61,C21,XEM GPIO through direction-controlled level translator; TCK is the programming clock.
+18,JTAG_TDO,output,T8,63,B21,XEM GPIO through direction-controlled level translator; TCK is the programming clock.
+19,PWR_IN_12V,input,,,,"Selected voltage; protected source, inrush, load, cable and return ratings not implemented/qualified. MC3 cannot supply this voltage."
+SH,SHIELD,shield,,,,Bonding/ESD design required at adapter. Headstage shell is GND; shell is not the sole power return.

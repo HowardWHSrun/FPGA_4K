@@ -105,3 +105,9 @@ AI agents should start with [AGENTS.md](AGENTS.md). Source credits, versions and
 ### Earlier meeting record — 23 September 2026
 
 [Read the dated meeting and actions](presentation/meetings/2026-09-23.html) · [Original notes](sources/meetings/2026-09-23-notes.txt) · [System diagram](sources/meetings/2026-09-23-system-view.png). These are the questions recorded at that meeting; the current 100T/XEM8310 uncertainty list above supersedes them as the active status.
+
+### Wednesday presentation - September 30, 2026
+
+[Open the dedicated meeting presentation](presentation/meetings/2026-09-30.html). Pin organization, selected 25T direction, three-port receiver and next design decisions, with presentation controls and links to the current schematics and 3D views. Preparation only; outcomes pending.
+
+[Open the Wednesday visual library](presentation/meetings/2026-09-30-visuals.html): 99 existing figures, schematic sheets, pin diagrams and preserved board revisions.
