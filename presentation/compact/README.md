@@ -2,7 +2,9 @@
 
 **[Open the live presentation](https://howardwhsrun.github.io/FPGA_4K/)**
 
-Active root presentation, published from the `presentation` branch. The review uses the exact supplied compact headboard, reported workstream owners and source-grounded details. The connecting section and lower routing/LDO board are one subsystem. The selected [XC7A25T board](../fpga/current-25t.html), proposed [three-port interposer](../adapter/) and [XEM8310-on-BRK8310 receiver](../xem/) are separate sections. The adapter view combines manufacturer-derived XEM/BRK 3D geometry with a native-derived 25T placement and an R8 PCB candidate; exploded spacing and cables are illustrative. The older 50T board page is a historical review. No displayed PCB is released for fabrication.
+The homepage opens with the system overview. Its top **Library** link opens the [separate searchable archive](../library/), where previous work and illustrations can be found by topic, date and revision.
+
+The preserved September assembly review uses the exact supplied compact headboard, reported workstream owners and source-grounded details. The connecting section and lower routing/LDO board are one subsystem. Its dated [XC7A25T board](../fpga/current-25t.html), [three-port interposer proposal](../adapter/) and [XEM8310-on-BRK8310 receiver](../xem/) are separate sections. The adapter view combines manufacturer-derived XEM/BRK 3D geometry with a native-derived 25T placement and an R8 PCB candidate; exploded spacing and cables are illustrative. The older 50T board page is a historical review. No displayed PCB is released for fabrication.
 
 ## Sections and responsibilities
 
@@ -28,7 +30,7 @@ The finishing layer removes duplicate headings, links hovered/focused labels and
 
 ## Editable files
 
-[slides.js](slides.js) contains owners, facts, details and source links. [app.js](app.js) contains the exact-STL renderer and camera controls. [style.css](style.css) defines the base layout. [refinements.css](refinements.css) and [interaction.js](interaction.js) apply the review-v2.1 finishing layer. [Root index.html](../../index.html) loads them. The [revision manifest](review-v2.json) records source and annotation provenance.
+[slides.js](slides.js) contains owners, facts, details and source links. [app.js](app.js) contains the exact-STL renderer and camera controls. [style.css](style.css) defines the base layout. [refinements.css](refinements.css) and [interaction.js](interaction.js) apply the review-v2.1 finishing layer. [Root index.html](../../index.html) loads these scripts and hosts the overview and its top Library link. The [revision manifest](review-v2.json) records source and annotation provenance.
 
 Typography prioritizes Inter and Aptos when installed, then platform system fonts, Segoe UI, Helvetica Neue and Arial. The face depends on the viewer's system. No fonts, analytics or external rendering libraries are bundled or downloaded.
 

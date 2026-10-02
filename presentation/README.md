@@ -1,18 +1,20 @@
 # Assembly-first presentation
 
-**Current 29 September direction:** The active root deck separates the [selected XC7A25T board](fpga/current-25t.html), [three-port XEM–BRK interposer study](adapter/) and [purchased XEM8310/BRK8310 receiver](xem/). The viewer uses Opal Kelly-derived XEM/BRK geometry, a native-derived but unrouted 25T placement, and a partially routed R8 adapter candidate. The original compact headboard model and the September 23 starter notes below remain historical presentation provenance. The three-link system, 12 V distribution, mechanical fit and board fabrication readiness are unverified.
+The [homepage](../index.html#overview) opens with the system overview. Its top **Library** link opens the [searchable project archive](library/), with dated illustrations, meeting records, board revisions and source files. The [compact presentation guide](compact/README.md) describes the preserved assembly shown in the overview.
+
+**Preserved 29 September review:** The dated assembly review separates the [XC7A25T board](fpga/current-25t.html), [three-port XEM–BRK interposer study](adapter/) and [purchased XEM8310/BRK8310 receiver](xem/). The viewer uses Opal Kelly-derived XEM/BRK geometry, a native-derived but unrouted 25T placement, and a partially routed R8 adapter candidate. The original compact headboard model and the September 23 starter notes below remain historical presentation provenance. The three-link system, 12 V distribution, mechanical fit and board fabrication readiness are unverified.
 
 Starter for the September 23, 2026 PI review. Presentation changes stay on the `presentation` branch; this is not a hardware release.
 
 ## Open
 
-**[Open the live presentation](https://howardwhsrun.github.io/FPGA_4K/index.html?v=assembly-20260922)**
+**[Open the live system overview](https://howardwhsrun.github.io/FPGA_4K/)** · **[Library](library/)**
 
 - GitHub Pages home: https://howardwhsrun.github.io/FPGA_4K/
 - Alternate browser preview: https://raw.githack.com/HowardWHSrun/FPGA_4K/presentation/index.html
 - Source branch: https://github.com/HowardWHSrun/FPGA_4K/tree/presentation
 
-GitHub Pages is now publishing the presentation branch. The version query in the primary link avoids the initial cached landing page. The live document and all three CSS/JavaScript/mesh assets returned HTTP 200 with the expected content in the [September 22 Pages verification](https://github.com/HowardWHSrun/FPGA_4K/actions/runs/35757413389). The alternate preview was separately verified.
+GitHub Pages publishes the presentation branch. The [September 22 Pages verification](https://github.com/HowardWHSrun/FPGA_4K/actions/runs/35757413389) records the original presentation's HTTP and asset checks; the alternate preview was separately verified at that time.
 
 Publishing configuration: **Deploy from a branch**, branch **presentation**, folder **/(root)**. The branch has a root `index.html` and `.nojekyll`. Do not change the default branch or merge presentation assets into `main` merely to publish the page.
 

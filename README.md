@@ -1,6 +1,6 @@
 # FPGA_4K
 
-[Project library](presentation/library/) · [Project homepage](index.html) · [Meeting archive](presentation/meetings/). Search previous work by title, topic, date and revision; view lightweight figure previews and open the original file or interactive viewer when needed.
+[System overview](index.html#overview) · [Library](presentation/library/) · [Meeting archive](presentation/meetings/). The homepage opens with the system overview. Use its top **Library** link to search previous work by title, topic, date and revision, browse lightweight figure previews, and open original files or interactive viewers.
 
 **Latest meeting — 2 October 2026:** [One-chip backup first and main FPGA review](presentation/meetings/2026-10-02.html). Reuse Gerald's existing LDO board and confirmed J1/J19 connectors through a rigid adapter to XEM8305; review V11 and the 35T candidate in parallel. Exact parts, carrier power, mating and firmware remain open. This dated record updates the working sequence; older architecture descriptions below remain historical context.
 
