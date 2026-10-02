@@ -4,12 +4,13 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>100T FPGA board — engineering review | 4K</title>
 <meta name="description" content="Smallest 100T FPGA board: visual component explanations, labeled pins, current routing and review files.">
-<link rel="icon" href="review-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="review.css"><script src="review.js?v=20260927-2975050c" defer></script><script src="review-board.js?v=20260927-2975050c" defer></script>
+<link rel="icon" href="review-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="review.css"><link rel="stylesheet" href="../shared/deferred-viewers.css"><script src="../shared/deferred-viewers.js" defer></script>
+<script src="review.js?v=20260927-2975050c" defer></script><script src="review-board.js?v=20260927-2975050c" defer></script>
 <link rel="stylesheet" href="presenter.css"><link rel="stylesheet" href="micro-hdmi-parts.css"><script src="presenter.js?v=20260927-2975050c" defer></script><script src="micro-hdmi-parts.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to review</a>
-<header class="topbar"><a class="brand" href="../../#fpga"><span class="brand-mark">4K</span><span class="brand-name">FPGA PCB<small>Howard + Zitong · Hardware design in progress</small></span></a><nav aria-label="Project"><a href="../meetings/">Meetings</a><a href="../../#fpga">← System overview</a><a href="#purchase-list">Parts list</a><a href="#files">KiCad files</a><button id="present-board" type="button">Present ⛶</button></nav></header>
+<header class="topbar"><a class="brand" href="../../#fpga"><span class="brand-mark">4K</span><span class="brand-name">FPGA PCB<small>Howard + Zitong · Hardware design in progress</small></span></a><nav aria-label="Project"><a class="project-library-link" href="../library/">Project library</a><a href="../meetings/">Meetings</a><a href="../../#fpga">← System overview</a><a href="#purchase-list">Parts list</a><a href="#files">KiCad files</a><button id="present-board" type="button">Present ⛶</button></nav></header>
 <main id="main">
 <section class="hero" aria-labelledby="title">
 <div class="breadcrumb"><a href="../../#overview">System</a><span>/</span><a href="../../#fpga">FPGA</a><span>/</span><span>Preserved micro-HDMI checkpoint</span></div>
@@ -23,8 +24,16 @@
 <div class="cad-panel" aria-label="Current 100T PCB viewer">
 <div class="cad-toolbar"><div class="cad-tabs" role="group" aria-label="Design view"><button id="front" type="button" aria-pressed="true">Front layout</button><button id="back" type="button" aria-pressed="false">Back layout</button><button id="native" type="button" aria-pressed="false">Interactive KiCad</button><button id="three" aria-pressed="false">3D board</button></div><span class="snapshot-label">Smallest board · <time data-field="date">loading</time></span></div>
 <div id="viewport" class="pcb-viewport" tabindex="0" role="region" aria-label="Current 100T PCB layout. Drag to pan, scroll or pinch to zoom. Plus and minus zoom; zero fits the board."><div id="board-transform"><img id="board-image" src="assets/current-front.svg" alt="Front of the current 33 × 36 mm XC7A100T PCB, with its existing copper and component geometry" draggable="false"></div><p class="image-state" id="image-state" role="status">Loading current KiCad layout…</p><div class="pcb-view-tools" aria-label="PCB zoom controls"><button id="zoom-out" type="button" aria-label="Zoom out">−</button><output id="zoom-value" aria-label="Zoom level">100%</output><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="fit" type="button">Fit board</button></div></div>
-<div id="native-panel" hidden><iframe id="native-frame" data-src="viewer/?board=compact-routed&amp;embed=1" title="Interactive native KiCad PCB" allow="fullscreen" allowfullscreen></iframe></div>
-<div id="three-panel" hidden><iframe id="three-frame" title="micro-hdmi 3D PCB" data-src="3d/?board=micro-hdmi&amp;locked=1" style="width:100%;height:680px;border:0" allow="fullscreen" allowfullscreen></iframe></div><div class="cad-caption"><span id="view-caption">Front copper + fabrication labels · inner layers omitted</span><span id="view-help">Drag to pan · scroll to zoom</span><a id="board-enlarge" href="../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/output/FPGA100T_33x36_Routing.svg" target="_blank" rel="noopener">Both sides ↗</a></div>
+<div id="native-panel" hidden><div class="deferred-viewer" data-deferred-viewer>
+<div class="viewer-placeholder"><strong>Preserved 100T native PCB</strong><p>Open the native board viewer to inspect layers, footprints and net labels.</p></div>
+<iframe id="native-frame" data-src="viewer/?board=compact-routed&amp;embed=1" title="Interactive native KiCad PCB" allow="fullscreen" allowfullscreen hidden></iframe>
+<div class="viewer-actions"><button type="button" data-viewer-open hidden>Open interactive PCB viewer</button><button type="button" data-viewer-close hidden>Close viewer</button><a href="viewer/?board=compact-routed">Open full viewer ↗</a><p class="viewer-state" role="status" aria-live="polite">Loads here when you open it.</p></div>
+</div></div>
+<div id="three-panel" hidden><div class="deferred-viewer" data-deferred-viewer>
+<div class="viewer-placeholder"><strong>Preserved 100T 3D board</strong><p>Open to rotate the earlier micro-HDMI board geometry.</p></div>
+<iframe id="three-frame" title="micro-hdmi 3D PCB" data-src="3d/?board=micro-hdmi&amp;locked=1" style="width:100%;height:680px;border:0" allow="fullscreen" allowfullscreen hidden></iframe>
+<div class="viewer-actions"><button type="button" data-viewer-open hidden>Open interactive 3D view</button><button type="button" data-viewer-close hidden>Close viewer</button><a href="3d/?board=micro-hdmi&amp;locked=1">Open full viewer ↗</a><p class="viewer-state" role="status" aria-live="polite">Loads here when you open it.</p></div>
+</div></div><div class="cad-caption"><span id="view-caption">Front copper + fabrication labels · inner layers omitted</span><span id="view-help">Drag to pan · scroll to zoom</span><a id="board-enlarge" href="../../hardware/fpga-interface-study/dated/2026-09-27/completion-checkpoint/output/FPGA100T_33x36_Routing.svg" target="_blank" rel="noopener">Both sides ↗</a></div>
 </div>
 <aside class="pcb-story"><p class="panel-kicker">01 / PRESERVED MICRO-HDMI CHECKPOINT</p><h2>Power up. Capture ASIC data.</h2><p class="description">First milestone: a short recording read through JTAG. The XEM8310 link follows later.</p>
 <div class="pcb-facts"><div><strong data-field="dimensions">33 × 36</strong><small>board · mm</small></div><div><strong data-field="components">—</strong><small>placed parts</small></div><div><strong>117</strong><small>ASIC contacts</small></div></div>
@@ -122,7 +131,11 @@
 <div class="section-head"><div><span class="eyebrow">03 / PIN LABELS</span><h2>116 FPGA signals. One analog contact.</h2></div><p>Every ball and contact has a visible status. Select one for its name, bank and connection.</p></div>
 <div class="pin-summary"><div><strong>116 + 1</strong><span>candidate FPGA nets + analog reservation</span></div><div><strong>3</strong><span>mezzanine contacts held in reserve</span></div><div><strong>8</strong><span>cable data contacts awaiting assignment</span></div></div>
 <p class="correction-callout"><strong>Six pin definitions corrected:</strong> U1.L9/L10 and U2–U5.4 (FB2) are now assigned to GND. Their GND-net copper status is shown in the pin map and current audit. AC_IN is analog 0–1.5 V: J5.46 has no FPGA connection; U1.A13 is NC. IMP_TST is assumed digital 0/1.5 V; polarity remains open.</p>
-<iframe id="pin-frame" src="pins/?embed=1" title="Labeled FPGA balls and connector contacts" loading="lazy"></iframe>
+<div class="deferred-viewer" data-deferred-viewer>
+<div class="viewer-placeholder"><strong>FPGA ball and connector map</strong><p>Open to inspect individual ball and contact labels in the preserved 100T pin map.</p></div>
+<iframe id="pin-frame" data-src="pins/?embed=1" title="Labeled FPGA balls and connector contacts" loading="lazy" hidden></iframe>
+<div class="viewer-actions"><button type="button" data-viewer-open hidden>Open interactive pin map</button><button type="button" data-viewer-close hidden>Close viewer</button><a href="pins/">Open full viewer ↗</a><p class="viewer-state" role="status" aria-live="polite">Loads here when you open it.</p></div>
+</div>
 <p class="evidence-links"><a class="button primary" href="pins/">Open full pin map ↗</a><a href="pins/All_Pin_Labels.csv" download>Every labeled pin · CSV ↓</a><a href="#interface-reference">ASIC signal list + Gerald’s slides ↓</a></p>
 <details class="reference-drawer" id="interface-reference"><summary>117 ASIC contacts, cable map and Gerald’s slide evidence</summary>
 <div class="section-head"><div><span class="eyebrow">03 / INTERFACE CONTRACTS</span><h2>117 contacts: 116 FPGA signals + analog AC_IN.</h2></div><p>117 is the corrected logical signal budget. It does not include grounds, power, shielding or connector spare contacts.</p></div>

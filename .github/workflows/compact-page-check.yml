@@ -25,6 +25,7 @@ jobs:
           node --check presentation/compact/slides.js
           node --check presentation/compact/interaction.js
           node --check presentation/model-source.js
+          node --check presentation/home.js
           python3 - <<'PY'
           import base64, gzip, hashlib, json
           from pathlib import Path
@@ -42,7 +43,7 @@ jobs:
           import hashlib, json, os, time, urllib.request
           from pathlib import Path
           base = 'https://howardwhsrun.github.io/FPGA_4K/'
-          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js', 'presentation/compact/refinements.css', 'presentation/compact/interaction.js']
+          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js', 'presentation/compact/refinements.css', 'presentation/compact/interaction.js', 'presentation/home.js', 'presentation/home.css', 'presentation/fpga/entry.js', 'presentation/library/index.html', 'presentation/library/library.js', 'presentation/library/catalog.json', 'presentation/shared/deferred-viewers.js']
           for attempt in range(18):
               try:
                   checked = []
@@ -66,7 +67,10 @@ jobs:
       - name: Render the public page in headless Chrome
         run: |
           CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          "$CHROME" --headless --no-sandbox --disable-gpu --window-size=1440,900 --virtual-time-budget=10000 --dump-dom "https://howardwhsrun.github.io/FPGA_4K/?check=${GITHUB_SHA}" > live-rendered.html 2> chrome.log
+          "$CHROME" --headless --no-sandbox --disable-gpu --window-size=1440,900 --virtual-time-budget=10000 --dump-dom "https://howardwhsrun.github.io/FPGA_4K/?check=${GITHUB_SHA}" > live-home.html 2> chrome.log
+          grep -q 'id="project-search"' live-home.html
+          if grep -q 'data-rendered="true"' live-home.html; then echo "Home unexpectedly started a model"; exit 1; fi
+          "$CHROME" --headless --no-sandbox --disable-gpu --window-size=1440,900 --virtual-time-budget=10000 --dump-dom "https://howardwhsrun.github.io/FPGA_4K/?check=${GITHUB_SHA}#overview" > live-rendered.html 2>> chrome.log
           grep -q 'data-rendered="true"' live-rendered.html
           grep -q 'data-model="compact_B_v1"' live-rendered.html
           grep -q 'data-triangles="650"' live-rendered.html
@@ -80,4 +84,5 @@ jobs:
           path: |
             live-page-check.json
             live-rendered.html
+            live-home.html
             chrome.log

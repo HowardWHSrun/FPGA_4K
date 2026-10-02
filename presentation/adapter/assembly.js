@@ -18,7 +18,9 @@ if (presentationView) document.body.classList.add('presentation-view');
 if (boardLabels) document.body.classList.add('board-labels');
 const canvas = $('scene'), stage = $('stage');
 const state = {focus:'all', view:'iso', revision, ready:false, officialModels:0, candidateBoard:false};
-let renderer;
+let renderer, frame=0, stageVisible=true, dirty=true, lastWidth=0, lastHeight=0;
+let assetLoadStarted=false, receiverAssetsRequested=false, assetRequest=0, modelConfigPromise;
+const modelLoads=new Map(), modelFiles=new Map();
 try {renderer = new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}
 catch (error) {$('loading').textContent='WebGL is unavailable. The connector route and exact pin table are on the main adapter page.'; throw error;}
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
@@ -28,6 +30,7 @@ renderer.toneMappingExposure=1.35;
 const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(37,1,0.1,2000);
 const controls=new OrbitControls(camera,canvas);
 controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=95;controls.maxDistance=900;
+controls.addEventListener('change',requestRender);
 scene.add(new THREE.HemisphereLight(0xffffff,0x688498,3));
 const key=new THREE.DirectionalLight(0xfff8ec,3.5);key.position.set(-90,180,130);scene.add(key);
 const fill=new THREE.DirectionalLight(0xd5eaff,2.2);fill.position.set(160,70,-140);scene.add(fill);
@@ -116,8 +119,9 @@ function setFocus(focus){state.focus=focus;const chosen=focus==='fpga'?fpgaNames
   cableGroup.visible=focus==='all'||focus==='adapter';
   document.querySelectorAll('[data-focus]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.focus===focus)));
   setDetail(focus==='fpga'?'fpga1':focus==='all'?null:focus);
-  const target=focus==='all'?new THREE.Vector3(singleLink?-20:-45,0,0):focus==='fpga'?parts.fpga1.position.clone():focus==='receiver'?new THREE.Vector3(18,0,0):parts[focus].position.clone();
+  const target=focus==='all'?new THREE.Vector3(singleLink?-20:-45,0,0):focus==='fpga'?fpgaNames.reduce((center,name)=>center.add(parts[name].position),new THREE.Vector3()).multiplyScalar(1/fpgaNames.length):focus==='receiver'?new THREE.Vector3(18,0,0):parts[focus].position.clone();
   controls.target.copy(target);setView(state.view);
+  if(assetLoadStarted&&focus!=='fpga'&&!receiverAssetsRequested)loadAssets();
 }
 function setView(view){state.view=view;const target=controls.target.clone();const baseRange=state.focus==='all'?(singleLink?310:375):state.focus==='fpga'?(singleLink?(presentationView?80:135):245):state.focus==='receiver'?250:state.focus==='brk'?235:state.focus==='adapter'&&singleLink?210:165;
   const aspect=Math.max(.55,stage.clientWidth/Math.max(stage.clientHeight,1));
@@ -125,6 +129,7 @@ function setView(view){state.view=view;const target=controls.target.clone();cons
   const dir=view==='top'?new THREE.Vector3(.001,1,.001):view==='side'?new THREE.Vector3(-1,.13,.05):new THREE.Vector3(-.8,.6,1);
   camera.up.set(0,1,0);camera.position.copy(target).addScaledVector(dir.normalize(),range);controls.update();
   document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
+  requestRender();
 }
 document.querySelectorAll('[data-focus]').forEach(button=>button.addEventListener('click',()=>setFocus(button.dataset.focus)));
 document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>setView(button.dataset.view)));
@@ -142,14 +147,19 @@ const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let down;
 canvas.addEventListener('pointerdown',event=>{down=[event.clientX,event.clientY];});
 canvas.addEventListener('pointerup',event=>{if(!down||Math.hypot(event.clientX-down[0],event.clientY-down[1])>5)return;const r=canvas.getBoundingClientRect();pointer.set((event.clientX-r.left)/r.width*2-1,-(event.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);for(const hit of raycaster.intersectObjects(Object.values(parts),true)){let obj=hit.object;while(obj&&!obj.userData.part)obj=obj.parent;if(obj?.userData.part){const n=obj.userData.part;setFocus(n.startsWith('fpga')?'fpga':n);setDetail(n);break;}}});
 canvas.addEventListener('keydown',event=>{if(event.key==='0'){setFocus('all');setView('iso');event.preventDefault();}});
-function loadModel(name,spec){if(!spec?.file)return Promise.resolve(false);return new GLTFLoader().loadAsync(spec.file).then(gltf=>{
-  const root=gltf.scene;root.scale.setScalar(spec.units_to_mm||1);if(spec.orientation==='cad-z-up')root.rotation.x=-Math.PI/2;
+function loadModel(name,spec){
+  if(!spec?.file)return Promise.resolve(false);
+  if(modelLoads.has(name))return modelLoads.get(name);
+  // Repeated FPGA placements share parsed geometry while keeping materials independent.
+  if(!modelFiles.has(spec.file))modelFiles.set(spec.file,new GLTFLoader().loadAsync(spec.file));
+  const pending=modelFiles.get(spec.file).then(gltf=>{
+  const root=gltf.scene.clone(true);root.scale.setScalar(spec.units_to_mm||1);if(spec.orientation==='cad-z-up')root.rotation.x=-Math.PI/2;
   root.updateMatrixWorld(true);const bounds=new THREE.Box3().setFromObject(root),size=bounds.getSize(new THREE.Vector3());
   if(Math.max(size.x,size.y,size.z)>450||Math.max(size.x,size.y,size.z)<10)throw new Error(`unexpected ${name} model size`);
   const center=bounds.getCenter(new THREE.Vector3());root.position.sub(center);root.updateMatrixWorld(true);
   const group=parts[name];
   if(spec.position_offset_mm)group.position.add(new THREE.Vector3(...spec.position_offset_mm));
-  while(group.children.length)group.remove(group.children[0]);
+  while(group.children.length){const child=group.children[0];child.traverse(obj=>{if(obj.isMesh){obj.geometry.dispose();for(const material of Array.isArray(obj.material)?obj.material:[obj.material])material.dispose();}});group.remove(child);}
   if(spec.in_plane_rotation_deg)group.rotation.y=THREE.MathUtils.degToRad(spec.in_plane_rotation_deg);
   root.traverse(obj=>{if(obj.isMesh){obj.material=Array.isArray(obj.material)?obj.material.map(m=>m.clone()):obj.material.clone();obj.userData.part=name;}});
   group.add(root);
@@ -160,33 +170,47 @@ function loadModel(name,spec){if(!spec?.file)return Promise.resolve(false);retur
   }
   if(name==='xem'||name==='brk')state.officialModels++;
   if(name==='adapter')state.candidateBoard=true;
+  requestRender();
   return true;
-}).catch(error=>{console.warn(`Could not load ${name} model`,error);return false;});}
+}).catch(error=>{console.warn(`Could not load ${name} model`,error);return false;});
+  modelLoads.set(name,pending);return pending;
+}
 async function loadAssets(){
+  assetLoadStarted=true;
+  const token=++assetRequest,includeReceiver=state.focus!=='fpga'||receiverAssetsRequested;
+  receiverAssetsRequested=includeReceiver;
   try{
-    const response=await fetch('assets/models.json');if(!response.ok)throw new Error('model manifest unavailable');const cfg=await response.json();
+    if(!modelConfigPromise)modelConfigPromise=fetch('assets/models.json').then(response=>{if(!response.ok)throw new Error('model manifest unavailable');return response.json();});
+    const cfg=await modelConfigPromise;
     const results=await Promise.all([
-      loadModel('xem',cfg.xem),loadModel('brk',cfg.brk),loadModel('adapter',singleLink?cfg.adapter_r12:revision==='r10'?cfg.adapter_r10:revision==='r8'?cfg.adapter_r8:cfg.adapter),
+      includeReceiver?loadModel('xem',cfg.xem):false,includeReceiver?loadModel('brk',cfg.brk):false,includeReceiver?loadModel('adapter',singleLink?cfg.adapter_r12:revision==='r10'?cfg.adapter_r10:revision==='r8'?cfg.adapter_r8:cfg.adapter):false,
       ...fpgaNames.map(name=>loadModel(name,cfg.fpga))
     ]);
+    if(token!==assetRequest)return;
     state.ready=true;
     const native25T=results.slice(3).every(Boolean);
     $('loading').hidden=true;
     let r12Audit=null;
-    if(singleLink&&cfg.adapter_r12?.audit_file){try{const a=await fetch(cfg.adapter_r12.audit_file);if(a.ok)r12Audit=await a.json();}catch(error){console.warn('R12 audit metadata unavailable',error);}}
+    if(includeReceiver&&singleLink&&cfg.adapter_r12?.audit_file){try{const a=await fetch(cfg.adapter_r12.audit_file);if(a.ok)r12Audit=await a.json();}catch(error){console.warn('R12 audit metadata unavailable',error);}}
+    if(token!==assetRequest)return;
     const contactStatus=Number.isInteger(r12Audit?.cable_contacts_connected)?`${r12Audit.cable_contacts_connected}/19 contacts reach all required copper endpoints`:'19/19 contacts mapped in schematic; copper audit pending';
     const drcStatus=Number.isInteger(r12Audit?.physical_drc_errors)&&Number.isInteger(r12Audit?.physical_drc_warnings)?`; ${r12Audit.physical_drc_errors} physical errors; ${r12Audit.physical_drc_warnings} warnings`:'';
     const openStatus=Number.isInteger(r12Audit?.unconnected)?`; ${r12Audit.unconnected} open items`:'';
     if(singleLink)descriptions.adapter=['R12 interposer · one 19-contact link',`${contactStatus}${openStatus}. Schematic includes translated JTAG and a protected 12 V branch. Ground/JTAG copper remains unfinished; fabrication qualification remains open.`];
     const routeStatus=singleLink?`R12 native single-link PCB: ${contactStatus}${drcStatus}${openStatus}; HDI, cable-current and channel qualification remain open`:revision==='r10'?'R10 HDI feasibility loaded: all 12 selected pairs traced; 97 open items; proposed laser microvias, return planes and impedance unqualified':revision==='r9'?'R9 partial PCB loaded: six pairs traced; TX1/control open; 109 unconnected, trial-rule DRC clear':'R8 partial PCB loaded: one GTY pair traced; 119 unconnected, conservative-rule DRC open';
-    $('geometry-status').textContent=`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'} · ${native25T?(singleLink?'one native unrouted 25T placement':'native unrouted 25T placement repeated three times'):'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
-    document.querySelectorAll('.label.xem,.label.brk').forEach(el=>{if(state.officialModels<2)el.textContent=el.textContent.replace('OFFICIAL MODEL','ILLUSTRATIVE SHELL');});
+    $('geometry-status').textContent=`${includeReceiver?`${state.officialModels===2?'Official XEM and BRK geometry loaded':'XEM / BRK shown as illustrative shells'} · ${state.candidateBoard?routeStatus:'interposer placement shell only'}`:'Receiver geometry loads when selected'} · ${native25T?(singleLink?'one native unrouted 25T placement':'native unrouted 25T placement repeated three times'):'FPGA board placement shells shown'} · DF40 interface under redesign; exploded separation and cables illustrative.`;
+    if(includeReceiver)document.querySelectorAll('.label.xem,.label.brk').forEach(el=>{if(state.officialModels<2)el.textContent=el.textContent.replace('OFFICIAL MODEL','ILLUSTRATIVE SHELL');});
     if(state.candidateBoard&&!boardLabels)document.querySelector('.label.adapter').textContent=`INTERPOSER · ${revision.toUpperCase()} PCB STUDY`;
     setFocus(state.focus);
-  }catch(error){$('loading').textContent='Model assets could not load; the schematic route remains on the adapter page.';console.warn(error);}
+  }catch(error){if(token===assetRequest)$('loading').textContent='Model assets could not load; the schematic route remains on the adapter page.';console.warn(error);}
 }
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}}
+function requestRender(){dirty=true;if(!frame&&!document.hidden&&stageVisible)frame=requestAnimationFrame(renderFrame);}
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h&&(w!==lastWidth||h!==lastHeight)){lastWidth=w;lastHeight=h;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();requestRender();}}
 new ResizeObserver(resize).observe(stage);
-function animate(){requestAnimationFrame(animate);controls.update();if(document.hidden)return;for(const {name,el} of labels){const pos=parts[name].position.clone();pos.y+=name==='brk'?13:name==='xem'?12:name==='adapter'?9:22;const p=pos.project(camera);el.hidden=!parts[name].visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-p.y*.5+.5)*stage.clientHeight}px`;}for(const {el,point} of cableTags){const p=point.clone().project(camera);el.hidden=!cableGroup.visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-p.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
+function pauseRender(){if(frame)cancelAnimationFrame(frame);frame=0;}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseRender();else requestRender();});
+if('IntersectionObserver' in window)new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(stageVisible)requestRender();else pauseRender();}).observe(stage);
+// OrbitControls emits change while damping settles, so the loop ends when idle.
+function renderFrame(){frame=0;if(document.hidden||!stageVisible)return;controls.update();if(!dirty||!stage.clientWidth||!stage.clientHeight)return;dirty=false;const width=stage.clientWidth,height=stage.clientHeight;for(const {name,el} of labels){const pos=parts[name].position.clone();pos.y+=name==='brk'?13:name==='xem'?12:name==='adapter'?9:22;const p=pos.project(camera);el.hidden=!parts[name].visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*width}px`;el.style.top=`${(-p.y*.5+.5)*height}px`;}for(const {el,point} of cableTags){const p=point.clone().project(camera);el.hidden=!cableGroup.visible||p.z>1||p.z<0;el.style.left=`${(p.x*.5+.5)*width}px`;el.style.top=`${(-p.y*.5+.5)*height}px`;}renderer.render(scene,camera);}
 window.RECEIVER_3D={getState:()=>({...state,position:camera.position.toArray()}),setFocus,setView};
-setFocus(['all','fpga','receiver','xem','adapter','brk'].includes(params.get('focus'))?params.get('focus'):'all');resize();animate();loadAssets();
+setFocus(['all','fpga','receiver','xem','adapter','brk'].includes(params.get('focus'))?params.get('focus'):'all');resize();requestRender();loadAssets();

@@ -7,7 +7,7 @@
   const canvas = $('scene'), wrap = $('scene-container'), ctx = canvas.getContext('2d');
   const state = {slide:0,azimuth:-1.10,elevation:.57,zoom:1,labels:true,center:[36.5,0,7.5]};
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let animation=0, pickBuffer=null, pickWidth=0, pickHeight=0;
+  let animation=0, animationTarget=null, interactionTimer=0, pickBuffer=null, pickWidth=0, pickHeight=0, stageVisible=true, pixelRatio=1;
   const colors = {A:[80,133,178],C:[74,151,137],D:[119,132,184],E:[194,154,95],F:[86,119,139]};
   const anchors = {A:[-10,-5,14.1],C:[32,-12,6.95],D:[25,1,14.25],E:[63,0,4.5],F:[91,0,9.8]};
   const markerEls = Object.fromEntries(Object.keys(anchors).map(r=>[r,document.querySelector(`[data-region="${r}"]`)]));
@@ -15,8 +15,12 @@
   const sub = (a,b) => a.map((x,i)=>x-b[i]);
   const cross = (a,b) => [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
   const normalize = a => {const d=Math.hypot(...a)||1;return a.map(x=>x/d);};
-  let mesh=null, rawBytes=null, width=0, height=0, queued=false, sourceVerified=false;
-  function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;draw();});}
+  let mesh=null, rawBytes=null, width=0, height=0, queued=0, sourceVerified=false;
+  function queue(){if(queued||document.hidden||!stageVisible)return;queued=requestAnimationFrame(()=>{queued=0;if(!document.hidden&&stageVisible)draw();});}
+  function stopCamera(){cancelAnimationFrame(animation);animation=0;animationTarget=null;}
+  function pause(){if(animationTarget)Object.assign(state,animationTarget);stopCamera();cancelAnimationFrame(queued);queued=0;}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else queue();});
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(stageVisible)queue();else pause();}).observe(wrap);
   function current(){return slides[state.slide];}
   function setSlide(value,writeHash=true){
     let i=typeof value==='number'?value:slides.findIndex(s=>s.id===value);
@@ -61,10 +65,11 @@
     return {azimuth,elevation,zoom,center};
   }
   function animateCamera(target){
-    cancelAnimationFrame(animation);
-    if(reducedMotion||!mesh){Object.assign(state,target);queue();return;}
+    stopCamera();
+    if(reducedMotion||!mesh||document.hidden||!stageVisible){Object.assign(state,target);queue();return;}
+    animationTarget=target;
     const from={azimuth:state.azimuth,elevation:state.elevation,zoom:state.zoom,center:state.center.slice()},start=performance.now();
-    const step=now=>{const t=Math.min(1,(now-start)/580),e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;for(const k of ['azimuth','elevation','zoom'])state[k]=from[k]+(target[k]-from[k])*e;state.center=from.center.map((v,i)=>v+(target.center[i]-v)*e);queue();if(t<1)animation=requestAnimationFrame(step);};
+    const step=now=>{const t=Math.min(1,(now-start)/580),e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;for(const k of ['azimuth','elevation','zoom'])state[k]=from[k]+(target[k]-from[k])*e;state.center=from.center.map((v,i)=>v+(target.center[i]-v)*e);if(t<1)animation=requestAnimationFrame(step);else{animation=0;animationTarget=null;}queue();};
     animation=requestAnimationFrame(step);
   }
   function focusCamera(){setCamera('iso');}
@@ -73,7 +78,7 @@
     $('camera-name').textContent={iso:'ISOMETRIC',top:'TOP VIEW',side:'SIDE VIEW'}[name]||'ISOMETRIC';
     document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.camera===name)));
   }
-  function resize(){const box=wrap.getBoundingClientRect();width=box.width;height=box.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);if(ctx)ctx.setTransform(dpr,0,0,dpr,0,0);queue();}
+  function resize(){const box=wrap.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,1.5);if(width===box.width&&height===box.height&&pixelRatio===dpr)return;width=box.width;height=box.height;pixelRatio=dpr;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);if(ctx)ctx.setTransform(dpr,0,0,dpr,0,0);queue();}
   function decodeSTL(bytes){
     const v=new DataView(bytes),count=v.getUint32(80,true);
     if(bytes.byteLength!==84+count*50||count!==source.triangles)throw new Error('Unexpected STL length or facet count.');
@@ -119,10 +124,12 @@
   // Rasterization is used rather than sorting whole triangles, which is incorrect
   // when the supplied mesh has long faces spanning overlapping assembly regions.
   const rasterCanvas=document.createElement('canvas'),rasterCtx=rasterCanvas.getContext('2d');
+  let rasterImage=null,rasterDepth=null;
   function rasterize(ordered,points,light,active){
-    const factor=1.25,w=Math.ceil(width*factor),h=Math.ceil(height*factor);
-    if(rasterCanvas.width!==w||rasterCanvas.height!==h){rasterCanvas.width=w;rasterCanvas.height=h;}
-    const image=rasterCtx.createImageData(w,h),pixels=image.data,depth=new Float32Array(w*h);depth.fill(-Infinity);pickBuffer=new Uint8Array(w*h);pickWidth=w;pickHeight=h;
+    // Use fewer pixels while moving, then redraw the settled view at full quality.
+    const factor=Math.min((animation||pointers.size||interactionTimer) ? .75 : 1.25,1600/Math.max(width,height)),w=Math.ceil(width*factor),h=Math.ceil(height*factor);
+    if(!rasterImage||rasterCanvas.width!==w||rasterCanvas.height!==h){rasterCanvas.width=w;rasterCanvas.height=h;rasterImage=rasterCtx.createImageData(w,h);rasterDepth=new Float32Array(w*h);pickBuffer=new Uint8Array(w*h);}
+    const image=rasterImage,pixels=image.data,depth=rasterDepth;pixels.fill(0);depth.fill(-Infinity);pickBuffer.fill(0);pickWidth=w;pickHeight=h;
     const pts=points.map(p=>[p[0]*factor,p[1]*factor,p[2]]);
     ordered.forEach(({f,i})=>{
       const a=pts[f[0]],b=pts[f[1]],c=pts[f[2]],den=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);
@@ -232,16 +239,16 @@
     else if(e.key.toLowerCase()==='r')setCamera('iso');else if(e.key.toLowerCase()==='f')fullscreen();
   });
   const pointers=new Map();let lastDistance=0,clickOrigin=null,moved=false;
-  canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;cancelAnimationFrame(animation);pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);lastDistance=0;if(pointers.size===1){clickOrigin=[e.clientX,e.clientY];moved=false;}else moved=true;});
+  canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;stopCamera();pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);lastDistance=0;if(pointers.size===1){clickOrigin=[e.clientX,e.clientY];moved=false;}else moved=true;});
   canvas.addEventListener('pointermove',e=>{
     if(!pointers.has(e.pointerId))return;const old=pointers.get(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);
     if(clickOrigin&&Math.hypot(e.clientX-clickOrigin[0],e.clientY-clickOrigin[1])>4)moved=true;
     if(pointers.size===2){const p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);if(lastDistance>0)state.zoom=Math.max(.65,Math.min(5,state.zoom*d/lastDistance));lastDistance=d;}
     else if(moved){state.azimuth+=(e.clientX-old[0])*.007;state.elevation=Math.max(-1.2,Math.min(1.56,state.elevation+(e.clientY-old[1])*.007));$('camera-name').textContent='CUSTOM VIEW';document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed','false'));}queue();
   });
-  canvas.addEventListener('pointerup',e=>{if(pointers.size===1&&!moved&&pickBuffer){const r=canvas.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/width*pickWidth),y=Math.floor((e.clientY-r.top)/height*pickHeight);if(x>=0&&x<pickWidth&&y>=0&&y<pickHeight){const region=String.fromCharCode(pickBuffer[y*pickWidth+x]);const id={A:'carriers',C:'routing',D:'fpga',E:'adapter',F:'receiver'}[region];if(id)setSlide(id);}}pointers.delete(e.pointerId);lastDistance=0;});
-  ['pointercancel','lostpointercapture'].forEach(type=>canvas.addEventListener(type,e=>{pointers.delete(e.pointerId);lastDistance=0;}));
-  canvas.addEventListener('wheel',e=>{e.preventDefault();cancelAnimationFrame(animation);state.zoom=Math.max(.65,Math.min(5,state.zoom*Math.exp(-e.deltaY*.001)));queue();},{passive:false});
+  canvas.addEventListener('pointerup',e=>{if(pointers.size===1&&!moved&&pickBuffer){const r=canvas.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/width*pickWidth),y=Math.floor((e.clientY-r.top)/height*pickHeight);if(x>=0&&x<pickWidth&&y>=0&&y<pickHeight){const region=String.fromCharCode(pickBuffer[y*pickWidth+x]);const id={A:'carriers',C:'routing',D:'fpga',E:'adapter',F:'receiver'}[region];if(id)setSlide(id);}}pointers.delete(e.pointerId);lastDistance=0;queue();});
+  ['pointercancel','lostpointercapture'].forEach(type=>canvas.addEventListener(type,e=>{pointers.delete(e.pointerId);lastDistance=0;queue();}));
+  canvas.addEventListener('wheel',e=>{e.preventDefault();stopCamera();state.zoom=Math.max(.65,Math.min(5,state.zoom*Math.exp(-e.deltaY*.001)));clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>{interactionTimer=0;queue();},140);queue();},{passive:false});
   const readHash=()=>{const i=slides.findIndex(s=>'#'+s.id===location.hash);setSlide(i<0?0:i,false);};
   window.addEventListener('hashchange',readHash);window.addEventListener('popstate',readHash);
   $('markers').hidden=true;readHash();new ResizeObserver(resize).observe(wrap);resize();loadModel();

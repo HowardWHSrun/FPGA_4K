@@ -24,7 +24,7 @@
     ['sections','03 / PRESENTATION BUILD-OUT','Build the details around this view.','The overview is ready; detailed technical sections are reserved for the team’s content.']
   ];
   const state = {slide:0,variant:'compact',ratio:.5,selected:null,labels:true,ghost:false,az:.48,el:.47,zoom:1};
-  let W=0,H=0,DPR=1,dirty=false,faces=[],hitFaces=[],hitLabels=[];
+  let W=0,H=0,DPR=1,frame=0,stageVisible=true,interactionTimer=0,faces=[],hitFaces=[],hitLabels=[];
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
   const sub=(a,b)=>a.map((v,i)=>v-b[i]);
@@ -147,8 +147,9 @@
   const meshCanvas=document.createElement('canvas');
   const meshCtx=meshCanvas.getContext('2d');
   let image=null,depth=null,pick=null,RW=0,RH=0;
-  const RS=1.6;
+  let RS=1.25;
   function rasterize(items){
+    RS=Math.min((pointer||interactionTimer) ? .75 : 1.25,1600/Math.max(W,H));
     const rw=Math.ceil(W*RS),rh=Math.ceil(H*RS);
     if(rw!==RW||rh!==RH){RW=rw;RH=rh;meshCanvas.width=RW;meshCanvas.height=RH;image=meshCtx.createImageData(RW,RH);depth=new Float32Array(RW*RH);pick=new Uint8Array(RW*RH);}
     image.data.fill(0);depth.fill(-Infinity);pick.fill(0);
@@ -176,7 +177,7 @@
     meshCtx.putImageData(image,0,0);ctx.imageSmoothingEnabled=true;ctx.drawImage(meshCanvas,0,0,W,H);
   }
   function draw(){
-    dirty=false;if(!W||!H)return;
+    frame=0;if(document.hidden||!stageVisible||!W||!H)return;
     ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);drawGrid();
     const view=[Math.sin(state.az)*Math.cos(state.el),Math.cos(state.az)*Math.cos(state.el),Math.sin(state.el)];
     hitFaces=faces.filter(f=>f.n.reduce((a,n,i)=>a+n*view[i],0)>1e-8).map(f=>({...f,screen:f.p.map(project)}));
@@ -184,8 +185,11 @@
     rasterize(hitFaces);
     if(state.ghost&&state.variant==='compact')drawGhost();drawLabels();
   }
-  function requestDraw(){if(!dirty){dirty=true;requestAnimationFrame(draw);}}
-  function resize(){const rect=canvas.getBoundingClientRect();W=rect.width;H=rect.height;DPR=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);requestDraw();}
+  function requestDraw(interacting=false){if(interacting){clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>{interactionTimer=0;requestDraw();},140);}if(!frame&&!document.hidden&&stageVisible)frame=requestAnimationFrame(draw);}
+  function pauseDraw(){cancelAnimationFrame(frame);frame=0;}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseDraw();else requestDraw();});
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(stageVisible)requestDraw();else pauseDraw();}).observe(canvas);
+  function resize(){const rect=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,1.5);if(W===rect.width&&H===rect.height&&DPR===dpr)return;W=rect.width;H=rect.height;DPR=dpr;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);requestDraw();}
   function setRegion(r){
     state.selected=state.selected===r?null:r;
     document.querySelectorAll('[data-region]').forEach(b=>{b.classList.toggle('selected',b.dataset.region===state.selected);b.setAttribute('aria-pressed',String(b.dataset.region===state.selected));});
@@ -232,10 +236,10 @@
       const label=hitLabels.find(b=>p[0]>=b.x&&p[0]<=b.x+b.w&&p[1]>=b.y&&p[1]<=b.y+b.h);
       if(label)setRegion(label.role);else{const px=clamp(Math.floor(p[0]*RS),0,RW-1),py=clamp(Math.floor(p[1]*RS),0,RH-1),id=pick?pick[py*RW+px]:0;if(id)setRegion(String.fromCharCode(id+64));else if(state.selected)setRegion(state.selected);}
     }
-    pointer=null;canvas.classList.remove('dragging');
+    pointer=null;canvas.classList.remove('dragging');requestDraw();
   }
   canvas.addEventListener('pointerup',e=>finishPointer(e));canvas.addEventListener('pointercancel',e=>finishPointer(e,true));
-  canvas.addEventListener('wheel',e=>{e.preventDefault();state.zoom=clamp(state.zoom*Math.exp(-e.deltaY*.001),.6,2.5);requestDraw();},{passive:false});
+  canvas.addEventListener('wheel',e=>{e.preventDefault();state.zoom=clamp(state.zoom*Math.exp(-e.deltaY*.001),.6,2.5);requestDraw(true);},{passive:false});
   document.querySelectorAll('[data-region]').forEach(b=>b.addEventListener('click',()=>setRegion(b.dataset.region)));
   document.querySelectorAll('[data-slide]').forEach(b=>b.addEventListener('click',()=>setSlide(Number(b.dataset.slide))));
   document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
@@ -243,7 +247,7 @@
   $('compact-button').onclick=()=>setVariant('compact');$('original-button').onclick=()=>setVariant('original');
   $('labels-toggle').onclick=()=>{state.labels=!state.labels;$('labels-toggle').setAttribute('aria-pressed',String(state.labels));$('labels-toggle').textContent=state.labels?'Labels on':'Labels off';requestDraw();};
   $('ghost-toggle').onclick=()=>{state.ghost=!state.ghost;$('ghost-toggle').setAttribute('aria-pressed',String(state.ghost));$('ghost-toggle').textContent=state.ghost?'Hide original envelope':'Show original envelope';requestDraw();};
-  $('bridge-ratio').oninput=e=>{state.ratio=Number(e.target.value)/100;$('ratio-output').value=Math.round(state.ratio*100)+'%';setVariant('compact');};
+  $('bridge-ratio').oninput=e=>{state.ratio=Number(e.target.value)/100;$('ratio-output').value=Math.round(state.ratio*100)+'%';setVariant('compact');requestDraw(true);};
   $('zoom-out').onclick=()=>{state.zoom=clamp(state.zoom*.88,.6,2.5);requestDraw();};
   $('zoom-in').onclick=()=>{state.zoom=clamp(state.zoom/ .88,.6,2.5);requestDraw();};
   $('reset-view').onclick=()=>{state.zoom=1;setView('iso');};

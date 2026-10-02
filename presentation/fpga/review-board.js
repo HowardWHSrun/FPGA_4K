@@ -50,21 +50,21 @@
   async function selectView(mode) {
     if (!['front', 'back', 'native', 'three'].includes(mode)) return;
     state.mode = mode;
+    if (mode !== 'native') window.DEFERRED_VIEWERS?.close(get('native-frame'));
+    if (mode !== 'three') window.DEFERRED_VIEWERS?.close(get('three-frame'));
     for (const name of ['front', 'back', 'native', 'three']) get(name).setAttribute('aria-pressed', String(name === mode));
     viewport.hidden = mode === 'native' || mode === 'three';
     get('three-panel').hidden = mode !== 'three';
     get('native-panel').hidden = mode !== 'native';
     get('view-help').textContent = mode === 'native' ? 'Layers · components · nets' : 'Drag to pan · scroll to zoom';
     if (mode === 'three') {
-      const frame=get('three-frame'); if (!frame.src) frame.src=frame.dataset.src;
+      const frame=get('three-frame');
       get('view-caption').textContent='Native PCB geometry · simplified bodies identified in model details';
       const help=get('view-help'); if(help) help.textContent='Drag to rotate · scroll to zoom';
       const enlarge=get('board-enlarge'); if(enlarge){enlarge.href=frame.dataset.src;enlarge.textContent='Full 3D viewer ↗';}
       return;
     }
     if (mode === 'native') {
-      const frame = get('native-frame');
-      if (!frame.src) frame.src = frame.dataset.src;
       get('view-caption').textContent = 'Current 33 × 36 mm board · read-only native KiCad';
       get('board-enlarge').href = 'viewer/?board=compact-routed';
       get('board-enlarge').textContent = 'Full viewer ↗';

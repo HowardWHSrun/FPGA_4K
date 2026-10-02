@@ -1,5 +1,7 @@
 # Project files and documents
 
+[Search the project library](../presentation/library/) for illustrations, meeting records, board revisions, reports and editable packages. Filter by topic, type and date; each item links to its original public file. Interactive models open on request. [Library maintenance and preview provenance](../presentation/library/README.md).
+
 ## Shared questions and answers
 
 [Open questions and answers](https://fpga-team-questions.hwr.chatgpt.site) directly from the overview or meetings header. The shared decision register opens to resolved items; filters also expose pending questions and the full history. Teammates enter their names, raise questions, reply in the same thread and record outcomes. Questions, responses and status history are saved on the board. [Workflow guidance](../presentation/questions/index.html) remains available. [Confirmed decisions · 30 September 2026](team/current-decisions-2026-09-30.md) preserves 12 owner-confirmed choices and their remaining implementation or qualification limits.

@@ -4,9 +4,8 @@
   for (const button of document.querySelectorAll('[data-view]')) {
     button.addEventListener('click', () => {
       const showThree = button.dataset.view === '3d';
-      native.hidden = showThree;
-      three.hidden = !showThree;
-      if (showThree && !three.src) three.src = three.dataset.src;
+      window.DEFERRED_VIEWERS?.setVisible(native, !showThree);
+      window.DEFERRED_VIEWERS?.setVisible(three, showThree);
       for (const tab of document.querySelectorAll('[data-view]')) tab.setAttribute('aria-pressed', String(tab === button));
     });
   }

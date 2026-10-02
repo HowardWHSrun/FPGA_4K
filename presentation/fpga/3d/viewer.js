@@ -8,13 +8,14 @@ if(params.get('embed')==='1')document.body.classList.add('embed');
 const boardIds=new Set(['fpga50t','micro-hdmi','usb-c']);
 let board=boardIds.has(params.get('board'))?params.get('board'):'fpga50t', data, request=0, assembly, simpleGroup, labelEntries=[], selected=null;
 const state={ready:false,board,view:'iso',labels:true,simplified:true};
-let renderer, dirty=true;
+let renderer, dirty=true, frame=0, stageVisible=true, lastWidth=0, lastHeight=0;
 try {renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});} catch(e) {$('loading').textContent='3D needs WebGL. Use the Front / Back views or open the native KiCad file.';throw e;}
-renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.5)); renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.autoUpdate=false;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;
 const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(34,1,0.1,1000);
 const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.09;controls.minDistance=23;controls.maxDistance=200;controls.target.set(0,0,0);
-controls.addEventListener('change',()=>{dirty=true;});
+controls.addEventListener('change',requestRender);
 scene.add(new THREE.HemisphereLight(0xffffff,0x71849a,3));
 const key=new THREE.DirectionalLight(0xfff6e8,4);key.position.set(-30,65,30);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-35;key.shadow.camera.right=35;key.shadow.camera.top=35;key.shadow.camera.bottom=-35;key.shadow.normalBias=.06;scene.add(key);
 const fill=new THREE.DirectionalLight(0xe3efff,2.5);fill.position.set(35,25,-45);scene.add(fill);
@@ -52,6 +53,7 @@ function setView(view){
  const poses={iso:[46,60,62],top:[0,95,.01],bottom:[0,-95,.01],side:[95,3,0]};if(!poses[view])return;
  camera.up.set(0,1,0);camera.position.fromArray(poses[view]).multiplyScalar(k);controls.target.set(0,0,0);controls.update();state.view=view;
  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
+ requestRender();
 }
 async function load(id){
  const token=++request;state.ready=false;state.board=id;board=id;selected=null;$('part').hidden=true;$('loading').hidden=false;$('loading').textContent='Loading native board geometry…';$('revision').value=id;
@@ -69,18 +71,19 @@ async function load(id){
   $('board-dimension').textContent=`${data.dimensions_mm[0]} × ${data.dimensions_mm[1]} mm`;
   $('board-package').textContent=`${id==='fpga50t'?'50T':'100T'} · 15 × 15 mm package`;
   $('native-link').href=`../viewer/?board=${id==='fpga50t'?'fpga50t':id==='usb-c'?'usb-c':'compact-routed'}`;
-  $('loading').hidden=true;state.ready=true;dirty=true;setView('iso');
+  $('loading').hidden=true;state.ready=true;renderer.shadowMap.needsUpdate=true;setView('iso');
   const url=new URL(location.href);url.searchParams.set('board',id);history.replaceState(null,'',url);window.parent.postMessage({type:'fpga-3d-ready',board:id},location.origin);
  }catch(e){if(token===request){$('loading').textContent='The model could not load. Reload or inspect the native KiCad board.';console.error(e);}}
 }
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();dirty=true;}}
+function requestRender(){dirty=true;if(!frame&&!document.hidden&&stageVisible)frame=requestAnimationFrame(renderFrame);}
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h&&(w!==lastWidth||h!==lastHeight)){lastWidth=w;lastHeight=h;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();requestRender();}}
 new ResizeObserver(resize).observe(stage);
 function zoom(f){camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);controls.update();}
 $('in').onclick=()=>zoom(.82);$('out').onclick=()=>zoom(1.22);$('reset').onclick=()=>setView('iso');
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 $('revision').onchange=e=>load(e.target.value);
-$('simplified').onchange=e=>{state.simplified=e.target.checked;if(simpleGroup)simpleGroup.visible=state.simplified;dirty=true;};
-$('label-toggle').onclick=()=>{state.labels=!state.labels;$('label-toggle').setAttribute('aria-pressed',String(state.labels));dirty=true;};
+$('simplified').onchange=e=>{state.simplified=e.target.checked;if(simpleGroup)simpleGroup.visible=state.simplified;renderer.shadowMap.needsUpdate=true;requestRender();};
+$('label-toggle').onclick=()=>{state.labels=!state.labels;$('label-toggle').setAttribute('aria-pressed',String(state.labels));requestRender();};
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down;
 canvas.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY];});
 canvas.addEventListener('pointerup',e=>{
@@ -94,5 +97,9 @@ canvas.addEventListener('keydown',e=>{
 });
 window.addEventListener('message',e=>{if(e.origin!==location.origin)return;if(e.data?.type==='fpga-3d-camera')setView(e.data.view);if(e.data?.type==='fpga-3d-labels')$('label-toggle').click();});
 window.FPGA_3D={getState:()=>({...state,libraryModels:data?.library_model_count,simplifiedBodies:data?.simplified_body_count,boardSha:data?.board_sha256,camera:camera.position.toArray()}),setView};
-function animate(){requestAnimationFrame(animate);controls.update();if(!dirty||document.hidden)return;dirty=false;for(const {p,point,el} of labelEntries){const v=point.clone().project(camera);el.hidden=!state.labels||v.z>1||(p.back?camera.position.y>0:camera.position.y<0);el.style.left=`${(v.x*.5+.5)*stage.clientWidth}px`;el.style.top=`${(-v.y*.5+.5)*stage.clientHeight}px`;}renderer.render(scene,camera);}
-resize();setView('iso');load(board);animate();
+function pauseRender(){if(frame)cancelAnimationFrame(frame);frame=0;}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseRender();else requestRender();});
+if('IntersectionObserver' in window)new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(stageVisible)requestRender();else pauseRender();}).observe(stage);
+// Keep damping smooth while moving and stop scheduling frames once it settles.
+function renderFrame(){frame=0;if(document.hidden||!stageVisible)return;controls.update();if(!dirty||!stage.clientWidth||!stage.clientHeight)return;dirty=false;const width=stage.clientWidth,height=stage.clientHeight;for(const {p,point,el} of labelEntries){const v=point.clone().project(camera);el.hidden=!state.labels||v.z>1||(p.back?camera.position.y>0:camera.position.y<0);el.style.left=`${(v.x*.5+.5)*width}px`;el.style.top=`${(-v.y*.5+.5)*height}px`;}renderer.render(scene,camera);}
+resize();setView('iso');load(board);requestRender();

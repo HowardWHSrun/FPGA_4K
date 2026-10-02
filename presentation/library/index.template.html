@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search the FPGA project's dated illustrations, meeting records, board revisions, reports and native files.">
+  <title>Project library · FPGA 4K</title>
+  <link rel="stylesheet" href="library.css">
+  <script src="library.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#library-results">Skip to library results</a>
+  <header class="site-header">
+    <a class="brand" href="../../">FPGA <span>4K</span></a>
+    <nav aria-label="Project navigation">
+      <a href="../../">Overview</a>
+      <a href="./" aria-current="page">Library</a>
+      <a href="../meetings/">Meetings</a>
+      <a href="./?type=Board%20revision">Board history</a>
+      <a href="../schematic/simple.html">XEM adapter</a>
+      <a href="https://fpga-team-questions.hwr.chatgpt.site">Questions</a>
+    </nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">The project archive</p>
+      <h1 id="page-title">Find your previous work.</h1>
+      <p class="lead">Illustrations, meeting records, board revisions and source files, together in one searchable place.</p>
+      <p class="context-note">Dates belong to the original work. Earlier designs and three-board proposals remain historical; their inclusion does not change engineering status.</p>
+    </section>
+    <section class="interactive search-section" aria-label="Find library material">
+      <form id="library-search" role="search">
+        <label for="q">Search the library</label>
+        <div class="search-row">
+          <input id="q" name="q" type="search" placeholder="Try 25T, R12, clock, pin map, or 2026-09-26" autocomplete="off">
+          <button class="search-submit" type="submit">Search</button>
+        </div>
+        <div class="filters">
+          <div><label for="type">Material</label><select id="type" name="type"><option value="">All materials</option></select></div>
+          <div><label for="topic">Topic</label><select id="topic" name="topic"><option value="">All topics</option></select></div>
+          <div><label for="date">Source date</label><select id="date" name="date"><option value="">All dates</option></select></div>
+          <button id="reset-filters" type="button">Clear filters</button>
+        </div>
+      </form>
+      <div class="quick-filters" aria-label="Browse a material type">
+        <a href="?type=Illustration" data-quick-type="Illustration">Illustrations <span id="illustration-count"></span></a>
+        <a href="?type=Meeting" data-quick-type="Meeting">Meetings</a>
+        <a href="?type=Board%20revision" data-quick-type="Board revision">Board history</a>
+        <a href="?type=3D%20viewer" data-quick-type="3D viewer">3D views</a>
+        <a href="?type=Report" data-quick-type="Report">Reports</a>
+        <a href="?type=Native%20files" data-quick-type="Native files">Native files</a>
+      </div>
+    </section>
+    <section id="library-results" aria-labelledby="results-heading" tabindex="-1">
+      <div class="results-header interactive">
+        <div><h2 id="results-heading">All work</h2><p id="result-count" role="status" aria-live="polite">Loading the library…</p></div>
+        <p class="preview-note">Small previews · full figure opens on click</p>
+      </div>
+      <div id="cards" class="cards interactive"></div>
+      <div id="empty-state" class="empty-state" hidden><h3>No matching work</h3><p>Try fewer words, a revision such as R12, or another source date.</p><button id="empty-reset" type="button">Show all work</button></div>
+      <div class="load-row interactive"><button id="load-more" type="button" hidden>Show 24 more</button><p id="shown-count"></p></div>
+      <details id="fallback" class="fallback" open>
+        <summary>Browse all source links</summary>
+        <p>These links remain available without JavaScript. Use your browser’s Find command to search titles and dates.</p>
+        <!-- LIBRARY_FALLBACK -->
+      </details>
+    </section>
+  </main>
+  <dialog id="preview-dialog" aria-labelledby="preview-title">
+    <div class="dialog-heading"><div><p id="preview-meta" class="eyebrow"></p><h2 id="preview-title"></h2></div><button id="close-preview" type="button" aria-label="Close image preview">Close <span aria-hidden="true">×</span></button></div>
+    <div id="preview-media" class="preview-media"></div>
+    <div class="dialog-footer"><p id="preview-summary"></p><div><a id="preview-original" href="#">Open original figure ↗</a><a id="preview-related" href="#" hidden>Open related view ↗</a></div></div>
+  </dialog>
+  <footer class="site-footer"><p>FPGA 4K · Dated project materials</p><div><a href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/docs/library.md">Document index ↗</a><a href="https://github.com/HowardWHSrun/FPGA_4K/tree/presentation">Source repository ↗</a></div></footer>
+</body>
+</html>
