@@ -18,6 +18,17 @@ jobs:
           persist-credentials: false
       - name: Check source links and imported-file integrity
         run: python3 scripts/check_docs.py
+      - name: Check searchable library coverage and source hashes
+        run: python3 scripts/build_library.py --check
+      - name: Check website scripts
+        run: |
+          node --check presentation/compact/app.js
+          node --check presentation/compact/slides.js
+          node --check presentation/compact/interaction.js
+          node --check presentation/model-source.js
+          node --check presentation/library/library.js
+          node --check presentation/shared/deferred-viewers.js
+          node --check presentation/fpga/entry.js
       - name: Check active CAD packaging
         run: python3 scripts/check_hardware.py
       - name: Check patch whitespace

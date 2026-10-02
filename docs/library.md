@@ -1,5 +1,7 @@
 # Project files and documents
 
+The [homepage](../index.html#overview) opens with the system overview. Its top **Library** link opens the [searchable library](../presentation/library/) for illustrations, meeting records, board revisions, reports and editable packages. Filter by topic, type and date; each item links to its original public file. Interactive models in the library open on request. [Library maintenance and preview provenance](../presentation/library/README.md).
+
 ## Shared questions and answers
 
 [Open questions and answers](https://fpga-team-questions.hwr.chatgpt.site) directly from the overview or meetings header. The shared decision register opens to resolved items; filters also expose pending questions and the full history. Teammates enter their names, raise questions, reply in the same thread and record outcomes. Questions, responses and status history are saved on the board. [Workflow guidance](../presentation/questions/index.html) remains available. [Confirmed decisions · 30 September 2026](team/current-decisions-2026-09-30.md) preserves 12 owner-confirmed choices and their remaining implementation or qualification limits.
@@ -81,15 +83,15 @@ The source files are included at a pinned upstream revision for repeatable readi
 
 [Source provenance and checksums](../sources/README.md) describe what is original, what is a faithful representation and the one library-path adaptation.
 
-## Assembly-first presentation
+## Homepage overview and preserved assembly
 
-[Open the browser presentation](../index.html) · [Presentation guide](../presentation/compact/README.md) · [Model provenance](../presentation/compact/manifest.json).
+[Open the system overview](../index.html#overview) · [Presentation guide](../presentation/compact/README.md) · [Model provenance](../presentation/compact/manifest.json).
 
-The active root presentation uses the compact B v1 STL supplied by Howard on September 22, with unchanged geometry. Older original-based visualization studies remain separate and are not used by the root page. This is not a fabrication release.
+The homepage opens on the overview of the preserved compact B v1 assembly, supplied by Howard on September 22, with unchanged geometry. The top **Library** link opens the separate searchable archive. The assembly's September architecture and board-placement descriptions retain their dated context. Older original-based visualization studies remain separate. This is not a fabrication release.
 
 ## HTML presentation
 
-[Open the presentation](https://howardwhsrun.github.io/FPGA_4K/) · [Editing guide](../presentation/compact/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
+[Open the overview](https://howardwhsrun.github.io/FPGA_4K/) · [Open the library](../presentation/library/) · [Editing guide](../presentation/compact/README.md) · [Supplied compact STL](../hardware/assembly/stacked_headboard_compact_B_v1.stl).
 
 The presentation branch uses the compact B v1 assembly supplied on September 22. The original STL is preserved separately.
 
