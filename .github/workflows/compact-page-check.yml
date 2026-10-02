@@ -8,6 +8,7 @@ on:
       - presentation/model-source.js
       - presentation/home.css
       - presentation/fpga/entry.js
+      - presentation/shared/project-navigation.css
       - .github/workflows/compact-page-check.yml
   workflow_dispatch:
 permissions:
@@ -45,7 +46,7 @@ jobs:
           import hashlib, json, os, time, urllib.request
           from pathlib import Path
           base = 'https://howardwhsrun.github.io/FPGA_4K/'
-          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js', 'presentation/compact/refinements.css', 'presentation/compact/interaction.js', 'presentation/home.css', 'presentation/fpga/entry.js', 'presentation/library/index.html', 'presentation/library/library.js', 'presentation/library/catalog.json', 'presentation/shared/deferred-viewers.js']
+          paths = ['index.html', 'presentation/compact/app.js', 'presentation/compact/style.css', 'presentation/compact/slides.js', 'presentation/model-source.js', 'presentation/compact/refinements.css', 'presentation/compact/interaction.js', 'presentation/home.css', 'presentation/fpga/entry.js', 'presentation/library/index.html', 'presentation/library/library.js', 'presentation/library/catalog.json', 'presentation/shared/deferred-viewers.js', 'presentation/shared/project-navigation.css']
           for attempt in range(18):
               try:
                   checked = []
@@ -71,6 +72,7 @@ jobs:
           CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           "$CHROME" --headless --no-sandbox --disable-gpu --window-size=1440,900 --virtual-time-budget=10000 --dump-dom "https://howardwhsrun.github.io/FPGA_4K/?check=${GITHUB_SHA}" > live-home.html 2> chrome.log
           grep -Eq '<a[^>]+href="presentation/library/"[^>]*>Library</a>' live-home.html
+          grep -Eq '<a[^>]*href="#overview"[^>]*aria-current="page"[^>]*>Overview</a>' live-home.html
           grep -q 'data-section="overview"' live-home.html
           grep -q 'data-rendered="true"' live-home.html
           grep -q 'data-model="compact_B_v1"' live-home.html

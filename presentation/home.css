@@ -1,6 +1,7 @@
-/* Keep Library visible in the overview navigation at every screen size. */
-.masthead{height:auto;min-height:85px;flex-wrap:wrap;padding:17px 0;row-gap:14px}
-.header-tools{flex-wrap:wrap;justify-content:flex-end}
-.header-tools #library-link{order:-2}
+/* Overview layout beneath the shared project navigation. */
+.shell{max-width:1336px;padding:0 28px}
 .current-fpga-notice{margin-top:18px;border-radius:7px}
-@media(max-width:850px){.header-tools{justify-content:flex-start}.header-tools #library-link{order:-2}}
+.heading{flex-wrap:wrap;gap:18px}
+.overview-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+@media(max-width:760px){.shell{padding:0 20px}.heading{gap:14px}}
+@media print{.overview-tools{display:none}}

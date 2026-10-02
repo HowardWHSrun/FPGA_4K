@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="presentation/compact/style.css?v=review-v2">
 <style>.fpga-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:13px 14px;border-radius:6px;background:#17273d;color:white;font-size:12px;line-height:1.45;margin-top:7px}.fpga-entry:hover{background:#2c4b69;text-decoration:none}.fpga-entry[hidden]{display:none!important}.current-fpga-notice{padding:9px 22px;background:#fff2df;color:#62400c;font:12px/1.5 system-ui;text-align:center}.current-fpga-notice a{color:inherit;text-decoration:underline}.current-fpga-notice strong{font-weight:650}</style>
 <link rel="stylesheet" href="presentation/compact/refinements.css?v=brk-interposer-20260929">
-<link rel="stylesheet" href="presentation/questions/navigation.css?v=20260930">
-<link rel="stylesheet" href="presentation/home.css?v=20261002">
+<link rel="stylesheet" href="presentation/home.css?v=20261002-tabs">
+<link rel="stylesheet" href="presentation/shared/project-navigation.css?v=20261002-tabs">
 <script defer src="presentation/model-source.js?v=20261002-overview"></script>
 <script defer src="presentation/compact/slides.js?v=20261002-overview"></script>
 <script defer src="presentation/compact/app.js?v=20261002-overview"></script>
@@ -17,12 +17,22 @@
 <script defer src="presentation/compact/interaction.js?v=20261002-overview"></script>
 </head>
 <body>
+<header class="project-header">
+<a href="#overview" class="brand">FPGA <span>4K</span></a>
+<nav aria-label="Project navigation">
+<a href="#overview" aria-current="page">Overview</a>
+<a id="library-link" href="presentation/library/">Library</a>
+<a href="presentation/meetings/">Meetings</a>
+<a href="presentation/library/?type=Board%20revision">Board history</a>
+<a href="presentation/schematic/simple.html">XEM adapter</a>
+<a href="https://fpga-team-questions.hwr.chatgpt.site">Questions</a>
+</nav>
+</header>
 <div class="shell">
-<header class="masthead"><a href="#overview" class="brand"><span class="brand-mark">4K</span><span>Neural recording<span class="brand-sub">Xie–Luan labs · Team design review</span></span></a><div class="header-tools"><a id="library-link" class="button primary" href="presentation/library/">Library</a><a class="button" href="presentation/meetings/">Meetings</a><a class="button primary questions-link" href="https://fpga-team-questions.hwr.chatgpt.site">Questions &amp; answers</a><button id="model-notes" class="button">Notes &amp; sources</button><button id="fullscreen" class="button primary" title="Fullscreen (F)">Present <span aria-hidden="true">⛶</span></button></div></header>
 <main class="deck" aria-label="System overview and assembly review">
 <aside class="current-fpga-notice"><strong>Dated assembly review:</strong> These figures preserve the earlier September architecture and placement studies. <a href="presentation/meetings/2026-10-02.html">Read the latest meeting review →</a></aside>
 
-<div class="heading"><div><p class="eyebrow" id="section-label">System overview</p><h1 id="slide-title">4K neural recording</h1></div><p class="heading-note">Compact B · v1<span>Assembly-first review</span></p></div>
+<div class="heading"><div><p class="eyebrow" id="section-label">System overview</p><h1 id="slide-title">4K neural recording</h1></div><div class="overview-tools" aria-label="Overview tools"><button id="model-notes" class="button">Notes &amp; sources</button><button id="fullscreen" class="button primary" title="Fullscreen (F)">Present <span aria-hidden="true">⛶</span></button></div></div>
 <div class="workspace">
 <section class="viewer" aria-label="Interactive system architecture"><div class="viewer-top"><span class="viewer-label" id="view-label">System architecture</span><div class="segmented" aria-label="Camera presets"><button data-camera="iso" aria-pressed="true">3D</button><button data-camera="top" aria-pressed="false">Top</button><button data-camera="side" aria-pressed="false">Side</button></div></div>
 <div class="scene-container" id="scene-container"><canvas id="scene" tabindex="0" aria-label="Interactive compact headboard and explanatory XEM8310, interposer and BRK8310 stack. Drag to rotate, scroll to zoom, or select a board. All regions are also available in the navigation below."></canvas><div id="model-status" role="status">Loading compact assembly…</div><div id="markers" class="markers" aria-label="Select a subsystem"><button data-region="A" data-slide="carriers"><i>01</i><span>ASIC carriers<small>Gerald</small></span></button><button data-region="C" data-slide="routing"><i>02</i><span>Routing / LDO<small>Zitong</small></span></button><button data-region="D" data-slide="fpga"><i>03</i><span>Custom FPGA<small>Howard · Jiaao</small></span></button><button data-region="E" data-slide="adapter"><i>04</i><span>µHDMI adapter<small>between XEM + BRK</small></span></button><button data-region="F" data-slide="receiver"><i>05</i><span>XEM + BRK<small>current hardware</small></span></button></div><span id="camera-name" class="camera-name">ISOMETRIC</span></div>

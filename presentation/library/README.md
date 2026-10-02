@@ -2,6 +2,8 @@
 
 [The homepage](../../index.html#overview) opens with the system overview. Its top **Library** link opens this separate archive; the **Overview** link in the library returns to the homepage overview.
 
+The overview and library use [shared navigation styles](../shared/project-navigation.css), with the same six links and an underline on the current page. Edit that stylesheet to keep both headers consistent.
+
 [Open the library](index.html). This is the public index of dated FPGA illustrations, meeting records, board revisions, reports, native packages and viewer entry points. Search matches titles, dates, revisions, types, topics, source filenames and status notes. Material, topic and source-date filters combine, and their URL parameters can be shared.
 
 The gallery creates 24 cards at a time and uses 560 × 350 WebP previews. Full source images load only after a preview is opened; closing it removes the original image. Interactive board viewers open from explicit links. The delivered HTML also contains a complete source-link list for readers without JavaScript or if catalog loading fails. No browser libraries, third-party fonts, WebGL, model files or outside services load on this page.

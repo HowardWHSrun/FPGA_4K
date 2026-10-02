@@ -34,6 +34,8 @@ The finishing layer removes duplicate headings, links hovered/focused labels and
 
 Typography prioritizes Inter and Aptos when installed, then platform system fonts, Segoe UI, Helvetica Neue and Arial. The face depends on the viewer's system. No fonts, analytics or external rendering libraries are bundled or downloaded.
 
+[Shared project navigation](../shared/project-navigation.css) defines the matching top tabs on the overview and library. Overview remains the default page; Notes & sources and Present are in its title toolbar.
+
 ## Geometry and source authority
 
 Supplied file: `stacked_headboard_compact_B_v1(1).stl`.
