@@ -9,25 +9,13 @@
   <link rel="stylesheet" href="../questions/navigation.css?v=20260930">
 </head>
 <body>
-  <header class="qa-navigation-header"><a class="brand" href="./">4K / Meetings</a><nav aria-label="Project navigation"><a href="../../">System overview</a><a class="questions-link" href="https://fpga-team-questions.hwr.chatgpt.site">Questions &amp; answers</a><a href="../fpga/current-25t.html">Selected 25T FPGA</a></nav></header>
+  <header class="qa-navigation-header"><a class="brand" href="./">4K / Meetings</a><nav aria-label="Project navigation"><a href="../../">System overview</a><a class="questions-link" href="https://fpga-team-questions.hwr.chatgpt.site">Questions &amp; answers</a><a href="../fpga/current-25t.html">FPGA design history</a></nav></header>
   <main class="hub">
     <p class="eyebrow">Ongoing PCB development</p>
     <h1>One place for every review.</h1>
-    <p class="lead">Prepare for Wednesday, then follow the recorded reviews and open actions.</p>
-    <section class="upcoming-review" aria-labelledby="wednesday-title">
-      <p class="eyebrow">Wednesday presentation · 30 September 2026</p>
-      <h2 id="wednesday-title">117 pins → 19-contact link → XEM layout</h2>
-      <p>Four slides: the ASIC interface, custom cable arrangement, proposed FPGA components and the full three-FPGA / XEM / BRK system plan. Current routing focuses on one 19-pin link first.</p>
-      <div class="meeting-focus"><span>117 ASIC interface positions</span><span>19 cable contacts</span><span>R12 XEM interposer</span></div>
-      <div class="links"><a class="button primary" href="2026-09-30.html">Open Wednesday presentation →</a><a class="button" href="2026-09-30.html#cable-pins">Pin organization</a><a class="button" href="2026-09-30.html#xem-layout">What moves forward</a><a class="button" href="2026-09-30-visuals.html">All project visuals</a></div>
-      <p class="caption">Four slides · clear pin and component lists · interactive native 3D · 99 supporting figures. Meeting outcomes pending.</p>
-    </section>
+    <p class="lead">Follow the latest decisions, open actions and earlier dated reviews.</p>
     <section class="latest">
-      <p class="eyebrow">Latest recorded review · 28 September 2026</p>
-      <h2>FPGA board, power and MCU link</h2>
-      <p>Block-by-block design review, supplier checks and a verified micro-HDMI/MCU interface plan for the next meeting.</p>
-      <div class="links"><a class="button primary" href="2026-09-28.html">Open meeting summary →</a><a class="button" href="2026-09-28.html#decisions">Decisions and open choices</a><a class="button" href="2026-09-28.html#actions">Follow-ups</a></div>
-      <p class="caption">The recording did not approve FPGA purchasing, manufacturing or a final cable pin map.</p>
+      <p class="eyebrow">Latest recorded review · 2 October 2026</p><h2>One-chip backup first; main FPGA in parallel</h2><p>Reuse Gerald's LDO board, connect the confirmed J1/J19 pair directly to XEM8305 through a rigid adapter, and review the main V11 schematic. The custom FPGA remains the primary architecture.</p><div class="links"><a class="button primary" href="2026-10-02.html">Open meeting summary →</a><a class="button" href="2026-10-02.html#interfaces">Confirmed connectors</a><a class="button" href="2026-10-02.html#actions">Quick to-do for 6 October</a></div><p class="caption">35T exact part, carrier power, mating checks and firmware remain open. No fabrication release or completed test is recorded.</p>
     </section>
     <section>
       <h2 style="margin-top:36px">Same structure, each meeting</h2>
@@ -37,6 +25,8 @@
     </section>
     <section>
       <h2 style="margin-top:36px">Meeting records &amp; earlier context</h2>
+      <article class="archive"><span class="meta">30 Sep 2026</span><div><h3><a href="2026-09-30.html">Earlier Wednesday presentation →</a></h3><p>Preserved presentation and visual library; its architecture and CAD status remain dated context.</p></div></article>
+      <article class="archive"><span class="meta">28 Sep 2026</span><div><h3><a href="2026-09-28.html">FPGA board, power and MCU link →</a></h3><p>Earlier recorded review with its original decisions and follow-ups.</p></div></article>
       <article class="archive"><span class="meta">24 Sep 2026</span><div><h3><a href="2026-09-24.html">Pin budget and FPGA choice preparation →</a></h3><p>Proposal and review questions only; no meeting outcome recorded on that page.</p></div></article>
       <article class="archive"><span class="meta">23 Sep 2026</span><div><h3><a href="2026-09-23.html">FPGA selection and minimum board design →</a></h3><p>Meeting notes, system diagram, priorities and open actions.</p></div></article>
       <article class="archive"><span class="meta">22 Sep 2026</span><div><h3><a href="https://github.com/HowardWHSrun/FPGA_4K/blob/presentation/presentation/fpga/direction-2026-09-22.md">FPGA direction ↗</a></h3><p>Smaller-package evaluation, CP SOM One reference and prototyping.</p></div></article>

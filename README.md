@@ -1,5 +1,8 @@
 # FPGA_4K
 
+**Latest meeting — 2 October 2026:** [One-chip backup first and main FPGA review](presentation/meetings/2026-10-02.html). Reuse Gerald's existing LDO board and confirmed J1/J19 connectors through a rigid adapter to XEM8305; review V11 and the 35T candidate in parallel. Exact parts, carrier power, mating and firmware remain open. This dated record updates the working sequence; older architecture descriptions below remain historical context.
+
+
 [Wednesday’s presentation](presentation/meetings/2026-09-30.html) · [R12 simple connection overview](presentation/schematic/simple.html) · [current native 3D](presentation/adapter/assembly.html?revision=r12) · [editable R12 package and audit](hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/README.md). Current focus is one 19-contact link. All 19 contacts are mapped in a 10-sheet schematic with ERC 0; the PCB is still in progress: 10/19 contacts reach all intended copper endpoints, with 9 open connections and 11 dangling warnings. R8/R9/R10 three-port studies remain preserved. No fabrication release.
 
 <!-- CURRENT_FPGA_LEARNING_REPORT -->

@@ -111,3 +111,7 @@ The [R6 diagram](../presentation/meetings/assets/2026-09-30/R6_Micro_HDMI_Contac
 ## 29 September · Zitong’s component proposal
 
 The supplied team proposal is preserved in [the source note](meetings/2026-09-30-review/Zitong_Component_Proposal.txt). The new slide condenses its six component groups and clearly marks review pending. The [part review](meetings/2026-09-30-review/Component_Proposal_Review.md) links primary AMD, Abracon, Macronix and SiTime sources; it identifies HCSL versus LVDS, distinguishes jitter metrics, and makes flash level translation conditional on the configuration-bank plan. No CAD or BOM part selection is silently replaced.
+
+## 2 October meeting and connector confirmation
+
+[Public meeting notes](meetings/2026-10-02-review/Meeting_Notes.md) derive from Howard's supplied conversation with Zitong and Gerald and his subsequent confirmation of J1/J19. This is a concise authored summary, not a verbatim transcript. The full private conversation is not imported. The [connector illustration](../presentation/meetings/assets/2026-10-02/LDO_connector_identification.png) derives from the native board coordinates in the newly shared LDO ZIP; all three connectors are on B.Cu and J19 is electrically netless in that source. Its roles are confirmed separately from terminal mating verification. No native CAD or existing source evidence is replaced. Official Opal Kelly power/connector/specification sources are linked in the meeting page; carrier-power requirements are technical audit findings, not a recorded hardware test.

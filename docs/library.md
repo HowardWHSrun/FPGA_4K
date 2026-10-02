@@ -148,3 +148,7 @@ The [19-contact slide](../presentation/meetings/2026-09-30.html#cable-pins) now 
 ## Proposed FPGA board components · 29 September
 
 [Slide 3](../presentation/meetings/2026-09-30.html#component-proposal) presents Zitong’s proposed FPGA, two status LEDs, 100 MHz fabric clock, boot flash, 125 MHz GTP reference clock and support parts. [Part review](../sources/meetings/2026-09-30-review/Component_Proposal_Review.md) separates manufacturer specifications from remaining clock/bank/boot qualification. Full assembly follows as slide 4. Proposal status remains pending review.
+
+## 2 October meeting — current working sequence
+
+[Backup adapter and main FPGA review](../presentation/meetings/2026-10-02.html) · [public notes and provenance](../sources/meetings/2026-10-02-review/Meeting_Notes.md) · [confirmed J1/J19 connector illustration](../presentation/meetings/assets/2026-10-02/LDO_connector_identification.png). One-chip backup first, existing LDO reused, direct rigid adapter to XEM8305, main FPGA retained as primary, and 35T exact-part review pending. Meeting decisions and subsequent CAD/module-power findings are labelled separately. Private conversation and native CAD are excluded from this publication.

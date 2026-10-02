@@ -1,6 +1,6 @@
 # Recurring PCB meeting reviews
 
-[Meeting hub](index.html) · [Latest recorded review](2026-09-28.html) · [Reusable template](template.html)
+[Meeting hub](index.html) · [Latest recorded review](2026-10-02.html) · [Reusable template](template.html)
 
 Use the same six sections for each dated review: Overview, PCB status, Interfaces, Decisions, Actions, Sources. Keep subsystem order ASIC/carriers, routing/LDO, FPGA, downstream/PC.
 
@@ -21,3 +21,7 @@ Historical preparation: [September 24 proposal](2026-09-24.html), based on the s
 [Open the preparation page](2026-09-30.html). The seven presentation slides focus on the 19-contact cable: contact allocation, purpose, three XEM MC3 banks and next work. The final slide shows three custom FPGA boards with XEM, interposer and BRK. Use Present, arrow keys and Escape; click individual contacts to highlight their functional group. The six existing section IDs remain available, with an additional power-plan slide. Pins 9/11 are labeled Reserved without a proposed future use; historical native sources retain their original net names. September 28 remains the latest recorded meeting. The new page records no meeting outcome.
 
 The [Wednesday visual library](2026-09-30-visuals.html) gathers 99 existing figures, including all 22 current native schematic sheets, previous layouts, adapter revisions, pin diagrams and manufacturer-derived 3D previews. Filters, figure enlargement and detail links preserve revision context.
+
+## 2 October recorded review
+
+[Latest meeting and quick to-do](2026-10-02.html): one-chip backup first, reuse Gerald's existing LDO board, confirmed J1/J19 adapter pair to XEM8305, main FPGA in parallel and a 35T candidate pending exact-part confirmation. Technical CAD/module-power audit findings are separate from meeting decisions. The full conversation stays private. No native CAD is imported by this update.
