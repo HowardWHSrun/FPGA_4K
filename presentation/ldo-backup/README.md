@@ -1,6 +1,6 @@
 # Small cabled routing-board review · C2
 
-[Open small-board 3D](index.html?view=routing) · [Connection to Gerald's LDO](index.html?view=connection) · [Functional diagram](connection.svg) · [Source facts](provenance.json).
+[Open small-board 3D](index.html?view=routing) · [Connection to Gerald's LDO](index.html?view=connection) · [Native small-board image](assets/routing-cabled-c2.png) · [Functional diagram](connection.svg) · [Source facts](provenance.json).
 
 The current instruction is **XEM8305 through cable ↔ small routing board ↔ existing Gerald LDO J1/J19**. C1/R4 direct-mate studies are historical and unselected. This review loads native meshes for a new, separate C2 mechanical study and the existing Gerald LDO source. It does not publish an electrically routed C2 board.
 
