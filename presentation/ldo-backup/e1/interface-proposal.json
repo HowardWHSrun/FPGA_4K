@@ -1,0 +1,663 @@
+{
+  "revision": "E1 digital interface study \u00b7 3 October 2026",
+  "status": "Source pin audit verified; candidate cable/carrier contacts unselected; electrical operation unverified",
+  "source_board_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+  "source_schematic_sha256": "1435f5a0c444256892675297babb13f4116c4f72da660e4780b21b3f60ad5915",
+  "sources": [
+    {
+      "name": "Gerald LDO Board 10SOIC (New Rigid), supplied 2 October 2026",
+      "role": "Fresh native schematic and PCB audit"
+    },
+    {
+      "name": "Pins.xlsx",
+      "role": "ASIC semantic direction categories",
+      "repository_path": "../../hardware/references/asic-carrier/Pins.xlsx"
+    },
+    {
+      "name": "Chip_FPGA Interface",
+      "role": "ASIC clock, capture and stimulation sequence",
+      "repository_path": "../../sources/slides/Chip_FPGA_Interface.pdf"
+    },
+    {
+      "name": "Opal Kelly XEM8305 pin list",
+      "url": "https://pins.opalkelly.com/pin_list/XEM8305",
+      "sha256": "37a9eeb2abb00280d4a6c2a20f1c8a1875d37815badd80f0e8f9c62dfd74389a"
+    }
+  ],
+  "signals": [
+    {
+      "signal": "D<1>",
+      "ldo_j1": 4,
+      "asic_j2": [
+        "49"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 1",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 2,
+      "proposed_xem_mc1": 35,
+      "proposed_fpga_pin": "Y18",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L24P_T3U_N10_64",
+      "proposed_brk_endpoint": "MC4-12",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<2>",
+      "ldo_j1": 6,
+      "asic_j2": [
+        "47"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 2",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 4,
+      "proposed_xem_mc1": 37,
+      "proposed_fpga_pin": "AA18",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L24N_T3U_N11_64",
+      "proposed_brk_endpoint": "MC4-10",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<3>",
+      "ldo_j1": 8,
+      "asic_j2": [
+        "45"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 3",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 6,
+      "proposed_xem_mc1": 39,
+      "proposed_fpga_pin": "Y17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L23P_T3U_N8_64",
+      "proposed_brk_endpoint": "MC4-8",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<4>",
+      "ldo_j1": 10,
+      "asic_j2": [
+        "43"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 4",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 8,
+      "proposed_xem_mc1": 41,
+      "proposed_fpga_pin": "AA17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L23N_T3U_N9_64",
+      "proposed_brk_endpoint": "MC4-6",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "CLKH",
+      "ldo_j1": 12,
+      "asic_j2": [
+        "50"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Recording clock sent into ASIC",
+      "timing_context": "32 MHz recording input intended; waveform, duty cycle, thresholds and skew budget unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B2:B3 (Control/CLKH)",
+        "Slides 13\u201314 (clock into ASIC vs returned clock)"
+      ],
+      "proposed_cable_contact": 10,
+      "proposed_xem_mc1": 52,
+      "proposed_fpga_pin": "AC19",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L14P_T2L_N2_GC_64",
+      "proposed_brk_endpoint": "MC5-35",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "CHIP_RESET",
+      "ldo_j1": 14,
+      "asic_j2": [
+        "41"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Reset chip to a known state",
+      "timing_context": "Polarity, pulse width, reset ordering and off-state behavior unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B4 (CHIP_RST)",
+        "Slides 13\u201314 (Chip_Reset)"
+      ],
+      "proposed_cable_contact": 12,
+      "proposed_xem_mc1": 36,
+      "proposed_fpga_pin": "AD16",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L18P_T2U_N10_AD2P_64",
+      "proposed_brk_endpoint": "MC4-11",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "IMP_TEST",
+      "ldo_j1": 18,
+      "asic_j2": [
+        "37"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Impedance-test control",
+      "timing_context": "Test mode waveform, polarity and limits unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B6 (IMP_TST in Control)",
+        "Historical carrier same-net ASIC pin IMP_TST"
+      ],
+      "proposed_cable_contact": 14,
+      "proposed_xem_mc1": 40,
+      "proposed_fpga_pin": "AE17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L17P_T2U_N8_AD10P_64",
+      "proposed_brk_endpoint": "MC4-7",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "FE_RESET",
+      "ldo_j1": 20,
+      "asic_j2": [
+        "35"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Reset amplifier/front end",
+      "timing_context": "Polarity, pulse width and settling delay unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B7",
+        "Slides 13\u201314 (FE_RESET)"
+      ],
+      "proposed_cable_contact": 16,
+      "proposed_xem_mc1": 38,
+      "proposed_fpga_pin": "AE16",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L18N_T2U_N11_AD2N_64",
+      "proposed_brk_endpoint": "MC4-9",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "SPI_CLK",
+      "ldo_j1": 22,
+      "asic_j2": [
+        "33"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Configuration serial clock for amplifier gain/stimulation settings",
+      "timing_context": "SPI maximum clock, launch/capture edges and setup/hold unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B8",
+        "Slides 25\u201328 (FPGA sends CLK/L/R/LATCH)"
+      ],
+      "proposed_cable_contact": 18,
+      "proposed_xem_mc1": 43,
+      "proposed_fpga_pin": "AB17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L22P_T3U_N6_DBC_AD0P_64",
+      "proposed_brk_endpoint": "MC4-4",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "SPI_LATCH",
+      "ldo_j1": 24,
+      "asic_j2": [
+        "31"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Configuration latch",
+      "timing_context": "Latch polarity, pulse width and timing unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B9",
+        "Slides 25\u201328"
+      ],
+      "proposed_cable_contact": 20,
+      "proposed_xem_mc1": 44,
+      "proposed_fpga_pin": "AC18",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L16P_T2U_N6_QBC_AD3P_64",
+      "proposed_brk_endpoint": "MC4-3",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "SPI_DINL",
+      "ldo_j1": 26,
+      "asic_j2": [
+        "29"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Left-side serial configuration input",
+      "timing_context": "Serial encoding, timing and guaranteed logic levels unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 C2:C3 (Chip in/SPI_DL)",
+        "Slides 25\u201328 (FPGA sends L)"
+      ],
+      "proposed_cable_contact": 22,
+      "proposed_xem_mc1": 45,
+      "proposed_fpga_pin": "AC17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L22N_T3U_N7_DBC_AD0N_64",
+      "proposed_brk_endpoint": "MC4-2",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "STIM_START",
+      "ldo_j1": 27,
+      "asic_j2": [
+        "21"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Trigger stimulation after enable",
+      "timing_context": "Short pulse described; numerical pulse width/polarity and safe inactive state unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B10",
+        "Slides 27\u201328"
+      ],
+      "proposed_cable_contact": 24,
+      "proposed_xem_mc1": 48,
+      "proposed_fpga_pin": "AF18",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L15P_T2L_N4_AD11P_64",
+      "proposed_brk_endpoint": "MC5-39",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "SPI_DINR",
+      "ldo_j1": 28,
+      "asic_j2": [
+        "27"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Right-side serial configuration input",
+      "timing_context": "Serial encoding, timing and guaranteed logic levels unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 C2,C4 (Chip in/SPI_DR)",
+        "Slides 25\u201328 (FPGA sends R)"
+      ],
+      "proposed_cable_contact": 26,
+      "proposed_xem_mc1": 46,
+      "proposed_fpga_pin": "AD18",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L16N_T2U_N7_QBC_AD3N_64",
+      "proposed_brk_endpoint": "MC4-1",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "STIM_CLK",
+      "ldo_j1": 29,
+      "asic_j2": [
+        "19"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Stimulation timing clock",
+      "timing_context": "Frequency unspecified; slides describe 64 STIM_CLK cycles before charge balancing",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B11 (STM_CLK)",
+        "Slides 27\u201328 (STIM_CLK)"
+      ],
+      "proposed_cable_contact": 28,
+      "proposed_xem_mc1": 50,
+      "proposed_fpga_pin": "AF19",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L15N_T2L_N5_AD11N_64",
+      "proposed_brk_endpoint": "MC5-37",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "STIM_EN",
+      "ldo_j1": 31,
+      "asic_j2": [
+        "17"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Enable stimulation",
+      "timing_context": "Enable polarity, fail-safe default, interlocks and sequencing unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B12",
+        "Slides 27\u201328"
+      ],
+      "proposed_cable_contact": 30,
+      "proposed_xem_mc1": 55,
+      "proposed_fpga_pin": "Y20",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L19P_T3L_N0_DBC_AD9P_64",
+      "proposed_brk_endpoint": "MC5-32",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "STIM_CHB",
+      "ldo_j1": 33,
+      "asic_j2": [
+        "15"
+      ],
+      "direction": "XEM\u2192ASIC",
+      "function": "Charge-balancing control",
+      "timing_context": "Assert after 64 stimulation clock cycles in illustrated sequence; timing and polarity unqualified",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 B13",
+        "Slides 27\u201328"
+      ],
+      "proposed_cable_contact": 32,
+      "proposed_xem_mc1": 57,
+      "proposed_fpga_pin": "Y21",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L19N_T3L_N1_DBC_AD9N_64",
+      "proposed_brk_endpoint": "MC5-30",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "SYNC",
+      "ldo_j1": 34,
+      "asic_j2": [
+        "13"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "Frame/channel alignment marker",
+      "timing_context": "One SYNC per 1024 recording-clock-cycle frame; pulse shape and setup/hold unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D5",
+        "Slides 14\u201317"
+      ],
+      "proposed_cable_contact": 34,
+      "proposed_xem_mc1": 63,
+      "proposed_fpga_pin": "AB21",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L12P_T1U_N10_GC_64",
+      "proposed_brk_endpoint": "MC5-26",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "CLK32MHZ",
+      "ldo_j1": 36,
+      "asic_j2": [
+        "11"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "Returned recording clock used to capture data",
+      "timing_context": "Recording clock nominal 32 MHz; falling-edge capture in returned clock domain recorded in later requirements summary; source timing margins unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D2,D4 (Chip out/CLK32MHZ)",
+        "Slides 14\u201317 (returned clock/read/sync/data)"
+      ],
+      "proposed_cable_contact": 36,
+      "proposed_xem_mc1": 56,
+      "proposed_fpga_pin": "AD20",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L13P_T2L_N0_GC_QBC_64",
+      "proposed_brk_endpoint": "MC5-31",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<5>",
+      "ldo_j1": 38,
+      "asic_j2": [
+        "9"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 5",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 38,
+      "proposed_xem_mc1": 47,
+      "proposed_fpga_pin": "AA20",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L21P_T3L_N4_AD8P_64",
+      "proposed_brk_endpoint": "MC5-40",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<6>",
+      "ldo_j1": 40,
+      "asic_j2": [
+        "7"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 6",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 40,
+      "proposed_xem_mc1": 49,
+      "proposed_fpga_pin": "AB20",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L21N_T3L_N5_AD8N_64",
+      "proposed_brk_endpoint": "MC5-38",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<7>",
+      "ldo_j1": 42,
+      "asic_j2": [
+        "5"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 7",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 42,
+      "proposed_xem_mc1": 51,
+      "proposed_fpga_pin": "AA19",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L20P_T3L_N2_AD1P_64",
+      "proposed_brk_endpoint": "MC5-36",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "D<8>",
+      "ldo_j1": 44,
+      "asic_j2": [
+        "3"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "ADC recording data line 8",
+      "timing_context": "Four ADCs/time-multiplexed groups per line; falling-edge capture later confirmed; guaranteed timing and output loading unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D3 (D<1:8>)",
+        "Slides 5,14\u201317 (8 multiplexed data lines)"
+      ],
+      "proposed_cable_contact": 44,
+      "proposed_xem_mc1": 53,
+      "proposed_fpga_pin": "AB19",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L20N_T3L_N3_AD1N_64",
+      "proposed_brk_endpoint": "MC5-34",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    },
+    {
+      "signal": "READ",
+      "ldo_j1": 46,
+      "asic_j2": [
+        "1"
+      ],
+      "direction": "ASIC\u2192XEM",
+      "function": "Marks start of new amplifier data",
+      "timing_context": "16 READ events per 1024 recording-clock-cycle frame; pulse shape and setup/hold unavailable",
+      "direction_evidence": [
+        "Pins.xlsx Sheet1 D6",
+        "Slides 14\u201317"
+      ],
+      "proposed_cable_contact": 46,
+      "proposed_xem_mc1": 42,
+      "proposed_fpga_pin": "AF17",
+      "bank": 64,
+      "bank_type": "HP",
+      "fpga_pin_function": "IO_L17N_T2U_N9_AD10N_64",
+      "proposed_brk_endpoint": "MC4-5",
+      "carrier_status": "Existing carrier R6 Bank64 proposal retained as conditional target; cabled landing unselected",
+      "logic_limits": null,
+      "status": "PROPOSED cable and FPGA assignment; not approved, powered or tested"
+    }
+  ],
+  "candidate_cable": {
+    "contact_count": 51,
+    "connector_status": "Legacy FH26-51S footprint study; requires custom staggered-tip FPC. Current FH26W substitution is unverified. Cable face and length remain under review.",
+    "signal_contacts": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46
+    ],
+    "dgnd_contacts": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39,
+      41,
+      43,
+      45,
+      47,
+      49,
+      50,
+      51
+    ],
+    "nc_contacts": [
+      48
+    ],
+    "qualified_physical_cable_map": false,
+    "three_volt_three_over_cable": false
+  },
+  "carrier_contract_sha256": "a0feefd07db7ae966048a6b796277188eb8292263f5007c6ede8258850a7620c",
+  "carrier_architecture_difference": "R6 draft currently says rigid interposer. Current small routing board requires cable; far-end endpoint must be agreed.",
+  "ldo_power_boundary": {
+    "J1_1_2": "3V3 LDO input, separate qualified source required",
+    "J1_49_50": "DGND",
+    "J1_47_48": "Isolated VCC; do not reuse",
+    "J19": "24 source contacts netless; no electrical function assigned",
+    "AGND": "Separate source net; absent from J1"
+  },
+  "blocks_operation": [
+    "ASIC guaranteed logic thresholds and absolute limits",
+    "AGND/DGND reference topology",
+    "Physical mate and cable face/continuity",
+    "Carrier-side endpoint agreement",
+    "VCCO source/sequencing and FPGA IO standard",
+    "LDO rail-load and input power qualification",
+    "Cable timing and safe reset/stimulation states",
+    "Legacy RTL IMP_TEST direction conflicts with primary ASIC control classification"
+  ]
+}

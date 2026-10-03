@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "revision": "cabled-e1",
-  "date": "2026-10-03",
-  "status": "Native E1 routed digital proposal; no powered operation or finished physical cable contract",
+  "revision": "cabled-c2",
+  "date": "2026-10-02",
+  "status": "Native C2 mechanical PCB review; proposed compact envelope; electrical routing pending",
   "selected_topology": "XEM8305 through cable \u2194 small routing board \u2194 existing Gerald LDO J1/J19",
   "size_reference": {
     "source": "Original Sources/11_SpikeGadgets_Photo_Reference/SpikeGadgets_Component_Inventory.pdf",
@@ -35,22 +35,17 @@
         60
       ]
     },
-    "physical_connector_bodies": "J3 legacy FH26 included; J1/J19 omitted",
-    "cable_connector": "Proposed legacy FH26-51S custom-FPC port; replacement and complete cable unselected",
-    "cable_pinout": "Proposed logical allocation in e1/interface-proposal.json; no physical far-end continuity qualification",
+    "physical_connector_bodies": false,
+    "cable_connector": null,
+    "cable_pinout": null,
     "native_C2_generation": "Completed in a separate mechanical-only project",
-    "ERC": {
-      "errors": 1,
-      "warnings": 0,
-      "open": "Qualified3V3source missing"
-    },
+    "ERC": "Not applicable: no schematic or electrical netlist",
     "DRC": {
       "errors": 0,
       "warnings": 0,
-      "unconnected_items": 0,
-      "schematic_parity_issues": 0,
-      "ignored_checks": [],
-      "excluded_findings": 0
+      "excluded_findings": 0,
+      "ignored_categories": [],
+      "scope": "Mechanical-only project; zero airwires from cleared nets is not electrical completion"
     },
     "socket_courtyard_screen_mm": {
       "J1": {
@@ -211,72 +206,5 @@
       "sha256": "8ce50c8b691c6483d4fc2214c2987902f3d2fb61713c0b222cfd5e499df75321",
       "render": "Native KiCad bottom isometric render;984\u00d7784;missing connector bodies omitted"
     }
-  },
-  "E1_checks": {
-    "revision": "E1 digital source-to-proposed-custom-FPC study",
-    "PCB_sha256": "d428793ec0317867c8ed0d94078234d60daba9b948e055a7650dd8280f9aa978",
-    "schematic_sha256": "98edef39eb4a031cf739e5866d0e964a1b5c5cfd04ac89f81a39394303a76879",
-    "size_mm": [
-      18,
-      25
-    ],
-    "copper_layers": 4,
-    "tracks": 180,
-    "through_vias": 46,
-    "DRC": {
-      "errors": 0,
-      "warnings": 0,
-      "unconnected_items": 0,
-      "schematic_parity_issues": 0,
-      "ignored_checks": [],
-      "excluded_findings": 0
-    },
-    "ERC": {
-      "errors": 1,
-      "warnings": 0,
-      "ignored_checks": [],
-      "excluded_findings": 0,
-      "open_error": "3V3_LDO_IN is not driven by a qualified source"
-    },
-    "independent_logical_checks_passed": 41,
-    "independent_PCB_checks_passed": 43,
-    "source_LDO_23_native_copper_paths_connected": true,
-    "original_LDO_ERC": {
-      "errors": 35,
-      "warnings": 127,
-      "inherited_ignored_categories": 4,
-      "DRC": "Aborted; no pass claimed"
-    },
-    "GLB": {
-      "sha256": "2f99711793ca7b1fb80a6438eea8dd4eb0ac100b712f2bc61862f02dbb8c0a15",
-      "bytes": 2809592,
-      "missing_housing_models": [
-        "J1",
-        "J19"
-      ],
-      "silkscreen_export_warning": "Some underside silk may be omitted; diagnostic without silk removes exporter warning"
-    },
-    "PNG": {
-      "sha256": "273b20e19ed28686a0ab69f9a41247e5cf79eff32b876caa736af5c99f6dadc2",
-      "pixel_dimensions": [
-        1176,
-        984
-      ]
-    },
-    "electrical_operation_verified": false,
-    "hardware_connected_or_energized": false,
-    "remaining": [
-      "Qualified3V3source and inputlanding/currentbudget",
-      "CustomFPC and carrierendpoint",
-      "MarkedHirosemating and hardwarecontinuity",
-      "ASICguaranteedlevels/reference/safestates",
-      "VCCOsequencing/thermalbudget",
-      "Cabletiming/SI and firmwareIMP_TESTconflict"
-    ]
-  },
-  "historical_C2_provenance": "e1/c2-provenance.json",
-  "E1_native_assets": {
-    "board": "assets/routing-cabled-e1.glb",
-    "image": "assets/routing-cabled-e1.png"
   }
 }

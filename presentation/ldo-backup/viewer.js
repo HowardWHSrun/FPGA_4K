@@ -49,7 +49,7 @@ function frameCamera() {
   const offset = cameraView === 'top' ? new THREE.Vector3(0.01, distance, 0.01)
     : cameraView === 'bottom' ? new THREE.Vector3(0.01, -distance, 0.01)
     : cameraView === 'side' ? new THREE.Vector3(distance, 0, 0)
-    : mode === 'routing' ? new THREE.Vector3(0.55 * distance, -0.7 * distance, 0.65 * distance)
+    : mode === 'routing' ? new THREE.Vector3(0.55 * distance, 0.7 * distance, 0.65 * distance)
     : new THREE.Vector3(0.55 * distance, 0.5 * distance, 0.75 * distance);
   camera.up.set(0, 1, 0);
   if (cameraView === 'top') camera.up.set(0, 0, -1);
@@ -69,13 +69,13 @@ function updateMode(reframe = true) {
   for (const [x, z] of [[130.85, 41.25], [125, 60]]) line(guides, [local(x, -0.9, z), local(x, -gap + 0.9, z)], 0x82aab8, true);
   if (reframe) frameCamera();
   window.LDO_CABLED_PREVIEW.mode = mode; window.LDO_CABLED_PREVIEW.illustrativeGapMm = gap;
-  if (window.LDO_CABLED_PREVIEW.nativeLoaded) document.getElementById('stage-note').textContent = mode === 'connection' ? 'Native PCB geometry · exploded gap and cable path illustrative' : 'Native routing underside · connector bodies omitted';
+  if (window.LDO_CABLED_PREVIEW.nativeLoaded) document.getElementById('stage-note').textContent = mode === 'connection' ? 'Native PCB geometry · exploded gap and cable path illustrative' : 'Native E1 routing proposal · J1/J19 housings omitted';
 }
 async function loadNativeGeometry() {
   try {
     const loader = new GLTFLoader();
     const [smallModel, sourceModel] = await Promise.all([
-      loader.loadAsync('assets/routing-cabled-c2.glb'),
+      loader.loadAsync('assets/routing-cabled-e1.glb'),
       loader.loadAsync('assets/gerald-ldo.glb')
     ]);
     routing.clear(); ldo.clear();
@@ -88,7 +88,9 @@ async function loadNativeGeometry() {
     ldo.add(sourceModel.scene);
     window.LDO_CABLED_PREVIEW.nativeLoaded = true;
     window.LDO_CABLED_PREVIEW.geometryOnly = false;
-    window.LDO_CABLED_PREVIEW.mechanicalOnly = true;
+    window.LDO_CABLED_PREVIEW.mechanicalOnly = false;
+    window.LDO_CABLED_PREVIEW.proposedElectricalRouting = true;
+    window.LDO_CABLED_PREVIEW.operationallyQualified = false;
     updateMode(false);
     status.hidden = true;
   } catch (error) {
@@ -103,14 +105,25 @@ function resize() {
 }
 function animate() {
   controls.update(); scene.updateMatrixWorld(true);
+  const placed = [];
   for (const entry of labels) {
     const visible = entry.modes.includes(mode) && entry.group.visible;
     entry.element.hidden = !visible;
     if (!visible) continue;
     const point = entry.group.localToWorld(entry.point.clone()).project(camera);
     entry.element.hidden = point.z < -1 || point.z > 1;
-    entry.element.style.left = ((point.x + 1) * stage.clientWidth / 2) + 'px';
-    entry.element.style.top = ((1 - point.y) * stage.clientHeight / 2) + 'px';
+    if (entry.element.hidden) continue;
+    const width = entry.element.offsetWidth, height = entry.element.offsetHeight;
+    const x = Math.max(width / 2 + 8, Math.min(stage.clientWidth - width / 2 - 8, (point.x + 1) * stage.clientWidth / 2));
+    const projectedY = (1 - point.y) * stage.clientHeight / 2;
+    let y = projectedY;
+    for (const offset of [0, -52, 52, -104, 104, -156, 156]) {
+      y = Math.max(height / 2 + 8, Math.min(stage.clientHeight - height / 2 - 8, projectedY + offset));
+      const rect = { left: x - width / 2, right: x + width / 2, top: y - height / 2, bottom: y + height / 2 };
+      if (placed.every(other => rect.right + 5 < other.left || rect.left - 5 > other.right || rect.bottom + 5 < other.top || rect.top - 5 > other.bottom)) { placed.push(rect); break; }
+    }
+    entry.element.style.left = x + 'px';
+    entry.element.style.top = y + 'px';
   }
   renderer.render(scene, camera);
 }
@@ -139,9 +152,9 @@ try {
   centreMark(ldo, 128.2, 1, 25.33, 0xffe0a8);
   label('J2 → ASIC<small>ASIC end stays outside small board</small>', local(127, 2, 20), ldo, ['connection']);
   line(cable, [local(180, 4, 52), local(159, 5, 48), local(148, 3, 51), local(138, 2, 51)], 0xb58a40, true);
-  label('Cable → XEM8305<small>Connector / pinout TBD</small>', local(159, 9, 51), cable, ['connection']);
+  label('Cable → XEM8305<small>Custom FPC · far end TBD</small>', local(159, 9, 51), cable, ['connection']);
   line(routing, [local(138, 1, 48), local(138, 1, 54)], 0xb58a40, true);
-  window.LDO_CABLED_PREVIEW = { revision: 'cabled-c2', geometryOnly: true, provisionalRoutingMm: [18, 25], sourceLdoMm: [18.3, 42.025], noCablePinout: true, mode, illustrativeGapMm: gap };
+  window.LDO_CABLED_PREVIEW = { revision: 'cabled-e1', geometryOnly: true, provisionalRoutingMm: [18, 25], sourceLdoMm: [18.3, 42.025], noCablePinout: true, mode, illustrativeGapMm: gap };
   resize(); updateMode(); renderer.setAnimationLoop(animate); status.textContent = 'Loading native PCB models…'; status.hidden = false; loadNativeGeometry();
   new ResizeObserver(resize).observe(stage);
 } catch (error) {

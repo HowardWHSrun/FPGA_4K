@@ -1,8 +1,10 @@
 # Project files and documents
 
-## Small cabled routing board · 2 October
+## Small cabled routing board · 3 October
 
 [Small-board 3D](../presentation/ldo-backup/?view=routing) · [connection to the current Gerald LDO](../presentation/ldo-backup/?view=connection) · [review notes](../presentation/ldo-backup/README.md). XEM8305 connects through a cable. The 18 × 25 mm geometric preview is a provisional socket envelope, not a measured SpikeGadgets outline. Cable connector/pinout, exact dimensions and electrical routing remain open. Original CAD is preserved.
+
+[Pin-by-pin E1 study](../presentation/ldo-backup/pin-review.html) · [schematic and native check summary](../presentation/ldo-backup/e1/README.md). All 23 source signals are traced; a separate compact source-to-custom-FPC revision advances electrical routing. The carrier’s Bank 64 assignments remain conditional while its cable landing is reconciled. ASIC limits, references, power and timing remain open.
 
 ## Shared questions and answers
 
