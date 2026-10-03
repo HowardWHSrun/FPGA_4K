@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "revision": "cabled-c2",
+  "date": "2026-10-02",
+  "status": "Geometric preview; proposed compact envelope; electrical routing pending",
+  "selected_topology": "XEM8305 through cable ↔ small routing board ↔ existing Gerald LDO J1/J19",
+  "size_reference": {
+    "source": "Original Sources/11_SpikeGadgets_Photo_Reference/SpikeGadgets_Component_Inventory.pdf",
+    "identity": "SpikeGadgets LLC Rev.2.5; user photos IMG_0030.jpeg and IMG_0028.jpeg",
+    "dimensions_mm": null,
+    "commercial_model": null,
+    "limit": "Photo-based inventory explicitly leaves exact PCB dimensions unknown. No package dimension is used as a PCB measurement."
+  },
+  "new_routing": {
+    "bounds_mm": {
+      "xmin": 120,
+      "xmax": 138,
+      "ymin": 38,
+      "ymax": 63
+    },
+    "size_mm": [
+      18,
+      25
+    ],
+    "thickness_mm": 1.6,
+    "thickness_status": "Illustrative, unselected stackup",
+    "size_status": "Provisional socket envelope, not measured SpikeGadgets size",
+    "socket_centres_mm": {
+      "J1": [
+        130.85,
+        41.25
+      ],
+      "J19": [
+        125,
+        60
+      ]
+    },
+    "physical_connector_bodies": false,
+    "cable_connector": null,
+    "cable_pinout": null,
+    "native_C2_generation": "Unconfirmed; local host execution stalled",
+    "ERC": null,
+    "DRC": null,
+    "socket_courtyard_screen_mm": {
+      "J1": {
+        "xmin": 124.04,
+        "xmax": 137.66,
+        "ymin": 38.86,
+        "ymax": 43.64
+      },
+      "J19": {
+        "xmin": 120.8,
+        "xmax": 129.2,
+        "ymin": 57.61,
+        "ymax": 62.39
+      }
+    }
+  },
+  "existing_ldo": {
+    "source": "2026-10-02_FPGA_Work/02_Meeting_And_Backup_Adapter/source/Gerald_LDO_Board/LDO_Board_10SOIC (New Rigid)/PCB.kicad_pcb",
+    "source_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+    "bounds_mm": {
+      "xmin": 171.35,
+      "xmax": 189.65,
+      "ymin": 21.85,
+      "ymax": 63.875
+    },
+    "nominal_size_mm": [
+      18.3,
+      42.025
+    ],
+    "connector_centres_mm": {
+      "J1": [
+        183.15,
+        42.95
+      ],
+      "J19": [
+        177.3,
+        24.2
+      ],
+      "J2": [
+        180.5,
+        58.87
+      ]
+    },
+    "connector_face": "B.Cu",
+    "regulators_in_source": 9,
+    "regulator_family": "LT3042",
+    "render": "Simplified source envelope and connector centre markers; component bodies omitted",
+    "source_preserved": true
+  },
+  "registration": {
+    "xy_map": "x'=x-52.30; y'=84.20-y",
+    "face_reversal": "180 degrees; B-side faces oppose in proposed stack",
+    "J1_registered_mm": [
+      130.85,
+      41.25
+    ],
+    "J19_registered_mm": [
+      125,
+      60
+    ],
+    "J2_registered_mm": [
+      128.2,
+      25.33
+    ],
+    "exploded_gap_mm": 12,
+    "gap_status": "Illustrative only; actual connector part/mating height not qualified",
+    "pin_continuity_claim": false,
+    "source_bounding_envelope_registered_mm": {
+      "xmin": 119.05,
+      "xmax": 137.35,
+      "ymin": 20.325,
+      "ymax": 62.35
+    }
+  },
+  "source_interface_facts": {
+    "J1_asic_signals": 23,
+    "J1_3V3_contacts": [
+      1,
+      2
+    ],
+    "J1_DGND_contacts": [
+      49,
+      50
+    ],
+    "J1_VCC_contacts": [
+      47,
+      48
+    ],
+    "VCC_status": "Isolated/unpowered in audited source; not an assigned supply",
+    "J19": "PCB-only netless source footprint with custom numbering; electrical role unverified",
+    "AGND_DGND": "Separate source nets; cable returns not assigned",
+    "power_responsibility": "Existing LDO contains regulators. New routing-board power circuitry, source rails, loads and sequencing remain unresolved; no inherited R4 supply contract."
+  },
+  "historical_unselected": [
+    "R4 53×97 mm direct-mate study",
+    "C1 53×60 mm direct-mate study"
+  ],
+  "unresolved": [
+    "Measured SpikeGadgets PCB width × height",
+    "Selected cable and endpoint connector part numbers / numbered wire map",
+    "Actual installed J1/J19 part and mating height, J19 pin roles",
+    "Cable power/return arrangement, loads and regulator qualification",
+    "Final new-board outline, mechanical support and electrical routing"
+  ],
+  "validation": {
+    "registration_math": "Centres coincide under stated transform; J2 falls outside provisional routing rectangle",
+    "native_C2_ERC_DRC": "None completed; host execution unavailable.",
+    "website_checks": "Run-specific evidence belongs to associated GitHub check results",
+    "not_proven": [
+      "Connector mating",
+      "Electrical continuity",
+      "Mechanical clearance",
+      "Hardware operation",
+      "Fabrication readiness"
+    ],
+    "socket_screen": "Saved source-derived R4 socket courtyard bounds fit the provisional rectangle; no fresh native C2 DRC or cable-connector fit claim."
+  }
+}
