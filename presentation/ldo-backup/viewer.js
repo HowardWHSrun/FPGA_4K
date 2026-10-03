@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const stage = document.getElementById('stage');
 const canvas = document.getElementById('scene');
@@ -68,6 +69,33 @@ function updateMode(reframe = true) {
   for (const [x, z] of [[130.85, 41.25], [125, 60]]) line(guides, [local(x, -0.9, z), local(x, -gap + 0.9, z)], 0x82aab8, true);
   if (reframe) frameCamera();
   window.LDO_CABLED_PREVIEW.mode = mode; window.LDO_CABLED_PREVIEW.illustrativeGapMm = gap;
+  if (window.LDO_CABLED_PREVIEW.nativeLoaded) document.getElementById('stage-note').textContent = mode === 'connection' ? 'Native PCB geometry · exploded gap and cable path illustrative' : 'Native routing underside · connector bodies omitted';
+}
+async function loadNativeGeometry() {
+  try {
+    const loader = new GLTFLoader();
+    const [smallModel, sourceModel] = await Promise.all([
+      loader.loadAsync('assets/routing-cabled-c2.glb'),
+      loader.loadAsync('assets/gerald-ldo.glb')
+    ]);
+    routing.clear(); ldo.clear();
+    smallModel.scene.scale.setScalar(1000);
+    smallModel.scene.position.set(-129, 0, -50.5);
+    routing.add(smallModel.scene);
+    sourceModel.scene.scale.setScalar(1000);
+    sourceModel.scene.rotation.x = Math.PI;
+    sourceModel.scene.position.set(-181.3, -0.1, 33.7);
+    ldo.add(sourceModel.scene);
+    window.LDO_CABLED_PREVIEW.nativeLoaded = true;
+    window.LDO_CABLED_PREVIEW.geometryOnly = false;
+    window.LDO_CABLED_PREVIEW.mechanicalOnly = true;
+    updateMode(false);
+    status.hidden = true;
+  } catch (error) {
+    status.hidden = false;
+    status.textContent = 'Native model unavailable; simplified source-envelope concept shown.';
+    console.warn('Native LDO models:', error);
+  }
 }
 function resize() {
   const width = stage.clientWidth, height = stage.clientHeight;
@@ -101,21 +129,20 @@ try {
   box(routing, 129, 0, 50.5, 18, 1.6, 25, 0x28858a);
   for (const [name, x, z] of [['J1', 130.85, 41.25], ['J19', 125, 60]]) {
     centreMark(routing, x, -1, z, 0xffffff);
-    label(name + '<small>LDO socket centre</small>', local(x, -2, z), routing);
+    label(name + '<small>LDO socket centre</small>', local(x, -2, z), routing, ['routing']);
     centreMark(ldo, x, 1, z, 0xebf5e8);
-    label(name + '<small>Existing B-side centre</small>', local(x, 2, z), ldo, ['connection']);
   }
-  label('18 × 25 mm<small>Provisional small-board envelope</small>', local(130, 1, 51), routing);
+  label('18 × 25 mm<small>Provisional small-board envelope</small>', local(130, 1, 51), routing, ['routing']);
+  label('Small routing board<small>J1 / J19 underneath</small>', local(140, 2, 61), routing, ['connection']);
   box(ldo, 128.2, 0, 41.3375, 18.3, 1.51, 42.025, 0x4a7d42);
-  label('Existing LDO<small>Source envelope · components omitted</small>', local(130, 0, 31), ldo, ['connection']);
+  label('Existing LDO<small>Native source · connector bodies omitted</small>', local(116, 0, 35), ldo, ['connection']);
   centreMark(ldo, 128.2, 1, 25.33, 0xffe0a8);
-  label('J2 → ASIC<small>ASIC end stays outside small board</small>', local(128.2, 2, 24), ldo, ['connection']);
+  label('J2 → ASIC<small>ASIC end stays outside small board</small>', local(127, 2, 20), ldo, ['connection']);
   line(cable, [local(180, 4, 52), local(159, 5, 48), local(148, 3, 51), local(138, 2, 51)], 0xb58a40, true);
-  label('Cable → XEM8305<small>Route illustrative · XEM remains remote</small>', local(157, 8, 48), cable, ['connection']);
-  label('Cable endpoint TBD<small>No connector footprint or pinout assigned</small>', local(141, 1, 55), cable, ['connection']);
+  label('Cable → XEM8305<small>Connector / pinout TBD</small>', local(159, 9, 51), cable, ['connection']);
   line(routing, [local(138, 1, 48), local(138, 1, 54)], 0xb58a40, true);
   window.LDO_CABLED_PREVIEW = { revision: 'cabled-c2', geometryOnly: true, provisionalRoutingMm: [18, 25], sourceLdoMm: [18.3, 42.025], noCablePinout: true, mode, illustrativeGapMm: gap };
-  resize(); updateMode(); renderer.setAnimationLoop(animate); status.hidden = true;
+  resize(); updateMode(); renderer.setAnimationLoop(animate); status.textContent = 'Loading native PCB models…'; status.hidden = false; loadNativeGeometry();
   new ResizeObserver(resize).observe(stage);
 } catch (error) {
   status.textContent = '3D is unavailable in this browser. The connection diagram remains below.';

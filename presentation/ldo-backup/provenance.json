@@ -2,8 +2,8 @@
   "schema_version": 1,
   "revision": "cabled-c2",
   "date": "2026-10-02",
-  "status": "Geometric preview; proposed compact envelope; electrical routing pending",
-  "selected_topology": "XEM8305 through cable ↔ small routing board ↔ existing Gerald LDO J1/J19",
+  "status": "Native C2 mechanical PCB review; proposed compact envelope; electrical routing pending",
+  "selected_topology": "XEM8305 through cable \u2194 small routing board \u2194 existing Gerald LDO J1/J19",
   "size_reference": {
     "source": "Original Sources/11_SpikeGadgets_Photo_Reference/SpikeGadgets_Component_Inventory.pdf",
     "identity": "SpikeGadgets LLC Rev.2.5; user photos IMG_0030.jpeg and IMG_0028.jpeg",
@@ -23,7 +23,7 @@
       25
     ],
     "thickness_mm": 1.6,
-    "thickness_status": "Illustrative, unselected stackup",
+    "thickness_status": "Inherited preview stackup, not an approved manufacturing requirement",
     "size_status": "Provisional socket envelope, not measured SpikeGadgets size",
     "socket_centres_mm": {
       "J1": [
@@ -38,9 +38,15 @@
     "physical_connector_bodies": false,
     "cable_connector": null,
     "cable_pinout": null,
-    "native_C2_generation": "Unconfirmed; local host execution stalled",
-    "ERC": null,
-    "DRC": null,
+    "native_C2_generation": "Completed in a separate mechanical-only project",
+    "ERC": "Not applicable: no schematic or electrical netlist",
+    "DRC": {
+      "errors": 0,
+      "warnings": 0,
+      "excluded_findings": 0,
+      "ignored_categories": [],
+      "scope": "Mechanical-only project; zero airwires from cleared nets is not electrical completion"
+    },
     "socket_courtyard_screen_mm": {
       "J1": {
         "xmin": 124.04,
@@ -54,6 +60,23 @@
         "ymin": 57.61,
         "ymax": 62.39
       }
+    },
+    "native_pcb_sha256": "ebeeea930df8cb389ee6e79b517ef879f3d595d41ca47286757e0784bb7add45",
+    "native_project_sha256": "d52ab75ee90743a0ded7cd7b7e65d9cc88cb043f73fb053dc66c3ebaa3f0de60",
+    "native_pad_records": 74,
+    "retained_footprints": [
+      "J1",
+      "J19"
+    ],
+    "pad_net_assignments": 0,
+    "tracks": 0,
+    "vias": 0,
+    "zones": 0,
+    "native_dielectric_body_height_mm": 1.51,
+    "source_socket_footprints": {
+      "source_revision": "R4",
+      "source_pcb_sha256": "bd47f1332b61f2e100ca960d6593c17bf4a9eb8e6e5b0de6daff4eb8bb64e552",
+      "change": "Kept J1/J19 at exact native positions/angles and pad geometries. Removed all other footprints, tracks/vias/zones and pad net assignments in separate C2 copy. Refitted J1 reference text inside edge and packaged exact local footprint definitions."
     }
   },
   "existing_ldo": {
@@ -86,7 +109,7 @@
     "connector_face": "B.Cu",
     "regulators_in_source": 9,
     "regulator_family": "LT3042",
-    "render": "Simplified source envelope and connector centre markers; component bodies omitted",
+    "render": "Faithful native KiCad source PCB mesh with available component models; missing connector bodies omitted",
     "source_preserved": true
   },
   "registration": {
@@ -134,11 +157,11 @@
     "power_responsibility": "Existing LDO contains regulators. New routing-board power circuitry, source rails, loads and sequencing remain unresolved; no inherited R4 supply contract."
   },
   "historical_unselected": [
-    "R4 53×97 mm direct-mate study",
-    "C1 53×60 mm direct-mate study"
+    "R4 53\u00d797 mm direct-mate study",
+    "C1 53\u00d760 mm direct-mate study"
   ],
   "unresolved": [
-    "Measured SpikeGadgets PCB width × height",
+    "Measured SpikeGadgets PCB width \u00d7 height",
     "Selected cable and endpoint connector part numbers / numbered wire map",
     "Actual installed J1/J19 part and mating height, J19 pin roles",
     "Cable power/return arrangement, loads and regulator qualification",
@@ -146,7 +169,7 @@
   ],
   "validation": {
     "registration_math": "Centres coincide under stated transform; J2 falls outside provisional routing rectangle",
-    "native_C2_ERC_DRC": "None completed; host execution unavailable.",
+    "native_C2_ERC_DRC": "Native mechanical DRC 0 errors/0 warnings with no ignored categories or exclusions; ERC and schematic parity not applicable.",
     "website_checks": "Run-specific evidence belongs to associated GitHub check results",
     "not_proven": [
       "Connector mating",
@@ -155,6 +178,33 @@
       "Hardware operation",
       "Fabrication readiness"
     ],
-    "socket_screen": "Saved source-derived R4 socket courtyard bounds fit the provisional rectangle; no fresh native C2 DRC or cable-connector fit claim."
+    "socket_screen": "Saved source-derived R4 socket courtyard bounds fit the provisional rectangle; no fresh native C2 DRC or cable-connector fit claim.",
+    "independent_native_readback": "74 pad geometries match source R4; both B.Cu and 180 degrees; all pad extents inside provisional rectangle; GLB native frame and body bounds verified.",
+    "browser_runtime": "Small-board and connection modes, native model loading and label cleanup inspected locally; no error/warning logs."
+  },
+  "native_models": {
+    "routing-cabled-c2.glb": {
+      "source": "04_LDO_Routing_Board/Website_Views_2026-10-02/cabled_study/project/LDO_Cabled_C2_Mechanical.kicad_pcb",
+      "source_sha256": "ebeeea930df8cb389ee6e79b517ef879f3d595d41ca47286757e0784bb7add45",
+      "bytes": 662184,
+      "sha256": "6625d6de598354a52096e1f1e56ef673ea9dea4602a4ad3256e9bee81624e3ea",
+      "units": "metres; displayed at 1000 scale in millimetres",
+      "export": "Native KiCad 10.0.6 GLB; source copper and available component models, missing connector bodies omitted"
+    },
+    "gerald-ldo.glb": {
+      "source": "2026-10-02_FPGA_Work/02_Meeting_And_Backup_Adapter/source/Gerald_LDO_Board/LDO_Board_10SOIC (New Rigid)/PCB.kicad_pcb",
+      "source_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+      "bytes": 15488984,
+      "sha256": "e8f7fb795f679a6a59d9b55706339770906511e6e3baa59db148c2de8f5963fd",
+      "units": "metres; displayed at 1000 scale in millimetres",
+      "export": "Native KiCad 10.0.6 GLB; source copper and available component models, missing connector bodies omitted"
+    },
+    "routing-cabled-c2.png": {
+      "source": "04_LDO_Routing_Board/Website_Views_2026-10-02/cabled_study/project/LDO_Cabled_C2_Mechanical.kicad_pcb",
+      "source_sha256": "ebeeea930df8cb389ee6e79b517ef879f3d595d41ca47286757e0784bb7add45",
+      "bytes": 72596,
+      "sha256": "8ce50c8b691c6483d4fc2214c2987902f3d2fb61713c0b222cfd5e499df75321",
+      "render": "Native KiCad bottom isometric render;984\u00d7784;missing connector bodies omitted"
+    }
   }
 }
