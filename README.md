@@ -1,5 +1,7 @@
 # FPGA_4K
 
+**Current cabled backup review · 2 October:** [Small routing board 3D](presentation/ldo-backup/?view=routing) · [connection to the existing LDO](presentation/ldo-backup/?view=connection). XEM8305 connects by cable. The 18 × 25 mm preview is provisional; the shared SpikeGadgets board dimensions and cable connector/pinout remain unverified. The dated direct-mate meeting proposal below is preserved history.
+
 **Latest meeting — 2 October 2026:** [One-chip backup first and main FPGA review](presentation/meetings/2026-10-02.html). Reuse Gerald's existing LDO board and confirmed J1/J19 connectors through a rigid adapter to XEM8305; review V11 and the 35T candidate in parallel. Exact parts, carrier power, mating and firmware remain open. This dated record updates the working sequence; older architecture descriptions below remain historical context.
 
 

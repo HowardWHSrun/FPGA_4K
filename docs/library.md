@@ -1,5 +1,9 @@
 # Project files and documents
 
+## Small cabled routing board · 2 October
+
+[Small-board 3D](../presentation/ldo-backup/?view=routing) · [connection to the current Gerald LDO](../presentation/ldo-backup/?view=connection) · [review notes](../presentation/ldo-backup/README.md). XEM8305 connects through a cable. The 18 × 25 mm geometric preview is a provisional socket envelope, not a measured SpikeGadgets outline. Cable connector/pinout, exact dimensions and electrical routing remain open. Original CAD is preserved.
+
 ## Shared questions and answers
 
 [Open questions and answers](https://fpga-team-questions.hwr.chatgpt.site) directly from the overview or meetings header. The shared decision register opens to resolved items; filters also expose pending questions and the full history. Teammates enter their names, raise questions, reply in the same thread and record outcomes. Questions, responses and status history are saved on the board. [Workflow guidance](../presentation/questions/index.html) remains available. [Confirmed decisions · 30 September 2026](team/current-decisions-2026-09-30.md) preserves 12 owner-confirmed choices and their remaining implementation or qualification limits.
