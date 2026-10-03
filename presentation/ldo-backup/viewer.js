@@ -6,6 +6,10 @@ const stage = document.getElementById('stage');
 const canvas = document.getElementById('scene');
 const status = document.getElementById('status');
 const labelsRoot = document.getElementById('labels');
+const leadersRoot = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+leadersRoot.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;overflow:visible';
+leadersRoot.setAttribute('aria-hidden', 'true');
+labelsRoot.append(leadersRoot);
 const gapInput = document.getElementById('gap');
 let mode = new URLSearchParams(location.search).get('view') === 'connection' ? 'connection' : 'routing';
 let cameraView = 'iso';
@@ -30,7 +34,13 @@ function label(text, point, group, modes = ['routing', 'connection']) {
   element.className = 'model-label';
   element.innerHTML = text;
   labelsRoot.append(element);
-  labels.push({ element, point, group, modes });
+  const connector = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const leader = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  leader.setAttribute('stroke', '#6d8f9d'); leader.setAttribute('stroke-width', '1');
+  const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  dot.setAttribute('r', '2.2'); dot.setAttribute('fill', '#6d8f9d');
+  connector.append(leader, dot); leadersRoot.append(connector);
+  labels.push({ element, point, group, modes, connector, leader, dot });
 }
 function centreMark(group, x, y, z, color) {
   const dot = new THREE.Mesh(new THREE.SphereGeometry(0.58, 18, 12), new THREE.MeshStandardMaterial({ color, roughness: 0.6 }));
@@ -109,10 +119,11 @@ function animate() {
   for (const entry of labels) {
     const visible = entry.modes.includes(mode) && entry.group.visible;
     entry.element.hidden = !visible;
+    entry.connector.style.display = visible ? '' : 'none';
     if (!visible) continue;
     const point = entry.group.localToWorld(entry.point.clone()).project(camera);
     entry.element.hidden = point.z < -1 || point.z > 1;
-    if (entry.element.hidden) continue;
+    if (entry.element.hidden) { entry.connector.style.display = 'none'; continue; }
     const width = entry.element.offsetWidth, height = entry.element.offsetHeight;
     const x = Math.max(width / 2 + 8, Math.min(stage.clientWidth - width / 2 - 8, (point.x + 1) * stage.clientWidth / 2));
     const projectedY = (1 - point.y) * stage.clientHeight / 2;
@@ -124,6 +135,10 @@ function animate() {
     }
     entry.element.style.left = x + 'px';
     entry.element.style.top = y + 'px';
+    const anchorX = (point.x + 1) * stage.clientWidth / 2;
+    entry.leader.setAttribute('x1', anchorX); entry.leader.setAttribute('y1', projectedY);
+    entry.leader.setAttribute('x2', x); entry.leader.setAttribute('y2', y);
+    entry.dot.setAttribute('cx', anchorX); entry.dot.setAttribute('cy', projectedY);
   }
   renderer.render(scene, camera);
 }
@@ -146,14 +161,14 @@ try {
     centreMark(ldo, x, 1, z, 0xebf5e8);
   }
   label('18 × 25 mm<small>Provisional small-board envelope</small>', local(130, 1, 51), routing, ['routing']);
-  label('Small routing board<small>J1 / J19 underneath</small>', local(140, 2, 61), routing, ['connection']);
+  label('Small routing board<small>J1 / J19 underneath</small>', local(129, 2, 46), routing, ['connection']);
   box(ldo, 128.2, 0, 41.3375, 18.3, 1.51, 42.025, 0x4a7d42);
-  label('Existing LDO<small>Native source · connector bodies omitted</small>', local(116, 0, 35), ldo, ['connection']);
+  label('Existing LDO<small>Native source · connector bodies omitted</small>', local(128.2, -1, 41.3375), ldo, ['connection']);
   centreMark(ldo, 128.2, 1, 25.33, 0xffe0a8);
-  label('J2 → ASIC<small>ASIC end stays outside small board</small>', local(127, 2, 20), ldo, ['connection']);
-  line(cable, [local(180, 4, 52), local(159, 5, 48), local(148, 3, 51), local(138, 2, 51)], 0xb58a40, true);
-  label('Cable → XEM8305<small>Custom FPC · far end TBD</small>', local(159, 9, 51), cable, ['connection']);
-  line(routing, [local(138, 1, 48), local(138, 1, 54)], 0xb58a40, true);
+  label('J2 → ASIC<small>ASIC end stays outside small board</small>', local(128.2, -1, 25.33), ldo, ['connection']);
+  line(cable, [local(175, 4, 35), local(159, 5, 31), local(145, 3, 32), local(129, 2, 38), local(129, 2, 49)], 0xb58a40, true);
+  label('Cable → XEM8305<small>Custom FPC · far end TBD</small>', local(159, 9, 31), cable, ['connection']);
+  line(routing, [local(121.2, 1, 46.35), local(136.8, 1, 46.35)], 0xb58a40, true);
   window.LDO_CABLED_PREVIEW = { revision: 'cabled-e1', geometryOnly: true, provisionalRoutingMm: [18, 25], sourceLdoMm: [18.3, 42.025], noCablePinout: true, mode, illustrativeGapMm: gap };
   resize(); updateMode(); renderer.setAnimationLoop(animate); status.textContent = 'Loading native PCB models…'; status.hidden = false; loadNativeGeometry();
   new ResizeObserver(resize).observe(stage);
