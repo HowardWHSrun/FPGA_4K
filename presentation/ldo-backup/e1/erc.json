@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-03T08:19:21",
+    "ignored_checks": [],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/cadb8670-aab5-56f8-ae6c-c6297c812422",
+            "violations": [
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol J1 Pin 1 [3V3_LDO_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.1049,
+                                "y": 0.4699
+                            },
+                            "uuid": "6a1f6131-aa59-524e-86ee-20ab86b517a9"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                }
+            ]
+        }
+    ],
+    "source": "LDO_Cabled_E1_Proposed.kicad_sch"
+}

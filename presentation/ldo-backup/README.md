@@ -1,6 +1,6 @@
-# Small cabled routing-board review · C2
+# Small cabled routing-board review · C2 shape / E1 pin study
 
-[Open small-board 3D](index.html?view=routing) · [Connection to Gerald's LDO](index.html?view=connection) · [Native small-board image](assets/routing-cabled-c2.png) · [Functional diagram](connection.svg) · [Source facts](provenance.json).
+[Pin-by-pin E1 review](pin-review.html) · [Open small-board 3D](index.html?view=routing) · [Connection to Gerald's LDO](index.html?view=connection) · [Native small-board image](assets/routing-cabled-c2.png) · [Functional diagram](connection.svg) · [Source facts](provenance.json).
 
 The current instruction is **XEM8305 through cable ↔ small routing board ↔ existing Gerald LDO J1/J19**. C1/R4 direct-mate studies are historical and unselected. This review loads native meshes for a new, separate C2 mechanical study and the existing Gerald LDO source. It does not publish an electrically routed C2 board.
 
@@ -15,3 +15,9 @@ Before electrical CAD can proceed, identify the selected cable and both endpoint
 The cable and exploded gap are illustrative. The dashed cable endpoint is not a selected footprint. The separate native C2 PCB keeps only J1/J19 and all 74 pad records at their source positions, on B.Cu at 180 degrees. It has no pad net assignments, tracks, vias, zones or cable footprint. Its native mechanical DRC has **0 errors and 0 warnings**, with no ignored categories or excluded findings. Two missing-library warnings were resolved by packaging exact local footprint definitions; a clipped J1 reference was moved inside the edge. All pad geometry remains unchanged. **Zero airwires from cleared nets does not prove electrical completion.** ERC and schematic parity are not applicable because no schematic/netlist is supplied. The native GLB frame and pad geometry were independently checked; the small-board and connection views were inspected in the browser without console errors. Earlier C1 checks do not validate C2. Website packaging checks are reported by the associated repository check run.
 
 Original native CAD, shared libraries, global settings and unrelated board projects remain unchanged by this website update. No fabrication files, order or hardware operation is included.
+
+## E1 pin study · 3 October 2026
+
+The [interactive pin review](pin-review.html) traces all 23 J1 signals to ASIC J2: 12 FPGA→ASIC controls and 11 ASIC→FPGA outputs. CLKH clocks the ASIC; CLK32MHZ returns the recording clock to a proposed clock-capable Bank 64 input. All new cable and FPGA contacts remain proposed. Fresh source export/PCB comparisons cover 116 electrical external pins with no mismatch. J19 remains netless and VCC 47/48 isolated.
+
+A 51-contact custom-FPC proposal gives 23 signals and 27 DGND conductors, plus one NC. The legacy FH26 candidate requires staggered-tip FPC and is obsolete; its current FH26W replacement is not a verified footprint substitution. ASIC guaranteed levels/reference, connector orientation, cable face/length/continuity, carrier agreement, VCCO sequencing, input power/current, timing and safe control states remain open. No hardware was connected or powered. Read the [E1 checkpoint and native checks](e1/README.md), [CSV](e1/pin-map-proposal.csv) and [contract](e1/interface-proposal.json).

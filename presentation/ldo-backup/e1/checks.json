@@ -1,0 +1,62 @@
+{
+  "revision": "E1 digital source-to-proposed-custom-FPC study",
+  "PCB_sha256": "d428793ec0317867c8ed0d94078234d60daba9b948e055a7650dd8280f9aa978",
+  "schematic_sha256": "98edef39eb4a031cf739e5866d0e964a1b5c5cfd04ac89f81a39394303a76879",
+  "size_mm": [
+    18,
+    25
+  ],
+  "copper_layers": 4,
+  "tracks": 180,
+  "through_vias": 46,
+  "DRC": {
+    "errors": 0,
+    "warnings": 0,
+    "unconnected_items": 0,
+    "schematic_parity_issues": 0,
+    "ignored_checks": [],
+    "excluded_findings": 0
+  },
+  "ERC": {
+    "errors": 1,
+    "warnings": 0,
+    "ignored_checks": [],
+    "excluded_findings": 0,
+    "open_error": "3V3_LDO_IN is not driven by a qualified source"
+  },
+  "independent_logical_checks_passed": 41,
+  "independent_PCB_checks_passed": 43,
+  "source_LDO_23_native_copper_paths_connected": true,
+  "original_LDO_ERC": {
+    "errors": 35,
+    "warnings": 127,
+    "inherited_ignored_categories": 4,
+    "DRC": "Aborted; no pass claimed"
+  },
+  "GLB": {
+    "sha256": "2f99711793ca7b1fb80a6438eea8dd4eb0ac100b712f2bc61862f02dbb8c0a15",
+    "bytes": 2809592,
+    "missing_housing_models": [
+      "J1",
+      "J19"
+    ],
+    "silkscreen_export_warning": "Some underside silk may be omitted; diagnostic without silk removes exporter warning"
+  },
+  "PNG": {
+    "sha256": "273b20e19ed28686a0ab69f9a41247e5cf79eff32b876caa736af5c99f6dadc2",
+    "pixel_dimensions": [
+      1176,
+      984
+    ]
+  },
+  "electrical_operation_verified": false,
+  "hardware_connected_or_energized": false,
+  "remaining": [
+    "Qualified3V3source and inputlanding/currentbudget",
+    "CustomFPC and carrierendpoint",
+    "MarkedHirosemating and hardwarecontinuity",
+    "ASICguaranteedlevels/reference/safestates",
+    "VCCOsequencing/thermalbudget",
+    "Cabletiming/SI and firmwareIMP_TESTconflict"
+  ]
+}
