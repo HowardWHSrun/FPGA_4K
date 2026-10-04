@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Current XC7A35T-2CSG325I FPGA PCB research revision R37: October 3–4 progress, unfinished routing, manufacturing inquiry and ASIC timing review.">
+  <title>Current 35T FPGA PCB · R37 | FPGA 4K</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../shared/current-review.css">
+  <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
+<script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
+  <script type="module" src="../reviews/viewer.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="project-header">
+    <a class="brand" href="../../#fpga">FPGA 4K<small>Custom FPGA · current R37 review</small></a>
+    <nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/">Library</a><a href="#weekend-update">Progress</a><a href="#history">Earlier reviews</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero review-body">
+      <p class="eyebrow">Weekend update · 3–4 October 2026</p>
+      <h1>Current 35T FPGA PCB · R37</h1>
+      <span class="status">Routing in progress</span>
+      <p class="lead">The current research board uses XC7A35T-2CSG325I in a 41 × 41 mm layout. Connector arrangement, power distribution and ASIC timing remain under review.</p>
+      <div class="facts"><span>R37 · research revision</span><span>41 × 41 mm PCB</span><span>18-sheet schematic review</span></div>
+    </section>
+    <section class="figure-slot" id="figures" aria-labelledby="figure-title">
+      <div class="figure-heading"><h2 id="figure-title">Current R37 board view</h2></div>
+      <div class="figure-space" id="current-figure"><div class="interactive-preview" data-preview-model="fpga35t-r37">
+        <div class="preview-stage"><canvas hidden tabindex="0" aria-label="Interactive Current R37 headboard and connector-only mating template. Drag to rotate, scroll to zoom; arrow keys rotate, plus and minus zoom, R resets."></canvas><img class="preview-fallback" src="../reviews/assets/2026-10-04/V15_Headboard_And_Interface_Isometric.png" alt="Current R37 headboard and connector-only mating template"><p class="preview-status" role="status">Loading current 3D preview…</p></div>
+        <nav class="preview-controls" aria-label="3D preview controls"><div><button data-preview-view="iso" aria-pressed="true">3D</button><button data-preview-view="top" aria-pressed="false">Top</button><button data-preview-view="bottom" aria-pressed="false">Bottom</button><button data-preview-view="side" aria-pressed="false">Side</button></div><div><button data-preview-out aria-label="Zoom out">−</button><button data-preview-in aria-label="Zoom in">+</button><button data-preview-reset>Reset view</button></div></nav>
+        <p class="preview-help">Drag to rotate · scroll to zoom · right-drag to pan</p>
+      </div></div>
+      <p class="caption">XC7A35T-2CSG325I · R37 · 4 October. Headboard with connector-only mating template; routing hidden. The lower template is not a functional LDO board. Populated fit and fabrication remain unqualified.</p>
+    </section>
+    <section class="section review-body" id="weekend-update" aria-labelledby="progress-title">
+      <p class="eyebrow">FPGA PCB</p><h2 id="progress-title">Weekend progress</h2>
+      <p>Over the weekend I worked on the FPGA board layout and design review, including the connector arrangement, power distribution, and routing approach. I completed the 3D component models and put together a review PDF with all 18 schematic sheets. I also contacted PCBWay to confirm the proposed eight-layer HDI stack-up and blind-via rules before committing to detailed routing. Routing is still unfinished, and I’m checking the timing constraints for the ASIC interface.</p>
+      <div class="review-grid">
+        <article><h3>Manufacturing review</h3><p>The eight-layer HDI stack-up and blind-via rules are proposed. PCBWay has been contacted; supplier acceptance is still pending.</p></article>
+        <article><h3>Mechanical review</h3><p>The connector-only lower-board template remains a placement reference. Populated fit still needs checking.</p></article>
+      </div>
+    </section>
+    <section class="section review-body" id="history" aria-labelledby="history-title">
+      <p class="eyebrow">Revision history</p><h2 id="history-title">Earlier FPGA reviews</h2>
+      <p>R37 is the current 35T research revision. The older paused R35 study and the published 25T placement retain their own routing status and counts.</p>
+      <div class="history-links"><a href="current-25t.html">29 September 25T placement</a><a href="index.html">28 September 50T review</a><a href="../meetings/2026-10-02.html">2 October meeting</a></div>
+    </section>
+  <p class="review-body caption"><a href="../reviews/README.md">Model sources, omissions and credits</a> · <a href="../reviews/provenance.json">Asset hashes</a></p>
+  </main>
+  <footer class="site-footer"><span>FPGA 4K · R37 · 3–4 October 2026</span><a href="../../#fpga">Back to FPGA section ↑</a></footer>
+</body>
+</html>

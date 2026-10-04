@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Current XEM8305 carrier assembly A1R2 with both mating connectors and flex mapping review; separate XEM8310 protected power path and unfinished routing.">
+  <title>Current XEM8305 carrier · A1R2 | FPGA 4K</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../shared/current-review.css">
+  <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
+<script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
+  <script type="module" src="../reviews/viewer.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="project-header">
+    <a class="brand" href="../../#receiver">FPGA 4K<small>XEM carrier · current A1R2 review</small></a>
+    <nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/">Library</a><a href="#weekend-update">Progress</a><a href="../ldo-backup/current-e5.html">LDO E5</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero review-body">
+      <p class="eyebrow">Weekend update · 3–4 October 2026</p>
+      <h1>XEM8305 carrier · A1R2</h1>
+      <span class="status">Assembly view updated · fit under review</span>
+      <p class="lead">The current XEM8305 assembly view includes both mating connectors, with signal mapping through the flex cable checked. Its adapter view is E3; the later LDO E5 layout is reviewed separately.</p>
+      <div class="facts"><span>A1R2 · carrier assembly</span><span>Both mating connectors shown</span><span>E3 · depicted adapter</span></div>
+    </section>
+    <section class="figure-slot" id="figures" aria-labelledby="figure-title">
+      <div class="figure-heading"><h2 id="figure-title">Current A1R2 carrier assembly</h2></div>
+      <div class="figure-space" id="current-figure"><div class="interactive-preview" data-preview-model="xem8305-a1r2">
+        <div class="preview-stage"><canvas hidden tabindex="0" aria-label="Interactive XEM8305 A1R2 carrier assembly with both mating pairs. Drag to rotate, scroll to zoom; arrow keys rotate, plus and minus zoom, R resets."></canvas><img class="preview-fallback" src="../reviews/assets/2026-10-04/A1R2_Selected_Assembly_Assembly_Rotated.png" alt="XEM8305 A1R2 carrier assembly with both mating pairs"><p class="preview-status" role="status">Loading current 3D preview…</p></div>
+        <nav class="preview-controls" aria-label="3D preview controls"><div><button data-preview-view="iso" aria-pressed="true">3D</button><button data-preview-view="top" aria-pressed="false">Top</button><button data-preview-view="bottom" aria-pressed="false">Bottom</button><button data-preview-view="side" aria-pressed="false">Side</button></div><div><button data-preview-out aria-label="Zoom out">−</button><button data-preview-in aria-label="Zoom in">+</button><button data-preview-reset>Reset view</button></div></nav>
+        <p class="preview-help">Drag to rotate · scroll to zoom · right-drag to pan</p>
+      </div></div>
+      <p class="caption">XEM8305 · A1R2 · both mating connectors. The assembly depicts the E3 adapter; later E5 power-connector changes and populated fit need separate review.</p>
+    </section>
+    <section class="section review-body" id="weekend-update" aria-labelledby="progress-title">
+      <p class="eyebrow">XEM carrier and connection</p><h2 id="progress-title">Weekend progress</h2>
+      <p>I updated the XEM8305 carrier assembly view to include both mating connectors and checked the signal mapping through the flex cable. Separately, I traced the custom FPGA board’s power path: the XEM8310 carrier schematic already provides a protected path from the shared external supply to the custom micro-HDMI power contact. That carrier power routing and cable qualification are still unfinished. I have the assembly views and connection diagrams ready for review.</p>
+      <div class="review-grid">
+        <article><h3>XEM8305 carrier</h3><p>Assembly and flex mapping are ready for review. Check populated fit, mating clearance and the connection to the current E5 adapter.</p></article>
+        <article><h3>Separate XEM8310 power path</h3><p>The protected external-supply path exists in the schematic. Carrier power routing and cable qualification remain unfinished.</p></article>
+      </div>
+    </section>
+    <section class="section review-body" id="history" aria-labelledby="history-title">
+      <p class="eyebrow">Separate project history</p><h2 id="history-title">Earlier XEM8310 reviews</h2>
+      <p>The XEM8305 backup carrier and XEM8310 receiver carrier are separate projects. The dated XEM8310/BRK8310 model and R12 study retain their own geometry and engineering status.</p>
+      <div class="history-links"><a href="index.html">29 September XEM8310 / BRK8310 review</a><a href="../adapter/assembly.html?revision=r12">Dated XEM8310 R12 study</a><a href="../meetings/2026-10-02.html">2 October backup direction</a></div>
+    </section>
+  <p class="review-body caption"><a href="../reviews/README.md">Model sources, omissions and credits</a> · <a href="../reviews/provenance.json">Asset hashes</a></p>
+  </main>
+  <footer class="site-footer"><span>FPGA 4K · A1R2 · 3–4 October 2026</span><a href="../../#receiver">Back to XEM carrier section ↑</a></footer>
+</body>
+</html>

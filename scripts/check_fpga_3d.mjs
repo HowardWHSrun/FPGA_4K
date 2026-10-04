@@ -27,12 +27,21 @@ try{
   check(await page.locator('#three-panel').isVisible()&&!(await page.locator('#viewport').isVisible())&&!(await page.locator('#native-panel').isVisible()),path+' exclusive 3D tab');check(!(await frame.locator('.revision').isVisible()),path+' revision locked to surrounding review');
   await page.screenshot({path:`${out}/${path.includes('micro')?'micro':'usb'}-review.png`});await page.locator('#back').click();check(await page.locator('#viewport').isVisible()&&!(await page.locator('#three-panel').isVisible()),path+' back layout restored');
  }
- await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.RECEIVER_3D?.getState().ready,{},{timeout:60000});
- check((await system.evaluate(()=>RECEIVER_3D.getState().focus))==='fpga','system focuses the selected three 25T boards');
- check((await page.locator('#facts').innerText()).includes('25T'),'system facts name selected 25T');
- check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-25t.html'),'system links to selected 25T section');
+ await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:60000});
+ check((await system.evaluate(()=>reviewPreview.model))==='fpga35t-r37','system shows current 35T R37 preview');
+ check((await page.locator('#facts').innerText()).includes('35T'),'system facts name current 35T');
+ check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-35t.html'),'system links to current 35T review');
  await page.screenshot({path:`${out}/system.png`});
- await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the FPGA focus hidden');
+ await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the current preview hidden');
+ for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
+  await page.goto(base+path);await page.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:120000});
+  check((await page.evaluate(()=>reviewPreview.model))===id,id+' current model loads');
+  for(const view of ['top','bottom','side','iso']){await page.locator(`[data-preview-view="${view}"]`).click();check((await page.evaluate(()=>reviewPreview.view))===view,id+' '+view+' preset');}
+  await page.locator('[data-preview-in]').click();check((await page.evaluate(()=>reviewPreview.zoom))>1,id+' zoom works');await page.locator('[data-preview-reset]').click();
+  const before=await page.evaluate(()=>reviewPreview.camera),box=await page.locator('.preview-stage canvas').boundingBox();await page.mouse.move(box.x+box.width*.45,box.y+box.height*.5);await page.mouse.down();await page.mouse.move(box.x+box.width*.65,box.y+box.height*.6,{steps:10});await page.mouse.up();
+  check(JSON.stringify(await page.evaluate(()=>reviewPreview.camera))!==JSON.stringify(before),id+' drag rotates');
+  await page.screenshot({path:`${out}/${id}.png`});
+ }
  await page.setViewportSize({width:390,height:844});
  for(const board of ['fpga50t','usb-c']){
   await page.goto(base+'presentation/fpga/3d/?board='+board);
@@ -43,6 +52,10 @@ try{
   check(await page.evaluate(previous=>Math.hypot(...FPGA_3D.getState().camera)<previous,before),board+' mobile zoom control moves closer');
   await page.locator('#reset').click();
   await page.screenshot({path:`${out}/${board}-mobile.png`});
+ }
+ for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
+  await page.goto(base+path);await page.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:120000});
+  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),id+' mobile fits width');await page.locator('[data-preview-in]').click();check((await page.evaluate(()=>reviewPreview.zoom))>1,id+' mobile zoom works');
  }
  check(report.errors.length===0,'no JavaScript page errors');report.status='passed';
 }catch(e){report.status='failed';report.failure=e.stack;await page.screenshot({path:`${out}/failure.png`});process.exitCode=1;}

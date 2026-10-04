@@ -33,7 +33,7 @@
     $('owners').replaceChildren();
     slide.owners.forEach(([name,role])=>{const e=document.createElement('div');e.className='owner';const n=document.createElement('strong'),r=document.createElement('span');n.textContent=name;r.textContent=role;e.append(n,r);$('owners').append(e);});
     $('facts').replaceChildren();slide.facts.forEach(([value,label])=>{const e=document.createElement('div');e.className='fact';const n=document.createElement('strong'),r=document.createElement('span');n.textContent=value;r.textContent=label;e.append(n,r);$('facts').append(e);});
-    $('overview-team').hidden=state.slide!==0;$('adapter-overview').hidden=state.slide!==0;$('open-adapter-design').hidden=slide.id!=='adapter';$('open-receiver-design').hidden=slide.id!=='receiver';document.querySelector('.slide-note').hidden=state.slide===0;
+    $('overview-team').hidden=state.slide!==0;$('adapter-overview').hidden=state.slide!==0;$('open-adapter-design').hidden=slide.id!=='adapter';$('open-receiver-design').hidden=slide.id!=='receiver';$('open-ldo-design').hidden=slide.id!=='routing';$('open-bonding-library').hidden=slide.id!=='carriers';document.querySelector('.slide-note').hidden=state.slide===0;
     $('current-page').textContent=String(state.slide+1).padStart(2,'0');$('total-pages').textContent=String(slides.length).padStart(2,'0');
     $('previous').disabled=state.slide===0;$('next').disabled=state.slide===slides.length-1;
     document.querySelectorAll('[data-slide]').forEach(b=>{const on=b.dataset.slide===slide.id;b.setAttribute('aria-pressed',String(on));b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});

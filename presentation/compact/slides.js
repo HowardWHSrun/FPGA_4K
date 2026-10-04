@@ -17,7 +17,7 @@
   window.PRESENTATION_SLIDES=[
     {
       id:'overview',section:'System overview',title:'4K neural recording',subtitle:'Headboard to host.',
-      description:'Weekend update · 3–4 October 2026. Open Custom FPGA, Routing + LDO, or XEM + BRK for the latest progress; the bonding fixture update is in ASIC carriers.',
+      description:'Weekend update · 3–4 October 2026. Open Custom FPGA, Routing + LDO, or XEM carrier for the latest progress; the bonding fixture is also in the Library.',
       regions:['A','C','D','E','F'],owners:[],facts:[['3','links in earlier proposal'],['8','ASICs in earlier concept'],['4,096','system channel goal']],
       noteLabel:'Earlier receiver proposal · 29 September',
       note:'Three custom FPGA boards are proposed to stream simultaneously through three µHDMI cables, one MC3 GTY bank each, into XEM8310. The XEM is currently seated directly on BRK8310.',
@@ -40,11 +40,11 @@
     },
     {
       id:'routing',section:'02 · Routing and power',title:'Routing + LDO board',subtitle:'Zitong · Routing and power PCB',
-      description:'The original supplied compact model groups the connecting section with its routing/power board. How this upstream design feeds three FPGA boards is open.',
-      regions:['C'],owners:[['Zitong','Routing / power management']],facts:[['B + C','one routing/LDO region'],['Signals','carrier → FPGA'],['Power','regulation / distribution']],
+      description:'The current E5 adapter separates the signal flex cable from the locking VDD/GND input. Current requirement, analog-ground return and physical fit remain under review.',
+      regions:['C'],owners:[['Zitong','Routing / power management']],facts:[['E5','current routed adapter'],['J1 + J19','J19 intentionally NC'],['Power','separate locking input']],
       noteLabel:'LDO routing adapter · weekend update · 3–4 October 2026',note:'I finished routing the LDO adapter and added ground copper and stitching vias. Following Gerald’s suggestion, I added a separate locking VDD/GND connector, while keeping power off the signal flex cable. Both J1 and J19 are included mechanically, with J19 intentionally unconnected. The latest layout passes DRC and connectivity checks, and I’ve prepared a concise schematic and pin-to-pin guide. Before fabrication, I still need to verify the actual current requirement, analog-ground return, and cable/connector fit.',
       details:[
-        'The former bridge and lower board share one label, selection and color. Geometry is preserved; no separate bridge part is introduced.',
+        'The earlier compact overview groups the former bridge and lower board as one routing/LDO region. The current panel shows E5 separately and preserves that earlier geometry in the overview.',
         'The historical LDO/routing reference is approximately 18.3 × 42 mm with 6 copper layers and nine regulator footprints. It is an example to adapt, not the finished eight-chip power design.',
         'That reference has 50-contact board-to-board connectors, while PCB-5 has an 80-contact connector. The references are not a verified mating pair.',
         'The September 17 meeting places FPGA power circuitry on the FPGA board; recording-chip regulator placement is still under review.'
@@ -52,14 +52,14 @@
     },
     {
       id:'fpga',section:'03 · Acquisition and aggregation',title:'Custom FPGA board',subtitle:'Howard · PCB     /     Jiaao · Firmware',
-      description:'The dated 29 September XC7A25T preview illustrates ASIC data, local controls and a custom µHDMI link. The weekend layout review is a separate research revision.',
-      regions:['D'],owners:[['Howard','FPGA PCB'],['Jiaao','FPGA programming']],facts:[['25T','dated preview device'],['18','weekend schematic sheets'],['Unfinished','current routing']],
+      description:'The current XC7A35T-2CSG325I board is R37, a 41 × 41 mm placement and mechanical review. Routing and ASIC timing review remain unfinished.',
+      regions:['D'],owners:[['Howard','FPGA PCB'],['Jiaao','FPGA programming']],facts:[['35T','current FPGA device'],['R37','4 October revision'],['Unfinished','current routing']],
       noteLabel:'FPGA PCB · weekend update · 3–4 October 2026',note:'Over the weekend I worked on the FPGA board layout and design review, including the connector arrangement, power distribution, and routing approach. I completed the 3D component models and put together a review PDF with all 18 schematic sheets. I also contacted PCBWay to confirm the proposed eight-layer HDI stack-up and blind-via rules before committing to detailed routing. Routing is still unfinished, and I’m checking the timing constraints for the ASIC interface.',
       details:[
-        'The 29 September 25T review has the same CSG325 package positions as the previous 50T placement. The separate 28 September 50T website remains an earlier PCB review, not the selected device.',
-        'Each cable has two active recording TX pairs, a third wired pair reserved in baseline firmware, and one inbound serial-control RX pair. The custom FPGA is intended to generate ASIC CLK, DATA and LATCH locally.',
-        'Cable contact 19 is the proposed 12 V feed to an entire remote FPGA/routing/ASIC assembly. Source, current limiting, inrush, return rating and local regulator sequence remain unqualified.',
-        'The published 29 September 25T placement is exported from native KiCad. That dated preview has a simplified U1 body and no routed tracks. It is separate from the weekend research revision; its geometry and counts are not the latest layout status.'
+        'The current research board uses XC7A35T-2CSG325I. R37 is separate from the older paused routed-core work and from the published September 29 25T placement.',
+        'The dated September 29 interface proposal gives each cable two active recording TX pairs, a third wired pair reserved in baseline firmware, and one inbound serial-control RX pair. The custom FPGA is intended to generate ASIC CLK, DATA and LATCH locally.',
+        'In that dated interface proposal, cable contact 19 is the proposed 12 V feed to an entire remote FPGA/routing/ASIC assembly. Source, current limiting, inrush, return rating and local regulator sequence remain unqualified.',
+        'The R37 mechanical review includes the headboard and a connector-only mating template. The template is not a functional LDO board; populated fit and retention still require checks.'
       ],sources:[refs.team,refs.adapter3d,refs.previousFpga,refs.open]
     },
     {
@@ -75,15 +75,15 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · Downstream receiver',title:'XEM8310 on BRK8310',subtitle:'Existing lab hardware',
-      description:'XEM8310 is the selected receiver FPGA module, currently seated directly on BRK8310. Its USB/FrontPanel interface is the initial PC path.',
-      regions:['F'],owners:[],facts:[['XEM8310','receiver FPGA'],['BRK8310','existing breakout'],['USB','initial PC route']],
+      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'XEM8305 assembly · separate XEM8310 power path',
+      description:'The updated XEM8305 A1R2 carrier assembly includes both J1 and J19 mating pairs. The separate XEM8310 carrier power path remains under routing and cable review.',
+      regions:['F'],owners:[],facts:[['XEM8305','A1R2 assembly'],['J1 + J19','physical mating pairs'],['XEM8310','separate power path']],
       noteLabel:'XEM carrier and connection · weekend update · 3–4 October 2026',note:'I updated the XEM8305 carrier assembly view to include both mating connectors and checked the signal mapping through the flex cable. Separately, I traced the custom FPGA board’s power path: the XEM8310 carrier schematic already provides a protected path from the shared external supply to the custom micro-HDMI power contact. That carrier power routing and cable qualification are still unfinished. I have the assembly views and connection diagrams ready for review.',
       details:[
         'XEM8310 contains an Artix UltraScale+ FPGA, GTY transceivers and FrontPanel USB. The project uses it in a controller role; it is not a conventional MCU. BRK8310 is a separate breakout board.',
         'BRK J1 Bulls Eye exposes bank 226. BRK J6 is a PCIe computer card edge using banks 224/225. With all three µHDMI links active, J6 has no concurrent PCIe GTY path.',
         'The initial data connection to the PC is XEM USB. The actual three-link gateware, sustained USB/host/storage rate, 12 V distribution and assembled connector fit remain unproven.',
-        'Opal Kelly supplies actual XEM8310 and BRK8310 STEP models. The adapter detail view uses derived meshes from those sources for orientation, while the unbuilt interposer and cable positions remain candidate geometry.'
+        'A1R2 shows the XEM8305 carrier with both mating pairs; J19 is mechanically included and electrically unassigned. Its assembly preview contains adapter E3, while the current separate-power-header adapter is E5. They remain distinct revisions.'
       ],sources:[refs.brk,refs.xem,refs.models,refs.adapter3d,refs.open]
     }
   ];

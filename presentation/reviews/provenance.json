@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "publication_date": "2026-10-04",
+  "scope": "User requested current interactive website previews. Only derived viewer meshes and the four dated PNG previews are included. Native CAD, schematic PDFs, STEP/STL/3MF originals and full private source folders are excluded.",
+  "models": [
+    {
+      "revision": "XC7A35T-2CSG325I R37",
+      "source_pcb_sha256": "4d39ef60c141cccb5cfcdf914a0e8e7119abe42b227c404eba31de9d5825f679",
+      "source_preview_sha256": "ce2d4fe9be40c02141b8a183aa6d7cff02fb7251cf98f97f4711eb33729927c8",
+      "geometry": "Current headboard plus connector-only mating template; no routing graphics.",
+      "limitations": [
+        "Routing and ASIC timing review unfinished",
+        "Lower template is not a functional LDO board",
+        "Populated fit, retention and manufacturing acceptance pending"
+      ],
+      "triangles": 195152,
+      "path": "presentation/reviews/assets/2026-10-04/fpga35t-r37.glb",
+      "bytes": 6308100,
+      "sha256": "d9bbb0fbfcf1c440ae3f619d313e65629117c8dce9c3b58a36ec412dba5ac74b",
+      "self_contained": true,
+      "units": "metres, Y-up",
+      "packing": {
+        "before_primitives": 23615,
+        "after_primitives": 33,
+        "max_coordinate_error_m": 1.8613412963719433e-09,
+        "max_normal_component_error": 4.440892098500626e-16,
+        "verification": "Every per-material source vertex and normal matches the transformed output after float32 rounding; every triangle index is identical after concatenation; materials are deep-equal; no native paths or external URIs."
+      }
+    },
+    {
+      "source_pcb_filename": "LDO_Cabled_E5_Separate_Power_Header.kicad_pcb",
+      "source_pcb_sha256": "c1a29c967b204a05ab232116f1b5fcda80d4d6189d148c9dda60db7208260a6b",
+      "source_header_model_sha256": "5a6b7dc9f24b3e12dafe0a70189e9b9102689f2fb2b2866ad35fa8605756ca8a",
+      "exporter": "KiCad 10.0.6 / Open CASCADE 7.9 native GLB",
+      "triangles": 66254,
+      "board_outline_mm": [
+        18,
+        25
+      ],
+      "header_body_included": "J4 JST SM02B-GHS-TB, source KiCad library model",
+      "omissions": [
+        "J1 and J19 Hirose housing model files unavailable; physical pad geometry remains",
+        "J3 housing body not supplied; native footprint pads remain",
+        "Inner copper excluded",
+        "No flex cable, power wires, LDO board or carrier added"
+      ],
+      "qualification": "Geometry preview only; source/load/analog-ground return, connector/cable fit and powered operation remain unqualified.",
+      "header_model_attribution": {
+        "copyright": "2018 Frank Severinsen",
+        "license": "CC-BY-SA 4.0 with KiCad electronic-design and generated-files exception",
+        "license_reference": "https://github.com/KiCad/kicad-packages3D/blob/master/LICENSE.md",
+        "cc_license_reference": "https://creativecommons.org/licenses/by-sa/4.0/legalcode",
+        "evidence": "Copyright and license in source STEP header; geometry converted into assembly GLB. No manufacturer fit acceptance is implied."
+      },
+      "revision": "LDO E5 separate power header",
+      "source_preview_sha256": "268e5823f827e8e53f180b55356fe6115526c105c0a818d1f6e44b985e2c9bd0",
+      "export_warning": "Local wire-meshing warning; surface copper graphics may be incomplete. Native CAD is unchanged.",
+      "path": "presentation/reviews/assets/2026-10-04/ldo-e5.glb",
+      "bytes": 2138092,
+      "sha256": "c05d6e26e317cbd78e83fc8391d1592f120867132e700f263974a44752532c99",
+      "self_contained": true,
+      "units": "metres, Y-up",
+      "packing": {
+        "before_primitives": 3615,
+        "after_primitives": 9,
+        "max_coordinate_error_m": 7.255934186822799e-09,
+        "max_normal_component_error": 0,
+        "verification": "Every per-material source vertex and normal matches the transformed output after float32 rounding; every triangle index is identical after concatenation; materials are deep-equal; no native paths or external URIs."
+      }
+    },
+    {
+      "revision": "XEM8305 A1R2 carrier assembly",
+      "source_preview_hashes": {
+        "module.glb": "f7478246eff4930e1d7273b9e743d6e53bc0d9a86ba7ec7e907ff8d3cb1f5af9",
+        "carrier_A1.glb": "f34a9554b781f9d9c1dec17000c09fb881341e8f2ec40dcec7758eff578068cf",
+        "e2_ldo_assembly.glb": "89ce600b95ec7c84f8e5a4dcff7bd22a8cb3b1ebe70edcf3996c5334d40b2182",
+        "adapter_E3.glb": "b60611248041cb251fcaf64f6c6fd9e34821a7b4ffa63f4deaea48bfa06c4031"
+      },
+      "assembly_contract_sha256": "fad858cadfc7278477d5c85448a0a1c2ff54ae095c52fb4270e72203c8d2c3bc",
+      "geometry": "Both J1/J19 mating pairs, XEM8305, carrier, E3 adapter, source LDO, nominal J3/J6 envelopes and exact 641-sample provisional cable.",
+      "triangles": 1026895,
+      "coordinate_transform": "Recorded millimetres/Z-up assembly to glTF metres/Y-up; E3 offset [-25,82,0] mm.",
+      "omissions": [
+        "Superseded E2 adapter board",
+        "Unknown protrusion anchors"
+      ],
+      "qualification": "Cable and connector fit remain provisional. Pictured E3 predates separate E5 adapter; XEM8310 carrier power path is a distinct project.",
+      "attribution": "Opal Kelly XEM8305 manufacturer visual; https://www.opalkelly.com/products/models/",
+      "path": "presentation/reviews/assets/2026-10-04/xem8305-a1r2.glb",
+      "bytes": 35198204,
+      "sha256": "c0fa289c06013bd9a48b30341552088b15402afd3bccc2167bc92ea752461ede",
+      "self_contained": true,
+      "units": "metres, Y-up"
+    },
+    {
+      "source_filename": "Probe_PCB_Frame_No_Ribs.stl",
+      "source_sha256": "4059d6011d3cf4695b6e1f326b2e0cb9d5c65512b090e9673b953d7b4119cd56",
+      "coordinate_transform": "STL Z-up mm to glTF Y-up metres: (x,y,z) -> (0.001*x,0.001*z,-0.001*y)",
+      "triangles": 5080,
+      "bounds_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          20.0,
+          21.25,
+          3.0
+        ]
+      },
+      "maximum_roundtrip_vertex_delta_mm": 9.238719940185547e-07,
+      "omissions": [
+        "No PCB/ASIC reference mesh added",
+        "No installed stage, vacuum source, seal or hardware assembly added"
+      ],
+      "qualification": "Fit-check prototype geometry only; vacuum sealing and bonding stability untested.",
+      "revision": "Bonding fixture V6 one-piece frame",
+      "path": "presentation/reviews/assets/2026-10-04/bonding-v6.glb",
+      "bytes": 366664,
+      "sha256": "feeb89cab059d7a90a774d3443cb346b9ba91f70f75b1377787442ca3e61e6fd",
+      "self_contained": true,
+      "units": "metres, Y-up"
+    }
+  ],
+  "images": [
+    {
+      "path": "presentation/reviews/assets/2026-10-04/V15_Headboard_And_Interface_Isometric.png",
+      "bytes": 221436,
+      "sha256": "14b85701fe33daa41da2157be15d7c690f1c39c0dc4d447a57dde882cf05a7d2",
+      "title": "35T R37",
+      "caption": "R37 headboard and connector-only mating template; routing unfinished."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-04/E5_Actual_CAD_Oblique_Top.png",
+      "bytes": 954689,
+      "sha256": "e9c06c40cd13ac34798bd9fff750303cd4deeb72ae363fc1db17918c30ba1e46",
+      "title": "LDO E5",
+      "caption": "Separate locking VDD/GND connector; power and fit qualification pending."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-04/A1R2_Selected_Assembly_Assembly_Rotated.png",
+      "bytes": 242550,
+      "sha256": "ad94d721bcf7c139c05cdcfcce59f34c0964c9e747ba1d30309db67b84361e2c",
+      "title": "XEM8305 A1R2",
+      "caption": "Both mating pairs; pictured E3 adapter predates E5."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-04/Fixture_V6_Fit_Check_Prototype_2026-10-03.png",
+      "bytes": 359782,
+      "sha256": "e94b410644a3ab6bab224f0127cacfa38508f6e8cedd7014e1507ed31c9ec734",
+      "title": "Bonding fixture V6",
+      "caption": "One-piece bottom-suction frame for fit-check prototype."
+    }
+  ],
+  "packing": "Identical-material batching and exact vertex tuple indexing only; no geometry simplification.",
+  "xem_validation": "Direct screenshot review used actual included PNG hash; no claim that prior private browser-validation screenshot hashes match."
+}
