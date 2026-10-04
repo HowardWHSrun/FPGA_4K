@@ -4,7 +4,7 @@
   const api=window.PRESENTATION;
   const slides=window.PRESENTATION_SLIDES;
   if(!api||!Array.isArray(slides))return;
-  const purpose={overview:'Headboard to host.',carriers:'Two ASICs per carrier.',routing:'One routing and power board.',fpga:'Three custom XC7A25T boards.',adapter:'Three-port interposer between XEM and BRK.',receiver:'XEM8310 on the BRK8310 breakout.'};
+  const purpose={overview:'Headboard to host.',carriers:'ASIC carriers and bonding fixture.',routing:'LDO routing adapter progress.',fpga:'FPGA PCB progress.',adapter:'Three-port interposer between XEM and BRK.',receiver:'XEM carrier and connection.'};
   const nav=document.querySelector('.system-nav');
   const announce=document.createElement('div');
   announce.className='selection-announcement';announce.setAttribute('role','status');announce.setAttribute('aria-live','polite');

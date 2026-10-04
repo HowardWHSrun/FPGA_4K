@@ -5,7 +5,7 @@
   const link=document.getElementById('open-fpga-design');if(!link)return;
   const schematic=document.getElementById('open-schematic-design');
   const container=document.getElementById('scene-container');
-  const frame=document.createElement('iframe');frame.id='fpga-system-3d';frame.title='Selected unrouted XC7A25T PCB placement, repeated for three proposed FPGA links';frame.hidden=true;frame.allow='fullscreen';frame.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3';container.append(frame);
+  const frame=document.createElement('iframe');frame.id='fpga-system-3d';frame.title='Dated 29 September XC7A25T PCB placement preview';frame.hidden=true;frame.allow='fullscreen';frame.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3';container.append(frame);
   const top=document.querySelector('.viewer-top'),controls=document.querySelector('.viewer-controls'),caption=document.querySelector('.scene-caption');
   const savedCaption=caption.innerHTML;
   const selected=()=>window.PRESENTATION?.getState().slideId==='fpga';
@@ -21,8 +21,8 @@
     if(on){
       if(!frame.src)frame.src='presentation/adapter/assembly.html?embed=1&focus=fpga';
       link.href='presentation/fpga/current-25t.html';
-      link.firstChild.textContent='Open selected 25T FPGA section ';
-      caption.innerHTML='<span>Native-derived XC7A25T placement · three separate boards</span><span>Unrouted PCB · DF40 connector interface under redesign</span>';
+      link.firstChild.textContent='Open FPGA progress and dated 25T preview ';
+      caption.innerHTML='<span>29 September XC7A25T native placement · existing preview</span><span>Dated geometry · weekend research revision is separate</span>';
     }else caption.innerHTML=savedCaption;
   }
   new MutationObserver(sync).observe(document.getElementById('slide-title'),{childList:true,subtree:true});sync();
