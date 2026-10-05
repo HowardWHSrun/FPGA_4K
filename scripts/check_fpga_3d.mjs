@@ -1,11 +1,20 @@
 import {chromium} from 'playwright';
 import {mkdir,writeFile} from 'node:fs/promises';
-const base=process.env.FPGA_BASE_URL||'https://howardwhsrun.github.io/FPGA_4K/';
-const out='fpga-browser-check/3d';await mkdir(out,{recursive:true});
+const base=(process.env.FPGA_BASE_URL||'https://howardwhsrun.github.io/FPGA_4K/').replace(/\/?$/,'/');
+const out=process.env.FPGA_3D_OUTPUT_DIR||'fpga-browser-check/3d';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
-const report={checks:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
+const report={base,checks:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
 const check=(test,message)=>{if(!test)throw new Error(message);report.checks.push(message);console.log("PASS",message);};
+async function openReview(target,id,label){
+ const load=target.locator('[data-preview-load]');
+ if(id==='fpga35t-r39'){
+  await load.waitFor({state:'visible'});
+  check(await target.evaluate(()=>window.reviewPreview?.ready===false),label+' R39 waits for explicit loading');
+  await load.click();
+ }else if(await load.count())await load.click();
+ await target.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:120000});
+}
 try{
  for(const board of ['fpga50t','usb-c','micro-hdmi']){
   const metadata=await (await page.request.get(base+'presentation/fpga/3d/assets/'+board+'.json')).json();
@@ -27,15 +36,15 @@ try{
   check(await page.locator('#three-panel').isVisible()&&!(await page.locator('#viewport').isVisible())&&!(await page.locator('#native-panel').isVisible()),path+' exclusive 3D tab');check(!(await frame.locator('.revision').isVisible()),path+' revision locked to surrounding review');
   await page.screenshot({path:`${out}/${path.includes('micro')?'micro':'usb'}-review.png`});await page.locator('#back').click();check(await page.locator('#viewport').isVisible()&&!(await page.locator('#three-panel').isVisible()),path+' back layout restored');
  }
- await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await system.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:60000});
- check((await system.evaluate(()=>reviewPreview.model))==='fpga35t-r37','system shows current 35T R37 preview');
+ await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await openReview(system,'fpga35t-r39','system preview');
+ check((await system.evaluate(()=>reviewPreview.model))==='fpga35t-r39','system shows current 35T R39 preview');
  check((await page.locator('#facts').innerText()).includes('35T'),'system facts name current 35T');
  check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-35t.html'),'system links to current 35T review');
  await page.screenshot({path:`${out}/system.png`});
  await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the current preview hidden');
- for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
-  await page.goto(base+path);await page.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:120000});
-  check((await page.evaluate(()=>reviewPreview.model))===id,id+' current model loads');
+ for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r39'],['presentation/fpga/review-r37-2026-10-04.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
+  await page.goto(base+path);await openReview(page,id,'desktop preview');
+  check((await page.evaluate(()=>reviewPreview.model))===id,id+' model loads');
   for(const view of ['top','bottom','side','iso']){await page.locator(`[data-preview-view="${view}"]`).click();check((await page.evaluate(()=>reviewPreview.view))===view,id+' '+view+' preset');}
   await page.locator('[data-preview-in]').click();check((await page.evaluate(()=>reviewPreview.zoom))>1,id+' zoom works');await page.locator('[data-preview-reset]').click();
   const before=await page.evaluate(()=>reviewPreview.camera),box=await page.locator('.preview-stage canvas').boundingBox();await page.mouse.move(box.x+box.width*.45,box.y+box.height*.5);await page.mouse.down();await page.mouse.move(box.x+box.width*.65,box.y+box.height*.6,{steps:10});await page.mouse.up();
@@ -53,8 +62,9 @@ try{
   await page.locator('#reset').click();
   await page.screenshot({path:`${out}/${board}-mobile.png`});
  }
- for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
-  await page.goto(base+path);await page.waitForFunction(()=>window.reviewPreview?.ready,{},{timeout:120000});
+ for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r39'],['presentation/fpga/review-r37-2026-10-04.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
+  await page.goto(base+path);await openReview(page,id,'mobile preview');
+  check((await page.evaluate(()=>reviewPreview.model))===id,id+' mobile model loads');
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),id+' mobile fits width');await page.locator('[data-preview-in]').click();check((await page.evaluate(()=>reviewPreview.zoom))>1,id+' mobile zoom works');
  }
  check(report.errors.length===0,'no JavaScript page errors');report.status='passed';

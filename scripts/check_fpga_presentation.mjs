@@ -317,8 +317,8 @@ try {
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
     await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/current-35t.html'));
-    await page.waitForFunction(() => document.title.includes('35T'));
-    report.checks.push('Root system view opens current 35T R37 review');
+    await page.waitForFunction(() => document.title.includes('35T') && document.title.includes('R39'));
+    report.checks.push('Root system view opens current 35T R39 review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
   assert(report.consoleErrors.length === 0, 'No browser console errors');

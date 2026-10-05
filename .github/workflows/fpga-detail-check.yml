@@ -6,6 +6,9 @@ on:
       - .gitattributes
       - index.html
       - presentation/fpga/**
+      - presentation/reviews/**
+      - presentation/downloads/**
+      - scripts/check_fpga_3d.mjs
       - scripts/check_fpga_presentation.mjs
       - scripts/check_fpga_viewer.mjs
       - scripts/check_usb_revision.py
@@ -33,6 +36,7 @@ jobs:
           node --check presentation/fpga/app.js
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
+          node --check presentation/reviews/viewer.js
           node --check scripts/check_fpga_3d.mjs
           node --check presentation/fpga/usb-c.js
           node --check presentation/fpga/review.js
@@ -68,6 +72,10 @@ jobs:
           paths += [str(p) for p in Path('hardware/fpga-interface-study/dated/2026-09-27/usb-c-revision').rglob('*') if p.is_file()]
           paths += [str(p) for p in Path('presentation/fpga/3d').rglob('*') if p.is_file()]
           paths += ['presentation/compact/slides.js','presentation/fpga/entry.js']
+          paths += ['presentation/fpga/current-35t.html','presentation/fpga/review-r37-2026-10-04.html','presentation/reviews/viewer.js','presentation/reviews/provenance.json','presentation/downloads/index.html','presentation/downloads/manifest.json']
+          reviews=json.loads(Path('presentation/reviews/provenance.json').read_text())
+          paths += [item['path'] for group in ['models','images'] for item in reviews[group] if item.get('revision','').endswith('R39')]
+          paths += [item['path'] for item in json.loads(Path('presentation/downloads/manifest.json').read_text())['files']]
           paths=list(dict.fromkeys(paths))
           def verify(p):
               req=urllib.request.Request('https://howardwhsrun.github.io/FPGA_4K/'+p+'?verify='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache'})
