@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "publication_date": "2026-10-04",
-  "scope": "User requested current interactive website previews. Only derived viewer meshes and the four dated PNG previews are included. Native CAD, schematic PDFs, STEP/STL/3MF originals and full private source folders are excluded.",
+  "publication_date": "2026-10-05",
+  "scope": "Current R39 headboard mesh and fresh native top/bottom/copper images; complete public R39 native project is indexed separately in presentation/downloads/manifest.json. Earlier dated interactive reviews and assets are preserved.",
   "models": [
     {
       "revision": "XC7A35T-2CSG325I R37",
@@ -121,6 +121,65 @@
       "sha256": "feeb89cab059d7a90a774d3443cb346b9ba91f70f75b1377787442ca3e61e6fd",
       "self_contained": true,
       "units": "metres, Y-up"
+    },
+    {
+      "revision": "XC7A35T-2CSG325I R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "source_pcb_filename": "FPGA35T_V15.kicad_pcb",
+      "exporter": "KiCad 10.0.6 / Open CASCADE 7.9 native GLB",
+      "export_options": [
+        "--include-tracks",
+        "--include-pads",
+        "--include-silkscreen",
+        "--include-soldermask"
+      ],
+      "geometry": "R39 headboard alone with available native component bodies, surface pads, existing partial tracks, silkscreen and soldermask. No lower mating template.",
+      "board_outline_mm": [
+        41,
+        41
+      ],
+      "bundled_model_count": 34,
+      "placed_model_references": 315,
+      "bundled_models_identical_to_R37": true,
+      "omissions": [
+        "Inner copper excluded",
+        "No future copper routes, vias or planes added",
+        "No lower mating board, LDO board, cable or connector counterpart added",
+        "Nominal package/envelope models remain visualization references; exact fit is unqualified"
+      ],
+      "qualification": "Physical DRC/ERC/parity checks pass for the pre-routing candidate; routing, factory-issued HDI construction, ASIC timing, populated fit and powered operation remain unqualified.",
+      "triangles": 412382,
+      "path": "presentation/reviews/assets/2026-10-05/fpga35t-r39.glb",
+      "bytes": 14292940,
+      "sha256": "64ce488aacf8ae5f7114b8c4e625e9218233d3e7fe17a5a2d14637fc5734c21b",
+      "self_contained": true,
+      "units": "metres, Y-up",
+      "coordinate_transform": "Native KiCad GLB already metres/Y-up; native rigid node transforms baked into float32 vertex positions. Identical float32 position/normal vertex tuples deduplicated. No scale or axis conversion, added geometry or simplification.",
+      "source_extents_m": [
+        [
+          -0.000600000113993883,
+          -0.0032350000040978193,
+          0.0
+        ],
+        [
+          0.04100000113248825,
+          0.004494997963119626,
+          0.04100000113248825
+        ]
+      ],
+      "export_warning": "No meshing warning. macOS emitted a source-attributes lookup warning for the initially nonexistent output file; export completed successfully.",
+      "attribution": "Existing KiCad library license and generated-files exception retained at presentation/fpga/3d/assets/KiCad-LICENSE.md; the same 34 bundled package models used for R37, including project nominal manufacturer-drawing envelopes.",
+      "packing": {
+        "before_bytes": 20580024,
+        "before_sha256": "1e8acd849c45c83619cc32c4967f7cd9ff87250e23bd5b73222e1ad427527166",
+        "before_primitives": 37994,
+        "after_primitives": 36,
+        "before_vertices": 454912,
+        "after_vertices": 452009,
+        "max_coordinate_error_m": 1.8613412963719433e-09,
+        "max_normal_component_error": 4.440892098500626e-16,
+        "verification": "Every ordered triangle corner retains the exact transformed float32 position and normal; materials unchanged. Identical position/normal vertex tuples indexed once; no geometry simplification, external URI or private absolute path."
+      }
     }
   ],
   "images": [
@@ -151,6 +210,128 @@
       "sha256": "e94b410644a3ab6bab224f0127cacfa38508f6e8cedd7014e1507ed31c9ec734",
       "title": "Bonding fixture V6",
       "caption": "One-piece bottom-suction frame for fit-check prototype."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Bottom_3D.png",
+      "bytes": 912424,
+      "sha256": "ffcbf471176c5f321d8c6c9f53112139406f9da6ed13f82d04201ff862f8ca49",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad 3D populated view, actual board alone",
+      "view": "Bottom, viewed from underside",
+      "derivative": "Exact native KiCad visual source bytes, copied unchanged",
+      "title": "35T R39 \u00b7 Bottom, viewed from underside",
+      "caption": "Native KiCad 3D populated view, actual board alone; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Bottom_3D.webp",
+      "bytes": 175118,
+      "sha256": "674f1bd8a6e52f96d6afd58ef2548a0dffb749834b378eaff25d41d6bb1d17c3",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad 3D populated view, actual board alone",
+      "view": "Bottom, viewed from underside",
+      "derivative": "WebP quality88 preview; exact PNG retained",
+      "title": "35T R39 \u00b7 Bottom, viewed from underside",
+      "caption": "Native KiCad 3D populated view, actual board alone; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.png",
+      "bytes": 305154,
+      "sha256": "4320e449a941f11009600112ebbcb99476c0431a4af3234e681d42fcc3dc847f",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Bottom, viewed from underside",
+      "derivative": "Exact native KiCad visual source bytes, copied unchanged",
+      "title": "35T R39 \u00b7 Bottom, viewed from underside",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.svg",
+      "bytes": 262298,
+      "sha256": "47137803fd4bbac7474c744ed5a8bd6f66b02844996e7147318a423d954083f9",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Bottom, viewed from underside",
+      "derivative": "Native KiCad SVG; trailing line whitespace removed for repository checks. Drawing coordinates, styles and text unchanged.",
+      "source_visual_sha256": "2c5f65e00517def0ccc5e21ce579cf1da6ea84f6f12fd32511bfbfa7a5a70002",
+      "title": "35T R39 \u00b7 Bottom, viewed from underside",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.webp",
+      "bytes": 154772,
+      "sha256": "629462cb2f2dde98cf86de279e50b33539cde39ae6a2356458e19b605e9de7b6",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Bottom, viewed from underside",
+      "derivative": "WebP quality88 preview; exact PNG retained",
+      "title": "35T R39 \u00b7 Bottom, viewed from underside",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Top_3D.png",
+      "bytes": 754547,
+      "sha256": "21e666a4369e8a0d56446952dee672f265ab868c73021b95ddf2b8b3031b1be0",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad 3D populated view, actual board alone",
+      "view": "Top",
+      "derivative": "Exact native KiCad visual source bytes, copied unchanged",
+      "title": "35T R39 \u00b7 Top",
+      "caption": "Native KiCad 3D populated view, actual board alone; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Top_3D.webp",
+      "bytes": 132212,
+      "sha256": "926b59a52ac099fddf6fc920f1a438a0648773f202a69e2d80267e434e43cc24",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad 3D populated view, actual board alone",
+      "view": "Top",
+      "derivative": "WebP quality88 preview; exact PNG retained",
+      "title": "35T R39 \u00b7 Top",
+      "caption": "Native KiCad 3D populated view, actual board alone; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.png",
+      "bytes": 343542,
+      "sha256": "f665eebcef866ce5079d7cfc1733ecf25cb8bb11f6160c9eb2cb05103763ac51",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Top",
+      "derivative": "Exact native KiCad visual source bytes, copied unchanged",
+      "title": "35T R39 \u00b7 Top",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.svg",
+      "bytes": 309492,
+      "sha256": "c16fc623c2b8b8dc179aca700f1db23ac8f411ab0478198c05ddb16eaefe4612",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Top",
+      "derivative": "Native KiCad SVG; trailing line whitespace removed for repository checks. Drawing coordinates, styles and text unchanged.",
+      "source_visual_sha256": "816b0799d1ce26f4d5cc49a9ec42037cf7f8f8c93afbf3f059c1013c9fe8d199",
+      "title": "35T R39 \u00b7 Top",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
+    },
+    {
+      "path": "presentation/reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.webp",
+      "bytes": 196822,
+      "sha256": "df49c9916e60b250f0bd53b1731eab15a2d94c211a04745b309f169c10a6242c",
+      "revision": "R39",
+      "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+      "content": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing",
+      "view": "Top",
+      "derivative": "WebP quality88 preview; exact PNG retained",
+      "title": "35T R39 \u00b7 Top",
+      "caption": "Native KiCad surface copper, pads, silkscreen and outline; partial existing routing; routing incomplete."
     }
   ],
   "packing": "Identical-material batching and exact vertex tuple indexing only; no geometry simplification.",

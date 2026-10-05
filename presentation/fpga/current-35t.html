@@ -3,52 +3,79 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Current XC7A35T-2CSG325I FPGA PCB research revision R37: October 3–4 progress, unfinished routing, manufacturing inquiry and ASIC timing review.">
-  <title>Current 35T FPGA PCB · R37 | FPGA 4K</title>
+  <meta name="description" content="Current XC7A35T-2CSG325I FPGA PCB R39: corrected land patterns and silkscreen, scoped escape rules, updated board views and complete KiCad download. Routing remains incomplete.">
+  <title>Current 35T FPGA PCB · R39 | FPGA 4K</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/current-review.css">
+  <style>.board-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}.board-gallery figure{margin:0}.board-gallery img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px}.board-gallery figcaption{margin:.6rem 0;line-height:1.5}.preview-load{padding:.65rem 1rem;background:#17273d;color:white;border:0;border-radius:5px;font:inherit;cursor:pointer}.preview-load[hidden]{display:none}.check-note{font-size:.9rem}.file-link{display:inline-block;margin:.5rem .75rem .5rem 0} @media(max-width:650px){.board-gallery{grid-template-columns:1fr}}</style>
   <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
-<script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
-  <script type="module" src="../reviews/viewer.js"></script>
+  <script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
+  <script type="module" src="../reviews/viewer.js?v=r39-20261005"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="project-header">
-    <a class="brand" href="../../#fpga">FPGA 4K<small>Custom FPGA · current R37 review</small></a>
-    <nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/">Library</a><a href="#weekend-update">Progress</a><a href="#history">Earlier reviews</a></nav>
+    <a class="brand" href="../../#fpga">FPGA 4K<small>Custom FPGA · current R39 review</small></a>
+    <nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/">Library</a><a href="#progress">Progress</a><a href="#downloads">Download</a><a href="#history">Earlier reviews</a></nav>
   </header>
   <main id="main">
     <section class="hero review-body">
-      <p class="eyebrow">Weekend update · 3–4 October 2026</p>
-      <h1>Current 35T FPGA PCB · R37</h1>
-      <span class="status">Routing in progress</span>
-      <p class="lead">The current research board uses XC7A35T-2CSG325I in a 41 × 41 mm layout. Connector arrangement, power distribution and ASIC timing remain under review.</p>
-      <div class="facts"><span>R37 · research revision</span><span>41 × 41 mm PCB</span><span>18-sheet schematic review</span></div>
+      <p class="eyebrow">Current FPGA update · 5 October 2026</p>
+      <h1>Current 35T FPGA PCB · R39</h1>
+      <span class="status">Pre-routing corrections applied · routing incomplete</span>
+      <p class="lead">The 41 × 41 mm XC7A35T-2CSG325I board now has corrected land patterns and silkscreen, bounded FPGA escape rules and updated component information. The four floating Hirose connectors remain grouped on the underside.</p>
+      <div class="facts"><span>R39 · research revision</span><span>343 components</span><span>41 × 41 mm PCB</span><span>18 schematic sheets</span></div>
+    </section>
+    <section class="section review-body" id="board-views" aria-labelledby="board-title">
+      <p class="eyebrow">Saved R39 native board</p><h2 id="board-title">Top and bottom views</h2>
+      <div class="board-gallery">
+        <figure><a href="../reviews/assets/2026-10-05/R39_Top_3D.png"><img src="../reviews/assets/2026-10-05/R39_Top_3D.webp" width="1200" height="1200" alt="R39 top view with the FPGA at the center"></a><figcaption><strong>Top.</strong> FPGA in the center, with the existing surrounding power and interface circuitry. <a href="../reviews/assets/2026-10-05/R39_Top_3D.png">Full-size image</a>.</figcaption></figure>
+        <figure><a href="../reviews/assets/2026-10-05/R39_Bottom_3D.png"><img src="../reviews/assets/2026-10-05/R39_Bottom_3D.webp" width="1200" height="1200" alt="R39 underside with four Hirose connectors grouped together"></a><figcaption><strong>Bottom.</strong> Four Hirose connectors grouped together, viewed directly from underneath. <a href="../reviews/assets/2026-10-05/R39_Bottom_3D.png">Full-size image</a>.</figcaption></figure>
+      </div>
+      <p class="caption">Fresh KiCad renders from R39. Component models depict nominal geometry; routing and populated fit remain incomplete. The 1.6 mm CAD thickness is an inherited placeholder.</p>
     </section>
     <section class="figure-slot" id="figures" aria-labelledby="figure-title">
-      <div class="figure-heading"><h2 id="figure-title">Current R37 board view</h2></div>
-      <div class="figure-space" id="current-figure"><div class="interactive-preview" data-preview-model="fpga35t-r37">
-        <div class="preview-stage"><canvas hidden tabindex="0" aria-label="Interactive Current R37 headboard and connector-only mating template. Drag to rotate, scroll to zoom; arrow keys rotate, plus and minus zoom, R resets."></canvas><img class="preview-fallback" src="../reviews/assets/2026-10-04/V15_Headboard_And_Interface_Isometric.png" alt="Current R37 headboard and connector-only mating template"><p class="preview-status" role="status">Loading current 3D preview…</p></div>
-        <nav class="preview-controls" aria-label="3D preview controls"><div><button data-preview-view="iso" aria-pressed="true">3D</button><button data-preview-view="top" aria-pressed="false">Top</button><button data-preview-view="bottom" aria-pressed="false">Bottom</button><button data-preview-view="side" aria-pressed="false">Side</button></div><div><button data-preview-out aria-label="Zoom out">−</button><button data-preview-in aria-label="Zoom in">+</button><button data-preview-reset>Reset view</button></div></nav>
+      <div class="figure-heading"><h2 id="figure-title">Rotatable R39 headboard</h2></div>
+      <div class="figure-space"><div class="interactive-preview" data-preview-model="fpga35t-r39">
+        <div class="preview-stage"><canvas hidden tabindex="0" aria-label="Interactive R39 FPGA headboard. Drag to rotate, scroll to zoom; arrow keys rotate, plus and minus zoom, R resets."></canvas><img class="preview-fallback" src="../reviews/assets/2026-10-05/R39_Top_3D.webp" alt="R39 headboard top view"><p class="preview-status" role="status">Open the 3D view to rotate the board.</p></div>
+        <nav class="preview-controls" aria-label="3D preview controls"><div><button class="preview-load" data-preview-load>Open 3D view</button><button data-preview-view="iso" aria-pressed="true">3D</button><button data-preview-view="top" aria-pressed="false">Top</button><button data-preview-view="bottom" aria-pressed="false">Bottom</button><button data-preview-view="side" aria-pressed="false">Side</button></div><div><button data-preview-out aria-label="Zoom out">−</button><button data-preview-in aria-label="Zoom in">+</button><button data-preview-reset>Reset view</button></div></nav>
         <p class="preview-help">Drag to rotate · scroll to zoom · right-drag to pan</p>
       </div></div>
-      <p class="caption">XC7A35T-2CSG325I · R37 · 4 October. Headboard with connector-only mating template; routing hidden. The lower template is not a functional LDO board. Populated fit and fabrication remain unqualified.</p>
+      <p class="caption">Current headboard only, including existing surface copper. The earlier connector-only lower-board template is retained in the dated R37 review.</p>
     </section>
-    <section class="section review-body" id="weekend-update" aria-labelledby="progress-title">
-      <p class="eyebrow">FPGA PCB</p><h2 id="progress-title">Weekend progress</h2>
-      <p>Over the weekend I worked on the FPGA board layout and design review, including the connector arrangement, power distribution, and routing approach. I completed the 3D component models and put together a review PDF with all 18 schematic sheets. I also contacted PCBWay to confirm the proposed eight-layer HDI stack-up and blind-via rules before committing to detailed routing. Routing is still unfinished, and I’m checking the timing constraints for the ASIC interface.</p>
+    <section class="section review-body" id="progress" aria-labelledby="progress-title">
+      <p class="eyebrow">Applied changes</p><h2 id="progress-title">What changed in R39</h2>
       <div class="review-grid">
-        <article><h3>Manufacturing review</h3><p>The eight-layer HDI stack-up and blind-via rules are proposed. PCBWay has been contacted; supplier acceptance is still pending.</p></article>
-        <article><h3>Mechanical review</h3><p>The connector-only lower-board template remains a placement reference. Populated fit still needs checking.</p></article>
+        <article><h3>Land patterns and silkscreen</h3><p>Retains 323 supplier-supported land corrections and improved silkscreen. The remaining fine-pitch TI/Hirose lands keep their accurate supplier geometry; JLCPCB’s exact-part library corroborates these narrow-land families.</p></article>
+        <article><h3>FPGA routing rules</h3><p>Fine escape rules are confined to the FPGA area. Ordinary spacing and unrelated bottom-side pads retain their existing protections. The adjacent laser-via candidate uses 0.35 mm lands and 0.125 mm drills.</p></article>
+        <article><h3>Component information</h3><p>Corrects 31 engineering and purchasing fields on 11 components, including actual regulator nominal voltages and the manufacturer’s current alias for six capacitors.</p></article>
+        <article><h3>Native checks</h3><p>Physical DRC, ERC and schematic/PCB parity pass under the delivered project settings. All existing placement, pad assignments and 113 surface track segments are preserved.</p></article>
       </div>
+      <p class="check-note"><strong>“Unconnected” means awaiting PCB copper.</strong> The schematic net assignments are intact. Native connectivity counts 1,413 PCB connections awaiting copper; the DRC listing is capped at 499. There are no placed vias or completed copper planes.</p>
+      <p class="check-note">The eight-layer 3+2+3 HDI construction remains an engineering candidate. JLCPCB must issue the stack, via and impedance/stencil process before critical routing and fabrication. One consolidated request is prepared and unsent. Passing CAD checks does not establish fabrication or powered-operation readiness.</p>
+    </section>
+    <section class="section review-body" id="copper" aria-labelledby="copper-title">
+      <p class="eyebrow">Actual partial routing</p><h2 id="copper-title">Copper and silkscreen</h2>
+      <div class="board-gallery">
+        <figure><a href="../reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.svg"><img loading="lazy" src="../reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.webp" width="1200" height="1200" alt="R39 top copper, silkscreen and outline, showing FPGA pad grid and existing partial tracks"></a><figcaption><strong>Top copper.</strong> Actual pads and existing tracks. <a href="../reviews/assets/2026-10-05/R39_Top_Copper_Silk_Outline.svg">Zoomable vector view</a>.</figcaption></figure>
+        <figure><a href="../reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.svg"><img loading="lazy" src="../reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.webp" width="1200" height="1200" alt="R39 underside copper, silkscreen and outline with four grouped connector land patterns"></a><figcaption><strong>Bottom copper.</strong> Mirrored for direct underside viewing. <a href="../reviews/assets/2026-10-05/R39_Bottom_Underside_Copper_Silk_Outline.svg">Zoomable vector view</a>.</figcaption></figure>
+      </div>
+      <p class="caption">These views show saved R39 copper, rather than schematic connection lines or future routes.</p>
+    </section>
+    <section class="section review-body" id="downloads" aria-labelledby="downloads-title">
+      <p class="eyebrow">Editable project</p><h2 id="downloads-title">Download R39</h2>
+      <p>Extract the whole ZIP and open <code>hardware/FPGA35T_V15.kicad_pro</code> in KiCad 10.0.6. The project includes all 18 schematic sheets, rules, local libraries and 34 component-model files. This is a research revision, not a fabrication release.</p>
+      <a class="file-link" href="../downloads/files/2026-10-05/FPGA35T_V15_R39_Complete_KiCad_2026-10-05.zip" download>Download complete R39 KiCad project</a>
+      <a class="file-link" href="../downloads/files/2026-10-05/R39_Check_Summary.json">Check summary</a>
+      <a class="file-link" href="../downloads/#fpga35t-r39">File size and checksum</a>
     </section>
     <section class="section review-body" id="history" aria-labelledby="history-title">
       <p class="eyebrow">Revision history</p><h2 id="history-title">Earlier FPGA reviews</h2>
-      <p>R37 is the current 35T research revision. The older paused R35 study and the published 25T placement retain their own routing status and counts.</p>
-      <div class="history-links"><a href="current-25t.html">29 September 25T placement</a><a href="index.html">28 September 50T review</a><a href="../meetings/2026-10-02.html">2 October meeting</a></div>
+      <p>R39 is the current compact 35T revision. R37’s headboard/mating-template view, the older paused R35 study and historical 25T placement retain their own status.</p>
+      <div class="history-links"><a href="review-r37-2026-10-04.html">4 October R37 review</a><a href="current-25t.html">29 September 25T placement</a><a href="index.html">28 September 50T review</a><a href="../meetings/2026-10-02.html">2 October meeting</a></div>
     </section>
-  <p class="review-body caption"><a href="../reviews/README.md">Model sources, omissions and credits</a> · <a href="../reviews/provenance.json">Asset hashes</a></p>
+    <p class="review-body caption"><a href="../reviews/README.md">Model sources and credits</a> · <a href="../reviews/provenance.json">Asset hashes</a> · <a href="https://jlcpcb.com/capabilities/Capab">JLCPCB capabilities</a></p>
   </main>
-  <footer class="site-footer"><span>FPGA 4K · R37 · 3–4 October 2026</span><a href="../../#fpga">Back to FPGA section ↑</a></footer>
+  <footer class="site-footer"><span>FPGA 4K · R39 · 5 October 2026</span><a href="../../#fpga">Back to FPGA section ↑</a></footer>
 </body>
 </html>

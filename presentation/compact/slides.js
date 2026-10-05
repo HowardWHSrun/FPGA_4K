@@ -17,7 +17,7 @@
   window.PRESENTATION_SLIDES=[
     {
       id:'overview',section:'System overview',title:'4K neural recording',subtitle:'Headboard to host.',
-      description:'Weekend update · 3–4 October 2026. Open Custom FPGA, Routing + LDO, or XEM carrier for the latest progress; the bonding fixture is also in the Library.',
+      description:'Current FPGA update · 5 October 2026. Open Custom FPGA for R39, fresh top/bottom views and the complete KiCad download. The separate LDO, XEM and fixture reviews retain their own dates.',
       regions:['A','C','D','E','F'],owners:[],facts:[['3','links in earlier proposal'],['8','ASICs in earlier concept'],['4,096','system channel goal']],
       noteLabel:'Earlier receiver proposal · 29 September',
       note:'Three custom FPGA boards are proposed to stream simultaneously through three µHDMI cables, one MC3 GTY bank each, into XEM8310. The XEM is currently seated directly on BRK8310.',
@@ -52,14 +52,14 @@
     },
     {
       id:'fpga',section:'03 · Acquisition and aggregation',title:'Custom FPGA board',subtitle:'Howard · PCB     /     Jiaao · Firmware',
-      description:'The current XC7A35T-2CSG325I board is R37, a 41 × 41 mm placement and mechanical review. Routing and ASIC timing review remain unfinished.',
-      regions:['D'],owners:[['Howard','FPGA PCB'],['Jiaao','FPGA programming']],facts:[['35T','current FPGA device'],['R37','4 October revision'],['Unfinished','current routing']],
-      noteLabel:'FPGA PCB · weekend update · 3–4 October 2026',note:'Over the weekend I worked on the FPGA board layout and design review, including the connector arrangement, power distribution, and routing approach. I completed the 3D component models and put together a review PDF with all 18 schematic sheets. I also contacted PCBWay to confirm the proposed eight-layer HDI stack-up and blind-via rules before committing to detailed routing. Routing is still unfinished, and I’m checking the timing constraints for the ASIC interface.',
+      description:'The current XC7A35T-2CSG325I board is R39, 41 × 41 mm, with corrected lands/silkscreen and scoped FPGA escape rules. Fresh views and the complete KiCad project are available. Routing remains incomplete.',
+      regions:['D'],owners:[['Howard','FPGA PCB'],['Jiaao','FPGA programming']],facts:[['35T','current FPGA device'],['R39','5 October revision'],['Unfinished','current routing']],
+      noteLabel:'FPGA PCB · R39 update · 5 October 2026',note:'Applied land and silkscreen corrections, bounded FPGA escape rules and 31 component-information updates. Physical DRC, ERC and schematic/PCB parity pass under the saved settings. Schematic connections are intact; the 1,413 PCB connections awaiting copper are expected before routing. JLCPCB construction and impedance dimensions remain unissued.',
       details:[
-        'The current research board uses XC7A35T-2CSG325I. R37 is separate from the older paused routed-core work and from the published September 29 25T placement.',
+        'The current research board uses XC7A35T-2CSG325I. R39 retains the compact bottom-connector arrangement and existing 113 surface segments. The most-routed R34, paused R35 and historical 25T placement remain separate.',
         'The dated September 29 interface proposal gives each cable two active recording TX pairs, a third wired pair reserved in baseline firmware, and one inbound serial-control RX pair. The custom FPGA is intended to generate ASIC CLK, DATA and LATCH locally.',
         'In that dated interface proposal, cable contact 19 is the proposed 12 V feed to an entire remote FPGA/routing/ASIC assembly. Source, current limiting, inrush, return rating and local regulator sequence remain unqualified.',
-        'The R37 mechanical review includes the headboard and a connector-only mating template. The template is not a functional LDO board; populated fit and retention still require checks.'
+        'Current R39 views depict the saved headboard alone. The earlier R37 headboard and connector-only mating-template review is preserved; populated fit and retention remain unqualified.'
       ],sources:[refs.team,refs.adapter3d,refs.previousFpga,refs.open]
     },
     {

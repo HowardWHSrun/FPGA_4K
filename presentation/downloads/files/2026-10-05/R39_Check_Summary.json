@@ -1,0 +1,79 @@
+{
+  "revision": "V15 R39",
+  "date": "2026-10-05",
+  "device": "XC7A35T-2CSG325I",
+  "board_outline_mm": [
+    41,
+    41
+  ],
+  "source_pcb_sha256": "24fee50ce9d4716d141ff1ef69a9f5ebf692b9ca4f0834c81ed87eed4ed629b9",
+  "footprints": 343,
+  "copper_pad_objects": 2135,
+  "existing_surface_segments": 113,
+  "placed_vias": 0,
+  "copper_planes": 0,
+  "non_copper_rule_areas": 1,
+  "native_unrouted_connections": 1413,
+  "DRC_listed_unconnected_items": 499,
+  "DRC_physical_library_violations": 0,
+  "schematic_parity_issues": 0,
+  "ERC_reported_violations": 0,
+  "check_scope": "Native KiCad 10.0.6, delivered project settings; these passes are not electrical or manufacturing qualification.",
+  "DRC_ignored_checks": [
+    {
+      "description": "Footprint has no courtyard defined",
+      "key": "missing_courtyard"
+    },
+    {
+      "description": "Track endpoint not centered on via",
+      "key": "track_not_centered_on_via"
+    },
+    {
+      "description": "Tuning profile track geometries",
+      "key": "tuning_profile_track_geometries"
+    },
+    {
+      "description": "Footprint doesn't match symbol's footprint filters",
+      "key": "footprint_filters_mismatch"
+    },
+    {
+      "description": "Footprint component type doesn't match footprint pads",
+      "key": "footprint_type_mismatch"
+    }
+  ],
+  "ERC_ignored_checks": [
+    {
+      "description": "Global label only appears once in the schematic",
+      "key": "single_global_label"
+    },
+    {
+      "description": "Four connection points are joined together",
+      "key": "four_way_junction"
+    },
+    {
+      "description": "SPICE model issue",
+      "key": "simulation_model_issue"
+    },
+    {
+      "description": "Assigned footprint doesn't match footprint filters",
+      "key": "footprint_filter"
+    }
+  ],
+  "applied_changes": {
+    "supplier_supported_land_changes_carried_from_R38": 323,
+    "engineering_BOM_field_changes": 31,
+    "affected_components": 11,
+    "bounded_FPGA_escape_rules": true
+  },
+  "fine_pitch_land_disposition": "Retain 512 current supplier-based TI/Hirose narrow lands; exact JLCPCB library corroborates these fine-pitch families; board-specific DFM acceptance remains required.",
+  "HDI_candidate": "Eight-layer symmetric 3+2+3, adjacent laser cells 0.35 mm land / 0.125 mm bore; factory construction not issued.",
+  "CAD_thickness_mm": 1.6,
+  "CAD_thickness_is_placeholder": true,
+  "remaining_work": [
+    "issued factory stack/via/impedance/stencil construction",
+    "complete routing, reference planes and final connectivity",
+    "FPGA implementation timing and powered/assembled qualification"
+  ],
+  "fabrication_release": false,
+  "factory_request_sent": false
+}

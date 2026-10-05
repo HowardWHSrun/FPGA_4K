@@ -1,8 +1,10 @@
 # Project files and documents
 
-## Current reviews · 3–4 October 2026
+[Current R39 project download](../presentation/downloads/#fpga35t-r39) includes the complete native hierarchy, rules, libraries and component models. [R37 is preserved separately](../presentation/fpga/review-r37-2026-10-04.html). R39 has applied pre-routing corrections and 1,413 connections awaiting copper; issued HDI construction and qualification remain incomplete.
 
-[Search the project Library](../presentation/library/) · [35T FPGA PCB R37](../presentation/fpga/current-35t.html) · [LDO routing adapter E5](../presentation/ldo-backup/current-e5.html) · [XEM8305 carrier A1R2](../presentation/xem/current-a1r2.html) · [bonding fixture V6](../presentation/library/bonding-fixture.html). These dated reviews record weekend progress and remaining checks. The 35T research board, earlier paused routing work and historical 25T placement retain separate status. The A1R2 assembly contains adapter E3; the E5 separate-power-header adapter and XEM8310 carrier power path are separate revisions.
+## Current reviews · 5 October 2026
+
+[Search the project Library](../presentation/library/) · [35T FPGA PCB R39](../presentation/fpga/current-35t.html) · [LDO routing adapter E5](../presentation/ldo-backup/current-e5.html) · [XEM8305 carrier A1R2](../presentation/xem/current-a1r2.html) · [bonding fixture V6](../presentation/library/bonding-fixture.html). These dated reviews record weekend progress and remaining checks. The 35T research board, earlier paused routing work and historical 25T placement retain separate status. The A1R2 assembly contains adapter E3; the E5 separate-power-header adapter and XEM8310 carrier power path are separate revisions.
 
 ## Small cabled routing board · 2 October
 

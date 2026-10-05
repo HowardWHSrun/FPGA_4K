@@ -8,7 +8,7 @@
   const top=document.querySelector('.viewer-top'),controls=document.querySelector('.viewer-controls'),caption=document.querySelector('.scene-caption');
   const savedCaption=caption.innerHTML;
   const reviews={
-    fpga:{url:'presentation/fpga/current-35t.html',title:'Current XC7A35T R37 placement review',caption:'XC7A35T · R37 · 4 October 2026',status:'Mechanical review · routing unfinished'},
+    fpga:{url:'presentation/fpga/current-35t.html',title:'Current XC7A35T R39 board review',caption:'XC7A35T · R39 · 5 October 2026',status:'Pre-routing corrections applied · routing incomplete'},
     routing:{url:'presentation/ldo-backup/current-e5.html',title:'Current LDO routing adapter E5 review',caption:'LDO routing adapter · E5 · 4 October 2026',status:'Separate locking power header · qualification pending'},
     receiver:{url:'presentation/xem/current-a1r2.html',title:'Updated XEM8305 carrier A1R2 review',caption:'XEM8305 carrier · A1R2 · 3–4 October 2026',status:'Both mating connectors · assembly fit pending'}
   };
