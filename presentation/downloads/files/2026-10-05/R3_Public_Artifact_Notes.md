@@ -1,0 +1,9 @@
+# XEM8305 direct carrier R3 public artifacts
+
+The native ZIP contains the complete eight-sheet KiCad10 project and local libraries. All native electrical/layout expressions are preserved relative to frozen source6e1cde48c3a146e691005f6e76434e98ce9298ac09ed0b13a128e490fa048e78; only named Samtec embedded3D payloads are omitted and externalized. Own Murata nominal VRML and KiCad library license are included. Standard KiCad3D paths require a local KiCad library installation; omitted vendor STEP files are deliberately absent. PACKAGE_MANIFEST.json records source/public hashes and omissions. No private absolute paths or editor caches are included.
+
+The eight-page schematic PDF uses a separate print-only copy: root page enlarged to A2, hierarchy boxes separated into a right column, repeated power-flag caption consolidated, second-row TMUX Reference/Value fields moved clear of capacitor symbols, and displayed revision shortened to R3. All component values/UUIDs and all67 components/296 nets match the unchanged public native schematic. All8 latest rendered pages were visually inspected with0 unresolved clipping/overlap issues. These presentation changes do not alter hardware.
+
+Top and mirrored bottom SVGs are native selected-layer exports (outer copper, corresponding silkscreen and board outline); they omit inner layers and package bodies. Use the native project and fabrication Gerbers for full engineering content.
+
+Fresh extracted public native checks use all severities, all track errors, schematic parity and zone refill: ERC0/DRC0/unconnected0/parity0, ignoredchecks=[]. Physical simultaneous connector seating, factory process/DFM acceptance, timing/thermal/load and powered qualification remain open. MC3 retains28 ground and52 reserved NC contacts, with no high-speed functional-use claim.

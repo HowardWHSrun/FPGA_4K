@@ -6,6 +6,7 @@ const canvas=preview.querySelector('canvas'),stage=preview.querySelector('.previ
 const state={ready:false,loading:false,model:preview.dataset.previewModel,view:'iso',zoom:1,renders:0};
 window.reviewPreview=state;
 const modelPaths={
+  'xem8305-direct-r3':'assets/2026-10-05/xem8305-direct-r3/xem8305-direct-r3.glb',
   'xem8305-direct-r2':'assets/2026-10-05/xem8305-direct/xem8305-direct-r2.glb',
   'fpga35t-r39':'assets/2026-10-05/fpga35t-r39.glb',
   'fpga35t-r37':'assets/2026-10-04/fpga35t-r37.glb',
@@ -39,10 +40,10 @@ async function init(){
   try{
     if(!modelPaths[state.model])throw new Error('Unknown preview model');
     renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
-    // The R2 copper/mask layers are micrometres apart. Its normalized span is
+    // The direct-carrier copper/mask layers are micrometres apart. Its normalized span is
     // two units and controls remain 1.4–12 units away; a bounded depth range
     // keeps those real surfaces distinguishable without changing geometry.
-    const depthRange=state.model==='xem8305-direct-r2'?[.05,50]:[.001,10000];
+    const depthRange=['xem8305-direct-r2','xem8305-direct-r3'].includes(state.model)?[.05,50]:[.001,10000];
     scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(36,1,...depthRange);
     controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.12;
     controls.addEventListener('change',()=>{state.camera=camera.position.toArray();dirty=true;requestDraw();});

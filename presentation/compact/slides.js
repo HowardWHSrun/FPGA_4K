@@ -75,16 +75,16 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'Direct LDO + XEM8305 · R2',
-      description:'The original LDO connects through a rigid routed board to XEM8305. R2 includes all three module sockets, both LDO mating pairs, complete native files and a matching four-page schematic. Exact fit and powered operation remain unqualified.',
+      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'Direct LDO + XEM8305 · R3',
+      description:'The original LDO connects through a rigid routed board to XEM8305. R3 includes all three module sockets, both LDO mating pairs, six layers, single-input power, and complete KiCad, Gerber and eight-sheet schematic downloads. Exact fit and powered operation remain unqualified.',
       regions:['F'],owners:[],facts:[['260','contacts accounted for'],['MC1 + MC2 + MC3','native sockets included'],['LDO J1 + J19','both mating pairs']],
-      noteLabel:'Direct XEM8305 · R2 update · 5 October 2026',note:'The routed CAD candidate has 3,508 tracks, 168 vias and two filled ground zones. Fresh checks on the extracted public project report zero ERC, DRC, opens and parity issues. All three connectors have documented dispositions; MC3 grounds are connected and its other contacts are explicitly reserved.',
+      noteLabel:'Direct XEM8305 · R3 update · 5 October 2026',note:'One six-layer carrier design with an external 12 V input, generated 2.5 V / 3.3 V rails, rail supervision and switched ASIC signals. Native checks and exported CAM checks pass; factory and first-board qualification remain open.',
       details:[
-        'The direct R2 native project includes all four schematic sheets, PCB, project settings and local libraries. The complete PDF and top/bottom native views match the same frozen revision.',
+        'The direct R3 native project includes all eight schematic sheets, PCB, project settings and local libraries. The complete PDF, native views, Gerber ZIP and all-files bundle match the checked source.',
         'MC1 has 100 contacts and MC2/MC3 each have 80. MC3 connects 28 DGND contacts and leaves 52 explicitly reserved/no-connect; a GTH link is not implemented.',
-        'The carrier 3D review shows actual native pads, board and surface copper with original nominal socket boxes. Manufacturer connector bodies and the assembled XEM/LDO stack are omitted from the public model.',
+        'The carrier 3D review shows actual native pads, board and surface copper with original nominal component envelopes. Manufacturer connector bodies and the assembled XEM/LDO stack are omitted from the public model.',
         'ASIC limits and FPGA timing, source/load/thermal behavior, exact simultaneous seating, factory DFM, firmware and recording operation remain unqualified. Earlier A1R2/E5 cable and XEM8310 studies retain their dates.'
-      ],sources:[['Direct R2 native review, schematic and downloads','presentation/xem/direct-all-connectors-2026-10-05.html'],['Opal Kelly · XEM8305 expansion connectors','https://docs.opalkelly.com/xem8305/expansion-connectors/'],refs.open]
+      ],sources:[['Direct R3 files, schematic and manufacturing status','presentation/xem/direct-all-connectors-2026-10-05.html'],['Opal Kelly · XEM8305 expansion connectors','https://docs.opalkelly.com/xem8305/expansion-connectors/'],refs.open]
     }
   ];
   for(const slide of window.PRESENTATION_SLIDES){

@@ -22,8 +22,16 @@ The XEM8305 module visual derives from [Opal Kelly’s published 3D models](http
 
 ## Direct XEM8305 R2 · 5 October 2026
 
-The [direct R2 review](../xem/direct-all-connectors-2026-10-05.html) shows native top/underside KiCad vectors and an explicitly loaded carrier-only 3D model. Native board, pads and surface copper are preserved; the five socket boxes are original project-authored nominal envelopes for position and side. Other component bodies, manufacturer connector bodies and the assembled XEM/LDO stack are omitted. These boxes do not qualify housing shape, mating height, simultaneous seating or fit.
+The [preserved direct R2 review](../xem/direct-r2-2026-10-05.html) shows native top/underside KiCad vectors and an explicitly loaded carrier-only 3D model. Native board, pads and surface copper are preserved; the five socket boxes are original project-authored nominal envelopes for position and side. Other component bodies, manufacturer connector bodies and the assembled XEM/LDO stack are omitted. These boxes do not qualify housing shape, mating height, simultaneous seating or fit.
 
 The [complete native package and four-page schematic](../downloads/#xem8305-direct-r2) match the frozen R2 revision. Public packaging omits the two embedded Samtec ERF6 payloads and externalizes only their model references. All non-model native semantics are preserved and fresh extracted-copy ERC/DRC/opens/parity checks are zero. The all-260-contact audit records MC3 as 28 DGND plus 52 explicitly reserved no-connects. Factory DFM, ASIC/FPGA timing, power/load/thermal, actual fit, firmware and powered operation remain unqualified. The earlier R39 and A1R2/E5 asset bytes are preserved.
 
 Samtec [website terms](https://suddendocs.samtec.com/articles/samtec-website-terms-of-use.pdf) and the [ERF6 model disclaimer](https://www.samtec.com/products/erf6) do not evidence permission to redistribute the supplied model bodies; they are not included. Project-authored board/footprint geometry remains identified separately from manufacturer 3D content. The existing KiCad and Three.js notices are retained.
+
+## Direct XEM8305 R3 · 5 October 2026
+
+The [R3 review and downloads](../xem/direct-all-connectors-2026-10-05.html) contain the eight-sheet schematic, native KiCad ZIP, Gerber/drill ZIP and one combined download. Native geometry comes from the frozen six-layer carrier. Public packaging documents removal of manufacturer model payloads and preserves circuit/board semantics; fresh extracted-project ERC/DRC/opens/parity are zero. The schematic PDF has separately documented print-layout adjustments with identical component/net topology.
+
+The carrier-only GLB preserves native board/pads/outer copper geometry and adds63 original nominal fitted-component envelopes at the source footprint centers/angles. R5 DNP and mount/wire features have no component bodies. Inner copper, exact manufacturer housings and the assembled XEM/LDO stack are omitted. Standard KiCad dependencies/notices and the project-authored nominal Murata body are documented in the native ZIP. [3D recipe and omissions](assets/2026-10-05/xem8305-direct-r3/Public_R3_3D_Receipt.json) give source-bound details.
+
+All144 actualCAM checks and766 actualpaste/mask/outline checks pass. Factory production acceptance, part sourcing/rotation/reflow and first-board fitting, power, timing and operation remain open. Publication is not an approved assembled-board order. Earlier R2/R39 download and model assets are preserved.

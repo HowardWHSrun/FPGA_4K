@@ -9,7 +9,7 @@ The overview and library use [shared navigation styles](../shared/project-naviga
 The gallery creates 24 cards at a time and uses 560 × 350 WebP previews. Full source images load only after a preview is opened; closing it removes the original image. Interactive board viewers open from explicit links. The delivered HTML also contains a complete source-link list for readers without JavaScript or if catalog loading fails. No browser libraries, third-party fonts, WebGL, model files or outside services load on this page.
 
 <!-- LIBRARY_STATS_START -->
-The generated catalog contains **387 records**, including **162 illustrations** and **14 3D viewer entry points**. All **99 figures** from the original September 30 index are retained. The **156 previews** total **2.66 MB**, compared with **74.04 MB** of original image files (**96.41% smaller**); only 24 cards are created initially. Exact counts, byte totals and source-date policy are recorded in [build-report.json](build-report.json).
+The generated catalog contains **396 records**, including **165 illustrations** and **15 3D viewer entry points**. All **99 figures** from the original September 30 index are retained. The **159 previews** total **2.71 MB**, compared with **75.12 MB** of original image files (**96.39% smaller**); only 24 cards are created initially. Exact counts, byte totals and source-date policy are recorded in [build-report.json](build-report.json).
 <!-- LIBRARY_STATS_END -->
 
 ## Source coverage and dates

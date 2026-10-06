@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Direct LDO and XEM8305 carrier connector review, dated 5 October 2026. Native revision, schematic, routing and fit checks are tracked separately.">
+  <title>Direct LDO to XEM8305 · Connector review | FPGA 4K</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../shared/current-review.css">
+  <style>.board-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:22px}.board-gallery figure{margin:0}.board-gallery img{display:block;width:100%;height:auto;background:white;border:1px solid var(--line);border-radius:5px}.board-gallery figcaption{font-size:13px;line-height:1.6;margin-top:10px}.file-links{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}code{overflow-wrap:anywhere}.preview-load[hidden]{display:none}@media(max-width:650px){.board-gallery{grid-template-columns:1fr;padding:16px}}</style>
+  <script type="importmap">{"imports":{"three":"../fpga/3d/vendor/build/three.module.js","three/addons/":"../fpga/3d/vendor/examples/jsm/"}}</script>
+  <script type="module" src="../reviews/viewer.js?v=direct-r2-depth-20261005"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="project-header">
+    <a class="brand" href="../../#receiver">FPGA 4K<small>Direct LDO + XEM8305 · 5 October 2026</small></a>
+    <nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/">Library</a><a href="../downloads/">Downloads</a><a href="#native-review">Native review</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero review-body">
+      <p class="eyebrow">Current connection direction · 5 October 2026</p>
+      <h1>Direct LDO → routing board → XEM8305</h1>
+      <!-- DIRECT_STATUS_START -->
+      <span class="status">R2 · routed CAD candidate · hardware qualification open</span>
+      <p class="lead">The original LDO board connects through a rigid routing board to XEM8305. This R2 native project includes MC1, MC2 and MC3, both LDO mating connectors, routed intended nets and filled ground copper.</p>
+      <div class="facts"><span>All 260 module contacts accounted for</span><span>4 schematic sheets · 24 footprints</span><span>3,508 tracks · 168 vias · 2 zones</span><span>Fresh public ERC / DRC / opens / parity: 0</span></div>
+      <!-- DIRECT_STATUS_END -->
+    </section>
+    <section class="figure-slot" id="native-review" aria-labelledby="native-title">
+      <div class="figure-heading"><h2 id="native-title">Native KiCad board views</h2></div>
+      <!-- DIRECT_ASSETS_START -->
+      <div class="board-gallery">
+        <figure><a href="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Top.svg"><img src="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Top.svg" alt="R2 native top copper and silkscreen with MC1, MC2 and MC3 connector footprints" width="530" height="830"></a><figcaption><strong>Top.</strong> Actual native surface copper, pads, silkscreen and board outline. <a href="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Top.svg">Zoomable KiCad vector view</a>.</figcaption></figure>
+        <figure><a href="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Bottom.svg"><img src="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Bottom.svg" alt="R2 native underside copper and silkscreen with the J1 and J19 LDO mating connectors" width="530" height="830"></a><figcaption><strong>Bottom.</strong> Mirrored for direct underside viewing; J1 and J19 mate with the original LDO. <a href="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Bottom.svg">Zoomable KiCad vector view</a>.</figcaption></figure>
+      </div>
+      <p class="caption">KiCad exports from the frozen R2 native revision. Internal copper includes an In1.Cu DGND plane and mixed signal/DGND fill on In2.Cu. These outer-layer views do not qualify return paths, timing or manufacturability.</p>
+      <!-- DIRECT_ASSETS_END -->
+    </section>
+    <section class="figure-slot" id="carrier-3d" aria-labelledby="three-title">
+      <div class="figure-heading"><h2 id="three-title">Rotatable carrier review</h2></div>
+      <div class="figure-space"><div class="interactive-preview" data-preview-model="xem8305-direct-r2">
+        <div class="preview-stage"><canvas hidden tabindex="0" aria-label="Interactive R2 carrier. Drag to rotate, scroll to zoom; arrow keys rotate, plus and minus zoom, R resets."></canvas><img class="preview-fallback" src="../reviews/assets/2026-10-05/xem8305-direct/XEM8305_Direct_R2_Top.svg" alt="R2 native carrier top view"><p class="preview-status" role="status">Open the 3D view to rotate the carrier.</p></div>
+        <nav class="preview-controls" aria-label="3D preview controls"><div><button class="preview-load" data-preview-load>Open 3D view</button><button data-preview-view="iso" aria-pressed="true">3D</button><button data-preview-view="top" aria-pressed="false">Top</button><button data-preview-view="bottom" aria-pressed="false">Bottom</button><button data-preview-view="side" aria-pressed="false">Side</button></div><div><button data-preview-out aria-label="Zoom out">−</button><button data-preview-in aria-label="Zoom in">+</button><button data-preview-reset>Reset view</button></div></nav>
+        <p class="preview-help">Drag to rotate · scroll to zoom · right-drag to pan</p>
+      </div></div>
+      <p class="caption">Carrier only: native board, surface copper and pads, with five project-authored nominal socket boxes for MC1/MC2/MC3 and J1/J19. Manufacturer connector model bodies, other component bodies and the assembled XEM/LDO stack are omitted. Boxes illustrate position and side; they do not establish exact housing shape, height, seating or fit. <a href="../reviews/assets/2026-10-05/xem8305-direct/Public_3D_Receipt.json">Geometry receipt</a>.</p>
+    </section>
+    <section class="section review-body" id="connection" aria-labelledby="connection-title">
+      <p class="eyebrow">Connection scope</p><h2 id="connection-title">Review the complete connector arrangement</h2>
+      <div class="review-grid">
+        <article><h3>MC1, MC2 and MC3</h3><p>MC1 has 100 contacts; MC2 and MC3 each have 80. Every contact has an audited native pad and schematic disposition. MC3 connects its 28 DGND contacts; the other 52 contacts are explicitly reserved / no-connect. They do not implement a GTH link.</p></article>
+        <article><h3>Original LDO board and power</h3><p>Both J1 and J19 are included for direct mating. J1 carries the mapped ASIC interface and named rails. J19 is preserved as a mechanical mating pair with explicit no-connect contacts. The candidate supplies the module bank rails and keeps the ADC ground reference separate; source, current, sequencing and load qualification remain open.</p></article>
+      </div>
+    </section>
+    <section class="section review-body" id="engineering-limits" aria-labelledby="engineering-title">
+      <p class="eyebrow">What still needs qualification</p><h2 id="engineering-title">Timing, power and assembled fit</h2>
+      <div class="review-grid">
+        <article><h3>Clock and data routing</h3><p>The returned clock is 68.476 mm and D_1–D_8 span 69.757–79.765 mm of native copper: an 11.29 mm group spread, with different via counts. These lengths do not establish propagation delay or the provisional ≤100 ps spread. Stack-up, local returns, ASIC setup/hold/data-valid limits and Vivado timing remain open.</p></article>
+        <article><h3>Independent power branches</h3><p>J3 supplies XEM VDCIN; J4 supplies raw VIO 2.5 V ±2%; J5 supplies the original low-stage nominal 3.3 V feed. PG sequences the 1.5 V bank regulator and does not monitor ASIC rails. Actual load, limiting/startup, drop, plating and thermal behavior need qualification.</p></article>
+      </div>
+      <p>The carrier includes no automatic powered-off interface isolation, ASIC rail-ready monitor, ASIC hardware current limiter or accepted backfeed/stimulation cutoff. The original high-stage supplies and AGND return still need their accepted source/sequence contract. Firmware high-Z alone does not qualify the power sequence. Exact simultaneous seating, factory DFM and powered recording remain open.</p>
+    </section>
+    <section class="section review-body" id="files" aria-labelledby="files-title">
+      <p class="eyebrow">Matching source files</p><h2 id="files-title">Project, schematic and checks</h2>
+      <!-- DIRECT_DOWNLOADS_START -->
+      <p>Extract the whole ZIP and open <code>hardware/LDO_to_XEM8305_Direct_R2.kicad_pro</code> in KiCad 10.0.6. The project contains all four hierarchical sheets, project settings, symbol/footprint tables and local libraries. The two embedded Samtec model files are omitted from this public copy; their external references are documented. Electrical and board geometry semantics match the frozen source.</p>
+      <div class="file-links"><a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_Native_2026-10-05.zip" download>Complete native KiCad project · R2</a><a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_Schematic.pdf">Complete schematic · 4-page PDF</a><a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_Check_Summary.json">Native checks and remaining qualifications</a><a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_All_260_Contacts.csv">All 260 contacts · CSV</a><a href="../downloads/#xem8305-direct-r2">File sizes and SHA-256 checksums</a></div>
+      <p>Fresh checks on the extracted public package report ERC 0, DRC 0, unconnected intended routes 0 and schematic/PCB parity 0. All error, warning and exclusion severities were checked; no checks are ignored or excluded. <a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_ERC.json">Full ERC receipt</a> · <a href="../downloads/files/2026-10-05/XEM8305_Direct_R2_DRC.json">Full DRC/parity receipt</a>.</p>
+      <p>The independent assigned-net review passes 790 checks and the actual copper graph review passes 86 checks: all 23 J1→MC1 signals and all 32 multi-pad nets are connected in native copper. Their source bindings and limits are included in the public check summary.</p>
+      <p><strong>Routed CAD candidate.</strong> Simultaneous seating, populated fit, ASIC electrical/timing limits, power/load/thermal behavior, FPGA firmware and factory DFM remain unqualified. These CAD checks do not establish powered recording or fabrication approval. The separate <a href="../fpga/current-35t.html">35T R39 review</a> retains its own status.</p>
+      <!-- DIRECT_DOWNLOADS_END -->
+    </section>
+    <section class="section review-body" id="history" aria-labelledby="history-title">
+      <p class="eyebrow">Preserved dated reviews</p><h2 id="history-title">Earlier carrier and adapter studies</h2>
+      <p>The A1R2 assembly and E5 adapter document the earlier cabled topology. Their saved mapping, copper and visualization checks apply to those revisions. The current direct arrangement requires its own native project and checks.</p>
+      <div class="history-links"><a href="current-a1r2.html">A1R2 cabled assembly · 3–4 October</a><a href="../ldo-backup/current-e5.html">E5 cabled adapter · 4 October</a><a href="index.html">Separate XEM8310 / BRK8310 history</a></div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>FPGA 4K · direct connection review · 5 October 2026</span><a href="../../#receiver">Back to XEM carrier section ↑</a></footer>
+</body>
+</html>

@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-05 America/Chicago",
+  "design": "XEM8305 direct R3 carrier",
+  "public_status": "Prototype fabrication files; final local CAD and CAM checks pass. Factory approval, assembly readiness and qualified system operation remain open.",
+  "scope": "Project-generated public summary of frozen source and actual manufacturing-file reviews; no vendor model or source-document collection included.",
+  "release_status": {
+    "local_prototype_CAD_complete": true,
+    "local_prototype_CAM_checks_pass": true,
+    "factory_DFM_approved": false,
+    "assembled_ready": false,
+    "qualified_system_operation": false,
+    "one_design": true,
+    "order_quantity_in_Gerber_archive": null
+  },
+  "manufacturing_geometry": {
+    "finished_carrier_mm": [
+      53,
+      83
+    ],
+    "one_up_panel_mm": [
+      73,
+      83
+    ],
+    "removable_side_rail_width_mm": 10,
+    "copper_layer_count": 6,
+    "nominal_finished_thickness_mm": 1.6,
+    "construction_profile_candidate": "JLC06161H-3313",
+    "controlled_impedance_qualified": false,
+    "copper_layer_order": [
+      "F.Cu",
+      "In1.Cu",
+      "In2.Cu",
+      "In3.Cu",
+      "In4.Cu",
+      "B.Cu"
+    ],
+    "reference_planes": "In1 and In3 DGND with normal via/manufacturing clearances; In4 DGND fill interrupted by the bounded STIM_EN trace.",
+    "In4_STIM_EN_length_mm": 33.224,
+    "panel_score_lines_mm_from_left": [
+      10,
+      63
+    ],
+    "factory_process_acceptance_pending": [
+      "Full-height score lines and low-strain depaneling",
+      "Epoxy-filled and capped 0.30 mm PTH via holes",
+      "Fine-pitch lands, paste/mask and assembly process acceptance"
+    ]
+  },
+  "source_binding": {
+    "frozen_native_PCB_sha256": "6e1cde48c3a146e691005f6e76434e98ce9298ac09ed0b13a128e490fa048e78",
+    "native_project_sha256": "573ea175f4cb59dd2baa00fcd9d6ab6af25a5e7ebbd339eb29da3713abfa97bc",
+    "native_netlist_sha256": "a1a65539f6ff6cdb6189c2eb1177d62064ecc5c09c25eaea7dd33fab534f0394",
+    "panel_PCB_sha256": "f24e0c1f2d37f41d8d372355d1abe9e6785cc4d642c38c2300adeaf5da80e2d9",
+    "frozen_source_files_verified_unchanged": 28,
+    "frozen_source_file_count": 28
+  },
+  "Gerber_drill_archive": {
+    "filename": "LDO_to_XEM8305_Direct_R3_Gerbers_Drill.zip",
+    "sha256": "ccb6021ca363950c4829001fa65eb042e14e8c2d0b7a53d43d415e96542411ba",
+    "bytes": 271792,
+    "member_count": 17,
+    "contents": "Six copper layers; both mask, paste and silk layers; outline/score geometry; separate PTH/NPTH drills; Gerber job; fabrication notes.",
+    "contains_vendor_model_or_source_PDF": false
+  },
+  "local_engineering_checks": {
+    "native": {
+      "ERC_violations": 0,
+      "DRC_violations": 0,
+      "unconnected_items": 0,
+      "schematic_parity_errors": 0,
+      "ignored_rules_or_exclusions": false
+    },
+    "panel_native": "All-severity ERC/DRC/refill/parity checks: zero violations, opens and parity errors; no ignored rules or exclusions.",
+    "native_electrical_and_copper": {
+      "passed": 1678,
+      "total": 1678,
+      "failed": 0
+    },
+    "interface_and_contact_audit": {
+      "passed": 1275,
+      "total": 1275,
+      "failed": 0
+    },
+    "actual_CAM_export": {
+      "passed": 144,
+      "total": 144,
+      "failed": 0
+    },
+    "actual_Gerber_aperture_and_datum": {
+      "passed": 766,
+      "total": 766,
+      "failed": 0
+    },
+    "source_mechanical_and_paste": {
+      "passed": 119,
+      "total": 119,
+      "failed": 0,
+      "physical_fit_qualified": false
+    },
+    "panel_datum_and_source_preservation": {
+      "passed": 28,
+      "total": 28,
+      "failed": 0
+    },
+    "buck_local_copper": {
+      "passed": 26,
+      "total": 26,
+      "failed": 0
+    },
+    "reference_plane_exception_review": {
+      "passed": 5,
+      "total": 5,
+      "failed": 0,
+      "SI_or_timing_qualified": false
+    },
+    "schematic_PDF_page_count": 8,
+    "interpretation": "Separate review groups overlap; their totals are not a unique combined coverage metric. Passing geometry/static checks does not establish factory or operating qualification."
+  },
+  "interface": {
+    "module_contacts_accounted": 260,
+    "connectors": {
+      "MC1": {
+        "contact_count": 100,
+        "all_accounted": true,
+        "ground_contacts": 13,
+        "reserved_NC_contacts": 54
+      },
+      "MC2": {
+        "contact_count": 80,
+        "all_accounted": true,
+        "ground_contacts": 11,
+        "reserved_NC_contacts": 63
+      },
+      "MC3": {
+        "contact_count": 80,
+        "all_accounted": true,
+        "ground_contacts": 28,
+        "reserved_NC_contacts": 52
+      }
+    },
+    "digital_paths": 23,
+    "signal_isolation": "Each digital path has checked ASIC-to-switch and switch-to-XEM copper halves. Switch ON behavior is a functional model; OFF leakage is finite.",
+    "MC3_high_speed_link_implemented": false,
+    "clock_directions": {
+      "CLKH": "Supplied by FPGA to ASIC",
+      "CLK32MHZ": "Returned by ASIC to FPGA"
+    },
+    "returned_clock_and_D1_D8_full_two_half_copper_spread_mm": 37.806,
+    "ASIC_timing_qualified": false,
+    "contact_report": {
+      "filename": "XEM8305_Direct_R3_260_Contacts.csv",
+      "sha256": "b0492696b9f0a79896e5dfec74b0129e1466dc0cbcdf3fe360f92c2d9abca709",
+      "rows": 260
+    }
+  },
+  "commissioning_requirements": {
+    "ARM_R5": "DNP / unpopulated; ASIC feed and signal link default OFF until staged commissioning.",
+    "external_regulated_input_V": [
+      11.4,
+      12.6
+    ],
+    "external_total_current_ceiling_A": 2.0,
+    "VCCO_aggregate_continuous_ceiling_A": 0.05,
+    "VCCO_ceiling_includes_bleeder_and_all_supplied_banks": true,
+    "FPGA_bank_required_measured_V": [
+      1.425,
+      1.575
+    ],
+    "VIO_2V5_aggregate_continuous_ceiling_A": 0.055,
+    "ASIC_limited_continuous_planning_ceiling_A": 0.15,
+    "ASIC_startup_planning_target_A": 0.12,
+    "planning_limits_are_hardware_guarantees": false,
+    "whole_ASIC_current_known": false,
+    "initial_checks": "Keep R5 DNP and ASIC disconnected; verify buck rails, PG, actual bank voltages and default-OFF state. Accept original LDO rail/AGND/inrush conditions before attaching the ASIC; keep stimulation high-stage inputs disconnected and stimulation controls inactive."
+  },
+  "remaining_engineering_limits": [
+    "Exact factory DFM/process acceptance and assembly sourcing/stencil/reflow/support approval remain open.",
+    "Simultaneous rigid-connector mating, populated clearances and actual original LDO fit remain unmeasured.",
+    "Whole ASIC/LDO branch current, actual rail/transient/AGND behavior and dynamic power-loss safety remain unqualified.",
+    "ASIC voltage/timing limits, FPGA timing closure, signal integrity, EMI and thermal behavior remain unqualified."
+  ],
+  "source_receipt_sha256": {
+    "Final_CAM_Receipt.json": "a68b88566b1814af71525145f79c80457b57cfb709144b80a9532737073c559a",
+    "Independent_R3_Interface_And_260_Contact_Audit.json": "f316d35c41d038ecd856ec074e2a8a83062fa48e0e4ba07227734af485255d99",
+    "Independent_R3_Mechanical_Paste_And_Clearance_Audit.json": "d9148fc1778e05047717d516c9ef302e69b0d5f6e137d98895b16760a32b7277",
+    "Independent_Panel_Datum_And_Source_Preservation_Audit.json": "764a394bf83fa6f514d1f108ebeab2cbbfc09984efc90d5bc23d164c0c8ca258",
+    "Independent_Final_Gerber_Aperture_And_Datum_Audit.json": "d4547688085e8b0f22238ff39841fbf61db47254f104d51bbba6837801859330",
+    "R3_Final_CAM_Visual_Review.json": "a94de87c5d09e9e4b0ca739083947d94509435fc956ddd640998b37dc82b5af6",
+    "R3_Native_Electrical_And_Copper_Audit.json": "9131c12924537ede5e80ee5e7e76ad07567e044f743a6a324544d526ffd36a2e",
+    "R3_Buck_Local_Copper_Audit.json": "2b92efbd9d1e25a714b7cab84ad21a10580631d06c1217eef3ad11419f51c340",
+    "R3_Reference_Plane_Exception_Audit.json": "b3492fb36c7100f6e814642f5b0cce463d55eddf319a42c82c65b76b5aeb43d2",
+    "Final_R3_Operating_Envelope.json": "8184b8b08a74c50bc3d497420b46b84077b5a0997ce82137845a2cc00b824d46",
+    "Frozen_Native_Receipt.json": "b109aa276a2d406a58bb4b0d26760d3af431d7568bb1adc1e3d31c9d5bc630e9",
+    "FINAL_GERBER_HANDOFF.json": "f009bb27cf1fafcfd4331f0e3c317c23f926f6f9b47ab46b0549bcedf93539f9"
+  }
+}
