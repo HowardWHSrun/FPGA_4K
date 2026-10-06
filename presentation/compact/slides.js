@@ -75,16 +75,16 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'XEM8305 assembly · separate XEM8310 power path',
-      description:'The updated XEM8305 A1R2 carrier assembly includes both J1 and J19 mating pairs. The separate XEM8310 carrier power path remains under routing and cable review.',
-      regions:['F'],owners:[],facts:[['XEM8305','A1R2 assembly'],['J1 + J19','physical mating pairs'],['XEM8310','separate power path']],
-      noteLabel:'XEM carrier and connection · weekend update · 3–4 October 2026',note:'I updated the XEM8305 carrier assembly view to include both mating connectors and checked the signal mapping through the flex cable. Separately, I traced the custom FPGA board’s power path: the XEM8310 carrier schematic already provides a protected path from the shared external supply to the custom micro-HDMI power contact. That carrier power routing and cable qualification are still unfinished. I have the assembly views and connection diagrams ready for review.',
+      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'Direct LDO + XEM8305 · R2',
+      description:'The original LDO connects through a rigid routed board to XEM8305. R2 includes all three module sockets, both LDO mating pairs, complete native files and a matching four-page schematic. Exact fit and powered operation remain unqualified.',
+      regions:['F'],owners:[],facts:[['260','contacts accounted for'],['MC1 + MC2 + MC3','native sockets included'],['LDO J1 + J19','both mating pairs']],
+      noteLabel:'Direct XEM8305 · R2 update · 5 October 2026',note:'The routed CAD candidate has 3,508 tracks, 168 vias and two filled ground zones. Fresh checks on the extracted public project report zero ERC, DRC, opens and parity issues. All three connectors have documented dispositions; MC3 grounds are connected and its other contacts are explicitly reserved.',
       details:[
-        'XEM8310 contains an Artix UltraScale+ FPGA, GTY transceivers and FrontPanel USB. The project uses it in a controller role; it is not a conventional MCU. BRK8310 is a separate breakout board.',
-        'BRK J1 Bulls Eye exposes bank 226. BRK J6 is a PCIe computer card edge using banks 224/225. With all three µHDMI links active, J6 has no concurrent PCIe GTY path.',
-        'The initial data connection to the PC is XEM USB. The actual three-link gateware, sustained USB/host/storage rate, 12 V distribution and assembled connector fit remain unproven.',
-        'A1R2 shows the XEM8305 carrier with both mating pairs; J19 is mechanically included and electrically unassigned. Its assembly preview contains adapter E3, while the current separate-power-header adapter is E5. They remain distinct revisions.'
-      ],sources:[refs.brk,refs.xem,refs.models,refs.adapter3d,refs.open]
+        'The direct R2 native project includes all four schematic sheets, PCB, project settings and local libraries. The complete PDF and top/bottom native views match the same frozen revision.',
+        'MC1 has 100 contacts and MC2/MC3 each have 80. MC3 connects 28 DGND contacts and leaves 52 explicitly reserved/no-connect; a GTH link is not implemented.',
+        'The carrier 3D review shows actual native pads, board and surface copper with original nominal socket boxes. Manufacturer connector bodies and the assembled XEM/LDO stack are omitted from the public model.',
+        'ASIC limits and FPGA timing, source/load/thermal behavior, exact simultaneous seating, factory DFM, firmware and recording operation remain unqualified. Earlier A1R2/E5 cable and XEM8310 studies retain their dates.'
+      ],sources:[['Direct R2 native review, schematic and downloads','presentation/xem/direct-all-connectors-2026-10-05.html'],['Opal Kelly · XEM8305 expansion connectors','https://docs.opalkelly.com/xem8305/expansion-connectors/'],refs.open]
     }
   ];
   for(const slide of window.PRESENTATION_SLIDES){

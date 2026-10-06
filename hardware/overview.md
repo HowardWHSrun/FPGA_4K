@@ -1,5 +1,7 @@
 # Board and system overview
 
+**Current direct backup review · 5 October 2026:** [XEM8305 Direct R2](../presentation/xem/direct-all-connectors-2026-10-05.html) · [native project, four-page schematic and checks](../presentation/downloads/#xem8305-direct-r2). All three module sockets and 260 contacts are accounted for in a routed CAD candidate. Its fresh public ERC/DRC/opens/parity checks are zero; actual fit, power, ASIC timing, DFM and operation remain unqualified. The earlier board references and architecture below retain their original dates.
+
 [Native schematic browser](../presentation/schematic/?board=adapter) · [selected 25T circuit](../presentation/schematic/?board=fpga25t) · [R10 HDI feasibility and editable project](../hardware/xem8310-adapter/dated/2026-09-29/r10-hdi-feasibility/README.md). R10 connects all twelve selected GTY pairs and preserves all 160 MC1/MC2 contact paths, with 0 physical DRC violations under provisional HDI rules, 97 opens and 19 parity findings. It requires laser microvias and a qualified stackup; power/JTAG, returns, impedance, pair matching and fit remain incomplete. R9 remains the default viewer baseline, with R10 available as an optional study. Both board schematics can be browsed sheet by sheet and opened as PDFs.
 
 Use these views to recognize the supplied boards, locate the main components and open the corresponding design files. The collection contains chip-carrier and LDO/routing references; it does not yet contain a finalized full-4K FPGA board or complete assembly.

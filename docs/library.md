@@ -4,6 +4,8 @@
 
 ## Current reviews · 5 October 2026
 
+[Direct LDO + XEM8305 R2 · 5 October](../presentation/xem/direct-all-connectors-2026-10-05.html) includes all three XEM sockets, all 260 contact dispositions, routed intended nets, native top/bottom vectors and a rotatable carrier. The [complete KiCad project, four-page schematic and checks](../presentation/downloads/#xem8305-direct-r2) match this revision. Fresh extracted-project ERC/DRC/opens/parity are zero; exact fit, timing, power/load/thermal, factory DFM and operation remain unqualified. Earlier A1R2/E5 cable studies remain dated history.
+
 [Search the project Library](../presentation/library/) · [35T FPGA PCB R39](../presentation/fpga/current-35t.html) · [LDO routing adapter E5](../presentation/ldo-backup/current-e5.html) · [XEM8305 carrier A1R2](../presentation/xem/current-a1r2.html) · [bonding fixture V6](../presentation/library/bonding-fixture.html). These dated reviews record weekend progress and remaining checks. The 35T research board, earlier paused routing work and historical 25T placement retain separate status. The A1R2 assembly contains adapter E3; the E5 separate-power-header adapter and XEM8310 carrier power path are separate revisions.
 
 ## Small cabled routing board · 2 October

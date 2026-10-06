@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "revision": "XEM8305 Direct R2",
+  "date": "2026-10-05",
+  "status": "Routed native CAD review candidate; not a fabrication or operation release",
+  "source_pcb_sha256": "620a8e3594cc1f12ca0ecee225075fa286efd4f8bef65905304d8c92da503cce",
+  "public_package": {
+    "filename": "XEM8305_Direct_R2_Native_2026-10-05.zip",
+    "sha256": "eff6401e7ca90485d8b24f7f87177de92050b947d1d3863b339121e50a191b91",
+    "bytes": 295354,
+    "native_files": 18,
+    "schematic_sheets": 4,
+    "non_model_semantics_preserved": true,
+    "omitted_embedded_models": [
+      "ERF6-40-03_5-L-DV-A-K-TR.stp",
+      "ERF6-50-03_5-L-DV-A-K-TR.stp"
+    ]
+  },
+  "fresh_extracted_public_checks": {
+    "KiCad": "10.0.6",
+    "ERC_violations": 0,
+    "DRC_violations": 0,
+    "unconnected_items": 0,
+    "schematic_parity_issues": 0,
+    "ignored_checks": [],
+    "excluded_violations": 0,
+    "all_severities_included": true,
+    "all_track_errors_requested": true,
+    "zones_refilled_for_check": true,
+    "public_check_did_not_save_or_modify_board": true
+  },
+  "frozen_geometry": {
+    "tracks": 3508,
+    "vias": 168,
+    "zones": 2,
+    "footprints": 24,
+    "layers": [
+      "F.Cu signals",
+      "In1.Cu DGND reference plane",
+      "In2.Cu signals and DGND fill",
+      "B.Cu signals"
+    ]
+  },
+  "candidate_rule_floors_mm": {
+    "min_clearance": 0.15,
+    "min_connection": 0.15,
+    "min_copper_edge_clearance": 0.3,
+    "min_hole_clearance": 0.25,
+    "min_hole_to_hole": 0.25,
+    "min_silk_clearance": 0.1,
+    "min_text_thickness": 0.1,
+    "min_through_hole_diameter": 0.3,
+    "min_track_width": 0.15,
+    "min_via_annular_width": 0.1,
+    "min_via_diameter": 0.5,
+    "solder_mask_to_copper_clearance": 0.05
+  },
+  "independent_electrical_copper_audit": {
+    "electrical_checks_passed": 790,
+    "electrical_checks_failed": 0,
+    "copper_checks_passed": 86,
+    "copper_checks_failed": 0,
+    "electrical_source_receipt_sha256": "6f6cedf001e15b41eaf6160de6b70f4284553e44b8b7b9be584733db28f1708c",
+    "copper_source_receipt_sha256": "302c6c325a33c5c5036f789d929ef67c529c839bb1e0d56d509cef60ce673f69",
+    "actual_J1_to_MC1_paths_connected": 23,
+    "multi_pad_nets_connected": 32,
+    "scope": "Assigned nets and actual native copper graph; no current-rating, impedance, return-path or timing qualification"
+  },
+  "returned_clock_data_geometry": {
+    "D_1_to_D_8_length_range_mm": [
+      69.757,
+      79.765
+    ],
+    "CLKH_length_mm": 68.476,
+    "group_length_spread_mm": 11.29,
+    "vias_per_digital_net_range": [
+      1,
+      5
+    ],
+    "scope": "Summed native copper lengths, not propagation delays. The provisional <=100 ps delay spread is not demonstrated."
+  },
+  "power_review": {
+    "separate_inputs": [
+      "J3 XEM_VDCIN",
+      "J4 raw VIO 2.5 V +/-2%",
+      "J5 nominal original-LDO low-stage feed 3.3 V"
+    ],
+    "VCCO": "TPS7A2015PDBVR fixed nominal 1.5 V supplies all four module external banks; PG gates its EN and does not monitor ASIC rails",
+    "ADC_reference": "R3 connects SYSMON_VREFP to separate GNDADC; GNDADC is not merged with DGND",
+    "unqualified_planning_envelopes": {
+      "XEM": "12 V +/-5%; <=2 A provisional load, not an implemented trip",
+      "VIO": "1-150 mA aggregate and <=55 C local ambient; load/idle/peaks and thermal unverified",
+      "original_LDO_low_stages": "<=200 mA continuous / guaranteed <=250 mA peak; external hardware limiting/startup validation required"
+    },
+    "implemented_protection_limits": "No automatic powered-off bidirectional isolation, ASIC rail-valid/readiness monitor, ASIC current limiter, reverse/backfeed interlock or accepted stimulation/reset cutoff. Original high-stage supplies and AGND return require a separate accepted contract."
+  },
+  "all_connector_contact_audit": {
+    "contacts": 260,
+    "checks_passed": 616,
+    "checks_total": 616,
+    "all_passed": true,
+    "MC1_contacts": 100,
+    "MC2_contacts": 80,
+    "MC3_contacts": 80,
+    "MC3_DGND": 28,
+    "MC3_explicit_reserved_NC": 52,
+    "meaning_of_NC": "Reserved contacts are explicitly marked no-connect in the schematic; they are not unresolved intended routes."
+  },
+  "schematic": {
+    "filename": "XEM8305_Direct_R2_Schematic.pdf",
+    "pages": 4,
+    "sha256": "ad3e3e43612bde56d2d48368ed6193ce76f9795f93367868faecab73f4fdd160",
+    "visual_QA": "PASS on all four pages"
+  },
+  "model_policy": {
+    "manufacturer_ERF6_model_payloads_included": false,
+    "public_3D": "Native board/pads/outer copper plus five original nominal socket envelopes; remaining component bodies omitted; carrier only"
+  },
+  "remaining_qualification": [
+    "Simultaneous connector seating and actual populated fit",
+    "ASIC silicon electrical/data-valid/setup/hold limits and FPGA timing closure",
+    "Power source/load/current/thermal and sequencing verification",
+    "Signal integrity, return paths and controlled-impedance process",
+    "Factory stack-up/DFM and fabrication acceptance",
+    "Firmware, USB acquisition and powered operation"
+  ]
+}
