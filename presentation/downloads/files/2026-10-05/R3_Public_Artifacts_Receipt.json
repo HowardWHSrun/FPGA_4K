@@ -38,7 +38,10 @@
         "F.Silkscreen",
         "Edge.Cuts"
       ],
-      "mirrored": false
+      "mirrored": false,
+      "public_whitespace_normalized_derivative": true,
+      "original_native_export_bytes_preserved": false,
+      "native_coordinates_CSS_declarations_and_text_unchanged": true
     },
     {
       "file": "XEM8305_Direct_R3_Bottom.svg",
@@ -52,7 +55,10 @@
         "B.Silkscreen",
         "Edge.Cuts"
       ],
-      "mirrored": true
+      "mirrored": true,
+      "public_whitespace_normalized_derivative": true,
+      "original_native_export_bytes_preserved": false,
+      "native_coordinates_CSS_declarations_and_text_unchanged": true
     }
   ],
   "artifact_files": {
@@ -69,16 +75,20 @@
       "bytes": 257896
     },
     "XEM8305_Direct_R3_Top.svg": {
-      "sha256": "018de64abc44eef7569b722aeafa61f89d6bfd724564b0e7cc0762b66fdf49cb",
-      "bytes": 381413
+      "sha256": "2d09a77bed82b0b188aa9f506313ba73366181004f5557361eb7694bc32ede9f",
+      "bytes": 379918,
+      "public_whitespace_only_derivative": true,
+      "original_export_sha256": "018de64abc44eef7569b722aeafa61f89d6bfd724564b0e7cc0762b66fdf49cb"
     },
     "XEM8305_Direct_R3_Bottom.svg": {
-      "sha256": "928e57edfc5321fa308b488df57a26f4f8b8421e2458f23c2cef740a74ff2303",
-      "bytes": 162203
+      "sha256": "4cfb0726966120426f1ef074379796a6fd61d248f5a1b1cb2f10c2c30670772a",
+      "bytes": 161356,
+      "public_whitespace_only_derivative": true,
+      "original_export_sha256": "928e57edfc5321fa308b488df57a26f4f8b8421e2458f23c2cef740a74ff2303"
     },
     "R3_Public_Artifact_Notes.md": {
-      "sha256": "624e516ae770db647d3082da0d07bb973b8107b6c2bcc42ad21cf1b544c0c973",
-      "bytes": 1813
+      "sha256": "5e3bd2d735898550f3377d373f72f342835f5ff4047abc6a223238e8967dcb0f",
+      "bytes": 2066
     },
     "Public_Final_Extracted_DRC.json": {
       "sha256": "834a59f7bac0b495e3325a0a3a96c0d6fe326a611a7df96301a7d70d767608d8",
@@ -99,7 +109,59 @@
     "Schematic_Print_Copy_Adaptation.json": {
       "sha256": "01252c0b9a671a23b1f8ef71cb594200b8f7d9a123ea0d57cfb06daab826f07b",
       "bytes": 4217
+    },
+    "XEM8305_Direct_R3_260_Contacts.csv": {
+      "sha256": "a66927587cbbf3c6b036be45a0bacbb944fa471236e828841dc875f2e1b24bdf",
+      "bytes": 17805,
+      "public_whitespace_only_derivative": true,
+      "original_export_sha256": "b0492696b9f0a79896e5dfec74b0129e1466dc0cbcdf3fe360f92c2d9abca709"
     }
   },
-  "hardware_and_license_boundary": "Public model omissions preserve electrical/layout CAD; vendor STEP redistribution permission is not claimed. KiCad license and own nominal Murata box remain. Factory/process, simultaneous rigid mating and system operation remain unqualified. No owning source changes or website edits/push by this artifact task."
+  "hardware_and_license_boundary": "Public model omissions preserve electrical/layout CAD; vendor STEP redistribution permission is not claimed. KiCad license and own nominal Murata box remain. Factory/process, simultaneous rigid mating and system operation remain unqualified. No owning source changes or website edits/push by this artifact task.",
+  "public_whitespace_only_derivatives": {
+    "scope": "SVG trailing line whitespace and CSV CRLF line endings only; no native/PDF/Gerber/ZIP change. Public hashes bind normalized derivatives, not byte-identical original exports.",
+    "parsed_content_preserved": true,
+    "original_and_public_derivative_hashes": [
+      {
+        "file": "artifacts/XEM8305_Direct_R3_Top.svg",
+        "transformation": "Remove trailing ASCII space/tab before line terminators or EOF only",
+        "parsed_XML_element_tree_and_all_nonstyle_attributes_identical": true,
+        "parsed_CSS_declarations_order_and_values_exactly_identical": true,
+        "coordinates_and_display_text_exactly_identical": true,
+        "XML_style_string_spacing_changed_only": 145,
+        "style_spacing_note": "Trailing source whitespace on multiline style attributes changes only XML-normalized separator spacing; complete parsed CSS property/value/order sequences remain identical.",
+        "trailing_line_whitespace_instances_removed": 1495,
+        "original_sha256": "018de64abc44eef7569b722aeafa61f89d6bfd724564b0e7cc0762b66fdf49cb",
+        "public_normalized_derivative_sha256": "2d09a77bed82b0b188aa9f506313ba73366181004f5557361eb7694bc32ede9f",
+        "original_bytes": 381413,
+        "public_normalized_derivative_bytes": 379918
+      },
+      {
+        "file": "artifacts/XEM8305_Direct_R3_Bottom.svg",
+        "transformation": "Remove trailing ASCII space/tab before line terminators or EOF only",
+        "parsed_XML_element_tree_and_all_nonstyle_attributes_identical": true,
+        "parsed_CSS_declarations_order_and_values_exactly_identical": true,
+        "coordinates_and_display_text_exactly_identical": true,
+        "XML_style_string_spacing_changed_only": 42,
+        "style_spacing_note": "Trailing source whitespace on multiline style attributes changes only XML-normalized separator spacing; complete parsed CSS property/value/order sequences remain identical.",
+        "trailing_line_whitespace_instances_removed": 847,
+        "original_sha256": "928e57edfc5321fa308b488df57a26f4f8b8421e2458f23c2cef740a74ff2303",
+        "public_normalized_derivative_sha256": "4cfb0726966120426f1ef074379796a6fd61d248f5a1b1cb2f10c2c30670772a",
+        "original_bytes": 162203,
+        "public_normalized_derivative_bytes": 161356
+      },
+      {
+        "file": "artifacts/XEM8305_Direct_R3_260_Contacts.csv",
+        "transformation": "CRLF line endings to LF only",
+        "CSV_rows_and_field_values_exactly_identical": true,
+        "row_count_including_header": 261,
+        "CRLF_endings_replaced": 261,
+        "original_sha256": "b0492696b9f0a79896e5dfec74b0129e1466dc0cbcdf3fe360f92c2d9abca709",
+        "public_normalized_derivative_sha256": "a66927587cbbf3c6b036be45a0bacbb944fa471236e828841dc875f2e1b24bdf",
+        "original_bytes": 18066,
+        "public_normalized_derivative_bytes": 17805
+      }
+    ],
+    "verification_receipt": "verification/Public_Display_Whitespace_Normalization.json"
+  }
 }

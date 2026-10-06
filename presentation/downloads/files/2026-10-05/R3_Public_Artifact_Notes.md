@@ -7,3 +7,5 @@ The eight-page schematic PDF uses a separate print-only copy: root page enlarged
 Top and mirrored bottom SVGs are native selected-layer exports (outer copper, corresponding silkscreen and board outline); they omit inner layers and package bodies. Use the native project and fabrication Gerbers for full engineering content.
 
 Fresh extracted public native checks use all severities, all track errors, schematic parity and zone refill: ERC0/DRC0/unconnected0/parity0, ignoredchecks=[]. Physical simultaneous connector seating, factory process/DFM acceptance, timing/thermal/load and powered qualification remain open. MC3 retains28 ground and52 reserved NC contacts, with no high-speed functional-use claim.
+
+Public SVGs remove trailing line whitespace only, and the contact CSV uses LF line endings. Parsed drawing geometry/styles/text and all 260 contact rows match their original exports; original and derivative hashes are retained in the artifact receipt.
