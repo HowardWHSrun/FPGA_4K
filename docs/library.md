@@ -1,6 +1,6 @@
 # Project files and documents
 
-- [7 October weekly FPGA PCB and LDO presentation](../presentation/meetings/2026-10-07.html): source-based parts choices, native layouts/3D, downloadable slides and separate M1/LDO/carrier projects.
+- [7 October weekly FPGA PCB and LDO presentation](../presentation/meetings/2026-10-07.html): assembly-first review, J1/J19 views, Zitong’s component list, native layouts/3D and downloadable projects.
 
 [Current R39 project download](../presentation/downloads/#fpga35t-r39) includes the complete native hierarchy, rules, libraries and component models. [R37 is preserved separately](../presentation/fpga/review-r37-2026-10-04.html). R39 has applied pre-routing corrections and 1,413 connections awaiting copper; issued HDI construction and qualification remain incomplete.
 

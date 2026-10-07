@@ -1,0 +1,901 @@
+{
+  "revision": "R2 assembly first, with major updates on page 2",
+  "kind": "Native CAD visualization study. Nominal seating and fit remain unverified.",
+  "study": {
+    "kind": "visualization-only model study, not electrically altered or fabrication qualified",
+    "source_pcb": "XEM8305_LDO_Carrier_Connector_Foundation.kicad_pcb",
+    "source_sha256": "9b28824b1acb05182390577897a62f5ce9644f66c6a72cb872183e7076a5043f",
+    "original_ldo_pcb_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+    "assembled_pcb": "XEM8305_LDO_Carrier_Connector_Foundation.kicad_pcb",
+    "exploded_pcb": "Assembly_Exploded_Visual_Only.kicad_pcb",
+    "geometry": {
+      "LDO_native_transform": "x=source_x-52.3; y=84.2-source_y; z=-source_z-2; LDO flipped about X",
+      "J1_planar_center_residual_mm": 0,
+      "J19_planar_center_residual_mm": 0,
+      "XEM_native_transform": "x=vendor_v+101; y=vendor_u+26; z=vendor_z+8.2",
+      "nominal_module_mating_gap_mm": 5,
+      "nominal_ldo_mating_gap_mm": 2,
+      "exploded_visual_added_spacing_mm": 35,
+      "module_model_kicad_rotation_z_degrees": 90,
+      "module_model_native_glb_transform_verified": "Source KiCad model rotation convention uses +90 degrees to obtain x=vendor_v+101 and y=vendor_u+26."
+    },
+    "connector_envelopes": {
+      "DS50_mm": [
+        12.6,
+        3.38,
+        1.95
+      ],
+      "DS24_mm": [
+        7.4,
+        3.38,
+        1.95
+      ],
+      "DP50_mm": [
+        11.52,
+        2.97,
+        1.14
+      ],
+      "DP24_mm": [
+        6.32,
+        2.97,
+        1.14
+      ],
+      "meaning": "Supplier drawing outer envelopes only; no cavities, contacts, engagement, tolerances. Envelope overlap in assembled pose is not a physical collision check."
+    },
+    "qualification": [
+      "Native PCB thickness/model datum discrepancy remains; do not infer exact 5mm seated BREP clearance.",
+      "Original LDO generic header/regulator models reflect source CAD, installed population unverified.",
+      "Source LDO J19 footprint has 24 signal-pad positions plus four source end pads; the end-pad function/numbering requires confirmation.",
+      "No rail, interface, power-up, physical clearance or fabrication qualification."
+    ],
+    "models": [
+      {
+        "path": "models/DP24_Nominal_Envelope.step",
+        "sha256": "99fcbff39e53f7d90db2ccb1e296c004e19f4ed5841fd28ded962e061df07901",
+        "bytes": 15583
+      },
+      {
+        "path": "models/LDO_Native_Source.step",
+        "sha256": "fd5d57a6d55a75486369a7cdf69c28cfcf764caa7cf2a9165c2db781d73e935b",
+        "bytes": 22936032
+      },
+      {
+        "path": "models/DS50_Nominal_Envelope.step",
+        "sha256": "8376f074a852e9f806ac93f5b0b9cb7274ec8185bd3bf3764e2408f1fc63c206",
+        "bytes": 15531
+      },
+      {
+        "path": "models/DP50_Nominal_Envelope.step",
+        "sha256": "008d378ceef665c33dd7729d44f01e881236d764925f104f63691cd8872f0394",
+        "bytes": 15587
+      },
+      {
+        "path": "models/XEM8305_Official.step",
+        "sha256": "0da93f5624de23d671c20cbe4703904d300984273350cd30be9d544ab1248511",
+        "bytes": 100560106
+      },
+      {
+        "path": "models/DS24_Nominal_Envelope.step",
+        "sha256": "bdb39f8577d0293bf802b0e2849d501c5746b12d1d5cd8896cc4fc93073fed5f",
+        "bytes": 15527
+      }
+    ],
+    "connector_sources": {
+      "DS50": "https://www.hirose.com/en/product/p/CL0684-4091-0-51",
+      "DS24": "https://www.hirose.com/en/product/p/CL0684-4041-2-51",
+      "DP50": "https://www.hirose.com/en/product/p/CL0684-4014-0-51",
+      "DP24": "https://www.hirose.com/en/product/p/CL0684-4011-1-51",
+      "download_status": "Exact vendor STEP ZIP links listed publicly; fresh direct retrieval returned HTTP 403; retained nominal drawing-derived envelope dimensions used."
+    }
+  },
+  "composition": {
+    "date_local": "2026-10-07",
+    "output": "Assembly.glb",
+    "output_sha256": "5d161e3b674dd9c28771b4c3911ea51b299e0984eee1ce477e2d88e240c76284",
+    "bytes": 34856268,
+    "root_meter_Yup_matrix_columnmajor": [
+      0.001,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -0.001,
+      0,
+      0,
+      0.001,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "sources": [
+      {
+        "group": "Carrier",
+        "source": "desktop-carrier.glb",
+        "source_sha256": "767cd201deaeb8a6ed54d1e507fbc10dab16cf4c88f16b0154c8c1f46686079a",
+        "source_binary_geometry_sha256": "4576462dd592b91d7b0d0955775601874294b4a004c31a07117fe31bb28162c0",
+        "world_placement_matrix_columnmajor": [
+          1000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1000,
+          0,
+          0,
+          -1000,
+          0,
+          0,
+          -105,
+          105,
+          0,
+          1
+        ],
+        "source_node_count": 24,
+        "source_mesh_count": 17
+      },
+      {
+        "group": "LDO",
+        "source": "original-ldo.glb",
+        "source_sha256": "2f7369dab38ded1e934b2d3ebbc8b6a8cc7478379717b7ec15698c328d79d3e8",
+        "source_binary_geometry_sha256": "8d2282bdabeb16f64639afc8c8c742e18f77d4a5082b00db2cf335c3d99b91b2",
+        "world_placement_matrix_columnmajor": [
+          1000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1000,
+          0,
+          0,
+          1000,
+          0,
+          0,
+          -157.3,
+          20.8,
+          -2,
+          1
+        ],
+        "source_node_count": 235,
+        "source_mesh_count": 103
+      },
+      {
+        "group": "XEM8305",
+        "source": "XEM8305_Official_Registered_mm.glb",
+        "source_sha256": "f7478246eff4930e1d7273b9e743d6e53bc0d9a86ba7ec7e907ff8d3cb1f5af9",
+        "source_binary_geometry_sha256": "c51b4613d460a2527bff04cca2fff1b112e58a74cae691bb49adfe0fc4875240",
+        "world_placement_matrix_columnmajor": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "source_node_count": 439,
+        "source_mesh_count": 51
+      }
+    ],
+    "limits": "Visual assembly only; inherited nominal 8.2 mm module top and 2 mm lower spacing. Amber J1/J19 connector bodies are supplier-drawing outer envelopes without contacts, cavities or seating detail. Exact seating and populated fit remain unverified.",
+    "no_mesh_geometry_rewritten": true,
+    "no_original_CAD_changes": true,
+    "nominal_connector_envelopes": [
+      {
+        "key": "DS50",
+        "step_source": "DS50_Nominal_Envelope.step",
+        "source_sha256": "8376f074a852e9f806ac93f5b0b9cb7274ec8185bd3bf3764e2408f1fc63c206",
+        "source_STEP_bounds_mm": {
+          "min": [
+            -6.3,
+            -1.69,
+            0.0
+          ],
+          "max": [
+            6.3,
+            1.69,
+            1.95
+          ]
+        },
+        "carrierworld_bounds_mm": {
+          "min": [
+            19.55,
+            62.06,
+            -1.95
+          ],
+          "max": [
+            32.15,
+            65.44,
+            0.0
+          ]
+        },
+        "node_index": 702,
+        "material": "amber",
+        "triangle_count": 12
+      },
+      {
+        "key": "DS24",
+        "step_source": "DS24_Nominal_Envelope.step",
+        "source_sha256": "bdb39f8577d0293bf802b0e2849d501c5746b12d1d5cd8896cc4fc93073fed5f",
+        "source_STEP_bounds_mm": {
+          "min": [
+            -3.7,
+            -1.69,
+            0.0
+          ],
+          "max": [
+            3.7,
+            1.69,
+            1.95
+          ]
+        },
+        "carrierworld_bounds_mm": {
+          "min": [
+            16.3,
+            43.31,
+            -1.95
+          ],
+          "max": [
+            23.7,
+            46.69,
+            0.0
+          ]
+        },
+        "node_index": 703,
+        "material": "amber",
+        "triangle_count": 12
+      },
+      {
+        "key": "DP50",
+        "step_source": "DP50_Nominal_Envelope.step",
+        "source_sha256": "008d378ceef665c33dd7729d44f01e881236d764925f104f63691cd8872f0394",
+        "source_STEP_bounds_mm": {
+          "min": [
+            -5.76,
+            -1.485,
+            0.0
+          ],
+          "max": [
+            5.76,
+            1.485,
+            1.14
+          ]
+        },
+        "carrierworld_bounds_mm": {
+          "min": [
+            20.090000000000003,
+            62.265,
+            -2.0
+          ],
+          "max": [
+            31.61,
+            65.235,
+            -0.8600000000000001
+          ]
+        },
+        "node_index": 704,
+        "material": "amber",
+        "triangle_count": 12
+      },
+      {
+        "key": "DP24",
+        "step_source": "DP24_Nominal_Envelope.step",
+        "source_sha256": "99fcbff39e53f7d90db2ccb1e296c004e19f4ed5841fd28ded962e061df07901",
+        "source_STEP_bounds_mm": {
+          "min": [
+            -3.16,
+            -1.485,
+            0.0
+          ],
+          "max": [
+            3.16,
+            1.485,
+            1.14
+          ]
+        },
+        "carrierworld_bounds_mm": {
+          "min": [
+            16.84,
+            43.515,
+            -2.0
+          ],
+          "max": [
+            23.16,
+            46.485,
+            -0.8600000000000001
+          ]
+        },
+        "node_index": 705,
+        "material": "amber",
+        "triangle_count": 12
+      }
+    ]
+  },
+  "native_registration": {
+    "Assembly_Native_Study.glb": {
+      "mtime": 1791379144.7483518,
+      "nodes": [
+        {
+          "index": 3,
+          "name": "VIS_XEM8305",
+          "min_mm": [
+            -4.0000000000000036,
+            2.8200347999999984,
+            -79.15044251764068
+          ],
+          "max_mm": [
+            49.000000000000014,
+            14.230480000002428,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000002,
+            11.41044520000243,
+            83.15044251764068
+          ],
+          "center_mm": [
+            22.500000000000007,
+            8.525257400001214,
+            -37.57522125882034
+          ]
+        },
+        {
+          "index": 446,
+          "name": "Board:1",
+          "min_mm": [
+            -4.0000000000000036,
+            6.7011091600000015,
+            -79.0
+          ],
+          "max_mm": [
+            49.000000000000014,
+            8.195,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000002,
+            1.4938908399999995,
+            83.0
+          ],
+          "center_mm": [
+            22.500000000000007,
+            7.448054580000001,
+            -37.5
+          ]
+        },
+        {
+          "index": 447,
+          "name": "Open CASCADE STEP translator 7.5 1.1.1:1",
+          "min_mm": [
+            -4.0000000000000036,
+            6.7011091600000015,
+            -79.0
+          ],
+          "max_mm": [
+            49.000000000000014,
+            8.195,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000002,
+            1.4938908399999995,
+            83.0
+          ],
+          "center_mm": [
+            22.500000000000007,
+            7.448054580000001,
+            -37.5
+          ]
+        },
+        {
+          "index": 448,
+          "name": "MC2",
+          "min_mm": [
+            -2.449999999999992,
+            0.7749999999999984,
+            -34.707501
+          ],
+          "max_mm": [
+            0.5500000000000078,
+            5.3,
+            -4.587500999999995
+          ],
+          "size_mm": [
+            3.0,
+            4.525000000000001,
+            30.120000000000008
+          ],
+          "center_mm": [
+            -0.9499999999999921,
+            3.037499999999999,
+            -19.647501
+          ]
+        },
+        {
+          "index": 453,
+          "name": "MC1",
+          "min_mm": [
+            44.44999000000001,
+            0.7749999999999979,
+            -43.972221000000005
+          ],
+          "max_mm": [
+            47.449990000000014,
+            5.3,
+            -7.502221000000003
+          ],
+          "size_mm": [
+            3.0000000000000027,
+            4.525000000000002,
+            36.47
+          ],
+          "center_mm": [
+            45.94999000000001,
+            3.0374999999999988,
+            -25.737221000000005
+          ]
+        },
+        {
+          "index": 460,
+          "name": "MC3",
+          "min_mm": [
+            5.427500000000011,
+            0.7749999999999999,
+            -0.3999999999999967
+          ],
+          "max_mm": [
+            35.5475,
+            5.299999999999999,
+            2.6000000000000023
+          ],
+          "size_mm": [
+            30.119999999999994,
+            4.5249999999999995,
+            2.999999999999999
+          ],
+          "center_mm": [
+            20.487500000000004,
+            3.037499999999999,
+            1.100000000000003
+          ]
+        },
+        {
+          "index": 465,
+          "name": "VIS_LDO",
+          "min_mm": [
+            14.050000000000008,
+            -4.869999999999997,
+            -87.17499999999998
+          ],
+          "max_mm": [
+            32.350000000000044,
+            -0.6499999999999932,
+            -40.33994299999999
+          ],
+          "size_mm": [
+            18.30000000000004,
+            4.220000000000004,
+            46.835057
+          ],
+          "center_mm": [
+            23.200000000000028,
+            -2.7599999999999953,
+            -63.757471499999994
+          ]
+        },
+        {
+          "index": 701,
+          "name": "J1",
+          "min_mm": [
+            19.55,
+            -2.0349999999999997,
+            -65.44
+          ],
+          "max_mm": [
+            32.15000000000001,
+            -0.0849999999999998,
+            -62.06
+          ],
+          "size_mm": [
+            12.60000000000001,
+            1.9500000000000002,
+            3.379999999999994
+          ],
+          "center_mm": [
+            25.850000000000005,
+            -1.06,
+            -63.75
+          ]
+        },
+        {
+          "index": 703,
+          "name": "J19",
+          "min_mm": [
+            16.3,
+            -2.0349999999999997,
+            -46.69
+          ],
+          "max_mm": [
+            23.699999999999978,
+            -0.08499999999999978,
+            -43.31
+          ],
+          "size_mm": [
+            7.399999999999976,
+            1.9500000000000002,
+            3.379999999999994
+          ],
+          "center_mm": [
+            19.99999999999999,
+            -1.0599999999999998,
+            -45.0
+          ]
+        }
+      ]
+    },
+    "Assembly.glb": {
+      "mtime": 1791379003.019498,
+      "nodes": [
+        {
+          "index": 2,
+          "name": "MC2",
+          "min_mm": [
+            -2.449999999999992,
+            0.7749999999999984,
+            -34.707501
+          ],
+          "max_mm": [
+            0.5500000000000078,
+            5.3,
+            -4.587500999999995
+          ],
+          "size_mm": [
+            3.0,
+            4.525000000000001,
+            30.120000000000008
+          ],
+          "center_mm": [
+            -0.9499999999999921,
+            3.037499999999999,
+            -19.647501
+          ]
+        },
+        {
+          "index": 7,
+          "name": "MC1",
+          "min_mm": [
+            44.44999000000001,
+            0.7749999999999979,
+            -43.972221000000005
+          ],
+          "max_mm": [
+            47.449990000000014,
+            5.3,
+            -7.502221000000003
+          ],
+          "size_mm": [
+            3.0000000000000027,
+            4.525000000000002,
+            36.47
+          ],
+          "center_mm": [
+            45.94999000000001,
+            3.0374999999999988,
+            -25.737221000000005
+          ]
+        },
+        {
+          "index": 12,
+          "name": "MC3",
+          "min_mm": [
+            5.427500000000011,
+            0.7749999999999999,
+            -0.3999999999999967
+          ],
+          "max_mm": [
+            35.5475,
+            5.299999999999999,
+            2.6000000000000023
+          ],
+          "size_mm": [
+            30.119999999999994,
+            4.5249999999999995,
+            2.999999999999999
+          ],
+          "center_mm": [
+            20.487500000000004,
+            3.037499999999999,
+            1.100000000000003
+          ]
+        },
+        {
+          "index": 25,
+          "name": "Carrier_Source_Preserving_Assembly_Placement",
+          "min_mm": [
+            -3.99999999999999,
+            -0.07500000000000001,
+            -78.99999999999999
+          ],
+          "max_mm": [
+            49.0,
+            5.3,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            52.99999999999999,
+            5.375,
+            82.99999999999999
+          ],
+          "center_mm": [
+            22.500000000000007,
+            2.6125,
+            -37.49999999999999
+          ]
+        },
+        {
+          "index": 261,
+          "name": "LDO_Source_Preserving_Assembly_Placement",
+          "min_mm": [
+            14.04999999999998,
+            -4.865,
+            -87.175
+          ],
+          "max_mm": [
+            32.34999999999999,
+            -0.6450000000000002,
+            -40.339943000000005
+          ],
+          "size_mm": [
+            18.30000000000001,
+            4.22,
+            46.835057
+          ],
+          "center_mm": [
+            23.199999999999985,
+            -2.7550000000000003,
+            -63.757471499999994
+          ]
+        },
+        {
+          "index": 699,
+          "name": "Board:1",
+          "min_mm": [
+            -4.000000000000004,
+            6.70610916,
+            -79.0
+          ],
+          "max_mm": [
+            49.0,
+            8.20000004153839,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000001,
+            1.4938908815383904,
+            83.0
+          ],
+          "center_mm": [
+            22.5,
+            7.453054600769194,
+            -37.5
+          ]
+        },
+        {
+          "index": 700,
+          "name": "Open CASCADE STEP translator 7.5 1.1.1:1",
+          "min_mm": [
+            -4.000000000000004,
+            6.70610916,
+            -79.0
+          ],
+          "max_mm": [
+            49.0,
+            8.20000004153839,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000001,
+            1.4938908815383904,
+            83.0
+          ],
+          "center_mm": [
+            22.5,
+            7.453054600769194,
+            -37.5
+          ]
+        },
+        {
+          "index": 701,
+          "name": "XEM8305_Source_Preserving_Assembly_Placement",
+          "min_mm": [
+            -4.000000000000004,
+            2.825034895367428,
+            -79.1504423796057
+          ],
+          "max_mm": [
+            49.0,
+            14.235480114440916,
+            4.0000000000000036
+          ],
+          "size_mm": [
+            53.00000000000001,
+            11.41044521907349,
+            83.1504423796057
+          ],
+          "center_mm": [
+            22.5,
+            8.530257504904172,
+            -37.57522118980285
+          ]
+        },
+        {
+          "index": 702,
+          "name": "J1 DS50 Nominal Envelope",
+          "min_mm": [
+            19.55,
+            -1.95,
+            -65.44
+          ],
+          "max_mm": [
+            32.15,
+            0.0,
+            -62.06
+          ],
+          "size_mm": [
+            12.599999999999996,
+            1.95,
+            3.379999999999994
+          ],
+          "center_mm": [
+            25.849999999999998,
+            -0.975,
+            -63.75
+          ]
+        },
+        {
+          "index": 703,
+          "name": "J19 DS24 Nominal Envelope",
+          "min_mm": [
+            16.3,
+            -1.95,
+            -46.69
+          ],
+          "max_mm": [
+            23.7,
+            0.0,
+            -43.31
+          ],
+          "size_mm": [
+            7.399999999999997,
+            1.95,
+            3.379999999999994
+          ],
+          "center_mm": [
+            20.0,
+            -0.975,
+            -45.0
+          ]
+        },
+        {
+          "index": 704,
+          "name": "J1 DP50 Nominal Envelope",
+          "min_mm": [
+            20.090000000000003,
+            -2.0,
+            -65.235
+          ],
+          "max_mm": [
+            31.61,
+            -0.8600000000000001,
+            -62.265
+          ],
+          "size_mm": [
+            11.519999999999996,
+            1.14,
+            2.9700000000000006
+          ],
+          "center_mm": [
+            25.85,
+            -1.4300000000000002,
+            -63.75
+          ]
+        },
+        {
+          "index": 705,
+          "name": "J19 DP24 Nominal Envelope",
+          "min_mm": [
+            16.84,
+            -2.0,
+            -46.485
+          ],
+          "max_mm": [
+            23.16,
+            -0.8600000000000001,
+            -43.515
+          ],
+          "size_mm": [
+            6.319999999999999,
+            1.14,
+            2.9700000000000006
+          ],
+          "center_mm": [
+            20.0,
+            -1.4300000000000002,
+            -45.0
+          ]
+        }
+      ]
+    }
+  },
+  "image_derivation": "Native KiCad exploded render and native SVG footprint details; transparent margins cropped only. Board labels are editable slide text.",
+  "model_sources": [
+    "https://www.opalkelly.com/products/models/",
+    "https://docs.opalkelly.com/xem8305/expansion-connectors/",
+    "https://www.hirose.com/en/product/p/CL0684-4011-1-58"
+  ],
+  "public_package_sha256": "838b0e178fca4a34429baec9dc7f9b008af04a52db356152c620e5f6632f54d0",
+  "clean_render": {
+    "frozen_native_study_sha256": "709b96f3eca8dde776fe58cc3427f70fa1b2d2b2dbd3f1d70cc1239666c385ba",
+    "pcb": "2026-10-07_FPGA_Work/01_Weekly_Meeting/revisions/R2_Assembly_First/visuals/study/Assembly_Exploded_Visual_Only.kicad_pcb",
+    "geometry_changed": false,
+    "camera": {
+      "rotate": [
+        290,
+        0,
+        0
+      ],
+      "zoom": 0.42,
+      "requested_dimensions": [
+        2400,
+        2200
+      ]
+    },
+    "render": "KiCad native basic quality, transparent background, no floor flag; camera/bottom1, top0.7, side0.8",
+    "purpose": "Remove floor/shadow artifacts while preserving same35mm explodedstudy placement.",
+    "output": "2026-10-07_FPGA_Work/01_Weekly_Meeting/revisions/R2_Assembly_First/visuals/Assembly_3D.png",
+    "sha256": "46b781a24c1c677b1db84aa9d26a1c0686964a6de508addf15617a219f49e26c",
+    "dimensions": [
+      2384,
+      2184
+    ],
+    "alpha_bounds": [
+      907,
+      478,
+      1477,
+      1487
+    ],
+    "opaque_bounds_alpha128": [
+      907,
+      478,
+      1477,
+      1487
+    ],
+    "frozen_native_study_sha256_after": "709b96f3eca8dde776fe58cc3427f70fa1b2d2b2dbd3f1d70cc1239666c385ba",
+    "visual_qa": "PASS: all3boards visible and unclipped, no floor/shadow blocks, transparent background; native geometry unchanged."
+  },
+  "image_crop": {
+    "box_pixels": [
+      877,
+      448,
+      1507,
+      1517
+    ],
+    "source_sha256": "46b781a24c1c677b1db84aa9d26a1c0686964a6de508addf15617a219f49e26c",
+    "output_sha256": "d3627039fae432f5b815e3b123897f2a91c3d5de94b9a1a43fb1deb78d4d1263",
+    "meaning": "Transparent margin crop only. Native geometry unchanged."
+  }
+}

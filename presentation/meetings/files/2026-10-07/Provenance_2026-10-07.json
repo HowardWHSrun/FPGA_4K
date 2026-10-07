@@ -106,16 +106,37 @@
   "geometry_limits": [
     "M1 outline is 41 × 41 mm from Edge.Cuts centerlines; the older README 40 × 40 mm claim is stale.",
     "M1 contains nominal AX3/NVT and inherited model envelopes; 28 test/jumper footprints lack body models.",
-    "Carrier/LDO Hirose J1/J19 housings are unavailable and absent. Carrier XEM Samtec socket bodies are native embedded models.",
-    "Original LDO render includes generic source header bodies; installed population is unverified."
+    "Original LDO render includes generic source header bodies; installed population is unverified.",
+    "The original standalone carrier/LDO source exports omit Hirose J1/J19 housings. The new assembly study adds separately documented model geometry and nominal seating; it does not qualify a populated fit.",
+    "The assembly uses the received two-layer Desktop carrier, not the separate four-layer Step 8 baseline. Original electrical PCB source files are retained."
   ],
-  "derivation": "Board layouts are native KiCad SVG exports rasterized to PNG. 3D PNG/GLB come from KiCad 10.0.6 native render/export. The original Zitong slide is a faithful LibreOffice PDF/PNG render. The new PPTX keeps editable text and native tables with board-export images. The PDF prints the browser slides.",
+  "derivation": "Original board images are native KiCad exports. The new assembly combines the received carrier and original LDO geometry with the official XEM8305 model and documented connector geometry. The assembly study is for 3D visualization, with nominal seating explicitly recorded. Editable slides follow the original Zitong component order; technical review comments remain in speaker notes. The PDF prints the browser slides.",
   "packaging": "Native PCB/SCH/PRO bytes preserved. Public README replaced for corrected measured size and privacy. Local library lookup repaired in carrier/LDO snapshots. Hidden histories/cache/settings, private chat/audio and manufacturing outputs omitted.",
   "published_files": [
     {
       "path": "presentation/meetings/assets/2026-10-07/Zitong_Original_Slide_1.png",
       "bytes": 291850,
       "sha256": "d2c19c72075aae96c8325074428b14e92309606a289da01e42efb6d640bc5c96"
+    },
+    {
+      "path": "presentation/meetings/assets/2026-10-07/assembly/Assembly.glb",
+      "bytes": 34856268,
+      "sha256": "5d161e3b674dd9c28771b4c3911ea51b299e0984eee1ce477e2d88e240c76284"
+    },
+    {
+      "path": "presentation/meetings/assets/2026-10-07/assembly/Assembly_3D.png",
+      "bytes": 88435,
+      "sha256": "d3627039fae432f5b815e3b123897f2a91c3d5de94b9a1a43fb1deb78d4d1263"
+    },
+    {
+      "path": "presentation/meetings/assets/2026-10-07/assembly/J19_Closeup.png",
+      "bytes": 30304,
+      "sha256": "77f714ce6ecd3cd443e22ced5c10cad22adc1b0b6eea91e07ab64c5b378c7975"
+    },
+    {
+      "path": "presentation/meetings/assets/2026-10-07/assembly/J1_Closeup.png",
+      "bytes": 38343,
+      "sha256": "d5a351a8da37ea50d2fcbb5734eeca0b055530e51130bfe54096b6623f05d34f"
     },
     {
       "path": "presentation/meetings/assets/2026-10-07/fpga/M1.glb",
@@ -173,6 +194,16 @@
       "sha256": "84e65229b32cee7c8afc451d3ec453ff474fc32e8c25e758e5abe177b42e6cc1"
     },
     {
+      "path": "presentation/meetings/files/2026-10-07/Assembly_Visual_Provenance.json",
+      "bytes": 23348,
+      "sha256": "82bd20804aabc3c9fe3f008bab43b39d6dbae15a59eb97e5a90c776705e6fa84"
+    },
+    {
+      "path": "presentation/meetings/files/2026-10-07/Assembly_Visual_Study_KiCad.zip",
+      "bytes": 20423825,
+      "sha256": "838b0e178fca4a34429baec9dc7f9b008af04a52db356152c620e5f6632f54d0"
+    },
+    {
       "path": "presentation/meetings/files/2026-10-07/Board_Howard_KiCad.zip",
       "bytes": 1953160,
       "sha256": "222bfb335b3a97d09860ace28fa4d5bdc62deb13efeada0e52182c940f1a20d3"
@@ -204,23 +235,26 @@
     },
     {
       "path": "presentation/meetings/files/2026-10-07/Slide_Content_2026-10-07.json",
-      "bytes": 14773,
-      "sha256": "0dcb43e1f4948ef73c2920b3105c1533d1bdeff77bec984f9121295b07997d03"
+      "bytes": 13254,
+      "sha256": "c51dc69ffbba73cbd1e736484df40c5941699af870f76fb674819c81d8b60ba0"
     },
     {
       "path": "presentation/meetings/files/2026-10-07/Weekly_FPGA_LDO_Update_2026-10-07.pdf",
-      "bytes": 4456700,
-      "sha256": "3b03613a0ddbf30a03725945f9df76cbefe8938e6fe9d9c6fc5f1d20a524e25d"
+      "bytes": 4028254,
+      "sha256": "9d7a94096856e05a67b8682454d7efc553835cba3d5f42b7b061800c1f6f21c0"
     },
     {
       "path": "presentation/meetings/files/2026-10-07/Weekly_FPGA_LDO_Update_2026-10-07.pptx",
-      "bytes": 4890176,
-      "sha256": "55d19481194bf84ef0dd6f61938d388b98631719eca59bdb49ebfee5ac822baa"
+      "bytes": 4215698,
+      "sha256": "dde02127392c56148c7e44da2a5c5f7eb548400de19e6d640145ed97d3b953e8"
     },
     {
       "path": "presentation/meetings/files/2026-10-07/Zitong_1007_Original.pptx",
       "bytes": 97898,
       "sha256": "2b967d58cbe929603f64835da169a6c8073ae7bfeaf4f4ae2ef93072a76a710d"
     }
-  ]
+  ],
+  "presentation_revision": "R2 assembly first: eleven simplified slides",
+  "slide_count": 11,
+  "assembly_visual_provenance": "Assembly_Visual_Provenance.json"
 }

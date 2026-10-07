@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**Weekly meeting · 7 October:** [FPGA PCB and LDO presentation](presentation/meetings/2026-10-07.html) · [PowerPoint, PDF and complete KiCad projects](presentation/meetings/2026-10-07.html#files). Howard and Zitong’s parts update, actual M1 and LDO layouts/3D, and the received carrier draft. M1 measures 41 × 41 mm and remains unrouted. The changed Desktop carrier needs review; it is separate from the applied Step 8 baseline.
+**Weekly meeting · 7 October:** [FPGA PCB and LDO presentation](presentation/meetings/2026-10-07.html) · [PowerPoint, PDF and complete KiCad projects](presentation/meetings/2026-10-07.html#files). Opens with the XEM8305/carrier/LDO assembly and J1/J19 views, followed by Zitong’s original component list and current PCB layouts. Connector seating and hardware qualification remain open.
 
 **Current direct carrier · 5 October:** [XEM8305 R3 files and review](presentation/xem/direct-all-connectors-2026-10-05.html) · [all files, Gerbers, KiCad and eight-sheet schematic](presentation/downloads/#xem8305-direct-r3). One six-layer carrier, all 260 XEM contacts accounted for. Native/ERC/DRC/opens/parity and actual CAM checks pass. Factory approval, assembly sourcing/placement/process and first-board fit/power/ASIC tests remain pending. [Earlier R2](presentation/xem/direct-r2-2026-10-05.html) is preserved.
 

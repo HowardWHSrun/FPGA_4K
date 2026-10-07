@@ -1,189 +1,84 @@
 [
   {
     "id": "opening",
-    "title": "FPGA PCB and LDO update",
-    "subtitle": "Wednesday, 7 October 2026",
-    "type": "cover",
-    "body": [
-      "Howard Wang and Zitong",
-      "Main 35T component choices, compact PCB candidate and direct LDO carrier"
+    "title": "XEM8305, carrier and LDO",
+    "subtitle": "7 October 2026 · Howard Wang and Zitong",
+    "type": "model",
+    "model": "assembly/Assembly.glb",
+    "images": [
+      {
+        "path": "assembly/Assembly_3D.png",
+        "caption": "Exploded CAD view of XEM8305, received carrier and current LDO"
+      }
     ],
-    "foot": "Design review. Routing and hardware qualification remain in progress.",
-    "notes": "I am presenting our FPGA component and PCB progress together with the LDO carrier work. The main update is a simpler 35T candidate and a clearer routing approach. The board images come from the actual native projects. We still need routing, timing, power and physical verification before operating the system.",
+    "foot": "Exploded preview; open 3D for the connected view. Connector envelopes and seating are nominal.",
+    "notes": "Begin with the complete intended physical arrangement: XEM8305 on the received Board_Howard carrier, with the existing original LDO mated to the carrier through J1 and J19. The source PCB and supplier module geometry are assembled for visualization. The carrier remains a draft; this view is not an operating-hardware photograph or a completed fit test. The next slide identifies both connector pairs. The static preview is exploded for visibility. Its separation is for presentation only; the rotatable model shows the nominal assembled position. The source J1/J19 housing geometry is represented by drawing-based outer envelopes, not detailed contact/cavity models.",
     "sources": [
-      "Zitong’s 7 October component proposal",
-      "6 October M1 candidate and LDO carrier reviews"
+      "Board_Howard native carrier",
+      "Original LDO native PCB",
+      "Official Opal Kelly XEM8305 mechanical model",
+      "https://www.opalkelly.com/products/models/",
+      "https://docs.opalkelly.com/xem8305/expansion-connectors/"
+    ],
+    "labels": [
+      {
+        "text": "XEM8305",
+        "y": 0.2
+      },
+      {
+        "text": "Carrier board",
+        "y": 0.6
+      },
+      {
+        "text": "Current LDO",
+        "y": 0.87
+      }
     ]
   },
   {
-    "id": "board-list",
-    "title": "Current board list",
-    "type": "table",
-    "columns": [
-      "Board",
-      "Latest material",
-      "Engineering status"
-    ],
-    "rows": [
-      [
-        "Custom 35T FPGA",
-        "M1, 41 × 41 mm, 287 parts",
-        "Two-sheet circuit and placement. PCB unrouted."
-      ],
-      [
-        "Existing ASIC LDO",
-        "Original nine-regulator board",
-        "23 direct digital paths. Actual rails and fitted assembly need verification."
-      ],
-      [
-        "Direct XEM8305 carrier",
-        "New Board_Howard Desktop package",
-        "Received draft: 59 DRC findings, 20 assigned opens."
-      ],
-      [
-        "Earlier references",
-        "R39 main PCB and carrier Step 8",
-        "Preserved separately for comparison."
-      ]
-    ],
-    "notes": "These are separate boards and revisions. M1 is the latest custom-FPGA prototype candidate. The existing LDO remains the source board. The Desktop carrier is the newest received layout, and we compare it with yesterday’s connector-foundation snapshot. None of these labels imply a fabricated or tested system.",
+    "id": "major-updates",
+    "title": "Major updates on 10/7",
+    "type": "updates",
+    "notes": "The material list is complete. Howard and Zitong are working toward a final schematic and placement; the custom FPGA PCB has not started routing. The alternative method connects the existing LDO directly to the XEM8305 FPGA module through the carrier. Its schematic and routing are in progress and dimensions need confirmation. Next week’s proposed work is to close schematic/placement review and mechanical dimensions, then begin the FPGA routing work. These are current work items and a plan, not a fabrication or operation claim.",
     "sources": [
-      "M1 START_HERE and native project",
-      "Original LDO native schematic",
-      "Board_Howard source package"
+      "Howard’s 7 October meeting-update wording",
+      "Current M1 and received carrier native sources"
+    ],
+    "blocks": [
+      {
+        "heading": "1. FPGA PCB update",
+        "detail": "Material list complete. Finalizing schematic and layout; routing has not started."
+      },
+      {
+        "heading": "2. Alternative method: LDO → XEM8305 module",
+        "detail": "Working on schematic and routing; confirming dimensions."
+      },
+      {
+        "heading": "3. Moving forward",
+        "detail": "Next week: finish design review, confirm connector fit and dimensions, then begin FPGA routing."
+      }
     ]
   },
   {
-    "id": "parts",
-    "title": "Zitong’s FPGA component list",
-    "type": "table",
-    "columns": [
-      "Function",
-      "Exact part",
-      "M1 choice"
-    ],
-    "rows": [
-      [
-        "FPGA",
-        "XC7A35T-2CSG325I",
-        "Keep"
-      ],
-      [
-        "125 MHz LVDS clock",
-        "AX3DCF1-125.0000T3",
-        "Adopt on 1.8 V"
-      ],
-      [
-        "Clock splitter",
-        "LMK1D2102LRGTR",
-        "Omit provisionally"
-      ],
-      [
-        "128 Mbit boot flash",
-        "IS25WP128F-JKLE",
-        "Adopt on 1.8 V, SPI x1"
-      ],
-      [
-        "Flash translator",
-        "NVT4858HKZ",
-        "Adopt, boot validation open"
-      ]
-    ],
-    "foot": "Zitong reports 150 user I/O and four GTP lanes. The stated 122-unit stock is a dated report, not a current purchasing check.",
-    "notes": "Zitong’s original slide proposes these five parts. M1 retains the selected 35T and adopts the clock, flash and translator. It does not fit the proposed LMK splitter yet. The deck’s stock number is a reported value only. The 128 Mbit flash capacity is 16 MB.",
-    "sources": [
-      "Zitong_1007 (1).pptx, slide 1",
-      "M1 clock and flash implementation reviews"
-    ]
-  },
-  {
-    "id": "clock-flash",
-    "title": "Clock and boot decisions",
-    "type": "text",
-    "body": [
-      "The selected oscillator is 125 MHz LVDS at 1.8 V. M1 keeps the AC-coupling pair and uses a supplier-derived land pattern.",
-      "M1 omits the LMK splitter while the GTP ODIV2 fabric-clock path awaits Vivado verification.",
-      "The original slide asks for better than ±20 ppm but lists a ±25 ppm oscillator. That requirement still needs reconciliation.",
-      "The 1.8 V flash crosses the 1.5 V FPGA configuration interface through NVT4858. SPI x1 boot and brownout behavior need testing."
-    ],
-    "notes": "The oscillator fits the reference-clock interface as a prototype selection. Its quoted 186 fs jitter was characterized at 3.3 V, so it does not settle the 1.8 V clock qualification. We need to verify the internal fabric-clock route and resolve the ppm mismatch. NVT4858 comes from an SD/SDIO application, and the implemented SPI adaptation still requires physical boot checks. RMS phase jitter also does not verify the slide’s peak-to-peak cycle-to-cycle jitter requirement. The proposed LMK exact-part hyperlink differs from the typed suffix and needs checking if later fitted.",
-    "sources": [
-      "Zitong slide 1",
-      "M1 Zitong_Clock_Implementation.md",
-      "M1 Zitong_Flash_Implementation.md"
-    ]
-  },
-  {
-    "id": "main-layout",
-    "title": "M1 FPGA PCB in KiCad",
+    "id": "ldo-connectors",
+    "title": "J1 and J19 connections",
     "type": "gallery",
     "images": [
       {
-        "path": "fpga/M1_Top.png",
-        "caption": "Top copper, pads, silkscreen and outline"
+        "path": "assembly/J1_Closeup.png",
+        "caption": "J1 · native carrier connector footprint"
       },
       {
-        "path": "fpga/M1_Bottom.png",
-        "caption": "Underside with four grouped floating connectors"
+        "path": "assembly/J19_Closeup.png",
+        "caption": "J19 · native carrier connector footprint"
       }
     ],
-    "foot": "Measured outline 41 × 41 mm. 287 parts. Zero routed tracks, vias or planes. 1,091 PCB connections await copper.",
-    "notes": "The board size stays at 41 by 41 millimeters. We have removed parts and regrouped clock and flash support, but freed placement space does not automatically make the board smaller. The four floating mezzanine connectors remain on the bottom. This is the actual M1 PCB, with expected unrouted connections. The earlier README lists 40 × 40 mm, but fresh native centerline geometry measures 41 × 41 mm. Use the measured outline here. The CLI lists only 499 of the 1,091 actual pending PCB connections.",
+    "foot": "Carrier J1 and J19 mate with matching LDO connectors. J19 has no assigned source nets.",
+    "notes": "Show the LDO and carrier sides of each connector pair. J1 provides the defined LDO circuit interface. J19 remains a required physical mating point even though its source contacts are electrically unassigned. The native pad positions register in plan; final connector seating and board clearance are still to be confirmed against populated hardware and supplier mechanical data. The original J19 has 24 signal-pad positions and four additional numbered end pads. The end-pad function and numbering remain to be confirmed; 28 CAD pads should not be described as 28 electrical connector contacts.",
     "sources": [
-      "FPGA35T_M1.kicad_pcb",
-      "M1 native validation and snapshot manifest"
-    ]
-  },
-  {
-    "id": "main-3d",
-    "title": "M1 FPGA board in 3D",
-    "type": "model",
-    "model": "fpga/M1.glb",
-    "images": [
-      {
-        "path": "fpga/M1_3D.png",
-        "caption": "Native KiCad 3D export of the M1 candidate"
-      }
-    ],
-    "foot": "Nominal AX3 and NVT4858 bodies show placement envelopes. Physical mating and clearance remain unqualified.",
-    "notes": "Rotate the model to show the component side and the four bottom connector locations. The geometry comes from the native PCB. Some bodies are explicitly labeled nominal envelopes, including the new oscillator and translator. This model supports review of placement and side, but cannot establish a populated fit result.",
-    "sources": [
-      "M1 native 3D export",
-      "M1 3D model provenance"
-    ]
-  },
-  {
-    "id": "direct-interface",
-    "title": "Simpler ASIC connections",
-    "type": "text",
-    "body": [
-      "M1 removes all 15 ASIC bus buffers and 56 parts overall. The component count falls from 343 to 287.",
-      "The original same-ASIC LDO and ECP5 reference circuits connect their digital signals directly.",
-      "M1 retains the outgoing 33 Ω damping arrays, passive defaults, boot holds and stimulation permission logic.",
-      "Removing buffers also removes their powered-off isolation. Controlled power sequencing and interface qualification remain necessary."
-    ],
-    "foot": "All 116 ASIC paths pass independent connectivity checks. Twenty-two receive-default arrays remain fitted.",
-    "notes": "The references support trying direct nominal 1.5 V signaling. Recording returns remain individual wires. Shared outgoing controls can have heavier loads as we scale to eight ASICs. We should add a targeted driver only where load or edge evidence supports it. We have not removed the 22 receive-default arrays or replaced them with a verified firmware policy. Native ERC, physical DRC and parity are zero, with PCB routing still open.",
-    "sources": [
-      "M1 independent connectivity verification",
-      "6 October same-ASIC LDO/ECP5 comparison"
-    ]
-  },
-  {
-    "id": "gerald-guidance",
-    "title": "Gerald’s board-design guidance",
-    "type": "text",
-    "body": [
-      "Place repeated circuits clearly, following signal flow and short local power loops.",
-      "Match total clock/data timing within each related I/O group. Shorten detours before tuning.",
-      "Keep continuous ground references and deliberate return connections at layer changes. Place bypass capacitors at their ICs.",
-      "Use manufacturable FPGA escapes. Gerald’s 1–2, 1–3 and 1–4 blind-via spans need a fabricator-approved construction.",
-      "Keep necessary functions in a compact placement, with bottom mezzanine connectors and a clear overall schematic."
-    ],
-    "notes": "The October 6 feedback highlighted routing quality, regular placement and unmatched delays. The earlier directions also call for power-distribution checks, practical blind-via escapes, compact placement and bottom connectors. Our engineering application is to review the full signal and return path, not only visual symmetry. A factory stackup and guaranteed ASIC timing still need evidence.",
-    "sources": [
-      "6 October recorded Gerald feedback and routing plan",
-      "4 October recorded routing directions"
+      "Original LDO and received carrier connector footprints",
+      "Hirose DF40C connector mechanical references",
+      "https://www.hirose.com/en/product/p/CL0684-4011-1-58"
     ]
   },
   {
@@ -200,7 +95,7 @@
         "caption": "Native KiCad 3D view"
       }
     ],
-    "foot": "Nine regulator/reference stages. J1/J19 housing models are absent. J19 has no assigned nets. Installed population remains unverified.",
+    "foot": "Nine regulator stages · 23 direct digital paths · rail and power-order checks remain open.",
     "notes": "This is Gerald’s existing LDO design. Its 23 digital signals pass directly between the connectors. The rail intents include separate nominal 1.5 V domains, 1.6 V, 0.75 V and two high-stage circuits. The high-stage sign and reference must stay explicit. All nine LDO power-good outputs are unused in the saved circuit, so a raw-input monitor does not establish that every ASIC rail is ready. Actual fitted parts, currents, return bonding and power order remain to be checked.",
     "sources": [
       "Original LDO PCB and schematic",
@@ -210,7 +105,7 @@
   },
   {
     "id": "carrier-layout",
-    "title": "Received direct-carrier layout",
+    "title": "Current carrier PCB",
     "type": "gallery",
     "images": [
       {
@@ -222,7 +117,7 @@
         "caption": "New Desktop carrier, underside layout"
       }
     ],
-    "foot": "Board_Howard draft: 38 DRC errors, 21 dangling-track warnings and 20 assigned open connections. Compare with saved Step 8.",
+    "foot": "Received routing draft · 20 assigned open connections · power/startup circuit pending.",
     "notes": "The new Desktop package contains the connector-foundation carrier. Show where the LDO and XEM sockets sit and how the recording bus runs between them. Do not call this a complete powered carrier. The older R3 and R5 circuits remain different revisions, and the R3 manufacturing hold remains in place. The received board uses two copper layers and has no ground plane. The saved Step 8 uses four copper layers and a dedicated In1.Cu DGND plane.",
     "sources": [
       "Board_Howard.zip and native Desktop project",
@@ -230,81 +125,103 @@
     ]
   },
   {
-    "id": "carrier-3d",
-    "title": "Received carrier in 3D",
-    "type": "model",
-    "model": "ldo/Carrier.glb",
-    "images": [
-      {
-        "path": "ldo/Carrier_3D.png",
-        "caption": "Native carrier 3D view"
-      }
-    ],
-    "foot": "Native preview includes the Samtec XEM sockets. Hirose J1/J19 housings are missing. Seating and assembled fit remain open.",
-    "notes": "Rotate the new received carrier to show the LDO-side and XEM-side mating locations. This is a PCB preview, not a mechanically qualified assembled XEM/LDO stack. The native snapshots preserve both the Desktop source and yesterday’s baseline so the changed layout can be reviewed in KiCad.",
-    "sources": [
-      "Board_Howard native PCB and 3D export provenance"
-    ]
-  },
-  {
-    "id": "carrier-status",
-    "title": "Carrier routing status",
-    "type": "table",
-    "foot": "Step 8 returned data/clock geometry: 48.547–63.830 mm, 15.283 mm spread. This measurement belongs to the saved baseline.",
-    "notes": "The new Desktop draft has changed copper and needs review before replacing the applied Step 8 baseline. Fresh native checks report 59 native DRC findings: 38 errors and 21 dangling-track warnings, 20 assigned unconnected items and 204 parity warnings. The same parity total does not mean every entry is the same. Step 8’s 234 unassigned contacts were checked independently, and its 204 parity warnings remain recorded. Neither set of checks establishes complete timing or a powered carrier. The 15.283 mm spread describes only the saved baseline and has no accepted skew threshold.",
-    "sources": [
-      "6 October Step 8 native and independent checks",
-      "7 October Desktop comparison"
-    ],
-    "columns": [
-      "Native check",
-      "Applied Step 8 baseline",
-      "New Desktop draft"
-    ],
-    "rows": [
-      [
-        "Physical DRC findings",
-        "0",
-        "38 errors + 21 warnings"
-      ],
-      [
-        "Assigned open connections",
-        "0",
-        "20"
-      ],
-      [
-        "Parity warnings",
-        "204",
-        "204"
-      ],
-      [
-        "Timing acceptance",
-        "Open",
-        "Open"
-      ],
-      [
-        "Power / startup circuit",
-        "Pending",
-        "Pending"
-      ]
-    ]
-  },
-  {
-    "id": "next",
-    "title": "Next review decisions",
+    "id": "zitong-fpga-leds",
+    "title": "Zitong’s FPGA and LEDs",
     "type": "text",
     "body": [
-      "Confirm the FPGA clock path, oscillator tolerance and SPI boot behavior for the selected parts.",
-      "Review the compact placement and carrier routing with Gerald, then route against an explicit timing and return-path plan.",
-      "Close ASIC pad limits, per-rail loads, power order and shared-control loading before operating the direct interface.",
-      "Check simultaneous connector mating, actual component bodies and the manufacturer’s stackup before fabrication.",
-      "Build the matched FPGA/host workflow and test one ASIC before assessing eight-chip operation."
+      "XC7A35T-2CSG325I: four GTP lanes and 150 user I/Os.",
+      "Eight ASICs need 117 user I/Os; four chips can stimulate.",
+      "Two LEDs: power and FPGA DONE, in different colors."
     ],
-    "notes": "Our next concrete review should use the native two-sheet FPGA drawing and the new carrier PCB. The requirements that still need ASIC-side evidence are pad levels, recording data-valid timing, rail currents and power-loss behavior. The fabrication stackup and mechanical seating need supplier or physical evidence. The one-chip XEM path is the first integration step, with eight-chip scaling following verified results.",
+    "notes": "Zitong's source calls XC7A35T-2CSG325I the final FPGA decision. Its requirements are XC7A series, at least two GTP lanes, more than 120 user I/Os, more than 100 units in stock, authorized AMD distributors and the smallest suitable package. It reports 122 units at JLCPCB and says packages smaller than 15 × 15 mm do not provide enough I/Os for this design. These are Zitong's dated selection claims, rather than current purchasing verification. M1 retains this FPGA and both indicators. The eight-chip statement describes the intended system, rather than demonstrated operation.",
     "sources": [
-      "M1 remaining operation gates",
-      "ASIC_REFERENCE U01–U09",
-      "Carrier manufacturing hold and routing plan"
+      "Zitong_1007_Original.pptx, slide 1: FPGA + Package and LEDs"
+    ],
+    "foot": "Selected FPGA and LEDs from Zitong’s 7 October list."
+  },
+  {
+    "id": "zitong-reference-clock",
+    "title": "Zitong’s reference clock",
+    "type": "text",
+    "body": [
+      "AX3DCF1-125.0000T3: 125 MHz, 1.8 V LVDS oscillator.",
+      "100 nF external AC-coupling capacitors.",
+      "LMK1D2102LRGTR: split the clock to MGTREFCLK and MRCC."
+    ],
+    "notes": "This slide preserves Zitong's proposed clock list and order. The source says Jiaao confirmed that one oscillator can serve the FPGA and GTP clock domains. The oscillator is described as 3.2 × 2.5 mm, ±25 ppm and 186 fs RMS phase jitter typical. The splitter is described as 1:2 LVDS, 1.8 V, up to 2 GHz and VQFN-16 at 3 × 3 mm. Review comments belong here: the source asks for better than ±20 ppm while listing ±25 ppm, and RMS phase jitter does not establish its <10 ps peak-to-peak cycle-to-cycle jitter request. The reported oscillator characterization uses 3.3 V rather than M1's selected 1.8 V. The typed LMK1D2102LRGTR suffix differs from the source's linked LMK1D2102RGTR. M1 adopts the oscillator and AC coupling, but provisionally omits the LMK while the GTP ODIV2 fabric-clock route awaits Vivado verification. Listing the LMK here records Zitong's proposal, rather than claiming it is fitted in M1.",
+    "sources": [
+      "Zitong_1007_Original.pptx, slide 1: Reference clock"
+    ],
+    "foot": "Component proposal from Zitong’s original 7 October list."
+  },
+  {
+    "id": "zitong-flash",
+    "title": "Zitong’s flash and level translation",
+    "type": "text",
+    "body": [
+      "IS25WP128F-JKLE: 128 Mbit SPI NOR flash, 6 × 5 mm.",
+      "NVT4858HKZ: FPGA 1.5 V to flash 1.8 V translation.",
+      "Programming path: MCU → JTAG → FPGA → SPI → Flash."
+    ],
+    "notes": "This slide preserves Zitong's flash section and programming workflow. Its requirements are small size, a single SPI interface, Vivado recognition and Artix-7 support. The source gives the ISSI flash a 1.65–1.95 V supply and up to 166 MHz operation. It gives the NXP translator 1.08–1.95 V A-side, 1.65–3.6 V B-side, up to 208 MHz and XQFN-16 at 2.6 × 1.8 mm. Reported inventory and future distributor arrival dates are dated source claims and stay out of the slide body. The source explicitly says NVT4858 was designed for SD/SDIO and that FPGA boot/configuration behavior still needs validation. M1 adopts these exact parts with SPI x1, adapted idle biases and separate boot holds. Physical boot and brownout behavior remain open. The displayed programming path is the source's intended workflow, rather than a completed software demonstration.",
+    "sources": [
+      "Zitong_1007_Original.pptx, slide 1: Flash"
+    ],
+    "foot": "Component proposal from Zitong’s original 7 October list."
+  },
+  {
+    "id": "main-layout",
+    "title": "Current FPGA PCB",
+    "type": "gallery",
+    "images": [
+      {
+        "path": "fpga/M1_Top.png",
+        "caption": "Component side"
+      },
+      {
+        "path": "fpga/M1_Bottom.png",
+        "caption": "Underside · four mezzanine connectors"
+      }
+    ],
+    "foot": "41 × 41 mm · 287 parts · 1,091 connections await routing.",
+    "notes": "The board size stays at 41 by 41 millimeters. We have removed parts and regrouped clock and flash support, but freed placement space does not automatically make the board smaller. The four floating mezzanine connectors remain on the bottom. This is the actual M1 PCB, with expected unrouted connections. The earlier README lists 40 × 40 mm, but fresh native centerline geometry measures 41 × 41 mm. Use the measured outline here. The CLI lists only 499 of the 1,091 actual pending PCB connections.",
+    "sources": [
+      "FPGA35T_M1.kicad_pcb",
+      "M1 native validation and snapshot manifest"
     ]
+  },
+  {
+    "id": "main-3d",
+    "title": "Current FPGA board in 3D",
+    "type": "model",
+    "model": "fpga/M1.glb",
+    "images": [
+      {
+        "path": "fpga/M1_3D.png",
+        "caption": "Native KiCad 3D export of the M1 candidate"
+      }
+    ],
+    "foot": "Native KiCad model. Oscillator and translator bodies are nominal envelopes.",
+    "notes": "Rotate the model to show the component side and the four bottom connector locations. The geometry comes from the native PCB. Some bodies are explicitly labeled nominal envelopes, including the new oscillator and translator. This model supports review of placement and side, but cannot establish a populated fit result.",
+    "sources": [
+      "M1 native 3D export",
+      "M1 3D model provenance"
+    ]
+  },
+  {
+    "id": "gerald-guidance",
+    "title": "Gerald’s board-design guidance",
+    "type": "text",
+    "body": [
+      "Keep related clock and data paths short and matched.",
+      "Place bypass capacitors close to ICs and keep continuous ground returns.",
+      "Use compact, regular placement and manufacturer-approved FPGA escapes."
+    ],
+    "notes": "The October 6 feedback highlighted routing quality, regular placement and unmatched delays. The earlier directions also call for power-distribution checks, practical blind-via escapes, compact placement and bottom connectors. Our engineering application is to review the full signal and return path, not only visual symmetry. A factory stackup and guaranteed ASIC timing still need evidence. Our next concrete review should use the native two-sheet FPGA drawing and the new carrier PCB. The requirements that still need ASIC-side evidence are pad levels, recording data-valid timing, rail currents and power-loss behavior. The fabrication stackup and mechanical seating need supplier or physical evidence. The one-chip XEM path is the first integration step, with eight-chip scaling following verified results.",
+    "sources": [
+      "6 October recorded Gerald feedback and routing plan",
+      "4 October recorded routing directions"
+    ],
+    "foot": "Next: clock and boot checks, carrier routing, and assembled connector fit."
   }
 ]
