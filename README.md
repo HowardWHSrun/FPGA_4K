@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**Current LDO carrier · C4.8-R4 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r4). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
+**Current LDO carrier · C4.8-R5 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r5). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
 
 **Weekly meeting · 7 October:** [FPGA PCB and LDO presentation](presentation/meetings/2026-10-07.html) · [PowerPoint, PDF and complete KiCad projects](presentation/meetings/2026-10-07.html#files). Opens with the XEM8305/carrier/LDO assembly and J1/J19 views, followed by Zitong’s original component list and current PCB layouts. Connector seating and hardware qualification remain open.
 

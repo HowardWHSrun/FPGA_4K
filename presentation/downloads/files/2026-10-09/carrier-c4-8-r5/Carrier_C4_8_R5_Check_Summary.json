@@ -1,0 +1,92 @@
+{
+  "revision": "C4.8-R5",
+  "date": "2026-10-09",
+  "source_pcb_sha256": "a26d5b67a5cbc5c3e4e6b16d28f7e0fba73bdf0f8ddd29d4a6af205f580d3cf2",
+  "status": "Routing review; not a fabrication release",
+  "fabrication_release": false,
+  "changes": [
+    "TP21 removed from schematic and PCB",
+    "J1/J19 supplier-model transforms retained; restricted 3D bodies omitted from public package"
+  ],
+  "board": {
+    "outline_centerline_mm": [
+      53,
+      83
+    ],
+    "copper_layers": 4,
+    "footprints": 27,
+    "pads": 407,
+    "track_segments": 379,
+    "vias": 171,
+    "unrouted": 0
+  },
+  "power_connections": {
+    "XEM_main_input": "12 V barrel J4.1 to VDCIN and MC1 91/93/95/97/99",
+    "LDO_ASIC_input": "Carrier U10/L14 3.3 V converter through JP1 to J1.1/J1.2 LDO_3V3",
+    "XEM_IO_banks": "Module MC2.75/.77/.79 1.8 V output to bank VCCO pins; no local 1.8 V converter"
+  },
+  "connectors": {
+    "J1": "DF40C(2.0)-50DS-0.4V(51)",
+    "J19": "DF40C(2.0)-24DS-0.4V(51)",
+    "mated_board_spacing_mm": 2.0,
+    "supplier_model_files_publicly_included": false
+  },
+  "native_PCB_check": {
+    "date": "2026-10-09T10:33:32",
+    "kicad_version": "10.0.6",
+    "violations": 0,
+    "unconnected_items": 0,
+    "schematic_parity": 0,
+    "ignored_checks": [
+      {
+        "description": "Footprint has no courtyard defined",
+        "key": "missing_courtyard"
+      },
+      {
+        "description": "Track endpoint not centered on via",
+        "key": "track_not_centered_on_via"
+      },
+      {
+        "description": "Tuning profile track geometries",
+        "key": "tuning_profile_track_geometries"
+      },
+      {
+        "description": "Footprint doesn't match symbol's footprint filters",
+        "key": "footprint_filters_mismatch"
+      },
+      {
+        "description": "Footprint component type doesn't match footprint pads",
+        "key": "footprint_type_mismatch"
+      }
+    ],
+    "report": "Carrier_C4_8_R5_DRC.json"
+  },
+  "inherited_schematic_ERC": {
+    "errors_unused_contacts": 214,
+    "warnings_off_grid": 13,
+    "re_run_for_this_publication": false
+  },
+  "cam": {
+    "gerber_layers": 11,
+    "drill_files": 2,
+    "plated_holes": 178,
+    "nonplated_holes": 6,
+    "source_edit": null
+  },
+  "open_review": [
+    "Schematic ERC cleanup",
+    "Electrical power, startup, load, thermal and timing qualification",
+    "Signal/power integrity and assembled mechanical fit",
+    "Fabricator stackup, DFM and manufacturing release"
+  ],
+  "archives": {
+    "Carrier_C4_8_R5_KiCad_Public.zip": {
+      "bytes": 209711,
+      "sha256": "91d0c15531b820b94e92bbcb2efb7d680b0c82862746aa08079a2deb3ec9b476"
+    },
+    "Carrier_C4_8_R5_Gerbers.zip": {
+      "bytes": 105395,
+      "sha256": "19498981da3c899f63c087bbb530aa1719bf6cf0122fa070b060601d62f24ae8"
+    }
+  }
+}
