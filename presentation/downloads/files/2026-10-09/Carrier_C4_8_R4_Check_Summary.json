@@ -1,0 +1,103 @@
+{
+  "revision": "C4.8-R4",
+  "design_date": "2026-10-08",
+  "export_publication_date": "2026-10-09",
+  "status": "Routing review revision; not a fabrication release.",
+  "fabrication_release": false,
+  "source_pcb_sha256": "ac7dd0c9bd0ba2be19fcc2c04cfb4026a67434b36835d43b3acdce32c8e4b020",
+  "board": {
+    "outline_centerline_mm": [
+      53,
+      83
+    ],
+    "copper_layers": 4,
+    "footprints": 28,
+    "pads": 408,
+    "track_segments": 379,
+    "vias": 171,
+    "nets": 251,
+    "unrouted": 0
+  },
+  "layer_order": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "B.Cu"
+  ],
+  "ground_planes": {
+    "In1.Cu": "DGND reference, no foreign-net tracks",
+    "In2.Cu": "DGND reference with retained BUCK_3V3 sense trace"
+  },
+  "recorded_native_check": {
+    "date": "2026-10-08T22:10:06",
+    "kicad_version": "10.0.6",
+    "violations": 0,
+    "unconnected_items": 0,
+    "schematic_parity": 0,
+    "ignored_checks": [
+      {
+        "description": "Footprint has no courtyard defined",
+        "key": "missing_courtyard"
+      },
+      {
+        "description": "Track endpoint not centered on via",
+        "key": "track_not_centered_on_via"
+      },
+      {
+        "description": "Tuning profile track geometries",
+        "key": "tuning_profile_track_geometries"
+      },
+      {
+        "description": "Footprint doesn't match symbol's footprint filters",
+        "key": "footprint_filters_mismatch"
+      },
+      {
+        "description": "Footprint component type doesn't match footprint pads",
+        "key": "footprint_type_mismatch"
+      }
+    ],
+    "report": "Carrier_C4_8_R4_DRC.json",
+    "fresh_ERC_run_for_export": false
+  },
+  "recorded_schematic_ERC": {
+    "unused_contact_errors": 214,
+    "off_grid_warnings": 13,
+    "note": "Inherited findings recorded in the routing-review guide; unresolved and not re-run for export."
+  },
+  "independent_interface_graph": {
+    "connected_signal_nets": 23,
+    "total_signal_nets": 23,
+    "dead_branches": 0,
+    "note": "Recorded R4 graph audit; connectivity is not timing or signal-integrity qualification."
+  },
+  "cam": {
+    "gerber_layers": 11,
+    "drill_files": 2,
+    "plated_holes": 179,
+    "nonplated_holes": 6,
+    "audit": "Carrier_C4_8_R4_CAM_Audit.json",
+    "export_only_edit": "The inherited PCB title revision R3 is corrected to R4 only in the export source; other PCB bytes match."
+  },
+  "public_native_package": {
+    "verification": "Carrier_C4_8_R4_Public_Package_Verification.json",
+    "changes": "Two named embedded Samtec STEP model payloads omitted; matching model URIs made project-relative. All non-model native semantics retained.",
+    "local_complete_zip_preserved": true,
+    "source_title_revision": "C4.8-R3 (inherited; source PCB hash identifies R4)"
+  },
+  "open_review": [
+    "Schematic ERC cleanup",
+    "Electrical power, startup and timing qualification",
+    "Signal/power integrity and assembled mechanical fit",
+    "Fabricator stackup, DFM and manufacturing release"
+  ],
+  "archives": {
+    "Carrier_C4_8_R4_KiCad_Public.zip": {
+      "bytes": 214407,
+      "sha256": "836b80ec9fe9cc715e22562937d65667eb3a24771e9c0745027966e38d752c90"
+    },
+    "Carrier_Board_Gerbers.zip": {
+      "bytes": 106873,
+      "sha256": "42e01e9ed1d2c035207930d06876292610b8ae04c52761f4df21d8cd2923c6c2"
+    }
+  }
+}

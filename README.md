@@ -1,8 +1,10 @@
 # FPGA_4K
 
+**Current LDO carrier · C4.8-R4 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r4). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
+
 **Weekly meeting · 7 October:** [FPGA PCB and LDO presentation](presentation/meetings/2026-10-07.html) · [PowerPoint, PDF and complete KiCad projects](presentation/meetings/2026-10-07.html#files). Opens with the XEM8305/carrier/LDO assembly and J1/J19 views, followed by Zitong’s original component list and current PCB layouts. Connector seating and hardware qualification remain open.
 
-**Current direct carrier · 5 October:** [XEM8305 R3 files and review](presentation/xem/direct-all-connectors-2026-10-05.html) · [all files, Gerbers, KiCad and eight-sheet schematic](presentation/downloads/#xem8305-direct-r3). One six-layer carrier, all 260 XEM contacts accounted for. Native/ERC/DRC/opens/parity and actual CAM checks pass. Factory approval, assembly sourcing/placement/process and first-board fit/power/ASIC tests remain pending. [Earlier R2](presentation/xem/direct-r2-2026-10-05.html) is preserved.
+**Preserved direct carrier · 5 October:** [XEM8305 R3 files and review](presentation/xem/direct-all-connectors-2026-10-05.html) · [all files, Gerbers, KiCad and eight-sheet schematic](presentation/downloads/#xem8305-direct-r3). One six-layer carrier, all 260 XEM contacts accounted for. Native/ERC/DRC/opens/parity and actual CAM checks pass. Factory approval, assembly sourcing/placement/process and first-board fit/power/ASIC tests remain pending. [Earlier R2](presentation/xem/direct-r2-2026-10-05.html) is preserved.
 
 **Preserved cabled backup review · 2 October:** [Small routing board 3D](presentation/ldo-backup/?view=routing) · [connection to the existing LDO](presentation/ldo-backup/?view=connection). XEM8305 connects by cable. The 18 × 25 mm preview is provisional; the shared SpikeGadgets board dimensions and cable connector/pinout remain unverified. This cabled study retains its original date and limits; the current direct R3 project is linked above.
 

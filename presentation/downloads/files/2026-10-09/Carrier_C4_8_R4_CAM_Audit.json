@@ -1,0 +1,64 @@
+{
+  "revision": "C4.8-R4",
+  "audit_date": "2026-10-09",
+  "status": "export_completeness_verified",
+  "fabrication_release": false,
+  "scope": "File identity, layer and revision metadata, outline closure, drill coverage, archive integrity. No electrical, CAM manufacturing, DFM, or fabrication approval implied.",
+  "source_identity": {
+    "canonical_pcb_sha256": "ac7dd0c9bd0ba2be19fcc2c04cfb4026a67434b36835d43b3acdce32c8e4b020",
+    "packaged_pcb_sha256": "ac7dd0c9bd0ba2be19fcc2c04cfb4026a67434b36835d43b3acdce32c8e4b020",
+    "export_only_pcb_sha256": "37bc8e59ab3ed1576ca92f85f97bf55ab3c6e496f82c2a5bbca3555a2f391576",
+    "canonical_and_packaged_match_expected": true,
+    "export_only_change_is_single_R3_to_R4_title_revision": true
+  },
+  "gerbers": {
+    "count": 11,
+    "all_files_present_mm_units_and_valid_end": true,
+    "all_header_revisions_R4": true,
+    "job_revision": "C4.8-R4",
+    "copper_layers": [
+      "Copper,L1,Top",
+      "Copper,L2,Inr",
+      "Copper,L3,Inr",
+      "Copper,L4,Bot"
+    ],
+    "outline": {
+      "width_mm": 53.0,
+      "height_mm": 83.0,
+      "single_closed_rectangle": true
+    }
+  },
+  "drills": {
+    "via_count": 171,
+    "coordinate_tolerance_mm_per_axis": 0.000501,
+    "PTH": {
+      "source_count": 179,
+      "drill_count": 179,
+      "diameter_counts": {
+        "0.2": 20,
+        "0.3": 151,
+        "1.0": 5,
+        "1.6": 3
+      },
+      "one_to_one_within_native_precision": true,
+      "max_center_rounding_mm": 0.000279
+    },
+    "NPTH": {
+      "source_count": 6,
+      "drill_count": 6,
+      "diameter_counts": {
+        "1.2": 6
+      },
+      "one_to_one_within_native_precision": true,
+      "max_center_rounding_mm": 0.0005001
+    }
+  },
+  "archive": {
+    "filename": "Carrier_Board_Gerbers.zip",
+    "sha256": "42e01e9ed1d2c035207930d06876292610b8ae04c52761f4df21d8cd2923c6c2",
+    "member_count": 19,
+    "crc_ok": true,
+    "all_members_match_final_directory": true,
+    "manifest_entries_match_files": true
+  }
+}

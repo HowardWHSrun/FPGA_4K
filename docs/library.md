@@ -1,5 +1,7 @@
 # Project files and documents
 
+- [Current XEM8305 / LDO carrier C4.8-R4 · 9 October](../presentation/downloads/#carrier-c4-8-r4): editable KiCad, four-layer Gerbers and drills, routing views and check summary. The 53 × 83 mm routing review has zero saved-board DRC, opens and parity findings; inherited schematic ERC cleanup and qualification remain open. Not a fabrication release.
+
 - [7 October weekly FPGA PCB and LDO presentation](../presentation/meetings/2026-10-07.html): eight-slide weekly update, Zitong’s complete list, interactive native schematics/layouts/3D and downloadable projects.
 
 [Current R39 project download](../presentation/downloads/#fpga35t-r39) includes the complete native hierarchy, rules, libraries and component models. [R37 is preserved separately](../presentation/fpga/review-r37-2026-10-04.html). R39 has applied pre-routing corrections and 1,413 connections awaiting copper; issued HDI construction and qualification remain incomplete.
