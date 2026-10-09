@@ -1,6 +1,6 @@
 # Board and system overview
 
-**Current XEM8305/LDO carrier · R11 (9 October):** [Six-layer interactive routing, 3D, schematic and checks](../presentation/xem/carrier-r11-2026-10-09.html). The overview carrier selection opens the current 53 × 83 mm board. This is a routed review candidate; EEPROM programming and hardware qualification remain open. Earlier carrier studies below retain their original scope.
+**Current XEM8305/LDO carrier · R12 (9 October):** [Six-layer interactive routing, 3D, schematic and checks](../presentation/xem/carrier-r12-2026-10-09.html). The overview carrier selection opens the current 53 × 83 mm board. This is a routed review candidate; EEPROM programming and hardware qualification remain open. Earlier carrier studies below retain their original scope.
 
 **Current direct carrier · 5 October:** [XEM8305 R3](../presentation/xem/direct-all-connectors-2026-10-05.html) · [matching files and checks](../presentation/downloads/#xem8305-direct-r3). One six-layer prototype design. Native and CAM checks pass; factory, assembly and system qualification remain pending. [Earlier R2](../presentation/xem/direct-r2-2026-10-05.html) is preserved.
 

@@ -1,0 +1,84 @@
+{
+  "revision": "R12",
+  "date": "2026-10-09",
+  "fabrication_release": false,
+  "source_pcb": "CARRIER_XEM8305_R12_LDO_Clearance.kicad_pcb",
+  "source_pcb_sha256": "7080ee9740a6ef007f2263a29c9db14506117d780382839fcd4e2ccd93943d2f",
+  "board": {
+    "size_mm": [
+      53,
+      83
+    ],
+    "copper_layers": 6,
+    "footprints": 81,
+    "fitted_component_bodies": 75,
+    "bare_features": [
+      "MH1",
+      "MH2",
+      "MH3",
+      "MH4",
+      "TP19",
+      "TP20"
+    ],
+    "segments": 602,
+    "vias": 213
+  },
+  "native_pcb_checks": {
+    "violations": 0,
+    "unconnected_items": 0,
+    "schematic_parity_findings": 0,
+    "retained_ignored_categories": [
+      "missing_courtyard",
+      "track_not_centered_on_via",
+      "tuning_profile_track_geometries",
+      "footprint_filters_mismatch",
+      "footprint_type_mismatch"
+    ]
+  },
+  "schematic_erc": {
+    "inherited_findings": 223,
+    "unused_connector_pins": 210,
+    "off_grid": 13
+  },
+  "native_brk8305_jtag_comparison": {
+    "fitted_positions": 50,
+    "connected_groups": 49,
+    "pcb_pads": 197,
+    "restored": [
+      "C522 100 nF shield bypass",
+      "FB503 220 ohm at 100 MHz shield filter",
+      "C528 100 nF target 1.8 V bypass"
+    ],
+    "intentional_part_adaptations": [
+      "USB4110-GF-A edge-facing socket replaces USB4120-03-C",
+      "Blank 93LC56B-E/MS replaces programmed CFG001"
+    ]
+  },
+  "qualification_open": [
+    "EEPROM provisioning and Vivado hardware validation",
+    "Powered operation and rail/load/thermal checks",
+    "Signal timing and SI/PI",
+    "Assembled connector fit and clearances",
+    "Factory and assembly qualification"
+  ],
+  "publication": "R12 review visuals and schematic. Prior R11 assets and earlier R5 four-layer CAD/Gerbers preserved. No R12 fabrication release.",
+  "ldo_clearance_revision": {
+    "D4_before_mm": [
+      136.8,
+      37.4,
+      90
+    ],
+    "D4_after_mm": [
+      142.5,
+      37,
+      0
+    ],
+    "nominal_body_side_gap_mm": 2.5,
+    "nominal_connector_board_gap_mm": 2,
+    "other_80_footprints": "unchanged",
+    "all_pad_nets": "unchanged",
+    "all_23_ASIC_signal_routes": "unchanged",
+    "JP1_and_J4": "Outside native registered LDO outline; positions unchanged",
+    "fit_status": "Geometric overlap removed. Exact fitted parts, orientation and assembly tolerances still need physical confirmation."
+  }
+}

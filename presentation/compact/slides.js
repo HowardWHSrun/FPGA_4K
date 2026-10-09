@@ -75,16 +75,16 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · XEM8305 / LDO carrier',title:'XEM8305 / LDO carrier',subtitle:'Current R11 · 9 October 2026',
-      description:'R11 keeps the original 53 × 83 mm board and clean ASIC signal bundles. The six-layer carrier has underside J1/J19 sockets, an edge-facing 12 V input and lower USB-C JTAG. Open Routing to inspect all six layers, drag to pan and scroll to zoom. Rotate 3D shows all 75 fitted component bodies.',
-      regions:['F'],owners:[],facts:[['R11','current carrier'],['6','copper layers'],['75','component bodies']],
+      id:'receiver',section:'05 · XEM8305 / LDO carrier',title:'XEM8305 / LDO carrier',subtitle:'Current R12 · 9 October 2026',
+      description:'R12 moves D4 beside the aligned LDO board to clear its mating space, keeping the 53 × 83 mm board and ASIC signal bundles. The six-layer carrier has underside J1/J19 sockets, an edge-facing 12 V input and lower USB-C JTAG. Open Routing to inspect all six layers, drag to pan and scroll to zoom. Rotate 3D shows all 75 fitted component bodies.',
+      regions:['F'],owners:[],facts:[['R12','current carrier'],['6','copper layers'],['75','component bodies']],
       noteLabel:'BRK8305-derived USB-C JTAG',note:'The native BRK8305 KiCad reference was checked component by component. C522, FB503 and C528 are restored; the horizontal USB socket is retained. EEPROM programming and hardware qualification remain open.',
       details:[
-        'The current R11 viewer includes native copper-layer toggles, filled-zone visibility and net highlighting, plus a rotatable board with all fitted component bodies represented. Package models are simplified where needed; mounting rings and test pads remain intentionally bare.',
+        'The current R12 viewer includes native copper-layer toggles, filled-zone visibility and net highlighting, plus a rotatable board with all fitted component bodies represented. Package models are simplified where needed; mounting rings and test pads remain intentionally bare.',
         'Two DGND reference planes and separate signal/power layers support the retained R10 ASIC routing. All original component positions and the 53 × 83 mm form factor are preserved.',
         'Native PCB checks report zero violations, opens and schematic parity findings under retained settings. This is a static design review, not evidence of powered operation, timing, assembled fit or manufacturing approval.',
-        'Earlier R5 downloads and the A1R2/R3/XEM8310 studies retain their own dates and status; their fabrication files do not describe R11.'
-      ],sources:[['Current R11 interactive routing, 3D and schematic','presentation/xem/carrier-r11-2026-10-09.html'],['R11 visual files and checks','presentation/downloads/#carrier-c4-8-r11'],refs.open]
+        'Earlier R5 downloads and the A1R2/R3/XEM8310 studies retain their own dates and status; their fabrication files do not describe R12.'
+      ],sources:[['Current R12 interactive routing, 3D and schematic','presentation/xem/carrier-r12-2026-10-09.html'],['R12 visual files and checks','presentation/downloads/#carrier-c4-8-r12'],refs.open]
     }
   ];
   for(const slide of window.PRESENTATION_SLIDES){

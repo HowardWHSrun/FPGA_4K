@@ -10,7 +10,7 @@
   const reviews={
     fpga:{url:'presentation/fpga/current-35t.html',title:'Current XC7A35T R39 board review',caption:'XC7A35T · R39 · 5 October 2026',status:'Pre-routing corrections applied · routing incomplete'},
     routing:{url:'presentation/ldo-backup/current-e5.html',title:'Current LDO routing adapter E5 review',caption:'LDO routing adapter · E5 · 4 October 2026',status:'Separate locking power header · qualification pending'},
-    receiver:{url:'presentation/xem/carrier-r11-2026-10-09.html',title:'Current XEM8305 / LDO carrier R11 · interactive routing and 3D',caption:'XEM8305 / LDO carrier · R11 · 9 October 2026',status:'Six routing layers · drag, zoom and rotate · hardware qualification pending'}
+    receiver:{url:'presentation/xem/carrier-r12-2026-10-09.html',title:'Current XEM8305 / LDO carrier R12 · interactive routing and 3D',caption:'XEM8305 / LDO carrier · R12 · 9 October 2026',status:'Six routing layers · drag, zoom and rotate · hardware qualification pending'}
   };
   let shown='';
   function sync(){

@@ -171,3 +171,9 @@ Six connector body assignments (J1, J19, MC1–MC3 and J4) are replaced for publ
 ### R11 interactive routing and rotation
 
 The current carrier page now opens with draggable routing. All six copper layers, tracks, pads, vias and native saved fills are retained in a self-contained SVG, with layer selection, net highlight and filled-copper visibility. Routing uses native top-view coordinates. The public GLB adds rotation/pan/zoom with 75 component groups and the same permitted public package geometry; native triangles/materials are preserved during browser optimization. See the [interactive model provenance](../presentation/xem/assets/2026-10-09/carrier-r11/Interactive_Model_Provenance.json) for source hashes and export limits. Native CAD and earlier Gerbers are unchanged.
+
+## Carrier R12 LDO mating-space revision · 9 October 2026
+
+The [current carrier viewer](../presentation/xem/carrier-r12-2026-10-09.html) retains the R11 outline, connector positions, signal routing and circuit. Native Gerald LDO geometry was registered using J1/J19. The [comparison figure](../presentation/xem/assets/2026-10-09/carrier-r12/Mating_Clearance_R12.png) shows D4 moved from beneath the LDO outline to the clear space beside it. JP1 and J4 are outside the aligned outline. Native R12 PCB checks report zero violations, opens and parity findings under the retained settings; assembled seating and tolerances remain unqualified.
+
+Public bodies use the same stock or independently authored geometry as R11. The independent J1/J19 proxy width is corrected to 3.38 mm. Restricted supplier models and private source paths are excluded. Original supplier CAD remains in the local native project. R11 public assets and the earlier R5 fabrication files remain preserved; no R12 fabrication package is published.
