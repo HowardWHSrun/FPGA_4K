@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**Current LDO carrier · R11 · 9 October:** [Top and underside 3D views, schematic and checks](presentation/xem/carrier-r11-2026-10-09.html). The [overview carrier selection](./#receiver) opens R11. Six layers, 53 × 83 mm and 75 fitted component bodies; BRK8305-derived USB-C JTAG. Routed design review; EEPROM programming and hardware qualification remain open.
+**Current LDO carrier · R11 · 9 October:** [Interactive routing, rotatable 3D, schematic and checks](presentation/xem/carrier-r11-2026-10-09.html). The [overview carrier selection](./#receiver) opens R11. Six layers, 53 × 83 mm and 75 fitted component bodies; BRK8305-derived USB-C JTAG. Routed design review; EEPROM programming and hardware qualification remain open.
 
 **Earlier LDO carrier files · C4.8-R5 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r5). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
 

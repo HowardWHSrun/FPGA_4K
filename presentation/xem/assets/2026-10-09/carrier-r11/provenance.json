@@ -50,6 +50,16 @@
       "sha256": "2e1c7a926e4532c6be2eeba209a3f72ca072c657fdb33b81a8b5a7c88a328cba"
     },
     {
+      "path": "Carrier_R11_Interactive.glb",
+      "bytes": 15870564,
+      "sha256": "2175f1344b940206e17ffc3e8e6d0796c9aa9b84f979afadf1fe74c086301100"
+    },
+    {
+      "path": "Carrier_R11_Routing.svg",
+      "bytes": 1195401,
+      "sha256": "a2789d4e780addca2b1820f5cc9d880e6369baaab3dd364cec59034650b117c8"
+    },
+    {
       "path": "Carrier_R11_Schematic.pdf",
       "bytes": 523644,
       "sha256": "f45e46fde9b83cf87d51800ff4691af60400341835bc52bfbad8bac11142fb5d"
@@ -65,14 +75,30 @@
       "sha256": "33379358fcdaaf49d03c6da6501217a5441b6dcd68c3c76a9abea0120401f43b"
     },
     {
+      "path": "Interactive_Model_Provenance.json",
+      "bytes": 2434,
+      "sha256": "f5e81b4273d6afb1fb92fa01c6cbbc046894abd4370a5ac9cd935d7847b911aa"
+    },
+    {
       "path": "Visual_Sources.md",
-      "bytes": 1474,
-      "sha256": "a09115ebec5ca7c42ecada8d8b793ad2dc5cccca9f49e596731503849f30ccb6"
+      "bytes": 2130,
+      "sha256": "bc7f824fb3d04a7799f62d708201fdd38825bcd023b4acaea56f82a4669c07b3"
     }
   ],
   "image_dimensions_px": [
     1768,
     1488
   ],
-  "public_render_copy_supplier_payloads": 0
+  "public_render_copy_supplier_payloads": 0,
+  "interactive_views": {
+    "routing": "Carrier_R11_Routing.svg",
+    "rotatable_3D": "Carrier_R11_Interactive.glb",
+    "native_segments": 602,
+    "native_vias": 213,
+    "native_footprints": 81,
+    "native_pad_records": 635,
+    "copper_layers": 6,
+    "board_zones": 9,
+    "coordinate_policy": "All routing layers in native top-view coordinates; 3D can rotate to either face."
+  }
 }
