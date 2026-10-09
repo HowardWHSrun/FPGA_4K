@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XEM8305 / LDO carrier · R11 | FPGA 4K</title>
+<meta name="description" content="Current R11 six-layer XEM8305/LDO carrier: complete component 3D views, clean signal routing and BRK8305-derived USB-C JTAG.">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="../shared/current-review.css">
+<link rel="stylesheet" href="carrier-r11.css?v=20261009-r11">
+<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
+<script defer src="carrier-r11.js?v=20261009-r11"></script>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="project-header"><a class="brand" href="../../#receiver">FPGA 4K<small>XEM8305 / LDO carrier · R11</small></a><nav aria-label="Project"><a href="../../#overview">Overview</a><a href="../library/?q=R11">Library</a><a href="#schematic">Schematic</a><a href="../downloads/#carrier-c4-8-r11">Files</a></nav></header>
+<main id="main">
+<section class="hero review-body"><p class="eyebrow">9 October 2026 · current carrier review</p><h1>XEM8305 / LDO carrier · R11</h1><span class="status">Routed design review</span><p class="lead">The same 53 × 83 mm carrier, with clean ASIC signal bundles, six copper layers and USB-C JTAG at the lower edge. All 75 fitted components are represented in the 3D views.</p><div class="facts"><span>6 copper layers</span><span>75 component bodies</span><span>J1 + J19 underneath</span><span>BRK8305-derived USB-C JTAG</span></div></section>
+<section class="figure-slot" id="views" aria-labelledby="figure-title">
+<div class="figure-heading"><h2 id="figure-title">Current carrier · R11</h2></div>
+<div class="render-toolbar"><div role="group" aria-label="Board view"><button data-view="bottom3d" aria-pressed="true">Underside 3D</button><button data-view="top3d" aria-pressed="false">Top 3D</button><button data-view="bottom" aria-pressed="false">Underside</button><button data-view="top" aria-pressed="false">Top</button></div><div role="group" aria-label="Image zoom"><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-in" aria-label="Zoom in">+</button><button id="reset-view">Reset</button></div></div>
+<div class="carrier-stage" tabindex="0" aria-label="Carrier render. Use plus and minus to zoom; drag to pan; R resets."><img id="carrier-image" src="assets/2026-10-09/carrier-r11/Carrier_R11_Bottom_3D.png" alt="R11 underside 3D: J1 and J19, edge-facing barrel jack, converter, USB-C JTAG and all underside components."><p id="image-status" role="status" hidden></p></div>
+<p class="caption"><strong id="view-caption">R11 · underside 3D</strong> · 75 component bodies · <a id="full-image" href="assets/2026-10-09/carrier-r11/Carrier_R11_Bottom_3D.png" target="_blank" rel="noopener">Open full image ↗</a><span class="render-help">Zoom +/− · drag to pan</span></p>
+</section>
+<section class="section review-body"><h2>What is on this board</h2><div class="review-grid">
+<article><h3>Connectors and power</h3><p>MC1–MC3 connect to the XEM8305. J1/J19 face the LDO board underneath. The edge-facing barrel input supplies 12 V to the XEM and the 3.3 V converter; the converter supplies the LDO/ASIC assembly.</p></article>
+<article><h3>Routing and ground</h3><p>Six layers separate signal routing, power and two DGND reference planes. The original form factor and R10 ASIC signal routes are retained. The mounting rings and TP19/TP20 are intentionally bare copper.</p></article>
+<article><h3>USB-C JTAG</h3><p>The native BRK8305 KiCad circuit was compared component by component: all 50 fitted JTAG positions and their connections are accounted for. C522, FB503 and C528 restore the reference shield filter and additional bypass.</p></article>
+<article><h3>Remaining qualification</h3><p>The edge-facing USB socket is a deliberate mechanical adaptation. The EEPROM still needs programming and a hardware check in Vivado. Static PCB checks pass; powered operation, timing and assembled fit remain to be verified.</p></article></div></section>
+<section class="section review-body" id="schematic"><h2>Current schematic and checks</h2><p><a href="assets/2026-10-09/carrier-r11/Carrier_R11_Schematic.pdf">Open the R11 one-page schematic</a> · <a href="assets/2026-10-09/carrier-r11/Carrier_R11_Check_Summary.json">Revision and check summary</a> · <a href="assets/2026-10-09/carrier-r11/provenance.json">Visual sources and hashes</a></p><p>These are CAD-rendered review views. Package representations are simplified where needed; they are not photographs or proof of mating clearance. Native R11 PCB checks report zero violations, opens and schematic-parity findings under the retained settings. This is not a fabrication release.</p></section>
+<section class="section review-body" id="history"><h2>Earlier revisions</h2><p>R11 visuals are current. The published R5 native CAD and four-layer Gerbers remain a separate earlier delivery; they do not match this six-layer revision.</p><div class="history-links"><a href="../downloads/#carrier-c4-8-r5">Earlier R5 CAD and Gerbers</a><a href="direct-all-connectors-2026-10-05.html">5 October direct R3 study</a><a href="current-a1r2.html">Earlier A1R2 cabled assembly</a></div></section>
+</main><footer class="site-footer"><span>R11 · 9 October 2026</span><a href="../../#receiver">Back to carrier overview ↑</a></footer>
+</body></html>

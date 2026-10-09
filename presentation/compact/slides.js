@@ -75,16 +75,16 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · Downstream receiver',title:'XEM carrier and connection',subtitle:'Direct LDO + XEM8305 · R3',
-      description:'The original LDO connects through a rigid routed board to XEM8305. R3 includes all three module sockets, both LDO mating pairs, six layers, single-input power, and complete KiCad, Gerber and eight-sheet schematic downloads. Exact fit and powered operation remain unqualified.',
-      regions:['F'],owners:[],facts:[['260','contacts accounted for'],['MC1 + MC2 + MC3','native sockets included'],['LDO J1 + J19','both mating pairs']],
-      noteLabel:'Direct XEM8305 · R3 update · 5 October 2026',note:'One six-layer carrier design with an external 12 V input, generated 2.5 V / 3.3 V rails, rail supervision and switched ASIC signals. Native checks and exported CAM checks pass; factory and first-board qualification remain open.',
+      id:'receiver',section:'05 · XEM8305 / LDO carrier',title:'XEM8305 / LDO carrier',subtitle:'Current R11 · 9 October 2026',
+      description:'R11 keeps the original 53 × 83 mm board and clean ASIC signal bundles. The six-layer carrier has underside J1/J19 sockets, an edge-facing 12 V input and lower USB-C JTAG. All 75 fitted component bodies are shown in the current views.',
+      regions:['F'],owners:[],facts:[['R11','current carrier'],['6','copper layers'],['75','component bodies']],
+      noteLabel:'BRK8305-derived USB-C JTAG',note:'The native BRK8305 KiCad reference was checked component by component. C522, FB503 and C528 are restored; the horizontal USB socket is retained. EEPROM programming and hardware qualification remain open.',
       details:[
-        'The direct R3 native project includes all eight schematic sheets, PCB, project settings and local libraries. The complete PDF, native views, Gerber ZIP and all-files bundle match the checked source.',
-        'MC1 has 100 contacts and MC2/MC3 each have 80. MC3 connects 28 DGND contacts and leaves 52 explicitly reserved/no-connect; a GTH link is not implemented.',
-        'The carrier 3D review shows actual native pads, board and surface copper with original nominal component envelopes. Manufacturer connector bodies and the assembled XEM/LDO stack are omitted from the public model.',
-        'ASIC limits and FPGA timing, source/load/thermal behavior, exact simultaneous seating, factory DFM, firmware and recording operation remain unqualified. Earlier A1R2/E5 cable and XEM8310 studies retain their dates.'
-      ],sources:[['Direct R3 files, schematic and manufacturing status','presentation/xem/direct-all-connectors-2026-10-05.html'],['Opal Kelly · XEM8305 expansion connectors','https://docs.opalkelly.com/xem8305/expansion-connectors/'],refs.open]
+        'The current R11 visuals show both board faces with all fitted component bodies represented. Package models are simplified where needed; mounting rings and test pads remain intentionally bare.',
+        'Two DGND reference planes and separate signal/power layers support the retained R10 ASIC routing. All original component positions and the 53 × 83 mm form factor are preserved.',
+        'Native PCB checks report zero violations, opens and schematic parity findings under retained settings. This is a static design review, not evidence of powered operation, timing, assembled fit or manufacturing approval.',
+        'Earlier R5 downloads and the A1R2/R3/XEM8310 studies retain their own dates and status; their fabrication files do not describe R11.'
+      ],sources:[['Current R11 carrier views and schematic','presentation/xem/carrier-r11-2026-10-09.html'],['R11 visual files and checks','presentation/downloads/#carrier-c4-8-r11'],refs.open]
     }
   ];
   for(const slide of window.PRESENTATION_SLIDES){

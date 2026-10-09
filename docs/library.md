@@ -1,6 +1,8 @@
 # Project files and documents
 
-- [Current XEM8305 / LDO carrier C4.8-R5 · 9 October](../presentation/downloads/#carrier-c4-8-r5): editable KiCad, four-layer Gerbers and drills, routing views and check summary. The 53 × 83 mm routing review has zero saved-board DRC, opens and parity findings; inherited schematic ERC cleanup and qualification remain open. Not a fabrication release.
+- [Current XEM8305 / LDO carrier R11 · 9 October](../presentation/xem/carrier-r11-2026-10-09.html): top/underside 3D views, six layers, 53 × 83 mm and all 75 fitted component bodies. The overview carrier selection opens this revision. Schematic and checks are included; EEPROM programming and hardware qualification remain open.
+
+- [Earlier XEM8305 / LDO carrier C4.8-R5 files · 9 October](../presentation/downloads/#carrier-c4-8-r5): editable KiCad, four-layer Gerbers and drills, routing views and check summary. The 53 × 83 mm routing review has zero saved-board DRC, opens and parity findings; inherited schematic ERC cleanup and qualification remain open. Not a fabrication release.
 
 - [7 October weekly FPGA PCB and LDO presentation](../presentation/meetings/2026-10-07.html): eight-slide weekly update, Zitong’s complete list, interactive native schematics/layouts/3D and downloadable projects.
 
