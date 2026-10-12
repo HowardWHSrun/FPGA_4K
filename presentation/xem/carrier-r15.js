@@ -49,7 +49,7 @@
       root.querySelectorAll('*').forEach(el=>Array.from(el.attributes).forEach(attr=>{if(/^on/i.test(attr.name)||/href$/i.test(attr.name))el.removeAttribute(attr.name);}));
       svg=document.importNode(root,true);svg.setAttribute('role','img');svg.setAttribute('aria-label','R15 six-layer native routing, top-view coordinates');surface.replaceChildren(svg);updateLayers();
       if(mode==='routing')status.hidden=true;
-    })().catch(error=>{routingPromise=null;if(mode==='routing'){status.textContent='Routing could not load. Try reloading or open the SVG link.';status.hidden=false;}console.warn(error.message);});
+    })().catch(error=>{routingPromise=null;if(mode==='routing'){status.textContent='Routing could not load. Try reloading the page.';status.hidden=false;}console.warn(error.message);});
     return routingPromise;
   }
   async function select(key){
@@ -57,22 +57,22 @@
     mode=key;stage.dataset.mode=key;pointers.clear();gesture=null;stage.classList.remove('dragging');
     image.hidden=!views[key];surface.hidden=key!=='routing';canvas.hidden=key!=='rotate3d';$('routing-controls').hidden=key!=='routing';$('pose-controls').hidden=key!=='rotate3d';$('assembly-controls').hidden=key!=='rotate3d';
     document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===key)));
-    status.hidden=true;const full=$('full-image');
+    status.hidden=true;
     if(key==='routing'){
-      baseZoom=1;reset();$('view-caption').textContent='R15 · routing · top-view coordinates';full.href=prefix+'Carrier_R15_Routing.svg';full.textContent='Open routing SVG ↗';$('interaction-help').textContent='Drag to pan · scroll/pinch to zoom · click a net';
+      baseZoom=1;reset();$('view-caption').textContent='R15 · routing · top-view coordinates';$('interaction-help').textContent='Drag to pan · scroll/pinch to zoom · click a net';
       if(!svg){status.textContent='Loading native routing…';status.hidden=false;}await loadRouting();
     }else if(key==='rotate3d'){
-      $('view-caption').textContent='XEM + R15 carrier + LDO · attachment view';full.href=prefix+'Carrier_R15_Interactive.glb';full.textContent='Download carrier 3D model ↗';$('interaction-help').textContent='Drag to rotate · right-drag to pan · scroll/pinch to zoom';
+      $('view-caption').textContent='XEM + R15 carrier + LDO · attachment view';$('interaction-help').textContent='Drag to rotate · right-drag to pan · scroll/pinch to zoom';
       try{modelPromise??=import('./carrier-r15-3d.js?v=20261012-r15');model=await modelPromise;if(mode==='rotate3d')await model.open();}catch(error){if(mode==='rotate3d'){status.textContent='3D unavailable here. Use the image or routing tabs.';status.hidden=false;}console.warn(error.message);}
     }else{
-      const view=views[key];baseZoom=key.endsWith('3d')?1.25:1;reset();image.src=prefix+view[0];image.alt=view[1]+' CAD-rendered review';$('view-caption').textContent=view[1];full.href=prefix+view[0];full.textContent='Open full image ↗';$('interaction-help').textContent='Drag to pan · scroll/pinch to zoom';
+      const view=views[key];baseZoom=key.endsWith('3d')?1.25:1;reset();image.src=prefix+view[0];image.alt=view[1]+' CAD-rendered review';$('view-caption').textContent=view[1];$('interaction-help').textContent='Drag to pan · scroll/pinch to zoom';
     }
     stage.dispatchEvent(new CustomEvent('carrier-mode',{detail:{mode}}));fitEmbed();
   }
   document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>select(button.dataset.view)));
   document.querySelectorAll('[data-pose]').forEach(button=>button.addEventListener('click',()=>model?.command('view',button.dataset.pose)));
   document.querySelectorAll('[data-layer-toggle],#show-planes,#show-references').forEach(input=>input.addEventListener('change',updateLayers));$('clear-net').addEventListener('click',clearNet);
-  $('zoom-in').addEventListener('click',()=>change(1.3));$('zoom-out').addEventListener('click',()=>change(1/1.3));$('reset-view').addEventListener('click',reset);$('show-xem').addEventListener('change',()=>model?.command('assembly'));$('show-ldo').addEventListener('change',()=>model?.command('assembly'));$('show-ldo').addEventListener('change',()=>model?.command('assembly'));$('show-ldo').addEventListener('change',()=>model?.command('assembly'));$('show-ldo').addEventListener('change',()=>model?.command('assembly'));$('assembly-gap').addEventListener('input',()=>{ $('gap-value').textContent=$('assembly-gap').value+' mm';model?.command('assembly');});
+  $('zoom-in').addEventListener('click',()=>change(1.3));$('zoom-out').addEventListener('click',()=>change(1/1.3));$('reset-view').addEventListener('click',reset);$('show-xem').addEventListener('change',()=>model?.command('assembly'));$('show-ldo').addEventListener('change',()=>model?.command('assembly'));$('assembly-gap').addEventListener('input',()=>{ $('gap-value').textContent=$('assembly-gap').value+' mm';model?.command('assembly');});
   stage.addEventListener('wheel',event=>{if(mode==='rotate3d')return;event.preventDefault();change(Math.exp(-event.deltaY*.0015),[event.clientX,event.clientY]);},{passive:false});
   function beginGesture(){
     const points=[...pointers.values()];
@@ -97,7 +97,7 @@
     if(mode==='rotate3d')return;
     if(['+','=','-','r','R','Escape','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)){event.preventDefault();if(event.key==='-')change(1/1.3);else if(['+','='].includes(event.key))change(1.3);else if(event.key==='Escape')clearNet();else if(event.key.toLowerCase()==='r')reset();else{x+=event.key==='ArrowLeft'?30:event.key==='ArrowRight'?-30:0;y+=event.key==='ArrowUp'?30:event.key==='ArrowDown'?-30:0;paint();}}
   });
-  image.addEventListener('error',()=>{if(views[mode]){status.textContent='Image unavailable. Try the full-image link.';status.hidden=false;}});image.addEventListener('load',()=>{if(views[mode])status.hidden=true;});
+  image.addEventListener('error',()=>{if(views[mode]){status.textContent='Image unavailable. Try another view or reload the page.';status.hidden=false;}});image.addEventListener('load',()=>{if(views[mode])status.hidden=true;});
   new ResizeObserver(fitEmbed).observe(document.querySelector('.render-toolbar'));new ResizeObserver(fitEmbed).observe($('routing-controls'));window.addEventListener('resize',fitEmbed);
   select(new URLSearchParams(location.search).get('view')==='routing'?'routing':'rotate3d');
 })();
