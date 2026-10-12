@@ -1,0 +1,158 @@
+{
+  "schema": "carrier-ldo-attachment-geometry-v1",
+  "date_local": "2026-10-12",
+  "status": "Source-backed nominal LDO attachment illustration; not qualified assembly",
+  "native_CAD_edited": false,
+  "source": {
+    "pcb": "2026-10-02_FPGA_Work/02_Meeting_And_Backup_Adapter/source/Gerald_LDO_Board/LDO_Board_10SOIC (New Rigid)/PCB.kicad_pcb",
+    "pcb_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+    "bom": "2026-10-02_FPGA_Work/02_Meeting_And_Backup_Adapter/source/Gerald_LDO_Board/LDO_Board_10SOIC (New Rigid)/PCB_BOM.csv",
+    "bom_sha256": "6e2f570e288885f1589ec8bd8a066e3abd95d242c68f81d20def38b51a243a0b",
+    "source_thickness_mm": 1.6,
+    "source_footprints": 80,
+    "source_identity_note": "MatchingOct2GeraldZIPsnapshot74ed99fa. Do notsubstituteolderOriginalSourcesddb07aPCB orE5adapter."
+  },
+  "carrier": {
+    "pcb": "2026-10-10_FPGA_Work/11_Carrier_R15_Wider_Power/project/CARRIER_XEM8305_R15_Wider_Power.kicad_pcb",
+    "sha256": "61e693734a11f87cc2719fc4030975bb590dee46df228db0d5de3316b03ea035",
+    "B_side_nominal_z_mm": 0.0,
+    "outline_mm": [
+      [
+        101,
+        26
+      ],
+      [
+        154,
+        26
+      ],
+      [
+        154,
+        109
+      ],
+      [
+        101,
+        109
+      ]
+    ]
+  },
+  "registration": {
+    "source_to_carrier_xy": "x=source_x\u221252.3;y=71.45\u2212source_y",
+    "source_pcb_coordinate_to_carrier_native_xyz_matrix_4x4": [
+      [
+        1,
+        0,
+        0,
+        -52.3
+      ],
+      [
+        0,
+        -1,
+        0,
+        71.45
+      ],
+      [
+        0,
+        0,
+        -1,
+        -2.0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "source_z_convention": "SourcebarePCBbottomBfacez=0,frontFfacez=+1.6. The180degreeface-to-faceflipmapsBface toassembly\u22122 andFface toassembly\u22123.6.",
+    "gltf_rule": "X=native_x/1000;Y=height_z/1000;Z=native_y/1000, then same commoncenteringascarrier",
+    "J1_center_error_mm": 0.0,
+    "J19_center_error_mm": 0.0,
+    "R13_contact_orientation_reference": "2026-10-10_FPGA_Work/09_Carrier_Gerald_Review_R13/verification/LDO_Contact_Orientation.json",
+    "R15_current_footprint_rotations_retained": true,
+    "J1_CAD_contact_mapping": "same sourceCADnumbers; powerpins1/2,ground49/50",
+    "J19_CAD_contact_mapping": "source1..12\u2192carriereven2..24,source13..24\u2192carrierodd1..23;mechanicalonly/netless",
+    "terminal_note": "ExteriorDP/DSsolderlandsdifferby0.185mmJ1 and0.14mmJ19; theyarenotinternalmatingcontactdatums. Familyisnotpolarized; actualassemblyorientationmustusepower/groundendsandcontinuity."
+  },
+  "assembly": {
+    "source_board_side_facing_carrier": "B.Cu",
+    "regulator_side": "F.Cu, outward/down awayfromcarrier",
+    "carrier_side": "B.Cu",
+    "nominal_board_gap_mm": 2.0,
+    "closest_LDO_face_z_mm": -2.0,
+    "outward_LDO_face_z_mm": -3.6,
+    "board_thickness_mm": 1.6,
+    "outline_bounds_native_xy_mm": [
+      119.05,
+      7.575,
+      137.35,
+      49.6
+    ],
+    "overhang_beyond_carrier_top_edge_mm": 18.425,
+    "overhang_note": "MatchingnativeLDOsourcehasnarrowtailabovecarrierY26edge, reachingY7.575. Preservevisibleoverhang; noLDOorcarrierboardextensionwasmade.",
+    "mounting_holes": [],
+    "mounting_note": "No dedicatedmountingholesidentifiedinsource. Connector/fixture/supportmechanicsremainunverified."
+  },
+  "population": {
+    "rendered_counts": {
+      "regulator": 9,
+      "capacitor": 43,
+      "resistor": 9
+    },
+    "source_DNP_omitted": [
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J6",
+      "J7",
+      "J8",
+      "J9",
+      "J10",
+      "J11",
+      "J12",
+      "J13",
+      "J14",
+      "J15",
+      "J16",
+      "J17",
+      "J18"
+    ],
+    "DNP_basis": "MatchingPCB_BOM.csv marksJ2andallsingle-pinheadersDNP; do notdrawtheseasinstalledtallbodies.",
+    "body_dimension_basis": "X/Ydimensions from nativeFabpackagesDFN3x3,C0603_1608andC0201_0603.9regulatorbodiesfaceoutward;16small0201capsfacecarrier.",
+    "heights_status": "Genericvisualpassiveheights andstockreferencedDFNmodelheight; actualfittedpartheightsunverified. SourcevalueLT3042xMSEandnativeDFNfootprintmustnotbeusedasproofordering-suffixpackagequalification."
+  },
+  "public_geometry": {
+    "viewer_file": "LDO_Viewer_Geometry.json",
+    "supplier_mesh_payload": false,
+    "source_artwork": false,
+    "outline_source": "NativeEdge.Cutssegmentsandtwoarcs; arcs sampled16steps, submicrontinyendpointdifferencespreservedorjoined.",
+    "exact_connector_plastic_shapes": false
+  },
+  "sources": [
+    {
+      "url": "https://www.hirose.com/en/product/p/CL0684-4091-0-51",
+      "verified": "2026-10-12",
+      "supports": "50DS2mm nominalmatedheight,50DPmatchedplug"
+    },
+    {
+      "url": "https://www.hirose.com/en/product/p/CL0684-4041-2-51",
+      "verified": "2026-10-12",
+      "supports": "24DS2mm nominalmatedheight,24DPmatchedplug"
+    },
+    {
+      "local": "2026-10-09_FPGA_Work/16_Carrier_LDO_Mating_Clearance/verification/Native_LDO_And_Carrier_Geometry.json",
+      "supports": "Preservednativesourceoutline,thickness,placements,Fabrecords."
+    },
+    {
+      "local": "2026-10-10_FPGA_Work/09_Carrier_Gerald_Review_R13/verification/LDO_Contact_Orientation.json",
+      "supports": "Intendednativecontactmapandreflection."
+    }
+  ],
+  "limitations": [
+    "Actualfittedconnectoridentity,seating,terminalorientationanddual-connectorrigidtoleranceunverified.",
+    "Passiveheightsareillustrative; componentclearanceisnotqualifiedbytheseprimitives.",
+    "Overhang/sourcegeometryisrealinmatchingCAD; fixture,cableaccessandASICassemblyclearanceremainopen.",
+    "No ASICdieorotherunprovidedassemblyisadded.",
+    "No nativeCADmodification,nofabricationoroperationapproval."
+  ]
+}

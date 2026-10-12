@@ -75,16 +75,16 @@
       ],sources:[refs.adapter,refs.adapter3d,refs.xem,refs.brk,refs.models,refs.open]
     },
     {
-      id:'receiver',section:'05 · XEM8305 / LDO carrier',title:'XEM8305 / LDO carrier',subtitle:'Current R12 · 9 October 2026',
-      description:'R12 moves D4 beside the aligned LDO board to clear its mating space, keeping the 53 × 83 mm board and ASIC signal bundles. The six-layer carrier has underside J1/J19 sockets, an edge-facing 12 V input and lower USB-C JTAG. Open Routing to inspect all six layers, drag to pan and scroll to zoom. Rotate 3D shows all 75 fitted component bodies.',
-      regions:['F'],owners:[],facts:[['R12','current carrier'],['6','copper layers'],['75','component bodies']],
-      noteLabel:'BRK8305-derived USB-C JTAG',note:'The native BRK8305 KiCad reference was checked component by component. C522, FB503 and C528 are restored; the horizontal USB socket is retained. EEPROM programming and hardware qualification remain open.',
+      id:'receiver',section:'05 · XEM8305 / LDO carrier',title:'XEM8305 / LDO carrier',subtitle:'Current R15 · published 12 October 2026',
+      description:'R15 widens 437 power and ground sections while retaining the 53 × 83 mm outline and signal routing. Rotate the XEM–carrier–LDO stack, or separate the boards to reveal MC1–MC3 and J1/J19. Routing provides all six layers, fills, net selection, drag and zoom.',
+      regions:['F'],owners:[],facts:[['R15','current carrier'],['6','copper layers'],['437','wider power/ground sections']],
+      noteLabel:'Power and module attachment',note:'12 V supplies XEM VDCIN and the 3.3 V converter. The converter feeds the LDO/ASIC assembly; XEM-provided 1.8 V supplies the selected I/O banks. Simplified XEM and Gerald LDO bodies use source connector datums with nominal 5 mm and 2 mm mating gaps.',
       details:[
-        'The current R12 viewer includes native copper-layer toggles, filled-zone visibility and net highlighting, plus a rotatable board with all fitted component bodies represented. Package models are simplified where needed; mounting rings and test pads remain intentionally bare.',
-        'Two DGND reference planes and separate signal/power layers support the retained R10 ASIC routing. All original component positions and the 53 × 83 mm form factor are preserved.',
-        'Native PCB checks report zero violations, opens and schematic parity findings under retained settings. This is a static design review, not evidence of powered operation, timing, assembled fit or manufacturing approval.',
-        'Earlier R5 downloads and the A1R2/R3/XEM8310 studies retain their own dates and status; their fabrication files do not describe R12.'
-      ],sources:[['Current R12 interactive routing, 3D and schematic','presentation/xem/carrier-r12-2026-10-09.html'],['R12 visual files and checks','presentation/downloads/#carrier-c4-8-r12'],refs.open]
+        'The viewer opens with the full XEM–carrier–LDO assembly. Hide either board to inspect all 75 carrier component bodies, or separate the stack to reveal both connector interfaces.',
+        'Two inner DGND planes, the existing ASIC signals, placements and vias are retained. Main inner 3.3 V and 12 V widths are 4.8 and 4.2 mm.',
+        'Native PCB checks report zero physical violations, opens and parity findings under retained settings. Inherited schematic/library findings and electrical, thermal, USB/JTAG, populated fit and manufacturing qualification remain open.',
+        'The native KiCad download and comparison PDF match R15. Earlier R5 fabrication files describe a separate four-layer revision.'
+      ],sources:[['Current R15 attachment, routing and schematic','presentation/xem/carrier-r15-2026-10-12.html'],['R15 native files and comparison PDF','presentation/downloads/#carrier-r15'],refs.open]
     }
   ];
   for(const slide of window.PRESENTATION_SLIDES){

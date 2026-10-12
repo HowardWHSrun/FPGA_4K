@@ -1,0 +1,149 @@
+(footprint
+  "EEE_FK1E221P"
+  (version
+    20241229)
+  (generator
+    "codex")
+  (layer
+    "F.Cu")
+  (descr
+    "Panasonic EEE-FK1E221P, 220uF 25V polarized SMD aluminum electrolytic; body dia8mm x height10.2mm, base8.3mm. Panasonic FK standard size F recommended lands: gap a=3.1mm, each pad b=4.0mm x c=2.0mm, centers +/-3.55mm. Source: https://industrial.panasonic.com/cdbs/www-data/pdf/RDE0000/ABA0000C1181.pdf pages 1-2, 10-Feb-2026. Generic body outline; no 3D model included.")
+  (tags
+    "capacitor polarized electrolytic Panasonic FK 220uF 25V")
+  (property
+    "Reference"
+    "REF**"
+    (at 0 -5.2 0)
+    (layer "F.SilkS")
+    (effects (font (size 1 1) (thickness 0.15))))
+  (property
+    "Value"
+    "EEE_FK1E221P"
+    (at 0 5.2 0)
+    (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15))))
+  (attr
+    smd)
+  (fp_text
+    user
+    "${REFERENCE}"
+    (at 0 0 0)
+    (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15))))
+  (fp_text
+    user
+    "+"
+    (at -2.8 -2.8 0)
+    (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15))))
+  (fp_circle
+    (center 0 0)
+    (end 4 0)
+    (stroke (width 0.1) (type solid))
+    (fill none)
+    (layer "F.Fab"))
+  (fp_line
+    (start -4.15 -3.15)
+    (end -3.15 -4.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start -3.15 -4.15)
+    (end 4.15 -4.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start 4.15 -4.15)
+    (end 4.15 4.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start 4.15 4.15)
+    (end -3.15 4.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start -3.15 4.15)
+    (end -4.15 3.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start -4.15 3.15)
+    (end -4.15 -3.15)
+    (stroke (width 0.1) (type solid))
+    (layer "F.Fab"))
+  (fp_line
+    (start -4.26 -3.21)
+    (end -3.21 -4.26)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -3.21 -4.26)
+    (end 4.26 -4.26)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start 4.26 -4.26)
+    (end 4.26 -1.2)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start 4.26 1.2)
+    (end 4.26 4.26)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start 4.26 4.26)
+    (end -3.21 4.26)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -3.21 4.26)
+    (end -4.26 3.21)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -4.26 3.21)
+    (end -4.26 1.2)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -4.26 -1.2)
+    (end -4.26 -3.21)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -5.5 -2.5)
+    (end -4.5 -2.5)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_line
+    (start -5 -3)
+    (end -5 -2)
+    (stroke (width 0.12) (type solid))
+    (layer "F.SilkS"))
+  (fp_rect
+    (start -5.8 -4.4)
+    (end 5.8 4.4)
+    (stroke (width 0.05) (type solid))
+    (fill none)
+    (layer "F.CrtYd"))
+  (pad
+    "1"
+    smd
+    rect
+    (at -3.55 0)
+    (size 4 2)
+    (layers "F.Cu" "F.Paste" "F.Mask"))
+  (pad
+    "2"
+    smd
+    rect
+    (at 3.55 0)
+    (size 4 2)
+    (layers "F.Cu" "F.Paste" "F.Mask"))
+  (model
+    "${KIPRJMOD}/models/Panasonic_EEE_FK1E221P_Datasheet.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))))

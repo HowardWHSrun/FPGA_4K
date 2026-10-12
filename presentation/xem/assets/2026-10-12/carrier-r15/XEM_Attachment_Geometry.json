@@ -1,0 +1,398 @@
+{
+  "schema": "carrier-xem8305-attachment-geometry-v1",
+  "date_local": "2026-10-12",
+  "status": "Source-backed nominal attachment illustration, not qualified mechanical assembly",
+  "native_CAD_edited": false,
+  "carrier": {
+    "source": "2026-10-10_FPGA_Work/11_Carrier_R15_Wider_Power/project/CARRIER_XEM8305_R15_Wider_Power.kicad_pcb",
+    "sha256": "61e693734a11f87cc2719fc4030975bb590dee46df228db0d5de3316b03ea035",
+    "native_general_thickness_mm": 1.6,
+    "outline_xy_mm": [
+      [
+        101,
+        26
+      ],
+      [
+        154,
+        26
+      ],
+      [
+        154,
+        109
+      ],
+      [
+        101,
+        109
+      ]
+    ],
+    "nominal_bottom_z_mm": 0,
+    "nominal_front_surface_z_mm": 1.6
+  },
+  "coordinate_frames": {
+    "native_xyz": "KiCad absolute X,Y in mm, Y increases down page; Z is height toward front components. This mixed drawing frame is not a right-handed 3D scene.",
+    "glTF_Y_up_meters": "X=native_x/1000;Y=native_z/1000;Z=native_y/1000, before any common scene-centering transform.",
+    "official_STEP_local_uvw": "u follows 83mm board length, v follows 53mm width, w points above module top face; PCB top w=0.",
+    "module_local_to_native_xy_matrix_3x3": [
+      [
+        0,
+        1,
+        101
+      ],
+      [
+        1,
+        0,
+        26
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "official_local_to_native_nominal_xyz_matrix_4x4": [
+      [
+        0,
+        1,
+        0,
+        101
+      ],
+      [
+        1,
+        0,
+        0,
+        26
+      ],
+      [
+        0,
+        0,
+        1,
+        8.093890881538393
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "official_local_to_gltf_nominal_meters_matrix_4x4": [
+      [
+        0,
+        0.001,
+        0,
+        0.101
+      ],
+      [
+        0,
+        0,
+        0.001,
+        0.008093890881538392
+      ],
+      [
+        0.001,
+        0,
+        0,
+        0.026
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "module": {
+    "part": "Opal Kelly XEM8305, AXX source model",
+    "outline_local_uv_mm": [
+      [
+        0,
+        0
+      ],
+      [
+        83,
+        0
+      ],
+      [
+        83,
+        53
+      ],
+      [
+        0,
+        53
+      ]
+    ],
+    "outline_native_xy_mm": [
+      [
+        101,
+        26
+      ],
+      [
+        154,
+        26
+      ],
+      [
+        154,
+        109
+      ],
+      [
+        101,
+        109
+      ]
+    ],
+    "bare_PCB_thickness_mm": 1.493890881538392,
+    "thickness_status": "Measured from official-derived retained Board mesh; not a fabrication tolerance or installed-board measurement.",
+    "nominal_bottom_z_mm": 6.6,
+    "nominal_top_z_mm": 8.093890881538393,
+    "nominal_center_xyz_mm": [
+      127.5,
+      67.5,
+      7.346945440769195
+    ],
+    "mounted_side": "Module bottom faces carrier F.Cu; module top faces outward. LDO connectors are on the opposite carrier face."
+  },
+  "seating": {
+    "nominal_mated_board_gap_mm": 5,
+    "source_url": "https://docs.opalkelly.com/xem8305/expansion-connectors/",
+    "definition": "Distance from actual carrier front board surface to module bottom board surface, for listed ERM6/ERF6 pairs.",
+    "implementation_rule": "For this nominal illustration, set module_bottom_z_mm=carrier.native_general_thickness_mm+5.0=6.6;module_top_z_mm=module_bottom_z_mm+bare_PCB_thickness_mm. Apply the same scene-centering transform to carrier and module. Label the5mm gap nominal CAD datum, not an installed or rendered-mask clearance measurement.",
+    "actual_exporter_front_surface_z_mm": 1.5744,
+    "exporter_frame_status": "Fresh R15 native GLB audited by comparison_figures. Keep nominal1.6mmCADdatum for illustrated5mm gap; actualexportmask/components differ slightly.",
+    "legacy_registration_top_z_mm": 8.2,
+    "legacy_registration_measured_board_bottom_z_mm": 6.70610916,
+    "legacy_gap_if_carrier_F_face_is_1_6mm": 5.106109159999999,
+    "legacy_caution": "Do not reuse inherited top-Z8.2 as an exact seating datum; it gives about5.106mm gap with measured official-model PCB thickness.",
+    "actual_exporter_front_surface_type": "F.Mask visual plane; exportedF.Cu upper surface1.5594mm, frontpadstop1.56440004mm",
+    "actual_exporter_component_mounting_origin_z_mm": 1.6094,
+    "actual_exporter_substrate_top_z_mm": 1.52439997,
+    "actual_exporter_frame": "Absolute native default origin0,0; X=x/1000,Y=z/1000,Z=y/1000",
+    "illustrated_gap_above_exported_FMask_mm": 5.0256,
+    "illustrated_gap_above_exported_component_origin_mm": 4.9906,
+    "actual_exporter_FCu_top_z_mm": 1.5594,
+    "actual_exporter_front_pad_top_z_mm": 1.56440004,
+    "actual_exporter_front_silkscreen_z_mm": 1.59939996
+  },
+  "connectors": [
+    {
+      "reference": "MC1",
+      "contacts": 100,
+      "module_mpn": "ERM6-50-01.5-L-DV-A-K-TR",
+      "carrier_mpn": "ERF6-50-03.5-L-DV-A-K-TR",
+      "native_footprint_datum_xy_mm": [
+        150.94999,
+        79.262779
+      ],
+      "native_rotation_deg": -90.0,
+      "native_longitudinal_axis_xy": [
+        0.0,
+        1.0
+      ],
+      "native_transverse_axis_xy": [
+        -1.0,
+        0.0
+      ],
+      "carrier_pad1_center_xy_mm": [
+        150.14999,
+        94.820279
+      ],
+      "simplified_xy_envelope_mm": {
+        "longitudinal": 36.47,
+        "transverse": 2.5,
+        "source": "Measured bounds of retained official module model; factual dimensions only. Exact plastic, terminal and latch geometry is omitted."
+      },
+      "retained_official_model_envelope_center_xy_mm": [
+        150.9497148021679,
+        79.2631273601867
+      ],
+      "model_to_native_datum_residual_xy_mm": [
+        -0.00027519783211005233,
+        0.00034836018670603153
+      ],
+      "individual_housing_z_extent": "Not used for public drawing; mate is represented by a simplified connection marker within the nominal gap."
+    },
+    {
+      "reference": "MC2",
+      "contacts": 80,
+      "module_mpn": "ERM6-40-01.5-L-DV-A-K-TR",
+      "carrier_mpn": "ERF6-40-03.5-L-DV-A-K-TR",
+      "native_footprint_datum_xy_mm": [
+        104.05,
+        85.352499
+      ],
+      "native_rotation_deg": -90.0,
+      "native_longitudinal_axis_xy": [
+        0.0,
+        1.0
+      ],
+      "native_transverse_axis_xy": [
+        -1.0,
+        0.0
+      ],
+      "carrier_pad1_center_xy_mm": [
+        103.24999,
+        97.734999
+      ],
+      "simplified_xy_envelope_mm": {
+        "longitudinal": 30.12,
+        "transverse": 2.5,
+        "source": "Measured bounds of retained official module model; factual dimensions only. Exact plastic, terminal and latch geometry is omitted."
+      },
+      "retained_official_model_envelope_center_xy_mm": [
+        104.05000152,
+        85.35150003999999
+      ],
+      "model_to_native_datum_residual_xy_mm": [
+        1.5199999978676715e-06,
+        -0.00099896000000399
+      ],
+      "individual_housing_z_extent": "Not used for public drawing; mate is represented by a simplified connection marker within the nominal gap."
+    },
+    {
+      "reference": "MC3",
+      "contacts": 80,
+      "module_mpn": "ERM6-40-01.5-L-DV-A-K-TR",
+      "carrier_mpn": "ERF6-40-03.5-L-DV-A-K-TR",
+      "native_footprint_datum_xy_mm": [
+        125.4875,
+        106.1
+      ],
+      "native_rotation_deg": 180.0,
+      "native_longitudinal_axis_xy": [
+        -1.0,
+        -0.0
+      ],
+      "native_transverse_axis_xy": [
+        0.0,
+        -1.0
+      ],
+      "carrier_pad1_center_xy_mm": [
+        113.105,
+        105.29999
+      ],
+      "simplified_xy_envelope_mm": {
+        "longitudinal": 30.12,
+        "transverse": 2.5,
+        "source": "Measured bounds of retained official module model; factual dimensions only. Exact plastic, terminal and latch geometry is omitted."
+      },
+      "retained_official_model_envelope_center_xy_mm": [
+        125.48450246,
+        106.09999982
+      ],
+      "model_to_native_datum_residual_xy_mm": [
+        -0.0029975399999955243,
+        -1.8000000068241206e-07
+      ],
+      "individual_housing_z_extent": "Not used for public drawing; mate is represented by a simplified connection marker within the nominal gap."
+    }
+  ],
+  "mounting_holes": [
+    {
+      "carrier_reference": "MH1",
+      "native_xy_mm": [
+        105.0,
+        35.0
+      ],
+      "official_module_uv_mm": [
+        9.0,
+        4.0
+      ],
+      "drill_diameter_mm": 3.2,
+      "copper_ring_diameter_mm": 6.4
+    },
+    {
+      "carrier_reference": "MH2",
+      "native_xy_mm": [
+        150.0,
+        35.0
+      ],
+      "official_module_uv_mm": [
+        9.0,
+        49.0
+      ],
+      "drill_diameter_mm": 3.2,
+      "copper_ring_diameter_mm": 6.4
+    },
+    {
+      "carrier_reference": "MH3",
+      "native_xy_mm": [
+        105.0,
+        105.0
+      ],
+      "official_module_uv_mm": [
+        79.0,
+        4.0
+      ],
+      "drill_diameter_mm": 3.2,
+      "copper_ring_diameter_mm": 6.4
+    },
+    {
+      "carrier_reference": "MH4",
+      "native_xy_mm": [
+        150.0,
+        105.0
+      ],
+      "official_module_uv_mm": [
+        79.0,
+        49.0
+      ],
+      "drill_diameter_mm": 3.2,
+      "copper_ring_diameter_mm": 6.4
+    }
+  ],
+  "mounting_hole_pattern_mm": {
+    "x_spacing": 45,
+    "y_spacing": 70,
+    "hole_diameter": 3.2
+  },
+  "public_visualization": {
+    "construction": "Independently authored board rectangle with four true holes, labelled MC1/MC2/MC3 simplified mating markers at native footprint datums.",
+    "vendor_meshes_included": false,
+    "supplier_logos_or_artwork_included": false,
+    "individual_connector_housing_geometry_qualified": false,
+    "recommended_views": [
+      "seated nominal assembly",
+      "exploded attachment",
+      "carrier only"
+    ],
+    "suggested_caption": "XEM8305 attachment illustration: official outline, native connector datums, nominal5mm mating gap. Simplified module body; physical fit and fasteners remain unverified."
+  },
+  "official_model_availability": {
+    "listing_url": "https://www.opalkelly.com/products/models/",
+    "listed_update_date": "2025-12-08",
+    "STEP_zip_url": "https://assets00.opalkelly.com/models/XEM8305-AXX-STEP.zip",
+    "retained_STEP": "2026-10-03_FPGA_Work/08_XEM8305_Assembly_A1_Provisional/source-references/XEM8305_Official/XEM8305-AXX_Official.step",
+    "retained_STEP_sha256_from_manifest": "0da93f5624de23d671c20cbe4703904d300984273350cd30be9d544ab1248511",
+    "retained_GLb_read_this_run": "2026-10-03_FPGA_Work/08_XEM8305_Assembly_A1_Provisional/assembly-visual/assets/module.glb",
+    "retained_GLb_sha256_fresh": "f7478246eff4930e1d7273b9e743d6e53bc0d9a86ba7ec7e907ff8d3cb1f5af9",
+    "retained_GLb_source_to_scene_registration": "x_world=v-4;y_world=79-u;z_world=w+8.2 in mm, Z up. Already applied once to asset root.",
+    "license_status": "Official page permits model download and use for integrating/checking mechanics. No explicit permission for public redistribution of supplier meshes was identified in inspected listing; public illustration uses original primitives only."
+  },
+  "sources": [
+    {
+      "url": "https://docs.opalkelly.com/xem8305/expansion-connectors/",
+      "verified": "2026-10-12",
+      "supports": "Connector MPNs, three bottom-side connectors, all5.00mm nominal mated height."
+    },
+    {
+      "url": "https://docs.opalkelly.com/wp-content/uploads/2025/12/XEM8305-AXX-MechanicalDrawing.pdf",
+      "local": "2026-10-07_FPGA_Work/01_Weekly_Meeting/revisions/R2_Assembly_First/visuals/xem8305/XEM8305_Mechanical_Official.pdf",
+      "supports": "83x53mm outline, four3.2mm holes; native readback plus model registration gives hole centers."
+    },
+    {
+      "url": "https://docs.opalkelly.com/wp-content/uploads/2025/07/XEM8305-Mating-Board-Diagram.pdf",
+      "local": "2026-10-07_FPGA_Work/01_Weekly_Meeting/revisions/R2_Assembly_First/visuals/xem8305/XEM8305_Mating_Board_Official.pdf",
+      "supports": "Mating-side connector arrangement and identifiers."
+    },
+    {
+      "local": "2026-10-07_FPGA_Work/01_Weekly_Meeting/revisions/R2_Assembly_First/visuals/xem8305/Official_Carrier_Registration_MH1.json",
+      "supports": "Preserved BRK8305-native connector/hole registration; current R15 agrees to1micron for connector datums."
+    }
+  ],
+  "limitations": [
+    "Installed XEM8305 revision, connector seating and terminal orientation have not been physically measured.",
+    "Source-based center and hole registration do not validate solder placement, board warp, fastener tolerances, cable access or thermal clearance.",
+    "Individual supplier connector meshes are not republished; simple mating markers explain attachment only.",
+    "Module PCB thickness is source-model measurement; no production tolerance is assigned.",
+    "Current visualization does not imply fabrication or power-up readiness."
+  ]
+}

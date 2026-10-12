@@ -1,0 +1,1 @@
+Public component models: six independently authored generic connector/jack assignments plus KiCad stock and original nominal dimension-derived package bodies. No manufacturer production CAD or supplier embedded payload is included. See KiCad_3D_License.md. These shapes are illustrative and do not qualify mating tolerances.

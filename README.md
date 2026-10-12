@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**Current LDO carrier · R12 · 9 October:** [Interactive routing, rotatable 3D, schematic and checks](presentation/xem/carrier-r12-2026-10-09.html). The [overview carrier selection](./#receiver) opens R12. Six layers, 53 × 83 mm and 75 fitted component bodies; BRK8305-derived USB-C JTAG. D4 moved beside the aligned LDO board for clearance. Routed design review; EEPROM programming and hardware qualification remain open.
+**Current LDO carrier · R15 · published 12 October:** [XEM–carrier–LDO assembly, six-layer routing and files](presentation/xem/carrier-r15-2026-10-12.html). The [overview carrier selection](./#receiver) opens R15. Main power copper is wider; the XEM and Gerald LDO attachment uses simplified source geometry with nominal 5 mm and 2 mm mating gaps. Complete editable KiCad project and R14-to-R15 PDF included. Routing review; hardware qualification remains open.
 
 **Earlier LDO carrier files · C4.8-R5 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r5). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
 

@@ -1,0 +1,28 @@
+(version 1)
+(rule "Normal track geometry retained outside J1"
+  (constraint track_width (min 0.2mm)))
+(rule "Normal via geometry retained outside J1"
+  (constraint via_diameter (min 0.5mm))
+  (constraint hole_size (min 0.3mm))
+  (condition "A.Type == 'Via'"))
+(rule "J1 short fine track necks"
+  (constraint track_width (min 0.1mm))
+  (condition "A.Type == 'Track' && A.intersectsCourtyard('J1')"))
+(rule "J1 compact through vias"
+  (constraint via_diameter (min 0.45mm))
+  (constraint hole_size (min 0.2mm))
+  (condition "A.Type == 'Via' && A.intersectsCourtyard('J1')"))
+(rule "J1 local escape clearance"
+  (constraint clearance (min 0.1mm))
+  (condition "A.intersectsCourtyard('J1') && B.intersectsCourtyard('J1')"))
+
+(rule "D500 short fine track necks"
+ (constraint track_width (min 0.15mm))
+ (condition "A.Type == 'Track' && A.intersectsCourtyard('D500')"))
+(rule "D500 native UDFN pad clearance"
+ (constraint clearance (min 0.127mm))
+ (constraint track_width (min 0.15mm))
+ (condition "A.intersectsCourtyard('D500') && B.intersectsCourtyard('D500')"))
+(rule "J500 native locating peg copper spacing"
+ (constraint hole_clearance (min 0.18mm))
+ (condition "A.intersectsCourtyard('J500') && B.intersectsCourtyard('J500')"))
