@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**[14 October presentation · carrier, FPGA and LDO](presentation/meetings/2026-10-14-v16/index.html)** — eight pages with interactive 3D, native layouts and complete schematics.
+**[14 October presentation · carrier, FPGA and LDO](presentation/meetings/2026-10-14-v17/index.html)** — eight pages with interactive 3D, native layouts and complete schematics.
 
 **Current LDO carrier · R15 · published 12 October:** [XEM–carrier–LDO assembly, six-layer routing and files](presentation/xem/carrier-r15-2026-10-12.html). The [overview carrier selection](./#receiver) opens R15. Main power copper is wider; the XEM and Gerald LDO attachment uses simplified source geometry with nominal 5 mm and 2 mm mating gaps. Complete editable KiCad project and R14-to-R15 PDF included. Routing review; hardware qualification remains open.
 

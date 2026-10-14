@@ -2,9 +2,9 @@
 
 [Meeting hub](index.html) · [Latest recorded review](2026-10-02.html) · [Reusable template](template.html)
 
-## Wednesday presentation · 14 October 2026 · V16
+## Wednesday presentation · 14 October 2026 · V17
 
-[Open the eight-page presentation](2026-10-14-v16/index.html). The carrier comes first, followed by the standalone FPGA schematic and layout/3D, then the one-page FPGA + LDO comparison. The comparison switches between the separate FPGA V41/LDO V5 boards and combined V6 PCB across 3D, native layouts and complete one-page schematics, with board dimensions and length references. V16 includes the corrected standalone FPGA 3D asset links. This is presentation preparation; no meeting outcomes are recorded. Earlier dated presentations remain available from the [meeting hub](index.html).
+[Open the eight-page presentation](2026-10-14-v17/index.html). The carrier comes first, followed by the standalone FPGA schematic and layout/3D, then the one-page FPGA + LDO comparison. The comparison switches between the separate FPGA V41/LDO V5 boards and combined V6 PCB across 3D, native layouts and complete one-page schematics, with board dimensions and length references. V16 includes the corrected standalone FPGA 3D asset links. This is presentation preparation; no meeting outcomes are recorded. Earlier dated presentations remain available from the [meeting hub](index.html).
 
 ## Review workflow
 
