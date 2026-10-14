@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FPGA + LDO · architecture comparison</title><link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="viewer.css">
+<script type="importmap">{"imports":{"three":"../carrier_viewer/vendor/dist/three.module.js","three/addons/":"../carrier_viewer/vendor/examples/jsm/"}}</script>
+<script type="module" src="viewer.js"></script>
+</head>
+<body><main>
+<div class="toolbar">
+ <div class="board-controls" id="separate-controls"><label><input id="show-fpga" type="checkbox" checked>FPGA V41</label><label><input id="show-ldo" type="checkbox" checked>LDO V5</label><label><input id="show-guides" type="checkbox" checked>Connector guides</label></div>
+ <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-in" aria-label="Zoom in">+</button><button id="fit">Fit</button></div>
+</div>
+<div class="toolbar secondary">
+ <div class="separation-controls" id="separation-controls"><button id="assemble">Together</button><button id="separate">Separate</button><label for="separation">Separate <input id="separation" aria-label="Additional separation beyond the nominal mating position" type="range" min="0" max="20" step="0.5" value="8"><output id="gap-value" for="separation">8 mm</output></label></div>
+ <div class="poses" role="group" aria-label="Assembly orientation"><button data-pose="iso" aria-pressed="true">Isometric</button><button data-pose="top" aria-pressed="false">Top</button><button data-pose="bottom" aria-pressed="false">Bottom</button><button data-pose="side" aria-pressed="false">Side</button></div>
+</div>
+<div id="stage" class="stage"><canvas id="assembly" tabindex="0" aria-label="Separate FPGA and LDO boards aligned at their two mating connectors. Drag to rotate, right-drag to pan, scroll to zoom."></canvas><p id="status" role="status">Loading FPGA and LDO boards…</p><div class="board-label" id="fpga-label" aria-hidden="true">FPGA · 25 × 23 mm</div><div class="board-label" id="ldo-label" aria-hidden="true">LDO · 32 × 32.5 mm</div><div class="board-label" id="combined-label" aria-hidden="true">Combined · 35 × 35 mm</div><div id="metric-scale" class="metric-scale"><div id="scale-line"></div><span id="scale-label">10 mm at view centre</span></div></div>
+<p class="caption"><span id="assembly-caption">FPGA V41 + LDO V5 · separated for inspection</span><span>Drag to rotate · scroll to zoom</span></p>
+<p class="scope"><span id="scope-label">Placement comparison · routing in progress</span></p>
+</main></body></html>

@@ -1,5 +1,9 @@
 # Source provenance
 
+## 14 October 2026 presentation · V16
+
+[Deck and runtime bundle](../presentation/meetings/2026-10-14-v16/index.html) · [provenance and scope](meetings/2026-10-14-presentation/README.md). Current carrier V16, standalone FPGA V41, separate LDO V5 and combined V6 are source-backed design-review views. This is presentation preparation, not a meeting outcome or fabrication release.
+
 [Wednesday’s presentation](../presentation/meetings/2026-09-30.html) · [R12 simple connection overview](../presentation/schematic/simple.html) · [current native 3D](../presentation/adapter/assembly.html?revision=r12) · [editable R12 package and audit](../hardware/xem8310-adapter/dated/2026-09-29/r12-single-link/README.md). Current focus is one 19-contact link. All 19 contacts are mapped in a 10-sheet schematic with ERC 0; the PCB is still in progress: 10/19 contacts reach all intended copper endpoints, with 9 open connections and 11 dangling warnings. R8/R9/R10 three-port studies remain preserved. No fabrication release.
 
 The project files are stored in this repository. Attribution and copy details are recorded here so the main documentation can focus on the system and its interfaces.

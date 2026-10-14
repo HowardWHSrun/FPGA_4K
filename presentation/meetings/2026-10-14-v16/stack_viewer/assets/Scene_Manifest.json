@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "title": "FPGA V41 + LDO V5",
+  "center_xy_mm": [
+    116,
+    116.25
+  ],
+  "nominal_gap_mm": 1.5,
+  "fpga_translation_xy_mm": [
+    0.5,
+    1.5
+  ],
+  "coordinate_convention": "Raw GLB metres: X=native KiCad X, Y=elevation, Z=native KiCad Y. Native board/model geometry retained.",
+  "nominal_plane_convention": "Front reference planes use the exporter zero-offset front component-placement frame; rear references are inferred by subtracting saved PCB thickness. This establishes the nominal board assembly, not a qualified physical fit. Source pad/mask/model offsets remain in the meshes.",
+  "nominal_outer_pcb_span_mm": 4.1,
+  "connectors": [
+    {
+      "pair": "J1",
+      "fpga_xy_mm": [
+        122.25,
+        109.08
+      ],
+      "ldo_xy_mm": [
+        122.75,
+        110.58
+      ],
+      "rotation_deg": 90
+    },
+    {
+      "pair": "J2",
+      "fpga_xy_mm": [
+        113.15,
+        119.35
+      ],
+      "ldo_xy_mm": [
+        113.65,
+        120.85
+      ],
+      "rotation_deg": 0
+    }
+  ],
+  "models": {
+    "fpga": {
+      "version": "V41",
+      "path": "assets/fpga/FPGA_V41_Interactive.glb",
+      "mesh_sha256": "89eddaffada21914daf27b40091fa8aa673fe674bf367d6cafe4315dd4281623",
+      "source_sha256": "9b115f6dc2146db157458ca5f9ba8ec0439f61da7359b050244cf347dae1c4c0",
+      "raw_to_mm": 1000,
+      "front_anchor_mm": 1.594998,
+      "back_anchor_mm": -0.005002,
+      "thickness_mm": 1.6,
+      "geometry": {
+        "footprints": 135,
+        "assigned_component_bodies": 122,
+        "exported_component_groups": 122,
+        "omitted_assigned_component_bodies": [],
+        "missing_source_model_files": [],
+        "footprints_without_assigned_3d_models": [
+          "TP1",
+          "TP10",
+          "TP11",
+          "TP12",
+          "TP13",
+          "TP2",
+          "TP3",
+          "TP4",
+          "TP5",
+          "TP6",
+          "TP7",
+          "TP8",
+          "TP9"
+        ],
+        "pcb_surface_groups": 8,
+        "triangles": 455871,
+        "native_primitives": 21164,
+        "browser_primitives": 292
+      },
+      "size_mm": [
+        25,
+        23
+      ]
+    },
+    "ldo": {
+      "version": "V5",
+      "path": "assets/ldo/LDO_V5_Interactive.glb",
+      "mesh_sha256": "44e61d7048fb3f18649d65c6debcad3850e2345a9000444ef143252fecdd8163",
+      "source_sha256": "f5d07985f5ff749ec338c609dc0ac859e8f74c0e97a381e711346547d55d42e6",
+      "raw_to_mm": 1000,
+      "front_anchor_mm": 0.995,
+      "back_anchor_mm": -0.005,
+      "thickness_mm": 1.0,
+      "geometry": {
+        "footprints": 192,
+        "pads": 1126,
+        "tracks": 0,
+        "vias": 0,
+        "zones": 0,
+        "assigned_component_bodies": 186,
+        "exported_component_groups": 186,
+        "omitted_assigned_component_bodies": [],
+        "footprints_without_assigned_3d_models": [
+          "NT100",
+          "NT200",
+          "NT300",
+          "NT400",
+          "TP90",
+          "TP91"
+        ],
+        "pcb_surface_groups": 7,
+        "native_primitives": 16815,
+        "browser_primitives": 429,
+        "triangles": 319679,
+        "material_table_unchanged": true,
+        "maximum_transform_rounding_m": 0
+      },
+      "size_mm": [
+        32,
+        32.5
+      ]
+    },
+    "combined": {
+      "version": "V6",
+      "path": "../combined_assets/mesh/Combined_V6_Interactive.glb",
+      "mesh_sha256": "f47c9f40b28014240fdf9a8c6493c2b2d4f90a08a8ba223ad8056124ff205201",
+      "source_sha256": "fb67b1b888a6cd54422555b30b092b6b1a02a5e06d683cee53611149c804c66a",
+      "raw_to_mm": 1000,
+      "center_xy_mm": [
+        117.5,
+        117.5
+      ],
+      "size_mm": [
+        35,
+        35
+      ],
+      "thickness_mm": 1.6,
+      "front_anchor_mm": 1.594998,
+      "back_anchor_mm": -0.005002,
+      "geometry": {
+        "footprints": 323,
+        "pads": 1742,
+        "assigned_component_bodies": 304,
+        "exported_component_groups": 304,
+        "omitted_assigned_component_bodies": [],
+        "triangles": 485618,
+        "browser_primitives": 705
+      }
+    }
+  },
+  "status": "Placement illustration; physical mating, retention and populated clearance under review."
+}

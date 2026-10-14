@@ -2,6 +2,12 @@
 
 [Meeting hub](index.html) · [Latest recorded review](2026-10-02.html) · [Reusable template](template.html)
 
+## Wednesday presentation · 14 October 2026 · V16
+
+[Open the eight-page presentation](2026-10-14-v16/index.html). The carrier comes first, followed by the standalone FPGA schematic and layout/3D, then the one-page FPGA + LDO comparison. The comparison switches between the separate FPGA V41/LDO V5 boards and combined V6 PCB across 3D, native layouts and complete one-page schematics, with board dimensions and length references. V16 includes the corrected standalone FPGA 3D asset links. This is presentation preparation; no meeting outcomes are recorded. Earlier dated presentations remain available from the [meeting hub](index.html).
+
+## Review workflow
+
 Use the same six sections for each dated review: Overview, PCB status, Interfaces, Decisions, Actions, Sources. Keep subsystem order ASIC/carriers, routing/LDO, FPGA, downstream/PC.
 
 For a new meeting, copy `template.html` to `YYYY-MM-DD.html`, fill the dated sections, link the preceding review, and update the latest entry in `index.html`. Move the previous latest into the archive; do not overwrite its meeting record. The template is not a scheduled meeting.

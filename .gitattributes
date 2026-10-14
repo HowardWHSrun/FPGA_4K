@@ -27,3 +27,9 @@ presentation/fpga/viewer/vendor/** -text -whitespace
 *.kicad_pro -merge
 *.kicad_sym -merge
 *.kicad_mod -merge
+
+# Preserve native KiCad SVG exports and pinned runtime bytes in the V16 deck.
+presentation/meetings/2026-10-14-v16/**/*.svg -text -whitespace
+presentation/meetings/2026-10-14-v16/carrier_viewer/vendor/** -text -whitespace
+presentation/meetings/2026-10-14-v16/fpga_viewer/vendor/** -text -whitespace
+presentation/meetings/2026-10-14-v16/**/*.kicad_pcb -text -whitespace

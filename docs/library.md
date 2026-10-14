@@ -1,5 +1,7 @@
 # Project files and documents
 
+- [14 October Wednesday presentation · V16](../presentation/meetings/2026-10-14-v16/index.html): eight pages with the carrier first, standalone FPGA next, then the separate/combined FPGA + LDO comparison. Interactive 3D, native layouts and complete one-page schematics include board dimensions and length references. Preparation only; routing and physical qualification remain in progress.
+
 - [Current XEM8305 / LDO carrier R15 · 12 October](../presentation/xem/carrier-r15-2026-10-12.html): rotatable XEM–carrier–LDO stack, separated attachment view, six-layer routing, native KiCad project and comparison PDF. R15 widens 437 power/ground segments while preserving 53 × 83 mm and signal routes. Nominal assembly and hardware qualification remain open.
 
 - [Earlier XEM8305 / LDO carrier C4.8-R5 files · 9 October](../presentation/downloads/#carrier-c4-8-r5): editable KiCad, four-layer Gerbers and drills, routing views and check summary. The 53 × 83 mm routing review has zero saved-board DRC, opens and parity findings; inherited schematic ERC cleanup and qualification remain open. Not a fabrication release.
