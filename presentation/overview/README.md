@@ -1,4 +1,4 @@
-# Current hardware overview — V1
+# Current hardware overview — V2
 
 14 October 2026. [Open the overview](../../index.html) · [Standalone FPGA](../../index.html#fpga) · [Revision sources](Source_Mapping.json).
 
@@ -16,3 +16,5 @@ All four complete native KiCad ZIPs are linked from the current board selection.
 These are design reviews and nominal 3D illustrations. They do not establish fabrication acceptance, populated mating, thermal performance or powered acquisition. The separate and combined compact paths still need ASIC distribution/stack-adapter design.
 
 The [previous root overview](../../overview-2026-09-23.html) is preserved byte for byte, with its existing dependent files. Earlier meeting pages and native source projects are unchanged.
+
+V2 fixes direct drawing-view navigation: absent or invalid drawing parameters open the FPGA schematic, a drawing selector switches views, and a persistent Overview link returns to the complete page. Loading and error states retain that return link.

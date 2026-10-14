@@ -24,7 +24,7 @@ async function ready(kind){
 }
 try{
  await page.goto(base+'#fpga',{waitUntil:'domcontentloaded'});
- check(await page.locator('html').getAttribute('data-overview-version')==='V1','Current overview V1 is active');
+ check(await page.locator('html').getAttribute('data-overview-version')==='V2','Current overview V1 is active');
  check(await page.locator('#design-title').innerText()==='Standalone FPGA · V41','Existing #fpga deep link selects V41');
  let frame=await ready('fpga3d');
  check(await frame.evaluate(()=>window.fpga3dViewer.getState().GLBSHA256==='89eddaffada21914daf27b40091fa8aa673fe674bf367d6cafe4315dd4281623'),'FPGA V41 source-derived model loads');
@@ -72,6 +72,15 @@ try{
  await page.goto(base+'#receiver',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.overviewState?.board==='carrier');
  check(await page.locator('#design-title').innerText()==='XEM8305 carrier · V17','Legacy #receiver selects current carrier');
  check((await page.request.get(base+'overview-2026-09-23.html')).ok(),'Earlier overview remains accessible');
+ for(const suffix of ['', '?asset=unknown']){
+  await page.goto(base+'presentation/overview/image-viewer.html'+suffix,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>window.drawingState?.ready,{},{timeout:90000});
+  check(await page.locator('#drawing-picker').inputValue()==='fpga-schematic','Missing/invalid drawing selector opens the FPGA schematic');
+  check(await page.locator('.overview-link').getAttribute('href')===base+'#fpga','Direct drawing view has a working overview link');
+ }
+ await page.locator('#drawing-picker').selectOption('combined-layout');
+ await page.waitForFunction(()=>window.drawingState?.asset==='combined-layout'&&window.drawingState.ready);
+ check((await page.locator('#drawing').getAttribute('src')).endsWith('_Front.svg'),'Drawing selector switches to V7 without leaving the page');
  check(report.pageErrors.length===0,'No browser JavaScript errors');
  check(report.httpErrors.length===0,'No failed HTTP resources');
  report.passed=true;

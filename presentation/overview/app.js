@@ -14,7 +14,7 @@ function selectView(key){
  const design=designs[board];if(!design.views[key])return;view=key;
  document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
  const url=design.views[view];$('design-view').src=url;$('design-view').title=design.title+' · '+({'3d':'3D view',layout:'PCB layout',schematic:'schematic'}[view]);$('open-view').href=url;
- window.overviewState={version:'V1',board,view,title:design.title,url};
+ window.overviewState={version:'V2',board,view,title:design.title,url};
 }
 function selectBoard(){
  const hash=location.hash.slice(1).toLowerCase();const key=aliases[hash]||hash;board=designs[key]?key:'overview';const design=designs[board];

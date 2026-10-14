@@ -2,7 +2,9 @@
 
 ## Hardware overview update — 14 October 2026
 
-[Overview V1](../index.html) uses carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7. [Exact revision mapping](../presentation/overview/Source_Mapping.json) records source files and reuse of unchanged V16 carrier geometry. Complete native packages and V7 native front/back SVGs are included. The former root HTML is preserved; original CAD and earlier meeting pages are unchanged. These are review snapshots, not fabrication or operating qualification.
+[Overview V2](../index.html) uses carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7. [Exact revision mapping](../presentation/overview/Source_Mapping.json) records source files and reuse of unchanged V16 carrier geometry. Complete native packages and V7 native front/back SVGs are included. The former root HTML is preserved; original CAD and earlier meeting pages are unchanged. These are review snapshots, not fabrication or operating qualification.
+
+V2 adds recovery for direct drawing-view URLs: missing or invalid asset selection defaults to the FPGA schematic, and the viewer provides a drawing selector and persistent overview link. Native files and board revisions are unchanged. V1 remains in Git history and the dated publication snapshot.
 
 ## 14 October 2026 presentation · V16
 
