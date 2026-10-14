@@ -1,8 +1,10 @@
 # FPGA_4K
 
+**[Current hardware overview · updated 14 October 2026](index.html)** — carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7, with current native downloads. The older device selections and architecture statements below remain dated history; the current overview gives the present review status.
+
 **[14 October presentation · carrier, FPGA and LDO](presentation/meetings/2026-10-14-v17/index.html)** — eight pages with interactive 3D, native layouts and complete schematics.
 
-**Current LDO carrier · R15 · published 12 October:** [XEM–carrier–LDO assembly, six-layer routing and files](presentation/xem/carrier-r15-2026-10-12.html). The [overview carrier selection](./#receiver) opens R15. Main power copper is wider; the XEM and Gerald LDO attachment uses simplified source geometry with nominal 5 mm and 2 mm mating gaps. Complete editable KiCad project and R14-to-R15 PDF included. Routing review; hardware qualification remains open.
+**Preserved LDO carrier · V15 · published 12 October:** [XEM–carrier–LDO assembly, six-layer routing and files](presentation/xem/carrier-r15-2026-10-12.html). The [overview carrier selection](./#receiver) now opens V17. Main power copper is wider; the XEM and Gerald LDO attachment uses simplified source geometry with nominal 5 mm and 2 mm mating gaps. Complete editable KiCad project and R14-to-R15 PDF included. Routing review; hardware qualification remains open.
 
 **Earlier LDO carrier files · C4.8-R5 · 9 October:** [KiCad project, Gerbers, drills and routing views](presentation/downloads/#carrier-c4-8-r5). Four layers, 53 × 83 mm, aligned corner vias. Saved-board DRC, opens and schematic/PCB parity are zero; inherited schematic ERC cleanup and hardware qualification remain open. Review files; not a fabrication release.
 

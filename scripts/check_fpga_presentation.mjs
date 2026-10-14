@@ -312,13 +312,13 @@ try {
   assert((await page.title()).includes('FPGA'), 'Earlier review remains accessible');
   assert(await page.locator('#chapters button').count() === 8, 'Earlier eight-slide deck preserved');
   if (!process.env.SKIP_SYSTEM_CHECK) {
-    await page.goto(base + '#fpga', {waitUntil: 'networkidle'});
+    await page.goto(base + 'overview-2026-09-23.html#fpga', {waitUntil: 'networkidle'});
     await page.waitForFunction(() => window.PRESENTATION?.getState().loaded);
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
     await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/current-35t.html'));
     await page.waitForFunction(() => document.title.includes('35T') && document.title.includes('R39'));
-    report.checks.push('Root system view opens current 35T R39 review');
+    report.checks.push('Historical system view opens its preserved 35T R39 review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
   assert(report.consoleErrors.length === 0, 'No browser console errors');

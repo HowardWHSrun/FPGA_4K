@@ -17,13 +17,13 @@ jobs:
           import urllib.request, json, time, re, hashlib
           from pathlib import Path
           base = 'https://howardwhsrun.github.io/FPGA_4K/'
-          expected = {'index.html': '4K Recording System', 'presentation/style.css': ':root', 'presentation/app.js': 'PRESENTATION', 'presentation/model-data.js': 'ASSEMBLY_MODEL'}
+          expected = {'index.html': 'data-overview-version', 'overview-2026-09-23.html': '4K Recording System', 'presentation/style.css': ':root', 'presentation/app.js': 'PRESENTATION', 'presentation/model-data.js': 'ASSEMBLY_MODEL'}
           report = {'base': base, 'checks': []}
           for path, marker in expected.items():
               result = {'path': path}
               for attempt in range(3):
                   try:
-                      url = base + path + '?v=assembly-20260922'
+                      url = base + path + '?v=overview-v1'
                       req = urllib.request.Request(url, headers={'User-Agent': 'FPGA-4K-Presentation-Check', 'Cache-Control': 'no-cache'})
                       with urllib.request.urlopen(req, timeout=15) as response:
                           raw = response.read()

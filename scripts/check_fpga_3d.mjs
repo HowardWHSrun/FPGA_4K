@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+const {chromium} = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 import {mkdir,writeFile} from 'node:fs/promises';
 const base=(process.env.FPGA_BASE_URL||'https://howardwhsrun.github.io/FPGA_4K/').replace(/\/?$/,'/');
 const out=process.env.FPGA_3D_OUTPUT_DIR||'fpga-browser-check/3d';await mkdir(out,{recursive:true});
@@ -36,12 +36,12 @@ try{
   check(await page.locator('#three-panel').isVisible()&&!(await page.locator('#viewport').isVisible())&&!(await page.locator('#native-panel').isVisible()),path+' exclusive 3D tab');check(!(await frame.locator('.revision').isVisible()),path+' revision locked to surrounding review');
   await page.screenshot({path:`${out}/${path.includes('micro')?'micro':'usb'}-review.png`});await page.locator('#back').click();check(await page.locator('#viewport').isVisible()&&!(await page.locator('#three-panel').isVisible()),path+' back layout restored');
  }
- await page.goto(base+'#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await openReview(system,'fpga35t-r39','system preview');
- check((await system.evaluate(()=>reviewPreview.model))==='fpga35t-r39','system shows current 35T R39 preview');
- check((await page.locator('#facts').innerText()).includes('35T'),'system facts name current 35T');
- check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-35t.html'),'system links to current 35T review');
+ await page.goto(base+'overview-2026-09-23.html#fpga');const system=await (await page.locator('#fpga-system-3d').elementHandle()).contentFrame();await openReview(system,'fpga35t-r39','system preview');
+ check((await system.evaluate(()=>reviewPreview.model))==='fpga35t-r39','historical system shows its 35T R39 preview');
+ check((await page.locator('#facts').innerText()).includes('35T'),'historical system facts name 35T');
+ check((await page.locator('#open-fpga-design').getAttribute('href')).includes('current-35t.html'),'historical system links to its 35T review');
  await page.screenshot({path:`${out}/system.png`});
- await page.goto(base+'#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the current preview hidden');
+ await page.goto(base+'overview-2026-09-23.html#overview');check(!(await page.locator('#fpga-system-3d').isVisible()),'overview keeps the current preview hidden');
  for(const [path,id] of [['presentation/fpga/current-35t.html','fpga35t-r39'],['presentation/fpga/review-r37-2026-10-04.html','fpga35t-r37'],['presentation/ldo-backup/current-e5.html','ldo-e5'],['presentation/xem/current-a1r2.html','xem8305-a1r2'],['presentation/library/bonding-fixture.html','bonding-v6']]){
   await page.goto(base+path);await openReview(page,id,'desktop preview');
   check((await page.evaluate(()=>reviewPreview.model))===id,id+' model loads');

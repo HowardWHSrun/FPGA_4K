@@ -1,5 +1,9 @@
 # Source provenance
 
+## Hardware overview update — 14 October 2026
+
+[Overview V1](../index.html) uses carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7. [Exact revision mapping](../presentation/overview/Source_Mapping.json) records source files and reuse of unchanged V16 carrier geometry. Complete native packages and V7 native front/back SVGs are included. The former root HTML is preserved; original CAD and earlier meeting pages are unchanged. These are review snapshots, not fabrication or operating qualification.
+
 ## 14 October 2026 presentation · V16
 
 [Deck and runtime bundle](../presentation/meetings/2026-10-14-v16/index.html) · [provenance and scope](meetings/2026-10-14-presentation/README.md). Current carrier V16, standalone FPGA V41, separate LDO V5 and combined V6 are source-backed design-review views. This is presentation preparation, not a meeting outcome or fabrication release.

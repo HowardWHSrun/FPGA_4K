@@ -4,11 +4,13 @@ on:
     branches: [presentation]
     paths:
       - index.html
+      - overview-2026-09-23.html
+      - scripts/check_overview.mjs
       - presentation/**
       - .github/workflows/presentation-checks.yml
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: presentation-checks
   cancel-in-progress: false
@@ -17,43 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: presentation
-      - name: Index the active compact presentation
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          lib = Path('docs/library.md')
-          text = lib.read_text()
-          text = text.replace('[Presentation guide](../presentation/README.md)', '[Presentation guide](../presentation/compact/README.md)')
-          text = text.replace('[Editing guide](../presentation/README.md)', '[Editing guide](../presentation/compact/README.md)')
-          text = text.replace('[Model derivation](../presentation/manifest.json)', '[Model provenance](../presentation/compact/manifest.json)')
-          text = text.replace('This branch-only starter uses the original assembly mesh and a separately labeled, new provisional compact connection study. It is not the unrecovered earlier shortened CAD revision or a fabrication release.', 'The active root presentation uses the compact B v1 STL supplied by Howard on September 22, with unchanged geometry. Older original-based visualization studies remain separate and are not used by the root page. Detailed slides are placeholders; this is not a fabrication release.')
-          lib.write_text(text)
-          path = Path('sources/manifest.json')
-          data = json.loads(path.read_text())
-          data['presentation_derivation'] = {'manifest': 'presentation/compact/manifest.json', 'branch': 'presentation', 'source': 'hardware/assembly/stacked_headboard_compact_B_v1.stl', 'status': 'supplied compact assembly; exact source bytes preserved; no geometric changes'}
-          registry = json.loads(Path('presentation/fpga/viewer/boards.json').read_text())
-          active = next(board for board in registry['boards'] if board['id'] == registry['default_board'])
-          source = (Path('presentation/fpga/viewer') / active['native']).resolve().parent.parent.relative_to(Path.cwd()).as_posix()
-          data['fpga_presentation'] = {
-              'manifest': active.get('package_manifest', source + '/manifest.json'),
-              'entry': 'presentation/fpga/index.html',
-              'source': source,
-              'board_id': active['id'],
-              'board_sha256': active['sha256'],
-              'status': active.get('publication_status', 'Unrouted engineering review; not for manufacture'),
-          }
-          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
-          PY
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/library.md sources/manifest.json
-          if ! git diff --cached --quiet; then
-            git commit -m 'Index active supplied-compact presentation and provenance'
-            git push origin HEAD:presentation
-          fi
       - name: Check repository, source and JavaScript
         run: |
           python3 scripts/check_docs.py
@@ -65,6 +30,7 @@ jobs:
           node --check presentation/fpga/slides.js
           node --check presentation/fpga/entry.js
           node --check presentation/fpga/review.js
+          node --check scripts/check_overview.mjs
           python3 scripts/check_fpga_review.py
           git diff --check
           python3 - <<'PY'
@@ -76,19 +42,23 @@ jobs:
           assert hashlib.sha256(raw).hexdigest() == manifest['source_sha256']
           source = json.loads(Path('presentation/model-source.js').read_text().split('window.PRESENTATION_MODEL_SOURCE = ', 1)[1].strip().removesuffix(';'))
           assert gzip.decompress(base64.b64decode(source['data'])) == raw
-          html = Path('index.html').read_text()
-          for asset in re.findall(r'(?:src|href)="(presentation/[^\"]+)"', html):
-              target = Path(urlsplit(asset).path)
-              assert target.is_file() or (target.is_dir() and (target / 'index.html').is_file()), asset
-          print('PASS: exact compact STL, source hash, active assets, and nested index links verified.')
+          for page in ['index.html', 'overview-2026-09-23.html']:
+              html = Path(page).read_text()
+              for asset in re.findall(r'(?:src|href)="(presentation/[^\"]+)"', html):
+                  target = Path(urlsplit(asset).path)
+                  assert target.is_file() or (target.is_dir() and (target / 'index.html').is_file()), asset
+          print('PASS: historical compact STL and source hash, overview assets, and nested links verified.')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: compact-and-fpga-presentation-bundle
+          name: overview-and-historical-presentation-bundle
           path: |
             index.html
+            overview-2026-09-23.html
+            scripts/check_overview.mjs
             .nojekyll
+            presentation/overview/
             presentation/compact/
             presentation/model-source.js
             presentation/fpga/

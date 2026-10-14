@@ -1,8 +1,8 @@
-# Compact assembly presentation
+# Historical compact assembly presentation
 
-**[Open the live presentation](https://howardwhsrun.github.io/FPGA_4K/)**
+**[Open the preserved compact overview](../../overview-2026-09-23.html)** · [Current hardware overview](../../index.html)
 
-Active root presentation, published from the `presentation` branch. The review uses the exact supplied compact headboard, reported workstream owners and source-grounded details. The connecting section and lower routing/LDO board are one subsystem. The selected [XC7A25T board](../fpga/current-25t.html), proposed [three-port interposer](../adapter/) and [XEM8310-on-BRK8310 receiver](../xem/) are separate sections. The adapter view combines manufacturer-derived XEM/BRK 3D geometry with a native-derived 25T placement and an R8 PCB candidate; exploded spacing and cables are illustrative. The older 50T board page is a historical review. No displayed PCB is released for fabrication.
+Preserved former root presentation, published from the `presentation` branch. The review uses the exact supplied compact headboard, reported workstream owners and source-grounded details. The connecting section and lower routing/LDO board are one subsystem. The selected [XC7A25T board](../fpga/current-25t.html), proposed [three-port interposer](../adapter/) and [XEM8310-on-BRK8310 receiver](../xem/) are separate sections. The adapter view combines manufacturer-derived XEM/BRK 3D geometry with a native-derived 25T placement and an R8 PCB candidate; exploded spacing and cables are illustrative. The older 50T board page is a historical review. No displayed PCB is released for fabrication.
 
 ## Sections and responsibilities
 
@@ -28,7 +28,7 @@ The finishing layer removes duplicate headings, links hovered/focused labels and
 
 ## Editable files
 
-[slides.js](slides.js) contains owners, facts, details and source links. [app.js](app.js) contains the exact-STL renderer and camera controls. [style.css](style.css) defines the base layout. [refinements.css](refinements.css) and [interaction.js](interaction.js) apply the review-v2.1 finishing layer. [Root index.html](../../index.html) loads them. The [revision manifest](review-v2.json) records source and annotation provenance.
+[slides.js](slides.js) contains owners, facts, details and source links. [app.js](app.js) contains the exact-STL renderer and camera controls. [style.css](style.css) defines the base layout. [refinements.css](refinements.css) and [interaction.js](interaction.js) apply the review-v2.1 finishing layer. [Preserved overview HTML](../../overview-2026-09-23.html) loads them. The [revision manifest](review-v2.json) records source and annotation provenance.
 
 Typography prioritizes Inter and Aptos when installed, then platform system fonts, Segoe UI, Helvetica Neue and Arial. The face depends on the viewer's system. No fonts, analytics or external rendering libraries are bundled or downloaded.
 

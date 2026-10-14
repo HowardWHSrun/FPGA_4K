@@ -5,7 +5,10 @@ on:
     paths:
       - .gitattributes
       - index.html
+      - overview-2026-09-23.html
+      - scripts/check_overview.mjs
       - presentation/fpga/**
+      - presentation/overview/**
       - presentation/reviews/**
       - presentation/downloads/**
       - scripts/check_fpga_3d.mjs
@@ -38,6 +41,7 @@ jobs:
           node --check presentation/fpga/entry.js
           node --check presentation/reviews/viewer.js
           node --check scripts/check_fpga_3d.mjs
+          node --check scripts/check_overview.mjs
           node --check presentation/fpga/usb-c.js
           node --check presentation/fpga/review.js
           node --check presentation/fpga/review-board.js
@@ -58,7 +62,8 @@ jobs:
           python3 - <<'PY'
           import concurrent.futures,json,os,time,urllib.request
           from pathlib import Path
-          paths=['index.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review-board.js','presentation/fpga/review.css','presentation/fpga/review-data.json','presentation/fpga/assets/core-front.svg','presentation/fpga/assets/core-back.svg','presentation/fpga/viewer/index.html','presentation/fpga/viewer/viewer.js','presentation/fpga/viewer/boards.json','presentation/fpga/viewer/vendor/kicanvas.js','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
+          paths=['index.html','overview-2026-09-23.html','presentation/fpga/index.html','presentation/fpga/review.js','presentation/fpga/review-board.js','presentation/fpga/review.css','presentation/fpga/review-data.json','presentation/fpga/assets/core-front.svg','presentation/fpga/assets/core-back.svg','presentation/fpga/viewer/index.html','presentation/fpga/viewer/viewer.js','presentation/fpga/viewer/boards.json','presentation/fpga/viewer/vendor/kicanvas.js','hardware/fpga-100t-review/manifest.json','hardware/fpga-interface-study/manifest.json','hardware/fpga-100t-review/hardware/FPGA100T_Minimal.kicad_pcb']
+          paths += [str(p) for p in Path('presentation/overview').rglob('*') if p.is_file()]
           fpga=json.loads(Path('presentation/fpga/manifest.json').read_text())
           current=json.loads(Path(fpga['artifact_manifest']).read_text())
           paths += [fpga['artifact_manifest'],'presentation/fpga/manifest.json','presentation/fpga/assets/current-front.svg','presentation/fpga/assets/current-back.svg','presentation/fpga/assets/current-view-provenance.json']
@@ -101,6 +106,7 @@ jobs:
       - name: Test review, downloads, history and system entry
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          node scripts/check_overview.mjs
           node scripts/check_fpga_presentation.mjs
           VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
       - uses: actions/upload-artifact@v4
