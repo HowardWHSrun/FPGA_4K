@@ -1,20 +1,18 @@
-# Current hardware overview — V2
+# Current hardware overview — V3
 
-14 October 2026. [Open the overview](../../index.html) · [Standalone FPGA](../../index.html#fpga) · [Revision sources](Source_Mapping.json).
+14 October 2026. [Open the original-structure overview](../../index.html) · [FPGA section](../../index.html#fpga) · [Revision sources](Source_Mapping.json).
 
-| Design | Current revision | Outline | Review status |
-|---|---|---|---|
-| XEM8305 carrier | V17 | 53 × 83 mm | Grid-aligned schematic; V16 copper/placement preserved. Factory and powered qualification open. |
-| Standalone FPGA | V41 | 25 × 23 mm | 116/116 mezzanine paths and 125 MHz clock routed; 445 board opens remain. |
-| Separate ASIC LDO | V5 | 32 × 32.5 mm | 32 LT3046 stages; unrouted, 731 gaps; canonical DRC is not clean. |
-| Combined FPGA/shared LDO | V7 | 30 × 30 mm | Eight shared LT3046 stages; unrouted, 827 gaps; canonical DRC and supply feasibility remain open. |
+The live page retains the previous assembly-first structure: original model on Overview, viewer on the left, subsystem description on the right, six sections along the bottom, and existing camera, notes and keyboard controls. Current previews replace the outdated work inside those sections.
 
-The current views reuse the published V41 FPGA and V5 LDO models and native viewers. Carrier 3D/layout retain V16 geometry because the V17 update preserves the physical design. The complete carrier schematic and downloadable project are V17. V7 has native front/back placement and a complete schematic; no earlier V6 model is labeled V7.
+| Existing section | Current work | Views and scope |
+|---|---|---|
+| Custom FPGA | V41 · 25 × 23 mm | Current 3D, native routing, schematic and complete KiCad; partial routing, 445 opens. |
+| Routing + LDO | Separate V5 · 32 × 32.5 mm | Separate FPGA/LDO 3D, native placement, schematic and complete KiCad; unrouted, 731 gaps. |
+| Routing + LDO · combined option | Combined V7 · 30 × 30 mm | Current native front/back layout, schematic and complete KiCad; unrouted, 827 gaps. No V6 model relabeled V7. |
+| XEM carrier | V17 · 53 × 83 mm | Current schematic/project; V16 3D/native physical geometry retained because V17 preserves copper and placement. |
 
-All four complete native KiCad ZIPs are linked from the current board selection. Exact sources, hashes and transformations are in the revision mapping. The [V7 canonical DRC](assets/Combined_V7_Canonical_DRC.json), [V7 placement geometry audit](assets/Combined_V7_Placement_Audit.json) and [V17 check summary](assets/Carrier_V17_Check_Summary.json) retain their original scopes.
+ASIC carriers and the dated µHDMI adapter study remain in their existing sections. The original assembly is conceptual geometry, not a verified current mating assembly. Current sources, rail feasibility, routing, physical fit and hardware qualification retain their own limits.
 
-These are design reviews and nominal 3D illustrations. They do not establish fabrication acceptance, populated mating, thermal performance or powered acquisition. The separate and combined compact paths still need ASIC distribution/stack-adapter design.
+The [original earlier overview](../../overview-2026-09-23.html) and [alternative V2 layout](../../overview-2026-10-14-v2.html) are preserved. V3 uses scoped slide/preview scripts; the historical compact app, data and entry scripts are unchanged.
 
-The [previous root overview](../../overview-2026-09-23.html) is preserved byte for byte, with its existing dependent files. Earlier meeting pages and native source projects are unchanged.
-
-V2 fixes direct drawing-view navigation: absent or invalid drawing parameters open the FPGA schematic, a drawing selector switches views, and a persistent Overview link returns to the complete page. Loading and error states retain that return link.
+The direct drawing viewer keeps the V2 recovery behavior: default FPGA schematic, a drawing selector, and a persistent return link.

@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**[Current hardware overview · updated 14 October 2026](index.html)** — carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7, with current native downloads. The older device selections and architecture statements below remain dated history; the current overview gives the present review status.
+**[Current hardware overview · updated 14 October 2026](index.html)** — carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7, in the original assembly-first page structure, with current native downloads. The older device selections and architecture statements below remain dated history; the current overview gives the present review status.
 
 **[14 October presentation · carrier, FPGA and LDO](presentation/meetings/2026-10-14-v17/index.html)** — eight pages with interactive 3D, native layouts and complete schematics.
 

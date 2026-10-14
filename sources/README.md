@@ -1,5 +1,9 @@
 # Source provenance
 
+## Original overview structure restored — V3 · 14 October 2026
+
+Howard requested retaining the previous structure and updating its previews. [Overview V3](../index.html) restores the original assembly canvas, right story panel, six-section navigation, camera/keyboard controls and notes. Current previews show FPGA V41, separate LDO V5, combined V7 and carrier V17. Combined V7 is an option inside Routing + LDO. The original compact source bytes and historical pages/dependencies are unchanged; the [alternative V2 overview](../overview-2026-10-14-v2.html) is preserved separately. Native CAD and hardware status are unchanged.
+
 ## Hardware overview update — 14 October 2026
 
 [Overview V2](../index.html) uses carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7. [Exact revision mapping](../presentation/overview/Source_Mapping.json) records source files and reuse of unchanged V16 carrier geometry. Complete native packages and V7 native front/back SVGs are included. The former root HTML is preserved; original CAD and earlier meeting pages are unchanged. These are review snapshots, not fabrication or operating qualification.

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" data-overview-version="V2">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Current 4K neural-recording hardware review: XEM8305 carrier V17, standalone Artix-7 FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7.">
+<meta name="theme-color" content="#152b3c"><title>Current Hardware Overview | 4K Neural Recording</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23152b3c'/%3E%3Ctext x='20' y='28' text-anchor='middle' fill='white' font-size='22' font-family='Arial'%3E4K%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="presentation/overview/style.css?v=20261014-v2"><script src="presentation/overview/app.js?v=20261014-v2" defer></script>
+</head><body>
+<header class="masthead"><a href="#overview" class="brand"><span class="brand-mark">4K</span><span>Neural recording<small>Xie–Luan labs · Hardware design review</small></span></a><nav class="header-links" aria-label="Project resources"><span class="date">Updated 14 October 2026</span><a class="library-link" href="presentation/library/">Library</a><a href="presentation/meetings/2026-10-14-v17/index.html">Wednesday presentation ↗</a></nav></header>
+<main>
+<section class="intro"><div><p class="eyebrow">Current designs · Overview V2</p><h1>4K recording hardware</h1></div><p>Current board revisions, native schematics and layout views. Routing, assembly and powered validation are still in progress.</p></section>
+<div class="review-grid"><aside><nav class="board-nav" aria-label="Current hardware">
+<a href="#overview" data-board="overview"><span class="nav-top">System <span>00</span></span><strong>Overview</strong><small>Two development paths</small></a>
+<a href="#carrier" data-board="carrier"><span class="nav-top">XEM8305 path <span>V17</span></span><strong>XEM8305 carrier</strong><small>53 × 83 mm · routed review</small></a>
+<a href="#fpga" data-board="fpga"><span class="nav-top">Compact FPGA path <span>V41</span></span><strong>Standalone FPGA</strong><small>25 × 23 mm · partial routing</small></a>
+<a href="#ldo" data-board="ldo"><span class="nav-top">Separate power board <span>V5</span></span><strong>ASIC LDO</strong><small>32 × 32.5 mm · unrouted</small></a>
+<a href="#combined" data-board="combined"><span class="nav-top">Combined option <span>V7</span></span><strong>FPGA + shared LDO</strong><small>30 × 30 mm · unrouted</small></a>
+</nav><p class="sidebar-note">Select a board to inspect its current files. Earlier designs remain in the <a href="overview-2026-09-23.html">preserved overview</a> and <a href="presentation/meetings/">meeting history</a>.</p></aside>
+<section class="design-panel" aria-labelledby="design-title"><div class="design-heading"><div><h2 id="design-title">Current hardware overview</h2><p id="design-description">Inspect the latest carrier, FPGA and ASIC power-board options.</p></div><span class="status" id="design-status">Design review</span></div>
+<div class="view-toolbar"><div class="view-tabs" role="group" aria-label="Design view"><button data-view="3d" aria-pressed="true">3D</button><button data-view="layout" aria-pressed="false">Layout</button><button data-view="schematic" aria-pressed="false">Schematic</button></div><a class="open-view" id="open-view" target="_blank" rel="noopener" href="presentation/meetings/2026-10-14-v16/stack_viewer/index.html?architecture=separate">Open full view ↗</a></div>
+<div class="stage"><iframe id="design-view" title="Current hardware view" allow="fullscreen"></iframe></div><div class="caption" id="design-caption">Native design views and nominal 3D illustrations.</div>
+<div class="design-detail"><div class="facts" id="design-facts"></div><div class="detail-bottom"><p id="design-next"></p><a class="download" id="download-project" hidden download>Download complete KiCad ↗</a></div></div></section></div>
+<section class="paths" aria-label="Development paths"><article class="path"><p class="eyebrow">XEM8305 path</p><h3>Existing module and LDO assembly</h3><p>ASIC interface → existing LDO assembly → <a href="#carrier">carrier V17 + XEM8305</a> → USB host. The physical layout is preserved from V16.</p></article><article class="path"><p class="eyebrow">Compact FPGA path</p><h3>Four 1k ASIC boards · eight ASICs</h3><p><a href="#fpga">FPGA V41</a> + <a href="#ldo">separate LDO V5</a>, or <a href="#combined">combined FPGA/shared LDO V7</a>. ASIC distribution, stack adapters and supply feasibility remain open.</p></article></section>
+<noscript><p>Enable JavaScript for the interactive views. Current files: <a href="presentation/overview/assets/Carrier_V17_Complete_KiCad.zip">carrier V17</a>, <a href="presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip">FPGA V41</a>, <a href="presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip">LDO V5</a>, <a href="presentation/overview/assets/Combined_FPGA_Shared_LDO_V7_KiCad.zip">combined V7</a>.</p></noscript>
+</main><footer class="footer"><span>Engineering review · fabrication and powered operation remain unqualified.</span><span><a href="presentation/overview/Source_Mapping.json">Revision sources</a> · <a href="https://github.com/HowardWHSrun/FPGA_4K/tree/presentation">GitHub files</a> · <a href="overview-2026-09-23.html">Earlier overview</a></span></footer>
+</body></html>

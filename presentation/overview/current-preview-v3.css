@@ -1,0 +1,15 @@
+/* Current previews inside the preserved assembly/story/navigation structure. */
+.current-view-tabs{display:flex;align-items:center;gap:3px;padding:3px;border:1px solid #d1dce6;border-radius:7px;background:#ffffff70}
+.current-view-tabs button{font-size:11px;padding:5px 10px;border-radius:4px;color:var(--muted)}
+.current-view-tabs button[aria-pressed=true]{color:var(--ink);background:white;box-shadow:0 1px 4px #203e5b15}
+.current-power-choice{font-size:11px;color:var(--muted);min-width:0}
+.current-power-choice select{font:inherit;color:var(--ink);border:1px solid #d1dce6;border-radius:5px;background:white;padding:6px;max-width:230px}
+.viewer-top.current-preview{padding-bottom:12px;flex-wrap:wrap}
+.viewer-top.current-preview .viewer-label{margin-right:auto}
+#current-board-preview{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3;background:#edf2f7}
+.viewer:has(#current-board-preview:not([hidden])) .scene-container{min-height:440px}
+@media(max-width:850px){.viewer-top.current-preview{gap:8px}.current-power-choice select{max-width:210px}.viewer:has(#current-board-preview:not([hidden])) .scene-container{min-height:470px}}
+@media(max-width:450px){.viewer-top.current-preview{padding-inline:12px}.viewer-top.current-preview .viewer-label{flex:1 1 100%}.current-power-choice{flex:1 1 100%}.current-power-choice select{max-width:100%;width:100%}.scene-caption{flex-wrap:wrap}}
+
+.current-preview-active>#scene,.current-preview-active>#markers,.current-preview-active>#camera-name,.current-preview-active>#model-status{display:none!important}
+@media(max-width:850px){.viewer:has(#current-board-preview:not([hidden])){height:550px;min-height:550px}.viewer:has(#current-board-preview:not([hidden])) .scene-container{min-height:0}}
