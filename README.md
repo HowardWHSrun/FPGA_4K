@@ -2,7 +2,7 @@
 
 [Two parallel approaches](index.html#overview): custom FPGA with new LDO electronics, and a separate XEM8305 carrier directly connecting the existing LDO board. Choose A or B to show only that approach’s path, overview and board navigation. One Updates button collects announcements; the original viewer/story structure adapts to desktop and mobile screens. [Overview revision guide](presentation/overview/README.md).
 
-**[Current hardware overview · updated 15 October 2026 · V7](index.html)** — current boards together in interactive 3D: four ASIC PCB-5 references, FPGA V41 + LDO V5 or combined V7, and the separate BRK8305 / interposer V4 / XEM8305 stack connected by micro-HDMI cable. Part descriptions use board revisions without individual assignments. The parallel direct-LDO route uses carrier V17. The original page structure, current native downloads and earlier dated records are preserved.
+**[Current hardware overview · updated 15 October 2026 · V8](index.html)** — current boards together in interactive 3D: four ASIC PCB-5 references, FPGA V41 + LDO V5 or combined V7, and the separate BRK8305 / interposer V4 / XEM8305 stack connected by micro-HDMI cable. Full host geometry and native interposer pad, silkscreen and soldermask detail replace the simplified preview; **Interposer** focus exposes its top and bottom. Part descriptions use board revisions without individual assignments. The parallel direct-LDO route uses carrier V17. The original page structure, current native downloads and earlier dated records are preserved.
 
 **[14 October presentation · carrier, FPGA and LDO](presentation/meetings/2026-10-14-v17/index.html)** — eight pages with interactive 3D, native layouts and complete schematics.
 

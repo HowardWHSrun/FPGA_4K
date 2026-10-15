@@ -118,6 +118,43 @@
       "output_sha256": "7526eb502f17eaeb0e01b9275ab385d2005ecafb20865ffc0efe6447b2c637c0",
       "size_bytes": 1186,
       "transformation": "Exact byte copy of source engineering evidence; scopes and limitations retained"
+    },
+    {
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/brk_official/BRK8305_Registered_Full_V4.glb",
+      "source_sha256": "41d0d4df7b35f90c56e648b562b0f614a9b7e3bf142ded8e7573f17bcf707090",
+      "output": "presentation/overview/assembly-v8/assets/BRK8305_Full.glb",
+      "output_sha256": "41d0d4df7b35f90c56e648b562b0f614a9b7e3bf142ded8e7573f17bcf707090",
+      "size_bytes": 18559572,
+      "transformation": "Exact byte copy of full registered source GLB; no display simplification."
+    },
+    {
+      "source": "2026-10-15_FPGA_Work/07_Website_Detailed_Models_V8/assets/Interposer_V4_Detailed.glb",
+      "source_sha256": "6904214132133e2f2da642129386f4a536a23f946de3ff3d976ee32cf426b184",
+      "output": "presentation/overview/assembly-v8/assets/Interposer_V4_Detailed.glb",
+      "output_sha256": "6904214132133e2f2da642129386f4a536a23f946de3ff3d976ee32cf426b184",
+      "size_bytes": 9505284,
+      "transformation": "Exact byte copy of richer native V4 export after exact per-material primitive merge and existing rigid registration; no triangle reduction or quantization.",
+      "native_pcb_source": "2026-10-15_FPGA_Work/01_XEM_Interposer_Compact_V4/project/XEM_Interposer_Compact_V4.kicad_pcb",
+      "native_pcb_sha256": "cd754509f51753dea646933c94f39607ed0a62b75144793e549be0768c6455f7",
+      "native_export_flags": [
+        "--user-origin",
+        "100x100mm",
+        "--include-tracks",
+        "--include-pads",
+        "--include-zones",
+        "--include-silkscreen",
+        "--include-soldermask"
+      ],
+      "component_reference_groups": 52,
+      "source_CAD_unchanged": true
+    },
+    {
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/xem/XEM8305_Official_Stack_mm.glb",
+      "source_sha256": "6bcd7fc6e66ddfc3334d666eb4722d017f2f42a149a7e84f5c98cd03f55b8caa",
+      "output": "presentation/overview/assembly-v8/assets/XEM8305_Full.glb",
+      "output_sha256": "6bcd7fc6e66ddfc3334d666eb4722d017f2f42a149a7e84f5c98cd03f55b8caa",
+      "size_bytes": 12275468,
+      "transformation": "Exact byte copy of full registered source GLB; no display simplification."
     }
   ],
   "boards": {
@@ -145,10 +182,10 @@
     "all_source_copy_sha256_matches": true,
     "SVG_source_PCB_unchanged": true,
     "native_kicad_version": "10.0.6",
-    "GLB_scope": "Native test export held only in dated verification folder; no V7 3D asset published."
+    "GLB_scope": "Published current native combined V7 and ASIC PCB-5 models, reused native FPGA V41/LDO V5, and full registered BRK/XEM host models. V8 adds native interposer pads, silkscreen and soldermask; source CAD unchanged."
   },
-  "overview_version": "V5",
-  "updated_date": "2026-10-14",
+  "overview_version": "V8",
+  "updated_date": "2026-10-15",
   "previous_overview": {
     "path": "overview-2026-09-23.html",
     "sha256": "cd84597268e895ac810f793d64cf7f76bc1b1e053cfc4117706ac97b982e0e72",
@@ -290,10 +327,15 @@
     "source_geometry_modified": false
   },
   "current_3d_assembly": {
-    "version": "V7",
+    "version": "V8",
     "date": "2026-10-15",
-    "source_manifest": "presentation/overview/assembly-v7/Scene_Manifest.json",
-    "viewer": "presentation/overview/assembly-v7/index.html",
-    "scope": "Current native board geometry; compact electronics separate from full BRK8305 host bounds, connected by an illustrative micro-HDMI cable. No individual ownership assignment; hardware qualification unchanged."
+    "source_manifest": "presentation/overview/assembly-v8/Scene_Manifest.json",
+    "viewer": "presentation/overview/assembly-v8/index.html",
+    "scope": "Full registered host meshes and native V4 interposer pads, silkscreen and soldermask; all 52 component groups retained. Interposer focus exposes Top/Bottom. Compact electronics remain separate from BRK host and linked by illustrative micro-HDMI cable. No individual assignments or invented routing; hardware qualification unchanged."
+  },
+  "preserved_v7_overview": {
+    "path": "overview-2026-10-15-v7.html",
+    "sha256": "5dfbdc431ce368df8990df2cb69b2cee8b0a5ac0e91578da304c413abbbb2cb2",
+    "note": "Exact previous V7 root HTML with original scoped scripts and simplified host-model assets preserved."
   }
 }

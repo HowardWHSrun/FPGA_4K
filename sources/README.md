@@ -1,5 +1,11 @@
 # Source provenance
 
+## Full host detail and interposer inspection — V8 · 15 October 2026
+
+[V8 model provenance](../presentation/overview/assembly-v8/README.md) records full registered tessellations of Opal Kelly's BRK8305 and XEM8305 models, replacing the earlier simplified display derivatives. The interposer is a read-only KiCad 10.0.6 export from the unchanged native V4 PCB: all 52 component-reference groups retain their original component triangles and registered bounds; native pads, top/bottom silkscreen and soldermask surfaces are included. No mesh reduction or quantization is applied. The saved PCB has zero tracks, vias and zones; no routing or parts are invented. Power Foundation V1 is separate schematic work and has not been placed onto V4.
+
+An Interposer focus hides surrounding boards and opens the top surface, with Bottom available for the underside. [Asset hashes, native export flags, source paths and omissions](../presentation/overview/assembly-v8/Scene_Manifest.json) distinguish the visualization from hardware qualification. The BRK official model still omits MC4–MC9 headers and S1/J2/J6 bodies; the XEM upstream conversion omits decorative silk/prepreg/pickup subtrees. Source attribution remains with Opal Kelly and the original native-board sources. [The V7 overview](../overview-2026-10-15-v7.html) and its dependencies are preserved.
+
 ## Selected hardware path — V5 · 15 October 2026
 
 [Overview V5](../index.html) shows one selected approach at a time. A persistent A/B switch filters the path diagram, overview, board navigation, page counts and keyboard sequence. The URL preserves the selection and route-specific links choose the appropriate approach. Direct-LDO Overview displays the existing carrier assembly; the ASIC reference uses the preserved isolated PCB-5 preview. The [V4 comparison page](../overview-2026-10-15-v4.html) and its dependencies are preserved exactly. This website interaction change modifies no native CAD or source geometry.

@@ -36,6 +36,7 @@ async function checkAssembly(frame,architecture,focus){
  const state=await frame.evaluate(()=>currentAssemblyViewer.getState());
  const common=['asic','brk','interposer','xem'],compact=architecture==='separate'?['fpga','ldo']:['combined'];
  check([...common,...compact].every(id=>state.loadedModels.includes(id)&&state.geometry[id]?.triangles>0&&state.geometry[id]?.meshes>0),'Current '+architecture+' composite loads source-derived ASIC, compact electronics and three host-board models');
+ check(state.geometry.brk.triangles>=565156&&state.geometry.interposer.triangles>=271492&&state.geometry.xem.triangles>=945424,'Current '+architecture+' composite retains the complete BRK and XEM models and detailed interposer geometry');
  const expected=['asic-1','asic-2','asic-3','asic-4','brk','interposer','xem',...compact];
  const visible=Object.entries(state.visible).filter(([,shown])=>shown).map(([id])=>id).sort();
  check(JSON.stringify(visible)===JSON.stringify(expected.sort())&&state.modelCount===expected.length,'Current '+architecture+' composite shows four ASIC boards and only its selected electronics option');
@@ -46,6 +47,33 @@ async function checkAssembly(frame,architecture,focus){
  check(state.cable?.type==='micro-HDMI'&&state.cable.illustrative===true&&state.cable.from===(architecture==='separate'?'fpga':'combined')&&state.cable.to==='interposer','Current '+architecture+' micro-HDMI cable connects the selected FPGA electronics to the interposer');
  check(Number(await frame.locator('html').getAttribute('data-compact-host-gap-mm'))===state.layout.compactHostGapMm&&await frame.locator('html').getAttribute('data-cable-type')==='micro-HDMI','Current '+architecture+' cable and clear-gap DOM diagnostics match the scene');
  check(state.focus===focus,'Current composite focus is '+focus);
+}
+async function checkInterposerInspection(frame,architecture){
+ await frame.locator('[data-focus="interposer"]').click();
+ await frame.waitForFunction(()=>{const state=window.currentAssemblyViewer?.getState();return state?.focus==='interposer'&&state.pose==='top'&&state.modelCount===1;});
+ const state=await frame.evaluate(()=>currentAssemblyViewer.getState());
+ const visible=Object.entries(state.visible).filter(([,shown])=>shown).map(([id])=>id);
+ check(visible.length===1&&visible[0]==='interposer'&&state.modelCount===1,'Interposer inspection hides ASICs, compact electronics, BRK and XEM in the '+architecture+' option');
+ check(await frame.locator('html').getAttribute('data-modelcount')==='1'&&await frame.locator('[data-focus="interposer"]').getAttribute('aria-pressed')==='true','Interposer inspection DOM diagnostics identify its isolated model');
+ check(state.cable?.visible===false,'Interposer inspection hides the illustrative cable in the '+architecture+' option');
+ const references=state.geometry.interposer.references;
+ check(Array.isArray(references)&&references.length===52&&new Set(references).size===52&&references.includes('J600'),'Detailed interposer retains all 52 source component references, including micro-HDMI J600');
+ const surfaces=state.geometry.interposer.surfaces;
+ const count=value=>typeof value==='number'?value:value&&typeof value==='object'?Object.values(value).reduce((sum,item)=>sum+count(item),0):0;
+ check(surfaces&&['pad','silk','mask'].every(kind=>Object.entries(surfaces).some(([key,value])=>key.toLowerCase().includes(kind)&&count(value)>0)),'Detailed interposer includes native pad, silkscreen and mask surfaces');
+ check(await frame.locator('[data-pose="top"]').getAttribute('aria-pressed')==='true','Interposer inspection starts in the Top view');
+ check(state.camera[2]>state.target[2],'Interposer Top camera looks down onto the board');
+ await frame.locator('[data-pose="bottom"]').click();
+ await frame.waitForFunction(()=>currentAssemblyViewer.getState().pose==='bottom');
+ check(await frame.locator('[data-pose="bottom"]').getAttribute('aria-pressed')==='true'&&await frame.locator('[data-pose="top"]').getAttribute('aria-pressed')==='false','Detailed interposer Bottom view selects the underside camera');
+ check(await frame.evaluate(()=>{const s=currentAssemblyViewer.getState();return s.camera[2]<s.target[2];}),'Interposer Bottom camera looks up at the underside of the board');
+ check(await frame.evaluate(()=>currentAssemblyViewer.getState().modelCount)===1,'Changing to Bottom keeps the interposer isolated');
+ await frame.locator('[data-pose="top"]').click();
+ await frame.waitForFunction(()=>currentAssemblyViewer.getState().pose==='top');
+ await frame.locator('[data-focus="all"]').click();
+ await checkAssembly(frame,architecture,'all');
+ check((await frame.evaluate(()=>currentAssemblyViewer.getState().layout.compactHostGapMm))>=70-1e-6,'Fit all restores the '+architecture+' assembly with at least 70 mm between compact electronics and host');
+ check(await frame.evaluate(()=>currentAssemblyViewer.getState().cable.visible)===true,'Fit all restores the illustrative micro-HDMI cable');
 }
 async function visibleIds(selector){return page.locator(selector+':visible').evaluateAll(items=>items.map(x=>x.dataset.slide));}
 async function routeOnly(mode){
@@ -124,7 +152,7 @@ async function checkResponsive(width,height,desktop){
    }
    if(previewKind){
     const frame=await ready(previewKind);
-    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V7'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
+    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V8'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
     if(id==='overview'&&mode==='direct'){
      const overviewFit=await frame.evaluate(()=>{
       const stage=document.querySelector('.carrier-stage')?.getBoundingClientRect(),canvas=document.querySelector('#carrier-3d')?.getBoundingClientRect();
@@ -154,7 +182,7 @@ async function checkResponsive(width,height,desktop){
 try{
  await page.goto(base+'#overview',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.PRESENTATION?.getState().sourceVerified&&window.currentOverviewState?.approach==='custom');
- check(await page.locator('html').getAttribute('data-overview-version')==='V7','Current composite keeps the selected-path original structure in Overview V7');
+ check(await page.locator('html').getAttribute('data-overview-version')==='V8','Current composite keeps the selected-path original structure in Overview V8');
  check(await page.evaluate(()=>window.OVERVIEW_SLIDE_CATALOG.every(slide=>Array.isArray(slide.owners)&&slide.owners.length===0)),'All current catalog sections leave people unassigned');
  check(await page.locator('.workspace > .viewer').count()===1&&await page.locator('.workspace > .story').count()===1,'Original viewer-left/story-right structure retained');
  check(JSON.stringify(await page.locator('.system-nav [data-slide]').evaluateAll(items=>items.map(x=>x.dataset.slide)))===JSON.stringify(['overview','carriers','routing','fpga','adapter','receiver']),'Original six section buttons retained for route filtering');
@@ -171,10 +199,12 @@ try{
  await choose('custom');await routeOnly('custom');
  check(await page.evaluate(()=>{const s=PRESENTATION.getState();return s.triangles===650&&s.sourceGeometryUnchanged&&s.sourceSHA256==='1aa6547321ffec16be82f6e58fd27fd49825b74ba4f23b1c36394f7b9f2eac46';}),'The preserved legacy 650-triangle source remains unchanged alongside the current composite');
  let assemblyFrame=await ready('assembly');
- check((await page.locator('#current-board-preview').getAttribute('src')).includes('assembly-v7/index.html')&&!(await page.locator('#scene').isVisible()),'Approach A overview opens the current composite and hides the earlier assembly canvas');
+ check((await page.locator('#current-board-preview').getAttribute('src')).includes('assembly-v8/index.html')&&!(await page.locator('#scene').isVisible()),'Approach A overview opens the detailed current composite and hides the earlier assembly canvas');
  await checkAssembly(assemblyFrame,'separate','all');
+ await checkInterposerInspection(assemblyFrame,'separate');
  await page.locator('#power-architecture').selectOption('combined');await page.waitForFunction(()=>window.currentOverviewState?.powerOption==='combined');
  assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'combined','all');
+ await checkInterposerInspection(assemblyFrame,'combined');
  await assemblyFrame.locator('#separation').click();
  check(!(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated)),'Combined current composite can return its host stack to nominal spacing');
  await checkAssembly(assemblyFrame,'combined','all');
