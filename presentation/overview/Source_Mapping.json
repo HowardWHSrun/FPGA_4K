@@ -147,7 +147,7 @@
     "native_kicad_version": "10.0.6",
     "GLB_scope": "Native test export held only in dated verification folder; no V7 3D asset published."
   },
-  "overview_version": "V4",
+  "overview_version": "V5",
   "updated_date": "2026-10-14",
   "previous_overview": {
     "path": "overview-2026-09-23.html",
@@ -264,5 +264,29 @@
   "preserved_v3_overview": {
     "path": "overview-2026-10-14-v3.html",
     "sha256": "73432bd7c39a7529fd76c89299c79b82b86926a6a46c063317e76effe34cef02"
+  },
+  "preserved_v4_overview": {
+    "path": "overview-2026-10-15-v4.html",
+    "sha256": "0f67998a7faf22e1b7b9f96686124d9df6711eea2197f3ee659e03308ee824f2"
+  },
+  "approach_selection": {
+    "default": "custom",
+    "url_parameter": "approach=custom|direct",
+    "custom_sections": [
+      "overview",
+      "carriers",
+      "routing",
+      "fpga",
+      "adapter"
+    ],
+    "direct_sections": [
+      "overview",
+      "carriers",
+      "receiver"
+    ],
+    "behavior": "One selected path and relevant navigation at a time; native previous/next, page counts and keyboard sequence use the same filtered slide array.",
+    "direct_overview": "Existing XEM8305/carrier/LDO assembly; unchanged V16 geometry corresponding to V17 connectivity/placement",
+    "direct_asic_reference": "hardware/previews/asic-carrier-3d.png",
+    "source_geometry_modified": false
   }
 }

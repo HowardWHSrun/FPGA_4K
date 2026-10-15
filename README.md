@@ -1,6 +1,6 @@
 # FPGA_4K
 
-[Two parallel approaches](index.html#overview): custom FPGA with new LDO electronics, and a separate XEM8305 carrier directly connecting the existing LDO board. One Updates button collects announcements; the original viewer/story structure now adapts to desktop and mobile screens. [Overview revision guide](presentation/overview/README.md).
+[Two parallel approaches](index.html#overview): custom FPGA with new LDO electronics, and a separate XEM8305 carrier directly connecting the existing LDO board. Choose A or B to show only that approach’s path, overview and board navigation. One Updates button collects announcements; the original viewer/story structure adapts to desktop and mobile screens. [Overview revision guide](presentation/overview/README.md).
 
 **[Current hardware overview · updated 15 October 2026](index.html)** — carrier V17, standalone FPGA V41, separate LDO V5 and combined FPGA/shared LDO V7, in the original assembly-first page structure, with current native downloads. The older device selections and architecture statements below remain dated history; the current overview gives the present review status.
 

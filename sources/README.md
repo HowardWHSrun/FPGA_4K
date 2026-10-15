@@ -1,8 +1,12 @@
 # Source provenance
 
+## Selected hardware path — V5 · 15 October 2026
+
+[Overview V5](../index.html) shows one selected approach at a time. A persistent A/B switch filters the path diagram, overview, board navigation, page counts and keyboard sequence. The URL preserves the selection and route-specific links choose the appropriate approach. Direct-LDO Overview displays the existing carrier assembly; the ASIC reference uses the preserved isolated PCB-5 preview. The [V4 comparison page](../overview-2026-10-15-v4.html) and its dependencies are preserved exactly. This website interaction change modifies no native CAD or source geometry.
+
 ## Parallel approaches and screen fit — V4 · 15 October 2026
 
-[Overview V4](../index.html) keeps the original viewer/story/six-section structure. It distinguishes the custom FPGA/new LDO route from the parallel XEM8305 carrier V17 directly connecting the existing LDO board. The wording is based on the V4 interposer scope and stack records, the preserved V17 presentation, and Howard's explicit clarification. Source hashes are recorded in [revision mapping](../presentation/overview/Source_Mapping.json). This update imports no new CAD and changes no hardware qualification status.
+[Overview V4](../overview-2026-10-15-v4.html) keeps the original viewer/story/six-section structure. It distinguishes the custom FPGA/new LDO route from the parallel XEM8305 carrier V17 directly connecting the existing LDO board. The wording is based on the V4 interposer scope and stack records, the preserved V17 presentation, and Howard's explicit clarification. Source hashes are recorded in [revision mapping](../presentation/overview/Source_Mapping.json). This update imports no new CAD and changes no hardware qualification status.
 
 Both notices move into one Updates dialog. Responsive V4 styles fit desktop navigation/footer inside the viewport, wrap mobile navigation and scope embedded-control wrapping to the live overview. The [V3 overview](../overview-2026-10-14-v3.html) is preserved byte for byte with its original scripts and stylesheet.
 

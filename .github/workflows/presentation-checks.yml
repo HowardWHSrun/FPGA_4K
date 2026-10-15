@@ -7,6 +7,7 @@ on:
       - overview-2026-09-23.html
       - overview-2026-10-14-v2.html
       - overview-2026-10-14-v3.html
+      - overview-2026-10-15-v4.html
       - scripts/check_overview.mjs
       - presentation/**
       - .github/workflows/presentation-checks.yml
@@ -38,6 +39,10 @@ jobs:
           node --check presentation/overview/current-slides-v4.js
           node --check presentation/overview/current-entry-v4.js
           node --check presentation/overview/current-interaction-v4.js
+          node --check presentation/overview/current-slides-v5.js
+          node --check presentation/overview/current-approaches-v5.js
+          node --check presentation/overview/current-entry-v5.js
+          node --check presentation/overview/current-interaction-v5.js
           node --check scripts/check_overview.mjs
           python3 scripts/check_fpga_review.py
           git diff --check
@@ -50,7 +55,7 @@ jobs:
           assert hashlib.sha256(raw).hexdigest() == manifest['source_sha256']
           source = json.loads(Path('presentation/model-source.js').read_text().split('window.PRESENTATION_MODEL_SOURCE = ', 1)[1].strip().removesuffix(';'))
           assert gzip.decompress(base64.b64decode(source['data'])) == raw
-          for page in ['index.html', 'overview-2026-09-23.html', 'overview-2026-10-14-v2.html', 'overview-2026-10-14-v3.html']:
+          for page in ['index.html', 'overview-2026-09-23.html', 'overview-2026-10-14-v2.html', 'overview-2026-10-14-v3.html', 'overview-2026-10-15-v4.html']:
               html = Path(page).read_text()
               for asset in re.findall(r'(?:src|href)="(presentation/[^\"]+)"', html):
                   target = Path(urlsplit(asset).path)
@@ -66,6 +71,7 @@ jobs:
             overview-2026-09-23.html
             overview-2026-10-14-v2.html
             overview-2026-10-14-v3.html
+            overview-2026-10-15-v4.html
             scripts/check_overview.mjs
             .nojekyll
             presentation/overview/

@@ -1,0 +1,141 @@
+/* V5: preserve the assembly/story structure while fitting the available screen. */
+.current-view-tabs{display:flex;align-items:center;flex-wrap:wrap;gap:3px;padding:3px;border:1px solid #d1dce6;border-radius:7px;background:#ffffff70}
+.current-view-tabs button{font-size:11px;padding:6px 10px;border-radius:4px;color:var(--muted)}
+.current-view-tabs button[aria-pressed=true]{color:var(--ink);background:white;box-shadow:0 1px 4px #203e5b15}
+.current-power-choice{font-size:11px;color:var(--muted);min-width:0;max-width:100%}
+.current-power-choice select{font:inherit;color:var(--ink);border:1px solid #d1dce6;border-radius:5px;background:white;padding:7px;max-width:100%;width:230px}
+.viewer-top.current-preview{padding-bottom:10px;flex-wrap:wrap}
+.viewer-top.current-preview .viewer-label{margin-right:auto}
+#current-board-preview{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3;background:#edf2f7}
+.current-preview-active>#scene,.current-preview-active>#markers,.current-preview-active>#camera-name,.current-preview-active>#model-status{display:none!important}
+body .shell,body .deck,body .workspace,body .viewer,body .story{min-width:0;max-width:100%}
+body .shell{padding-inline:clamp(16px,3vw,50px)}
+body .masthead{flex:none;height:auto;min-height:68px;padding-block:12px}
+body .header-tools{gap:7px;flex-wrap:wrap;justify-content:flex-end}
+body .header-tools .button{font-size:11px;padding:9px 11px;min-height:36px}
+body .header-tools .review-date{display:none}
+body .masthead .header-tools .questions-link{font-size:11px}
+body .heading{flex:none;padding:17px 0!important;gap:16px}
+body .heading h1{font-size:clamp(26px,2.6vw,36px)!important;overflow-wrap:anywhere}
+body .heading-note{flex-shrink:0}
+body .workspace{gap:24px;min-height:0;grid-template-columns:minmax(0,1fr) minmax(300px,340px)}
+body .viewer{min-height:0;height:auto}
+body .scene-container{min-height:0}
+body .scene-caption{flex-wrap:wrap;justify-content:flex-start;padding:9px 14px;font-size:9px!important;line-height:1.4}
+body .viewer-top{padding:12px 14px 0}
+body .viewer-controls{flex-wrap:wrap;padding:6px 14px 9px}
+body .viewer-controls>span{font-size:9px}
+body .story{padding-top:4px}
+body .story h2{font-size:24px;margin-bottom:12px;max-width:none}
+body .description{font-size:12px;line-height:1.6!important;margin-bottom:14px}
+body .team-list{margin-bottom:12px}
+body .team-list button{padding:8px 0}
+body .team-list strong{font-size:13px}
+body .facts{margin-top:8px;padding-top:12px;gap:10px}
+body .fact strong{font-size:16px}
+body .slide-note{margin:15px 0 12px}
+body .slide-note p{font-size:11px;line-height:1.55}
+body .fpga-entry{padding:10px 12px;font-size:11px!important}
+body .system-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;flex:none;overflow:visible;margin-top:14px;padding:5px}
+body .system-nav button,body .system-nav .overview-tab{padding:11px 8px 11px 30px;min-height:58px;min-width:0}
+body .system-nav button>span,body .overview-tab>span{top:14px!important;left:9px}
+body .system-nav strong{white-space:normal;display:block;font-size:11px;line-height:1.3}
+body .system-nav small{font-size:9px;line-height:1.35}
+body .system-nav [data-slide=receiver]{border-left:2px solid #3b8b81;background:#f1f7f6}
+body .system-nav [data-slide=receiver] small{color:#28675f}
+body footer{flex:none;min-height:46px;height:auto;padding-block:8px}
+.parallel-approaches{flex:none;margin-top:12px;padding-top:11px}
+.parallel-approaches .adapter-overview-head{gap:10px}
+.parallel-approaches .adapter-overview-head h2{font-size:14px;margin:0}
+.parallel-approaches .adapter-overview-head>span{font-size:10px;color:var(--muted)}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}
+.approach-card{display:block;background:#fff;border:1px solid var(--line);border-left:3px solid #6e79ad;border-radius:6px;padding:10px 12px;min-width:0;line-height:1.45}
+.approach-card:hover{border-color:#6e79ad;text-decoration:none;background:#fafaff}
+.approach-card strong{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600}
+.approach-card strong>span{margin-left:auto;color:var(--muted)}
+.approach-card i{font-style:normal;font-size:9px;background:#ececf6;border-radius:3px;padding:2px 5px}
+.approach-card p{font-size:10px;line-height:1.5;margin:6px 0 3px;color:var(--ink)}
+.approach-card small{display:block;font-size:9px;color:var(--muted)}
+.direct-approach{border-left-color:#3b8b81}
+.direct-approach:hover{border-color:#3b8b81;background:#f7fbfa}
+.direct-approach i{background:#dfefeb;color:#28675f}
+.updates-button{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.updates-button i{width:6px;height:6px;background:#3b8b81;border-radius:50%}
+.update-item{padding:18px 0;border-top:1px solid var(--line)}
+.update-item time{font-size:11px;color:var(--muted)}
+.update-item h3{font-size:16px;font-weight:600;margin:8px 0}
+.update-item p{margin:8px 0}
+.update-item a{color:#315f83;font-size:12px;font-weight:550}
+.update-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}
+body dialog{max-width:calc(100% - 24px);max-height:calc(100svh - 32px);overflow:auto}
+@media(min-width:1100px) and (min-height:650px){
+ body .shell{height:100svh;min-height:0}
+ body .deck{flex:1;min-height:0}
+ body .workspace{flex:1;min-height:0;overflow:hidden}
+ body .viewer,body .scene-container{min-height:0}
+ body .story{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b9c9d6 transparent;padding-right:8px}
+}
+@media(max-width:1099px),(max-height:649px){
+ body .shell{height:auto;min-height:100svh}
+ body .masthead{flex-wrap:wrap;gap:14px}
+ body .header-tools{justify-content:flex-start}
+ body .workspace{display:flex;flex-direction:column;gap:24px;flex:none}
+ body .viewer{height:clamp(350px,65svh,540px);min-height:350px;flex:none}
+ body .scene-container{min-height:0}
+ body .story{overflow:visible;padding-right:0}
+ body .story h2{max-width:none}
+ body .description{font-size:14px}
+ body .team-list{grid-template-columns:1fr 1fr;column-gap:24px}
+ body .system-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body .parallel-approaches{margin-top:22px}
+ body .approach-card p{font-size:12px}
+ body .approach-card small{font-size:11px}
+}
+@media(max-width:650px){
+ body .masthead{min-height:0;padding-block:14px}
+ body .masthead .header-tools{width:100%;gap:7px}
+ body .masthead .header-tools .questions-link{order:0}
+ body .header-tools #model-notes{display:inline-block}
+ body .brand-sub{font-size:10px}
+ body .heading{padding-block:18px!important}
+ body .heading-note{display:none}
+ body .viewer{height:clamp(350px,62svh,500px)}
+ body .viewer-top{flex-wrap:wrap;gap:8px}
+ body .viewer-top.current-preview .viewer-label{flex:1 1 100%}
+ .current-power-choice{flex:1 1 100%}
+ .current-power-choice select{width:100%}
+ body .viewer-controls>span{font-size:8px}
+ body .viewer-controls>div{gap:12px}
+ body .scene-caption{font-size:8px!important}
+ body .team-list{grid-template-columns:1fr}
+ body .system-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+ body .system-nav button,body .system-nav .overview-tab{min-height:62px}
+ .approach-grid{grid-template-columns:1fr}
+ .parallel-approaches .adapter-overview-head{flex-direction:column;align-items:flex-start}
+ body footer{gap:8px;font-size:9px}
+ body .slide-navigation{gap:9px}
+ body dialog{padding:20px}
+}
+@media print{body .shell{height:auto}body .story{overflow:visible}body .workspace{overflow:visible;min-height:430px}.updates-button{display:none}}
+/* The old host mesh does not depict the parallel direct-LDO carrier. */
+body .markers [data-region=F]{display:none!important}
+/* Only the chosen path is visible; the two switch labels remain available. */
+body[data-overview-approach=custom] [data-slide=receiver],
+body[data-overview-approach=direct] [data-slide=routing],
+body[data-overview-approach=direct] [data-slide=fpga],
+body[data-overview-approach=direct] [data-slide=adapter]{display:none!important}
+body .approach-grid{grid-template-columns:minmax(0,1fr)}
+body .heading{flex-wrap:wrap}
+.approach-switcher{display:flex;flex-wrap:wrap;gap:4px;border:1px solid var(--line);border-radius:8px;padding:4px;background:#fff;margin-left:auto}
+.approach-switcher button{padding:9px 11px;font-size:11px;font-weight:550;border-radius:5px;display:flex;align-items:center;gap:7px}
+.approach-switcher button>span{font-size:9px;opacity:.7}
+.approach-switcher button:hover{background:#f0f4f8}
+.approach-switcher button[aria-pressed=true]{background:#17273d;color:#fff}
+.approach-switcher [data-choose-approach=direct][aria-pressed=true]{background:#28675f}
+body .heading-note{font-size:10px;max-width:145px}
+body .heading-note span{font-size:9px}
+body[data-overview-approach=custom] .system-nav{grid-template-columns:repeat(5,minmax(0,1fr))}
+body[data-overview-approach=direct] .system-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1099px){body .approach-switcher{margin-left:0}body[data-overview-approach=custom] .system-nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){body .approach-switcher{width:100%}.approach-switcher button{flex:1;padding-inline:7px}body[data-overview-approach] .system-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.approach-switcher{display:none}}
