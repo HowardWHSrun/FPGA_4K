@@ -102,8 +102,15 @@ async function checkResponsive(width,height,desktop){
    }
    if(previewKind){
     const frame=await ready(previewKind);
-    await frame.waitForFunction(()=>document.documentElement.dataset.overviewEmbed==='V5'&&document.getElementById('overview-embed-style')?.sheet);
-    if(previewKind!=='reference'){
+    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V5'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
+    if(id==='overview'&&mode==='direct'){
+     const overviewFit=await frame.evaluate(()=>{
+      const stage=document.querySelector('.carrier-stage')?.getBoundingClientRect(),canvas=document.querySelector('#carrier-3d')?.getBoundingClientRect();
+      const controlsHidden=[...document.querySelectorAll('.render-toolbar,.assembly-controls')].every(element=>{const r=element.getBoundingClientRect();return r.width===0&&r.height===0;});
+      return controlsHidden&&stage?.height>=120&&canvas?.height>=120&&canvas.width>0&&canvas.left>=-1&&canvas.right<=innerWidth+1&&document.documentElement.scrollWidth<=innerWidth+1;
+     });
+     check(overviewFit,'Direct-LDO overview reserves a visible carrier canvas without detailed toolbars in '+label);
+    }else if(previewKind!=='reference'){
      const embeddedFit=await frame.evaluate(()=>{
       const controls=[...document.querySelectorAll(':is(.toolbar,.render-toolbar,.assembly-controls,header) :is(button,select,input)')].filter(element=>{const r=element.getBoundingClientRect();return r.width>0&&r.height>0;});
       return controls.length>0&&document.documentElement.scrollWidth<=innerWidth+1&&controls.every(element=>{const r=element.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1;});

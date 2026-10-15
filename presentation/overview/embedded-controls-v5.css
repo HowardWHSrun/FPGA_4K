@@ -6,3 +6,6 @@
  html[data-overview-embed=V5] .caption{flex-wrap:wrap}
 }
 html[data-overview-embed=V5] .carrier-stage{min-height:0}
+
+/* Overview is the assembly preview; the carrier section keeps its full controls. */
+html[data-overview-section=overview] .render-toolbar,html[data-overview-section=overview] .assembly-controls{display:none}

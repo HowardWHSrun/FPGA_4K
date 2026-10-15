@@ -34,6 +34,7 @@
    caption.replaceChildren(...[review.caption,review.scope].map(text=>{const span=document.createElement('span');span.textContent=text;return span;}));
    link('open-schematic-design',url,'Open current view full size',true);
   }else{caption.innerHTML=savedCaption;link('open-schematic-design','presentation/schematic/?board=adapter','View historical adapter schematic',section==='adapter');}
+  try{if(frame.contentDocument)frame.contentDocument.documentElement.dataset.overviewSection=section;}catch{}
   frame.contentWindow?.postMessage({type:'presentation-slide-active',active:on},location.origin);
   window.currentOverviewState={version:'V5',approach:window.overviewApproach,section,board:on?active:null,view:on?viewByBoard[active]:null,powerOption,source:on?frame.getAttribute('src'):null};
  }
@@ -78,8 +79,9 @@
   try{
    const doc=frame.contentDocument;if(!doc)return;
    doc.documentElement.dataset.overviewEmbed='V5';
+   doc.documentElement.dataset.overviewSection=api.getState().slideId;
    if(doc.getElementById('overview-embed-style'))return;
-   const link=doc.createElement('link');link.id='overview-embed-style';link.rel='stylesheet';link.href=new URL('presentation/overview/embedded-controls-v5.css?v=20261015-v5',document.baseURI).href;doc.head.append(link);
+   const link=doc.createElement('link');link.id='overview-embed-style';link.rel='stylesheet';link.href=new URL('presentation/overview/embedded-controls-v5.css?v=20261015-v5b',document.baseURI).href;doc.head.append(link);
   }catch{/* A standalone cross-origin viewer retains its own controls. */}
  });
 })();
