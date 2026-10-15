@@ -147,7 +147,7 @@
     "native_kicad_version": "10.0.6",
     "GLB_scope": "Native test export held only in dated verification folder; no V7 3D asset published."
   },
-  "overview_version": "V3",
+  "overview_version": "V4",
   "updated_date": "2026-10-14",
   "previous_overview": {
     "path": "overview-2026-09-23.html",
@@ -225,10 +225,44 @@
     ],
     "layout": "Original assembly-first canvas, left viewer/right story, bottom navigation, notes and camera/keyboard controls",
     "current_content": "FPGA V41, separate LDO V5 / combined V7, carrier V17 previews in original subsystem sections",
-    "native_geometry_modified": false
+    "native_geometry_modified": false,
+    "updates": "Single Updates dialog in header; notices removed",
+    "responsive": "Desktop viewport fit, internally scrolling details, vertically scrolling mobile with wrapping six-section navigation"
   },
   "preserved_v2_overview": {
     "path": "overview-2026-10-14-v2.html",
     "sha256": "7571d1c57c3a369dc4f796492e13af8ddd1f54ffd6474be0629fceb4c5b54d7b"
+  },
+  "overview_updated": "2026-10-15",
+  "parallel_approaches": {
+    "custom_fpga": "ASIC boards -> new LDO + custom FPGA -> micro-HDMI -> XEM8305/BRK8305 interposer -> PC",
+    "direct_ldo_alternative": "ASIC boards -> existing LDO board -> direct carrier V17 -> XEM8305 -> PC",
+    "distinction": "Two independent approaches under development, not components of one series chain. Existing LDO is not the new V5 or combined V7 design.",
+    "sources": [
+      {
+        "source": "2026-10-15_FPGA_Work/01_XEM_Interposer_Compact_V4/START_HERE.md",
+        "sha256": "1f96a2fd6b84dffd494f6bdfdb29560ed3b66759b5745b54d80973b2721312f3",
+        "use": "Architecture wording only; no CAD or assets imported by V4 website update."
+      },
+      {
+        "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/START_HERE.md",
+        "sha256": "2a83c2488a0ec81bfa3f8ec1e15b76eadd1b649dba9e54bda7c1f6e3826ee2b4",
+        "use": "Architecture wording only; no CAD or assets imported by V4 website update."
+      },
+      {
+        "source": "2026-10-14_FPGA_Work/22_XEM_FPGA_MicroHDMI_Carrier_V2/START_HERE.md",
+        "sha256": "ae8c9f5b0ea9e20d403ba9d855f0388ab12b15dcc82fc0da52a63099e2bc5c70",
+        "use": "Architecture wording only; no CAD or assets imported by V4 website update."
+      },
+      {
+        "source": "presentation/meetings/2026-10-14-v17/index.html",
+        "sha256": "bf5cc826971126344e623d106fa5b31d5ea80ba1603f97d240d25bd0bb66b7e8",
+        "use": "Direct carrier connection to the existing LDO board; also explicitly confirmed by Howard on 15 October 2026."
+      }
+    ]
+  },
+  "preserved_v3_overview": {
+    "path": "overview-2026-10-14-v3.html",
+    "sha256": "73432bd7c39a7529fd76c89299c79b82b86926a6a46c063317e76effe34cef02"
   }
 }

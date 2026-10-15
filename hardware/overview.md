@@ -1,8 +1,10 @@
 # Board and system overview
 
-**Current XEM8305/LDO carrier · R15 (published 12 October):** [Attachment, routing, schematic and editable files](../presentation/xem/carrier-r15-2026-10-12.html). The overview carrier selection opens R15. Inspect the XEM above MC1–MC3 and Gerald’s LDO underneath J1/J19, seated or separated; exact populated fit remains to verify. Earlier carrier studies below retain their own scope.
+For the current two parallel approaches, open the [15 October overview](../index.html#overview): custom FPGA/new LDO electronics and the XEM8305 direct-LDO carrier V17. Board revisions and older interface descriptions below retain their original dates.
 
-**Current direct carrier · 5 October:** [XEM8305 R3](../presentation/xem/direct-all-connectors-2026-10-05.html) · [matching files and checks](../presentation/downloads/#xem8305-direct-r3). One six-layer prototype design. Native and CAM checks pass; factory, assembly and system qualification remain pending. [Earlier R2](../presentation/xem/direct-r2-2026-10-05.html) is preserved.
+**Preserved XEM8305/LDO carrier · V15 (published 12 October):** [Attachment, routing, schematic and editable files](../presentation/xem/carrier-r15-2026-10-12.html). The current overview carrier selection opens V17. Inspect the XEM above MC1–MC3 and Gerald’s LDO underneath J1/J19, seated or separated; exact populated fit remains to verify. Earlier carrier studies below retain their own scope.
+
+**Preserved direct carrier · 5 October:** [XEM8305 R3](../presentation/xem/direct-all-connectors-2026-10-05.html) · [matching files and checks](../presentation/downloads/#xem8305-direct-r3). One six-layer prototype design. Native and CAM checks pass; factory, assembly and system qualification remain pending. [Earlier R2](../presentation/xem/direct-r2-2026-10-05.html) is preserved.
 
 [Native schematic browser](../presentation/schematic/?board=adapter) · [selected 25T circuit](../presentation/schematic/?board=fpga25t) · [R10 HDI feasibility and editable project](../hardware/xem8310-adapter/dated/2026-09-29/r10-hdi-feasibility/README.md). R10 connects all twelve selected GTY pairs and preserves all 160 MC1/MC2 contact paths, with 0 physical DRC violations under provisional HDI rules, 97 opens and 19 parity findings. It requires laser microvias and a qualified stackup; power/JTAG, returns, impedance, pair matching and fit remain incomplete. R9 remains the default viewer baseline, with R10 available as an optional study. Both board schematics can be browsed sheet by sheet and opened as PDFs.
 

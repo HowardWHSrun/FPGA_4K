@@ -1,5 +1,11 @@
 # Source provenance
 
+## Parallel approaches and screen fit — V4 · 15 October 2026
+
+[Overview V4](../index.html) keeps the original viewer/story/six-section structure. It distinguishes the custom FPGA/new LDO route from the parallel XEM8305 carrier V17 directly connecting the existing LDO board. The wording is based on the V4 interposer scope and stack records, the preserved V17 presentation, and Howard's explicit clarification. Source hashes are recorded in [revision mapping](../presentation/overview/Source_Mapping.json). This update imports no new CAD and changes no hardware qualification status.
+
+Both notices move into one Updates dialog. Responsive V4 styles fit desktop navigation/footer inside the viewport, wrap mobile navigation and scope embedded-control wrapping to the live overview. The [V3 overview](../overview-2026-10-14-v3.html) is preserved byte for byte with its original scripts and stylesheet.
+
 ## Original overview structure restored — V3 · 14 October 2026
 
 Howard requested retaining the previous structure and updating its previews. [Overview V3](../index.html) restores the original assembly canvas, right story panel, six-section navigation, camera/keyboard controls and notes. Current previews show FPGA V41, separate LDO V5, combined V7 and carrier V17. Combined V7 is an option inside Routing + LDO. The original compact source bytes and historical pages/dependencies are unchanged; the [alternative V2 overview](../overview-2026-10-14-v2.html) is preserved separately. Native CAD and hardware status are unchanged.
