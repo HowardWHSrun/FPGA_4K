@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Current cabled FPGA assembly</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="viewer.css">
+  <script type="importmap">{"imports":{"three":"../../meetings/2026-10-14-v16/carrier_viewer/vendor/dist/three.module.js","three/addons/":"../../meetings/2026-10-14-v16/carrier_viewer/vendor/examples/jsm/"}}</script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+<main>
+  <div class="toolbar">
+    <div class="view-controls" role="group" aria-label="Camera view">
+      <button data-pose="iso" aria-pressed="true">3D</button>
+      <button data-pose="top" aria-pressed="false">Top</button>
+      <button data-pose="side" aria-pressed="false">Side</button>
+    </div>
+    <label id="architecture-control">Electronics
+      <select id="architecture" aria-label="Compact electronics option">
+        <option value="separate">FPGA V41 + LDO V5</option>
+        <option value="combined">Combined V7</option>
+      </select>
+    </label>
+    <div class="display-controls">
+      <button id="separation" aria-pressed="true">Separate stacks</button>
+      <button id="labels" aria-pressed="true">Labels</button>
+    </div>
+  </div>
+  <div id="stage" class="stage">
+    <canvas id="assembly" tabindex="0" aria-label="Current custom FPGA architecture: four ASIC reference boards, compact FPGA and LDO electronics, linked by a micro-HDMI cable to the separate BRK8305, interposer V4 and XEM8305 host stack. Drag to rotate, scroll to zoom."></canvas>
+    <div id="board-labels" class="board-labels" aria-label="Select a board for details"></div>
+    <div id="status" role="status">Loading current board models…</div>
+    <div id="metric-scale" aria-hidden="true"><div id="scale-line"></div><span id="scale-label">20 mm</span></div>
+    <span id="pose-name" aria-hidden="true">ISOMETRIC</span>
+  </div>
+  <div class="inspection-controls" role="group" aria-label="Inspect part of the assembly">
+    <span>Inspect</span>
+    <button data-focus="all" aria-pressed="true">Fit all</button>
+    <button data-focus="asic" aria-pressed="false">ASICs</button>
+    <button data-focus="compact" aria-pressed="false">FPGA / LDO</button>
+    <button data-focus="host" aria-pressed="false">Host stack</button>
+    <span class="gesture-hint">Drag to rotate · scroll to zoom</span>
+  </div>
+  <p class="caption">Separate electronics connected by a micro-HDMI cable · illustrative route.</p>
+</main>
+</body>
+</html>

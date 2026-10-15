@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-15",
+  "version": "V7",
+  "coordinate_frame": "Numeric millimetres; right-handed Z-up",
+  "assets": [
+    {
+      "path": "../assembly-v6/assets/ASIC_PCB5_Interactive.glb",
+      "bytes": 10187900,
+      "sha256": "7e8e14af51aab32b3e5a697034e2a7fdc098f3d9244eed67d36ff0a2b619f7ff"
+    },
+    {
+      "path": "../assembly-v6/assets/Combined_V7_Interactive.glb",
+      "bytes": 11280396,
+      "sha256": "3239414a1e0bdba966e1079c79feab30dffebd35cee592757b6183bddff17af6"
+    },
+    {
+      "path": "../assembly-v6/assets/BRK8305_Display.glb",
+      "bytes": 771944,
+      "sha256": "9ba9acf52763fb0c501b5f3b17078c9987998d19ca4b60da5651f21f70b00581"
+    },
+    {
+      "path": "../assembly-v6/assets/Interposer_V4_Display.glb",
+      "bytes": 492196,
+      "sha256": "6c263a07d3f1d18727bf13e436d9dac131ea8f21bd9c8a98529b8eb8aeb2bb74"
+    },
+    {
+      "path": "../assembly-v6/assets/XEM8305_Display.glb",
+      "bytes": 615120,
+      "sha256": "65ef8c1b295ce8e85d823a95e0a0a8203f8a5f8b13a38e024a2f8cd00e4587c3"
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/fpga/FPGA_V41_Interactive.glb",
+      "bytes": 15534372,
+      "sha256": "89eddaffada21914daf27b40091fa8aa673fe674bf367d6cafe4315dd4281623"
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/ldo/LDO_V5_Interactive.glb",
+      "bytes": 10233988,
+      "sha256": "44e61d7048fb3f18649d65c6debcad3850e2345a9000444ef143252fecdd8163"
+    }
+  ],
+  "transforms": {
+    "native_to_scene": "Scale 1000, rotate X +90deg: native metres [x,elevation,y] -> mm [x,-y,elevation].",
+    "asic": "Four original PCB-5 clones retain source geometry; their complete group is translated for a separate recording-side cluster. No ASIC distribution or mating adapter is invented.",
+    "ldo_translation_after_native_conversion_mm": [
+      -116,
+      116.25,
+      -0.995
+    ],
+    "fpga_translation_after_native_conversion_mm": [
+      -115.5,
+      114.75,
+      1.505002
+    ],
+    "combined_translation_after_native_conversion_mm": [
+      -115,
+      115,
+      0
+    ],
+    "separated_view": "Inspection only: FPGA +8mm, interposer +10mm, XEM +20mm. Registered nominal view removes these display offsets.",
+    "display_layout": "Rigid 180 degree Z rotations of compact and complete registered host groups point source micro-HDMI ports into the gap. Host visible bounds centered at X70/Y0 mm. Compact group translated to leave 70 mm between its maxX and full host minX; required display clearance >=65 mm. ASIC group translated left of compact with18 mm clearance. These are illustration positions, not physical stack or enclosure dimensions."
+  },
+  "source_notes": [
+    "../assembly-v6/assets/Host_Asset_Provenance.json",
+    "../assembly-v6/assets/Native_Assets_Provenance_V6.json",
+    "../../meetings/2026-10-14-v16/stack_viewer/assets/Scene_Manifest.json"
+  ],
+  "scope": "Native source board meshes unchanged. Compact electronics and host stack have a non-overlapping layout linked by an illustrative micro-HDMI cable. No ASIC die, distribution adapter or standoff invented; physical mating and powered operation remain unqualified.",
+  "cable": {
+    "type": "micro-HDMI",
+    "representation": "Illustrative curved jacket mesh; no qualified plug, physical cable length, bend radius or mating datum.",
+    "separate_source": "FPGA V41 node J3 world maxX face center after rigid group rotation.",
+    "combined_source": "V7 J3 source-model mouth point native metres[.0994,.00277,.1058], transformed with the combined model.",
+    "host_target": "Interposer V4 node J600 world minX face center after rigid group rotation; follows interposer inspection separation.",
+    "source_reference_scope": "Nominal connector-bound anchors retain the actual source ports. Cable geometry and overall spacing communicate the architecture only."
+  }
+}

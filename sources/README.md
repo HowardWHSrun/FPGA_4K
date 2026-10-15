@@ -209,3 +209,7 @@ The [current carrier](../presentation/xem/carrier-r15-2026-10-12.html) publishes
 ## Current composite overview · 15 October 2026 · V6
 
 [Model provenance and transforms](../presentation/overview/assembly-v6/README.md) record the original ASIC PCB-5, current native FPGA V41 / LDO V5 / combined V7, and registered BRK8305 / interposer V4 / XEM8305 display derivatives. Original sources and earlier assembly bytes are preserved. The viewer uses four PCB-5 copies as an illustrative distribution; it does not invent missing ASIC die, connector, cable or adapter bodies. [V5 overview archive](../overview-2026-10-15-v5.html) preserves the previous concept.
+
+## Cabled assembly presentation · V7 · 15 October 2026
+
+[V7 layout and cable provenance](../presentation/overview/assembly-v7/README.md) reuse all source GLBs unchanged and separate the compact electronics from the complete BRK host bounds. The curved micro-HDMI jacket and overall positions are illustrative; nominal cable anchors follow source J3 and interposer J600. Current part descriptions omit individual assignments. [V6 overview](../overview-2026-10-15-v6.html) preserves the previous presentation.

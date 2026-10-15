@@ -13,6 +13,7 @@ function check(ok,label){if(!ok)throw Error(label);report.checks.push(label);con
 async function select(section){
  await page.locator('.system-nav [data-slide="'+section+'"]').click();
  await page.waitForFunction(id=>window.currentOverviewState?.section===id,section);
+ await checkUnassignedParts(section);
 }
 async function choose(mode){
  await page.locator('[data-choose-approach="'+mode+'"]').click();
@@ -27,6 +28,9 @@ async function ready(kind){
  return f;
 }
 async function settled(){await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
+async function checkUnassignedParts(section){
+ check((await page.locator('#owners').innerText()).trim()===''&&!/\b(?:Gerald|Zitong|Howard|Jiaao)\b/i.test(await page.locator('#overview-team').innerText()),'Current '+section+' parts do not assign people');
+}
 async function checkAssembly(frame,architecture,focus){
  await frame.waitForFunction(([mode,part])=>{const state=window.currentAssemblyViewer?.getState();return state?.ready&&!state.error&&state.architecture===mode&&state.focus===part&&document.getElementById('status').hidden;},[architecture,focus]);
  const state=await frame.evaluate(()=>currentAssemblyViewer.getState());
@@ -38,6 +42,9 @@ async function checkAssembly(frame,architecture,focus){
  check(await frame.locator('html').getAttribute('data-architecture')===architecture&&await frame.locator('html').getAttribute('data-modelcount')===String(expected.length),'Current composite DOM diagnostics match the '+architecture+' scene');
  if(architecture==='combined')check(state.geometry.combined.triangles>1000&&/V7/.test(await frame.locator('[data-board="combined"]').innerText()),'Combined native model and its visible label identify V7');
  check(state.versions.asic==='PCB-5'&&state.versions.interposer==='V4'&&state.versions.xem==='XEM8305'&&(architecture==='separate'?state.versions.fpga==='V41'&&state.versions.ldo==='V5':state.versions.combined==='V7'),'Current '+architecture+' composite identifies the current source revisions');
+ check(Number.isFinite(state.layout?.compactHostGapMm)&&Number.isFinite(state.layout?.requiredGapMm)&&state.layout.requiredGapMm>=65&&state.layout.compactHostGapMm>=state.layout.requiredGapMm,'Current '+architecture+' electronics have a measured clear gap from the BRK host stack');
+ check(state.cable?.type==='micro-HDMI'&&state.cable.illustrative===true&&state.cable.from===(architecture==='separate'?'fpga':'combined')&&state.cable.to==='interposer','Current '+architecture+' micro-HDMI cable connects the selected FPGA electronics to the interposer');
+ check(Number(await frame.locator('html').getAttribute('data-compact-host-gap-mm'))===state.layout.compactHostGapMm&&await frame.locator('html').getAttribute('data-cable-type')==='micro-HDMI','Current '+architecture+' cable and clear-gap DOM diagnostics match the scene');
  check(state.focus===focus,'Current composite focus is '+focus);
 }
 async function visibleIds(selector){return page.locator(selector+':visible').evaluateAll(items=>items.map(x=>x.dataset.slide));}
@@ -46,7 +53,8 @@ async function routeOnly(mode){
  check(JSON.stringify(await visibleIds('.system-nav [data-slide]'))===JSON.stringify(routes[mode]),mode+' navigation contains only its selected route');
  check(await page.locator('.approach-card:visible').count()===1&&await page.locator('.approach-card[data-approach="'+mode+'"]').isVisible()&&!(await page.locator('.approach-card[data-approach="'+other+'"]').isVisible()),mode+' overview shows one flow and hides the other flow');
  const teamIds=await visibleIds('#overview-team [data-slide]');
- check(JSON.stringify(teamIds)===JSON.stringify(routes[mode].slice(1)),mode+' overview team links contain only its route');
+ check(JSON.stringify(teamIds)===JSON.stringify(routes[mode].slice(1)),mode+' overview board links contain only its route');
+ await checkUnassignedParts(mode+' overview');
  check(await page.locator('[data-choose-approach="'+mode+'"]').getAttribute('aria-pressed')==='true'&&await page.locator('[data-choose-approach="'+other+'"]').getAttribute('aria-pressed')==='false',mode+' is the only selected approach button');
  check(new URL(page.url()).searchParams.get('approach')===mode,mode+' selection is retained in the URL');
  check(await page.locator('#total-pages').innerText()===String(routes[mode].length).padStart(2,'0'),mode+' page count excludes the hidden route');
@@ -116,7 +124,7 @@ async function checkResponsive(width,height,desktop){
    }
    if(previewKind){
     const frame=await ready(previewKind);
-    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V6'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
+    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V7'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
     if(id==='overview'&&mode==='direct'){
      const overviewFit=await frame.evaluate(()=>{
       const stage=document.querySelector('.carrier-stage')?.getBoundingClientRect(),canvas=document.querySelector('#carrier-3d')?.getBoundingClientRect();
@@ -146,7 +154,8 @@ async function checkResponsive(width,height,desktop){
 try{
  await page.goto(base+'#overview',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.PRESENTATION?.getState().sourceVerified&&window.currentOverviewState?.approach==='custom');
- check(await page.locator('html').getAttribute('data-overview-version')==='V6','Current composite keeps the selected-path original structure in Overview V6');
+ check(await page.locator('html').getAttribute('data-overview-version')==='V7','Current composite keeps the selected-path original structure in Overview V7');
+ check(await page.evaluate(()=>window.OVERVIEW_SLIDE_CATALOG.every(slide=>Array.isArray(slide.owners)&&slide.owners.length===0)),'All current catalog sections leave people unassigned');
  check(await page.locator('.workspace > .viewer').count()===1&&await page.locator('.workspace > .story').count()===1,'Original viewer-left/story-right structure retained');
  check(JSON.stringify(await page.locator('.system-nav [data-slide]').evaluateAll(items=>items.map(x=>x.dataset.slide)))===JSON.stringify(['overview','carriers','routing','fpga','adapter','receiver']),'Original six section buttons retained for route filtering');
  check(await page.locator('.board-nav').count()===0,'Replacement sidebar removed');
@@ -162,10 +171,16 @@ try{
  await choose('custom');await routeOnly('custom');
  check(await page.evaluate(()=>{const s=PRESENTATION.getState();return s.triangles===650&&s.sourceGeometryUnchanged&&s.sourceSHA256==='1aa6547321ffec16be82f6e58fd27fd49825b74ba4f23b1c36394f7b9f2eac46';}),'The preserved legacy 650-triangle source remains unchanged alongside the current composite');
  let assemblyFrame=await ready('assembly');
- check((await page.locator('#current-board-preview').getAttribute('src')).includes('assembly-v6/index.html')&&!(await page.locator('#scene').isVisible()),'Approach A overview opens the current composite and hides the earlier assembly canvas');
+ check((await page.locator('#current-board-preview').getAttribute('src')).includes('assembly-v7/index.html')&&!(await page.locator('#scene').isVisible()),'Approach A overview opens the current composite and hides the earlier assembly canvas');
  await checkAssembly(assemblyFrame,'separate','all');
  await page.locator('#power-architecture').selectOption('combined');await page.waitForFunction(()=>window.currentOverviewState?.powerOption==='combined');
  assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'combined','all');
+ await assemblyFrame.locator('#separation').click();
+ check(!(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated)),'Combined current composite can return its host stack to nominal spacing');
+ await checkAssembly(assemblyFrame,'combined','all');
+ await assemblyFrame.locator('#separation').click();
+ check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated),'Combined current composite can separate its host stack for inspection');
+ await checkAssembly(assemblyFrame,'combined','all');
  await page.locator('#power-architecture').selectOption('separate');await page.waitForFunction(()=>window.currentOverviewState?.powerOption==='separate');
  assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'separate','all');
  await assemblyFrame.locator('[data-pose="top"]').click();check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().pose)==='top','Current composite Top camera works');
@@ -173,7 +188,10 @@ try{
  await assemblyFrame.locator('[data-focus="host"]').click();check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().focus)==='host','Current composite can focus the complete current host stack');
  await assemblyFrame.locator('[data-focus="all"]').click();await assemblyFrame.locator('[data-pose="iso"]').click();
  await assemblyFrame.locator('#separation').click();check(!(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated)),'Current composite can return its board stacks to nominal spacing');
+ await checkAssembly(assemblyFrame,'separate','all');
  await assemblyFrame.locator('#separation').click();
+ check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated),'Separate current composite can separate its board stacks for inspection');
+ await checkAssembly(assemblyFrame,'separate','all');
  await assemblyFrame.locator('[data-board="fpga"]').click();await page.waitForFunction(()=>window.currentOverviewState?.section==='fpga');
  check(await page.locator('#approach-label').innerText()==='A · Custom FPGA approach','Selecting the current 3D FPGA opens its existing details section');
  await select('carriers');assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'separate','asic');
