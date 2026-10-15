@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-15",
+  "version": "V6",
+  "coordinate_frame": "Numeric millimetres; right-handed Z-up",
+  "assets": [
+    {
+      "path": "assets/ASIC_PCB5_Interactive.glb",
+      "bytes": 10187900,
+      "sha256": "7e8e14af51aab32b3e5a697034e2a7fdc098f3d9244eed67d36ff0a2b619f7ff"
+    },
+    {
+      "path": "assets/Combined_V7_Interactive.glb",
+      "bytes": 11280396,
+      "sha256": "3239414a1e0bdba966e1079c79feab30dffebd35cee592757b6183bddff17af6"
+    },
+    {
+      "path": "assets/BRK8305_Display.glb",
+      "bytes": 771944,
+      "sha256": "9ba9acf52763fb0c501b5f3b17078c9987998d19ca4b60da5651f21f70b00581"
+    },
+    {
+      "path": "assets/Interposer_V4_Display.glb",
+      "bytes": 492196,
+      "sha256": "6c263a07d3f1d18727bf13e436d9dac131ea8f21bd9c8a98529b8eb8aeb2bb74"
+    },
+    {
+      "path": "assets/XEM8305_Display.glb",
+      "bytes": 615120,
+      "sha256": "65ef8c1b295ce8e85d823a95e0a0a8203f8a5f8b13a38e024a2f8cd00e4587c3"
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/fpga/FPGA_V41_Interactive.glb",
+      "bytes": 15534372,
+      "sha256": "89eddaffada21914daf27b40091fa8aa673fe674bf367d6cafe4315dd4281623"
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/ldo/LDO_V5_Interactive.glb",
+      "bytes": 10233988,
+      "sha256": "44e61d7048fb3f18649d65c6debcad3850e2345a9000444ef143252fecdd8163"
+    }
+  ],
+  "transforms": {
+    "native_to_scene": "Scale 1000, rotate X +90deg: native metres [x,elevation,y] -> mm [x,-y,elevation].",
+    "asic": "Four clones centered from complete source bounds, placed at [-105,-15],[-78,-15],[-105,15],[-78,15] mm; physical adapters and mating transforms unknown.",
+    "compact_group_mm": [
+      -28,
+      0,
+      0
+    ],
+    "ldo_translation_after_native_conversion_mm": [
+      -116,
+      116.25,
+      -0.995
+    ],
+    "fpga_translation_after_native_conversion_mm": [
+      -115.5,
+      114.75,
+      1.505002
+    ],
+    "combined_translation_after_native_conversion_mm": [
+      -115,
+      115,
+      0
+    ],
+    "host": "Assets pre-registered in common Z-up/mm coordinates; parent translation [3.5,26.5,0] only.",
+    "separated_view": "Inspection only: FPGA +8mm, interposer +10mm, XEM +20mm. Registered nominal view removes these display offsets."
+  },
+  "source_notes": [
+    "assets/Host_Asset_Provenance.json",
+    "assets/Native_Assets_Provenance_V6.json",
+    "../../meetings/2026-10-14-v16/stack_viewer/assets/Scene_Manifest.json"
+  ],
+  "scope": "Source model geometry retained; no cable, plug, distribution adapter, die or standoff geometry invented. Overall layout and dashed logical links illustrative; hardware mating/operation unqualified."
+}

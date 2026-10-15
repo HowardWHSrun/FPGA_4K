@@ -1,6 +1,6 @@
 # Project files and documents
 
-- [Current hardware overview · 15 October · V5](../index.html): Two parallel approaches: custom FPGA/new LDO electronics and the XEM8305 carrier directly connecting the existing LDO. FPGA V41, LDO V5/combined V7 and carrier V17 views/files; choose one approach to show only its path and sections, with one Updates button and responsive original layout. Qualification remains open. [Revision guide](../presentation/overview/README.md).
+- [Current hardware overview · 15 October · V6](../index.html): Two parallel approaches: custom FPGA/new LDO electronics and the XEM8305 carrier directly connecting the existing LDO. Current composite 3D brings four ASIC PCB-5 references, FPGA V41 + LDO V5 or combined V7, and the BRK8305/interposer V4/XEM8305 host stack together. FPGA V41, LDO V5/combined V7 and carrier V17 views/files; choose one approach to show only its path and sections, with one Updates button and responsive original layout. Qualification remains open. [Revision guide](../presentation/overview/README.md).
 
 - [14 October Wednesday presentation · V17](../presentation/meetings/2026-10-14-v17/index.html): eight pages with the carrier first, standalone FPGA next, then the separate/combined FPGA + LDO comparison. Interactive 3D, native layouts and complete one-page schematics include board dimensions and length references. Preparation only; routing and physical qualification remain in progress.
 

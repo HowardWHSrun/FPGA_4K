@@ -1,0 +1,40 @@
+{
+  "version": "V6",
+  "date": "2026-10-15",
+  "assets": [
+    {
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/brk_official/BRK8305_Registered_Viewer_V4_Display.glb",
+      "output": "presentation/overview/assembly-v6/assets/BRK8305_Display.glb",
+      "sha256": "9ba9acf52763fb0c501b5f3b17078c9987998d19ca4b60da5651f21f70b00581",
+      "bytes": 771944,
+      "transformation": "Exact byte copy of registered display derivative; numeric mm; right-handed Z-up. No per-board transforms."
+    },
+    {
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/interposer/XEM_Interposer_Compact_V4_Stack_mm_Display.glb",
+      "output": "presentation/overview/assembly-v6/assets/Interposer_V4_Display.glb",
+      "sha256": "6c263a07d3f1d18727bf13e436d9dac131ea8f21bd9c8a98529b8eb8aeb2bb74",
+      "bytes": 492196,
+      "transformation": "Exact byte copy of registered display derivative; numeric mm; right-handed Z-up. No per-board transforms."
+    },
+    {
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/xem/XEM8305_Official_Stack_mm_Display.glb",
+      "output": "presentation/overview/assembly-v6/assets/XEM8305_Display.glb",
+      "sha256": "65ef8c1b295ce8e85d823a95e0a0a8203f8a5f8b13a38e024a2f8cd00e4587c3",
+      "bytes": 615120,
+      "transformation": "Exact byte copy of registered display derivative; numeric mm; right-handed Z-up. No per-board transforms."
+    }
+  ],
+  "registration": {
+    "brk_top_z_mm": 0,
+    "interposer_bottom_z_mm": 5,
+    "interposer_top_nominal_z_mm": 7.4,
+    "xem_bottom_z_mm": 12.4,
+    "xem_top_z_mm": 13.89389088
+  },
+  "scope": "Nominal CAD visualization. Populated mating and assembled hardware are unqualified. V4 is physical placement; newer power-foundation schematic is separate.",
+  "omissions": [
+    "BRK official source omits MC4\u2013MC9 headers and S1/J2/J6 bodies.",
+    "XEM derivative omits decorative silk, prepreg and pick-cap geometry.",
+    "Some V4 bodies are nominal package/drawing envelopes. Cable plugs, standoffs and ASIC distribution adapters are not modeled."
+  ]
+}

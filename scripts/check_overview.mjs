@@ -23,10 +23,23 @@ async function choose(mode){
 async function ready(kind){
  const f=await (await page.locator('#current-board-preview').elementHandle()).contentFrame();
  await f.waitForURL(new URL(await page.locator('#current-board-preview').getAttribute('src'),base).href);
- await f.waitForFunction(type=>type==='reference'?[...document.images].some(img=>img.complete&&img.naturalWidth>0):type==='image'?window.drawingState?.ready:type==='native'?window.nativePcbViewer?.getState().ready:type==='fpga3d'?window.fpga3dViewer?.getState().ready:type==='carrier3d'?window.carrierViewer?.getState().assemblyReady:window.fpgaLdoViewer?.getState().ready,kind,{timeout:90000});
+ await f.waitForFunction(type=>type==='reference'?[...document.images].some(img=>img.complete&&img.naturalWidth>0):type==='image'?window.drawingState?.ready:type==='native'?window.nativePcbViewer?.getState().ready:type==='fpga3d'?window.fpga3dViewer?.getState().ready:type==='carrier3d'?window.carrierViewer?.getState().assemblyReady:type==='assembly'?document.documentElement.dataset.sceneReady==='true'&&window.currentAssemblyViewer?.getState().ready:window.fpgaLdoViewer?.getState().ready,kind,{timeout:90000});
  return f;
 }
 async function settled(){await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
+async function checkAssembly(frame,architecture,focus){
+ await frame.waitForFunction(([mode,part])=>{const state=window.currentAssemblyViewer?.getState();return state?.ready&&!state.error&&state.architecture===mode&&state.focus===part&&document.getElementById('status').hidden;},[architecture,focus]);
+ const state=await frame.evaluate(()=>currentAssemblyViewer.getState());
+ const common=['asic','brk','interposer','xem'],compact=architecture==='separate'?['fpga','ldo']:['combined'];
+ check([...common,...compact].every(id=>state.loadedModels.includes(id)&&state.geometry[id]?.triangles>0&&state.geometry[id]?.meshes>0),'Current '+architecture+' composite loads source-derived ASIC, compact electronics and three host-board models');
+ const expected=['asic-1','asic-2','asic-3','asic-4','brk','interposer','xem',...compact];
+ const visible=Object.entries(state.visible).filter(([,shown])=>shown).map(([id])=>id).sort();
+ check(JSON.stringify(visible)===JSON.stringify(expected.sort())&&state.modelCount===expected.length,'Current '+architecture+' composite shows four ASIC boards and only its selected electronics option');
+ check(await frame.locator('html').getAttribute('data-architecture')===architecture&&await frame.locator('html').getAttribute('data-modelcount')===String(expected.length),'Current composite DOM diagnostics match the '+architecture+' scene');
+ if(architecture==='combined')check(state.geometry.combined.triangles>1000&&/V7/.test(await frame.locator('[data-board="combined"]').innerText()),'Combined native model and its visible label identify V7');
+ check(state.versions.asic==='PCB-5'&&state.versions.interposer==='V4'&&state.versions.xem==='XEM8305'&&(architecture==='separate'?state.versions.fpga==='V41'&&state.versions.ldo==='V5':state.versions.combined==='V7'),'Current '+architecture+' composite identifies the current source revisions');
+ check(state.focus===focus,'Current composite focus is '+focus);
+}
 async function visibleIds(selector){return page.locator(selector+':visible').evaluateAll(items=>items.map(x=>x.dataset.slide));}
 async function routeOnly(mode){
  const other=mode==='custom'?'direct':'custom';
@@ -72,11 +85,12 @@ async function checkResponsive(width,height,desktop){
     await page.locator('#power-architecture').selectOption('separate');
     await page.waitForFunction(()=>window.currentOverviewState?.board==='separate');
     previewKind='stack';
-   }else if(id==='fpga')previewKind='fpga3d';
+   }else if(mode==='custom'&&['overview','carriers','adapter'].includes(id))previewKind='assembly';
+   else if(id==='fpga')previewKind='fpga3d';
    else if(id==='receiver'||id==='overview'&&mode==='direct')previewKind='carrier3d';
    else if(id==='carriers'&&mode==='direct')previewKind='reference';
    if(previewKind){
-    await page.locator('[data-current-view="3d"]').click();
+    if(await page.locator('[data-current-view="3d"]').isVisible())await page.locator('[data-current-view="3d"]').click();
     await page.waitForFunction(()=>window.currentOverviewState?.view==='3d');
    }
    await settled();
@@ -102,7 +116,7 @@ async function checkResponsive(width,height,desktop){
    }
    if(previewKind){
     const frame=await ready(previewKind);
-    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V5'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
+    await frame.waitForFunction(section=>document.documentElement.dataset.overviewEmbed==='V6'&&document.documentElement.dataset.overviewSection===section&&document.getElementById('overview-embed-style')?.sheet,id);
     if(id==='overview'&&mode==='direct'){
      const overviewFit=await frame.evaluate(()=>{
       const stage=document.querySelector('.carrier-stage')?.getBoundingClientRect(),canvas=document.querySelector('#carrier-3d')?.getBoundingClientRect();
@@ -110,9 +124,16 @@ async function checkResponsive(width,height,desktop){
       return controlsHidden&&stage?.height>=120&&canvas?.height>=120&&canvas.width>0&&canvas.left>=-1&&canvas.right<=innerWidth+1&&document.documentElement.scrollWidth<=innerWidth+1;
      });
      check(overviewFit,'Direct-LDO overview reserves a visible carrier canvas without detailed toolbars in '+label);
+    }else if(previewKind==='assembly'){
+     const assemblyFit=await frame.evaluate(()=>{
+      const stage=document.querySelector('#stage')?.getBoundingClientRect(),canvas=document.querySelector('#assembly')?.getBoundingClientRect();
+      const controls=[...document.querySelectorAll('.toolbar :is(button,select),.inspection-controls button')].filter(element=>{const r=element.getBoundingClientRect();return r.width>0&&r.height>0;});
+      return stage?.height>=120&&canvas?.height>=120&&canvas.width>0&&canvas.left>=-1&&canvas.right<=innerWidth+1&&document.documentElement.scrollWidth<=innerWidth+1&&controls.every(element=>{const r=element.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1;});
+     });
+     check(assemblyFit,'Current composite canvas and controls fit in '+label);
     }else if(previewKind!=='reference'){
      const embeddedFit=await frame.evaluate(()=>{
-      const controls=[...document.querySelectorAll(':is(.toolbar,.render-toolbar,.assembly-controls,header) :is(button,select,input)')].filter(element=>{const r=element.getBoundingClientRect();return r.width>0&&r.height>0;});
+      const controls=[...document.querySelectorAll(':is(.toolbar,.render-toolbar,.assembly-controls,.inspection-controls,header) :is(button,select,input)')].filter(element=>{const r=element.getBoundingClientRect();return r.width>0&&r.height>0;});
       return controls.length>0&&document.documentElement.scrollWidth<=innerWidth+1&&controls.every(element=>{const r=element.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1;});
      });
      check(embeddedFit,'Embedded board toolbar fits in '+label);
@@ -125,7 +146,7 @@ async function checkResponsive(width,height,desktop){
 try{
  await page.goto(base+'#overview',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.PRESENTATION?.getState().sourceVerified&&window.currentOverviewState?.approach==='custom');
- check(await page.locator('html').getAttribute('data-overview-version')==='V5','Selected-path original structure is Overview V5');
+ check(await page.locator('html').getAttribute('data-overview-version')==='V6','Current composite keeps the selected-path original structure in Overview V6');
  check(await page.locator('.workspace > .viewer').count()===1&&await page.locator('.workspace > .story').count()===1,'Original viewer-left/story-right structure retained');
  check(JSON.stringify(await page.locator('.system-nav [data-slide]').evaluateAll(items=>items.map(x=>x.dataset.slide)))===JSON.stringify(['overview','carriers','routing','fpga','adapter','receiver']),'Original six section buttons retained for route filtering');
  check(await page.locator('.board-nav').count()===0,'Replacement sidebar removed');
@@ -139,8 +160,27 @@ try{
  check(await directCard.getAttribute('href')==='#receiver'&&/existing LDO board/.test(await directCard.textContent())&&/carrier V17/.test(await directCard.textContent())&&/connects directly/.test(await directCard.textContent()),'Approach B identifies carrier V17 connecting directly to the existing LDO board');
  check(await page.locator('.system-nav b,.system-nav .pc-path').count()===0&&!/[→↔]/.test(await page.locator('.system-nav').innerText()),'Bottom section navigation does not depict the approaches as one serial chain');
  await choose('custom');await routeOnly('custom');
- check(await page.evaluate(()=>{const s=PRESENTATION.getState();return s.triangles===650&&s.sourceGeometryUnchanged&&s.sourceSHA256==='1aa6547321ffec16be82f6e58fd27fd49825b74ba4f23b1c36394f7b9f2eac46';}),'Approach A preserves the supplied 650-triangle assembly geometry exactly');
- check(!(await page.locator('#current-board-preview').isVisible()),'Approach A overview opens the original assembly canvas');
+ check(await page.evaluate(()=>{const s=PRESENTATION.getState();return s.triangles===650&&s.sourceGeometryUnchanged&&s.sourceSHA256==='1aa6547321ffec16be82f6e58fd27fd49825b74ba4f23b1c36394f7b9f2eac46';}),'The preserved legacy 650-triangle source remains unchanged alongside the current composite');
+ let assemblyFrame=await ready('assembly');
+ check((await page.locator('#current-board-preview').getAttribute('src')).includes('assembly-v6/index.html')&&!(await page.locator('#scene').isVisible()),'Approach A overview opens the current composite and hides the earlier assembly canvas');
+ await checkAssembly(assemblyFrame,'separate','all');
+ await page.locator('#power-architecture').selectOption('combined');await page.waitForFunction(()=>window.currentOverviewState?.powerOption==='combined');
+ assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'combined','all');
+ await page.locator('#power-architecture').selectOption('separate');await page.waitForFunction(()=>window.currentOverviewState?.powerOption==='separate');
+ assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'separate','all');
+ await assemblyFrame.locator('[data-pose="top"]').click();check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().pose)==='top','Current composite Top camera works');
+ await assemblyFrame.locator('[data-pose="side"]').click();check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().pose)==='side','Current composite Side camera works');
+ await assemblyFrame.locator('[data-focus="host"]').click();check(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().focus)==='host','Current composite can focus the complete current host stack');
+ await assemblyFrame.locator('[data-focus="all"]').click();await assemblyFrame.locator('[data-pose="iso"]').click();
+ await assemblyFrame.locator('#separation').click();check(!(await assemblyFrame.evaluate(()=>currentAssemblyViewer.getState().separated)),'Current composite can return its board stacks to nominal spacing');
+ await assemblyFrame.locator('#separation').click();
+ await assemblyFrame.locator('[data-board="fpga"]').click();await page.waitForFunction(()=>window.currentOverviewState?.section==='fpga');
+ check(await page.locator('#approach-label').innerText()==='A · Custom FPGA approach','Selecting the current 3D FPGA opens its existing details section');
+ await select('carriers');assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'separate','asic');
+ await select('adapter');assemblyFrame=await ready('assembly');await checkAssembly(assemblyFrame,'separate','host');
+ check((await page.locator('#slide-description').innerText()).includes('83 × 53')&&(await page.locator('#slide-title').innerText()).includes('V4'),'Current interposer V4 replaces the earlier adapter in the live section');
+ check((await page.locator('#open-adapter-design').getAttribute('href')).includes('overview-2026-10-15-v5.html#adapter'),'The dated September adapter remains linked in the exact V5 archive');
+ await select('overview');
  await customCard.click();await page.waitForFunction(()=>window.currentOverviewState?.section==='fpga');
  check(await page.locator('#approach-label').innerText()==='A · Custom FPGA approach','Approach A flow opens its current FPGA section');
  await choose('direct');await routeOnly('direct');await ready('carrier3d');
@@ -171,12 +211,13 @@ try{
  check(await f.evaluate(()=>nativePcbViewer.getState().sourceSHA256==='f5d07985f5ff749ec338c609dc0ac859e8f74c0e97a381e711346547d55d42e6'),'V5 native layout is the current placement');
  await page.locator('#power-architecture').selectOption('combined');await page.waitForFunction(()=>window.currentOverviewState?.board==='combined');await ready('image');
  check((await page.locator('#slide-title').innerText()).includes('V7')&&(await page.locator('#slide-description').innerText()).includes('30 × 30'),'Combined V7 preview stays inside the original LDO section');
- check(!(await page.locator('[data-current-view="3d"]').isVisible()),'V6 combined 3D is not relabeled V7');
+ check(await page.locator('[data-current-view="3d"]').isVisible(),'Combined V7 has its own current native 3D view');
+ if(await page.locator('[data-current-view="3d"]').isVisible())await page.locator('[data-current-view="3d"]').click();f=await ready('assembly');await checkAssembly(f,'combined','compact');
  check((await page.locator('#open-ldo-design').getAttribute('href')).includes('Combined_FPGA_Shared_LDO_V7'),'V7 complete native download linked');
  await page.locator('[data-current-view="schematic"]').click();await ready('image');
- await select('adapter');check((await page.locator('#slide-description').innerText()).includes('29 September'),'Dated adapter study remains separate');
+ await select('adapter');await ready('assembly');check((await page.locator('#slide-title').innerText()).includes('V4'),'The adapter section displays the current physical V4 host stack');
  await page.locator('#detail-button').click();check(await page.locator('#notes-dialog').isVisible(),'Original technical notes dialog works');await page.locator('#close-notes').click();
- await select('overview');await page.locator('[data-camera="top"]').click();check(await page.locator('#camera-name').innerText()==='TOP VIEW','Approach A overview camera controls work');await page.locator('[data-camera="iso"]').click();
+ await select('overview');assemblyFrame=await ready('assembly');await assemblyFrame.locator('[data-pose="top"]').click();await assemblyFrame.waitForFunction(()=>currentAssemblyViewer.getState().pose==='top');check(await assemblyFrame.locator('[data-pose="top"]').getAttribute('aria-pressed')==='true','Current overview Top camera remains usable after visiting board details');await assemblyFrame.locator('[data-pose="iso"]').click();await assemblyFrame.waitForFunction(()=>currentAssemblyViewer.getState().pose==='iso');
  await choose('direct');await select('receiver');check((await page.locator('#slide-title').innerText()).includes('V17'),'Direct-LDO carrier section shows V17');await ready('carrier3d');
  await page.locator('[data-current-view="schematic"]').click();await ready('image');
  check((await page.locator('#open-receiver-design').getAttribute('href')).includes('Carrier_V17_Complete_KiCad'),'V17 complete native download linked');
