@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native design view</title><link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;height:100vh;display:grid;grid-template-rows:auto minmax(0,1fr) 26px;font:11px Arial,system-ui;color:#213e50;background:#eef3f5}header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 14px;padding:8px 14px;background:white;border-bottom:1px solid #dce3e7;min-height:43px}.heading,.tools{display:flex;align-items:center;gap:6px;min-width:0}.heading{flex:1 1 190px}.tools{flex-wrap:wrap}#title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}button,select,.overview-link{font:inherit;color:inherit;border:1px solid #c9d5da;background:white;border-radius:4px;padding:5px 9px}button,select{cursor:pointer}select{max-width:180px}.overview-link{flex-shrink:0;text-decoration:none;color:#156467}button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #327b9c}#sides{white-space:nowrap}#stage{position:relative;min-height:0;overflow:hidden;touch-action:none;cursor:grab}#stage.dragging{cursor:grabbing}img{position:absolute;width:94%;height:94%;left:3%;top:3%;object-fit:contain;transform-origin:center;user-select:none;pointer-events:none}footer{padding:7px 14px;font-size:10px;color:#526674}#status{position:absolute;top:45%;width:100%;padding:0 18px;text-align:center;line-height:1.7}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+<div class="heading"><a class="overview-link" href="https://howardwhsrun.github.io/FPGA_4K/#fpga" target="_top">← Overview</a><span id="title">Native design view</span></div>
+<div class="tools"><select id="drawing-picker" aria-label="Select drawing"><option value="fpga-schematic">FPGA V41 · schematic</option><option value="carrier-schematic">Carrier V42 · schematic</option><option value="ldo-schematic">LDO V5 · schematic</option><option value="combined-layout">Combined V7 · layout</option><option value="combined-schematic">Combined V7 · schematic</option></select><span id="sides" hidden><button data-side="front" aria-pressed="true">Front</button> <button data-side="back" aria-pressed="false">Back</button></span><button id="out" aria-label="Zoom out">−</button><button id="in" aria-label="Zoom in">+</button><button id="fit">Fit</button></div>
+</header>
+<div id="stage" tabindex="0" aria-label="Native drawing. Drag to pan, scroll to zoom."><img id="drawing" alt="Native KiCad design drawing" draggable="false"><p id="status" role="status">Opening drawing… <a href="https://howardwhsrun.github.io/FPGA_4K/#fpga" target="_top">Return to overview</a></p></div>
+<footer>Drag to pan · scroll to zoom · Fit to reset</footer>
+<script src="image-viewer-v11.js?v=20261018-v11"></script>
+</body></html>

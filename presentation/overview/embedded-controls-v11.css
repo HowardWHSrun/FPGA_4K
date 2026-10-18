@@ -1,0 +1,26 @@
+/* Scoped to the live V11 parent; earlier viewer sources and V10 remain intact. */
+html[data-overview-embed=V11] .carrier-stage{min-height:0}
+html[data-overview-embed=V11] .assembly-controls:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;max-width:100%;gap:6px 10px}
+html[data-overview-embed=V11] .assembly-controls>*{max-width:100%;min-width:0}
+html[data-overview-embed=V11] .visibility,
+html[data-overview-embed=V11] .pose-controls{display:flex;flex-wrap:wrap;max-width:100%}
+html[data-overview-embed=V11] .spacing-control{display:flex;flex-wrap:wrap;gap:5px;white-space:normal}
+html[data-overview-embed=V11] .spacing-control input[type=range]{width:clamp(80px,22vw,140px);min-width:80px;touch-action:pan-y}
+html[data-overview-embed=V11] .assembly-controls .nominal{display:block;font-size:10px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;color:#607480}
+html[data-overview-embed=V11] .caption{flex-wrap:wrap}
+
+/* The outer 3D/Layout/Schematic tabs make this duplicate toolbar optional.
+   Keep assembly visibility, orientation and illustration spacing accessible. */
+html[data-overview-embed=V11][data-overview-section=overview] .render-toolbar{display:none}
+
+@media(max-width:550px){
+ html[data-overview-embed=V11] .toolbar,
+ html[data-overview-embed=V11] .render-toolbar{flex-wrap:wrap;justify-content:center;gap:6px}
+ html[data-overview-embed=V11] .toolbar>div,
+ html[data-overview-embed=V11] .render-toolbar>div{flex-wrap:wrap;justify-content:center;max-width:100%}
+ html[data-overview-embed=V11] .assembly-controls{padding:6px 8px}
+ html[data-overview-embed=V11] .spacing-control{flex-basis:100%}
+ html[data-overview-embed=V11] .pose-controls{margin-left:0;width:100%;gap:4px}
+ html[data-overview-embed=V11] .pose-controls button{padding:5px 6px}
+ html[data-overview-embed=V11] .assembly-controls .nominal{flex-basis:100%}
+}

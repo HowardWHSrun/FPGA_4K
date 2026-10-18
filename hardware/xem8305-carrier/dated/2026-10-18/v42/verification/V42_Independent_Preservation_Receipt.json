@@ -1,0 +1,295 @@
+{
+  "audit": "Independent read-only V42 preservation audit",
+  "pass": true,
+  "checks": {
+    "V41_frozen_manifest": {
+      "pass": true,
+      "checked_files": 249,
+      "missing": [],
+      "changed": []
+    },
+    "audited_final_PCB_identity": {
+      "pass": true,
+      "source_sha256": "8241aee58b92798491cf6bcd8d16272a8f4049487a1b2fd2bd17fa9332b6ecf7",
+      "V42_sha256": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626",
+      "expected": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626"
+    },
+    "unrelated_footprints_byte_exact": {
+      "pass": true,
+      "source_count": 89,
+      "target_count": 89,
+      "changed_references": [
+        "D601"
+      ],
+      "byte_exact_unrelated_count": 88
+    },
+    "D601_pad_electrical_and_manufacturing_properties_preserved": {
+      "pass": true,
+      "pads": {
+        "1": true,
+        "2": true
+      }
+    },
+    "D601_component_properties_preserved": {
+      "pass": true,
+      "properties": {
+        "Reference": "D601",
+        "Value": "RED / 0603",
+        "Datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APT1608LSECK-J3-PRV.pdf",
+        "Description": "Low-current red LED; pad 1 cathode, pad 2 anode",
+        "Manufacturer": "Kingbright",
+        "MPN": "APT1608LSECK/J3-PRV"
+      },
+      "footprint": "StatusLED:LED_0603_Kingbright"
+    },
+    "D601_bottom_position": {
+      "pass": true,
+      "layer": "B.Cu",
+      "at": [
+        "141",
+        "55",
+        "90"
+      ]
+    },
+    "segment_original_objects_exact": {
+      "pass": true,
+      "source_count": 738,
+      "target_count": 742,
+      "retained_byte_exact": 737,
+      "removed": [
+        "efe61b7a-7b63-415b-983c-d20a0f56e47c"
+      ],
+      "changed": [],
+      "added": 5
+    },
+    "via_original_objects_exact": {
+      "pass": true,
+      "source_count": 312,
+      "target_count": 313,
+      "retained_byte_exact": 311,
+      "removed": [
+        "670d121a-978b-44f9-a24e-fe776501d1c7"
+      ],
+      "changed": [],
+      "added": 2
+    },
+    "only_old_D601_ground_objects_removed": {
+      "pass": true,
+      "removed": [
+        "670d121a-978b-44f9-a24e-fe776501d1c7",
+        "efe61b7a-7b63-415b-983c-d20a0f56e47c"
+      ]
+    },
+    "original_D601_anode_segment_retained_exactly": {
+      "pass": true
+    },
+    "new_copper_only_indicator_branch": {
+      "pass": true,
+      "new_items": [
+        {
+          "kind": "segment",
+          "uuid": "07e9ea33-cdf8-533b-ab4f-4a391efab25d",
+          "net": "LED_LDO3V3_A",
+          "start": [
+            "141",
+            "48"
+          ],
+          "end": [
+            "141",
+            "53.5"
+          ],
+          "layer": [
+            "F.Cu"
+          ],
+          "width": [
+            "0.25"
+          ]
+        },
+        {
+          "kind": "segment",
+          "uuid": "93281111-89bb-5b95-b6c9-5f7d47192646",
+          "net": "DGND",
+          "start": [
+            "141",
+            "55.825"
+          ],
+          "end": [
+            "142",
+            "55.825"
+          ],
+          "layer": [
+            "B.Cu"
+          ],
+          "width": [
+            "0.25"
+          ]
+        },
+        {
+          "kind": "segment",
+          "uuid": "b9f105b1-0849-5019-965b-a0609d316f23",
+          "net": "LED_LDO3V3_A",
+          "start": [
+            "142.5",
+            "46.5"
+          ],
+          "end": [
+            "141",
+            "48"
+          ],
+          "layer": [
+            "F.Cu"
+          ],
+          "width": [
+            "0.25"
+          ]
+        },
+        {
+          "kind": "segment",
+          "uuid": "da9d51a6-85f6-5159-8c2a-9e2551a3a5e0",
+          "net": "LED_LDO3V3_A",
+          "start": [
+            "142.5",
+            "38.675"
+          ],
+          "end": [
+            "142.5",
+            "46.5"
+          ],
+          "layer": [
+            "F.Cu"
+          ],
+          "width": [
+            "0.25"
+          ]
+        },
+        {
+          "kind": "segment",
+          "uuid": "e1cc4144-5ebb-5adc-ba3c-1639f97a6176",
+          "net": "LED_LDO3V3_A",
+          "start": [
+            "141",
+            "53.5"
+          ],
+          "end": [
+            "141",
+            "54.175"
+          ],
+          "layer": [
+            "B.Cu"
+          ],
+          "width": [
+            "0.25"
+          ]
+        },
+        {
+          "kind": "via",
+          "uuid": "23dae501-a00d-5f84-92f0-e1da8139845b",
+          "net": "LED_LDO3V3_A",
+          "at": [
+            "141",
+            "53.5"
+          ],
+          "size": [
+            "0.6"
+          ],
+          "drill": [
+            "0.3"
+          ]
+        },
+        {
+          "kind": "via",
+          "uuid": "2a230995-9859-55e3-9e18-36848033c9aa",
+          "net": "DGND",
+          "at": [
+            "142",
+            "55.825"
+          ],
+          "size": [
+            "0.6"
+          ],
+          "drill": [
+            "0.3"
+          ]
+        }
+      ]
+    },
+    "board_text_only_D601_label_and_revision": {
+      "pass": true,
+      "changed_UUIDs": [
+        "92a63d94-1659-4bed-91c6-7746cbac1dc6",
+        "badf6628-dc55-40b6-9eb5-211a3997a7ef"
+      ]
+    },
+    "D601_label_moved_to_bottom": {
+      "pass": true,
+      "at": [
+        "141",
+        "58.5",
+        "0"
+      ]
+    },
+    "all_zone_definitions_preserved": {
+      "pass": true,
+      "source_count": 21,
+      "target_count": 21,
+      "changed_definition_UUIDs": []
+    },
+    "only_expected_zone_fill_caches_changed": {
+      "pass": true,
+      "changed_fill_caches": [
+        {
+          "uuid": "44b0183a-ae43-4768-8b2d-0e8c2d58f53b",
+          "net": "DGND",
+          "layer": "In4.Cu",
+          "old_polygons": 1,
+          "new_polygons": 1
+        },
+        {
+          "uuid": "f8c71fa8-f6a1-49c2-b227-d9cd28a1489e",
+          "net": "VDCIN",
+          "layer": "In3.Cu",
+          "old_polygons": 1,
+          "new_polygons": 1
+        },
+        {
+          "uuid": "d9314cf2-e5c6-43ca-a760-f47b9dc1c62b",
+          "net": "DGND",
+          "layer": "In1.Cu",
+          "old_polygons": 1,
+          "new_polygons": 1
+        }
+      ],
+      "other_zone_bytes_exact": 18
+    },
+    "separate_native_fill_geometry_locality_receipt_matches_final_board": {
+      "pass": true,
+      "receipt": "verification/Native_Fill_Locality.json",
+      "method": "KiCad native SHAPE_POLY_SET BooleanXor of all saved filled polygons; difference minus three 2x2 mm indicator-via windows must be empty. No geometry approximation."
+    },
+    "all_other_board_nodes_byte_exact": {
+      "pass": true,
+      "node_count": 13
+    },
+    "schematic_circuit_and_notes_byte_exact": {
+      "pass": true
+    },
+    "project_settings_preserved_except_name": {
+      "pass": true
+    },
+    "design_rules_byte_exact": {
+      "pass": true
+    },
+    "libraries_models_and_reference_sources_preserved": {
+      "pass": true,
+      "changed": []
+    },
+    "native_netlist_membership_unchanged": {
+      "pass": true,
+      "source_nets": 304,
+      "target_nets": 304,
+      "source_memberships": 606,
+      "target_memberships": 606
+    }
+  },
+  "limits": "Preservation and native netlist comparison; local copper-fill geometry locality and manufacturing/visibility checks are separate receipts. Does not establish working hardware."
+}

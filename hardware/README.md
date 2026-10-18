@@ -1,10 +1,10 @@
 # Hardware design files
 
-[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) restores the previous rotatable assembly view with freshly derived V41 carrier geometry, exact native routing/net inspection, current schematic and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
+[Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
 
 ## Latest XEM8305 carrier review
 
-[Carrier V41 · 18 October 2026](xem8305-carrier/dated/2026-10-18/v41/README.md) includes the editable carrier project, project-local libraries, schematic PDF and manufacturing/assembly review candidates. This is the direct XEM8305-to-existing-LDO carrier, separate from the standalone FPGA work below. Supplier 3D bodies are omitted; non-3D equivalence and native check receipts are included. Sourcing, factory approval and powered qualification remain open.
+[Carrier V42 · 18 October 2026](xem8305-carrier/dated/2026-10-18/v42/README.md) includes the editable project, schematic PDF and matching manufacturing/assembly review files. D601 moves onto the exposed underside while unrelated routing and placements remain exact. It is the direct XEM8305-to-existing-LDO carrier, separate from the standalone FPGA. Public native files omit supplier 3D payloads; exact non-3D equivalence and checks are included. Sourcing, factory approval and powered qualification remain open. [Preserved V41](xem8305-carrier/dated/2026-10-18/v41/README.md).
 
 ## Current FPGA design
 

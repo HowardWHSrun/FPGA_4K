@@ -1,8 +1,10 @@
 # FPGA_4K
 
-[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) restores the previous rotatable assembly view with freshly derived V41 carrier geometry, exact native routing/net inspection, current schematic and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
+[Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
 
-**[Latest XEM8305 carrier review · V41 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v41/README.md)** — editable KiCad project with local libraries, schematic PDF, six copper-layer plots, BOM/CPL and manufacturing review files. V41 sourcing changes retain all V40 copper and placement; restricted 3D model bodies are omitted from the public copy. Native checks and pending sourcing/factory/bench gates are documented. This is separate from the standalone FPGA V41 and is not a fabrication release.
+**[Latest XEM8305 carrier review · V42 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v42/README.md)** — D601 moved to the visible underside; unrelated routing and component positions are preserved. Editable KiCad project, PDF, six-layer plots, matching BOM/CPL and manufacturing review files are included. Native physical/silk/open/parity checks pass; sourcing, factory and powered qualification remain open. This carrier is separate from the standalone FPGA V41 and is not a fabrication release.
+
+[Preserved carrier V41 review](hardware/xem8305-carrier/dated/2026-10-18/v41/README.md) retains its earlier source, files and checks.
 
 - [V32 carrier power-routing lesson · 17 October](presentation/learn/v32-power/): actual KiCad copper, clickable parts, supply/return diagrams and a proposed fix sequence. Read-only V32; no fabrication qualification.
 

@@ -1,4 +1,16 @@
-# Current shared hardware overview — V10
+# Current shared hardware overview — V11
+
+18 October 2026. [Public direct-LDO carrier overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) · [V42 assembly](carrier-viewer-v42/index.html) · [V42 native layout](carrier-viewer-v42/native/index.html) · [V42 review files](../../hardware/xem8305-carrier/dated/2026-10-18/v42/README.md).
+
+The same assembly-first layout now uses **carrier V42**. D601 has moved to the underside at (141, 55) mm so all three rail-presence LEDs can be viewed from the exposed side of the nominal stack. Its indicator branch and local clearances are the only routing changes; unrelated routing and every other fitted placement remain unchanged from V41. The exact native board contains 742 segments, 313 vias, 651 pads, 21 zones and 89 footprints. The schematic drawing is freshly exported from the saved V42 native schematic.
+
+**Illustration spacing** is visible and draggable in both Overview and the Direct-LDO carrier section. It separates the XEM8305 and existing LDO attachment from the carrier for inspection. **0 mm means nominal seating**; added distance is illustrative and does not change CAD, connector specifications or qualified stack height. Board visibility and camera presets remain accessible. The 3D, Layout and Schematic tabs and current KiCad/PDF/BOM/CPL downloads remain available.
+
+The separate custom FPGA path stays at its existing FPGA V41 checkpoint. [The V10 page](../../overview-2026-10-18-v10.html), its V41 viewer, schematic and dated package remain preserved. V11 uses new entry, slide, interaction, drawing-viewer and embedded-control files; it does not rewrite historical scripts or assets.
+
+The saved JLC five-board quote remains **V41** and has not been updated by this publication. Four procurement groups, exact stackup, 13 selected filled/capped thermal vias, panel/assembly acceptance and powered validation remain open. This publication is a review candidate; no order or payment.
+
+# Preserved overview V10 record
 
 18 October 2026. [Public direct-LDO carrier overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) · [V41 layer viewer](carrier-v41/index.html) · [V41 review files](../../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md).
 
