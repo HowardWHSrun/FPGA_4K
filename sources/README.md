@@ -1,5 +1,9 @@
 # Source provenance
 
+## V32 carrier power-routing lesson · 17 October 2026
+
+[Provenance and scope](../presentation/learn/v32-power/provenance.md) records the exact V32 hash, native geometry derivation, verified SGND bypass corridors, source citations and remaining limits. The interactive website changes no CAD; current copper and proposed actions are explicitly separate.
+
 ## Full host detail and interposer inspection — V8 · 15 October 2026
 
 [V8 model provenance](../presentation/overview/assembly-v8/README.md) records full registered tessellations of Opal Kelly's BRK8305 and XEM8305 models, replacing the earlier simplified display derivatives. The interposer is a read-only KiCad 10.0.6 export from the unchanged native V4 PCB: all 52 component-reference groups retain their original component triangles and registered bounds; native pads, top/bottom silkscreen and soldermask surfaces are included. No mesh reduction or quantization is applied. The saved PCB has zero tracks, vias and zones; no routing or parts are invented. Power Foundation V1 is separate schematic work and has not been placed onto V4.
