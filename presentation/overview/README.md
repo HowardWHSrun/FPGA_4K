@@ -1,4 +1,14 @@
-# Current hardware overview — V8
+# Current shared hardware overview — V9
+
+18 October 2026. [Public direct-LDO carrier overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) · [V41 layer viewer](carrier-v41/index.html) · [V41 review files](../../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md).
+
+The direct-LDO route now shows the latest saved carrier **V41**, with actual six-layer saved copper, the current schematic, complete editable public KiCad and assembly/manufacturing review files. The V41 sourcing substitutions preserve all V40 routing. Supplier 3D bodies are omitted from the public CAD; exact non-3D equivalence is recorded. The old V16 physical viewer is historical and is not relabeled V41.
+
+Five assembled boards are being quoted. Four procurement groups and factory approval of the exact stack, 13 selectively filled/capped thermal vias, panel and manual assembly remain open. Native physical/silk/open/parity results and inherited ERC/library findings are recorded; static checks do not qualify powered hardware. No order or payment.
+
+The original two-approach layout, navigation and custom FPGA path are retained. [The prior V8 page](../../overview-2026-10-18-v8.html) and its scripts remain preserved. The notes below describe that earlier V8 publication.
+
+# Preserved overview V8 record
 
 15 October 2026. [Open the original-structure overview](../../index.html) · [FPGA section](../../index.html#fpga) · [Revision sources](Source_Mapping.json).
 

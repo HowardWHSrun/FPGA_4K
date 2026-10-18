@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>XEM8305 carrier V41 · six-layer routing review</title>
+  <meta name="description" content="Inspect the saved V41 carrier copper, ground planes and silkscreen. Download the schematic and editable KiCad review files.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="viewer.css">
+  <script defer src="viewer.js"></script>
+</head>
+<body>
+<main>
+  <header class="toolbar">
+    <div class="identity"><strong>Carrier V41</strong><span>18 October 2026 · saved routing</span></div>
+    <div class="actions" role="group" aria-label="Board view">
+      <button id="orientation" aria-pressed="false">Top view</button>
+      <button id="zoom-out" aria-label="Zoom out">−</button>
+      <button id="zoom-in" aria-label="Zoom in">+</button>
+      <button id="reset-view">Fit board</button>
+    </div>
+  </header>
+  <nav class="layer-bar" aria-label="Select copper layer">
+    <button data-layer="F.Cu" aria-pressed="true" style="--layer:#c83434"><span>L1</span>Top</button>
+    <button data-layer="In1.Cu" aria-pressed="false" style="--layer:#6aaf6a"><span>L2</span>Ground</button>
+    <button data-layer="In2.Cu" aria-pressed="false" style="--layer:#aa791c"><span>L3</span>Signals</button>
+    <button data-layer="In3.Cu" aria-pressed="false" style="--layer:#478d95"><span>L4</span>Power</button>
+    <button data-layer="In4.Cu" aria-pressed="false" style="--layer:#9266b6"><span>L5</span>Ground</button>
+    <button data-layer="B.Cu" aria-pressed="false" style="--layer:#4b72bd"><span>L6</span>Bottom</button>
+  </nav>
+  <div class="workbench">
+    <div class="stage" id="stage" tabindex="0" aria-label="V41 PCB routing. Drag to pan, scroll to zoom. Arrow keys pan; plus and minus zoom; zero fits the board.">
+      <div class="board" id="board"><div class="orientation" id="board-orientation"><img id="copper" alt="V41 top copper, native KiCad plot" draggable="false"><img class="silk" id="silk" alt="" hidden draggable="false"></div></div>
+      <div id="status" role="status">Loading native V41 layer…</div>
+      <div class="stage-tag"><span id="layer-name">L1 · F.Cu</span><span id="view-name">Looking from top</span></div>
+      <div class="stage-scale"><span id="scale-line"></span><span>10 mm</span></div>
+    </div>
+    <aside class="inspector" aria-label="Layer explanation and review files">
+      <div class="layer-note"><span class="eyebrow">Selected layer</span><h1 id="layer-title">L1 · top copper</h1><p id="layer-description"></p></div>
+      <label class="silk-option"><input id="show-silk" type="checkbox">Silkscreen context <select id="silk-side" aria-label="Silkscreen side"><option value="F">Top</option><option value="B">Bottom</option></select></label>
+      <div class="regions" role="group" aria-label="Focus board section"><span class="eyebrow">Inspect a section</span><button data-region="ldo">LDO connector / JP1</button><button data-region="regulator">3.3 V regulator</button><button data-region="usb">USB / JTAG</button><button data-region="connectors">XEM connectors</button></div>
+      <details class="review-status"><summary>Checks and open review</summary><p>V41 preserves every V40 track, via, pad, zone and saved fill. Native checks report 0 physical/silkscreen findings, 0 opens and 0 schematic/PCB parity findings. Inherited library and unused-connector findings remain documented.</p><p>Five assembled boards are being quoted. Four part groups, factory stackup / selective 13-via treatment, placement and powered-board checks remain open. No order or payment has been made. This is a review snapshot.</p></details>
+      <div class="downloads"><span class="eyebrow">Review files</span><a data-file="output/pdf/Carrier_V41_Schematic.pdf" target="_blank" rel="noopener">Schematic PDF ↗</a><a data-file="Carrier_V41_Public_KiCad_Review.zip" download>Editable KiCad ZIP ↓</a><a data-file="output/assembly/V41_JLC_BOM_Full_82_Parts_39_MPNs.csv" download>BOM · 39 groups / 82 refs ↓</a><a data-file="output/assembly/V41_JLC_CPL_Full_82_Parts_Centroids.csv" download>Placement CSV ↓</a><a data-file="output/V41_JLC_Gerber_Paste_Drill_Clean.zip" download>Manufacturing review ZIP ↓</a><a id="context-link" target="_blank" rel="noopener">Changes, checks and questions ↗</a><a id="factory-link" target="_blank" rel="noopener">Factory requirements ↗</a></div>
+    </aside>
+  </div>
+  <footer><span>Drag to pan · scroll or + / − to zoom · 0 to fit</span><a id="original-svg" target="_blank" rel="noopener">Open selected SVG ↗</a><a class="standalone" href="./" target="_blank" rel="noopener">Open full viewer ↗</a><span class="scope">Native KiCad plots with saved fills; geometry alone does not establish return-current quality or hardware operation.</span></footer>
+</main>
+</body>
+</html>
