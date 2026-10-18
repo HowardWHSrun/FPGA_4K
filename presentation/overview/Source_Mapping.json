@@ -198,7 +198,7 @@
     "native_kicad_version": "10.0.6",
     "GLB_scope": "Published current native combined V7 and ASIC PCB-5 models, reused native FPGA V41/LDO V5, and full registered BRK/XEM host models. V8 adds native interposer pads, silkscreen and soldermask; source CAD unchanged."
   },
-  "overview_version": "V9",
+  "overview_version": "V10",
   "updated_date": "2026-10-18",
   "previous_overview": {
     "path": "overview-2026-09-23.html",
@@ -336,7 +336,7 @@
       "receiver"
     ],
     "behavior": "One selected path and relevant navigation at a time; native previous/next, page counts and keyboard sequence use the same filtered slide array.",
-    "direct_overview": "Current V41 saved copper in interactive six-layer viewer; V41 schematic and complete public project. Older V16 assembly is preserved separately, not the current board.",
+    "direct_overview": "Restored rotatable XEM8305/carrier/LDO arrangement, freshly derived V41 carrier copper and placement; native net-highlighting layout and current schematic. Nominal attachment and component representations are not fit qualification.",
     "direct_asic_reference": "hardware/previews/asic-carrier-3d.png",
     "source_geometry_modified": false
   },
@@ -364,5 +364,26 @@
     "public_model_omissions": "All model assignments and embedded supplier STEP bodies omitted from public V41 CAD; non-3D content checked identical.",
     "fabrication_qualified": false,
     "order_or_payment": false
+  },
+  "preserved_v9_overview": {
+    "path": "overview-2026-10-18-v9.html",
+    "note": "Exact previous V9 root and scripts preserved with the six-layer plot viewer."
+  },
+  "carrier_v41_assembly_view_restore": {
+    "date": "2026-10-18",
+    "viewer": "presentation/overview/carrier-viewer-v41/index.html",
+    "native_layout": "presentation/overview/carrier-viewer-v41/native/index.html",
+    "source_native_revision": "V41",
+    "source_CAD_modified": false,
+    "scope": "Restored earlier presentation controls with current carrier geometry. Original V41/V40 routing remains unchanged.",
+    "LEDs": {
+      "D600": "VDCIN nominal 12 V input",
+      "D602": "BUCK_3V3 before JP1",
+      "D601": "LDO_3V3 after JP1 / external feed"
+    },
+    "hardware_qualified": false,
+    "GLB_sha256": "882eb1ca212b70a6b27496c318d0f61b83960eed85ac2ce2bddaea732632f43a",
+    "component_representation_count": 82,
+    "mesh_scope": "Fresh native V41 export with public stock/nominal component representations; a documented small wire-tessellation warning means the exact native routing inspector remains authoritative."
   }
 }

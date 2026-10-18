@@ -1,5 +1,9 @@
 # Source provenance
 
+## Carrier V41 assembly view restored · 18 October 2026
+
+[Overview V10](../index.html?approach=direct#overview) restores the previous rotatable XEM8305/carrier/LDO presentation using freshly generated V41 carrier geometry and exact current native KiCad routing. Source model representations, mesh hash, component counts and limitations are recorded in the [current model provenance](../presentation/overview/carrier-viewer-v41/assets/Model_Provenance.json). Attachment envelopes retain the earlier source-backed nominal registration; actual connector seating remains unqualified. Both prior V8 and V9 page roots and assets are preserved; original V41/V40 engineering CAD is unchanged.
+
 ## Shared Pages carrier V41 update · 18 October 2026
 
 [Overview V9](../index.html?approach=direct#overview) uses the frozen V41 schematic and copper-layer exports plus the complete checked public review package. New scoped V9 scripts replace the V17 carrier presentation while preserving the previous V8 root and dependencies. The separate custom FPGA route retains its existing assets. Source CAD is unchanged; public V41 omits supplier 3D bodies. Deployment and browser verification are recorded in the dated local handoff; source mappings remain in [Source_Mapping.json](../presentation/overview/Source_Mapping.json).

@@ -1,6 +1,6 @@
 # Project files and documents
 
-[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) provides current schematic/layer inspection and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
+[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) restores the previous rotatable assembly view with freshly derived V41 carrier geometry, exact native routing/net inspection, current schematic and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
 
 - [XEM8305 carrier V41 · 18 October review](../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md): current carrier CAD, complete public ZIP, PDF, six-layer plots, BOM/CPL, stack and selective 13-via requirements. V40 routing is preserved; four procurement groups and factory/powered-board qualification remain open.
 

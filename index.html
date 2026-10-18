@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-overview-version="V9" data-overview-structure="original">
+<html lang="en" data-overview-version="V10" data-overview-structure="original">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Two parallel neural-recording approaches: custom FPGA with new LDO electronics, and an XEM8305 carrier directly connecting the existing LDO board.">
@@ -8,15 +8,15 @@
 <link rel="stylesheet" href="presentation/compact/style.css?v=review-v2">
 <script defer src="presentation/model-source.js?v=compact-v1"></script>
 <script defer src="presentation/compact/slides.js?v=carrier-r15-assembly-20261012"></script>
-<script defer src="presentation/overview/current-slides-v9.js?v=20261018-v9"></script>
+<script defer src="presentation/overview/current-slides-v10.js?v=20261018-v10"></script>
 <script defer src="presentation/overview/current-approaches-v5.js?v=20261015-v8"></script>
 <script defer src="presentation/compact/app.js?v=r39-20261005"></script>
 <style>.fpga-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:13px 14px;border-radius:6px;background:#17273d;color:white;font-size:12px;line-height:1.45;margin-top:7px}.fpga-entry:hover{background:#2c4b69;text-decoration:none}.fpga-entry[hidden]{display:none!important}</style>
 
-<script defer src="presentation/overview/current-entry-v9.js?v=20261018-v9"></script>
+<script defer src="presentation/overview/current-entry-v10.js?v=20261018-v10"></script>
 <link rel="stylesheet" href="presentation/compact/refinements.css?v=brk-interposer-20260929">
 <link rel="stylesheet" href="presentation/questions/navigation.css?v=20260930">
-<script defer src="presentation/overview/current-interaction-v9.js?v=20261018-v9"></script>
+<script defer src="presentation/overview/current-interaction-v10.js?v=20261018-v10"></script>
 <link rel="stylesheet" href="presentation/overview/current-preview-v5.css?v=20261015-v8">
 <link rel="stylesheet" href="presentation/overview/current-preview-v6.css?v=20261015-v8">
 </head>
@@ -27,7 +27,7 @@
 <aside style="margin:12px 0;padding:12px 18px;border:1px solid #c8d7ce;border-radius:7px;background:#edf4ee;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px"><strong>Current · Carrier V41</strong><span>Six-layer routing, schematic and review files. Sourcing and factory confirmation remain open.</span><a href="?approach=direct#overview" style="margin-left:auto;font-weight:700">Inspect V41 →</a><a href="presentation/learn/v32-power/">V32 power lab · historical walkthrough</a></aside>
 <main class="deck">
 
-<div class="heading"><div><p class="eyebrow" id="section-label">System overview</p><h1 id="slide-title">4K neural recording</h1></div><div id="approach-switcher" class="approach-switcher" role="group" aria-label="Choose hardware approach"><button type="button" data-choose-approach="custom" aria-pressed="true"><span>A</span> Custom FPGA</button><button type="button" data-choose-approach="direct" aria-pressed="false"><span>B</span> Direct-LDO carrier</button></div><p class="heading-note">Overview V9<span id="approach-label">A · Custom FPGA approach</span></p></div>
+<div class="heading"><div><p class="eyebrow" id="section-label">System overview</p><h1 id="slide-title">4K neural recording</h1></div><div id="approach-switcher" class="approach-switcher" role="group" aria-label="Choose hardware approach"><button type="button" data-choose-approach="custom" aria-pressed="true"><span>A</span> Custom FPGA</button><button type="button" data-choose-approach="direct" aria-pressed="false"><span>B</span> Direct-LDO carrier</button></div><p class="heading-note">Overview V10<span id="approach-label">A · Custom FPGA approach</span></p></div>
 <div class="workspace">
 <section class="viewer" aria-label="Interactive system architecture"><div class="viewer-top"><span class="viewer-label" id="view-label">System architecture</span><div class="segmented" aria-label="Camera presets"><button data-camera="iso" aria-pressed="true">3D</button><button data-camera="top" aria-pressed="false">Top</button><button data-camera="side" aria-pressed="false">Side</button></div></div>
 <div class="scene-container" id="scene-container"><canvas id="scene" tabindex="0" aria-label="Interactive compact headboard and explanatory XEM8310, interposer and BRK8310 stack. Drag to rotate, scroll to zoom, or select a board. All regions are also available in the navigation below."></canvas><div id="model-status" role="status">Loading compact assembly…</div><div id="markers" class="markers" aria-label="Select a subsystem"><button data-region="A" data-slide="carriers"><i>01</i><span>ASIC carriers<small>PCB-5 reference</small></span></button><button data-region="C" data-slide="routing"><i>02</i><span>Routing / LDO<small>LDO V5 / V7</small></span></button><button data-region="D" data-slide="fpga"><i>03</i><span>Custom FPGA<small>FPGA V41</small></span></button><button data-region="E" data-slide="adapter"><i>04</i><span>Earlier adapter<small>September study</small></span></button><button data-region="F" data-slide="receiver"><i>05</i><span>Parallel alternative<small>Direct-LDO carrier · V41</small></span></button></div><span id="camera-name" class="camera-name">ISOMETRIC</span></div>
