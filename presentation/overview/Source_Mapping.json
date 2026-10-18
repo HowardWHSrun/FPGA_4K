@@ -175,6 +175,20 @@
       ],
       "copper_layers": 6,
       "status": "Schematic grid cleanup from V16; unchanged electrical netlist and copper/placement. Native physical, disconnected and parity findings zero; 210 unused-pin ERC findings remain. Hardware operation and fabrication qualification remain open."
+    },
+    "carrier_v41": {
+      "outline_mm": [
+        53,
+        83
+      ],
+      "copper_layers": 6,
+      "source_pcb_sha256": "8241aee58b92798491cf6bcd8d16272a8f4049487a1b2fd2bd17fa9332b6ecf7",
+      "public_pcb_sha256": "caf0553fad56bd222a3513bd9bd2f3c8cb286b5084a05b150c92ef04c0c3ed80",
+      "routing_preserved_from": "V40",
+      "status": "Latest saved carrier review. 0 physical/silk findings, opens or parity findings; 50 inherited library warnings and 210 unused-connector ERC findings remain. Five-board sourcing and factory/powered qualification pending.",
+      "native_package": "hardware/xem8305-carrier/dated/2026-10-18/v41/Carrier_V41_Public_KiCad_Review.zip",
+      "native_check_receipt": "hardware/xem8305-carrier/dated/2026-10-18/v41/verification/Public_V41_Native_Checks.json",
+      "public_derivative_equivalence": "hardware/xem8305-carrier/dated/2026-10-18/v41/verification/Public_Review_Non3D_Equivalence.json"
     }
   },
   "scope": "Publication copies and read-only native exports only. Source CAD is not modified; no native GUI input.",
@@ -184,8 +198,8 @@
     "native_kicad_version": "10.0.6",
     "GLB_scope": "Published current native combined V7 and ASIC PCB-5 models, reused native FPGA V41/LDO V5, and full registered BRK/XEM host models. V8 adds native interposer pads, silkscreen and soldermask; source CAD unchanged."
   },
-  "overview_version": "V8",
-  "updated_date": "2026-10-15",
+  "overview_version": "V9",
+  "updated_date": "2026-10-18",
   "previous_overview": {
     "path": "overview-2026-09-23.html",
     "sha256": "cd84597268e895ac810f793d64cf7f76bc1b1e053cfc4117706ac97b982e0e72",
@@ -261,7 +275,7 @@
       "receiver"
     ],
     "layout": "Original assembly-first canvas, left viewer/right story, bottom navigation, notes and camera/keyboard controls",
-    "current_content": "FPGA V41, separate LDO V5 / combined V7, carrier V17 previews in original subsystem sections",
+    "current_content": "FPGA V41, separate LDO V5 / combined V7, carrier V41 previews in original subsystem sections",
     "native_geometry_modified": false,
     "updates": "Single Updates dialog in header; notices removed",
     "responsive": "Desktop viewport fit, internally scrolling details, vertically scrolling mobile with wrapping six-section navigation"
@@ -270,10 +284,10 @@
     "path": "overview-2026-10-14-v2.html",
     "sha256": "7571d1c57c3a369dc4f796492e13af8ddd1f54ffd6474be0629fceb4c5b54d7b"
   },
-  "overview_updated": "2026-10-15",
+  "overview_updated": "2026-10-18",
   "parallel_approaches": {
     "custom_fpga": "ASIC boards -> new LDO + custom FPGA -> micro-HDMI -> XEM8305/BRK8305 interposer -> PC",
-    "direct_ldo_alternative": "ASIC boards -> existing LDO board -> direct carrier V17 -> XEM8305 -> PC",
+    "direct_ldo_alternative": "ASIC boards -> existing LDO board -> direct carrier V41 -> XEM8305 -> PC",
     "distinction": "Two independent approaches under development, not components of one series chain. Existing LDO is not the new V5 or combined V7 design.",
     "sources": [
       {
@@ -322,7 +336,7 @@
       "receiver"
     ],
     "behavior": "One selected path and relevant navigation at a time; native previous/next, page counts and keyboard sequence use the same filtered slide array.",
-    "direct_overview": "Existing XEM8305/carrier/LDO assembly; unchanged V16 geometry corresponding to V17 connectivity/placement",
+    "direct_overview": "Current V41 saved copper in interactive six-layer viewer; V41 schematic and complete public project. Older V16 assembly is preserved separately, not the current board.",
     "direct_asic_reference": "hardware/previews/asic-carrier-3d.png",
     "source_geometry_modified": false
   },
@@ -337,5 +351,18 @@
     "path": "overview-2026-10-15-v7.html",
     "sha256": "5dfbdc431ce368df8990df2cb69b2cee8b0a5ac0e91578da304c413abbbb2cb2",
     "note": "Exact previous V7 root HTML with original scoped scripts and simplified host-model assets preserved."
+  },
+  "preserved_v8_overview": {
+    "path": "overview-2026-10-18-v8.html",
+    "note": "Previous V8 root with V17 carrier and original V8 dependencies; unchanged and historical."
+  },
+  "carrier_v41_page_update": {
+    "date": "2026-10-18",
+    "viewer": "presentation/overview/carrier-v41/index.html",
+    "overview_url": "https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview",
+    "source_CAD_modified": false,
+    "public_model_omissions": "All model assignments and embedded supplier STEP bodies omitted from public V41 CAD; non-3D content checked identical.",
+    "fabrication_qualified": false,
+    "order_or_payment": false
   }
 }

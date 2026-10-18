@@ -1,5 +1,9 @@
 # FPGA_4K
 
+[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) provides current schematic/layer inspection and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
+
+**[Latest XEM8305 carrier review · V41 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v41/README.md)** — editable KiCad project with local libraries, schematic PDF, six copper-layer plots, BOM/CPL and manufacturing review files. V41 sourcing changes retain all V40 copper and placement; restricted 3D model bodies are omitted from the public copy. Native checks and pending sourcing/factory/bench gates are documented. This is separate from the standalone FPGA V41 and is not a fabrication release.
+
 - [V32 carrier power-routing lesson · 17 October](presentation/learn/v32-power/): actual KiCad copper, clickable parts, supply/return diagrams and a proposed fix sequence. Read-only V32; no fabrication qualification.
 
 [Two parallel approaches](index.html#overview): custom FPGA with new LDO electronics, and a separate XEM8305 carrier directly connecting the existing LDO board. Choose A or B to show only that approach’s path, overview and board navigation. One Updates button collects announcements; the original viewer/story structure adapts to desktop and mobile screens. [Overview revision guide](presentation/overview/README.md).
