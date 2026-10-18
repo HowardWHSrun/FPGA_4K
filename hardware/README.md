@@ -1,5 +1,9 @@
 # Hardware design files
 
+## Latest XEM8305 carrier review
+
+[Carrier V41 · 18 October 2026](xem8305-carrier/dated/2026-10-18/v41/README.md) includes the editable carrier project, project-local libraries, schematic PDF and manufacturing/assembly review candidates. This is the direct XEM8305-to-existing-LDO carrier, separate from the standalone FPGA work below. Supplier 3D bodies are omitted; non-3D equivalence and native check receipts are included. Sourcing, factory approval and powered qualification remain open.
+
 ## Current FPGA design
 
 The active design is the [USB-C revision](../presentation/fpga/index.html). Open its [native KiCad project](fpga-interface-study/dated/2026-09-27/usb-c-revision/hardware/FPGA100T_33x36_Routing.kicad_pro) from the extracted [complete ZIP](fpga-interface-study/dated/2026-09-27/usb-c-revision/FPGA100T_USB_C_Development.zip). The 100T and two ASIC mezzanines are retained. The [native audit](fpga-interface-study/dated/2026-09-27/usb-c-revision/reports/USB_C_Native_Audit.json) reports actual component/pin counts, routing gaps and checks for this exact USB-C PCB.

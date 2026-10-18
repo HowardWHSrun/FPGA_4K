@@ -1,0 +1,125 @@
+{
+  "selection": "JLC06161H-2116",
+  "suffix": "none",
+  "source_url": "https://jlcpcb.com/impedance",
+  "retrieved_local": "2026-10-18",
+  "nominal_finished_board_thickness_mm": 1.6,
+  "nominal_board_thickness_tolerance_fraction": 0.1,
+  "nominal_finished_thickness_interval_mm": [
+    1.44,
+    1.76
+  ],
+  "outer_copper_weight_oz": 1,
+  "inner_copper_weight_oz": 0.5,
+  "surface_finish": "ENIG",
+  "stack_sequence": [
+    {
+      "type": "copper",
+      "jlc_layer": "Top",
+      "kicad_layer": "F.Cu",
+      "thickness_mm": 0.035,
+      "copper_weight_oz": 1
+    },
+    {
+      "type": "prepreg",
+      "style": "2116",
+      "count": 1,
+      "thickness_mm": 0.127
+    },
+    {
+      "type": "prepreg",
+      "style": "2313",
+      "count": 1,
+      "thickness_mm": 0.0964
+    },
+    {
+      "type": "copper",
+      "jlc_layer": "L2",
+      "kicad_layer": "In1.Cu",
+      "thickness_mm": 0.0152,
+      "copper_weight_oz": 0.5
+    },
+    {
+      "type": "core",
+      "thickness_mm": 0.3,
+      "copper_excluded": true
+    },
+    {
+      "type": "copper",
+      "jlc_layer": "L3",
+      "kicad_layer": "In2.Cu",
+      "thickness_mm": 0.0152,
+      "copper_weight_oz": 0.5
+    },
+    {
+      "type": "prepreg",
+      "style": "7628",
+      "count": 1,
+      "thickness_mm": 0.2084
+    },
+    {
+      "type": "prepreg",
+      "style": "7628",
+      "count": 1,
+      "thickness_mm": 0.2084
+    },
+    {
+      "type": "copper",
+      "jlc_layer": "L4",
+      "kicad_layer": "In3.Cu",
+      "thickness_mm": 0.0152,
+      "copper_weight_oz": 0.5
+    },
+    {
+      "type": "core",
+      "thickness_mm": 0.3,
+      "copper_excluded": true
+    },
+    {
+      "type": "copper",
+      "jlc_layer": "L5",
+      "kicad_layer": "In4.Cu",
+      "thickness_mm": 0.0152,
+      "copper_weight_oz": 0.5
+    },
+    {
+      "type": "prepreg",
+      "style": "2313",
+      "count": 1,
+      "thickness_mm": 0.0964
+    },
+    {
+      "type": "prepreg",
+      "style": "2116",
+      "count": 1,
+      "thickness_mm": 0.127
+    },
+    {
+      "type": "copper",
+      "jlc_layer": "Bottom",
+      "kicad_layer": "B.Cu",
+      "thickness_mm": 0.035,
+      "copper_weight_oz": 1
+    }
+  ],
+  "dielectric_gap_mm": [
+    0.2234,
+    0.3,
+    0.4168,
+    0.3,
+    0.2234
+  ],
+  "native_v39_dielectric_gap_mm": [
+    0.2234,
+    0.3,
+    0.4168,
+    0.3,
+    0.2234
+  ],
+  "gap_matches_native_v39": true,
+  "copper_and_dielectric_sum_mm": 1.5944000000000003,
+  "native_mask_thickness_each_mm": 0.01,
+  "native_sum_including_masks_mm": 1.6144000000000003,
+  "interpretation": "JLC labels both 0.30 mm cores WITHOUT copper. Copper is separately included. Sums are nominal construction arithmetic, not an exact finished 1.6000 mm guarantee. Order uses nominal 1.6 mm and factory tolerances. Native aggregate outer-prepreg Dk 4.16 does not resolve each constituent material; this is not a factory pressed sheet or impedance guarantee.",
+  "factory_acceptance": "Manufacturer publishes this standard construction. Existing 2026-10-13 email permits selectable standards and requires formal order engineering review. No V40 quote, order or CAM acceptance has been given."
+}

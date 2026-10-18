@@ -1,5 +1,9 @@
 # Source provenance
 
+## XEM8305 carrier V41 · 18 October 2026
+
+[Public review package](../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md) derives from the saved V41 sourcing revision. The schematic, project settings, rules and electrical library definitions are preserved; PCB/footprint copies remove only 3D model assignments and embedded supplier STEP payloads. [Exact non-3D equivalence and source/public hashes](../hardware/xem8305-carrier/dated/2026-10-18/v41/verification/Public_Review_Non3D_Equivalence.json) document the omissions. Original local V41/V40 are unchanged. No supplier model collection, private correspondence, JLC account link or payment record is published. Export candidates retain V41 source bytes except the stack JSON, which omits a broken local evidence path and keeps all physical data. Native checks are scoped; this is not a fabrication release.
+
 ## V32 carrier power-routing lesson · 17 October 2026
 
 [Provenance and scope](../presentation/learn/v32-power/provenance.md) records the exact V32 hash, native geometry derivation, verified SGND bypass corridors, source citations and remaining limits. The interactive website changes no CAD; current copper and proposed actions are explicitly separate.
