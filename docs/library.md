@@ -1,8 +1,8 @@
 # Project files and documents
 
-[Public carrier V41 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) restores the previous rotatable assembly view with freshly derived V41 carrier geometry, exact native routing/net inspection, current schematic and direct KiCad/PDF/assembly downloads without a GitHub account. Earlier revisions and the separate FPGA path remain preserved.
+[Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
 
-- [XEM8305 carrier V41 · 18 October review](../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md): current carrier CAD, complete public ZIP, PDF, six-layer plots, BOM/CPL, stack and selective 13-via requirements. V40 routing is preserved; four procurement groups and factory/powered-board qualification remain open.
+- [XEM8305 carrier V42 · 18 October review](../hardware/xem8305-carrier/dated/2026-10-18/v42/README.md): D601 underside relocation, current CAD, public ZIP, PDF, six-layer plots and matching manufacturing/CPL files. Other routing and placements are preserved. The assembly view has a draggable illustration-spacing control. Sourcing/factory/powered qualification remain open. [Earlier V41](../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md).
 
 - [V32 carrier power-routing lesson · 17 October](../presentation/learn/v32-power/): actual KiCad copper, clickable parts, supply/return diagrams and a proposed fix sequence. Read-only V32; no fabrication qualification.
 

@@ -235,3 +235,10 @@ The [current carrier](../presentation/xem/carrier-r15-2026-10-12.html) publishes
 ## Cabled assembly presentation · V7 · 15 October 2026
 
 [V7 layout and cable provenance](../presentation/overview/assembly-v7/README.md) reuse all source GLBs unchanged and separate the compact electronics from the complete BRK host bounds. The curved micro-HDMI jacket and overall positions are illustrative; nominal cable anchors follow source J3 and interposer J600. Current part descriptions omit individual assignments. [V6 overview](../overview-2026-10-15-v6.html) preserves the previous presentation.
+
+
+## Carrier V42 public review and overview V11 — 18 October 2026
+
+The [V42 review package](../hardware/xem8305-carrier/dated/2026-10-18/v42/README.md) derives from the preserved native carrier V42, whose D601 indicator moves to B.Cu at (141,55 mm). Only that indicator branch, its local via-clearance fills, label and revision identity change from V41; all unrelated routing and placements are preserved. The public PCB omits model assignments/embedded supplier bodies only, with non-3D equivalence recorded in the package. Private account, correspondence, payment data and supplier CAD payloads are excluded.
+
+The shared overview V11 retains the rotatable XEM8305–carrier–LDO assembly and native layout/schematic tabs. Its visible illustration-spacing slider offsets the attachments for inspection; zero returns to nominal source registration. The current V42 3D export uses the current native copper and placements with the previously licensed stock or independently authored nominal component representations. These bodies and attachment envelopes do not establish populated fit or electrical/factory qualification. Original V41 hardware, viewer assets and V10 overview scripts remain archived.

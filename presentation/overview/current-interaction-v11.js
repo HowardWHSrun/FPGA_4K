@@ -1,0 +1,59 @@
+/* V11 finishing layer for current work within the preserved presentation structure. */
+(() => {
+  'use strict';
+  const api=window.PRESENTATION;
+  const slides=window.PRESENTATION_SLIDES;
+  if(!api||!Array.isArray(slides))return;
+  const nav=document.querySelector('.system-nav');
+  const announce=document.createElement('div');
+  announce.className='selection-announcement';announce.setAttribute('role','status');announce.setAttribute('aria-live','polite');
+  document.body.append(announce);
+  let last='';
+  function sync(){
+    const id=api.getState().slideId,slide=slides.find(s=>s.id===id);
+    if(!slide)return;
+    if(id==='overview')document.getElementById('panel-kicker').textContent='Architecture & current work';
+    document.body.dataset.section=id;
+    const heading=document.getElementById('slide-subtitle');
+    if(heading)heading.textContent=slide.subtitle;
+    const ownerText=slide.owners.map(([name,role])=>name+': '+role).join('; ');
+    document.getElementById('scene').setAttribute('aria-label',slide.title+(ownerText?'. '+ownerText:'')+'. Preserved assembly concept. Drag to rotate; scroll to zoom. Select a labeled board or use the section navigation.');
+    const selection=id+':'+slide.title;
+    if(selection!==last){
+      announce.textContent=slide.title+(ownerText?'. '+ownerText:'');
+      const active=nav?.querySelector('[data-slide="'+id+'"]');
+      if(active&&nav.scrollWidth>nav.clientWidth){
+        const a=active.getBoundingClientRect(),n=nav.getBoundingClientRect();
+        nav.scrollTo({left:nav.scrollLeft+a.left-n.left-(n.width-a.width)/2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+      }
+      last=selection;
+    }
+    document.querySelectorAll('[data-slide="'+id+'"]').forEach(button=>{
+      button.setAttribute('aria-label',slide.title+(ownerText?'. '+ownerText:'')+'. Select section.');
+      if(button.closest('.markers'))button.title=slide.title+(ownerText?' · '+ownerText:'');
+    });
+  }
+  document.querySelectorAll('[data-slide]').forEach(button=>{
+    const slide=window.OVERVIEW_SLIDE_CATALOG.find(s=>s.id===button.dataset.slide);if(!slide)return;
+    const owners=slide.owners.map(([name,role])=>name+' — '+role).join('; ');
+    button.setAttribute('aria-label',slide.title+(owners?'. '+owners:'')+'. Select section.');
+    if(button.closest('.markers'))button.title=slide.title+(owners?' · '+owners:'');
+    function highlight(on){document.querySelectorAll('[data-slide="'+slide.id+'"]').forEach(el=>el.classList.toggle('is-hovered',on));}
+    button.addEventListener('pointerenter',()=>highlight(true));button.addEventListener('pointerleave',()=>highlight(false));
+    button.addEventListener('focus',()=>highlight(true));button.addEventListener('blur',()=>highlight(false));
+  });
+  new MutationObserver(sync).observe(document.getElementById('slide-title'),{childList:true,subtree:true});
+  document.addEventListener('keydown',event=>{
+    if(event.key!=='Escape'||event.defaultPrevented||document.querySelector('dialog[open]')||document.fullscreenElement)return;
+    if(/INPUT|TEXTAREA|SELECT/.test(event.target.tagName)||event.target.isContentEditable)return;
+    api.setSlide('overview');
+  });
+  if(nav)new ResizeObserver(()=>{
+    const active=nav.querySelector('[data-slide="'+api.getState().slideId+'"]');
+    if(active&&nav.scrollWidth>nav.clientWidth){
+      const a=active.getBoundingClientRect(),n=nav.getBoundingClientRect();
+      nav.scrollTo({left:nav.scrollLeft+a.left-n.left-(n.width-a.width)/2,behavior:'instant'});
+    }
+  }).observe(nav);
+  sync();document.body.dataset.presentationRevision='overview-v11';
+})();

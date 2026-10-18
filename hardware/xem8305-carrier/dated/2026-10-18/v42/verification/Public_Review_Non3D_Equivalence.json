@@ -1,0 +1,597 @@
+{
+  "result": "PASS_NON3D_ENGINEERING_EQUIVALENCE",
+  "source_revision": "V42",
+  "source_topic": "2026-10-18_FPGA_Work/15_Carrier_LED_Visibility_V42",
+  "source_PCB_sha256": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626",
+  "public_PCB_sha256": "16e2feb8d973c7927e915a89278ace80d3bc74c1a0f7e6a7ad8e85e47d782d69",
+  "original_sources_unchanged": true,
+  "removed_tags_only": [
+    "embedded_files",
+    "model"
+  ],
+  "model_files_included": 0,
+  "project_file_count": 49,
+  "symbol_library_files": 8,
+  "footprint_library_files": 35,
+  "project_relative_dependencies_resolve": true,
+  "library_table_URI_count": 16,
+  "public_libraries_byte_identical_to_V41_public_precedent": true,
+  "file_receipts": [
+    {
+      "file": "project/CARRIER_XEM8305_V42_LED_Visibility.kicad_pcb",
+      "source_sha256": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626",
+      "public_sha256": "16e2feb8d973c7927e915a89278ace80d3bc74c1a0f7e6a7ad8e85e47d782d69",
+      "removed_3D_nodes": 79,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/CARRIER_XEM8305_V42_LED_Visibility.kicad_sch",
+      "source_sha256": "bf61031430526b37f1cfc2d0802f9672d384c206d7f377c402f1a45f85de0a00",
+      "public_sha256": "bf61031430526b37f1cfc2d0802f9672d384c206d7f377c402f1a45f85de0a00",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/CARRIER_XEM8305_V42_LED_Visibility.kicad_pro",
+      "source_sha256": "9a63ad800928502ea887b1df703dad1a4558366d56f611dab8c2baca9f99ad0e",
+      "public_sha256": "9a63ad800928502ea887b1df703dad1a4558366d56f611dab8c2baca9f99ad0e",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/CARRIER_XEM8305_V42_LED_Visibility.kicad_dru",
+      "source_sha256": "07226d0fabe8842de0a4764ccc2a11ecec5a7738a36d676bc027c7afa1cdfbe8",
+      "public_sha256": "07226d0fabe8842de0a4764ccc2a11ecec5a7738a36d676bc027c7afa1cdfbe8",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/fp-lib-table",
+      "source_sha256": "ecc4c4a18dd267134a8334153657bde7cd84c1fce169c150e6ba0af4520f774b",
+      "public_sha256": "ecc4c4a18dd267134a8334153657bde7cd84c1fce169c150e6ba0af4520f774b",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/sym-lib-table",
+      "source_sha256": "11b7aa5f382038a492e095dcd0a695222e796ba1b27b1cc847a173b605afef4a",
+      "public_sha256": "11b7aa5f382038a492e095dcd0a695222e796ba1b27b1cc847a173b605afef4a",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/BackupR3.kicad_sym",
+      "source_sha256": "2079f2e57be08e1e6f13230cabcaa5802140fa07767fea082cec57e4b2b8f0ae",
+      "public_sha256": "2079f2e57be08e1e6f13230cabcaa5802140fa07767fea082cec57e4b2b8f0ae",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/CarrierMechanical.kicad_sym",
+      "source_sha256": "a6fba3e41cca8fc2465abff0c590982f653f972ec017039f5d6490d760cbc4be",
+      "public_sha256": "a6fba3e41cca8fc2465abff0c590982f653f972ec017039f5d6490d760cbc4be",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/Reference3V3.kicad_sym",
+      "source_sha256": "9fd19667b544a233d2a51fe1aef084063b17dc9c3c61d68a221981df4a4a5115",
+      "public_sha256": "9fd19667b544a233d2a51fe1aef084063b17dc9c3c61d68a221981df4a4a5115",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/ReferenceInput.kicad_sym",
+      "source_sha256": "167b6a1845f1b129cb0c05c7f2e48f77bc10a27e8e7f0f305fef66aa2dfb9983",
+      "public_sha256": "167b6a1845f1b129cb0c05c7f2e48f77bc10a27e8e7f0f305fef66aa2dfb9983",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/ReferenceJTAG.kicad_sym",
+      "source_sha256": "b14f82fd31c357c021a927c13b0940f0e79b76c5c2482b120f99a89ea2abe8e3",
+      "public_sha256": "b14f82fd31c357c021a927c13b0940f0e79b76c5c2482b120f99a89ea2abe8e3",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/RegulatorFixes.kicad_sym",
+      "source_sha256": "018b7dfd9a4b9c17d85bb6c056a665c557a3859948df59b22634817125b61f49",
+      "public_sha256": "018b7dfd9a4b9c17d85bb6c056a665c557a3859948df59b22634817125b61f49",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/StatusLED.kicad_sym",
+      "source_sha256": "43bc362586ca11e82a2a053ad2863d151b59fec71681e3f55b02c5eb1b2abe31",
+      "public_sha256": "43bc362586ca11e82a2a053ad2863d151b59fec71681e3f55b02c5eb1b2abe31",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/USBJTAG.kicad_sym",
+      "source_sha256": "1dc9600f8dfa0d79420087b811a79c746328a23eaf507b81c4c7da0e7beb2f6d",
+      "public_sha256": "1dc9600f8dfa0d79420087b811a79c746328a23eaf507b81c4c7da0e7beb2f6d",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/BackupR3.pretty/ERF6-40-03.5-L-DV-A-K-TR.kicad_mod",
+      "source_sha256": "2f1363c8c479428d734858aeb9a6fea4e3fc5068df8e8598de18ee230637bfc8",
+      "public_sha256": "9fd9962137e9b66cf5cc065e9f7d2450289361b081672bbd1c92814c9d87e203",
+      "removed_3D_nodes": 2,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/BackupR3.pretty/ERF6-50-03.5-L-DV-A-K-TR.kicad_mod",
+      "source_sha256": "7c6bd6f18aae444b89194c48a660a36decef0d3d5175805407acd1fcda2f65de",
+      "public_sha256": "603ed31b09a0504c002adb37f2329ecd5274079ed0a5ce22aa572fd1a89eab81",
+      "removed_3D_nodes": 2,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/BackupR3.pretty/Hirose_DF40C(2.0)-24DS-0.4V_2x12_P0.4mm.kicad_mod",
+      "source_sha256": "eece4f3186b5ccc84686a2a6fca5b34bcab98a46939b6af649c9bab5cef55e80",
+      "public_sha256": "edddeadabc3bfbea41e82abafcc34ee4697d5168fbf96caac0157787b8da1665",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/BackupR3.pretty/Hirose_DF40C(2.0)-50DS-0.4V_2x25_P0.4mm.kicad_mod",
+      "source_sha256": "c6f26bdfc4cb363d2213817f7a5518472b4ccdcd81da7ab829107fcd5327836d",
+      "public_sha256": "020344bae4bd108dfa9e2d3c23b29507a1caab45c221de1ea70c7c91a2138c03",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/CarrierMechanical.pretty/MountingHole_3.2mm_M3_Isolated.kicad_mod",
+      "source_sha256": "d465ab9dc9077aba6aa4e4c7b9ae2e0411a88a7fc863e5576a84fd092438600f",
+      "public_sha256": "d465ab9dc9077aba6aa4e4c7b9ae2e0411a88a7fc863e5576a84fd092438600f",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/C_0402.kicad_mod",
+      "source_sha256": "59d83921115a9c8c8737870cab242fb2c4f08ac006f06e18c6faf9a16a0890bd",
+      "public_sha256": "a4b28b1837665c19836b7645b48e54cbc595076ab82d52f0597a943e998b3452",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/C_1206.kicad_mod",
+      "source_sha256": "b559e0e12831aa593d0ff8827e2ac8bac9f9251109bd5da0d0c726bc69482fb8",
+      "public_sha256": "f2fa4c2208ec553ea072d1325a0a3eba65436b847f5afa221d4a8a08506fe9b8",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/Harwin_M20_9990245_1x02_P2_54_HandSolder.kicad_mod",
+      "source_sha256": "577b0e1b3ea3896c716b1e0369a88d6c437ccb2fb67e4d1788291142450c8650",
+      "public_sha256": "387122fa9d3566acea992cd41ec14e8d7095bb9cfaa86f818c4f5a6dfebb0621",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/Murata_1267AY.kicad_mod",
+      "source_sha256": "b9781bccbf5050d6249861bd1233523689c0153d0ca4a50fb23c384319926f0f",
+      "public_sha256": "1dd5964e9e2c75bca34fee9e42f4e866fdd1aa8e878334d279f55c7f7a1bae7e",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/PinHeader_1x02_P2_54.kicad_mod",
+      "source_sha256": "8839c757854f3c6562c4c051dd53dfad3e607839abda77eafbeb7fae89b3c8fe",
+      "public_sha256": "43778f47469f9317a101a21b5717b48858540b7700828d673ca63be5327f208c",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/R_0402.kicad_mod",
+      "source_sha256": "5662e89de437dfdcbd2442895a71be034f5ae4e0f6e462fcc253bf1468641cd3",
+      "public_sha256": "bf13b3c506341b6188533926e7e0e42295e3a13761d55aaf8adeddf3b7cc1154",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/R_0603.kicad_mod",
+      "source_sha256": "4b1e76c10629b81d6a3adb86366b990841a2e1123a7af3fa9797969019274206",
+      "public_sha256": "4b1e76c10629b81d6a3adb86366b990841a2e1123a7af3fa9797969019274206",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/TPS54429E_RSA.kicad_mod",
+      "source_sha256": "ce6d8bf1895013f51169d71441f86009bcdf22c778b76a1e9afe2dbb2e088d81",
+      "public_sha256": "fddbc8cccd0d2d3f8797a76928a4248c1d1f76f8fbbf24532a80cb9c60e7f9ba",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/TestPoint_1mm.kicad_mod",
+      "source_sha256": "baeb672dd6bfc8a14e933c93671ba7552cb8adda0bee8854a5ccb0c1c9915d38",
+      "public_sha256": "baeb672dd6bfc8a14e933c93671ba7552cb8adda0bee8854a5ccb0c1c9915d38",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/Reference3V3.pretty/TestPoint_PTH_D1_Pad2_5.kicad_mod",
+      "source_sha256": "c36c205cfc08233ff944afb2500ad4b130a62353dc5890a5df8152b878012172",
+      "public_sha256": "c36c205cfc08233ff944afb2500ad4b130a62353dc5890a5df8152b878012172",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/ReferenceInput.pretty/C_0402.kicad_mod",
+      "source_sha256": "59d83921115a9c8c8737870cab242fb2c4f08ac006f06e18c6faf9a16a0890bd",
+      "public_sha256": "a4b28b1837665c19836b7645b48e54cbc595076ab82d52f0597a943e998b3452",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/ReferenceInput.pretty/D_SMB.kicad_mod",
+      "source_sha256": "9469bc2642829bec137cb4b7135fe8ca6005e82035cba67c70c0a77e478fedd4",
+      "public_sha256": "a314e71cf85a34f3f48cd79c337783f2131dc4c2de797195f50e9362db74b0f0",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/ReferenceInput.pretty/EEE_FK1E221P.kicad_mod",
+      "source_sha256": "050e7fe3ced40f6c830cf6cb72ea1f48c1120d9bcc034cafe1a0c3cc14b7d3f6",
+      "public_sha256": "0b7fadcaa250276b5a3b337cc1dc6977ef175b3d473cd3477ea5c4dee23bf908",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/ReferenceInput.pretty/PJ102AH.kicad_mod",
+      "source_sha256": "2e0afcf6a316ec9ecfe68305ff69e1cad75af06cf999e007ca810dfa3672caf7",
+      "public_sha256": "a1dc5b188624320749edbf66ef73acbc15a0116895c9dcc7e62aa5e9fc9fdedf",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/ReferenceJTAG.pretty/Molex_87831_1420_2x07_P2mm.kicad_mod",
+      "source_sha256": "a3d557703dd96b8218387993182b4f5140ff5cc5a8e918c8472daebc4d5abb53",
+      "public_sha256": "a3d557703dd96b8218387993182b4f5140ff5cc5a8e918c8472daebc4d5abb53",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/RegulatorFixes.pretty/C_0603_1608Metric.kicad_mod",
+      "source_sha256": "227252d52393d183d6f0fe1c1dc6d0b4b4a3e7042b19082bbf11e6f3f59db058",
+      "public_sha256": "faa7b8158dd30af4607c15a9d08dde5b2193a4462cc315e227815418a33a230b",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/RegulatorFixes.pretty/NetTie_SGND_0p25.kicad_mod",
+      "source_sha256": "15aaae4b28dd9a3d3dfbb2a074694e0415199fb051c5c0b4e2547042f31a0ac9",
+      "public_sha256": "15aaae4b28dd9a3d3dfbb2a074694e0415199fb051c5c0b4e2547042f31a0ac9",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/StatusLED.pretty/LED_0603_Kingbright.kicad_mod",
+      "source_sha256": "def5180fb916b3cc0f1a796c6b6800a470a9a5afd63e92519ee0cc24bf88e5a0",
+      "public_sha256": "def5180fb916b3cc0f1a796c6b6800a470a9a5afd63e92519ee0cc24bf88e5a0",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/StatusLED.pretty/R_0805.kicad_mod",
+      "source_sha256": "0039d9e11bb080957d7f625fd19f1096a088d0940555eb56a91ae816133689c9",
+      "public_sha256": "0039d9e11bb080957d7f625fd19f1096a088d0940555eb56a91ae816133689c9",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/C_0402_1005Metric.kicad_mod",
+      "source_sha256": "d2df17b6bb6aa59f6315bd57fbc81923e4fa681fc5a532f9fbd535fec09ce313",
+      "public_sha256": "a6362549224dbd0b06d3fb0f8017b88c37fb6aabf54d73cf500327f160c1b913",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/Crystal_SMD_3225-4Pin_3.2x2.5mm.kicad_mod",
+      "source_sha256": "40067adb42423fbf5fc1666c7aaba946b3b48095b2fdf191d78819491423c700",
+      "public_sha256": "efb63b08f20084cb803799bf54adc8aa9346389d16668999545598f2760a567a",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/Diodes_UDFN-10_1x2.5mm_P0.5mm.kicad_mod",
+      "source_sha256": "349bd7cefbdc4d2dd65dd8da1634b0e62befd385b5469a98996589042e0491b7",
+      "public_sha256": "9c748c4513a1b8c3be5a79609ffc0857d0d7ed799b926289d6b276c4b3b652d9",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/L_0603_1608Metric.kicad_mod",
+      "source_sha256": "8e998c31e150ea4b6fe65109f13360d3940278a7ca79a40227f54c6f4cab07e0",
+      "public_sha256": "0c858d21ce93c01a898ad1d415393e8b923931faf9dea5a6011499f1b327ad40",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/L_0805_2012Metric.kicad_mod",
+      "source_sha256": "ae1e9bf890dc447883c3a493bcda7156262e6dfed22f7398e0ddc8788619e5ca",
+      "public_sha256": "d33447949b6ad541df351cf5fbaef85cb97ad1b77db7db95ec2b5f13b7186478",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/MSOP-8_3x3mm_P0.65mm.kicad_mod",
+      "source_sha256": "f8843df9405c8aea40fb3275e9db675fcd4548708f097c0224b3f8df282f80a5",
+      "public_sha256": "3a86f6d70dacd8feeb641ef10d109e9200efecee583863e0b3feb1c2efd6ddb7",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/QFN-48-1EP_8x8mm_P0.5mm_EP6.2x6.2mm.kicad_mod",
+      "source_sha256": "40bba9edeff9f0c25a8a715c5fb176bb43471bbc0181689f86079cfa1e441112",
+      "public_sha256": "38c8d50eed2188cf4c65e633da548ed8bceaf3be56bc6cf54ee0095cfe58618f",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/R_0402_1005Metric.kicad_mod",
+      "source_sha256": "b9294875c3639747fc62697d87945ad3267ad1e1cac4572e3e1d00b3b8471286",
+      "public_sha256": "17c590789d485a59c3542b71e2a9876ac6da89fdabbb93de6f48809de0f0d5ac",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/SOT-23-6.kicad_mod",
+      "source_sha256": "aa33645a4db43e06567b721143453c51e3aad088a6e36696bb216809feec9f6f",
+      "public_sha256": "f06d3e7859993f904c196cc9676e81820774281b32d91ee219dd4b1e7d272706",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/TI_DPY0002A_TPD1E10B06.kicad_mod",
+      "source_sha256": "f74bc7f86b8b0e22b5fe944cac8ca85bb86f135116ec527afb8878a0b69d6b7f",
+      "public_sha256": "f74bc7f86b8b0e22b5fe944cac8ca85bb86f135116ec527afb8878a0b69d6b7f",
+      "removed_3D_nodes": 0,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": true
+    },
+    {
+      "file": "project/libraries/USBJTAG.pretty/USB_C_Receptacle_GCT_USB4110.kicad_mod",
+      "source_sha256": "8316b08c2f5e2237115f91d15eccdf193a9ff583b793d7d7d51a96d4994a6433",
+      "public_sha256": "69e34e1e5949db4261a793b8c43874bee1b0a85cbffefc199e19d9c29059b52b",
+      "removed_3D_nodes": 1,
+      "all_non3D_tokens_identical": true,
+      "source_byte_identical": false
+    }
+  ],
+  "geometry_raw_byte_checks": {
+    "segment": {
+      "count": 742,
+      "raw_bytes_identical": true,
+      "sha256": "d4e7df75564b41c01369b16963d89b66b6b29cb6df262743ab3652028f672b9e"
+    },
+    "arc": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "via": {
+      "count": 313,
+      "raw_bytes_identical": true,
+      "sha256": "a5a4dc0f57aaf4635f1c4ee69a9b11d1cac74164bad563fcf398fe384edcad61"
+    },
+    "zone": {
+      "count": 21,
+      "raw_bytes_identical": true,
+      "sha256": "79a1eb7e348dd4b48622d47f32a3aa4d383604dcf3a0f16b0f034b79cb94b6e9"
+    },
+    "gr_line": {
+      "count": 4,
+      "raw_bytes_identical": true,
+      "sha256": "f96e4e6c54d98999f29136d7945d0e6f52e867bf680994233dfd014ee279d475"
+    },
+    "gr_arc": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gr_circle": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gr_rect": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gr_poly": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gr_text": {
+      "count": 6,
+      "raw_bytes_identical": true,
+      "sha256": "e1c1d7fad46d1a9195bf3eeae1a16c99d51a9e7000bfc89819431332facff24e"
+    },
+    "layers": {
+      "count": 1,
+      "raw_bytes_identical": true,
+      "sha256": "ec8fc3d1b1515d2482e50f845cc52bc847090ab76c69c8b86f5150d005227050"
+    },
+    "setup": {
+      "count": 1,
+      "raw_bytes_identical": true,
+      "sha256": "6311bd0f95663f5971276366ce2d9514775cf54e7e6b76980c24213d2d681111"
+    },
+    "net": {
+      "count": 0,
+      "raw_bytes_identical": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "footprint_pad": {
+      "count": 651,
+      "raw_bytes_identical": true,
+      "sha256": "9cd5d5db9152ec5ef24a89dc350c9e924fe612e6fba98c572550f7e333820f55"
+    },
+    "footprint_at": {
+      "count": 89,
+      "raw_bytes_identical": true,
+      "sha256": "103d91de44e97498b69cdcee35fa6ae8543a36cfa9bf4239851bdcf0c30631f6"
+    },
+    "footprint_layer": {
+      "count": 89,
+      "raw_bytes_identical": true,
+      "sha256": "8e65a57e24910d4d04bae331bc1f8e9154257b1610667156fd79c724a9b4c7b3"
+    },
+    "footprint_path": {
+      "count": 89,
+      "raw_bytes_identical": true,
+      "sha256": "578dc87afa894ed0112d58d818d91eaac2aeef670e56bf8d016d2072a6a18f1d"
+    },
+    "footprint_attr": {
+      "count": 89,
+      "raw_bytes_identical": true,
+      "sha256": "9a6d9779ac245534d84b463b959b0e6ce345ae68372b043b32878ddd85f92cda"
+    }
+  },
+  "copied_output_receipts": [
+    {
+      "file": "output/pdf/Carrier_V42_Schematic.pdf",
+      "source_sha256": "1885894a75ab6f9330f47e53ccd4a08d2ed68a099f586af6d764f36dde311622",
+      "public_sha256": "1885894a75ab6f9330f47e53ccd4a08d2ed68a099f586af6d764f36dde311622",
+      "byte_identical": true
+    },
+    {
+      "file": "output/V42_JLC_Gerber_Paste_Drill_Clean.zip",
+      "source_sha256": "670910c09832ee4adb7c0a3861e59c627662d013333c74a32344ea63ecf06a0b",
+      "public_sha256": "670910c09832ee4adb7c0a3861e59c627662d013333c74a32344ea63ecf06a0b",
+      "byte_identical": true
+    },
+    {
+      "file": "output/assembly/V42_JLC_BOM_Full_82_Parts_39_MPNs.csv",
+      "source_sha256": "762f56e5859eb8ffac2da33707fe827361b5b8956676ba3c84dabae82f38e7d5",
+      "public_sha256": "762f56e5859eb8ffac2da33707fe827361b5b8956676ba3c84dabae82f38e7d5",
+      "byte_identical": true
+    },
+    {
+      "file": "output/assembly/V42_JLC_CPL_Full_82_Parts_Centroids.csv",
+      "source_sha256": "cee5f6c3efcaf355a07dd9240af78e7c966e3696db45964536d59bfabcd1d27f",
+      "public_sha256": "cee5f6c3efcaf355a07dd9240af78e7c966e3696db45964536d59bfabcd1d27f",
+      "byte_identical": true
+    },
+    {
+      "file": "output/assembly/V42_JP1_Shunt_Accessory_Separate.csv",
+      "source_sha256": "5e344c6569cd5b2c51886c9ababc4b62d34a3bbef6e30abaf7e2a61cda5c56dc",
+      "public_sha256": "5e344c6569cd5b2c51886c9ababc4b62d34a3bbef6e30abaf7e2a61cda5c56dc",
+      "byte_identical": true
+    },
+    {
+      "file": "output/manufacturing/Thermal_Vias_Epoxy_Filled_Capped.csv",
+      "source_sha256": "def63118207d1299c77f6abcb24a0c02ce651edd620ed85b0d2b002124cc971a",
+      "public_sha256": "def63118207d1299c77f6abcb24a0c02ce651edd620ed85b0d2b002124cc971a",
+      "byte_identical": true
+    },
+    {
+      "file": "output/figures/V42_LED_Stack_Visibility.png",
+      "source_sha256": "79838f45589410a732b425407899155fb72190d030fdc7cbab9d68d31b20222f",
+      "public_sha256": "79838f45589410a732b425407899155fb72190d030fdc7cbab9d68d31b20222f",
+      "byte_identical": true
+    },
+    {
+      "file": "output/figures/V42_LED_Stack_Visibility.svg",
+      "source_sha256": "2df382b0c48daa4e253cc6f6c621eb0c4d48a3e6279541df3fcfe4d6e11529d3",
+      "public_sha256": "2df382b0c48daa4e253cc6f6c621eb0c4d48a3e6279541df3fcfe4d6e11529d3",
+      "byte_identical": true
+    },
+    {
+      "file": "output/layers/V42_Bottom_Inspection.svg",
+      "source_sha256": "0eb03535302a79de6baf4ec157d9e26a4c89c476e7c633c2a8e7a7b3b7abdbbe",
+      "public_sha256": "0eb03535302a79de6baf4ec157d9e26a4c89c476e7c633c2a8e7a7b3b7abdbbe",
+      "byte_identical": true
+    },
+    {
+      "file": "output/layers/V42_Front_Inspection.svg",
+      "source_sha256": "3b2dedf13704c50bc11c8894ef0b5fccd85a06284479887a18b27607daaae5b6",
+      "public_sha256": "3b2dedf13704c50bc11c8894ef0b5fccd85a06284479887a18b27607daaae5b6",
+      "byte_identical": true
+    },
+    {
+      "file": "output/manufacturing/JLC06161H-2116_Stackup_Contract.json",
+      "source_sha256": "192d14b7b47489962bb769ebb9e696f401ef3b65e13a2979f74c12e28b3f300e",
+      "public_sha256": "192d14b7b47489962bb769ebb9e696f401ef3b65e13a2979f74c12e28b3f300e",
+      "byte_identical": true
+    },
+    {
+      "file": "output/manufacturing/Stackup_And_13_Thermal_Vias.png",
+      "source_sha256": "bae7231113c197c208b157ef536cc971db81a69775fdeecf88c2efb0bc73e8f8",
+      "public_sha256": "bae7231113c197c208b157ef536cc971db81a69775fdeecf88c2efb0bc73e8f8",
+      "byte_identical": true
+    },
+    {
+      "file": "project/THIRD_PARTY_NOTICES.md",
+      "source_sha256": "87d2d076da74a01a10e6b7b7ef11b81111263226415efec44ff743d708255d68",
+      "public_sha256": "87d2d076da74a01a10e6b7b7ef11b81111263226415efec44ff743d708255d68",
+      "byte_identical": true
+    },
+    {
+      "file": "project/LICENSES/KiCad_Libraries_License.md",
+      "source_sha256": "45d2bce75e5a4208f5afb01b8fb2c406e700371c4fe2b5f5cd5c443d46db4d8f",
+      "public_sha256": "45d2bce75e5a4208f5afb01b8fb2c406e700371c4fe2b5f5cd5c443d46db4d8f",
+      "byte_identical": true
+    }
+  ],
+  "omitted_asset_policy": [
+    "All model assignments and embedded model payloads removed. No STEP/STP/WRL bodies.",
+    "No private correspondence, account screenshots, cart identifiers, payment data or local paths in review reports.",
+    "No project-local settings, backups, locks or historically stale factory notes."
+  ],
+  "verification_method": "All tokens outside complete model/embedded_files nodes match the authoritative V42 source; schematic/project/rules/symbols and tables are byte-identical. Raw geometry, pads, nets, stack, rules and fill caches independently match. This is review equivalence, not hardware qualification."
+}
