@@ -1,8 +1,8 @@
-# Current shared hardware overview — V9
+# Current shared hardware overview — V10
 
 18 October 2026. [Public direct-LDO carrier overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) · [V41 layer viewer](carrier-v41/index.html) · [V41 review files](../../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md).
 
-The direct-LDO route now shows the latest saved carrier **V41**, with actual six-layer saved copper, the current schematic, complete editable public KiCad and assembly/manufacturing review files. The V41 sourcing substitutions preserve all V40 routing. Supplier 3D bodies are omitted from the public CAD; exact non-3D equivalence is recorded. The old V16 physical viewer is historical and is not relabeled V41.
+The direct-LDO route restores the earlier rotatable XEM8305/carrier/LDO assembly view, updated with freshly derived **V41** carrier copper, placement and component representations. Layout opens the exact current native KiCad board with net highlighting and layer controls; Schematic and current download links remain available. The V41 sourcing substitutions preserve all V40 routing. Three passive indicators show the nominal 12 V input, BUCK_3V3 before JP1 and LDO_3V3 after JP1; they assist power diagnosis rather than providing precision power-good detection. Supplier 3D bodies are omitted from the public CAD; exact non-3D equivalence is recorded. The old V16 physical viewer is historical and is not relabeled V41.
 
 Five assembled boards are being quoted. Four procurement groups and factory approval of the exact stack, 13 selectively filled/capped thermal vias, panel and manual assembly remain open. Native physical/silk/open/parity results and inherited ERC/library findings are recorded; static checks do not qualify powered hardware. No order or payment.
 

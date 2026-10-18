@@ -1,0 +1,1581 @@
+{
+  "schema": "ldo-procedural-viewer-geometry-v1",
+  "name": "Gerald LDO board, matched Oct2 source",
+  "coordinate_order": "outline_mm andconnectorx,y are nativecarrierPCB[X,Y]. All3Dcenter_mm/size_mm arrays are [nativeX,heightZ,nativeY] for ThreeBoxGeometry(X,Yup,Z). Unitsmm.",
+  "outline_mm": [
+    [
+      119.05,
+      49.6
+    ],
+    [
+      137.35,
+      49.6
+    ],
+    [
+      137.35,
+      24.6
+    ],
+    [
+      136.598473,
+      24.6
+    ],
+    [
+      136.50055032,
+      24.595195751
+    ],
+    [
+      136.403568724,
+      24.580825574
+    ],
+    [
+      136.308460426,
+      24.5570276
+    ],
+    [
+      136.216139634,
+      24.52403058
+    ],
+    [
+      136.127493761,
+      24.482151692
+    ],
+    [
+      136.043374897,
+      24.431793488
+    ],
+    [
+      135.964591617,
+      24.373440025
+    ],
+    [
+      135.891901206,
+      24.307652212
+    ],
+    [
+      135.826002388,
+      24.235062422
+    ],
+    [
+      135.767528598,
+      24.156368407
+    ],
+    [
+      135.717041905,
+      24.072326597
+    ],
+    [
+      135.675027601,
+      23.983744826
+    ],
+    [
+      135.641889538,
+      23.891474566
+    ],
+    [
+      135.61794625,
+      23.796402747
+    ],
+    [
+      135.603427885,
+      23.699443224
+    ],
+    [
+      135.598474,
+      23.601528
+    ],
+    [
+      135.590128,
+      7.575
+    ],
+    [
+      120.75,
+      7.605
+    ],
+    [
+      120.749011,
+      7.605002
+    ],
+    [
+      120.77307,
+      23.598472
+    ],
+    [
+      120.768395233,
+      23.696591431
+    ],
+    [
+      120.754116313,
+      23.793778821
+    ],
+    [
+      120.730371024,
+      23.889096382
+    ],
+    [
+      120.697388488,
+      23.98162437
+    ],
+    [
+      120.655486963,
+      24.070469958
+    ],
+    [
+      120.605070769,
+      24.15477585
+    ],
+    [
+      120.546626384,
+      24.233728559
+    ],
+    [
+      120.480717754,
+      24.306566246
+    ],
+    [
+      120.407980849,
+      24.372586083
+    ],
+    [
+      120.329117526,
+      24.431151026
+    ],
+    [
+      120.244888759,
+      24.481695967
+    ],
+    [
+      120.156107294,
+      24.523733183
+    ],
+    [
+      120.063629806,
+      24.556857048
+    ],
+    [
+      119.968348635,
+      24.580747939
+    ],
+    [
+      119.871183174,
+      24.595175328
+    ],
+    [
+      119.773071,
+      24.6
+    ],
+    [
+      119.05,
+      24.6
+    ]
+  ],
+  "thickness_mm": 1.6,
+  "bottom_mm": -3.6,
+  "top_mm": -2.0,
+  "connection_face": "top",
+  "nominal_gap_mm": 2.0,
+  "holes": [],
+  "connectors": [
+    {
+      "name": "J1",
+      "x": 130.85,
+      "y": 28.5,
+      "angle_deg": 180.0,
+      "length_mm": 12.6,
+      "width_mm": 3.38,
+      "source_native_xy_mm": [
+        183.15,
+        42.95
+      ],
+      "source_native_angle_deg": 180.0,
+      "source_side": "B.Cu",
+      "source_MPN": "DF40C-50DP-0.4V(51)",
+      "carrier_MPN": "DF40C(2.0)-50DS-0.4V(51)",
+      "contact_count": 50,
+      "mated_height_nominal_mm": 2.0,
+      "envelope_status": "Simplified complete-mate marker; XYdimensions from previously audited carrier receptacle model envelope, not exact plug housing or terminal geometry.",
+      "function": "50-contact functional interface"
+    },
+    {
+      "name": "J19",
+      "x": 125.0,
+      "y": 47.25,
+      "angle_deg": 180.0,
+      "length_mm": 7.4,
+      "width_mm": 3.38,
+      "source_native_xy_mm": [
+        177.3,
+        24.2
+      ],
+      "source_native_angle_deg": 180.0,
+      "source_side": "B.Cu",
+      "source_MPN": "DF40C-24DP-0.4V(51)",
+      "carrier_MPN": "DF40C(2.0)-24DS-0.4V(51)",
+      "contact_count": 24,
+      "mated_height_nominal_mm": 2.0,
+      "envelope_status": "Simplified complete-mate marker; XYdimensions from previously audited carrier receptacle model envelope, not exact plug housing or terminal geometry.",
+      "function": "mechanical only; allsourcecontactsnetless"
+    }
+  ],
+  "features": [
+    {
+      "name": "C11",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        129.81,
+        -4.0,
+        30.525
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R2",
+      "kind": "resistor",
+      "source_value": "16k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.4475,
+        -3.825,
+        33.725
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C10",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.3975,
+        -4.0,
+        32.22
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C19",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        129.6075,
+        -4.0,
+        43.525
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C15",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        124.03,
+        -4.0,
+        40.28
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C28",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.4875,
+        -4.0,
+        45.17
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C14",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.07,
+        -4.0,
+        38.815
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C7",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.425,
+        -4.0,
+        27.22
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C21",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.3975,
+        -4.0,
+        38.725
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C9",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        126.71,
+        -4.0,
+        35.525
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C6",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        123.85,
+        -4.0,
+        27.31
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "U9",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        122.52,
+        -3.98,
+        36.315
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C17",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        125.8,
+        -4.0,
+        48.55
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "U6",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        133.835,
+        -3.98,
+        36.225
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "R8",
+      "kind": "resistor",
+      "source_value": "90k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.12,
+        -3.825,
+        33.815
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C24",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.3475,
+        -4.0,
+        38.725
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R3",
+      "kind": "resistor",
+      "source_value": "15k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.08,
+        -3.825,
+        40.28
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C16",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        124.1325,
+        -4.0,
+        45.275
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C23",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        124.07,
+        -4.0,
+        38.815
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C20",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        128.775,
+        -4.0,
+        48.55
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R4",
+      "kind": "resistor",
+      "source_value": "15k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        126.72,
+        -3.825,
+        37.02
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "U2",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.85,
+        -3.98,
+        29.82
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "U7",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        133.975,
+        -3.98,
+        42.67
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C27",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.3875,
+        -4.0,
+        40.17
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "U5",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        128.0075,
+        -3.98,
+        46.025
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C22",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        135.4475,
+        -4.0,
+        33.725
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "U4",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        122.62,
+        -3.98,
+        42.775
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C3",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        126.62,
+        -4.0,
+        42.02
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C4",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        129.62,
+        -4.0,
+        42.02
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R6",
+      "kind": "resistor",
+      "source_value": "15k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        126.86,
+        -3.825,
+        30.525
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "U1",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        128.1575,
+        -3.98,
+        39.52
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C13",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.1825,
+        -4.0,
+        45.275
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C18",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        124.07,
+        -4.0,
+        33.815
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C12",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        129.66,
+        -4.0,
+        35.525
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R5",
+      "kind": "resistor",
+      "source_value": "15k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        120.9,
+        -3.825,
+        27.31
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "R7",
+      "kind": "resistor",
+      "source_value": "15k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        126.6075,
+        -3.825,
+        43.525
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C5",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        121.12,
+        -4.0,
+        32.31
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C8",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        124.07,
+        -4.0,
+        32.31
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C2",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.4475,
+        -4.0,
+        32.22
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C1",
+      "kind": "capacitor",
+      "source_value": "1uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        129.67,
+        -4.0,
+        37.02
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "R1",
+      "kind": "resistor",
+      "source_value": "7.5k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.3875,
+        -3.825,
+        40.17
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "U8",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        133.9375,
+        -3.98,
+        29.73
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "R9",
+      "kind": "resistor",
+      "source_value": "90k",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.475,
+        -3.825,
+        27.22
+      ],
+      "size_mm": [
+        1.6,
+        0.45,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "U3",
+      "kind": "regulator",
+      "source_value": "LT3042xMSE",
+      "source_footprint": "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm_EP1.65x2.38mm",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        128.21,
+        -3.98,
+        33.025
+      ],
+      "size_mm": [
+        3.0,
+        0.76,
+        3.0
+      ],
+      "height_status": "0.76mm coordinateheightofreferencedKiCadDFNstockmodel; envelopeillustrationonly, noinstalledpartqualification",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 2698547
+    },
+    {
+      "name": "C25",
+      "kind": "capacitor",
+      "source_value": "10uF",
+      "source_footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "source_layer": "F.Cu",
+      "assembly_face": "outward bottom",
+      "center_mm": [
+        132.4875,
+        -4.0,
+        45.17
+      ],
+      "size_mm": [
+        1.6,
+        0.8,
+        0.8
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C32",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.8044,
+        -1.85,
+        16.7064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C41",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.7944,
+        -1.85,
+        18.8064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C43",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        20.4
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C30",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        18.3
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C29",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        19.0
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C40",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.7944,
+        -1.85,
+        18.1064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C33",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.8144,
+        -1.85,
+        19.5064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C38",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        17.6
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C37",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.7844,
+        -1.85,
+        15.3064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C31",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        16.9
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C39",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.8044,
+        -1.85,
+        17.4064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C35",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        15.5
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C34",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.7844,
+        -1.85,
+        16.0064
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C36",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        16.2
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C26",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        123.83,
+        -1.85,
+        19.7
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 180.0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    },
+    {
+      "name": "C42",
+      "kind": "capacitor",
+      "source_value": "0.1uF",
+      "source_footprint": "Capacitor_SMD:C_0201_0603Metric",
+      "source_layer": "B.Cu",
+      "assembly_face": "carrier-facing top",
+      "center_mm": [
+        132.8144,
+        -1.85,
+        20.2564
+      ],
+      "size_mm": [
+        0.6,
+        0.3,
+        0.3
+      ],
+      "height_status": "Illustrative genericpassiveheight; X/Ydimensions from nativeFabpackage",
+      "native_angle_deg": 0,
+      "render_box_axis_aligned": true,
+      "color": 11440996
+    }
+  ],
+  "feature_counts": {
+    "regulator": 9,
+    "capacitor": 43,
+    "resistor": 9
+  },
+  "source_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+  "mesh_payload_included": false,
+  "caption": "Gerald LDO outline and native component placements; nominal2mm carrier gap. Simplified bodyboxes; seating and heights unverified.",
+  "board_color": 9794354,
+  "label": "LDO assembly",
+  "label_x": 128.2,
+  "label_y": 14,
+  "label_z": -8,
+  "label_width": 23,
+  "carrier_revision": "V41",
+  "carrier_source_pcb_sha256": "caf0553fad56bd222a3513bd9bd2f3c8cb286b5084a05b150c92ef04c0c3ed80",
+  "registration_note": "Inherited V16 simplified attachment envelope and nominal seating. MC1, MC2, MC3 and J1/J19 placement independently compared against V41 and unchanged; this is a visual assembly reference, not a populated mechanical qualification.",
+  "previous_carrier_source_pcb_sha256": "2e113d71197499b31474d939e48d04c21e482fe6d2f7675979acd360d7e45a5b"
+}

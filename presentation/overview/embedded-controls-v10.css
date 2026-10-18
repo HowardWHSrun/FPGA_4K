@@ -1,0 +1,11 @@
+/* Added only by the live V10 overview; preserved viewer sources are unchanged. */
+@media(max-width:480px){
+ html[data-overview-embed=V10] .toolbar,html[data-overview-embed=V10] .render-toolbar{flex-wrap:wrap;justify-content:center;gap:6px}
+ html[data-overview-embed=V10] .toolbar>div,html[data-overview-embed=V10] .render-toolbar>div{flex-wrap:wrap;justify-content:center;max-width:100%}
+ html[data-overview-embed=V10] .assembly-controls,html[data-overview-embed=V10] .visibility,html[data-overview-embed=V10] .pose-controls{flex-wrap:wrap;max-width:100%}
+ html[data-overview-embed=V10] .caption{flex-wrap:wrap}
+}
+html[data-overview-embed=V10] .carrier-stage{min-height:0}
+
+/* Overview is the assembly preview; the carrier section keeps its full controls. */
+html[data-overview-section=overview] .render-toolbar,html[data-overview-section=overview] .assembly-controls{display:none}
