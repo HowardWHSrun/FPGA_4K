@@ -182,6 +182,10 @@ async function checkResponsive(width,height,desktop){
 try{
  await page.goto(base+'#overview',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.PRESENTATION?.getState().sourceVerified&&window.currentOverviewState?.approach==='custom');
+ if(await page.locator('html').getAttribute('data-overview-version')==='V23'){
+  const {checkOverviewV23}=await import('./check_overview_v23.mjs');
+  await checkOverviewV23({page,base,out,check,ready,select,choose,routeOnly,routeNavigation,checkAssembly});
+ }else{
  check(await page.locator('html').getAttribute('data-overview-version')==='V8','Current composite keeps the selected-path original structure in Overview V8');
  check(await page.evaluate(()=>window.OVERVIEW_SLIDE_CATALOG.every(slide=>Array.isArray(slide.owners)&&slide.owners.length===0)),'All current catalog sections leave people unassigned');
  check(await page.locator('.workspace > .viewer').count()===1&&await page.locator('.workspace > .story').count()===1,'Original viewer-left/story-right structure retained');
@@ -273,6 +277,7 @@ try{
  for(const suffix of ['', '?asset=unknown']){
   await page.goto(base+'presentation/overview/image-viewer.html'+suffix,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.drawingState?.ready,null,{timeout:90000});
   check(await page.locator('#drawing-picker').inputValue()==='fpga-schematic','Direct drawing fallback remains available');
+ }
  }
  check(report.pageErrors.length===0,'No browser JavaScript errors');check(report.httpErrors.length===0,'No failed HTTP resources');report.passed=true;
 }catch(error){report.passed=false;report.error=error.stack;console.error(error.stack);process.exitCode=1;}
