@@ -1,5 +1,7 @@
 # Project files and documents
 
+- [Custom Overview assembly sequence V23 · 20 October](../index.html?approach=custom#overview): FPGA V54 / LDO V13 / interposer V12 placement snapshot; separate host seating stages and optional sheep on one timeline. [Full-size viewer](../presentation/overview/assembly-v23/index.html) · [model sources](../presentation/overview/assembly-v23/model-sources.html). Detailed board meshes, nominal public connectors; engineering fit remains unqualified.
+
 [Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
 
 - [XEM8305 carrier V42 · 18 October review](../hardware/xem8305-carrier/dated/2026-10-18/v42/README.md): D601 underside relocation, current CAD, public ZIP, PDF, six-layer plots and matching manufacturing/CPL files. Other routing and placements are preserved. The assembly view has a draggable illustration-spacing control. Sourcing/factory/powered qualification remain open. [Earlier V41](../hardware/xem8305-carrier/dated/2026-10-18/v41/README.md).

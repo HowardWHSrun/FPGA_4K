@@ -1,0 +1,40 @@
+/* Carrier inspection needs room for both its controls and the assembly.
+   The standalone FPGA path and all preserved overviews keep their sizing. */
+body.carrier-inspection .shell{height:auto;min-height:100svh}
+body.carrier-inspection .deck{flex:none;min-height:0}
+body.carrier-inspection .workspace{flex:none;min-height:580px;overflow:visible;align-items:start}
+body.carrier-inspection .viewer{height:clamp(580px,78svh,820px);min-height:580px}
+body.carrier-inspection .scene-container{min-height:420px}
+body.carrier-inspection .story{max-height:none;overflow:visible}
+
+@media(max-width:1099px),(max-height:649px){
+ body.carrier-inspection .workspace{min-height:0}
+ body.carrier-inspection .viewer{height:clamp(600px,78svh,800px);min-height:600px}
+}
+@media(max-width:650px){
+ body.carrier-inspection .viewer{height:clamp(620px,78svh,780px);min-height:620px}
+}
+@media print{
+ body.carrier-inspection .viewer{height:580px}
+}
+
+/* V23: only the custom Overview uses the larger interactive assembly viewport.
+   The carrier and every saved subsystem retain their earlier display rules. */
+body.assembly-inspection .shell{height:auto;min-height:100svh}
+body.assembly-inspection .deck{flex:none;min-height:0}
+body.assembly-inspection .workspace{flex:none;min-height:0;overflow:visible;align-items:start}
+body.assembly-inspection .viewer{height:clamp(760px,88svh,960px);min-height:760px}
+body.assembly-inspection .scene-container{min-height:620px}
+body.assembly-inspection .story{max-height:none;overflow:visible;padding-right:0}
+body.assembly-inspection .scene-caption{font-size:10px!important}
+@media(max-width:1099px),(max-height:649px){
+ body.assembly-inspection .viewer{height:clamp(780px,86svh,980px);min-height:780px}
+ body.assembly-inspection .scene-container{min-height:620px}
+}
+@media(max-width:650px){
+ body.assembly-inspection .viewer{height:860px;min-height:860px}
+ body.assembly-inspection .scene-container{min-height:660px}
+ body.assembly-inspection .viewer-top{padding-top:12px}
+ body.assembly-inspection .scene-caption{font-size:9px!important}
+}
+@media print{body.assembly-inspection .viewer{height:760px;min-height:760px}}

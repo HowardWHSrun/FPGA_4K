@@ -1,5 +1,9 @@
 # Source provenance
 
+## Assembly sequence V23 · 20 October 2026
+
+[Custom Overview](../index.html?approach=custom#overview) embeds the V54/V13 compact stack study and the saved interposer V12 host placement. [Asset manifest](../presentation/overview/assembly-v23/Asset_Manifest.json), [coverage and credits](../presentation/overview/assembly-v23/model-sources.html) and [component geometry receipts](../presentation/overview/assembly-v23/assets/Public_Component_Mesh_Audit_V23.json) record the runtime derivatives. Exact supplier DF40 payloads remain local; independent nominal previews replace them publicly. Detailed BRK/XEM assets reuse existing V8 bytes. Quaternius CC0, Three.js MIT, KiCad library exception and source CADENAS/manufacturer notices are retained. Native CAD is unchanged; source omissions and unfinished electrical/mating/animal-fit gates remain explicit. Previous root V11 is preserved as [the20October archive](../overview-2026-10-20-v11.html).
+
 ## Carrier V41 assembly view restored · 18 October 2026
 
 [Overview V10](../index.html?approach=direct#overview) restores the previous rotatable XEM8305/carrier/LDO presentation using freshly generated V41 carrier geometry and exact current native KiCad routing. Source model representations, mesh hash, component counts and limitations are recorded in the [current model provenance](../presentation/overview/carrier-viewer-v41/assets/Model_Provenance.json). Attachment envelopes retain the earlier source-backed nominal registration; actual connector seating remains unqualified. Both prior V8 and V9 page roots and assets are preserved; original V41/V40 engineering CAD is unchanged.

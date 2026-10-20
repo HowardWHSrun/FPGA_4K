@@ -1,0 +1,67 @@
+{
+  "viewer_revision": "V23",
+  "source_viewer_revision": "V22",
+  "date": "2026-10-20",
+  "source_boards": {
+    "FPGA": {
+      "revision": "V54",
+      "pcb_source_sha256": "5d5f1ce3c85d884dc3991e357e9f7eba79dba3cb4901e38474c6f8453ae2ac68",
+      "original_assigned_bodies": 133,
+      "public_note": "Hirose J1/J2 manufacturer meshes are excluded from the public board derivative; independently generated connector previews are placed at the native registrations."
+    },
+    "LDO": {
+      "revision": "V13",
+      "assigned_bodies": 46,
+      "missing_packaged_bodies": [
+        "RN250",
+        "RN450"
+      ]
+    },
+    "interposer": {
+      "revision": "V12",
+      "pcb_source_sha256": "fabf1059806b2448629d13f71094fea92382e40fa1e767dd44ac914c97f02392",
+      "assigned_bodies": 27,
+      "packaged_body_omissions": [
+        "C1",
+        "C10",
+        "C11",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "JP1",
+        "JP2",
+        "L1",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "U1",
+        "U2",
+        "U3"
+      ],
+      "native_cad_changed": false
+    },
+    "host": {
+      "boards": [
+        "BRK8305",
+        "XEM8305"
+      ],
+      "source": "Retained official source geometry, reused byte-for-byte from the existing assembly-v8 public assets."
+    }
+  },
+  "nominal_connector_previews": true,
+  "electrical_boundary": "V12 assumes remote1.8V JTAG; unchanged FPGA V54 bank0 is1.5V. This mechanical visualization does not establish direct electrical compatibility.",
+  "limits": [
+    "ASIC pass-through PCB redesign unfinished",
+    "Public connector previews are nominal, not manufacturer CAD or mating tolerance validation",
+    "Cable, head interior, support and probe directions are schematic",
+    "Board routing, physical clearance and powered operation remain unqualified"
+  ]
+}

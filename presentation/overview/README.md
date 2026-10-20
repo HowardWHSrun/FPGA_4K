@@ -1,5 +1,9 @@
 # Current shared hardware overview — V11
 
+## Assembly sequence V23 · 20 October 2026
+
+The custom FPGA Overview now embeds [assembly V23](assembly-v23/index.html): one timeline for ASIC/LDO/FPGA and BRK/interposer/XEM assembly, with optional sheep context and board/component inspection. [Coverage](assembly-v23/model-sources.html) distinguishes the V54/V13/V12 snapshots, missing source bodies and nominal public connector previews. Existing subsystem checkpoints and direct V42 are preserved. [Earlier root V11](../../overview-2026-10-20-v11.html) retains the previous overview.
+
 18 October 2026. [Public direct-LDO carrier overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) · [V42 assembly](carrier-viewer-v42/index.html) · [V42 native layout](carrier-viewer-v42/native/index.html) · [V42 review files](../../hardware/xem8305-carrier/dated/2026-10-18/v42/README.md).
 
 The same assembly-first layout now uses **carrier V42**. D601 has moved to the underside at (141, 55) mm so all three rail-presence LEDs can be viewed from the exposed side of the nominal stack. Its indicator branch and local clearances are the only routing changes; unrelated routing and every other fitted placement remain unchanged from V41. The exact native board contains 742 segments, 313 vias, 651 pads, 21 zones and 89 footprints. The schematic drawing is freshly exported from the saved V42 native schematic.

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f7fa"><title>Assembly sequence | 4K Design Review</title>
+<script>if(new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.embed="true";</script>
+<link rel="stylesheet" href="source/viewer-v23.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<main>
+  <header><div><a class="breadcrumb" href="../../../?approach=custom#overview">4K design review / Overview</a><h1>ASIC · LDO · FPGA · XEM <span>V23</span></h1><p>Detailed PCB models · one assembly sequence</p></div><a href="model-sources.html" target="_blank" rel="noopener">Model sources</a></header>
+  <div class="view-tools">
+    <label>Inspect <select id="focus" aria-label="Inspect board">
+      <option value="scene">All electronics</option><option value="module">Head electronics</option>
+      <option value="1">ASIC 1 concept</option><option value="2">ASIC 2 concept</option><option value="3">ASIC 3 concept</option><option value="4">ASIC 4 concept</option>
+      <option value="LDO">LDO V13</option><option value="FPGA">FPGA V54</option><option value="host">XEM host assembly</option>
+      <option value="xem">XEM8305</option><option value="interposer">Interposer V12 snapshot</option><option value="brk">BRK8305</option><option value="asic-reference">Original ASIC source PCB</option>
+    </select></label>
+    <label>Tool <select id="tool" aria-label="Interaction tool"><option value="orbit">Rotate / inspect</option><option value="draw">Sketch</option><option value="measure">Measure</option></select></label>
+    <label class="check"><input id="sheep" type="checkbox">Show sheep</label>
+    <label class="check"><input id="cutaway" type="checkbox">Head cutaway</label>
+    <label class="check"><input id="isolate" type="checkbox">Isolate selection</label>
+    <button id="fit" type="button">Fit view</button>
+    <button id="flip" type="button" disabled>Other side</button>
+  </div>
+  <section class="stage" id="stage" aria-label="Interactive 3D CAD assembly and schematic sheep head">
+    <canvas id="canvas" aria-label="Rotate the 3D assembly; select a component to inspect, double-click to zoom"></canvas>
+    <svg id="labels" aria-hidden="true"></svg>
+    <div id="loading" role="status">Loading detailed CAD models…</div>
+    <div class="zoom"><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out">−</button></div>
+  </section>
+  <div class="timeline">
+    <div class="progress-label"><label for="progress">Assembly progress</label><output id="progress-value">0%</output><span id="phase" role="status" aria-live="polite">Separate electronics</span></div>
+    <input id="progress" type="range" min="0" max="100" step="0.1" value="0" aria-label="Assembly progress" disabled>
+    <div class="milestones"><button data-stage="0">Separate</button><button data-stage="18">ASIC pairs</button><button data-stage="34">Middle LDO</button><button data-stage="48">FPGA</button><button data-stage="64">Interposer</button><button data-stage="80">XEM</button><button data-stage="100">Cable</button><button id="head-milestone" hidden>On head</button></div>
+    <div id="gap-status" class="gap-status" aria-live="off"></div>
+  </div>
+  <div class="actions"><button id="play" type="button" class="primary" disabled>Play sequence</button><button id="context" type="button">Overview</button><button id="host-view" type="button">Host stack</button><span id="ink-actions" hidden><button id="undo" type="button">Undo mark</button><button id="clear" type="button">Clear marks</button></span><span class="hint" id="hint">Drag to orbit · scroll / pinch to zoom · click a part · double-click for close-up</span></div>
+  <div class="selection"><strong id="selected-title">Whole assembly</strong><span id="selected-detail">FPGA/LDO use detailed project exports with nominal connector previews; XEM host uses official source geometry and the V12 placement snapshot. ASIC stack revision remains a concept.</span></div>
+  <footer>Nominal connector previews · schematic cable/head context · mating and hardware operation unqualified. <a href="model-sources.html" target="_blank" rel="noopener">Model coverage</a></footer>
+</main>
+<script type="module" src="source/viewer-v23.js"></script>
+</body></html>

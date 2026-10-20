@@ -1,5 +1,7 @@
 # FPGA_4K
 
+**[Custom FPGA assembly sequence · V23 · 20 October 2026](index.html?approach=custom#overview)** — one timeline joins ASIC concepts / LDO V13 / FPGA V54, then the saved interposer V12 / BRK / XEM stack; sheep context is optional. The page matches the overview layout and uses detailed project meshes with nominal public connector previews. [Model scope and credits](presentation/overview/assembly-v23/model-sources.html).
+
 [Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
 
 **[Latest XEM8305 carrier review · V42 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v42/README.md)** — D601 moved to the visible underside; unrelated routing and component positions are preserved. Editable KiCad project, PDF, six-layer plots, matching BOM/CPL and manufacturing review files are included. Native physical/silk/open/parity checks pass; sourcing, factory and powered qualification remain open. This carrier is separate from the standalone FPGA V41 and is not a fabrication release.
