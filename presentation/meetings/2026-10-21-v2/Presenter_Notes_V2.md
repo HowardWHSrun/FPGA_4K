@@ -11,11 +11,11 @@ Sources:
 - 2026-10-19_FPGA_Work/11_Carrier_V42_JLC_Final_Draft_Check_V1/START_HERE.md
 - 2026-10-20_FPGA_Work/13_XEM_Interposer_Routing_V16/START_HERE.md
 - Howard’s 20 October evening slide instructions and supplied JLC screenshot.
-- 2026-10-20_FPGA_Work/17_XEM_Interposer_Power_Width_Review_V20/START_HERE.md
+- 2026-10-21_FPGA_Work/04_XEM_Interposer_PCM_Switch_V23/START_HERE.md
 
 ## 2. LDO carrier board progress
 
-The LDO carrier board design is ready for manufacturing. Our first step is global sourcing through JLCPCB. This screenshot shows the parts in Purchasing. I can switch to the assembly, schematic or routed PCB for the hardware discussion. Production-file approval, component arrival and powered testing remain separate from the board-design status.
+The LDO carrier board design is ready for manufacturing. Our first step is global sourcing through JLCPCB. This screenshot shows the parts in Purchasing. I can switch to the assembly, schematic or routed PCB for the hardware discussion. Production-file approval, component arrival and powered testing remain separate from the board-design status. The assembly view also shows the source-derived single-ASIC PCB at the LDO interface and a schematic 512-channel probe extending outward. The probe has 512 channels as specified for this LDO. Probe geometry and nominal seating are schematic; final mating and interface review remain open.
 
 Sources:
 - Howard’s 20 October carrier sourcing/production update.
@@ -23,6 +23,8 @@ Sources:
 - 2026-10-19_FPGA_Work/11_Carrier_V42_JLC_Final_Draft_Check_V1/START_HERE.md
 - build/Asset_Staging_Receipt.json
 - Howard-provided Screenshot 2026-10-20 at 8.44.50 PM.png, retained unchanged.
+- Howard’s 21 October correction: the probe connected to this LDO has 512 channels, not 1k.
+- 2026-10-21_FPGA_Work/05_Meeting_Slide_2_Fixes_V1/START_HERE.md
 
 ## 3. System assembly overview
 
@@ -38,11 +40,11 @@ The interposer schematic and connected prototype routing are complete. It provid
 
 Sources:
 - Howard’s 20 October evening update.
-- 2026-10-20_FPGA_Work/17_XEM_Interposer_Power_Width_Review_V20/START_HERE.md
+- 2026-10-21_FPGA_Work/04_XEM_Interposer_PCM_Switch_V23/START_HERE.md
 
 ## 5. Separate FPGA and LDO boards
 
-The overview keeps the ASIC boards, LDO, custom FPGA and XEM host together. The two direct 60-contact pairs connect the separate FPGA and LDO boards. I can choose FPGA from the board selector or use the FPGA close-up button, then select or double-click a component for a closer look. The updated FPGA model uses V60 and retains the assigned component bodies, with clearly labeled nominal connector previews for public sharing. ASIC stack revisions, cable and mounting remain conceptual; the view supports the board-arrangement discussion. The host interposer uses the current V20 saved layout. Components without assigned source 3D models remain identified in model coverage.
+The overview keeps the ASIC boards, LDO, custom FPGA and XEM host together. The two direct 60-contact pairs connect the separate FPGA and LDO boards. I can choose FPGA from the board selector or use the FPGA close-up button, then select or double-click a component for a closer look. The updated FPGA model uses V60 and retains the assigned component bodies, with clearly labeled nominal connector previews for public sharing. ASIC stack revisions, cable and mounting remain conceptual; the view supports the board-arrangement discussion. The host interposer uses the current V23 saved layout, including the PCM12 selector switch. All 49 fitted interposer parts are represented; nominal connector and package previews are identified in model coverage.
 
 Sources:
 - 2026-10-20_FPGA_Work/01_Two_60_Interface_Final_Handoff_V1/START_HERE.md
@@ -50,15 +52,15 @@ Sources:
 - 2026-10-20_FPGA_Work/09_Assembly_Overview_Publication_V23/START_HERE.md
 - build/Assembly_Update_V2.json
 - 2026-10-20_FPGA_Work/14_FPGA_Regulator_Power_Routing_V60/START_HERE.md
-- 2026-10-20_FPGA_Work/17_XEM_Interposer_Power_Width_Review_V20/START_HERE.md
+- 2026-10-21_FPGA_Work/04_XEM_Interposer_PCM_Switch_V23/START_HERE.md
 
-## 6. Interposer layout and 3D
+## 6. Interposer schematic, layout and 3D
 
-The 3D model and routing view show the same active six-layer V20 interposer checkpoint. It widens the BRK power path and buck-output throat, adds parallel supply/return access, and repairs the R8 quiet return. Native checks report no open connections, ERC errors or schematic parity findings. Six inherited NPTH/courtyard errors and 512 secondary In3 reference misses remain disclosed in the engineering review. Current/thermal behavior, the retained construction, signal integrity and powered operation still need qualification. The stopped four-layer V21 trial is not used.
+The schematic, native routing and 3D model show the same saved six-layer V23 interposer checkpoint. The PCM12SMTBR selector switch uses its matching footprint and revised local routing. All 49 fitted parts have visible 3D bodies: 21 assigned KiCad stock models, six nominal connector previews and 22 nominal package envelopes. Nominal models communicate placement rather than qualified mechanical fit. Native checks report no open connections, ERC errors or schematic parity findings. Six inherited connector courtyard errors remain in the engineering review. Current, thermal behavior, construction, signal integrity and powered operation still need qualification.
 
 Sources:
-- 2026-10-20_FPGA_Work/17_XEM_Interposer_Power_Width_Review_V20/START_HERE.md
-- build/Interposer_Refresh_V2.json
+- 2026-10-21_FPGA_Work/04_XEM_Interposer_PCM_Switch_V23/START_HERE.md
+- 2026-10-21_FPGA_Work/06_Interposer_Meeting_Refresh_V23/START_HERE.md
 
 ## 7. FPGA schematic updates
 
@@ -89,4 +91,4 @@ Sources:
 
 ## Source snapshots
 
-Carrier readiness and interposer sourcing/manufacturing plans follow Howard’s 20 October update. The carrier JLC screenshot is a saved observation. Interposer schematic, native routing and 3D use the connected V20 checkpoint. FPGA schematic and routing use V60, which remains partially routed. Public 3D uses labeled nominal connector previews where supplier meshes are excluded. Saved static checks and the visualization do not establish fabrication or powered qualification.
+Carrier readiness and interposer sourcing/manufacturing plans follow Howard’s 20 October update. The carrier JLC screenshot is a saved observation. Interposer schematic, native routing and 3D use the saved V23 PCM switch checkpoint, with all 49 fitted parts represented. FPGA schematic and routing use V60, which remains partially routed. Public 3D uses labeled nominal connector previews where supplier meshes are excluded. Saved static checks and the visualization do not establish fabrication or powered qualification.

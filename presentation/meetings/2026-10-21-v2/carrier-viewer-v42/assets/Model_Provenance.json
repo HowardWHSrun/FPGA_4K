@@ -456,5 +456,22 @@
     "The current native 3D export at 0.001 mm tolerance reports the same copper-wire self-interference warning seen in V41 at X105.790898..107.008146 / Y86.001335..86.832516 mm. GLB is an assembly illustration; the separate exact native routing viewer and native PCB remain authoritative for copper inspection.",
     "Other assembly boards use the prior simplified source-backed reference bodies; mating tolerances and installed heights are unverified."
   ],
-  "source_files_preserved": true
+  "source_files_preserved": true,
+  "assembly_extension_v1": {
+    "date": "2026-10-21",
+    "physical_reference": "One-ASIC board from historical Board-1024.zip; PCB bda1e19d157d134a462e0b66a12f10eb663fe5e0e90d8862189e98295194fac0",
+    "geometry": "Native board/copper/pad/mask/silkscreen export without any component body models. Original source/CAD left unchanged.",
+    "public_model": "ASIC_512_Source_Board_V1.glb",
+    "public_model_sha256": "7d5cceff3187947749c15879ef629b2b21d0d18b0e2936073fcad2c541f47262",
+    "connector_and_die_bodies": "Independently authored nominal simple primitives; no supplier CAD read/exported.",
+    "probe": "512-channel probe \u00b7 schematic. No probe CAD or measured implant geometry exists. No electrode-site or shank-count claim.",
+    "source_detail": "ASIC_Probe_Assembly_V1.json",
+    "limits": [
+      "Source-derived positions and contact columns are aligned by180degree in-plane rotation.",
+      "49/50 source net names align in the geometric comparison; ASIC pin50 is NC while LDO has optional DISC_OUT.",
+      "Pad-row centers differ by0.035mm; physical tolerance, mating and complete net/firmware qualification remain open.",
+      "Board-1024 is a historical archive name. No1024-channel probe is asserted.",
+      "Probe geometry, die-body height and connector shapes are illustrative; no supplier production geometry included."
+    ]
+  }
 }

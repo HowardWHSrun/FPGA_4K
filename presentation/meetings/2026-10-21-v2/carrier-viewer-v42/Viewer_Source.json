@@ -10,7 +10,7 @@
     "source_relative_to_repository": "hardware/xem8305-carrier/dated/2026-10-18/v42/project/CARRIER_XEM8305_V42_LED_Visibility.kicad_pcb",
     "sha256": "16e2feb8d973c7927e915a89278ace80d3bc74c1a0f7e6a7ad8e85e47d782d69",
     "original_native_sha256": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626",
-    "vendor": "../vendor/",
+    "vendor": "../vendor/kicanvas/",
     "defaults": [
       "F.Cu"
     ],
@@ -88,5 +88,12 @@
     "Static native geometry and the assembly illustration do not establish electrical operation, signal integrity, thermal performance, populated mechanical fit, manufacturing acceptance or a fabrication release.",
     "V42 relocates D601 and its local branch/ground connection only. V41 remains preserved; unrelated routing is retained.",
     "Added separation is for illustration; 0 mm returns attachments to inherited nominal seating positions."
-  ]
+  ],
+  "assembly_extension_v1": {
+    "source": "assets/ASIC_Probe_Assembly_V1.json",
+    "asic_source_pcb_sha256": "bda1e19d157d134a462e0b66a12f10eb663fe5e0e90d8862189e98295194fac0",
+    "probe_channels": 512,
+    "probe_representation": "schematic; no source probe CAD",
+    "geometry": "Source one-ASIC board with native copper; nominal die region and50-contact connector previews. No sourcePCB5twoASICgeometry used."
+  }
 }

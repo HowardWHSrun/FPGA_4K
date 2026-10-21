@@ -38,7 +38,7 @@ function state(){return {loaded:diagnostics.ready,ready:diagnostics.ready,render
 const api=window.nativePcbViewer={getState:state,setLayers,choosePreset,planes,highlight,selectNet:highlight,clearNet,zoom,fit,reset,flip:()=>nativeViewer?.flip_view(),activity:name=>boardApp?.change_activity(name)};
 window.fpgaViewer=api;
 async function load(){
- const r=await fetch('board.json');if(!r.ok)throw Error('Board identity unavailable');board=await r.json();document.title=board.title+' · native KiCad view';$('board-title').textContent=board.title;diagnostics.board=board.revision;
+ const r=await fetch('board.json?v=V23-20261021a');if(!r.ok)throw Error('Board identity unavailable');board=await r.json();document.title=board.title+' · native KiCad view';$('board-title').textContent=board.title;diagnostics.board=board.revision;
  if(board.defaults.length===1){$('routes').hidden=true;}
  const response=await fetch(board.native);if(!response.ok)throw Error('Native board unavailable');const bytes=await response.arrayBuffer();const digest=await crypto.subtle.digest('SHA-256',bytes);const hash=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==board.sha256)throw Error('Native source hash changed');diagnostics.sourceHash=hash;
  const fonts=document.createElement('link');fonts.rel='stylesheet';fonts.href=board.vendor+'fonts.css';document.head.append(fonts);

@@ -1,0 +1,121 @@
+{
+  "revision": "V1",
+  "date": "2026-10-21",
+  "source_archive": "Board-1024.zip (historical filename retained; one ASIC instance)",
+  "source_pcb": "Board-1024.zip/PCB.kicad_pcb",
+  "source_pcb_sha256": "bda1e19d157d134a462e0b66a12f10eb663fe5e0e90d8862189e98295194fac0",
+  "channel_basis": "One U01_BCD1 / IC:U01_BCD_OFF_CHIP instance. ASIC_REFERENCE identifies this ASIC family as 512 recording /128 stimulation channels; exact silicon revision remains unidentified. Probe depiction is explicitly schematic512, not a measured probe CAD model.",
+  "board": {
+    "asset": "ASIC_512_Source_Board_V1.glb",
+    "sha256": "7d5cceff3187947749c15879ef629b2b21d0d18b0e2936073fcad2c541f47262",
+    "bytes": 12440412,
+    "geometry": "Native saved board outline, pads, tracks, zones, masks and silkscreen. No assigned component body or supplier mesh exported.",
+    "thickness_mm": 1.6,
+    "asset_translation_mm": [
+      -130.3528,
+      0,
+      -69.7992
+    ],
+    "origin_xz_mm": [
+      128.2,
+      12.58
+    ],
+    "origin_y_mm": 0,
+    "rotation_y_deg": 180,
+    "gap_offset_factor": 0,
+    "source_bounds_native_xy_mm": [
+      122.46724,
+      138.076912,
+      67.425,
+      84.32
+    ]
+  },
+  "ldo_interface": {
+    "reference": "J2",
+    "native_xy_mm": [
+      180.5,
+      58.87
+    ],
+    "native_side": "B.Cu",
+    "x": 128.2,
+    "z": 12.58,
+    "plane_y_mm": -2,
+    "length_mm": 12.6,
+    "width_mm": 3.38,
+    "angle_deg": 0,
+    "source_sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425",
+    "source_footprint": "HRS_DF40C-50DS",
+    "source_family": "DF40 50-contact receptacle",
+    "nominal_display_mating_height_mm": 2.0,
+    "mating_height_status": "Display assumption / inferred candidate; 2.0mm is not a verified source J2 MPN or qualified installed mating height."
+  },
+  "asic_interface": {
+    "reference": "J2",
+    "source_mpn": "DF40C-50DP-0.4V(51)",
+    "native_xy_mm": [
+      130.3528,
+      69.7992
+    ],
+    "native_side": "B.Cu",
+    "position_mm": [
+      0,
+      0,
+      0
+    ],
+    "representation": "Independent nominal socket/plug bodies, not supplier CAD.2mm gap nominal."
+  },
+  "nominal_features": [
+    {
+      "name": "ASIC body /region (nominal)",
+      "center_mm": [
+        0.2114,
+        1.95,
+        10.566844
+      ],
+      "size_mm": [
+        8.1,
+        0.7,
+        7
+      ],
+      "color": 2830388,
+      "basis": "Nominal8.1x7mm ASIC_REFERENCE summary; source footprint has no Fab body outline. Not measured installed die geometry."
+    }
+  ],
+  "probe": {
+    "label": "512-channel probe \u00b7 schematic",
+    "channels": 512,
+    "source_probe_cad": false,
+    "anchor_native_xy_mm": [
+      130.272076,
+      84.32
+    ],
+    "flex_path_mm": [
+      [
+        -0.080724,
+        1.72,
+        13.6
+      ],
+      [
+        -0.080724,
+        1.9,
+        17
+      ],
+      [
+        -0.080724,
+        1.4,
+        25
+      ]
+    ],
+    "flex_width_mm": 3.6,
+    "shank_width_mm": 1.1,
+    "shank_length_mm": 12,
+    "basis": "Schematic flex/probe drawn from far board edge, not a native connector, pin map or measured implant. Seven visual traces do not represent channel count."
+  },
+  "interface_limits": [
+    "Source-derived positions and contact columns are aligned by180degree in-plane rotation.",
+    "49/50 source net names align in the geometric comparison; ASIC pin50 is NC while LDO has optional DISC_OUT.",
+    "Pad-row centers differ by0.035mm; physical tolerance, mating and complete net/firmware qualification remain open.",
+    "Board-1024 is a historical archive name. No1024-channel probe is asserted.",
+    "Probe geometry, die-body height and connector shapes are illustrative; no supplier production geometry included."
+  ]
+}

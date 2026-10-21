@@ -1,6 +1,6 @@
 # Full system assembly — meeting V2
 
-20 October 2026 · FPGA V60 / LDO V13 / active six-layer interposer V20.
+21 October 2026 · FPGA V60 / LDO V13 / active six-layer interposer V23.
 
 - [Assembly animation](index.html?fullscene=1&progress=0).
 - [Full assembly overview](index.html?fullscene=1&progress=100).
@@ -10,8 +10,8 @@ The initial view includes all nine boards: four ASIC concepts, LDO, FPGA, BRK, i
 
 FPGA V60 retains native partial copper, pads, mask, silk and 142 native component bodies. Two independently authored nominal J1/J2 connector previews replace excluded supplier payloads and remain selectable. TP1–TP13 are copper-only. Native U1/J1/J2/J3 poses retain the earlier registration, including the +0.5/+1.5 mm FPGA-to-LDO offset.
 
-Interposer V20 preserves the six connector datums, outline and 2.4 mm thickness, so the existing host registration remains. The public model includes 20 stock bodies and six nominal Samtec previews. Twenty-two packaged components lack assigned solid bodies, including Yamaichi J1. Mounts and test pads have no separate body. The cable anchor uses the J1 footprint and remains schematic.
+Interposer V23 preserves the six stack connector datums, outline and2.4 mm thickness, so host registration remains. All 49 fitted parts are represented:21 stock bodies including PCM12 SW1, six nominal stack connectors and 22 nominal package envelopes from saved Fab/pad geometry. Four mounts and four test pads remain PCB features. The cable anchor uses the J1 footprint and remains schematic; its new body is a nominal envelope.
 
 ASIC pass-through, cable and animal fit are conceptual. Static checks and visual models do not qualify construction, populated mating, electrical operation, thermal performance or animal placement. FPGA routing remains partial. Interposer checks retain six NPTH/courtyard errors and secondary reference misses.
 
-[Coverage](data/model-coverage.json) · [FPGA registration and coverage](data/fpga-v60-coverage.json) · [Interposer registration](data/interposer-v20.json) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+[Coverage](data/model-coverage.json) · [FPGA registration and coverage](data/fpga-v60-coverage.json) · [Interposer registration](data/interposer-v23.json) · [Third-party notices](THIRD_PARTY_NOTICES.md)

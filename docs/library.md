@@ -1,6 +1,6 @@
 # Project files and documents
 
-- [21 October FPGA hardware presentation · V2](../presentation/meetings/2026-10-21-v2/index.html): carrier V42 sourcing, full assembly animation, interposer V20 and FPGA V60 schematic/routing/3D. Nine interactive slides with FPGA component zoom and presenter notes.
+- [21 October FPGA hardware presentation · V2](../presentation/meetings/2026-10-21-v2/index.html): carrier V42 sourcing prices and 512-channel ASIC/probe assembly, full system animation, interposer V23 and FPGA V60 schematic/routing/3D. Nine interactive slides with all 49 fitted interposer bodies, FPGA component zoom and presenter notes.
 
 
 - [Custom Overview assembly sequence V23 · 20 October](../index.html?approach=custom#overview): FPGA V54 / LDO V13 / interposer V12 placement snapshot; separate host seating stages and optional sheep on one timeline. [Full-size viewer](../presentation/overview/assembly-v23/index.html) · [model sources](../presentation/overview/assembly-v23/model-sources.html). Detailed board meshes, nominal public connectors; engineering fit remains unqualified.
