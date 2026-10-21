@@ -1,0 +1,158 @@
+{
+  "revision": "V20",
+  "source_pcb": "project/XEM_Interposer_V20_Power_Width_Review.kicad_pcb",
+  "source_pcb_sha256": "b2091652b5cecf99ff433a79296707f4d351f6d822ad23112d9c9e625317e853",
+  "glb_sha256": "3e5cc805ec258c97f0a257db18b963b17a607562dddb5c56169f010f1aa55712",
+  "glb_bytes": 19500336,
+  "native_origin": "Default KiCad origin. Metres, native PCB X/Y map to GLB X/Z.",
+  "export_flags": [
+    "--include-tracks",
+    "--include-pads",
+    "--include-zones",
+    "--include-silkscreen",
+    "--include-soldermask",
+    "--cut-vias-in-body",
+    "--component-filter: R14,C14,C20,R12,C12,U5,C17,U6,C19,U7,R13,R15,C16,R11,C13,R16,C21,C15,C18,C22"
+  ],
+  "source_CAD_modified": false,
+  "coverage": {
+    "footprints": 57,
+    "stock_native_component_bodies": 20,
+    "nominal_connector_previews": 6,
+    "source_assigned_bodies": 26,
+    "unassigned_footprints": 31,
+    "unassigned_packaged_parts": 22,
+    "excluded_supplier_bodies": [
+      "JX1",
+      "JX2",
+      "JX3",
+      "JB1",
+      "JB2",
+      "JB3"
+    ],
+    "geometry_origin": "Native board/copper plus KiCad stock bodies; project-authored nominal Samtec previews."
+  },
+  "geometry": {
+    "nodes": 55,
+    "mesh_instances": 34,
+    "triangles": 383482
+  },
+  "nominal_previews": [
+    {
+      "reference": "JB1",
+      "value": "ERM6-50-01.5-L-DV-A-K-TR",
+      "position_mm": [
+        129.737223,
+        149.949994
+      ],
+      "rotation_deg": 0,
+      "side": "B.Cu",
+      "Fab_length_width_mm": [
+        36.47,
+        2.5
+      ],
+      "illustrative_height_mm": 1.5,
+      "electrical_contact_count": 100,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    },
+    {
+      "reference": "JB2",
+      "value": "ERM6-40-01.5-L-DV-A-K-TR",
+      "position_mm": [
+        123.647497,
+        103.049997
+      ],
+      "rotation_deg": 0,
+      "side": "B.Cu",
+      "Fab_length_width_mm": [
+        30.12,
+        2.5
+      ],
+      "illustrative_height_mm": 1.5,
+      "electrical_contact_count": 80,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    },
+    {
+      "reference": "JB3",
+      "value": "ERM6-40-01.5-L-DV-A-K-TR",
+      "position_mm": [
+        102.899995,
+        124.4875
+      ],
+      "rotation_deg": -90.0,
+      "side": "B.Cu",
+      "Fab_length_width_mm": [
+        30.12,
+        2.5
+      ],
+      "illustrative_height_mm": 1.5,
+      "electrical_contact_count": 80,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    },
+    {
+      "reference": "JX1",
+      "value": "ERF6-50-03.5-L-DV-A-K-TR",
+      "position_mm": [
+        129.737223,
+        149.949994
+      ],
+      "rotation_deg": 180.0,
+      "side": "F.Cu",
+      "Fab_length_width_mm": [
+        37.17,
+        3.25
+      ],
+      "illustrative_height_mm": 3.5,
+      "electrical_contact_count": 100,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    },
+    {
+      "reference": "JX2",
+      "value": "ERF6-40-03.5-L-DV-A-K-TR",
+      "position_mm": [
+        123.647497,
+        103.049997
+      ],
+      "rotation_deg": 180.0,
+      "side": "F.Cu",
+      "Fab_length_width_mm": [
+        30.82,
+        3.25
+      ],
+      "illustrative_height_mm": 3.5,
+      "electrical_contact_count": 80,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    },
+    {
+      "reference": "JX3",
+      "value": "ERF6-40-03.5-L-DV-A-K-TR",
+      "position_mm": [
+        102.899995,
+        124.4875
+      ],
+      "rotation_deg": 90.0,
+      "side": "F.Cu",
+      "Fab_length_width_mm": [
+        30.82,
+        3.25
+      ],
+      "illustrative_height_mm": 3.5,
+      "electrical_contact_count": 80,
+      "basis": "Saved native Fab bounds/pad centers. Authored rails/contact strips. Heights and internal structure are nominal display assumptions."
+    }
+  ],
+  "supplier_STEP_or_mesh_used_for_previews": false,
+  "display_processing": "Native per-part/material primitives may be combined without triangle simplification. Nominal connector rails and contact strips use saved Fab extents and pad positions; heights/internal structure are display assumptions.",
+  "credits": [
+    {
+      "source": "KiCad library contributors",
+      "scope": "Stock component bodies",
+      "license": "../licenses/KiCad_Libraries.md"
+    },
+    {
+      "source": "Project authors",
+      "scope": "Six nominal Samtec previews. No supplier STEP or mesh data used."
+    }
+  ],
+  "qualification": "Display model only. Source has unmodeled packaged parts, including J1. Exact mating, body dimensions and hardware operation remain unqualified."
+}

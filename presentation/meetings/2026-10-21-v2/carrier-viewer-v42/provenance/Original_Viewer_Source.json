@@ -1,0 +1,92 @@
+{
+  "revision": "V42",
+  "old_viewer_relative_to_repository": "presentation/meetings/2026-10-14-v16/carrier_viewer/",
+  "deployment_relative_to_repository": "presentation/overview/carrier-viewer-v42/",
+  "behavior": "Full rotatable V42 native assembly with visible, draggable Illustration spacing range (0\u201335 mm, default 16 mm), nominal seated and separated states, show/hide XEM/carrier/LDO, isometric/top/underside/side presets, plus exact native KiCanvas layout, parts/layers/nets and copper highlighting. Slider input changes actual attachment group translations, not just the displayed number.",
+  "routing_source": {
+    "title": "V42 carrier",
+    "revision": "V42",
+    "native": "../../../../hardware/xem8305-carrier/dated/2026-10-18/v42/project/CARRIER_XEM8305_V42_LED_Visibility.kicad_pcb",
+    "source_relative_to_repository": "hardware/xem8305-carrier/dated/2026-10-18/v42/project/CARRIER_XEM8305_V42_LED_Visibility.kicad_pcb",
+    "sha256": "16e2feb8d973c7927e915a89278ace80d3bc74c1a0f7e6a7ad8e85e47d782d69",
+    "original_native_sha256": "5f1c9069e03eae1fb0390e0198b944624d309b61d34292c1f078084b86564626",
+    "vendor": "../../../meetings/2026-10-14-v16/fpga_viewer/vendor/",
+    "defaults": [
+      "F.Cu"
+    ],
+    "expected": {
+      "footprints": 89,
+      "pads": 651,
+      "segments": 742,
+      "vias": 313,
+      "zones": 21,
+      "copperLayers": 6
+    },
+    "theme": "kicad",
+    "planes": false,
+    "references": true,
+    "source_note": "Model-only omissions in public PCB; native electrical geometry and saved filled polygons retained. Routing is rendered directly from this hash-checked KiCad file, not an approximate JSON conversion."
+  },
+  "attachment_registration": [
+    {
+      "reference": "MC1",
+      "native_placement": [
+        "150.94999",
+        "79.262779",
+        "-90"
+      ],
+      "side": "F.Cu",
+      "V41_placement_unchanged": true
+    },
+    {
+      "reference": "MC2",
+      "native_placement": [
+        "104.05",
+        "85.352499",
+        "-90"
+      ],
+      "side": "F.Cu",
+      "V41_placement_unchanged": true
+    },
+    {
+      "reference": "MC3",
+      "native_placement": [
+        "125.4875",
+        "106.1",
+        "180"
+      ],
+      "side": "F.Cu",
+      "V41_placement_unchanged": true
+    },
+    {
+      "reference": "J1",
+      "native_placement": [
+        "130.85",
+        "28.5",
+        "180"
+      ],
+      "side": "B.Cu",
+      "V41_placement_unchanged": true
+    },
+    {
+      "reference": "J19",
+      "native_placement": [
+        "125",
+        "47.25",
+        "180"
+      ],
+      "side": "B.Cu",
+      "V41_placement_unchanged": true
+    }
+  ],
+  "vendor_dependencies": [
+    "presentation/meetings/2026-10-14-v16/carrier_viewer/vendor/",
+    "presentation/meetings/2026-10-14-v16/fpga_viewer/vendor/"
+  ],
+  "attachments_note": "XEM and LDO simplified geometry reused with historical source hashes retained. Nominal mating gaps and component envelopes unqualified.",
+  "limits": [
+    "Static native geometry and the assembly illustration do not establish electrical operation, signal integrity, thermal performance, populated mechanical fit, manufacturing acceptance or a fabrication release.",
+    "V42 relocates D601 and its local branch/ground connection only. V41 remains preserved; unrelated routing is retained.",
+    "Added separation is for illustration; 0 mm returns attachments to inherited nominal seating positions."
+  ]
+}

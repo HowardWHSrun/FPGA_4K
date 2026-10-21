@@ -1,0 +1,86 @@
+{
+  "revision": "V60",
+  "source_asset": "fpga-v60-native.glb",
+  "source_sha256": "5f1bfb9ff7c8c0e38d47a1e3a1087eaaa8b8412fe40f2d1553d11c8a05175c6b",
+  "output_asset": "fpga-v60-public.glb",
+  "output_sha256": "d7b8e667bd153533333908418359ab471baa5c9defb999864d306f0d40dee79b",
+  "output_bytes": 14488772,
+  "supplier_subtree_roots_removed": [
+    {
+      "node": 498,
+      "name": "J1",
+      "children": [
+        499
+      ]
+    },
+    {
+      "node": 578,
+      "name": "J2",
+      "children": [
+        579
+      ]
+    }
+  ],
+  "supplier_subtree_node_count_removed": 4,
+  "retained_native_component_bodies": 142,
+  "original_assigned_component_bodies": 144,
+  "public_nominal_connector_previews": 2,
+  "preview_asset": "df40-60ds-preview.glb",
+  "preview_sha256": "8239aacd0d417093c131350771cb510a638ba54bd46da2d52dcc8f7d4b20d5ff",
+  "preview_supplier_mesh_used": false,
+  "preview_datums": [
+    {
+      "reference": "J1",
+      "native_xy_mm": [
+        122.25,
+        109.08
+      ],
+      "rotation_deg": 90,
+      "translation_m": [
+        0.12225,
+        -8.5e-05,
+        0.10908
+      ],
+      "quaternion_xyzw": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476,
+        0
+      ]
+    },
+    {
+      "reference": "J2",
+      "native_xy_mm": [
+        113.15,
+        119.35
+      ],
+      "rotation_deg": 0,
+      "translation_m": [
+        0.11315,
+        -8.5e-05,
+        0.11935
+      ],
+      "quaternion_xyzw": [
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "preview_mounting_basis": "Same source footprint datums and B-side Y=-0.085mm convention as the prior public V23 preview placements; X/Y plane -> GLB X/Z in metres. Preview original numeric-mm geometry scaled by 0.001.",
+  "retained_native_mesh_count": 553,
+  "retained_native_buffer_views": 3,
+  "retained_native_payloads_byte_identical": true,
+  "retained_native_transforms_unchanged": true,
+  "source_unique_triangles": 337661,
+  "retained_native_unique_triangles": 316389,
+  "preview_unique_triangles": 2220,
+  "selectable_reference_nodes": [
+    "J1",
+    "J2"
+  ],
+  "native_pcb_modified": false,
+  "source_glb_modified": false,
+  "reason": "Public meeting package follows prior V23 Hirose supplier-CAD omission policy and reuses independently authored nominal DF40 previews."
+}

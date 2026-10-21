@@ -1,0 +1,63 @@
+{
+  "viewer_revision": "V23",
+  "source_viewer_revision": "V22",
+  "date": "2026-10-20",
+  "source_boards": {
+    "FPGA": {
+      "revision": "V60",
+      "pcb_source_sha256": "66396b16c10e53ee490c286cf2de6d3a265c1e282c57e8a0a52907be65d6eab7",
+      "assigned_bodies": 144,
+      "source_body_omissions": [
+        "TP1",
+        "TP2",
+        "TP3",
+        "TP4",
+        "TP5",
+        "TP6",
+        "TP7",
+        "TP8",
+        "TP9",
+        "TP10",
+        "TP11",
+        "TP12",
+        "TP13"
+      ],
+      "note": "Public V60 GLB retains 142 native component bodies and includes two authored nominal J1/J2 connector previews. V60 remains partially routed. See fpga-v60-coverage.json."
+    },
+    "LDO": {
+      "revision": "V13",
+      "assigned_bodies": 46,
+      "missing_packaged_bodies": [
+        "RN250",
+        "RN450"
+      ]
+    },
+    "interposer": {
+      "revision": "V20",
+      "pcb_source_sha256": "b2091652b5cecf99ff433a79296707f4d351f6d822ad23112d9c9e625317e853",
+      "assigned_bodies": 26,
+      "unassigned_footprints": 31,
+      "unassigned_packaged_parts": 22,
+      "note": "Public V20 GLB contains the native board/copper, 20 stock component bodies and six authored nominal connector previews. Five copper test points and four mounting holes have no separate bodies. Dedicated V20 coverage record retains exact omissions. Cable endpoint is schematic at current J1 footprint.",
+      "coverage_record": "interposer-v20-coverage.json",
+      "stock_native_bodies": 20,
+      "nominal_connector_previews": 6
+    },
+    "host": {
+      "boards": [
+        "BRK8305",
+        "XEM8305"
+      ],
+      "source": "Retained official source geometry, reused byte-for-byte from the existing assembly-v8 public assets."
+    }
+  },
+  "nominal_connector_previews": true,
+  "electrical_boundary": "FPGA V60 retains 1.8 V Bank0/JTAG/flash and 1.5 V ASIC banks. Viewer registration does not establish system operation.",
+  "limits": [
+    "ASIC pass-through PCB redesign unfinished",
+    "Public connector previews are nominal, not manufacturer CAD or mating tolerance validation",
+    "Cable, head interior, support and probe directions are schematic",
+    "Board routing, physical clearance and powered operation remain unqualified"
+  ],
+  "meeting_refresh": "V2, 20 October 2026"
+}

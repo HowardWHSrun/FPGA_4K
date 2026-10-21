@@ -1,5 +1,8 @@
 # FPGA_4K
 
+**[21 October FPGA hardware presentation · V2](presentation/meetings/2026-10-21-v2/index.html)** — LDO carrier readiness and JLC sourcing, full assembly animation, interposer V20 schematic/layout/3D, separate FPGA/LDO boards and FPGA V60 updates. Nine interactive slides; review and powered qualification remain open.
+
+
 **[Custom FPGA assembly sequence · V23 · 20 October 2026](index.html?approach=custom#overview)** — one timeline joins ASIC concepts / LDO V13 / FPGA V54, then the saved interposer V12 / BRK / XEM stack; sheep context is optional. The page matches the overview layout and uses detailed project meshes with nominal public connector previews. [Model scope and credits](presentation/overview/assembly-v23/model-sources.html).
 
 [Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.

@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-15",
+  "version": "V8",
+  "coordinate_frame": "Numeric millimetres; right-handed Z-up",
+  "assets": [
+    {
+      "path": "../assembly-v6/assets/ASIC_PCB5_Interactive.glb",
+      "bytes": 10187900,
+      "sha256": "7e8e14af51aab32b3e5a697034e2a7fdc098f3d9244eed67d36ff0a2b619f7ff"
+    },
+    {
+      "path": "../assembly-v6/assets/Combined_V7_Interactive.glb",
+      "bytes": 11280396,
+      "sha256": "3239414a1e0bdba966e1079c79feab30dffebd35cee592757b6183bddff17af6"
+    },
+    {
+      "path": "assets/BRK8305_Full.glb",
+      "bytes": 18559572,
+      "sha256": "41d0d4df7b35f90c56e648b562b0f614a9b7e3bf142ded8e7573f17bcf707090",
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/brk_official/BRK8305_Registered_Full_V4.glb",
+      "transformation": "Exact byte copy of full registered source GLB; no display simplification.",
+      "unique_triangles": 447234,
+      "drawn_triangles": 565156
+    },
+    {
+      "path": "assets/Interposer_V4_Detailed.glb",
+      "bytes": 9505284,
+      "sha256": "6904214132133e2f2da642129386f4a536a23f946de3ff3d976ee32cf426b184",
+      "source": "2026-10-15_FPGA_Work/07_Website_Detailed_Models_V8/assets/Interposer_V4_Detailed.glb",
+      "transformation": "Exact byte copy of richer native V4 export after exact per-material primitive merge and existing rigid registration; no triangle reduction or quantization.",
+      "unique_triangles": 271492,
+      "drawn_triangles": 271492
+    },
+    {
+      "path": "assets/XEM8305_Full.glb",
+      "bytes": 12275468,
+      "sha256": "6bcd7fc6e66ddfc3334d666eb4722d017f2f42a149a7e84f5c98cd03f55b8caa",
+      "source": "2026-10-15_FPGA_Work/02_XEM_Interposer_Stack_View_V4/assets/xem/XEM8305_Official_Stack_mm.glb",
+      "transformation": "Exact byte copy of full registered source GLB; no display simplification.",
+      "unique_triangles": 335232,
+      "drawn_triangles": 945424
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/fpga/FPGA_V41_Interactive.glb",
+      "bytes": 15534372,
+      "sha256": "89eddaffada21914daf27b40091fa8aa673fe674bf367d6cafe4315dd4281623"
+    },
+    {
+      "path": "../../meetings/2026-10-14-v16/stack_viewer/assets/ldo/LDO_V5_Interactive.glb",
+      "bytes": 10233988,
+      "sha256": "44e61d7048fb3f18649d65c6debcad3850e2345a9000444ef143252fecdd8163"
+    }
+  ],
+  "transforms": {
+    "native_to_scene": "Scale 1000, rotate X +90deg: native metres [x,elevation,y] -> mm [x,-y,elevation].",
+    "asic": "Four original PCB-5 clones retain source geometry; their complete group is translated for a separate recording-side cluster. No ASIC distribution or mating adapter is invented.",
+    "ldo_translation_after_native_conversion_mm": [
+      -116,
+      116.25,
+      -0.995
+    ],
+    "fpga_translation_after_native_conversion_mm": [
+      -115.5,
+      114.75,
+      1.505002
+    ],
+    "combined_translation_after_native_conversion_mm": [
+      -115,
+      115,
+      0
+    ],
+    "separated_view": "Inspection only: FPGA +8mm, interposer +10mm, XEM +20mm. Registered nominal view removes these display offsets.",
+    "display_layout": "Rigid 180 degree Z rotations of compact and complete registered host groups point source micro-HDMI ports into the gap. Host visible bounds centered at X70/Y0 mm. Compact group translated to leave 70 mm between its maxX and full host minX; required display clearance >=65 mm. ASIC group translated left of compact with18 mm clearance. These are illustration positions, not physical stack or enclosure dimensions."
+  },
+  "source_notes": [
+    "../assembly-v6/assets/Host_Asset_Provenance.json",
+    "../assembly-v6/assets/Native_Assets_Provenance_V6.json",
+    "../../meetings/2026-10-14-v16/stack_viewer/assets/Scene_Manifest.json",
+    "2026-10-15_FPGA_Work/07_Website_Detailed_Models_V8/Interposer_Detailed_Provenance_V8.json"
+  ],
+  "scope": "Unchanged native board CAD, with full registered host geometry and native interposer pad/silkscreen/soldermask surfaces. Compact electronics and host stack remain separate and linked by an illustrative micro-HDMI cable. No ASIC die, distribution adapter, missing vendor body, standoff or routing invented; hardware qualification unchanged.",
+  "cable": {
+    "type": "micro-HDMI",
+    "representation": "Illustrative curved jacket mesh; no qualified plug, physical cable length, bend radius or mating datum.",
+    "separate_source": "FPGA V41 node J3 world maxX face center after rigid group rotation.",
+    "combined_source": "V7 J3 source-model mouth point native metres[.0994,.00277,.1058], transformed with the combined model.",
+    "host_target": "Interposer V4 node J600 world minX face center after rigid group rotation; follows interposer inspection separation.",
+    "source_reference_scope": "Nominal connector-bound anchors retain the actual source ports. Cable geometry and overall spacing communicate the architecture only."
+  },
+  "host_detail": {
+    "policy": "Full registered BRK/XEM tessellations and original native V4 component/surface triangles. No QEM, clustering, decimation or quantization.",
+    "interposer": {
+      "native_revision": "V4",
+      "website_revision": "V8",
+      "source_pcb": "2026-10-15_FPGA_Work/01_XEM_Interposer_Compact_V4/project/XEM_Interposer_Compact_V4.kicad_pcb",
+      "source_pcb_sha256_before": "cd754509f51753dea646933c94f39607ed0a62b75144793e549be0768c6455f7",
+      "source_pcb_sha256_after": "cd754509f51753dea646933c94f39607ed0a62b75144793e549be0768c6455f7",
+      "source_unchanged": true,
+      "exporter": "KiCad 10.0.6 native pcb export glb",
+      "export_flags": [
+        "--user-origin",
+        "100x100mm",
+        "--include-tracks",
+        "--include-pads",
+        "--include-zones",
+        "--include-silkscreen",
+        "--include-soldermask"
+      ],
+      "raw_export_sha256": "f00d4f0e901cf7c2d438558b8964e05693198b70ab5c8d033456ae04507c94aa",
+      "raw_export_bytes": 16942736,
+      "component_reference_groups": 52,
+      "top_component_groups": 49,
+      "bottom_component_references": [
+        "JB1",
+        "JB2",
+        "JB3"
+      ],
+      "verification": "Every component reference has the same triangle count and registered bounds as the earlier full V4 model. Registered substrate bounds are unchanged.",
+      "native_surface_meshes": [
+        {
+          "surface": "pads",
+          "triangles": 32900
+        },
+        {
+          "surface": "front silkscreen",
+          "triangles": 6608
+        },
+        {
+          "surface": "back silkscreen",
+          "triangles": 260
+        },
+        {
+          "surface": "front soldermask",
+          "triangles": 6464
+        },
+        {
+          "surface": "back soldermask",
+          "triangles": 2214
+        }
+      ],
+      "total_triangles": 271492,
+      "tracks": 0,
+      "vias": 0,
+      "zones": 0,
+      "processing": "Merge primitives by material within each original mesh, retain native float32 positions, normals, material assignments and triangles; apply existing V4 Z-up/mm registration.",
+      "world_transform_from_native_metres": [
+        [
+          1000,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1000,
+          0
+        ],
+        [
+          0,
+          1000,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "limits": "Existing component sources mix vendor geometry, generic packages and dimension-derived nominal envelopes. Newer Power Foundation V1 is separate schematic work, not placed V4 hardware.",
+      "viewer_material_policy": "Render native transparent substrate, soldermask and silkscreen materials as opaque with depth writing to avoid sorting haze. GLB material assignments and bytes are unchanged."
+    },
+    "official_source_omissions": {
+      "BRK8305": "Official STEP omits MC4\u2013MC9 header bodies and S1/J2/J6 bodies. No replacement bodies invented.",
+      "XEM8305": "Upstream official-STEP conversion omits decorative silkscreen, prepreg and K-DOT pickup subtrees. Full GLB retains all remaining input tessellation."
+    },
+    "attribution": "Opal Kelly authored official BRK8305/XEM8305 models; native V4 retains original project and model-source provenance.",
+    "inspection": {
+      "focus_parameter": "focus=interposer",
+      "behavior": "Interposer focus hides surrounding models and opens Top; Bottom exposes the underside; other focus controls restore the assembly."
+    }
+  }
+}
