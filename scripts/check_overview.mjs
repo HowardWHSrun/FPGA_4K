@@ -182,7 +182,10 @@ async function checkResponsive(width,height,desktop){
 try{
  await page.goto(base+'#overview',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.PRESENTATION?.getState().sourceVerified&&window.currentOverviewState?.approach==='custom');
- if(await page.locator('html').getAttribute('data-overview-version')==='V24'){
+ if(await page.locator('html').getAttribute('data-overview-version')==='V25'){
+  const {checkOverviewV25}=await import('./check_overview_v25.mjs');
+  await checkOverviewV25({page,base,out,check,report});
+ }else if(await page.locator('html').getAttribute('data-overview-version')==='V24'){
   const {checkOverviewV24}=await import('./check_overview_v24.mjs');
   await checkOverviewV24({page,base,out,check,report});
  }else if(await page.locator('html').getAttribute('data-overview-version')==='V23'){

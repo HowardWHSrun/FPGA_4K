@@ -1,0 +1,11 @@
+# Carrier V1 whole assembly — V2
+
+[Open the rotatable assembly](../../../../../presentation/overview/carrier-assembly-v2/) · [Connector registration](registration.json) · [Source manifest](source-manifest.json)
+
+The current Carrier V1 sits between the XEM8305 module on its front and Gerald's original LDO board on its back. Show all three boards seated, add illustration spacing to expose the mating connectors, or focus a single board. The XEM uses MC1–MC3; LDO J1/J19 register to Carrier J1/J2.
+
+The carrier keeps the previously published current geometry and all 80 component-body representations. Its 80/80 native model verification applies to the carrier. Added XEM and LDO geometry reuses the independently authored public reference envelopes from the preserved V42 viewer, freshly registered to this carrier's connector origins. The XEM preview contains ten major package envelopes and three connector markers; the LDO contains 61 component boxes and two connector markers. No supplier CAD mesh is added.
+
+Fresh native registration checks match all XEM connector/hole origins and both LDO connector origins within a 0.001 mm numerical tolerance. All 74 LDO electrical contact rows have matching longitudinal coordinates; opposing DP/DS solder tails have the recorded 0.185 mm / 0.14 mm transverse offsets. The LDO outline extends 17.1875 mm beyond the carrier's left edge. A nominal slab/body-box screen finds no non-mating interference.
+
+The nominal PCB face gaps are 5 mm for XEM and 2 mm for the LDO ([Opal Kelly expansion connectors](https://docs.opalkelly.com/xem8305/expansion-connectors/), [Hirose 50-contact](https://www.hirose.com/en/product/p/CL0684-4091-0-51), [Hirose 24-contact](https://www.hirose.com/en/product/p/CL0684-4041-2-51), checked 26 October 2026); the spacing slider adds an illustration offset. Generic connector markers do not describe exact housings or terminals. In nominal seating, abstract mating-connector envelopes may intentionally overlap. The view supports inspection of nominal placement, not toleranced populated fit, support/retention, electrical/thermal behavior or manufacturing qualification. Original native CAD and the earlier carrier-only viewer are unchanged.

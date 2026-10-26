@@ -1,6 +1,8 @@
 # FPGA_4K
 
-**[Updated alternative approach · Carrier V1 · 26 October 2026](index.html?approach=direct#overview)** — current four-layer XEM8305 / existing-LDO carrier, with 3D, layout and schematic views. **All 80 component bodies verified in native 3D**; saved-rule DRC, opens and schematic/PCB parity are 0 / 0 / 0. [Review files and verification scope](hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
+**[Whole alternative assembly · Overview V25](index.html?approach=direct#overview)** — rotate the XEM8305, current Carrier V1 and original LDO together. Use Seated, illustration spacing and individual board focus to inspect their connector alignment. Fresh registration matches the current carrier; the LDO extends about 17.2 mm beyond its edge. Carrier 80/80 native body-model verification remains scoped to the carrier. [Assembly sources and nominal fit](hardware/xem8305-carrier/dated/2026-10-26/assembly-v2/README.md). 26 October 2026.
+
+**[Carrier V1 alone · 26 October 2026](presentation/overview/carrier-v1/)** — current four-layer XEM8305 / existing-LDO carrier, with 3D, layout and schematic views. **All 80 component bodies verified in native 3D**; saved-rule DRC, opens and schematic/PCB parity are 0 / 0 / 0. [Review files and verification scope](hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
 
 **[XEM8310 carrier · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
 

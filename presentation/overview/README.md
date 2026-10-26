@@ -1,4 +1,14 @@
-# Current shared hardware overview — V24
+# Current shared hardware overview — V25
+
+26 October 2026. [Whole alternative assembly](../../index.html?approach=direct#overview) · [Full-size assembly viewer](carrier-assembly-v2/) · [Current carrier alone](carrier-v1/) · [Assembly registration and source scope](../../hardware/xem8305-carrier/dated/2026-10-26/assembly-v2/README.md).
+
+The direct approach now shows the XEM8305, current Carrier V1 and original Gerald LDO together. Seated returns to nominal connector positions; Illustration spacing separates attachments for inspection. Each board can be focused or hidden, and four camera presets expose the module, component side and stack gaps. Carrier layout and circuit tabs still use the exact published current sources.
+
+Fresh checks match all three XEM connector origins and four mounting holes to the current carrier. The LDO source J1/J19 pair maps to current carrier J1/J2 through its moved/rotated placement; all 74 contact numbers/longitudinal positions are checked, with expected plug/socket solder-tail offsets recorded. The LDO extends about 17.2 mm beyond the carrier's native left edge. Nominal 5 mm XEM and 2 mm LDO PCB face gaps follow the cited manufacturer mating references. Generic connector markers, source-bound major package boxes and nominal body envelopes support placement inspection; exact populated tolerances, support and retention remain unqualified.
+
+The carrier retains its 80/80 native component-body verification. The XEM public preview contains ten major packages and three mating markers; the LDO has 61 package boxes and two mating markers. No supplier mesh or native CAD edit is added. [The exact V24 overview](../../overview-2026-10-26-v24.html?approach=direct#overview), its carrier-only viewer, earlier V42 materials and custom FPGA V23 assembly remain unchanged. New V25 slides, entry, assembly viewer and regression branch preserve earlier revision scripts.
+
+# Preserved shared hardware overview — V24
 
 26 October 2026. [Updated alternative approach B](../../index.html?approach=direct#overview) · [Carrier V1 viewer](carrier-v1/) · [Public review files](../../hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md).
 

@@ -1,0 +1,12 @@
+/* V25: add checked nominal XEM8305 and original LDO attachment to current Carrier V1. */
+(() => {
+ 'use strict';
+ const catalog=window.OVERVIEW_SLIDE_CATALOG;if(!Array.isArray(catalog))return;
+ const base='hardware/xem8305-carrier/dated/2026-10-26/assembly-v2/';
+ const extraSources=[['Whole assembly · source geometry and limits',base+'README.md'],['Connector registration and nominal stack',base+'registration.json'],['Assembly source hashes',base+'source-manifest.json'],['Carrier alone · preserved V24 viewer','presentation/overview/carrier-v1/']];
+ const receiver=catalog.find(s=>s.id==='receiver');
+ const update={section:'B · Direct-LDO whole assembly',title:'XEM8305 + carrier + existing LDO',subtitle:'See the three boards and their connector alignment.',description:'Rotate the XEM8305, current Carrier V1 and existing LDO together. Use Seated to inspect nominal alignment, or Illustration spacing to expose the connectors. Focus or hide each board to inspect its surfaces.',facts:[['3','boards in the assembly'],['80 / 80','carrier bodies verified'],['0 / 0 / 0','carrier DRC / opens / parity']],noteLabel:'Current carrier · nominal attachment fit',note:'Carrier component bodies are verified in native 3D. Attachment placement follows checked connector datums; public bodies and seating gaps are nominal. Toleranced populated fit remains open.'};
+ if(receiver)Object.assign(receiver,update,{details:['XEM8305 is above the carrier at MC1–MC3; the original LDO mates to the carrier at J1/J2. The current carrier connector datums are checked against the attachment sources; this does not reuse the V42 placement unchecked.','Illustration spacing adds display separation only. Seated returns to nominal source-bound positions. Per-board focus and visibility expose the carrier and attachment component sides.',...(receiver.details||[])],sources:[...extraSources,...(receiver.sources||[])]});
+ const original=window.setOverviewApproachContent;
+ window.setOverviewApproachContent=mode=>{original(mode);if(mode!=='direct')return;Object.assign(catalog.find(s=>s.id==='overview')||{},update,{details:receiver?.details||[],sources:receiver?.sources||extraSources,section:'B · Three-board alternative assembly',description:'The existing LDO connects through the current Carrier V1 to XEM8305. Inspect all three boards together, return to nominal seating, or separate them to see the connectors. The carrier retains its 80/80 native component-body verification.'});};
+})();

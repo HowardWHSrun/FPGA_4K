@@ -1,5 +1,7 @@
 # Hardware design files
 
+[Whole XEM8305 / Carrier V1 / existing LDO assembly](../index.html?approach=direct#overview) shows the current three-board alternative. Use Seated, illustration spacing, per-board focus/visibility and side view to inspect the nominal stack and connector alignment. [Fresh registration and source scope](xem8305-carrier/dated/2026-10-26/assembly-v2/README.md) distinguish the exact current carrier datums from nominal public attachment bodies. The [carrier alone](../presentation/overview/carrier-v1/) and its [native review package](xem8305-carrier/dated/2026-10-26/carrier-v1/README.md) remain available. Carrier 80/80 native body models are verified; toleranced assembled fit and powered qualification remain open.
+
 [Updated alternative approach · Carrier V1](../index.html?approach=direct#overview) shows the current four-layer carrier, native layout and schematic. All 80 component bodies are verified in the native 3D project; saved-rule DRC / opens / parity are 0 / 0 / 0. [Review package and scope](xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
 
 ## Preserved XEM8305 carrier V42 review

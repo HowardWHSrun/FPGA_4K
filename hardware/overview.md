@@ -1,5 +1,7 @@
 # Board and system overview
 
+[Inspect the whole direct-LDO alternative](../index.html?approach=direct#overview): XEM8305 above the current Carrier V1 at MC1–MC3, original LDO on the carrier's opposite face at J1/J2. The LDO source J1/J19 connector pair is registered to the carrier's current moved/rotated pair. [Assembly sources and checks](xem8305-carrier/dated/2026-10-26/assembly-v2/README.md) record the nominal 5 mm / 2 mm PCB face gaps, about 17.2 mm LDO overhang and simplified component-body scope. Seated and separated states preserve the same XY datums.
+
 For the two parallel approaches, open the [current overview](../index.html#overview). The [updated alternative approach B](../index.html?approach=direct#overview) uses the four-layer Carrier V1 with the existing LDO and XEM8305. All 80 component bodies are verified in native 3D; saved-rule DRC / opens / parity are 0 / 0 / 0. [Current review files and scope](xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). The custom FPGA approach and earlier board descriptions retain their own revisions and status.
 
 **Preserved XEM8305/LDO carrier · V15 (published 12 October):** [Attachment, routing, schematic and editable files](../presentation/xem/carrier-r15-2026-10-12.html). The current overview carrier selection opens V17. Inspect the XEM above MC1–MC3 and Gerald’s LDO underneath J1/J19, seated or separated; exact populated fit remains to verify. Earlier carrier studies below retain their own scope.
