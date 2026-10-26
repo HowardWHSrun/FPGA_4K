@@ -1,6 +1,6 @@
 # Board and system overview
 
-For the current two parallel approaches, open the [15 October overview](../index.html#overview): custom FPGA/new LDO electronics and the XEM8305 direct-LDO carrier V17. Board revisions and older interface descriptions below retain their original dates.
+For the two parallel approaches, open the [current overview](../index.html#overview). The [updated alternative approach B](../index.html?approach=direct#overview) uses the four-layer Carrier V1 with the existing LDO and XEM8305. All 80 component bodies are verified in native 3D; saved-rule DRC / opens / parity are 0 / 0 / 0. [Current review files and scope](xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). The custom FPGA approach and earlier board descriptions retain their own revisions and status.
 
 **Preserved XEM8305/LDO carrier · V15 (published 12 October):** [Attachment, routing, schematic and editable files](../presentation/xem/carrier-r15-2026-10-12.html). The current overview carrier selection opens V17. Inspect the XEM above MC1–MC3 and Gerald’s LDO underneath J1/J19, seated or separated; exact populated fit remains to verify. Earlier carrier studies below retain their own scope.
 

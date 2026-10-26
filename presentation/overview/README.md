@@ -1,4 +1,12 @@
-# Current shared hardware overview — V11
+# Current shared hardware overview — V24
+
+26 October 2026. [Updated alternative approach B](../../index.html?approach=direct#overview) · [Carrier V1 viewer](carrier-v1/) · [Public review files](../../hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md).
+
+The direct-LDO alternative now opens the separate four-layer Carrier_V1 from-scratch design, with matching 3D, front/back layout and one-page schematic views. **All 80 component bodies are verified in native 3D.** Saved-rule native DRC, unconnected items and schematic/PCB parity are 0 / 0 / 0. The viewer identifies all 80 body-bearing components and separately accounts for eight test pads and four mounting holes. These CAD checks do not qualify purchasing parts, powered hardware, fabrication or toleranced assembly.
+
+The interactive public carrier uses independently authored nominal component bodies and current native board/pad/copper coordinates. Supplier 3D files remain in the complete local project; the public review ZIP strips model references and embedded payloads while preserving electrical and non-model geometry. Native render images are also provided. No new full XEM/LDO seating claim is made. The [exact preceding V23 overview](../../overview-2026-10-20-v23.html?approach=direct#overview), V42 viewer/assets and custom FPGA assembly V23 remain preserved. New V24 slide and entry overrides update the direct path without replacing historical scripts.
+
+# Preserved shared hardware overview — V11
 
 ## Assembly sequence V23 · 20 October 2026
 

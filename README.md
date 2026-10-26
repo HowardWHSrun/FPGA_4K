@@ -1,5 +1,7 @@
 # FPGA_4K
 
+**[Updated alternative approach · Carrier V1 · 26 October 2026](index.html?approach=direct#overview)** — current four-layer XEM8305 / existing-LDO carrier, with 3D, layout and schematic views. **All 80 component bodies verified in native 3D**; saved-rule DRC, opens and schematic/PCB parity are 0 / 0 / 0. [Review files and verification scope](hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
+
 **[XEM8310 carrier · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
 
 **[XEM8310 eight-port carrier · V8](xem8310-v8/)** — standalone schematic, interactive PCB/3D, 422-component browser and native review files. V7 electrical design / six-layer V8 rough placement, 25 October 2026. Routing and hardware qualification remain open.
@@ -9,9 +11,9 @@
 
 **[Custom FPGA assembly sequence · V23 · 20 October 2026](index.html?approach=custom#overview)** — one timeline joins ASIC concepts / LDO V13 / FPGA V54, then the saved interposer V12 / BRK / XEM stack; sheep context is optional. The page matches the overview layout and uses detailed project meshes with nominal public connector previews. [Model scope and credits](presentation/overview/assembly-v23/model-sources.html).
 
-[Public carrier V42 overview](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#overview) shows the current XEM8305–carrier–LDO assembly, native layout and schematic. Drag the illustration-spacing slider to separate the boards, or return to nominal seating. D601 now joins D600/D602 on the exposed underside. V41 and the separate FPGA path are preserved.
+[Preserved carrier V42 overview](overview-2026-10-20-v23.html?approach=direct#overview) retains the earlier XEM8305–carrier–LDO assembly and illustration-spacing control. The updated alternative above uses the separate Carrier_V1 from-scratch design; the earlier V42 and custom FPGA records retain their own scope.
 
-**[Latest XEM8305 carrier review · V42 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v42/README.md)** — D601 moved to the visible underside; unrelated routing and component positions are preserved. Editable KiCad project, PDF, six-layer plots, matching BOM/CPL and manufacturing review files are included. Native physical/silk/open/parity checks pass; sourcing, factory and powered qualification remain open. This carrier is separate from the standalone FPGA V41 and is not a fabrication release.
+**[Preserved XEM8305 carrier review · V42 · 18 October 2026](hardware/xem8305-carrier/dated/2026-10-18/v42/README.md)** — D601 moved to the visible underside; unrelated routing and component positions are preserved. Editable KiCad project, PDF, six-layer plots, matching BOM/CPL and manufacturing review files are included. Native physical/silk/open/parity checks pass; sourcing, factory and powered qualification remain open. This carrier is separate from the standalone FPGA V41 and is not a fabrication release.
 
 [Preserved carrier V41 review](hardware/xem8305-carrier/dated/2026-10-18/v41/README.md) retains its earlier source, files and checks.
 

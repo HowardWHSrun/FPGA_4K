@@ -1,0 +1,52 @@
+(version 1)
+# Trial only. Ordinary0.20mm netclassclearance and0.25mm holeclearance retained globally.
+# Named B-layer area contains shortJ1stubs/vias only. At leastonepaireditemmusttouchJ1courtyard.
+# JLCPCBpublished0.10mm pad-to-track and0.20mmvia-hole-to-track capability; noMC1exception.
+(rule "ASIC signal nominal 0.10mm tracks"
+ (constraint track_width (min 0.10mm) (opt 0.10mm))
+ (condition "A.Type == 'Track' && A.NetClass == 'ASIC_SIGNAL'"))
+(rule "J1 bounded B-side signal escape copper"
+ (layer "B.Cu")
+ (constraint clearance (min 0.10mm))
+ (condition "A.NetClass == 'ASIC_SIGNAL' && B.NetClass == 'ASIC_SIGNAL' && A.intersectsArea('J1_SIGNAL_ESCAPE') && B.intersectsArea('J1_SIGNAL_ESCAPE') && (A.intersectsCourtyard('J1') || B.intersectsCourtyard('J1')) && (A.Type == 'Track' || A.Type == 'Via' || B.Type == 'Track' || B.Type == 'Via')"))
+(rule "J1 bounded B-side via-hole to signal stub"
+ (layer "B.Cu")
+ (constraint hole_clearance (min 0.20mm))
+ (condition "A.Type == 'Via' && A.NetClass == 'ASIC_SIGNAL' && B.NetClass == 'ASIC_SIGNAL' && B.Type == 'Track' && A.intersectsArea('J1_SIGNAL_ESCAPE') && B.intersectsArea('J1_SIGNAL_ESCAPE') && B.intersectsCourtyard('J1')"))
+
+# Precommitted frontfanout:23unique0.4mmYrows, signal-to-signal only, noMC1exception.
+(rule "J1 bounded F-side signal ray escape copper"
+ (layer "F.Cu")
+ (constraint clearance (min 0.10mm))
+ (condition "A.NetClass == 'ASIC_SIGNAL' && B.NetClass == 'ASIC_SIGNAL' && A.intersectsArea('J1_FRONT_ESCAPE') && B.intersectsArea('J1_FRONT_ESCAPE') && (A.Type == 'Track' || A.Type == 'Via' || B.Type == 'Track' || B.Type == 'Via')"))
+(rule "J1 bounded F-side via-hole to signal ray"
+ (layer "F.Cu")
+ (constraint hole_clearance (min 0.20mm))
+ (condition "A.Type == 'Via' && B.Type == 'Track' && A.NetClass == 'ASIC_SIGNAL' && B.NetClass == 'ASIC_SIGNAL' && A.intersectsArea('J1_FRONT_ESCAPE') && B.intersectsArea('J1_FRONT_ESCAPE')"))
+
+
+# Scoped package footprint rules for U2 (X2SON-5 1x1mm) and J4 (USB4110-GF-A positioning boss NPTH).
+(rule "U2 X2SON-5 1x1mm internal pad and escape clearance"
+ (layer "B.Cu")
+ (constraint clearance (min 0.11mm))
+ (condition "A.intersectsCourtyard('U2') && B.intersectsCourtyard('U2')"))
+(rule "J4 USB4110-GF-A NPTH boss to GND pad hole clearance"
+ (constraint hole_clearance (min 0.19mm))
+ (condition "A.intersectsCourtyard('J4') && B.intersectsCourtyard('J4')"))
+
+# Carrier USB/JTAG V1. Manufacturer-calculated JLC04161H-3313 outer microstrip.
+(rule "USB2 JLC3313 calculated trace width V1"
+ (constraint track_width (min 0.1356mm) (opt 0.1356mm) (max 0.1356mm))
+ (condition "A.Type == 'Track' && A.NetClass == 'USB2_90R'"))
+(rule "JTAG ordinary 0.20mm trace width V1"
+ (constraint track_width (min 0.20mm) (opt 0.20mm) (max 0.20mm))
+ (condition "A.Type == 'Track' && (A.NetName == 'JTAG_TCK_1.8V' || A.NetName == 'JTAG_TDI_1.8V' || A.NetName == 'JTAG_TDO_1.8V' || A.NetName == 'JTAG_TMS_1.8V' || A.NetName == 'Net-(U3-ADBUS0_{slash}_TCK_{slash}_SK)' || A.NetName == 'Net-(U3-ADBUS1_{slash}_TDI_{slash}_DO)' || A.NetName == 'Net-(U3-ADBUS2_{slash}_TDO_{slash}_DI)' || A.NetName == 'Net-(U3-ADBUS3_{slash}_TMS_{slash}_CS)')"))
+(rule "JTAG main trace spacing 3W and 3H V1"
+ (constraint clearance (min 0.40mm))
+ (condition "A.Type == 'Track' && B.Type == 'Track' && (A.NetName == 'JTAG_TCK_1.8V' || A.NetName == 'JTAG_TDI_1.8V' || A.NetName == 'JTAG_TDO_1.8V' || A.NetName == 'JTAG_TMS_1.8V' || A.NetName == 'Net-(U3-ADBUS0_{slash}_TCK_{slash}_SK)' || A.NetName == 'Net-(U3-ADBUS1_{slash}_TDI_{slash}_DO)' || A.NetName == 'Net-(U3-ADBUS2_{slash}_TDO_{slash}_DI)' || A.NetName == 'Net-(U3-ADBUS3_{slash}_TMS_{slash}_CS)') && (B.NetName == 'JTAG_TCK_1.8V' || B.NetName == 'JTAG_TDI_1.8V' || B.NetName == 'JTAG_TDO_1.8V' || B.NetName == 'JTAG_TMS_1.8V' || B.NetName == 'Net-(U3-ADBUS0_{slash}_TCK_{slash}_SK)' || B.NetName == 'Net-(U3-ADBUS1_{slash}_TDI_{slash}_DO)' || B.NetName == 'Net-(U3-ADBUS2_{slash}_TDO_{slash}_DI)' || B.NetName == 'Net-(U3-ADBUS3_{slash}_TMS_{slash}_CS)') && A.NetName != B.NetName"))
+# Finite U3 pin fanout only: ordinary clearances are strengthened to 3H.
+# Both complete track objects must lie inside this small B.Cu rule area.
+(rule "U3 bounded JTAG pin fanout retains 3H V1"
+ (layer "B.Cu")
+ (constraint clearance (min 0.2982mm))
+ (condition "A.Type == 'Track' && B.Type == 'Track' && (A.NetName == 'JTAG_TCK_1.8V' || A.NetName == 'JTAG_TDI_1.8V' || A.NetName == 'JTAG_TDO_1.8V' || A.NetName == 'JTAG_TMS_1.8V' || A.NetName == 'Net-(U3-ADBUS0_{slash}_TCK_{slash}_SK)' || A.NetName == 'Net-(U3-ADBUS1_{slash}_TDI_{slash}_DO)' || A.NetName == 'Net-(U3-ADBUS2_{slash}_TDO_{slash}_DI)' || A.NetName == 'Net-(U3-ADBUS3_{slash}_TMS_{slash}_CS)') && (B.NetName == 'JTAG_TCK_1.8V' || B.NetName == 'JTAG_TDI_1.8V' || B.NetName == 'JTAG_TDO_1.8V' || B.NetName == 'JTAG_TMS_1.8V' || B.NetName == 'Net-(U3-ADBUS0_{slash}_TCK_{slash}_SK)' || B.NetName == 'Net-(U3-ADBUS1_{slash}_TDI_{slash}_DO)' || B.NetName == 'Net-(U3-ADBUS2_{slash}_TDO_{slash}_DI)' || B.NetName == 'Net-(U3-ADBUS3_{slash}_TMS_{slash}_CS)') && A.NetName != B.NetName && A.enclosedByArea('U3_JTAG_PIN_ESCAPE_V1') && B.enclosedByArea('U3_JTAG_PIN_ESCAPE_V1')"))

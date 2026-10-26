@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "revision": "Carrier_V1",
+  "publication_revision": "V1",
+  "date_local": "2026-10-26",
+  "source_PCB_sha256": "5caf9b364ec5ce7ba98a2e82c6d69d306f2a07f1fd13243a46281236f8e50fcc",
+  "headline": "All 80 fitted component bodies verified in the native 3D model",
+  "verification_scope": "Saved-CAD model presence, resolution and orientation/registration review, native PCB connectivity and schematic parity. Package dimensions are nominal or source-bound representations; this is not powered hardware or fabrication qualification.",
+  "counts": {
+    "native_DRC_findings": 0,
+    "unconnected_items": 0,
+    "schematic_PCB_parity_findings": 0,
+    "native_3D_component_bodies_verified": 80,
+    "required_component_bodies": 80,
+    "physical_footprints": 92,
+    "bare_test_pads": 8,
+    "mounting_holes": 4,
+    "model_scope_checks_passed": 14,
+    "U2_equivalent_envelope_checks_passed": 8,
+    "assembly_STEP_checks_passed": 11,
+    "retained_ignored_DRC_categories": [
+      "footprint_filters_mismatch",
+      "footprint_type_mismatch",
+      "missing_courtyard",
+      "track_not_centered_on_via",
+      "tuning_profile_track_geometries"
+    ],
+    "retained_ignored_ERC_categories": [
+      "footprint_filter",
+      "four_way_junction",
+      "simulation_model_issue",
+      "single_global_label"
+    ],
+    "active_minimum_silk_clearance_mm": 0.0,
+    "stricter_0p20mm_silk_review": {
+      "overlaps": 1,
+      "remaining": "Inherited C30/R13 footprint outline gap 0.1428 mm; source outlines unchanged."
+    }
+  },
+  "public_package": {
+    "supplier_3D_payloads": false,
+    "native_3D_model_references": false,
+    "native_embedded_file_payloads": false,
+    "nonmodel_native_geometry_preserved": true,
+    "model_free_public_review": true
+  },
+  "open_qualification": [
+    "Powered electrical and regulator/load behavior",
+    "Thermal, signal-integrity and timing validation",
+    "Toleranced mating and assembly-process review",
+    "Fabrication approval"
+  ],
+  "fabrication_release": false
+}
