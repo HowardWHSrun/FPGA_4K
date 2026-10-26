@@ -21084,13 +21084,13 @@
     {
       "path": "scripts/check_overview.mjs",
       "origin": "User-authorized 14 October 2026 current hardware overview V1",
-      "status": "Current hardware overview V4; parallel approaches with qualification open",
-      "transformation": "V23-specific current Overview checks with retained historical V8 regression branch",
-      "note": "Tests one timeline, optional sheep, focus and zoom, host sequencing, responsive embed, saved subsystem and direct V42 routes. Browser execution runs in CI; no local browser launch by this change.",
-      "bytes": 31091,
-      "sha256": "f1d7470d7ea0eae971c224f1a9ddd705b446dee930c05a74d8dd447049264ff0",
+      "status": "Browser regression checks; not hardware qualification",
+      "transformation": "Add V24-specific current carrier checks while preserving V23 and V8 historical regression branches",
+      "note": "Checks 80 component bodies and 12 board features, source hash, tabs, cameras, component selection, native front/back drawings, current ZIP, iframe synchronization, custom assembly preservation, desktop/mobile fit and browser/HTTP errors.",
+      "bytes": 31301,
+      "sha256": "56c428ab9a930934ed30c4839ab5b9046c65d43f0eca6a73016f87792578daeb",
       "source_date": "2026-10-14",
-      "updated_at": "2026-10-20"
+      "updated_at": "2026-10-26"
     },
     {
       "path": "presentation/library/thumbs/e25290371b2f9ba0-59e395ce83ea.webp",
@@ -27678,6 +27678,17 @@
       "source_date": "2026-10-26",
       "bytes": 4616,
       "sha256": "7c9d4f86ee6b77254343a843c32f11410b46f9ac5d060460e8248909336d2a92"
+    },
+    {
+      "path": "scripts/check_overview_v24.mjs",
+      "origin": "26 October 2026 Carrier_V1 Overview V24 publication",
+      "source_date": "2026-10-26",
+      "status": "Browser regression checks; not hardware qualification",
+      "transformation": "Add V24-specific current carrier checks while preserving V23 and V8 historical regression branches",
+      "note": "Checks 80 component bodies and 12 board features, source hash, tabs, cameras, component selection, native front/back drawings, current ZIP, iframe synchronization, custom assembly preservation, desktop/mobile fit and browser/HTTP errors.",
+      "bytes": 7052,
+      "sha256": "b9ee7243aed3936c46c1e404decb37cb19d428a0aed073418240222a28ac0ffa",
+      "updated_at": "2026-10-26"
     }
   ],
   "scope": "Original team material, faithful meeting and slide representations, and dated FPGA review handoffs; source identities and qualification limits recorded per entry.",
@@ -27937,7 +27948,8 @@
     "fabrication_qualified": false,
     "powered_hardware_verified": false,
     "previous_overview": "overview-2026-10-20-v23.html?approach=direct#overview",
-    "custom_assembly_unchanged": "presentation/overview/assembly-v23/"
+    "custom_assembly_unchanged": "presentation/overview/assembly-v23/",
+    "browser_regression_script": "scripts/check_overview_v24.mjs"
   },
   "historical_hardware_overview_v3": {
     "entry": "index.html",
