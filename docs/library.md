@@ -1,5 +1,9 @@
 # Project files and documents
 
+- [XEM8310 carrier V9 · shared power and JTAG](../xem8310/): current one-page schematic, 351 components, searchable datasheets and native review project. One 6 A / 3.3 V source with eight protected outputs; one shared headstage JTAG interface with eight signal switches; XEM branch retained. V8 PCB is an earlier placement reference.
+
+- [XEM8310 carrier V8 · standalone design review](../xem8310-v8/): one-page schematic with circuit/component zoom, eight-port six-layer PCB, selectable 3D parts, 422-component list and public native review archive. Rough placement only; no new routing/refill. The meeting presentation is unchanged.
+
 - [21 October FPGA hardware presentation · V2](../presentation/meetings/2026-10-21-v2/index.html): carrier V42 sourcing prices and 512-channel ASIC/probe assembly, full system animation, interposer V23 and FPGA V60 schematic/routing/3D. Nine interactive slides with all 49 fitted interposer bodies, FPGA component zoom and presenter notes.
 
 

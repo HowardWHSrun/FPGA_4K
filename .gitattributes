@@ -48,3 +48,12 @@ presentation/meetings/2026-10-21-v2/assembly-v23/vendor/** -text -whitespace
 presentation/meetings/2026-10-21-v2/assembly-v23/licenses/Quaternius_CC0.txt -text -whitespace
 presentation/meetings/2026-10-21-v2/carrier-viewer-v42/vendor/** -text -whitespace
 presentation/meetings/2026-10-21-v2/carrier-viewer-v42/review-files/** -text -whitespace
+
+# Preserve source-native V8 SVG exports and the CSV exporter's CRLF bytes.
+xem8310-v8/assets/*.svg -text -whitespace
+xem8310-v8/assets/components.csv -text whitespace=cr-at-eol
+xem8310-v8/assets/vendor/** -text -whitespace
+
+# Preserve exact V9 native schematic export and component CSV bytes.
+xem8310/assets/*.svg -text -whitespace
+xem8310/assets/components.csv -text whitespace=cr-at-eol

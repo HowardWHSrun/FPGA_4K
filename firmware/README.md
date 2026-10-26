@@ -1,5 +1,9 @@
 # FPGA acquisition reference
 
+**25 October 2026 V9 schematic update:** the [current carrier review](../xem8310/) shares the 3.3 V source and headstage JTAG support circuit. It adds no firmware/bitstream. The [review project](../xem8310/assets/files/source-manifest.json) is schematic-only, with model payloads omitted; V8 PCB/3D remains an earlier placement reference.
+
+**25 October 2026 carrier review:** the [standalone XEM8310 V8 page](../xem8310-v8/) adds no acquisition, PCIe/DMA, stimulation or JTAG firmware/bitstream. Its public native CAD archive omits supplier 3D body payloads and private reports; source revision/omissions are recorded in the [public source manifest](../xem8310-v8/assets/files/source-manifest.json). Earlier firmware references below remain separate.
+
 **New Artix-7 work, 26 September 2026:** the separate [raw-capture engine](artix7/2026-09-26/raw_capture/README.md) passed independent-clock simulations and XC7 synthesis. It stores eight finite buffers on the ASIC clocks' falling edges. It has no SPI/reset sequencer, JTAG transport or XEM8310 link and is not a complete acquisition bitstream. The [clock-pin implementation proof](artix7/2026-09-26/clock_pin_proof/README.md) is a development test only; never program its artificial signature outputs onto an ASIC-connected board.
 
 The actual [FPGA_512 source files](FPGA_512/) are included here so a clone of this repository contains the original RTL, host programs, testbenches, constraints, reference documents and archived bitstreams. Start with the [original README](FPGA_512/README.md), [system overview](FPGA_512/docs/SYSTEM_OVERVIEW.md), and [software guide](../docs/software.md).

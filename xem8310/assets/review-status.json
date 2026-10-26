@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "revision": "V9",
+  "scope": "One-page schematic only; V8PCB is earlier reference; V9PCB update pending.",
+  "schematic_sha256": "ca020fa975e660be97fb48eab0ec149bf605cd280f38b52205610c024f740fe9",
+  "physical_components": 351,
+  "prior_V8_components": 422,
+  "native_ERC": {
+    "errors": 0,
+    "warnings": 1193,
+    "warning_categories": {
+      "endpoint_off_grid": 1111,
+      "same_local_global_label": 82
+    }
+  },
+  "independent_checks": {
+    "shared_JTAG": {
+      "passed": 489,
+      "total": 489
+    },
+    "retained_circuits_and_metadata": {
+      "passed": 2328,
+      "total": 2328
+    },
+    "shared_power": {
+      "passed": 62,
+      "total": 62
+    }
+  },
+  "power": {
+    "source_count": 1,
+    "protected_outputs": 8,
+    "converter_rating_A": 6,
+    "normal_allocation_A": 4.45,
+    "sum_upper_eFuse_current_limit_screens_A": 6.1907,
+    "all_branches_simultaneously_at_limit_guaranteed": false
+  },
+  "JTAG": {
+    "shared_headstage_translators": 1,
+    "headstage_signal_switches": 8,
+    "separate_XEM_path_retained": true,
+    "switch_target_sequence": "Stop TCK; SW700 EXTERNAL; rotate SW600; SW700 ONBOARD; wait at least50ms; begin clocking."
+  },
+  "inherited_unspecified_part_MPN_and_datasheet": [
+    "C700",
+    "R700",
+    "R701"
+  ],
+  "new_PCB_routing": false,
+  "fabrication_release": false,
+  "powered_operation_verified": false
+}

@@ -1,0 +1,69 @@
+{
+  "revision": "V8",
+  "source_pcb_sha256": "023d8f67ae7b1f1d3a951b4f3a07f350084658da62199d7617c284960dec1c3c",
+  "source_schematic_sha256": "29d047fbbc8796ccef19676f0d068405638d8f7047808840e77f98e0fbcdb485",
+  "source_native_xml_sha256": "1484cd151e902863acab029abd090b86f697b46d4439c5065afeaf0e620a48fc",
+  "glb_sha256": "6d8ea9a579fc550198f8e24b0e9daf98a3b2e25e11d7fa75cff83b88c30b61a5",
+  "glb_bytes": 30625540,
+  "source_board_only_glb_sha256": "81427f1f3dc5f0bac1c6e3d8351094d0fb0156df11d197846aebc7c492aab43a",
+  "source_board_only_export_command": "kicad-cli pcb export glb --board-only --include-tracks --include-pads --include-silkscreen --include-soldermask --output <private-build>/carrier-v8-native-board-only.glb <frozen-V8.kicad_pcb>",
+  "source_board_thickness_mm": 1.55035,
+  "source_copper_layers": 6,
+  "source_board_geometry": {
+    "native_triangle_count": 762456,
+    "native_surface_node_count": 8,
+    "triangle_positions_normals_indices_preserved": true,
+    "batching": "Concatenated primitives per native node/material; no simplification or geometry alteration.",
+    "visible_geometry": "Native board outline, cutouts/holes, outer tracks/pads, silkscreen and soldermask. Historical zone fills and inner copper not exported; native files retain them.",
+    "source_byte_stable": true
+  },
+  "public_component_geometry": {
+    "nominal_body_count": 399,
+    "nominal_triangle_count": 16344,
+    "per_footprint_named_groups": 437,
+    "supplier_STEP_WRL_GLTF_or_mesh_payloads_read_or_copied": false,
+    "assigned_model_filenames_used_for_geometry": false,
+    "body_xy_basis": "Saved native Fab graphics excluding text, otherwise courtyard/body envelope. No supplier model geometry.",
+    "display_height_policy": "Independent display assumptions except7.0mm published XAL7070 maximum.",
+    "coverage_file": "model-coverage.json"
+  },
+  "coordinates": {
+    "unit": "metres",
+    "native_mm_to_model_m": 0.001,
+    "mapping": "PCB X -> GLB X; PCB Y -> GLB Z; GLB Y is upward; F bodies positiveY, B bodies negativeY",
+    "origin": "Native default KiCad origin; no centering or normalization applied",
+    "front_nominal_mount_y_m": 0.0015503499999999998,
+    "back_nominal_mount_y_m": 0
+  },
+  "geometry": {
+    "nodes": 446,
+    "meshes": 407,
+    "primitives": 727,
+    "triangles": 778800
+  },
+  "credits": [
+    {
+      "source": "KiCad10 board-only exporter",
+      "scope": "Geometry generated from the frozen native PCB; source CAD unchanged.",
+      "url": "https://docs.kicad.org/10.0/en/cli/cli.html"
+    },
+    {
+      "source": "Project authors",
+      "scope": "399 independent nominal previews from native drawing/pad datums; no supplier body meshes used."
+    },
+    {
+      "source": "Coilcraft XAL7070 Document856-1 rev02/25/26 p1",
+      "scope": "Published7.0mmMAX coil height only; nominal box independently authored.",
+      "url": "https://www.coilcraft.com/getmedia/1ba55433-bcc8-4838-9b21-382f497e12e0/xal7070.pdf"
+    },
+    {
+      "source": "Opal Kelly BRK8310 source design",
+      "scope": "Inherited carrier board outline, source footprint/route datums retained in the native PCB.",
+      "url": "https://www.opalkelly.com/products/addon-boards/BRK8310/"
+    }
+  ],
+  "qualification": "All399 body previews are independently authored nominal geometry. Their X/Y envelopes derive from saved PCB drawings and positions; most display heights are assumptions. Coil height uses the published7.0mm maximum. Bodies support placement review, not physical mating/chassis, dimensions, manufacturing or powered qualification.",
+  "source_CAD_modified": false,
+  "refill_performed": false,
+  "private_supplier_model_payloads_published": false
+}

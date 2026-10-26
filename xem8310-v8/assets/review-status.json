@@ -1,0 +1,86 @@
+{
+  "design": "XEM8310 carrier V8",
+  "date": "2026-10-25",
+  "electrical_revision": "V7",
+  "placement_revision": "V8",
+  "status": "Rough placement only; no new routing or zone refill",
+  "pcb_sha256": "023d8f67ae7b1f1d3a951b4f3a07f350084658da62199d7617c284960dec1c3c",
+  "schematic_sha256": "29d047fbbc8796ccef19676f0d068405638d8f7047808840e77f98e0fbcdb485",
+  "components": 422,
+  "mechanical_footprints": 15,
+  "layers": 6,
+  "native_unconnected_count": 879,
+  "schematic_PCB_parity_issues": 0,
+  "native_ERC": {
+    "errors": 0,
+    "warnings": 931,
+    "categories": {
+      "same_local_global_label": 82,
+      "endpoint_off_grid": 849
+    }
+  },
+  "native_DRC": {
+    "schematic_parity_issues": 0,
+    "reported_violations": 2261,
+    "reported_unconnected_items_capped": 499,
+    "categories": {
+      "items_not_allowed": 26,
+      "clearance": 499,
+      "tracks_crossing": 12,
+      "shorting_items": 199,
+      "hole_clearance": 60,
+      "copper_edge_clearance": 34,
+      "drill_out_of_range": 199,
+      "unresolved_variable": 8,
+      "track_width": 199,
+      "starved_thermal": 34,
+      "solder_mask_bridge": 199,
+      "track_dangling": 199,
+      "isolated_copper": 1,
+      "padstack": 108,
+      "lib_footprint_mismatch": 1,
+      "text_height": 199,
+      "silk_overlap": 136,
+      "silk_over_copper": 148
+    },
+    "ignored_checks_unchanged_from_V7": [
+      {
+        "description": "Footprint has no courtyard defined",
+        "key": "missing_courtyard"
+      },
+      {
+        "description": "Track endpoint not centered on via",
+        "key": "track_not_centered_on_via"
+      },
+      {
+        "description": "Tuning profile track geometries",
+        "key": "tuning_profile_track_geometries"
+      },
+      {
+        "description": "Footprint doesn't match symbol's footprint filters",
+        "key": "footprint_filters_mismatch"
+      },
+      {
+        "description": "Footprint component type doesn't match footprint pads",
+        "key": "footprint_type_mismatch"
+      }
+    ],
+    "counts_are_capped_in_several_categories": true,
+    "physical_clean": false
+  },
+  "source_copper_retained": 5735,
+  "obsolete_upper_PCIe_segments_removed": 24,
+  "historical_zone_definitions_fills_preserved": 11,
+  "required_active_source_copper_objects": 2712,
+  "required_active_pad_route_contacts": 0,
+  "deferred_unused_stub_contacts": 483,
+  "source_copper_native_net_identity_mismatches": 0,
+  "original_BRK_footprint_poses_preserved": 91,
+  "manufacturing_ready": false,
+  "remaining": [
+    "Unused copper can still bridge new pads; cleanup and fresh fill are required.",
+    "Routing, stack/impedance/via process, full assembly/cable/chassis fit, power/thermal behavior and powered operation remain open.",
+    "Headstage GPIO adaptation remains separate."
+  ],
+  "public_model_scope": "Native board geometry with399 independently authored nominal bodies;38 copper-only/mechanical features. Source supplier body payloads excluded."
+}

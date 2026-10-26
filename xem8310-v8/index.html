@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="XEM8310 eight-port carrier V8: one-page schematic, PCB placement, interactive 3D and searchable components.">
+  <meta name="theme-color" content="#126a71">
+  <title>XEM8310 carrier V8 · Design review</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">{"imports":{"three":"./assets/vendor/dist/three.module.js","three/addons/":"./assets/vendor/examples/jsm/"}}</script>
+  <script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../">FPGA 4K <span>/ XEM8310</span></a>
+  <nav aria-label="Page sections"><a href="#schematic">Schematic</a><a href="#pcb">PCB</a><a href="#components">Components</a><a href="#files">Files</a></nav>
+  <span class="version">V8 · 25 Oct 2026</span>
+</header>
+<div class="archive-banner" style="padding:13px 5%;background:#edf6f5;font-size:13px">Earlier V8 placement reference. <a href="../xem8310/">View the current V9 shared-power / JTAG schematic ↗</a></div>
+<main id="main">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-copy">
+      <p class="eyebrow">BRK8310-derived carrier · AU25P</p>
+      <h1 id="page-title">XEM8310<br>carrier.</h1>
+      <p class="intro">Eight recording links. PCIe ×4 to the PC. Power and selectable JTAG for every headstage.</p>
+      <p class="state"><span class="state-dot"></span>V7 schematic · V8 rough placement</p>
+      <div class="hero-actions"><a class="button primary" href="#schematic">Explore the schematic <span aria-hidden="true">↗</span></a><a class="button" href="#components">Browse components</a></div>
+      <dl class="metrics"><div><dt>8</dt><dd>micro-HDMI ports</dd></div><div><dt>6</dt><dd>copper layers</dd></div><div><dt>422</dt><dd>electrical components</dd></div></dl>
+    </div>
+    <figure class="hero-figure"><img src="assets/pcb-angled.png" width="2184" height="1488" alt="V8 carrier placement, with six micro-HDMI connectors on the left, two along the top, two power banks and XEM mating connectors."><figcaption>Saved V8 PCB · native KiCad render</figcaption></figure>
+  </section>
+
+  <section class="architecture" aria-label="Signal path">
+    <div class="path-label">Recording</div>
+    <div class="signal-path"><div><strong>Headstages ×8</strong><span>Artix-7 GT transmitters</span></div><span class="path-arrow" aria-hidden="true">→</span><div><strong>micro-HDMI ×8</strong><span>One recording lane per port</span></div><span class="path-arrow" aria-hidden="true">→</span><div><strong>XEM8310</strong><span>8 GTY receive lanes</span></div><span class="path-arrow" aria-hidden="true">→</span><div><strong>PC</strong><span>PCIe ×4 · 4 GTY lanes</span></div></div>
+    <p class="return-path">Stimulation commands travel back over regular Bank64 differential I/O. Two four-port power banks and a nine-target JTAG selector serve the XEM and all eight headstages.</p>
+  </section>
+
+  <section class="section" id="schematic" aria-labelledby="schematic-title">
+    <div class="section-heading"><div><p class="eyebrow">01 / Circuit</p><h2 id="schematic-title">One page. Every connection.</h2><p>The V7 electrical design, paired with the V8 PCB. Choose a circuit or zoom into the full drawing.</p></div><a class="text-link" href="assets/schematic.svg" target="_blank" rel="noopener">Open full SVG ↗</a></div>
+    <div class="viewer schematic-viewer">
+      <div class="toolbar"><label class="select-label" for="circuit">Circuit <select id="circuit"><option value="all">Full schematic</option></select></label><div class="toolbar-actions"><button id="schematic-out" aria-label="Zoom schematic out">−</button><button id="schematic-in" aria-label="Zoom schematic in">+</button><button id="schematic-fit">Fit</button><button id="schematic-expand" aria-label="Expand schematic viewer">Expand</button></div></div>
+      <div id="schematic-stage" class="drawing-stage" tabindex="0" aria-label="Schematic viewer. Drag to pan, scroll to zoom, use plus and minus to zoom, or press R to fit."><p class="loading" id="schematic-status" role="status">Loading the native schematic…</p></div>
+      <div class="viewer-caption"><span>Native vector drawing · references and source notes retained</span><span>Drag to pan · scroll to zoom</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="pcb" aria-labelledby="pcb-title">
+    <div class="section-heading"><div><p class="eyebrow">02 / Placement</p><h2 id="pcb-title">Inspect the carrier.</h2><p>Six ports on the left, two on the top. The original BRK outline and mating connectors stay in place.</p></div><a class="text-link" id="board-full" href="assets/pcb-top.png" target="_blank" rel="noopener">Open front render ↗</a></div>
+    <div class="viewer board-viewer">
+      <div class="toolbar board-toolbar"><div class="tabs" role="group" aria-label="Board view"><button data-board-view="3d" aria-pressed="true">3D</button><button data-board-view="front" aria-pressed="false">Front render</button><button data-board-view="back" aria-pressed="false">Back render</button><button data-board-view="copper-front" aria-pressed="false">Front copper</button><button data-board-view="copper-back" aria-pressed="false">Back copper</button></div><div class="toolbar-actions" id="poses"><button data-pose="iso" aria-pressed="true">Iso</button><button data-pose="top" aria-pressed="false">Top</button><button data-pose="bottom" aria-pressed="false">Bottom</button><button id="board-fit">Fit</button></div></div>
+      <div class="board-stage" id="board-stage"><div id="model-stage"><img class="model-poster" src="assets/pcb-top.png" width="2184" height="1488" alt="Front render of the V8 PCB while the interactive view loads."><canvas id="board-canvas" tabindex="0" aria-label="Interactive carrier. Drag to rotate, right-drag to pan and scroll to zoom. Click a component to inspect it."></canvas><p class="loading" id="model-status" role="status">Loading interactive 3D…</p><div class="model-selection" id="model-selection" hidden></div></div><img id="board-image" alt="V8 PCB view" hidden></div>
+      <div class="viewer-caption"><span id="board-caption">Native PCB geometry · 399 nominal component bodies · 38 copper-only / mechanical features</span><span id="board-hint">Click a part to inspect · drag to rotate</span></div>
+    </div>
+    <div class="placement-notes"><p><strong>Power.</strong> Both four-port power banks are on the front, outside the XEM footprint. Eight protected branches have individual reset controls.</p><p><strong>JTAG.</strong> Onboard USB programming with nine selectable targets: XEM plus P1–P8. Positions 10–12 are off.</p><p><strong>BRK continuity.</strong> 91 original footprint positions and 5,735 copper objects are retained. 24 obsolete PCIe segments are removed for electrical ×4 isolation; the ×8 mechanical edge remains.</p></div>
+  </section>
+
+  <section class="section" id="components" aria-labelledby="components-title">
+    <div class="section-heading"><div><p class="eyebrow">03 / Components</p><h2 id="components-title">Find any part.</h2><p>Search a reference, value or part number. Select a row to locate it in the circuit or on the board.</p></div><a class="text-link" href="assets/components.csv" download>Download component CSV ↓</a></div>
+    <div class="component-tools"><label class="search-label"><span class="sr-only">Search components</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="component-search" placeholder="Search J101, TPS56637, 100 nF…" autocomplete="off"></label><label class="sr-only" for="component-group">Filter circuit group</label><select id="component-group"><option value="all">All circuits</option></select><label class="sr-only" for="component-fit">Filter fitted status</label><select id="component-fit"><option value="all">All parts</option><option value="fitted">Fitted</option><option value="dnp">DNP</option></select></div>
+    <div class="component-grid"><div class="parts-list"><div class="result-summary"><span id="component-count" aria-live="polite">Loading components…</span><button id="clear-search" class="quiet" hidden>Clear filters</button></div><div class="table-scroll"><table><thead><tr><th scope="col">Reference</th><th scope="col">Value / part</th><th scope="col">Circuit</th></tr></thead><tbody id="component-rows"></tbody></table><p id="no-components" class="empty-state" hidden>No matching parts. Try a reference such as J101 or U800.</p></div></div><aside class="part-detail" id="part-detail" aria-label="Selected component"><p class="eyebrow">Component detail</p><h3>Select a part</h3><p>Its circuit, datasheet and saved position will appear here.</p></aside></div>
+  </section>
+
+  <section class="section files-section" id="files" aria-labelledby="files-title"><div class="section-heading"><div><p class="eyebrow">04 / Review files</p><h2 id="files-title">Take a closer look.</h2></div></div><div class="download-grid"><a class="download" href="assets/files/XEM8310_Carrier_V8_Review.zip" download><span class="file-type">KICAD</span><strong>Native review project <span aria-hidden="true">↓</span></strong><span>Schematic, PCB, project and local libraries. Supplier 3D payloads are omitted.</span></a><a class="download" href="assets/schematic.svg" target="_blank" rel="noopener"><span class="file-type">SVG</span><strong>One-page schematic <span aria-hidden="true">↗</span></strong><span>Scalable native export with circuit references and source notes.</span></a><a class="download" href="assets/components.csv" download><span class="file-type">CSV</span><strong>422-component list <span aria-hidden="true">↓</span></strong><span>References, values, part numbers, fitted status and saved locations.</span></a></div>
+    <details class="review-details"><summary>Review status and source information</summary><div class="review-content"><p><strong>Placement checkpoint, 25 October 2026.</strong> The saved schematic and PCB match. No new tracks, vias or zone refill were added. There are 879 native unconnected connections; physical DRC is not clean.</p><p>Unused BRK stubs and historical filled copper still need cleanup. The independent scan protects 2,712 active source copper objects; 483 contacts with unused stubs remain deferred and can still bridge pads. Routing, return paths, stack/impedance, assembly fit, power/thermal behavior and powered operation remain open.</p><p>The interactive model uses native board geometry and independently authored nominal component bodies. The rendered views show the original saved CAD appearance. Neither view qualifies assembled clearances. Remote headstage stimulation-GPIO adaptation remains a separate project change.</p><p>Based on <a href="https://pins.opalkelly.com/downloads/442/download?category_id=3" target="_blank" rel="noopener">Opal Kelly BRK8310 A01</a>. Manufacturer references remain on the schematic and in each component’s datasheet field.</p><p><a href="assets/files/source-manifest.json">Native source manifest</a> · <a href="assets/model-provenance.json">3D model provenance</a> · <a href="assets/components.json">Component data</a> · <a href="assets/review-status.json">Saved-file review status</a></p></div></details>
+  </section>
+</main>
+<footer><span>XEM8310 carrier · V8 placement / V7 electrical design</span><a href="../">Back to FPGA 4K ↗</a></footer>
+</body>
+</html>
