@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**[XEM8310 carrier · V9 shared power and JTAG](xem8310/)** — current one-page schematic, 351-component browser and native schematic review project. One 3.3 V source, eight protected outputs, one shared headstage JTAG interface and a separate XEM path. The earlier six-layer [V8 PCB/3D](xem8310-v8/) remains a placement reference; the PCB update to V9 is pending. 25 October 2026.
+**[XEM8310 carrier · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
 
 **[XEM8310 eight-port carrier · V8](xem8310-v8/)** — standalone schematic, interactive PCB/3D, 422-component browser and native review files. V7 electrical design / six-layer V8 rough placement, 25 October 2026. Routing and hardware qualification remain open.
 

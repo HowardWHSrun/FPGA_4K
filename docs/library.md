@@ -1,6 +1,6 @@
 # Project files and documents
 
-- [XEM8310 carrier V9 · shared power and JTAG](../xem8310/): current one-page schematic, 351 components, searchable datasheets and native review project. One 6 A / 3.3 V source with eight protected outputs; one shared headstage JTAG interface with eight signal switches; XEM branch retained. V8 PCB is an earlier placement reference.
+- [XEM8310 carrier V10 · standalone design review](../xem8310/): matching PCB, interactive 3D, native one-page schematic, searchable 351-component list and exact review sources. One compact design panel switches between 3D, layout and circuit views; detailed results are expandable. Eight ports / six layers; placement only, 776 unrouted. [Earlier V9](../xem8310-v9/) · [V8 placement](../xem8310-v8/).
 
 - [XEM8310 carrier V8 · standalone design review](../xem8310-v8/): one-page schematic with circuit/component zoom, eight-port six-layer PCB, selectable 3D parts, 422-component list and public native review archive. Rough placement only; no new routing/refill. The meeting presentation is unchanged.
 

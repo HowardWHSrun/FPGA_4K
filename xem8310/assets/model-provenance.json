@@ -1,0 +1,89 @@
+{
+  "revision": "V10",
+  "source_pcb_sha256": "23cfe57498038dbdc035c78a12163ea9447021965c3071a77a1c7d70534d4b1b",
+  "source_schematic_sha256": "8e3eb7a0a3b057934af413d207b3233d0cc9dd69ad593ac90a402dec3b412c98",
+  "source_native_xml_sha256": "52e38d9c843b20a2f7a84df88b5ebf07e529f3f6fe4ca8d626a4507f0d22f0e8",
+  "glb_sha256": "cd51ae30d8f7b0d2a46dbfad1b215b06b3a4358304ec1afaac12585af37ec2ef",
+  "glb_bytes": 29242964,
+  "source_board_only_glb_sha256": "a4156dad932db5f06d92526bf196a8d89958eea9c24ddadeff0f533919ecd5a2",
+  "source_board_only_export_command": "kicad-cli pcb export glb --board-only --include-tracks --include-pads --include-silkscreen --include-soldermask --output <private-build>/carrier-v10-native-board-only.glb <frozen-V10.kicad_pcb>",
+  "source_board_thickness_mm": 1.55035,
+  "source_copper_layers": 6,
+  "source_board_geometry": {
+    "native_triangle_count": 731373,
+    "native_surface_node_count": 8,
+    "triangle_positions_normals_indices_preserved": true,
+    "batching": "Concatenated primitives per native node/material; no simplification or geometry alteration.",
+    "visible_geometry": "Native board outline, cutouts/holes, outer tracks/pads, silkscreen and soldermask. Historical zone fills and inner copper not exported; native files retain them.",
+    "source_byte_stable": true
+  },
+  "public_component_geometry": {
+    "nominal_body_count": 330,
+    "nominal_triangle_count": 14196,
+    "per_footprint_named_groups": 366,
+    "supplier_STEP_WRL_GLTF_or_mesh_payloads_read_or_copied": false,
+    "assigned_model_filenames_used_for_geometry": false,
+    "body_xy_basis": "Saved native Fab graphics excluding text, otherwise courtyard/body envelope. No supplier model geometry.",
+    "display_height_policy": "Independent display assumptions except7.0mm published XAL7070 maximum.",
+    "coverage_file": "model-coverage.json",
+    "bodyless_pick_bounds_records": 36,
+    "bodyless_pick_bounds_basis": "Nativepad/drillXYbounds,notfullfootprintgraphics;0.10mmselection-planeenvelopeorboardthicknessforholes/bothsides."
+  },
+  "coordinates": {
+    "unit": "metres",
+    "native_mm_to_model_m": 0.001,
+    "mapping": "PCB X -> GLB X; PCB Y -> GLB Z; GLB Y is upward; F bodies positiveY, B bodies negativeY",
+    "origin": "Native default KiCad origin; no centering or normalization applied",
+    "front_nominal_mount_y_m": 0.0015503499999999998,
+    "back_nominal_mount_y_m": 0
+  },
+  "geometry": {
+    "nodes": 375,
+    "meshes": 338,
+    "primitives": 603,
+    "triangles": 745569
+  },
+  "credits": [
+    {
+      "source": "KiCad10 board-only exporter",
+      "scope": "Geometry generated from the frozen native PCB; source CAD unchanged.",
+      "url": "https://docs.kicad.org/10.0/en/cli/cli.html"
+    },
+    {
+      "source": "Project authors",
+      "scope": "330 independent nominal previews from native drawing/pad datums; no supplier body meshes used."
+    },
+    {
+      "source": "Coilcraft XAL7070 Document856-1 rev02/25/26 p1",
+      "scope": "Published7.0mmMAX coil height only; nominal box independently authored.",
+      "url": "https://www.coilcraft.com/getmedia/1ba55433-bcc8-4838-9b21-382f497e12e0/xal7070.pdf"
+    },
+    {
+      "source": "Opal Kelly BRK8310 source design",
+      "scope": "Inherited carrier board outline, source footprint/route datums retained in the native PCB.",
+      "url": "https://www.opalkelly.com/products/addon-boards/BRK8310/"
+    }
+  ],
+  "qualification": "All330 body previews are independently authored nominal geometry. Their X/Y envelopes derive from saved PCB drawings and positions; most display heights are assumptions. Coil height uses the published7.0mm maximum. Bodies support placement review, not physical mating/chassis, dimensions, manufacturing or powered qualification.",
+  "source_CAD_modified": false,
+  "refill_performed": false,
+  "private_supplier_model_payloads_published": false,
+  "glb_gzip_bytes": 5071268,
+  "glb_gzip_sha256": "d9efe63bee4e4bf5efc51b6a0d31a6bbf567e5591a45ec2e6e1ce05e63ac0603",
+  "model_coverage_sha256": "3818c5c9c467cb61561cbc9a6dce52b3e82fef2abfc7b84976f8f10996f449e0",
+  "component_table_sha256": "0dc775bb67a1c35333c77ed6ead50b37812f1beda9929a48fd828e3a60cb2ba0",
+  "explicit_source_MPN_records": 300,
+  "manufacturer_part_number_policy": "Case-insensitive alphanumeric field keys: manufacturerpn > mpn > manufacturerpartnumber > mfrpn > mfrpartnumber. Internal PARTNUMBER codes, Current_manufacturer_part_number annotations and Value are excluded.",
+  "geometry_binary_payload_sha256": "3090f324c077e47d90ff2d94fa787fd2982edd4631b6c48f795f834e2a9d9c03",
+  "display_metadata_corrections": {
+    "SW600": {
+      "nominal_height_mm": 7.5,
+      "prior_metadata_mm": 8.0,
+      "reason": "Actual independently authored rendered cylinders reach7.5mm above the mount plane.",
+      "mesh_geometry_modified": false,
+      "GLB_node_extras_height_corrected": true,
+      "all_geometry_binary_bytes_unchanged": true,
+      "body_bounds_m_basis": "Actual stored float32 mesh vertex extrema."
+    }
+  }
+}

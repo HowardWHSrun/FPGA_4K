@@ -1,6 +1,6 @@
 # FPGA acquisition reference
 
-**25 October 2026 V9 schematic update:** the [current carrier review](../xem8310/) shares the 3.3 V source and headstage JTAG support circuit. It adds no firmware/bitstream. The [review project](../xem8310/assets/files/source-manifest.json) is schematic-only, with model payloads omitted; V8 PCB/3D remains an earlier placement reference.
+**25 October 2026 V10 placement review:** the [current standalone page](../xem8310/) publishes matching native PCB/schematic, interactive 3D and component data for the eight-port shared-power/JTAG carrier. It adds no firmware or bitstream. The [native review package](../xem8310/assets/files/source-manifest.json) omits all model payloads; the public web model uses nominal bodies. [Earlier V9 schematic](../xem8310-v9/) remains preserved.
 
 **25 October 2026 carrier review:** the [standalone XEM8310 V8 page](../xem8310-v8/) adds no acquisition, PCIe/DMA, stimulation or JTAG firmware/bitstream. Its public native CAD archive omits supplier 3D body payloads and private reports; source revision/omissions are recorded in the [public source manifest](../xem8310-v8/assets/files/source-manifest.json). Earlier firmware references below remain separate.
 

@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "revision": "V10",
+  "artifact": "XEM8310 carrier V10",
+  "date_local": "2026-10-25",
+  "status": "Rough PCB placement only; new circuits are unrouted; not a fabrication release.",
+  "architecture": {
+    "HDMI_ports": 8,
+    "PC_link": "PCIe x4",
+    "recording": "GT receive lanes",
+    "stimulation_commands": "ordinary FPGA I/O",
+    "headstage_power": "One shared 3.3 V converter with eight individually protected branches",
+    "headstage_JTAG": "One shared selected interface for eight headstages; separate XEM branch"
+  },
+  "counts": {
+    "electrical_components": 351,
+    "physical_footprints": 366,
+    "mechanical_references": 15,
+    "local_native_model_bearing_footprints": 330,
+    "HDMI_ports": 8,
+    "copper_layers": 6,
+    "native_unconnected_edges": 776
+  },
+  "native_checks": {
+    "schematic_parity_findings": 0,
+    "ERC_errors": 0,
+    "ERC_warnings": 1193,
+    "reported_DRC_violations": 2126,
+    "DRC_reported_unconnected_items_cap": 499,
+    "native_unconnected_count_used": 776,
+    "retained_source_route_net_mismatches": 0,
+    "loaded_pad_net_mismatches": 0,
+    "retained_ignored_DRC_categories": [
+      "missing_courtyard",
+      "track_not_centered_on_via",
+      "tuning_profile_track_geometries",
+      "footprint_filters_mismatch",
+      "footprint_type_mismatch"
+    ],
+    "retained_ignored_ERC_categories": [
+      "single_global_label",
+      "four_way_junction",
+      "simulation_model_issue",
+      "footprint_filter"
+    ]
+  },
+  "source_geometry": {
+    "comparison": "V10 preserves the accepted V8 source geometry",
+    "retained_routing_objects": 5735,
+    "copper_graphic_polygons": 12,
+    "zones_including_cached_fills": 11,
+    "unchanged_BRK_footprints": 91,
+    "unchanged_HDMI_poses": 8,
+    "unchanged_retained_electrical_poses": 294,
+    "new_routes": 0,
+    "zone_refill": false,
+    "new_source_cuts_in_V10": 0
+  },
+  "new_generation_geometry": {
+    "JTAG_component_generations_checked": 57,
+    "active_route_contacts": 0,
+    "isolated_legacy_route_contacts": 0,
+    "source_copper_graphic_contacts": 0,
+    "cached_zone_fill_contacts": 0,
+    "introduced_courtyard_Fab_envelope_drill_or_unlike_pad_contacts": 0,
+    "scope": "Native saved geometry screens with zero intersection; these checks do not establish routed or qualified circuitry."
+  },
+  "retained_contact_records": {
+    "total": 365,
+    "isolated_legacy_route_contacts": 282,
+    "historical_cached_fill_contacts": 69,
+    "source_copper_graphic_contacts": 14,
+    "policy": "Pre-existing retained interactions, explicitly deferred to obsolete-copper cleanup and routing review; included in the unresolved board state."
+  },
+  "public_model_policy": {
+    "body_payloads_in_CAD_download": false,
+    "model_references_preserved_in_exact_CAD": true,
+    "local_native_model_reference_count": 330,
+    "web_bodies": "Independently authored nominal bodies for public review; not exact assembly geometry."
+  },
+  "qualification_open": [
+    "Routing and obsolete-copper cleanup",
+    "DRC closure and inherited ignored categories",
+    "Power, sequencing, thermal and cable operation",
+    "Signal integrity, timing and complete return paths",
+    "Mechanical assembly and fabrication review"
+  ],
+  "fabrication_release": false,
+  "main_sources": [
+    {
+      "path": "XEM8310_Carrier_Placement_V10.kicad_sch",
+      "bytes": 1490146,
+      "sha256": "8e3eb7a0a3b057934af413d207b3233d0cc9dd69ad593ac90a402dec3b412c98"
+    },
+    {
+      "path": "XEM8310_Carrier_Placement_V10.kicad_pcb",
+      "bytes": 4808677,
+      "sha256": "23cfe57498038dbdc035c78a12163ea9447021965c3071a77a1c7d70534d4b1b"
+    },
+    {
+      "path": "XEM8310_Carrier_Placement_V10.kicad_pro",
+      "bytes": 9950,
+      "sha256": "42fa778fe59cf45d3788e56abdf553374129ecac47da8c0d481e0e7d4cc9aa11"
+    }
+  ]
+}

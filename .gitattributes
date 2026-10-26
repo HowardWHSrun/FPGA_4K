@@ -57,3 +57,9 @@ xem8310-v8/assets/vendor/** -text -whitespace
 # Preserve exact V9 native schematic export and component CSV bytes.
 xem8310/assets/*.svg -text -whitespace
 xem8310/assets/components.csv -text whitespace=cr-at-eol
+
+# Preserve the earlier V9 native exports and pinned V10 runtime/CSV bytes.
+xem8310-v9/assets/*.svg -text -whitespace
+xem8310-v9/assets/components.csv -text whitespace=cr-at-eol
+xem8310/assets/vendor/** -text -whitespace
+xem8310/assets/board-features.csv -text whitespace=cr-at-eol
