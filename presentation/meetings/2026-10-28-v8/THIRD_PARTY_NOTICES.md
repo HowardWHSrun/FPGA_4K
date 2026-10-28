@@ -1,0 +1,10 @@
+# Third-party notices · 28 October presentation V8
+
+- **Three.js authors:** the system viewer uses Three.js 0.160.1 and its loader/control utilities under the [MIT license](licenses/Three_MIT.txt). The carrier viewer retains the newer Three build's 2010–2025 copyright and [MIT license](licenses/Three_MIT_2025.txt). Imports are localized for static hosting.
+- **KiCad library contributors:** rendered/exported library-package geometry is used within the project designs under the [KiCad libraries license and generated-design exception](licenses/KiCad_Libraries.md). This package is a design visualization, with no standalone supplier-model collection.
+- **Opal Kelly:** XEM8310 geometry is derived from the official 29 September mechanical-reference import. Original authorship remains with Opal Kelly. Colors are illustrative; registration and retained scope are in the [system provenance](assets/system-viewer/PROVENANCE.md).
+- **Project sources:** the custom BRK8310 V1 export, FPGA V60 public derivative, LDO V13 and PCB-5 ASIC layout retain their dated source scope. Public FPGA connector representations and the thinner ASIC boards/connector blocks are nominal previews. The carrier assembly reuses already-public authored geometry, described in its [source manifest](assets/carrier/assembly-viewer/model/source-manifest.json).
+- **U100:** no original Texas Instruments EVM body tessellation is redistributed in the GLB. An independently authored nominal envelope replaces only U100; [conversion evidence](assets/system-viewer/Public_Model_Changes_V8.json) records unchanged non-U100 payloads and the source/output hashes. The native CAD remains unchanged.
+- **Presentation additions:** the PC tower, logical PCIe path, cable curves and thinner ASIC stack visualization were authored for discussion. They do not define a selected riser, cable, housing, board construction or qualified mating.
+
+Original source credits and applicable terms remain with their authors. These displays do not establish fabrication, electrical, thermal or mechanical qualification.

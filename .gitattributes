@@ -63,3 +63,10 @@ xem8310-v9/assets/*.svg -text -whitespace
 xem8310-v9/assets/components.csv -text whitespace=cr-at-eol
 xem8310/assets/vendor/** -text -whitespace
 xem8310/assets/board-features.csv -text whitespace=cr-at-eol
+
+# Preserve exact KiCad export spacing and pinned vendor bytes in the 28 October deck.
+# Authored HDMI SVG, slide HTML/CSS/JS and comments UI remain whitespace-checked.
+presentation/meetings/2026-10-28-v8/assets/breakout/*.svg -text -whitespace
+presentation/meetings/2026-10-28-v8/assets/carrier/*.svg -text -whitespace
+presentation/meetings/2026-10-28-v8/assets/system-viewer/vendor/** -text -whitespace
+presentation/meetings/2026-10-28-v8/assets/carrier/assembly-viewer/vendor/** -text -whitespace

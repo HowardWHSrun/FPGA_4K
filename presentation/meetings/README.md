@@ -2,6 +2,10 @@
 
 [Meeting hub](index.html) · [Latest recorded review](2026-10-02.html) · [Reusable template](template.html)
 
+## Wednesday presentation · 28 October 2026 · V8
+
+[Open the six-slide weekly presentation](2026-10-28-v8/index.html). The overview is followed by the whole system: eight Artix-7 FPGA/ASIC/LDO stacks, XEM8310/custom BRK and PCIe-to-PC context. Breakout and carrier schematic/layout/3D views are clickable; the 19-contact HDMI schematic supports discussion. Next steps close the deck. Comments beside Notes and Fullscreen accept an optional name and persist in the shared service. The breakout remains open for design. [Publication scope and hashes](2026-10-28-v8/Publication_Assets_V8.json).
+
 ## Wednesday presentation · 21 October 2026 · V2
 
 [Open the nine-slide FPGA hardware update](2026-10-21-v2/index.html). The deck covers carrier V42 readiness and JLC sourcing, the system assembly animation, active six-layer interposer V20 schematic and routing/3D, separate FPGA/LDO boards, and FPGA V60 updates. Slide 5 retains the whole assembly with FPGA and component zoom. Public connector shapes are labeled nominal previews where supplier bodies are excluded. This is meeting preparation; outcomes remain pending. [Asset scope and hashes](2026-10-21-v2/Publication_Assets_V2.json).
