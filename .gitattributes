@@ -71,11 +71,6 @@ presentation/meetings/2026-10-28-v8/assets/carrier/*.svg -text -whitespace
 presentation/meetings/2026-10-28-v8/assets/system-viewer/vendor/** -text -whitespace
 presentation/meetings/2026-10-28-v8/assets/carrier/assembly-viewer/vendor/** -text -whitespace
 
-# Preserve exact KiCad exports, native PCB snapshots and pinned V9 vendor/license bytes.
-# Authored slide and viewer code remains whitespace-checked.
-presentation/meetings/2026-10-28-v9/assets/breakout/*.svg -text -whitespace
-presentation/meetings/2026-10-28-v9/assets/carrier/*.svg -text -whitespace
-presentation/meetings/2026-10-28-v9/assets/system-viewer/vendor/** -text -whitespace
-presentation/meetings/2026-10-28-v9/assets/carrier/assembly-viewer/vendor/** -text -whitespace
-presentation/meetings/2026-10-28-v9/assets/layout-viewer/vendor/** -text -whitespace
-presentation/meetings/2026-10-28-v9/assets/layout-viewer/**/*.kicad_pcb -text -whitespace
+# Preserve native layout snapshots and pinned dependency/license bytes in the V8 update.
+presentation/meetings/2026-10-28-v8/assets/layout-viewer/vendor/** -text -whitespace
+presentation/meetings/2026-10-28-v8/assets/layout-viewer/**/*.kicad_pcb -text -whitespace

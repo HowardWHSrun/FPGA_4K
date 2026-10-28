@@ -8,3 +8,7 @@
 - **Presentation additions:** the PC tower, logical PCIe path, cable curves and thinner ASIC stack visualization were authored for discussion. They do not define a selected riser, cable, housing, board construction or qualified mating.
 
 Original source credits and applicable terms remain with their authors. These displays do not establish fabrication, electrical, thermal or mechanical qualification.
+
+## Native interactive PCB viewer
+
+The pinned KiCanvas renderer is copyright 2022 Alethea Katherine Flowers, under the [MIT license and copyright notices](assets/layout-viewer/vendor/kicanvas/LICENSE.md). Its existing KiCad 10 named-net compatibility adapter builds an in-memory numbered-net index without rewriting the source PCB. Original notices for [Earcut](assets/layout-viewer/vendor/kicanvas/earcut-LICENSE.txt), [Newstroke](assets/layout-viewer/vendor/kicanvas/newstroke-README.txt), [Newstroke authors](assets/layout-viewer/vendor/kicanvas/newstroke-AUTHOR.txt), [Newstroke font header](assets/layout-viewer/vendor/kicanvas/newstroke-font-header.txt), [Nunito](assets/layout-viewer/vendor/kicanvas/Nunito-OFL.txt) and [Material Symbols](assets/layout-viewer/vendor/kicanvas/Material-Symbols-LICENSE.txt) accompany the local dependencies.

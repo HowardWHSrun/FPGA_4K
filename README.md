@@ -1,8 +1,6 @@
 # FPGA_4K
 
-**[28 October weekly FPGA presentation · V9](presentation/meetings/2026-10-28-v9/)** — native interactive PCB layouts for the breakout and carrier, with layer controls, planes, part inspection and net highlighting. The six-slide presentation, 3D views and shared comments are retained. [Scope and sources](presentation/meetings/2026-10-28-v9/README.md).
-
-**[28 October weekly FPGA presentation · V8](presentation/meetings/2026-10-28-v8/)** — six interactive slides with the eight-stack system assembly, XEM8310/custom breakout and PCIe-to-PC path, HDMI schematic discussion, and XEM8305/LDO carrier views. Shared comments accept a name or Anonymous beside Notes and Fullscreen. The breakout and interface remain under review. [Scope and sources](presentation/meetings/2026-10-28-v8/README.md).
+**[28 October weekly FPGA presentation · V8](presentation/meetings/2026-10-28-v8/)** — six interactive slides with the eight-stack system assembly, XEM8310/custom breakout and PCIe-to-PC path, HDMI schematic discussion, and XEM8305/LDO carrier views. Native interactive PCB layouts support layers, planes, part inspection and net highlighting. Shared comments accept a name or Anonymous beside Notes and Fullscreen. The breakout and interface remain under review. [Scope and sources](presentation/meetings/2026-10-28-v8/README.md).
 
 **[Whole alternative assembly · Overview V25](index.html?approach=direct#overview)** — rotate the XEM8305, current Carrier V1 and original LDO together. Use Seated, illustration spacing and individual board focus to inspect their connector alignment. Fresh registration matches the current carrier; the LDO extends about 17.2 mm beyond its edge. Carrier 80/80 native body-model verification remains scoped to the carrier. [Assembly sources and nominal fit](hardware/xem8305-carrier/dated/2026-10-26/assembly-v2/README.md). 26 October 2026.
 

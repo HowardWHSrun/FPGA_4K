@@ -1,10 +1,8 @@
 # Source provenance
 
-## 28 October weekly presentation · V9
-
-[Six-slide deck](../presentation/meetings/2026-10-28-v9/index.html) adds native interactive PCB viewers to the breakout and carrier layout tabs. [Source identity and hashes](../presentation/meetings/2026-10-28-v9/assets/layout-viewer/SOURCE_MANIFEST_V9.json) match the retained October 27 snapshots. The pinned KiCanvas viewer and local dependencies retain [their notices](../presentation/meetings/2026-10-28-v9/THIRD_PARTY_NOTICES.md). Existing V8 public 3D model bytes and shared comments are preserved. [Public file hashes](../presentation/meetings/2026-10-28-v9/Publication_Assets_V9.json) record the bundle. No active CAD or hardware qualification status changes.
-
 ## 28 October weekly presentation · V8
+
+The existing V8 page now includes the native interactive PCB viewers in both layout tabs. [Unchanged PCB source hashes](../presentation/meetings/2026-10-28-v8/assets/layout-viewer/SOURCE_MANIFEST_V8.json), local dependency notices and source-native geometry counts accompany the viewers. The public URL and shared comments key remain the same.
 
 [Six-slide deck](../presentation/meetings/2026-10-28-v8/index.html) preserves the weekly overview/next-work format with current presentation assets and shared optional-name comments. Runtime files are normalized for GitHub Pages; backend source, local review state and private handoffs are excluded. The custom breakout remains a working design. The whole-system view uses fresh saved breakout geometry, official-derived XEM8310 geometry, preserved public FPGA V60/LDO V13 geometry and a thinner ASIC display concept. U100 alone uses an authored nominal envelope in the public breakout GLB; retained non-U100 accessor bytes match the source. [Conversion record](../presentation/meetings/2026-10-28-v8/assets/system-viewer/Public_Model_Changes_V8.json), [asset hashes](../presentation/meetings/2026-10-28-v8/Publication_Assets_V8.json), and [notices](../presentation/meetings/2026-10-28-v8/THIRD_PARTY_NOTICES.md) identify transformations and original credits. The PC/cabling and compact stack are illustrative. No native CAD is changed or released.
 
