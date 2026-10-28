@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "revision": "V2",
+  "date_local": "2026-10-26",
+  "source_PCB_sha256": "5caf9b364ec5ce7ba98a2e82c6d69d306f2a07f1fd13243a46281236f8e50fcc",
+  "sources": [
+    {
+      "path": "hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/public-model.json",
+      "sha256": "3bef5e911a6fd2e6c37f73848175d921ff029809a2840d0d30c9b110b902e195",
+      "role": "Current carrier board, pad/copper geometry and all 80 nominal body boxes; decoded geometry exactly preserved; source file hash retained."
+    },
+    {
+      "path": "presentation/overview/carrier-viewer-v42/assets/XEM_Viewer_Geometry.json",
+      "sha256": "2004d501ed672194f904bc1485308d7269c5f48d5079ec50caad676c15531d62",
+      "role": "Existing public independently authored/source-bound procedural reference geometry; re-registered, no supplier mesh."
+    },
+    {
+      "path": "presentation/overview/carrier-viewer-v42/assets/LDO_Viewer_Geometry.json",
+      "sha256": "f8f6ef05a083c53d7e9f9487548ec3a965aa1ff1d825d9dde0c6ac70a6866344",
+      "role": "Existing public independently authored/source-bound procedural reference geometry; re-registered, no supplier mesh."
+    }
+  ],
+  "supplier_meshes_included": false,
+  "native_CAD_changed": false,
+  "transformations": [
+    "Carrier geometry reused without semantic changes.",
+    "XEM old registered XY remains exact; carrier0..1.6 height frame shifted to centered-.8..+.8.",
+    "LDO old registered XY rotated-90deg and translated [76.2375,186.85] in native coordinates.",
+    "Attachment procedural boxes and board outlines converted to common millimeter X/Y/Z-up carrier-centered frame."
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "fb5a797de6e3d66ace86db9599a9710f5ffa1c44d3b67b2e119e4a44ed24da2e",
+      "bytes": 2220
+    },
+    {
+      "path": "assembly-model.json",
+      "sha256": "d633a361050d7065d7de351be5854d1ec9c9e34b13e35c84d502471fbfc438f3",
+      "bytes": 1109802
+    },
+    {
+      "path": "registration.json",
+      "sha256": "79391ee90df9ec1a21769f1eb244779c029a4dadc0c7116a3cf78dda3b395416",
+      "bytes": 4786
+    }
+  ]
+}
