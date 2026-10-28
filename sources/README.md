@@ -2,7 +2,7 @@
 
 ## 28 October weekly presentation · V9
 
-[Six-slide deck](../presentation/meetings/2026-10-28-v9/index.html) adds native interactive PCB viewers to the breakout and carrier layout tabs. [Source identity and hashes](../presentation/meetings/2026-10-28-v9/assets/layout-viewer/Source_Manifest_V9.json) match the retained October 27 snapshots. The pinned KiCanvas viewer and local dependencies retain [their notices](../presentation/meetings/2026-10-28-v9/THIRD_PARTY_NOTICES.md). Existing V8 public 3D model bytes and shared comments are preserved. [Public file hashes](../presentation/meetings/2026-10-28-v9/Publication_Assets_V9.json) record the bundle. No active CAD or hardware qualification status changes.
+[Six-slide deck](../presentation/meetings/2026-10-28-v9/index.html) adds native interactive PCB viewers to the breakout and carrier layout tabs. [Source identity and hashes](../presentation/meetings/2026-10-28-v9/assets/layout-viewer/SOURCE_MANIFEST_V9.json) match the retained October 27 snapshots. The pinned KiCanvas viewer and local dependencies retain [their notices](../presentation/meetings/2026-10-28-v9/THIRD_PARTY_NOTICES.md). Existing V8 public 3D model bytes and shared comments are preserved. [Public file hashes](../presentation/meetings/2026-10-28-v9/Publication_Assets_V9.json) record the bundle. No active CAD or hardware qualification status changes.
 
 ## 28 October weekly presentation · V8
 

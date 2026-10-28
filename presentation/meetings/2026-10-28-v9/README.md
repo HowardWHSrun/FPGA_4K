@@ -2,7 +2,7 @@
 
 [Open the six-slide presentation](index.html). Overview, whole-system assembly, breakout views, HDMI discussion, carrier and next steps retain the weekly meeting format. V9 restores the native interactive PCB viewer in both layout tabs: layers, planes, silkscreen, parts, net highlighting, zoom, fit and flip. Use Expand for a larger view.
 
-The native PCB snapshots match the retained October 27 deck exports. The breakout is the unrouted placement snapshot; the carrier is the saved October 27 board. [PCB sources and hashes](assets/layout-viewer/Source_Manifest_V9.json) and [viewer method](assets/layout-viewer/README.md) retain the scope. This publication changes no active native CAD or engineering status.
+The native PCB snapshots match the retained October 27 deck exports. The breakout is the unrouted placement snapshot; the carrier is the saved October 27 board. [PCB sources and hashes](assets/layout-viewer/SOURCE_MANIFEST_V9.json) and [viewer method](assets/layout-viewer/README.md) retain the scope. This publication changes no active native CAD or engineering status.
 
 Notes, fullscreen and shared comments remain available. Comments use the existing shared service and meeting key; blank names appear as Anonymous. Posted comments are visible to everyone with the presentation link. No account is required. Names and unfinished drafts may be remembered locally.
 
