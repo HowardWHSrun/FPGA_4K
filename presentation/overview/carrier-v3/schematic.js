@@ -9,7 +9,7 @@ function fit(){if(viewer){viewer.zoom_to_page();viewer.draw();}}
 function zoom(factor){if(viewer){viewer.viewport.camera.zoom*=factor;viewer.draw();}}
 window.nativeSchematicViewer={getState:()=>({ready:diagnostics.ready,error:diagnostics.error,revision:'V3',renderer:'KiCanvas native KiCad',sourceSHA256:diagnostics.sourceHash,counts:diagnostics.counts,zoom:viewer?.viewport.camera.zoom}),fit,zoom,activity:name=>app?.change_activity(name)};
 async function load(){
- const config=await fetch('board.json').then(response=>{if(!response.ok)throw Error('Direct LDO Carrier identity unavailable');return response.json();});
+ const config=await fetch('board.json').then(response=>{if(!response.ok)throw Error('Carrier identity unavailable');return response.json();});
  const source=config.schematic;const response=await fetch(source.native);if(!response.ok)throw Error('Native schematic unavailable');
  const bytes=await response.arrayBuffer(),digest=await crypto.subtle.digest('SHA-256',bytes),hash=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('');
  if(hash!==source.sha256)throw Error('Native schematic source hash changed');diagnostics.sourceHash=hash;$('download-native').href=source.native;
@@ -24,7 +24,7 @@ async function load(){
  for(const[key,value]of Object.entries(source.expected))if(counts[key]!==value)throw Error('Native schematic '+key+' count changed');
  diagnostics.counts=counts;element.theme='kicad';element.update_theme();viewer.paint();const sidebar=inside(embed.shadowRoot,'kc-ui-activity-side-bar');if(sidebar)sidebar.collapsed=true;
  await document.fonts.ready;requestAnimationFrame(()=>requestAnimationFrame(fit));new ResizeObserver(()=>{if(diagnostics.ready)viewer.draw();}).observe($('canvas-host'));
- $('canvas-host').setAttribute('aria-busy','false');$('load-status').textContent='Direct LDO Carrier · native KiCad schematic';diagnostics.ready=true;document.documentElement.dataset.viewerReady='true';
+ $('canvas-host').setAttribute('aria-busy','false');$('load-status').textContent='Direct LDO Carrier V3 · native KiCad schematic';diagnostics.ready=true;document.documentElement.dataset.viewerReady='true';
  parent.postMessage({type:'native-schematic-ready',revision:'V3',state:window.nativeSchematicViewer.getState()},location.origin);
 }
 $('fit').onclick=fit;$('zoom-in').onclick=()=>zoom(1.35);$('zoom-out').onclick=()=>zoom(1/1.35);$('parts').onclick=()=>app?.change_activity('symbols');

@@ -12,8 +12,8 @@
     meeting:['14 October FPGA and LDO presentation · V17','presentation/meetings/2026-10-14-v17/index.html'],
     hardware:['Original ASIC and LDO board references','hardware/overview.md'],
     assembly:['Preserved compact assembly concept','hardware/assembly/README.md'],
-    fpga:['Standalone FPGA V41 · complete KiCad','presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip'],
-    separate:['Separate LDO V5 · complete KiCad','presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip'],
+    fpga:['Frontend FPGA Board V41 · complete KiCad','presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip'],
+    separate:['FPGA-LDO PCB V5 · complete KiCad','presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip'],
     combined:['Combined FPGA/shared LDO V7 · complete KiCad','presentation/overview/assets/Combined_FPGA_Shared_LDO_V7_KiCad.zip'],
     carrier:['XEM8305 carrier V42 · public KiCad review package','hardware/xem8305-carrier/dated/2026-10-18/v42/Carrier_V42_Public_KiCad_Review.zip'],
     carrierChecks:['Carrier V42 native verification summary','hardware/xem8305-carrier/dated/2026-10-18/v42/verification/Public_V42_Native_Checks.json'],
@@ -30,11 +30,11 @@
     description:'We are developing two approaches in parallel: compact custom FPGA electronics with new LDO designs, and an XEM8305 carrier that connects directly to the existing LDO board. Explore either route below.',
     facts:[['4','two-ASIC boards'],['8','ASICs in the system concept'],['4,096','recording-channel target']],
     noteLabel:'A common recording goal · two hardware approaches',
-    note:'The carrier V42 is the parallel direct-LDO alternative. The custom FPGA route studies FPGA V41 + new LDO V5, or combined FPGA/shared LDO V7. Both use XEM8305 in different arrangements; neither is hardware-qualified.',
+    note:'The carrier V42 is the parallel direct-LDO alternative. The custom FPGA route studies Frontend FPGA Board V41 + new LDO V5, or combined FPGA/shared LDO V7. Both use XEM8305 in different arrangements; neither is hardware-qualified.',
     details:[
       'The preserved compact B V1 model is an earlier assembly concept. Its geometry is unchanged; its source has unspecified model units and does not establish current board dimensions, connector fit or a completed assembly.',
       'The current ASIC arrangement is four 1k boards, with two 512-channel ASICs on each board: eight ASICs and a 4,096-channel recording target. The compact FPGA/LDO studies still need ASIC-board distribution and stack-adapter design.',
-      'Approach A connects compact custom FPGA electronics by micro-HDMI to an XEM8305 host interface. Its latest interposer V4 sits between BRK8305 and XEM8305 and does not connect to the previous LDO board. The compact power options are standalone FPGA V41 + new LDO V5, or combined FPGA/shared LDO V7. The interface is under development.',
+      'Approach A connects compact custom FPGA electronics by micro-HDMI to an XEM8305 host interface. Its latest interposer V4 sits between BRK8305 and XEM8305 and does not connect to the previous LDO board. The compact power options are Frontend FPGA Board V41 + new LDO V5, or combined FPGA/shared LDO V7. The interface is under development.',
       'Approach B uses the existing LDO board directly with XEM8305 through carrier V42. It is a parallel alternative to the compact custom FPGA/LDO arrangement. Populated mating, powered operation, ASIC bring-up and hardware qualification remain open for both approaches.',
       'The µHDMI adapter section preserves the dated September XEM8310/BRK8310 study. Its three-cable proposal is historical context and does not define either current development path.'
     ],
@@ -55,7 +55,7 @@
     sources:[sources.hardware,sources.mapping,sources.meeting,['Bonding-fixture files and fit-check study','presentation/library/?q=bonding']]
   });
   update('fpga',{
-    section:'A · Custom FPGA approach',title:'Saved FPGA checkpoint · V41',subtitle:'Saved routing checkpoint · V41.',
+    section:'A · Custom FPGA approach',title:'Saved Frontend FPGA Board checkpoint · V41',subtitle:'Saved routing checkpoint · V41.',
     description:'The saved 25 × 23 mm XC7A35T board connects all 116 digital mezzanine paths and the 125 MHz Abracon reference-clock path in the saved routing checkpoint. Whole-board routing remains incomplete.',
     facts:[['V41','saved FPGA revision'],['25 × 23 mm','board outline'],['116 / 116','mezzanine paths routed']],
     noteLabel:'Remaining FPGA routing and qualification',
@@ -93,15 +93,15 @@
   });
   const powerOptions={
     separate:{
-      section:'A · Saved power-board checkpoint',title:'Saved separate LDO · V5',subtitle:'Saved LDO V5 · FPGA V41.',
+      section:'A · Saved power-board checkpoint',title:'Saved FPGA-LDO PCB · V5',subtitle:'Saved FPGA-LDO PCB V5 · Frontend FPGA Board V41.',
       description:'The saved separate 32 × 32.5 mm power-board placement uses 32 LT3046 stages for four 1k ASIC boards. It retains two 60-contact FPGA connectors and four 80-contact ASIC interfaces. Compare it with the combined V7 option in this section.',
       facts:[['V5','saved LDO revision'],['32 × 32.5 mm','board outline'],['32','LT3046 stages']],
-      noteLabel:'Unrouted placement · separate LDO V5',
+      noteLabel:'Unrouted placement · FPGA-LDO PCB V5',
       note:'731 whole-board connection gaps remain and canonical DRC is not clean. Routing, rail loads, thermal copper, grounding, provisional WLCSP lands and the ASIC distribution/stack adapters still need review.',
       details:[
-        'V5 is a separate ASIC power board used with standalone FPGA V41. Its 32 LT3046 stages and four 80-contact ASIC interfaces serve the four-board, eight-ASIC system concept.',
+        'V5 is a separate ASIC power board used with Frontend FPGA Board V41. Its 32 LT3046 stages and four 80-contact ASIC interfaces serve the four-board, eight-ASIC system concept.',
         'The native 32 × 32.5 mm board is an unrouted placement with 731 connection gaps. The canonical DRC is not clean; saved placement is not a fabrication release.',
-        'The 3D view shows FPGA V41 and separate LDO V5 with nominal alignment at their two 60-contact connectors. Illustrative separation does not establish populated fit, retention or an approved stack height.',
+        'The 3D view shows Frontend FPGA Board V41 and FPGA-LDO PCB V5 with nominal alignment at their two 60-contact connectors. Illustrative separation does not establish populated fit, retention or an approved stack height.',
         'ASIC distribution/stack adapters, regulator rail loads, startup, thermal copper, grounding and provisional WLCSP lands require validation. The combined V7 option is a separate design revision with shared rails.'
       ],
       sources:[sources.separate,sources.mapping,sources.meeting]
@@ -138,11 +138,11 @@
       noteLabel:'Assembly study · populated fit remains open',
       note:'The ASIC pass-through revision is a concept. Public connector previews use nominal project-authored geometry; exact supplier CAD stays local. Routing, electrical integration and populated fit remain unqualified.',
       details:[
-        'The compact module uses four same-facing ASIC board concepts with flat LDO V13 between the middle boards and FPGA V54 at the LDO interface. Probe-facing edges remain exposed. This is an assembly study, not a finished ASIC pass-through PCB.',
+        'The compact module uses four same-facing ASIC board concepts with flat FPGA-LDO PCB V13 between the middle boards and Frontend FPGA Board V54 at the LDO interface. Probe-facing edges remain exposed. This is an assembly study, not a finished ASIC pass-through PCB.',
         'The separate host combines the retained BRK8305 and XEM8305 source geometry with the saved interposer V12 placement snapshot. Each host board moves in its own seating stage. The cable endpoint follows the moving interposer J1 opening.',
         'One timeline covers the electronics sequence. Show sheep adds the final schematic head approach while preserving the electronics assembly stage. Select a board or double-click a component to inspect it while scrubbing; Other side exposes its reverse face.',
         'Available package models retain their source geometry. The public connector previews are nominal project-authored geometry with supplier references rather than redistributed supplier CAD. V12 has 27 assigned bodies; 23 packaged source bodies remain absent, with pads and silkscreen retained. Model coverage records distinguish these omissions from the completed display geometry.',
-        'The board sections below preserve their saved FPGA V41, LDO V5/combined V7 and host V4 checkpoints. Their native source files and prior routing status have not been replaced by this illustration. The parallel direct-LDO carrier V42 is unchanged. Connector engagement, electrical compatibility, powered operation and animal fit are not established by this animation.'
+        'The board sections below preserve their saved Frontend FPGA Board V41, LDO V5/combined V7 and host V4 checkpoints. Their native source files and prior routing status have not been replaced by this illustration. The parallel direct-LDO carrier V42 is unchanged. Connector engagement, electrical compatibility, powered operation and animal fit are not established by this animation.'
       ],
       sources:[['Assembly V23 model coverage and sources','presentation/overview/assembly-v23/README.md'],['Open the full-size assembly viewer','presentation/overview/assembly-v23/index.html'],['Preserved earlier assembly V8','presentation/overview/assembly-v8/README.md'],sources.hardware,sources.mapping]
     },

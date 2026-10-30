@@ -36,9 +36,9 @@ const layoutAssets={
  'back-render':['assets/pcb-bottom.png','Native KiCad render · saved V10 placement','back render']
 };
 function updateCaption(){
- if(view==='3d'){$('#view-caption').textContent='HDMI Extension Board V10 · 330 nominal component bodies';$('#view-full').href='assets/pcb-top.png';$('#view-full').textContent='Open front render ↗';}
- if(view==='layout'){const [url,caption,name]=layoutAssets[$('#layout-mode').value];$('#board-image').src=url;$('#board-image').alt=`HDMI Extension Board V10 ${name}`;$('#view-caption').textContent='HDMI Extension Board V10 · '+caption;$('#view-full').href=url;$('#view-full').textContent=`Open ${name} ↗`;}
- if(view==='schematic'){$('#view-caption').textContent='HDMI Extension Board V10 · native schematic · drag to pan · scroll to zoom';$('#view-full').href='assets/schematic.svg';$('#view-full').textContent='Open full SVG ↗';}
+ if(view==='3d'){$('#view-caption').textContent='Native board geometry · 330 nominal component bodies';$('#view-full').href='assets/pcb-top.png';$('#view-full').textContent='Open front render ↗';}
+ if(view==='layout'){const [url,caption,name]=layoutAssets[$('#layout-mode').value];$('#board-image').src=url;$('#board-image').alt=`V10 ${name}`;$('#view-caption').textContent=caption;$('#view-full').href=url;$('#view-full').textContent=`Open ${name} ↗`;}
+ if(view==='schematic'){$('#view-caption').textContent='One native page · drag to pan · scroll to zoom';$('#view-full').href='assets/schematic.svg';$('#view-full').textContent='Open full SVG ↗';}
 }
 async function showView(next){
  if(!['3d','layout','schematic'].includes(next))return;view=next;
@@ -50,7 +50,7 @@ async function showView(next){
 }
 async function ensureModel(){
  if(modelPromise)return modelPromise;
- modelPromise=import('./board-viewer.js?v=V10-2').then(module=>module.createViewer({canvas:$('#board-canvas'),stage:$('#board-stage'),status:$('#model-status'),poster:$('.model-poster'),selection:$('#model-selection'),expectedRefs:[...allParts.keys()],expectedPCB:SOURCE_PCB,onSelect:ref=>{selectPart(ref,false);selectionLabel(ref);}})).then(m=>{model=m;m.setActive(view==='3d');return m;}).catch(error=>{$('#model-status').hidden=false;$('#model-status').innerHTML='HDMI Extension Board 3D could not load. <a href="assets/pcb-top.png" target="_blank" rel="noopener">Open the native render</a>.';console.error(error);return null;});
+ modelPromise=import('./board-viewer.js?v=V10-2').then(module=>module.createViewer({canvas:$('#board-canvas'),stage:$('#board-stage'),status:$('#model-status'),poster:$('.model-poster'),selection:$('#model-selection'),expectedRefs:[...allParts.keys()],expectedPCB:SOURCE_PCB,onSelect:ref=>{selectPart(ref,false);selectionLabel(ref);}})).then(m=>{model=m;m.setActive(view==='3d');return m;}).catch(error=>{$('#model-status').hidden=false;$('#model-status').innerHTML='3D could not load. <a href="assets/pcb-top.png" target="_blank" rel="noopener">Open the native render</a>.';console.error(error);return null;});
  return modelPromise;
 }
 function aspectBox(box){const s=$('#schematic-stage'),ratio=s.clientWidth/Math.max(s.clientHeight,1),cx=box[0]+box[2]/2,cy=box[1]+box[3]/2,w=Math.max(box[2],box[3]*ratio)*1.06;return[cx-w/2,cy-w/ratio/2,w,w/ratio];}
@@ -62,9 +62,9 @@ function svgPoint(e){const p=schematic.createSVGPoint();p.x=e.clientX;p.y=e.clie
 async function ensureSchematic(){
  if(schematicPromise)return schematicPromise;
  schematicPromise=(async()=>{
-  const text=await compressedText('assets/schematic-web.svg.gz','assets/schematic-web.svg'),svg=new DOMParser().parseFromString(text,'image/svg+xml').documentElement;if(svg.localName!=='svg')throw new Error('Invalid schematic');svg.querySelectorAll('script,foreignObject').forEach(e=>e.remove());schematic=document.importNode(svg,true);schematic.removeAttribute('width');schematic.removeAttribute('height');schematic.setAttribute('role','img');schematic.setAttribute('aria-label','Native HDMI Extension Board V10 one-page schematic');$('#schematic-stage').append(schematic);$('#schematic-status').hidden=true;
+  const text=await compressedText('assets/schematic-web.svg.gz','assets/schematic-web.svg'),svg=new DOMParser().parseFromString(text,'image/svg+xml').documentElement;if(svg.localName!=='svg')throw new Error('Invalid schematic');svg.querySelectorAll('script,foreignObject').forEach(e=>e.remove());schematic=document.importNode(svg,true);schematic.removeAttribute('width');schematic.removeAttribute('height');schematic.setAttribute('role','img');schematic.setAttribute('aria-label','Native one-page V10 schematic');$('#schematic-stage').append(schematic);$('#schematic-status').hidden=true;
   let drag=null;const stage=$('#schematic-stage');stage.addEventListener('pointerdown',e=>{if(e.button!==0)return;const p=svgPoint(e);drag={id:e.pointerId,x:p.x,y:p.y};stage.setPointerCapture(e.pointerId);stage.classList.add('dragging');});stage.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const p=svgPoint(e);setSchematicView([schematicView[0]+drag.x-p.x,schematicView[1]+drag.y-p.y,schematicView[2],schematicView[3]]);});const stop=()=>{drag=null;stage.classList.remove('dragging');};stage.addEventListener('pointerup',stop);stage.addEventListener('pointercancel',stop);stage.addEventListener('wheel',e=>{e.preventDefault();zoomSchematic(Math.exp(Math.max(-.4,Math.min(.4,e.deltaY*.0015))),svgPoint(e));},{passive:false});stage.addEventListener('keydown',e=>{if(['+','=','-','r','R'].includes(e.key)){e.preventDefault();if(e.key==='-')zoomSchematic(1.3);else if(['+','='].includes(e.key))zoomSchematic(1/1.3);else chooseCircuit();}});return schematic;
- })().catch(error=>{$('#schematic-status').innerHTML='HDMI Extension Board schematic could not load. <a href="assets/schematic.svg" target="_blank" rel="noopener">Open the full SVG</a>.';console.error(error);return null;});return schematicPromise;
+ })().catch(error=>{$('#schematic-status').innerHTML='Drawing could not load. <a href="assets/schematic.svg" target="_blank" rel="noopener">Open the full SVG</a>.';console.error(error);return null;});return schematicPromise;
 }
 async function showPartSchematic(p,unit=0){
  await showView('schematic');$('#design').scrollIntoView({behavior:smooth()});if(!schematic)return;const q=p.schematic_positions?.[unit];if(!q)return;const b=p.schematic_bbox_mm,single=p.schematic_positions.length===1,scale=data.schematic.svg_units_per_mm||[1,1],w=single&&b?Math.max(100,b[2]-b[0]+85):150,h=single&&b?Math.max(80,b[3]-b[1]+65):120;setSchematicView(aspectBox([(q.x_mm-w/2)*scale[0],(q.y_mm-h/2)*scale[1],w*scale[0],h*scale[1]]));const f=data.schematic.frames.find(f=>f.id===p.schematic_frame_ids?.[0]);if(f)$('#circuit').value=f.id;

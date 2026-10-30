@@ -1,7 +1,5 @@
 # Project files and documents
 
-[The four PCB board names and their roles](board-names.md).
-
 - **[Direct LDO Carrier V3 · 30 October 2026](../presentation/overview/carrier-v3/):** interactive native layout/schematic and [only the KiCad/Gerber/BOM/CPL and necessary JLC files](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md).
 
 - [28 October weekly presentation · V8](../presentation/meetings/2026-10-28-v8/index.html): six slides, native interactive PCB layouts with layers, parts and nets, clickable schematic/3D, whole-system PCIe-to-PC context and shared optional-name comments. [Source scope](../presentation/meetings/2026-10-28-v8/README.md), [asset hashes](../presentation/meetings/2026-10-28-v8/Publication_Assets_V8.json) and [third-party notices](../presentation/meetings/2026-10-28-v8/THIRD_PARTY_NOTICES.md). The custom breakout remains open for design; no meeting outcome or fabrication release is inferred.
@@ -41,7 +39,7 @@
 
 [XEM8305 direct carrier R3 · 5 October](../presentation/xem/direct-all-connectors-2026-10-05.html) provides [all files, KiCad, Gerbers and the eight-sheet schematic](../presentation/downloads/#xem8305-direct-r3), scalable native views and rotatable carrier 3D. Local CAD/CAM checks pass. Factory, assembly and first-board qualification remain open. [R2](../presentation/xem/direct-r2-2026-10-05.html) retains its historical files.
 
-[Search the project Library](../presentation/library/) · [Frontend FPGA Board · 35T R39](../presentation/fpga/current-35t.html) · [LDO routing adapter E5](../presentation/ldo-backup/current-e5.html) · [XEM8305 carrier A1R2](../presentation/xem/current-a1r2.html) · [bonding fixture V6](../presentation/library/bonding-fixture.html). These dated reviews record weekend progress and remaining checks. The 35T research board, earlier paused routing work and historical 25T placement retain separate status. The A1R2 assembly contains adapter E3; the E5 separate-power-header adapter and XEM8310 carrier power path are separate revisions.
+[Search the project Library](../presentation/library/) · [Frontend FPGA Board R39](../presentation/fpga/current-35t.html) · [LDO routing adapter E5](../presentation/ldo-backup/current-e5.html) · [XEM8305 carrier A1R2](../presentation/xem/current-a1r2.html) · [bonding fixture V6](../presentation/library/bonding-fixture.html). These dated reviews record weekend progress and remaining checks. The 35T research board, earlier paused routing work and historical 25T placement retain separate status. The A1R2 assembly contains adapter E3; the E5 separate-power-header adapter and XEM8310 carrier power path are separate revisions.
 
 ## Small cabled routing board · 2 October
 
