@@ -1,5 +1,7 @@
 # Project files and documents
 
+- **[Direct-LDO carrier V3 · 30 October 2026](../presentation/overview/carrier-v3/):** interactive native layout/schematic and [only the KiCad/Gerber/BOM/CPL and necessary JLC files](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md).
+
 - [28 October weekly presentation · V8](../presentation/meetings/2026-10-28-v8/index.html): six slides, native interactive PCB layouts with layers, parts and nets, clickable schematic/3D, whole-system PCIe-to-PC context and shared optional-name comments. [Source scope](../presentation/meetings/2026-10-28-v8/README.md), [asset hashes](../presentation/meetings/2026-10-28-v8/Publication_Assets_V8.json) and [third-party notices](../presentation/meetings/2026-10-28-v8/THIRD_PARTY_NOTICES.md). The custom breakout remains open for design; no meeting outcome or fabrication release is inferred.
 
 - [Whole XEM8305 / carrier / LDO assembly · V25](../index.html?approach=direct#overview): current Carrier V1 with both attachments, seated and separated states, individual board focus/visibility, four camera presets and unchanged carrier layout/circuit views. [Source hashes, connector registration and nominal fit](../hardware/xem8305-carrier/dated/2026-10-26/assembly-v2/README.md). LDO J1/J19 align with current carrier J1/J2 after the connector group's move/rotation; about 17.2 mm of LDO overhang remains. The carrier's 80/80 native body-model verification is separate from attachment envelope scope.
