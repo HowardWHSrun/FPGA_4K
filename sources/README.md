@@ -299,3 +299,5 @@ The public assembly contains unchanged carrier geometry plus independently autho
 V25 uses a new viewer and script overrides. Exact V24 root HTML is archived separately, and the V24 carrier-only viewer, V42 assets, custom FPGA assembly and XEM8310 review remain preserved. The original native PCB/schematic/rules are unchanged. The revision-aware browser runner adds a V25 assembly-control branch while retaining V24/V23/V8 tests.
 
 - **30 October carrier V3:** [public source/packaging guide](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md). The model-free public native copy preserves electrical and routing content; required local libraries are included. Factory exports are unchanged from the frozen V3 handoff. No private history or supplier3D payloads are added.
+
+- **30 October PCB naming:** [canonical board names](../docs/board-names.md) define Direct LDO Carrier, Frontend FPGA Board, FPGA-LDO PCB and HDMI Extension Board. Only display names and navigation/index labels change; native design identities, source bytes and engineering status are preserved.

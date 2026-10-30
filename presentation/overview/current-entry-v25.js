@@ -7,20 +7,20 @@
  const assembly='presentation/overview/assembly-v8/index.html?v=20261015-v8';
  const overviewAssembly='presentation/overview/assembly-v23/index.html?embed=1&v=20261020-v23';
  const reviews={
-  assembly:{name:'Assembly study · V23',caption:'ASIC concepts · FPGA V54 + LDO V13 · interposer V12 snapshot · XEM8305',scope:'One timeline · optional sheep · nominal public connector previews · populated fit unqualified',views:{'3d':overviewAssembly}},
+  assembly:{name:'Assembly study · V23',caption:'ASIC concepts · Frontend FPGA Board V54 + FPGA-LDO PCB V13 · interposer V12 snapshot · XEM8305',scope:'One timeline · optional sheep · nominal public connector previews · populated fit unqualified',views:{'3d':overviewAssembly}},
   currentAsic:{name:'ASIC boards · PCB-5',caption:'Four copies of the original two-ASIC PCB-5 reference',scope:'Illustrative distribution · ASIC die and unavailable J3 body omitted',views:{'3d':assembly+'&focus=asic'}},
   adapter:{name:'Saved XEM8305 host · interposer V4',caption:'BRK8305 → interposer V4 → XEM8305',scope:'Current physical placement · nominal registered gaps',views:{'3d':assembly+'&focus=host'}},
   asicReference:{name:"ASIC carrier · source reference",caption:"Original PCB-5 · two ASIC footprints",scope:"Board reference · populated mating and hardware operation unqualified",views:{'3d':'presentation/overview/asic-reference-v5.html'}},
-  fpga:{name:'Saved FPGA V41',caption:'25 × 23 mm · V41 routing checkpoint',scope:'116/116 digital mezzanine paths · 445 whole-board opens',download:'presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'fpga_3d/index.html',layout:meeting+'fpga_viewer/index.html?embed=1',schematic:image('fpga-schematic')}},
-  separate:{name:'Saved separate LDO V5',caption:'32 × 32.5 mm · 32 LT3046 stages',scope:'Unrouted placement · physical ASIC distribution/adapter open',download:'presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'stack_viewer/index.html?architecture=separate',layout:meeting+'ldo_viewer/index.html?embed=1',schematic:image('ldo-schematic')}},
+  fpga:{name:'Frontend FPGA Board · V41',caption:'25 × 23 mm · V41 routing checkpoint',scope:'116/116 digital mezzanine paths · 445 whole-board opens',download:'presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'fpga_3d/index.html',layout:meeting+'fpga_viewer/index.html?embed=1',schematic:image('fpga-schematic')}},
+  separate:{name:'FPGA-LDO PCB · V5',caption:'32 × 32.5 mm · 32 LT3046 stages',scope:'Unrouted placement · physical ASIC distribution/adapter open',download:'presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'stack_viewer/index.html?architecture=separate',layout:meeting+'ldo_viewer/index.html?embed=1',schematic:image('ldo-schematic')}},
   combined:{name:'Saved combined FPGA + shared LDO V7',caption:'30 × 30 mm · 8 shared LT3046 stages',scope:'Unrouted · shared-load/noise/thermal feasibility open',download:'presentation/overview/assets/Combined_FPGA_Shared_LDO_V7_KiCad.zip',views:{'3d':assembly+'&architecture=combined&focus=compact',layout:image('combined-layout'),schematic:image('combined-schematic')}},
-  receiver:{name:'Direct-LDO carrier · V3',caption:'30 October 2026 · current four-layer carrier routing',scope:'80 fitted parts · native DRC / opens / parity 0 / 0 / 0 · JLC acceptance and sourcing pending',download:'hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/Carrier_V3_KiCad.zip',views:{'3d':'presentation/overview/carrier-assembly-v2/index.html?embed=1&view=3d',layout:'presentation/overview/carrier-v3/layout.html?embed=1&v=20261030-v3',schematic:'presentation/overview/carrier-v3/schematic.html?embed=1&v=20261030-v3'}}
+  receiver:{name:'Direct LDO Carrier · V3',caption:'30 October 2026 · current four-layer carrier routing',scope:'80 fitted parts · native DRC / opens / parity 0 / 0 / 0 · JLC acceptance and sourcing pending',download:'hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/Carrier_V3_KiCad.zip',views:{'3d':'presentation/overview/carrier-assembly-v2/index.html?embed=1&view=3d',layout:'presentation/overview/carrier-v3/layout.html?embed=1&v=20261030-v3',schematic:'presentation/overview/carrier-v3/schematic.html?embed=1&v=20261030-v3'}}
  };
  const top=document.querySelector('.viewer-top'),label=$('view-label'),camera=top.querySelector('.segmented'),controls=document.querySelector('.viewer-controls'),caption=document.querySelector('.scene-caption'),savedCaption=caption.innerHTML;
  const frame=document.createElement('iframe');frame.id='current-board-preview';frame.hidden=true;frame.allowFullscreen=true;$('scene-container').append(frame);
  const tabs=document.createElement('div');tabs.className='current-view-tabs';tabs.hidden=true;tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Current board view');
  for(const [key,text] of [['3d','3D'],['layout','Layout'],['schematic','Schematic']]){const button=document.createElement('button');button.dataset.currentView=key;button.textContent=text;button.onclick=()=>{viewByBoard[active]=key;sync();};tabs.append(button);}
- const power=document.createElement('label');power.className='current-power-choice';power.hidden=true;power.innerHTML='<select id="power-architecture" aria-label="Power board option"><option value="separate">Separate LDO · V5</option><option value="combined">Combined FPGA + shared LDO · V7</option></select>';
+ const power=document.createElement('label');power.className='current-power-choice';power.hidden=true;power.innerHTML='<select id="power-architecture" aria-label="Power board option"><option value="separate">FPGA-LDO PCB · V5</option><option value="combined">Combined FPGA + shared LDO · V7</option></select>';
  top.append(power,tabs);
  const viewByBoard={assembly:'3d',currentAsic:'3d',adapter:'3d',asicReference:'3d',fpga:'3d',separate:'3d',combined:'layout',receiver:'layout'};let active='',powerOption='separate';
  $('power-architecture').onchange=event=>{setPower(event.target.value);};
@@ -34,15 +34,15 @@
   frame.hidden=!on;$('scene-container').classList.toggle('current-preview-active',on);tabs.hidden=!on||Object.keys(review?.views||{}).length===1;camera.hidden=on;controls.hidden=on;power.hidden=section!=='routing';top.classList.toggle('current-preview',on);
   for(const id of ['scene','markers','camera-name','model-status'])$(id).hidden=on||(id==='model-status'&&api.getState().loaded);
   link('open-adapter-design','overview-2026-10-15-v5.html#adapter','Open preserved September adapter study',section==='adapter');
-  link('open-fpga-design',reviews.fpga.download,'Download FPGA V41 · complete KiCad',section==='fpga');
+  link('open-fpga-design',reviews.fpga.download,'Download Frontend FPGA Board V41 · complete KiCad',section==='fpga');
   link('open-ldo-design',reviews[powerOption].download,'Download '+reviews[powerOption].name+' · complete KiCad',section==='routing');
-  link('open-receiver-design',reviews.receiver.download,'Download Carrier V3 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');
+  link('open-receiver-design',reviews.receiver.download,'Download Direct LDO Carrier V3 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');
   const manufacturing=$('carrier-manufacturing-links');if(manufacturing)manufacturing.hidden=active!=='receiver';
   if(on){
    const view=viewByBoard[active];label.textContent=active==='receiver'&&view==='3d'?'Assembly reference · 26 October 2026':review.name;
    tabs.querySelectorAll('button').forEach(button=>{button.hidden=!review.views[button.dataset.currentView];button.setAttribute('aria-pressed',String(view===button.dataset.currentView));});
    const url=active==='assembly'?overviewAssembly:['currentAsic','adapter'].includes(active)?review.views[view]+'&architecture='+powerOption:review.views[view];if(frame.getAttribute('src')!==url)frame.src=url;frame.title=review.name+' · '+view;
-   const text=active==='receiver'&&view==='3d'?['Earlier Carrier V1 + XEM8305 + LDO · assembly reference','30 October Carrier V3 is in the Layout and Schematic tabs']: [review.caption,review.scope];
+   const text=active==='receiver'&&view==='3d'?['Earlier Carrier V1 + XEM8305 + LDO · assembly reference','30 October Direct LDO Carrier V3 is in the Layout and Schematic tabs']: [review.caption,review.scope];
    caption.replaceChildren(...text.map(text=>{const span=document.createElement('span');span.textContent=text;return span;}));
    link('open-schematic-design',active==='assembly'?'presentation/overview/assembly-v23/index.html?v=20261020-v23':url,'Open current view full size',true);
   }else{caption.innerHTML=savedCaption;link('open-schematic-design','presentation/schematic/?board=adapter','View historical adapter schematic',section==='adapter');}

@@ -1,10 +1,12 @@
-# Direct-LDO carrier V3 — 30 October 2026
+# Direct LDO Carrier
+
+V3 · 30 October 2026
 
 [Inspect native layout and schematic](../../../../../presentation/overview/carrier-v3/) · [Open in the main page](../../../../../index.html?approach=direct#overview)
 
 | Download | Use |
 |---|---|
-| [Carrier V3 KiCad ZIP](Carrier_V3_KiCad.zip) | Editable PCB, schematic, project, rules and required project-local libraries. Extract the whole folder and open `Carrier_V1.kicad_pro` with KiCad10.0.6. Visible revision is V3. |
+| [Direct LDO Carrier KiCad ZIP](Carrier_V3_KiCad.zip) | Editable PCB, schematic, project, rules and required project-local libraries. Extract the whole folder and open `Carrier_V1.kicad_pro` with KiCad10.0.6. Visible revision is V3. |
 | [Gerbers and drills](jlcpcb/Carrier_V3_PCB_Gerbers.zip) | Upload this ZIP to JLCPCB for the four-layer PCB. |
 | [Assembly BOM](jlcpcb/Carrier_V3_Assembly_BOM.csv) | 52 groups covering80 fitted parts, including76 catalog-coded references. |
 | [Placement CPL](jlcpcb/Carrier_V3_CPL.csv) | Matching80 placements:3Top/77Bottom. Native KiCad origins/angles; verify JLC's matched-part preview. |

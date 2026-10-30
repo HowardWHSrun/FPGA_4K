@@ -1,6 +1,17 @@
 # FPGA_4K
 
-**[Direct-LDO carrier V3 · 30 October](presentation/overview/carrier-v3/)** — current native KiCanvas routing and schematic; matching [KiCad and JLCPCB downloads](hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md). 80 fitted parts; native DRC/opens/parity and reported ERC findings zero. C2 preorder, four private references and Hirose factory acceptance remain open.
+## Board names
+
+| Name | Role | View |
+|---|---|---|
+| **Direct LDO Carrier** | XEM8305 carrier connecting the existing LDO board. | [Carrier V3](index.html?approach=direct#receiver) |
+| **Frontend FPGA Board** | PCB containing the Artix-7 35T FPGA. | [FPGA board](index.html?approach=custom#fpga) |
+| **FPGA-LDO PCB** | LDO power-supply board for the Artix-7 FPGA board. | [Power board](index.html?approach=custom#routing) |
+| **HDMI Extension Board** | XEM8310 breakout connecting eight FPGA boards through HDMI cables. | [Eight-port board](xem8310/) |
+
+[Board naming guide](docs/board-names.md). The linked pages retain their saved revision numbers and engineering status.
+
+**[Direct LDO Carrier V3 · 30 October](presentation/overview/carrier-v3/)** — current native KiCanvas routing and schematic; matching [KiCad and JLCPCB downloads](hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md). 80 fitted parts; native DRC/opens/parity and reported ERC findings zero. C2 preorder, four private references and Hirose factory acceptance remain open.
 
 **[28 October weekly FPGA presentation · V8](presentation/meetings/2026-10-28-v8/)** — six interactive slides with the eight-stack system assembly, XEM8310/custom breakout and PCIe-to-PC path, HDMI schematic discussion, and XEM8305/LDO carrier views. Native interactive PCB layouts support layers, planes, part inspection and net highlighting. Shared comments accept a name or Anonymous beside Notes and Fullscreen. The breakout and interface remain under review. [Scope and sources](presentation/meetings/2026-10-28-v8/README.md).
 
@@ -8,7 +19,7 @@
 
 **[Carrier V1 alone · 26 October 2026](presentation/overview/carrier-v1/)** — current four-layer XEM8305 / existing-LDO carrier, with 3D, layout and schematic views. **All 80 component bodies verified in native 3D**; saved-rule DRC, opens and schematic/PCB parity are 0 / 0 / 0. [Review files and verification scope](hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
 
-**[XEM8310 carrier · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
+**[HDMI Extension Board · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
 
 **[XEM8310 eight-port carrier · V8](xem8310-v8/)** — standalone schematic, interactive PCB/3D, 422-component browser and native review files. V7 electrical design / six-layer V8 rough placement, 25 October 2026. Routing and hardware qualification remain open.
 
