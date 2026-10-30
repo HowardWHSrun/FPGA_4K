@@ -2,6 +2,8 @@
 
 The original files are stored in this repository. Use the editable formats for further work and the PDFs or searchable notes for a quick review.
 
+- [Current PCB names and website links](board-names.md): Direct LDO Carrier, Frontend FPGA Board, FPGA-LDO PCB and HDMI Extension Board; naming updated 30 October 2026.
+
 ## Team workflow and editable design
 
 - [Team start page](team/README.md), [contribution guide](../CONTRIBUTING.md), [owners and open work](team/owners-and-work.md).
