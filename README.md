@@ -1,18 +1,5 @@
 # FPGA_4K
 
-## Current PCB names
-
-The current website uses these four names. The [board naming guide](docs/board-names.md) identifies their roles and keeps the earlier source names traceable.
-
-| PCB name | Role | Current review |
-|---|---|---|
-| **Direct LDO Carrier** | XEM8305 ↔ existing LDO board | [Open carrier](https://howardwhsrun.github.io/FPGA_4K/?approach=direct#receiver) |
-| **Frontend FPGA Board** | Artix-7 35T board | [Open FPGA](https://howardwhsrun.github.io/FPGA_4K/?approach=custom#fpga) |
-| **FPGA-LDO PCB** | Power companion for the Frontend FPGA Board | [Open power board](https://howardwhsrun.github.io/FPGA_4K/?approach=custom#routing) |
-| **HDMI Extension Board** | XEM8310 breakout for eight FPGA HDMI cables | [Open extension board](https://howardwhsrun.github.io/FPGA_4K/xem8310/) |
-
-Naming updated 30 October 2026. The linked reviews retain their own revision and design status. This branch's September source files and the historical notes below remain at their existing paths.
-
 Shared PCB development for the 4K neural-recording system: working designs, interface decisions, reference boards and acquisition software.
 
 ## Start working with the team
