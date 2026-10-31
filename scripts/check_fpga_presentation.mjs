@@ -317,7 +317,8 @@ try {
     await page.locator('#open-fpga-design').waitFor({state: 'visible'});
     await page.locator('#open-fpga-design').click();
     await page.waitForURL(url => url.pathname.endsWith('/presentation/fpga/current-35t.html'));
-    await page.waitForFunction(() => document.title.includes('35T') && document.title.includes('R39'));
+    await page.waitForFunction(() => document.title.includes('Frontend FPGA Board') && document.title.includes('R39'));
+    assert((await page.locator('.lead').innerText()).includes('XC7A35T-2CSG325I'), 'Historical board target retains its exact 35T device identity');
     report.checks.push('Historical system view opens its preserved 35T R39 review');
   }
   assert(report.pageErrors.length === 0, 'No JavaScript page errors');
