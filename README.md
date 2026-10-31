@@ -1,6 +1,8 @@
 # FPGA_4K
 
-**[Direct LDO Carrier V3 · 30 October](presentation/overview/carrier-v3/)** — current native KiCanvas routing and schematic; matching [KiCad and JLCPCB downloads](hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md). 80 fitted parts; native DRC/opens/parity and reported ERC findings zero. C2 preorder, four private references and Hirose factory acceptance remain open.
+**[Direct LDO Carrier V4 / BOM V5 · 31 October](presentation/overview/carrier-v4/)** — current native layout and schematic, with matching [KiCad and JLCPCB files](hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). 80 fitted parts in 42 BOM groups; fresh native checks clear. Matched-part placement and factory acceptance remain pending.
+
+**[Preserved Direct LDO Carrier V3 · 30 October](presentation/overview/carrier-v3/)** — earlier native viewers and [V3 files](hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md). Use the V4 design / V5 BOM above for the current package.
 
 **[28 October weekly FPGA presentation · V8](presentation/meetings/2026-10-28-v8/)** — six interactive slides with the eight-stack system assembly, XEM8310/custom breakout and PCIe-to-PC path, HDMI schematic discussion, and XEM8305/LDO carrier views. Native interactive PCB layouts support layers, planes, part inspection and net highlighting. Shared comments accept a name or Anonymous beside Notes and Fullscreen. The breakout and interface remain under review. [Scope and sources](presentation/meetings/2026-10-28-v8/README.md).
 

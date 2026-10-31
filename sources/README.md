@@ -1,5 +1,9 @@
 # Source provenance
 
+## Direct LDO Carrier V4 / BOM V5 · 31 October 2026
+
+[Publication and source hashes](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md) bind the current native viewers and model-free editable package to the frozen 30 October V4 design and exact V5 grouped BOM. Electrical/layout tokens are preserved, required local libraries included, and the Gerber/CPL/BOM bytes retained. Earlier V3 and 26 October 3D remain separate records. Factory placement/process review and powered qualification remain open.
+
 ## 28 October weekly presentation · V8
 
 The existing V8 page now includes the native interactive PCB viewers in both layout tabs. [Unchanged PCB source hashes](../presentation/meetings/2026-10-28-v8/assets/layout-viewer/SOURCE_MANIFEST_V8.json), local dependency notices and source-native geometry counts accompany the viewers. The public URL and shared comments key remain the same.

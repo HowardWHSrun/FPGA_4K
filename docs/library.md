@@ -1,6 +1,8 @@
 # Project files and documents
 
-- **[Direct LDO Carrier V3 · 30 October 2026](../presentation/overview/carrier-v3/):** interactive native layout/schematic and [only the KiCad/Gerber/BOM/CPL and necessary JLC files](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md).
+- **[Direct LDO Carrier V4 / BOM V5 · 31 October 2026](../presentation/overview/carrier-v4/):** current native layout/schematic and [matching KiCad, Gerber, grouped BOM and CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). Placement preview and manufacturing acceptance remain pending.
+
+- **[Preserved Direct LDO Carrier V3 · 30 October 2026](../presentation/overview/carrier-v3/):** interactive native layout/schematic and [only the KiCad/Gerber/BOM/CPL and necessary JLC files](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md).
 
 - [28 October weekly presentation · V8](../presentation/meetings/2026-10-28-v8/index.html): six slides, native interactive PCB layouts with layers, parts and nets, clickable schematic/3D, whole-system PCIe-to-PC context and shared optional-name comments. [Source scope](../presentation/meetings/2026-10-28-v8/README.md), [asset hashes](../presentation/meetings/2026-10-28-v8/Publication_Assets_V8.json) and [third-party notices](../presentation/meetings/2026-10-28-v8/THIRD_PARTY_NOTICES.md). The custom breakout remains open for design; no meeting outcome or fabrication release is inferred.
 

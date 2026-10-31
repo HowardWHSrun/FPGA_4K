@@ -15,7 +15,7 @@
   fpga:{name:'Saved Frontend FPGA Board V41',caption:'25 × 23 mm · V41 routing checkpoint',scope:'116/116 digital mezzanine paths · 445 whole-board opens',download:'presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'fpga_3d/index.html',layout:meeting+'fpga_viewer/index.html?embed=1',schematic:image('fpga-schematic')}},
   separate:{name:'Saved FPGA-LDO PCB V5',caption:'32 × 32.5 mm · 32 LT3046 stages',scope:'Unrouted placement · physical ASIC distribution/adapter open',download:'presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'stack_viewer/index.html?architecture=separate',layout:meeting+'ldo_viewer/index.html?embed=1',schematic:image('ldo-schematic')}},
   combined:{name:'Saved combined FPGA + shared LDO V7',caption:'30 × 30 mm · 8 shared LT3046 stages',scope:'Unrouted · shared-load/noise/thermal feasibility open',download:'presentation/overview/assets/Combined_FPGA_Shared_LDO_V7_KiCad.zip',views:{'3d':assembly+'&architecture=combined&focus=compact',layout:image('combined-layout'),schematic:image('combined-schematic')}},
-  receiver:{name:'Direct LDO Carrier · V3',caption:'30 October 2026 · current four-layer carrier routing',scope:'80 fitted parts · native DRC / opens / parity 0 / 0 / 0 · JLC acceptance and sourcing pending',download:'hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/Carrier_V3_KiCad.zip',views:{'3d':'presentation/overview/carrier-assembly-v2/index.html?embed=1&view=3d',layout:'presentation/overview/carrier-v3/layout.html?embed=1&v=20261030-v3',schematic:'presentation/overview/carrier-v3/schematic.html?embed=1&v=20261030-v3'}}
+  receiver:{name:'Direct LDO Carrier · V4',caption:'31 October 2026 · V4 CAD / V5 grouped BOM',scope:'80 fitted parts · native DRC / opens / parity 0 / 0 / 0 · JLC placement and factory review pending',download:'hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/Carrier_V4_KiCad.zip',views:{'3d':'presentation/overview/carrier-assembly-v2/index.html?embed=1&view=3d',layout:'presentation/overview/carrier-v4/layout.html?embed=1&v=20261031-v4',schematic:'presentation/overview/carrier-v4/schematic.html?embed=1&v=20261031-v4'}}
  };
  const top=document.querySelector('.viewer-top'),label=$('view-label'),camera=top.querySelector('.segmented'),controls=document.querySelector('.viewer-controls'),caption=document.querySelector('.scene-caption'),savedCaption=caption.innerHTML;
  const frame=document.createElement('iframe');frame.id='current-board-preview';frame.hidden=true;frame.allowFullscreen=true;$('scene-container').append(frame);
@@ -62,13 +62,13 @@
   link('open-adapter-design',systemMeeting+'index.html#slide-3','Open 28 October HDMI Extension Board review',section==='adapter');
   link('open-fpga-design',reviews.fpga.download,'Download Frontend FPGA Board V41 · complete KiCad',section==='fpga');
   link('open-ldo-design',reviews[powerOption].download,'Download '+reviews[powerOption].name+' · complete KiCad',section==='routing');
-  link('open-receiver-design',reviews.receiver.download,'Download Direct LDO Carrier V3 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');
+  link('open-receiver-design',reviews.receiver.download,'Download Direct LDO Carrier V4 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');
   const manufacturing=$('carrier-manufacturing-links');if(manufacturing)manufacturing.hidden=active!=='receiver';
   if(on){
    const view=viewByBoard[active];label.textContent=active==='receiver'&&view==='3d'?'Assembly reference · 26 October 2026':review.name;
    tabs.querySelectorAll('button').forEach(button=>{button.hidden=!review.views[button.dataset.currentView];button.setAttribute('aria-pressed',String(view===button.dataset.currentView));});
    const url=review.views[view];if(frame.getAttribute('src')!==url){systemFocus='';systemObserver?.disconnect();frame.src=url;}frame.title=review.name+' · '+view;focusSystemView();
-   const text=active==='receiver'&&view==='3d'?['Earlier Carrier V1 + XEM8305 + LDO · assembly reference','30 October Carrier V3 is in the Layout and Schematic tabs']: [review.caption,review.scope];
+   const text=active==='receiver'&&view==='3d'?['Earlier Carrier V1 + XEM8305 + LDO · assembly reference','31 October Carrier V4 is in the Layout and Schematic tabs']: [review.caption,review.scope];
    caption.replaceChildren(...text.map(text=>{const span=document.createElement('span');span.textContent=text;return span;}));
    link('open-schematic-design',url,'Open current view full size',true);
   }else{caption.innerHTML=savedCaption;link('open-schematic-design','presentation/schematic/?board=adapter','View historical adapter schematic',section==='adapter');}
@@ -120,7 +120,7 @@
    doc.documentElement.dataset.overviewEmbed=frame.getAttribute('src')?.includes('assembly-v23/')?'V23':frame.getAttribute('src')?.includes('carrier-assembly-v2/')?'V25':frame.getAttribute('src')?.includes('carrier-v1/')?'V24':'V11';
    doc.documentElement.dataset.overviewSection=api.getState().slideId;
    if(frame.getAttribute('src')?.includes('/2026-10-28-v8/'))return;
-   if(frame.getAttribute('src')?.includes('carrier-v3/')||['V23','V24','V25'].includes(doc.documentElement.dataset.overviewEmbed)||doc.getElementById('overview-embed-style'))return;
+   if(frame.getAttribute('src')?.includes('carrier-v4/')||frame.getAttribute('src')?.includes('carrier-v3/')||['V23','V24','V25'].includes(doc.documentElement.dataset.overviewEmbed)||doc.getElementById('overview-embed-style'))return;
    const link=doc.createElement('link');link.id='overview-embed-style';link.rel='stylesheet';link.href=new URL('presentation/overview/embedded-controls-v11.css?v=20261018-v11',document.baseURI).href;doc.head.append(link);
   }catch{/* A standalone cross-origin viewer retains its own controls. */}
  });
