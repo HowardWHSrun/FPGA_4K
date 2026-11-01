@@ -1,6 +1,10 @@
 # Source provenance
 
-## Direct LDO Carrier V4 / BOM V5 · 31 October 2026
+## Direct LDO Carrier V6 · 31 October 2026
+
+[Publication and source hashes](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md) identify the V4-derived V6 schematic/PCB with the MC2.14 VREFP to MC2.16 GNDADC connection. The withdrawn input-protection redesign is excluded. All current public downloads and the portable project use V6 names; historical library identifiers and source-revision notes retain their provenance. BOM/CPL contents retain the same 80 parts/placements. Public native files omit supplier 3D payloads and include required project-local libraries. JLC placement/CAM/process review and powered qualification remain open.
+
+## Preserved Direct LDO Carrier V4 / BOM V5 · 31 October 2026
 
 [Publication and source hashes](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md) bind the current native viewers and model-free editable package to the frozen 30 October V4 design and exact V5 grouped BOM. Electrical/layout tokens are preserved, required local libraries included, and the Gerber/CPL/BOM bytes retained. Earlier V3 and 26 October 3D remain separate records. Factory placement/process review and powered qualification remain open.
 

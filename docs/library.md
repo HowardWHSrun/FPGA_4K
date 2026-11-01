@@ -1,6 +1,8 @@
 # Project files and documents
 
-- **[Direct LDO Carrier V4 / BOM V5 · 31 October 2026](../presentation/overview/carrier-v4/):** current native layout/schematic and [matching KiCad, Gerber, grouped BOM and CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). Placement preview and manufacturing acceptance remain pending.
+- **[Direct LDO Carrier V6 · 31 October 2026](../presentation/overview/carrier-v6/):** SYSMON internal-reference copper link, current native viewers and [matching V6 KiCad/Gerber/BOM/CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md). Same parts/placements; JLC placement and factory review remain pending.
+
+- **[Preserved Direct LDO Carrier V4 / BOM V5 · 31 October 2026](../presentation/overview/carrier-v4/):** earlier native layout/schematic and [preserved KiCad, Gerber, grouped BOM and CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). Placement preview and manufacturing acceptance remain pending.
 
 - **[Preserved Direct LDO Carrier V3 · 30 October 2026](../presentation/overview/carrier-v3/):** interactive native layout/schematic and [only the KiCad/Gerber/BOM/CPL and necessary JLC files](../hardware/xem8305-carrier/dated/2026-10-30/carrier-v3/README.md).
 
