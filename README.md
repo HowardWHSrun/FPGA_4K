@@ -1,5 +1,8 @@
 # FPGA_4K
 
+**[HDMI Extension Board · current V5 schematic / V3 placement · 1 November 2026](xem8310/)** — one-page PDF and SVG, six-layer placement, interactive 3D, component search and [editable KiCad downloads](xem8310/#files). Four new test points await PCB placement; routing and hardware qualification remain open.
+
+
 **[Direct LDO Carrier V6 · 31 October](presentation/overview/carrier-v6/)** — MC2 pin 14 VREFP now joins pin 16 GNDADC. Current native layout/schematic and matching [V6 KiCad, Gerbers, BOM and CPL](hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md); same 80 fitted parts / 42 BOM groups. Native checks pass; JLC placement, factory acceptance and powered qualification remain pending.
 
 **[Preserved Direct LDO Carrier V4 / BOM V5 · 31 October](presentation/overview/carrier-v4/)** — earlier native layout and schematic, with preserved [KiCad and JLCPCB files](hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). 80 fitted parts in 42 BOM groups; fresh native checks clear. Matched-part placement and factory acceptance remain pending.
@@ -12,7 +15,7 @@
 
 **[Carrier V1 alone · 26 October 2026](presentation/overview/carrier-v1/)** — current four-layer XEM8305 / existing-LDO carrier, with 3D, layout and schematic views. **All 80 component bodies verified in native 3D**; saved-rule DRC, opens and schematic/PCB parity are 0 / 0 / 0. [Review files and verification scope](hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Purchasing, powered operation, toleranced assembly and fabrication qualification remain open.
 
-**[HDMI Extension Board · V10](xem8310/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
+**[Preserved HDMI Extension Board · V10](xem8310-v10/)** — cleaner standalone review with matching PCB, interactive 3D, one-page schematic and 351-component browser. Eight HDMI ports, six layers and shared power/JTAG. Placement only: 776 unrouted connections; routing and DRC cleanup remain open. [Earlier V9 schematic review](xem8310-v9/) · [V8 placement](xem8310-v8/). 25 October 2026.
 
 **[XEM8310 eight-port carrier · V8](xem8310-v8/)** — standalone schematic, interactive PCB/3D, 422-component browser and native review files. V7 electrical design / six-layer V8 rough placement, 25 October 2026. Routing and hardware qualification remain open.
 

@@ -15,9 +15,9 @@
     system:['Eight-stack system viewer','presentation/meetings/2026-10-28-v8/assets/system-viewer/index.html'],
     systemProvenance:['System snapshots, nominal geometry and PCIe scope','presentation/meetings/2026-10-28-v8/assets/system-viewer/PROVENANCE.md'],
     hdmi:['19-contact HDMI discussion schematic','presentation/meetings/2026-10-28-v8/assets/hdmi/HDMI_Port_19_Contacts_V7.svg'],
-    breakoutLayout:['HDMI Extension Board · 27 October native placement snapshot','presentation/meetings/2026-10-28-v8/assets/layout-viewer/breakout/index.html'],
-    breakoutSources:['Meeting native PCB sources and hashes','presentation/meetings/2026-10-28-v8/assets/layout-viewer/SOURCE_MANIFEST_V8.json'],
-    breakoutSchematic:['HDMI Extension Board · four-sheet meeting schematic','presentation/meetings/2026-10-28-v8/assets/breakout/schematic-v1.pdf'],
+    breakoutLayout:['HDMI Extension Board · V3 placement','xem8310/?view=layout'],
+    breakoutSources:['Current V5 / V3 sources and hashes','xem8310/assets/files/source-manifest.json'],
+    breakoutSchematic:['HDMI Extension Board · V5 one-page schematic','xem8310/assets/HDMI_Extension_Board_Schematic_V5.pdf'],
     hardware:['Original ASIC and LDO board references','hardware/overview.md'],
     assembly:['Preserved compact assembly concept','hardware/assembly/README.md'],
     fpga:['Frontend FPGA Board V41 · complete KiCad','presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip'],
@@ -44,7 +44,7 @@
       'The meeting V8 scene repeats eight frontend stacks. Each illustrative stack combines a Frontend FPGA Board, FPGA-LDO PCB and four PCB-5-derived two-ASIC boards. Replication conveys topology; native ASIC pass-through, distribution and stack hardware remain unfinished.',
       'Approach A uses XEM8310 with the HDMI Extension Board, eight HDMI cable links and an electrical PCIe x4 path to the PC. The board retains a physical x8-length edge; no cable, riser or enclosure fit is selected.',
       'Approach B uses the existing LDO board directly with XEM8305 through carrier V42. It is a parallel alternative to the compact custom FPGA/LDO arrangement. Populated mating, powered operation, ASIC bring-up and hardware qualification remain open for both approaches.',
-      'The HDMI Extension Board section uses the 27 October placement snapshot retained in meeting V8: 247 footprints and no routed copper. It is not a claim about later active CAD. Earlier XEM8305 interposer and September three-cable studies remain separate history.'
+      'The HDMI Extension Board section now shows the 1 November V5 schematic and six-layer V3 placement. TP710–TP713 await placement. The whole-system model retains the labelled 28 October snapshots; earlier interposer studies remain history.'
     ],
     sources:[sources.meetingV8,sources.meetingNotes,sources.system,sources.systemProvenance,sources.hdmi,sources.mapping,sources.meeting,sources.assembly,sources.hardware]
   });
@@ -93,11 +93,11 @@
     sources:[sources.carrier,sources.carrierPdf,sources.carrierChecks,sources.carrierStatus,sources.carrierFactory,sources.carrierBom,sources.carrierCpl]
   });
   update('adapter',{
-    section:'A · XEM8310 host interface',title:'HDMI Extension Board · saved V1',subtitle:'27 October placement snapshot · 247 footprints · unrouted.',
-    description:'The HDMI Extension Board breaks XEM8310 out to eight provisional HDMI ports for the eight Frontend FPGA Board / FPGA-LDO PCB / ASIC stacks. Its electrical PCIe x4 link provides the planned PC path. These views retain the 27 October snapshot used by meeting V8.',
-    facts:[['8','provisional HDMI ports'],['247','saved footprints'],['0','routed segments in snapshot']],
-    noteLabel:'Meeting V8 snapshot · design remains open',note:'The retained placement has no routed copper. Connector spacing, electrical design, power-module footprint, physical fit, HDMI interface decisions and PCIe implementation remain under review. No native CAD changes are made here.',
-    details:['Meeting V8 presents BRK8310-derived Custom V1, now named HDMI Extension Board. The retained native PCB has 247 footprints, 1,390 pads, four copper layers and zero segments, vias or zones. These counts describe the saved 27 October placement, not later local routing work.','Four schematic sheets group the overview, PCIe x4, frontend ports/power and USB JTAG. J101–J108 provide the eight provisional HDMI cable interfaces. Review their signals, power budget, cable and connector contract before updating the Frontend FPGA Board.','The system viewer adds XEM8310 at a nominal 5 mm PCB-surface gap and eight replicated frontend stacks. Some bodies are nominal envelopes; cable paths and the PC slot are illustrative. The electrical x4 design retains an x8-length edge, with no selected riser, cable or enclosure fit.','The older BRK8305 / interposer V4 / XEM8305 host and the September three-cable study remain historical designs. Neither is the current eight-HDMI custom topology; the Direct LDO Carrier remains the separate XEM8305 / existing-LDO path.'],
+    section:'A · XEM8310 host interface',title:'HDMI Extension Board · V5 / V3',subtitle:'1 November 2026 · current V5 circuit · six-layer V3 placement.',
+    description:'Eight custom Micro-HDMI ports carry recording, commands, JTAG and individually switched 5 V frontend power. Inspect the current V5 one-page circuit and latest saved V3 placement, with electrical PCIe x4 to the PC.',
+    facts:[['267','schematic components'],['6','PCB copper layers'],['8','frontend ports']],
+    noteLabel:'Current checkpoint · 1 November',note:'Placement study: no routed traces or power/ground pours. TP710–TP713 await PCB placement. Not a fabrication release.',
+    details:['V5 is the current one-page schematic; V3 is a separate placement revision with its earlier paired schematic. The editable downloads preserve both identities and their local 2D libraries.','All 1,423 existing named pin/net memberships agree. Four new rail test points appear only in V5. V3 has 269 footprints including six PCB-only mechanical/fiducial features.','The rotatable V3 preview uses native board surfaces and 238 nominal component bodies. XEM, bracket, cables and enclosure are not included; plug and populated fit remain unqualified.','The proposed six-layer construction, impedance rules, routing, power/clock placement, silkscreen, support holes and cable power still require engineering review. The whole-system animation remains the historical meeting model.'],
     sources:[sources.meetingV8,sources.meetingNotes,sources.breakoutLayout,sources.breakoutSources,sources.breakoutSchematic,sources.hdmi,sources.systemProvenance,['Earlier XEM8305 host models and provenance','presentation/overview/assembly-v8/README.md'],sources.mapping,['Preserved September study','overview-2026-10-15-v5.html#adapter']]
   });
   const powerOptions={

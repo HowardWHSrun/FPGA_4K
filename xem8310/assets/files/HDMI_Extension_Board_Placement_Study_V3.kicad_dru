@@ -1,0 +1,20 @@
+(version 1)
+# Source: V3/impedance_solver.py on JLC06161H-2116; confirm with JLC before ordering.
+(rule "100R pairs on L3 (In2.Cu)"
+	(layer "In2.Cu")
+	(condition "A.hasNetclass('REC_100R') || A.hasNetclass('CMD_100R')")
+	(constraint track_width (min 0.16) (opt 0.177) (max 0.19))
+	(constraint diff_pair_gap (min 0.18) (opt 0.20) (max 0.22)))
+
+(rule "PCIe and USB stay on outer layers"
+	(layer inner)
+	(condition "A.hasNetclass('PCIE_85R') || A.hasNetclass('USB_90R')")
+	(constraint disallow track))
+
+(rule "Micro-HDMI fine-pitch pads (0.4 mm pitch footprint)"
+	(condition "A.memberOfFootprint('J61*') && B.memberOfFootprint('J61*')")
+	(constraint clearance (min 0.15)))
+
+(rule "USB-C fine-pitch pads"
+	(condition "A.memberOfFootprint('J500') && B.memberOfFootprint('J500')")
+	(constraint clearance (min 0.15)))

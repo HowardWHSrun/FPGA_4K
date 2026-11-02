@@ -74,3 +74,10 @@ presentation/meetings/2026-10-28-v8/assets/carrier/assembly-viewer/vendor/** -te
 # Preserve native layout snapshots and pinned dependency/license bytes in the V8 update.
 presentation/meetings/2026-10-28-v8/assets/layout-viewer/vendor/** -text -whitespace
 presentation/meetings/2026-10-28-v8/assets/layout-viewer/**/*.kicad_pcb -text -whitespace
+
+# Preserve archived V10 native exports and pinned runtime bytes.
+xem8310-v10/assets/*.svg -text -whitespace
+xem8310-v10/assets/*.csv -text whitespace=cr-at-eol
+xem8310-v10/assets/vendor/** -text -whitespace
+# Preserve newly published native KiCad files without reformatting.
+xem8310/assets/files/*.kicad_* -text -whitespace

@@ -1,5 +1,10 @@
 # Source provenance
 
+## HDMI Extension Board — 1 November 2026
+
+[Current V5 / V3 page](../xem8310/) and [source hashes](../xem8310/assets/files/source-manifest.json) identify the frozen local sources. V5 schematic and V3 placement use separate revision tracks; four new test points remain unplaced. Native circuit/layout data is preserved, with public model references removed and local 2D dependencies packaged. The GLB combines KiCad board surfaces with independently authored nominal component bodies. Supplier 3D payloads are not redistributed. Original BRK8310 provenance is retained. This publication is not a manufacturing release; the prior [V10 page](../xem8310-v10/) is preserved.
+
+
 ## Direct LDO Carrier V6 · 31 October 2026
 
 [Publication and source hashes](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md) identify the V4-derived V6 schematic/PCB with the MC2.14 VREFP to MC2.16 GNDADC connection. The withdrawn input-protection redesign is excluded. All current public downloads and the portable project use V6 names; historical library identifiers and source-revision notes retain their provenance. BOM/CPL contents retain the same 80 parts/placements. Public native files omit supplier 3D payloads and include required project-local libraries. JLC placement/CAM/process review and powered qualification remain open.

@@ -1,5 +1,8 @@
 # Project files and documents
 
+**[HDMI Extension Board · current V5 schematic / V3 placement · 1 November 2026](../xem8310/)** — one-page PDF and SVG, six-layer placement, interactive 3D, component search and [editable KiCad downloads](../xem8310/#files). Four new test points await PCB placement; routing and hardware qualification remain open.
+
+
 - **[Direct LDO Carrier V6 · 31 October 2026](../presentation/overview/carrier-v6/):** SYSMON internal-reference copper link, current native viewers and [matching V6 KiCad/Gerber/BOM/CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md). Same parts/placements; JLC placement and factory review remain pending.
 
 - **[Preserved Direct LDO Carrier V4 / BOM V5 · 31 October 2026](../presentation/overview/carrier-v4/):** earlier native layout/schematic and [preserved KiCad, Gerber, grouped BOM and CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v4-bom-v5/README.md). Placement preview and manufacturing acceptance remain pending.
@@ -12,7 +15,7 @@
 
 - [Carrier V1 alone · 26 October](../presentation/overview/carrier-v1/): current four-layer carrier with 3D, native layout, one-page schematic, all 80 component bodies and a model-free native review archive. **All 80 component bodies verified in native 3D**; saved-rule DRC / opens / parity 0 / 0 / 0. [Review files, source hashes and scope](../hardware/xem8305-carrier/dated/2026-10-26/carrier-v1/README.md). Powered, assembly, purchasing and fabrication qualification remain open.
 
-- [HDMI Extension Board V10 · standalone design review](../xem8310/): matching PCB, interactive 3D, native one-page schematic, searchable 351-component list and exact review sources. One compact design panel switches between 3D, layout and circuit views; detailed results are expandable. Eight ports / six layers; placement only, 776 unrouted. [Earlier V9](../xem8310-v9/) · [V8 placement](../xem8310-v8/).
+- [Preserved HDMI Extension Board V10 · standalone design review](../xem8310-v10/): matching PCB, interactive 3D, native one-page schematic, searchable 351-component list and exact review sources. One compact design panel switches between 3D, layout and circuit views; detailed results are expandable. Eight ports / six layers; placement only, 776 unrouted. [Earlier V9](../xem8310-v9/) · [V8 placement](../xem8310-v8/).
 
 - [XEM8310 carrier V8 · standalone design review](../xem8310-v8/): one-page schematic with circuit/component zoom, eight-port six-layer PCB, selectable 3D parts, 422-component list and public native review archive. Rough placement only; no new routing/refill. The meeting presentation is unchanged.
 

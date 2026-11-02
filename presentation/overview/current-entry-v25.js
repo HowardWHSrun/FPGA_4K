@@ -10,7 +10,7 @@
  const reviews={
   assembly:{name:'XEM8310 · eight HDMI links',caption:'8 Frontend FPGA Board / FPGA-LDO PCB / ASIC stacks → HDMI Extension Board + XEM8310 → PCIe x4 → PC',scope:'28 October meeting topology · saved model snapshots · cable and populated fit remain unqualified',views:{'3d':overviewAssembly}},
   currentAsic:{name:'ASIC stack · 28 October concept',caption:'One frontend stack · four PCB-5-derived ASIC boards, FPGA-LDO PCB and Frontend FPGA Board',scope:'Thinner board and connector spacing are illustrative · eight stacks in the system view',views:{'3d':overviewAssembly}},
-  adapter:{name:'HDMI Extension Board · meeting snapshot',caption:'XEM8310 · J101–J108 · eight HDMI links · PCIe x4 to PC',scope:'27 October V1 placement used in the 28 October meeting · 247 footprints · unrouted',views:{'3d':overviewAssembly,layout:systemMeeting+'assets/layout-viewer/breakout/index.html?embed=1',schematic:'presentation/overview/image-viewer.html?board=hdmi-extension&asset=hdmi-overview&v=20261030-custom-v1'}},
+  adapter:{name:'HDMI Extension Board · V5 / V3',caption:'Current V5 schematic · saved V3 placement · eight custom Micro-HDMI ports · PCIe x4',scope:'1 November 2026 · six layers · unrouted study · four new test points await placement',views:{'3d':'xem8310/?embed=1&view=3d',layout:'xem8310/?embed=1&view=layout',schematic:'xem8310/?embed=1&view=schematic'}},
   asicReference:{name:"ASIC carrier · source reference",caption:"Original PCB-5 · two ASIC footprints",scope:"Board reference · populated mating and hardware operation unqualified",views:{'3d':'presentation/overview/asic-reference-v5.html'}},
   fpga:{name:'Saved Frontend FPGA Board V41',caption:'25 × 23 mm · V41 routing checkpoint',scope:'116/116 digital mezzanine paths · 445 whole-board opens',download:'presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'fpga_3d/index.html',layout:meeting+'fpga_viewer/index.html?embed=1',schematic:image('fpga-schematic')}},
   separate:{name:'Saved FPGA-LDO PCB V5',caption:'32 × 32.5 mm · 32 LT3046 stages',scope:'Unrouted placement · physical ASIC distribution/adapter open',download:'presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'stack_viewer/index.html?architecture=separate',layout:meeting+'ldo_viewer/index.html?embed=1',schematic:image('ldo-schematic')}},
@@ -59,7 +59,7 @@
   document.body.classList.toggle('assembly-inspection',active==='assembly');
   frame.hidden=!on;$('scene-container').classList.toggle('current-preview-active',on);tabs.hidden=!on||Object.keys(review?.views||{}).length===1;camera.hidden=on;controls.hidden=on;power.hidden=section!=='routing';top.classList.toggle('current-preview',on);
   for(const id of ['scene','markers','camera-name','model-status'])$(id).hidden=on||(id==='model-status'&&api.getState().loaded);
-  link('open-adapter-design',systemMeeting+'index.html#slide-3','Open 28 October HDMI Extension Board review',section==='adapter');
+  link('open-adapter-design','xem8310/#files','HDMI Extension Board · current views and downloads',section==='adapter');
   link('open-fpga-design',reviews.fpga.download,'Download Frontend FPGA Board V41 · complete KiCad',section==='fpga');
   link('open-ldo-design',reviews[powerOption].download,'Download '+reviews[powerOption].name+' · complete KiCad',section==='routing');
   link('open-receiver-design',reviews.receiver.download,'Download Direct LDO Carrier V6 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');

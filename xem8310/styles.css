@@ -6,3 +6,5 @@
 
 /* Keep the board visible immediately on desktop. */
 @media(min-width:701px){.intro{padding:24px 0 24px}h1{font-size:clamp(32px,4.1vw,46px)}.design-stage{height:clamp(390px,60vh,620px)}}
+
+.download-row{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}.embedded .site-header,.embedded .intro,.embedded .components-section,.embedded .files-section,.embedded footer,.embedded .design-note{display:none}.embedded main{padding:0;max-width:none}.embedded .design-section{margin:0}.embedded .design-stage{height:calc(100vh - 105px);min-height:260px}.embedded .design-viewer{border-radius:0}.embedded .skip-link{display:none}button:disabled{opacity:.5;cursor:default}@media(max-width:650px){.download-row{grid-template-columns:1fr}.version{font-size:11px}}
