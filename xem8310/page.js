@@ -21,7 +21,7 @@ function renderParts(){
 }
 function selectionLabel(ref){const p=allParts.get(ref);if(!p)return;$('#model-selection').hidden=false;$('#model-selection').innerHTML=`<strong>${esc(ref)}</strong>${esc(p.value)}<button data-inspect-ref="${esc(ref)}">Details ↓</button>`;}
 function selectPart(ref,highlight=true){
-  const p=allParts.get(ref);if(!p)return;selected=p;
+  const p=allParts.get(ref);if(!p)return;selected=p;if(p.pcb_present===false){model?.clearSelection();$('#model-selection').hidden=true;}
   $$('#component-rows tr').forEach(row=>row.classList.toggle('selected',row.dataset.ref===ref));
   const positions=p.schematic_positions||[],isFeature=p.electrical_component===false||!positions.length;
   let sheet='';try{const u=new URL(p.datasheet);if(['http:','https:'].includes(u.protocol))sheet=`<a class="datasheet" href="${esc(u.href)}" target="_blank" rel="noopener">Datasheet ↗</a>`;}catch{}

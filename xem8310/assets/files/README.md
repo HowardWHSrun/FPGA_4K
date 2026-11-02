@@ -9,7 +9,7 @@
 - [Source hashes](source-manifest.json)
 - [Native check summary](../publication-status.json)
 
-Open the project file inside each extracted folder in KiCad 10.0.6 or newer. V5 is the current circuit source; V3 is the latest saved placement study. The V3 paired schematic predates TP710–TP713, and these four footprints are not placed. All 1,423 existing named pin/net memberships agree with current V5. These are separate revision tracks; V3 does not supersede the V5 schematic version.
+Open the project file inside each extracted folder in KiCad 10.0.6 or newer. V5 is the current circuit source; V3 is the selected saved placement study. The V3 paired schematic predates TP710–TP713, and these four footprints are not placed. All 1,423 existing named pin/net memberships agree with current V5. These are separate revision tracks; V3 does not supersede the V5 schematic version.
 
 The V3 board has 269 footprints, six layers, no routed tracks/vias and no copper pours. The included layer stack and design rules are working assumptions, not fabrication-approved impedance constraints. DRC remains open; inspect the saved reports and ignored checks. The earlier V2 review is not a full review or approval of V3. Bracket and plug fit, support holes, silkscreen, power/clock placement, cable power, routing and hardware qualification remain open.
 

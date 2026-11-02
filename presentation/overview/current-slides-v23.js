@@ -94,7 +94,7 @@
   });
   update('adapter',{
     section:'A · XEM8310 host interface',title:'HDMI Extension Board · V5 / V3',subtitle:'1 November 2026 · current V5 circuit · six-layer V3 placement.',
-    description:'Eight custom Micro-HDMI ports carry recording, commands, JTAG and individually switched 5 V frontend power. Inspect the current V5 one-page circuit and latest saved V3 placement, with electrical PCIe x4 to the PC.',
+    description:'Eight custom Micro-HDMI ports carry recording, commands, JTAG and individually switched 5 V frontend power. Inspect the current V5 one-page circuit and saved V3 placement, with electrical PCIe x4 to the PC.',
     facts:[['267','schematic components'],['6','PCB copper layers'],['8','frontend ports']],
     noteLabel:'Current checkpoint · 1 November',note:'Placement study: no routed traces or power/ground pours. TP710–TP713 await PCB placement. Not a fabrication release.',
     details:['V5 is the current one-page schematic; V3 is a separate placement revision with its earlier paired schematic. The editable downloads preserve both identities and their local 2D libraries.','All 1,423 existing named pin/net memberships agree. Four new rail test points appear only in V5. V3 has 269 footprints including six PCB-only mechanical/fiducial features.','The rotatable V3 preview uses native board surfaces and 238 nominal component bodies. XEM, bracket, cables and enclosure are not included; plug and populated fit remain unqualified.','The proposed six-layer construction, impedance rules, routing, power/clock placement, silkscreen, support holes and cable power still require engineering review. The whole-system animation remains the historical meeting model.'],
