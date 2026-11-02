@@ -1,0 +1,77 @@
+{
+  "updated": "2026-11-01",
+  "boards": [
+    {
+      "key": "frontend",
+      "slug": "frontend",
+      "name": "Frontend FPGA Board",
+      "revision": "V6",
+      "description": "Artix-7 frontend with Micro-HDMI, mezzanine interfaces and 5 V input conversion. Unrouted placement study; package selection, regulator layout, timing and power integrity remain under review.",
+      "full_kicad": "frontend/assets/files/Frontend_FPGA_Board_V6_Full_KiCad.zip",
+      "pdf": "frontend/assets/schematic-v6.pdf",
+      "source_pcb_sha256": "47a08fc99c45e16ba4d115f205e7e63722d755e9e652c70b6a7c5711bf2e36e4",
+      "source_schematic_sha256": "84965e7772f0b7101710ee314255bac66092c6223d6888a11bed0e2180ac5d70",
+      "captured_at": "2026-11-01T20:25:31.504070-06:00",
+      "native_checks": {
+        "erc": {
+          "warning": 1
+        },
+        "drc": {},
+        "unconnected_items": 499,
+        "schematic_parity": 0
+      },
+      "footprints": 185,
+      "components": 185,
+      "zip_bytes": 1843506,
+      "zip_sha256": "5ce7693de3abe9dbca201ce46f9379247847a31535fa169bb19d7b3e3c9beb75"
+    },
+    {
+      "key": "hdmi",
+      "slug": "xem8310",
+      "name": "HDMI Extension Board",
+      "revision": "V6",
+      "description": "Eight custom Micro-HDMI links, individually switched 5 V feeds, USB-C JTAG and the XEM8310 PCIe interface. Layout and routing are in progress; clock, cable power and mechanical fit remain under review.",
+      "full_kicad": "xem8310/assets/files/HDMI_Extension_Board_V6_Full_KiCad.zip",
+      "pdf": "xem8310/assets/schematic-v6.pdf",
+      "source_pcb_sha256": "3d51bc3b1b289cb9373efd66e11e958968e4925f9c5872d3b7a7701c4076d223",
+      "source_schematic_sha256": "4068e64d0a868a1aabad59e02347eba74eb9a0b67bc928d2645693c8959fcd23",
+      "captured_at": "2026-11-01T20:25:58.055074-06:00",
+      "native_checks": {
+        "erc": {
+          "warning": 190
+        },
+        "drc": {
+          "warning": 234
+        },
+        "unconnected_items": 499,
+        "schematic_parity": 0
+      },
+      "footprints": 279,
+      "components": 267,
+      "zip_bytes": 24419659,
+      "zip_sha256": "73f9054d9470a7364249cf5dd1c24b558e1e4bf44e1fe26aa3acc13df05c37c5"
+    },
+    {
+      "key": "carrier",
+      "slug": "direct-ldo",
+      "name": "Direct LDO Carrier",
+      "revision": "V6",
+      "description": "Four-layer XEM8305 carrier for the existing LDO board. V6 includes the MC2.14\u2013MC2.16 SYSMON reference link. JLC placement, factory acceptance and powered qualification remain pending.",
+      "full_kicad": "direct-ldo/assets/files/Direct_LDO_Carrier_V6_Full_KiCad.zip",
+      "pdf": "direct-ldo/assets/schematic-v6.pdf",
+      "source_pcb_sha256": "d9db1f01d0649196dd799c2348af74ed3c1ef6dbeda343e94275f9968d26b540",
+      "source_schematic_sha256": "4df649292623c6f09d9a7490780563356b171db6a08fbf39c0a224d0d2053627",
+      "captured_at": "2026-11-01T20:14:21.699674-06:00",
+      "native_checks": {
+        "erc": {},
+        "drc": {},
+        "unconnected_items": 0,
+        "schematic_parity": 0
+      },
+      "footprints": 92,
+      "components": 92,
+      "zip_bytes": 5780604,
+      "zip_sha256": "994d8f77846b3b9e08fe8d4295054ce198d8b3470f39b453b89dbcd925625f9e"
+    }
+  ]
+}

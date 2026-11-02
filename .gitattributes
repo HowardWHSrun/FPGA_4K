@@ -81,3 +81,11 @@ xem8310-v10/assets/*.csv -text whitespace=cr-at-eol
 xem8310-v10/assets/vendor/** -text -whitespace
 # Preserve newly published native KiCad files without reformatting.
 xem8310/assets/files/*.kicad_* -text -whitespace
+
+# Preserve native export spacing and CSV line endings for the three current PCBs.
+frontend/assets/*.svg -text -whitespace
+direct-ldo/assets/*.svg -text -whitespace
+frontend/assets/*.csv -text whitespace=cr-at-eol
+direct-ldo/assets/*.csv -text whitespace=cr-at-eol
+frontend/assets/files/*.kicad_* -text -whitespace
+direct-ldo/assets/files/*.kicad_* -text -whitespace

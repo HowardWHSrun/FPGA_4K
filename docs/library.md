@@ -1,6 +1,13 @@
 # Project files and documents
 
-**[HDMI Extension Board · current V5 schematic / V3 placement · 1 November 2026](../xem8310/)** — one-page PDF and SVG, six-layer placement, interactive 3D, component search and [editable KiCad downloads](../xem8310/#files). Four new test points await PCB placement; routing and hardware qualification remain open.
+**Current PCBs · 1 November 2026:** [Frontend FPGA Board V6](../frontend/) · [HDMI Extension Board V6](../xem8310/) · [Direct LDO Carrier V6](../direct-ldo/). Each page includes a full editable KiCad ZIP with schematic, PCB, settings, rules, local libraries and available 3D models. Development status is stated per board.
+
+
+## Earlier dated records
+
+These entries describe earlier deliveries. The three current board pages and downloads are linked above.
+
+**[HDMI Extension Board · earlier V5 schematic / V3 placement · 1 November 2026](../xem8310/)** — one-page PDF and SVG, six-layer placement, interactive 3D, component search and [editable KiCad downloads](../xem8310/#files). Four new test points await PCB placement; routing and hardware qualification remain open.
 
 
 - **[Direct LDO Carrier V6 · 31 October 2026](../presentation/overview/carrier-v6/):** SYSMON internal-reference copper link, current native viewers and [matching V6 KiCad/Gerber/BOM/CPL files](../hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/README.md). Same parts/placements; JLC placement and factory review remain pending.

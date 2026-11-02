@@ -1,5 +1,10 @@
 # Source provenance
 
+## Three current PCB snapshots — 1 November 2026
+
+[Current board manifest](../current-boards.json) links three independently frozen V6 projects. Full KiCad packages retain native identities and all local dependencies, including available models; path-only portability adaptations and file hashes are recorded inside each ZIP. Web previews combine current native PCB surfaces with independently authored nominal component bodies. Existing source credits and terms remain; publishing is not hardware or fabrication qualification.
+
+
 ## HDMI Extension Board — 1 November 2026
 
 [Current V5 / V3 page](../xem8310/) and [source hashes](../xem8310/assets/files/source-manifest.json) identify the frozen local sources. V5 schematic and V3 placement use separate revision tracks; four new test points remain unplaced. Native circuit/layout data is preserved, with public model references removed and local 2D dependencies packaged. The GLB combines KiCad board surfaces with independently authored nominal component bodies. Supplier 3D payloads are not redistributed. Original BRK8310 provenance is retained. This publication is not a manufacturing release; the prior [V10 page](../xem8310-v10/) is preserved.

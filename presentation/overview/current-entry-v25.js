@@ -8,14 +8,14 @@
  const systemMeeting='presentation/meetings/2026-10-28-v8/';
  const overviewAssembly=systemMeeting+'assets/system-viewer/index.html?embed=1';
  const reviews={
-  assembly:{name:'XEM8310 · eight HDMI links',caption:'8 Frontend FPGA Board / FPGA-LDO PCB / ASIC stacks → HDMI Extension Board + XEM8310 → PCIe x4 → PC',scope:'28 October meeting topology · saved model snapshots · cable and populated fit remain unqualified',views:{'3d':overviewAssembly}},
+  assembly:{name:'Three current PCBs',caption:'Frontend FPGA Board · HDMI Extension Board · Direct LDO Carrier',scope:'Saved V6 checkpoints · full KiCad projects available',views:{'3d':'current-boards/'}},
   currentAsic:{name:'ASIC stack · 28 October concept',caption:'One frontend stack · four PCB-5-derived ASIC boards, FPGA-LDO PCB and Frontend FPGA Board',scope:'Thinner board and connector spacing are illustrative · eight stacks in the system view',views:{'3d':overviewAssembly}},
-  adapter:{name:'HDMI Extension Board · V5 / V3',caption:'Current V5 schematic · saved V3 placement · eight custom Micro-HDMI ports · PCIe x4',scope:'1 November 2026 · six layers · unrouted study · four new test points await placement',views:{'3d':'xem8310/?embed=1&view=3d',layout:'xem8310/?embed=1&view=layout',schematic:'xem8310/?embed=1&view=schematic'}},
+  adapter:{"name": "HDMI Extension Board \u00b7 V6", "caption": "Current V6 schematic, PCB and full KiCad project", "scope": "Eight custom Micro-HDMI links, individually switched 5 V feeds, USB-C JTAG and the XEM8310 PCIe interface. Layout and routing are in progress; clock, cable power and mechanical fit remain under review.", "download": "xem8310/assets/files/HDMI_Extension_Board_V6_Full_KiCad.zip", "views": {"3d": "xem8310/?embed=1&view=3d", "layout": "xem8310/?embed=1&view=layout", "schematic": "xem8310/?embed=1&view=schematic"}},
   asicReference:{name:"ASIC carrier · source reference",caption:"Original PCB-5 · two ASIC footprints",scope:"Board reference · populated mating and hardware operation unqualified",views:{'3d':'presentation/overview/asic-reference-v5.html'}},
-  fpga:{name:'Saved Frontend FPGA Board V41',caption:'25 × 23 mm · V41 routing checkpoint',scope:'116/116 digital mezzanine paths · 445 whole-board opens',download:'presentation/overview/assets/FPGA_V41_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'fpga_3d/index.html',layout:meeting+'fpga_viewer/index.html?embed=1',schematic:image('fpga-schematic')}},
+  fpga:{"name": "Frontend FPGA Board \u00b7 V6", "caption": "Current V6 schematic, PCB and full KiCad project", "scope": "Artix-7 frontend with Micro-HDMI, mezzanine interfaces and 5 V input conversion. Unrouted placement study; package selection, regulator layout, timing and power integrity remain under review.", "download": "frontend/assets/files/Frontend_FPGA_Board_V6_Full_KiCad.zip", "views": {"3d": "frontend/?embed=1&view=3d", "layout": "frontend/?embed=1&view=layout", "schematic": "frontend/?embed=1&view=schematic"}},
   separate:{name:'Saved FPGA-LDO PCB V5',caption:'32 × 32.5 mm · 32 LT3046 stages',scope:'Unrouted placement · physical ASIC distribution/adapter open',download:'presentation/overview/assets/Separate_LDO_V5_Complete_KiCad_2026-10-14.zip',views:{'3d':meeting+'stack_viewer/index.html?architecture=separate',layout:meeting+'ldo_viewer/index.html?embed=1',schematic:image('ldo-schematic')}},
   combined:{name:'Saved combined FPGA + shared LDO V7',caption:'30 × 30 mm · 8 shared LT3046 stages',scope:'Unrouted · shared-load/noise/thermal feasibility open',download:'presentation/overview/assets/Combined_FPGA_Shared_LDO_V7_KiCad.zip',views:{'3d':assembly+'&architecture=combined&focus=compact',layout:image('combined-layout'),schematic:image('combined-schematic')}},
-  receiver:{name:'Direct LDO Carrier · V6',caption:'31 October 2026 · V6 SYSMON reference link',scope:'80 fitted parts · native DRC / opens / parity 0 / 0 / 0 · JLC placement and factory review pending',download:'hardware/xem8305-carrier/dated/2026-10-31/carrier-v6/Carrier_V6_KiCad.zip',views:{'3d':'presentation/overview/carrier-assembly-v2/index.html?embed=1&view=3d',layout:'presentation/overview/carrier-v6/layout.html?embed=1&v=20261031-v6',schematic:'presentation/overview/carrier-v6/schematic.html?embed=1&v=20261031-v6'}}
+  receiver:{"name": "Direct LDO Carrier \u00b7 V6", "caption": "Current V6 schematic, PCB and full KiCad project", "scope": "Four-layer XEM8305 carrier for the existing LDO board. V6 includes the MC2.14\u2013MC2.16 SYSMON reference link. JLC placement, factory acceptance and powered qualification remain pending.", "download": "direct-ldo/assets/files/Direct_LDO_Carrier_V6_Full_KiCad.zip", "views": {"3d": "direct-ldo/?embed=1&view=3d", "layout": "direct-ldo/?embed=1&view=layout", "schematic": "direct-ldo/?embed=1&view=schematic"}}
  };
  const top=document.querySelector('.viewer-top'),label=$('view-label'),camera=top.querySelector('.segmented'),controls=document.querySelector('.viewer-controls'),caption=document.querySelector('.scene-caption'),savedCaption=caption.innerHTML;
  const frame=document.createElement('iframe');frame.id='current-board-preview';frame.hidden=true;frame.allowFullscreen=true;$('scene-container').append(frame);
@@ -44,7 +44,7 @@
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame.contentWindow)return;
   if(event.data?.type==='overview-power-option'&&['separate','combined'].includes(event.data.value))setPower(event.data.value);
-  if(event.data?.type==='overview-select-section'&&['carriers','fpga','routing','adapter'].includes(event.data.section))api.setSlide(event.data.section);
+  if(event.data?.type==='overview-select-section'&&['fpga','adapter','receiver'].includes(event.data.section))api.setSlide(event.data.section);
   if(event.data?.type==='native-pcb-key'&&window.overviewApproach==='custom'&&active==='adapter'&&viewByBoard.adapter==='layout'&&!document.querySelector('dialog[open]')){
    const key=event.data.key;
    if(key==='Escape')api.setSlide('overview');
@@ -54,21 +54,21 @@
  });
  function link(id,url,text,on){const el=$(id);if(!el)return;el.hidden=!on;if(on){el.href=url;el.firstChild.textContent=text+' ';}}
  function sync(){
-  const section=api.getState().slideId;active=section==='overview'?(window.overviewApproach==='direct'?'receiver':'assembly'):section==='carriers'?(window.overviewApproach==='direct'?'asicReference':'currentAsic'):section==='routing'?powerOption:section;const review=reviews[active],on=Boolean(review);
+  const section=api.getState().slideId;active=section==='overview'?'assembly':section==='carriers'?(window.overviewApproach==='direct'?'asicReference':'currentAsic'):section==='routing'?powerOption:section;const review=reviews[active],on=Boolean(review);
   document.body.classList.toggle('carrier-inspection',active==='receiver');
   document.body.classList.toggle('assembly-inspection',active==='assembly');
   frame.hidden=!on;$('scene-container').classList.toggle('current-preview-active',on);tabs.hidden=!on||Object.keys(review?.views||{}).length===1;camera.hidden=on;controls.hidden=on;power.hidden=section!=='routing';top.classList.toggle('current-preview',on);
   for(const id of ['scene','markers','camera-name','model-status'])$(id).hidden=on||(id==='model-status'&&api.getState().loaded);
-  link('open-adapter-design','xem8310/#files','HDMI Extension Board · current views and downloads',section==='adapter');
-  link('open-fpga-design',reviews.fpga.download,'Download Frontend FPGA Board V41 · complete KiCad',section==='fpga');
+  link('open-adapter-design',reviews.adapter.download,'Download full KiCad · HDMI Extension Board V6',section==='adapter');
+  link('open-fpga-design',reviews.fpga.download,'Download full KiCad · Frontend FPGA Board V6',section==='fpga');
   link('open-ldo-design',reviews[powerOption].download,'Download '+reviews[powerOption].name+' · complete KiCad',section==='routing');
-  link('open-receiver-design',reviews.receiver.download,'Download Direct LDO Carrier V6 · KiCad project',section==='receiver'||section==='overview'&&window.overviewApproach==='direct');
+  link('open-receiver-design',reviews.receiver.download,'Download full KiCad · Direct LDO Carrier V6',section==='receiver');
   const manufacturing=$('carrier-manufacturing-links');if(manufacturing)manufacturing.hidden=active!=='receiver';
   if(on){
-   const view=viewByBoard[active];label.textContent=active==='receiver'&&view==='3d'?'Assembly reference · 26 October 2026':review.name;
+   const view=viewByBoard[active];label.textContent=review.name;
    tabs.querySelectorAll('button').forEach(button=>{button.hidden=!review.views[button.dataset.currentView];button.setAttribute('aria-pressed',String(view===button.dataset.currentView));});
    const url=review.views[view];if(frame.getAttribute('src')!==url){systemFocus='';systemObserver?.disconnect();frame.src=url;}frame.title=review.name+' · '+view;focusSystemView();
-   const text=active==='receiver'&&view==='3d'?['Earlier Carrier V1 + XEM8305 + LDO · assembly reference','31 October Carrier V6 is in the Layout and Schematic tabs']: [review.caption,review.scope];
+   const text=[review.caption,review.scope];
    caption.replaceChildren(...text.map(text=>{const span=document.createElement('span');span.textContent=text;return span;}));
    link('open-schematic-design',url,'Open current view full size',true);
   }else{caption.innerHTML=savedCaption;link('open-schematic-design','presentation/schematic/?board=adapter','View historical adapter schematic',section==='adapter');}
@@ -104,7 +104,7 @@
  let previous='';
  function sync(){
   const section=api.getState().slideId;
-  document.getElementById('approach-label').textContent=section==='overview'?(window.overviewApproach==='direct'?'B · Parallel direct-LDO approach':'A · Custom FPGA approach'):context[section]||'';
+  document.getElementById('approach-label').textContent='Three current PCBs · V6';
   if(section!==previous)document.querySelector('.story').scrollTop=0;
   if(!['overview','carriers','adapter','fpga','routing','receiver'].includes(section)&&!(window.overviewApproach==='direct'&&['overview','carriers'].includes(section)))document.getElementById('view-label').textContent='Earlier assembly concept';
   previous=section;

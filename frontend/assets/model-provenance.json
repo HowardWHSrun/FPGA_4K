@@ -1,0 +1,64 @@
+{
+  "revision": "V6",
+  "source_pcb_sha256": "47a08fc99c45e16ba4d115f205e7e63722d755e9e652c70b6a7c5711bf2e36e4",
+  "source_schematic_sha256": "84965e7772f0b7101710ee314255bac66092c6223d6888a11bed0e2180ac5d70",
+  "source_native_xml_sha256": "ed1aa9b468d922f59b966ec3590eeb53c470561c7ddff5c12d184500a192ffe1",
+  "glb_sha256": "1872b36a9d02a72c584cda2f1ca02635336f81e3ed700d42fdb68fc035db018a",
+  "glb_bytes": 5062932,
+  "source_board_only_glb_sha256": "394c10bb3d04b947e47378275abb6eff011decb7da6cc50a9b132867af875a27",
+  "source_board_only_export_command": "kicad-cli pcb export glb --board-only --include-tracks --include-pads --include-silkscreen --include-soldermask --force --output native-board.glb <packaged-V6.kicad_pcb>",
+  "source_board_thickness_mm": 1.62,
+  "source_copper_layers": 10,
+  "source_board_geometry": {
+    "native_triangle_count": 115947,
+    "native_surface_node_count": 6,
+    "triangle_positions_normals_indices_preserved": true,
+    "batching": "Concatenated primitives per native node/material; no simplification or geometry alteration.",
+    "visible_geometry": "Native board outline, cutouts/holes, outer tracks/pads, silkscreen and soldermask. Historical zone fills and inner copper not exported; native files retain them.",
+    "source_byte_stable": true
+  },
+  "public_component_geometry": {
+    "nominal_body_count": 171,
+    "nominal_triangle_count": 5580,
+    "per_footprint_named_groups": 185,
+    "supplier_STEP_WRL_GLTF_or_mesh_payloads_read_or_copied": false,
+    "assigned_model_filenames_used_for_geometry": false,
+    "body_xy_basis": "Saved native Fab graphics excluding text, otherwise courtyard/body envelope. No supplier model geometry.",
+    "display_height_policy": "Nominal display assumptions; inspect individual records for inherited source notes.",
+    "coverage_file": "model-coverage.json"
+  },
+  "coordinates": {
+    "unit": "metres",
+    "native_mm_to_model_m": 0.001,
+    "mapping": "PCB X -> GLB X; PCB Y -> GLB Z; GLB Y is upward; F bodies positiveY, B bodies negativeY",
+    "origin": "Native default KiCad origin; no centering or normalization applied",
+    "front_nominal_mount_y_m": 0.0016200000000000001,
+    "back_nominal_mount_y_m": 0
+  },
+  "geometry": {
+    "nodes": 192,
+    "meshes": 177,
+    "primitives": 324,
+    "triangles": 121527
+  },
+  "credits": [
+    {
+      "source": "KiCad 10.0.6 native board exporter",
+      "scope": "Saved V6 PCB surfaces",
+      "url": "https://docs.kicad.org/10.0/en/cli/cli.html"
+    },
+    {
+      "source": "Frontend FPGA Board native project and project authors",
+      "scope": "171 independently authored nominal component previews; engineering citations remain on the schematic."
+    }
+  ],
+  "qualification": "171 independently authored nominal bodies from saved footprint drawings. Display heights are assumptions; no assembled-fit or hardware qualification.",
+  "source_CAD_modified": false,
+  "refill_performed": false,
+  "private_supplier_model_payloads_published": false,
+  "geometry_binary_payload_sha256": "bf26e44a5d49cb84dbcfa256981e42c4448cc68020d7b64ca1ccdd852b8f2c1f",
+  "model_coverage_sha256": "a1f7591118aec29cf8dcda43353ff0734bea16fd08adc69df8e40906ebe6aaad",
+  "component_table_sha256": "540d63dd5a783f7ead15a569712c21384f00b055e16d6be821058462cc9a1aff",
+  "explicit_source_MPN_records": 163,
+  "manufacturer_part_number_policy": "Case-insensitive alphanumeric field keys: manufacturerpn > mpn > manufacturerpartnumber > mfrpn > mfrpartnumber. Internal PARTNUMBER codes, Current_manufacturer_part_number annotations and Value are excluded."
+}

@@ -4,7 +4,7 @@
  const slides=window.PRESENTATION_SLIDES,catalog=window.OVERVIEW_SLIDE_CATALOG;
  if(!Array.isArray(slides)||!Array.isArray(catalog))return;
  const byId=new Map(catalog.map(slide=>[slide.id,slide]));
- const routes={custom:['overview','carriers','routing','fpga','adapter'],direct:['overview','carriers','receiver']};
+ const routes={custom:['overview','fpga','adapter','receiver'],direct:['overview','fpga','adapter','receiver']};
  const routeFor=id=>({routing:'custom',fpga:'custom',adapter:'custom',ldo:'custom',combined:'custom',receiver:'direct',carrier:'direct'})[id];
  function readMode(){const requested=new URL(location.href).searchParams.get('approach');return routeFor(location.hash.slice(1))||(Object.hasOwn(routes,requested)?requested:'custom');}
  function apply(mode){
@@ -12,10 +12,10 @@
   document.body.dataset.overviewApproach=mode;
   window.setOverviewApproachContent(mode);
   slides.splice(0,slides.length,...routes[mode].map(id=>byId.get(id)));
-  document.querySelectorAll('[data-approach]').forEach(el=>el.hidden=el.dataset.approach!==mode);
+  document.querySelectorAll('[data-approach]').forEach(el=>el.hidden=false);
   document.querySelectorAll('[data-choose-approach]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.chooseApproach===mode)));
   routes[mode].forEach((id,index)=>{const number=document.querySelector('.system-nav [data-slide="'+id+'"]>span');if(number)number.textContent=String(index).padStart(2,'0');});
-  const label=mode==='direct'?'Direct-LDO approach':'Custom FPGA approach';
+  const label='Three current PCBs';
   document.getElementById('overview-nav-context').textContent=label;
   document.getElementById('adapter-overview-title').textContent='Selected path · '+label;
  }

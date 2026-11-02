@@ -1,17 +1,17 @@
 {
-  "revision": "V3",
-  "source_pcb_sha256": "6a5ca93aa53cf6f2fb77df658e2e62621c3ea34b4c0c7324d1356d9222fc29c4",
-  "source_schematic_sha256": "cbd1ca9254498a18e88456e869780d7dc248f26779dead5cc9740aec9f61e30b",
-  "source_native_xml_sha256": "954080173a7b35a04af35c5d9dfcd0127d27c53f46855867e22d20f6c803a9cf",
-  "glb_sha256": "8dec33e04c33ef84dd93ee4cbde49ce7346af2f32f04305fcf2b1ace97f7aa2b",
-  "glb_bytes": 10261824,
-  "source_board_only_glb_sha256": "c25c0857b44af76275030a2b30a1f9163cd6a9cb53852ce2f5fd6a29e4464808",
-  "source_board_only_export_command": "kicad-cli pcb export glb --board-only --include-tracks --include-pads --include-silkscreen --include-soldermask --output <private-build>/hdmi-extension-placement-v3-native-board-only.glb <frozen-V10.kicad_pcb>",
+  "revision": "V6",
+  "source_pcb_sha256": "3d51bc3b1b289cb9373efd66e11e958968e4925f9c5872d3b7a7701c4076d223",
+  "source_schematic_sha256": "4068e64d0a868a1aabad59e02347eba74eb9a0b67bc928d2645693c8959fcd23",
+  "source_native_xml_sha256": "4c5ba70fd02b6ba1bad91b5b767d2c31c18958d172e44c19edbc7f12f7b4acab",
+  "glb_sha256": "95a0ac578129d2e1d34449a87aac9242505d9e24999b308952cc55645545dd53",
+  "glb_bytes": 10786688,
+  "source_board_only_glb_sha256": "ab515862c0397da52d139a3336a02e6cc6d4d65d8c9a60f52dc2cbab61f458ca",
+  "source_board_only_export_command": "kicad-cli pcb export glb --board-only --include-tracks --include-pads --include-silkscreen --include-soldermask --force --output native-board.glb <packaged-V6.kicad_pcb>",
   "source_board_thickness_mm": 1.5944,
   "source_copper_layers": 6,
   "source_board_geometry": {
-    "native_triangle_count": 241223,
-    "native_surface_node_count": 6,
+    "native_triangle_count": 255294,
+    "native_surface_node_count": 8,
     "triangle_positions_normals_indices_preserved": true,
     "batching": "Concatenated primitives per native node/material; no simplification or geometry alteration.",
     "visible_geometry": "Native board outline, cutouts/holes, outer tracks/pads, silkscreen and soldermask. Historical zone fills and inner copper not exported; native files retain them.",
@@ -20,11 +20,11 @@
   "public_component_geometry": {
     "nominal_body_count": 238,
     "nominal_triangle_count": 10944,
-    "per_footprint_named_groups": 269,
+    "per_footprint_named_groups": 279,
     "supplier_STEP_WRL_GLTF_or_mesh_payloads_read_or_copied": false,
     "assigned_model_filenames_used_for_geometry": false,
     "body_xy_basis": "Saved native Fab graphics excluding text, otherwise courtyard/body envelope. No supplier model geometry.",
-    "display_height_policy": "Nominal preview assumptions; not mechanical specifications.",
+    "display_height_policy": "Nominal display assumptions; inspect individual records for inherited source notes.",
     "coverage_file": "model-coverage.json"
   },
   "coordinates": {
@@ -36,34 +36,29 @@
     "back_nominal_mount_y_m": 0
   },
   "geometry": {
-    "nodes": 276,
-    "meshes": 244,
-    "primitives": 429,
-    "triangles": 252167
+    "nodes": 288,
+    "meshes": 246,
+    "primitives": 431,
+    "triangles": 266238
   },
   "credits": [
     {
-      "source": "KiCad 10 board exporter",
-      "scope": "Native saved V3 PCB surfaces, pads, silkscreen and soldermask",
+      "source": "KiCad 10.0.6 native board exporter",
+      "scope": "Saved V6 PCB surfaces",
       "url": "https://docs.kicad.org/10.0/en/cli/cli.html"
     },
     {
-      "source": "Project authors",
-      "scope": "Independent nominal body previews derived from saved footprint drawings"
-    },
-    {
-      "source": "Opal Kelly BRK8310 reference",
-      "scope": "Inherited outline and footprint definitions",
-      "url": "https://www.opalkelly.com/products/addon-boards/BRK8310/"
+      "source": "HDMI Extension Board native project and project authors",
+      "scope": "238 independently authored nominal component previews; engineering citations remain on the schematic."
     }
   ],
-  "qualification": "Native saved V3 board geometry with 238 independently authored nominal body previews. Body heights are display assumptions. No manufacturer 3D payloads are redistributed. This is a placement illustration, not assembled-fit verification; the XEM module, bracket, cables and enclosure are not modeled.",
+  "qualification": "238 independently authored nominal bodies from saved footprint drawings. Display heights are assumptions; no assembled-fit or hardware qualification.",
   "source_CAD_modified": false,
   "refill_performed": false,
   "private_supplier_model_payloads_published": false,
-  "geometry_binary_payload_sha256": "02519510f799eed996654b9b7931a6c27ac4b97a364829a42576c15c417a6855",
-  "model_coverage_sha256": "f7165c93a0cae23309393269f14c5a0acaf13b217ea2ce380a0123825608ec6d",
-  "component_table_sha256": "e3c66d23faff7772a3a8a1f80bd2343794f1f3839a9281a28c61112bf3ee15b7",
+  "geometry_binary_payload_sha256": "4451edfea38ae2f92609c5da04696439a76292751e4d2b038e48963a6b19b3cd",
+  "model_coverage_sha256": "75bce94aeab219db931e40fea435b1d52d94b25e3879189d937bde8343ed3b89",
+  "component_table_sha256": "8d08df5b0d5055385c46441a77aa547f0bcf39ed620917b895bea1f0cd3f6254",
   "explicit_source_MPN_records": 146,
   "manufacturer_part_number_policy": "Case-insensitive alphanumeric field keys: manufacturerpn > mpn > manufacturerpartnumber > mfrpn > mfrpartnumber. Internal PARTNUMBER codes, Current_manufacturer_part_number annotations and Value are excluded."
 }

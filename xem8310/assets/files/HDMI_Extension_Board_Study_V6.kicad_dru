@@ -1,0 +1,23 @@
+(version 1)
+# Source: V3/impedance_solver.py on JLC06161H-2116; confirm with JLC before ordering.
+(rule "100R pairs on L3"
+	(layer "In2.Cu")
+	(condition "A.hasNetclass('REC_100R') || A.hasNetclass('CMD_100R')")
+	(constraint track_width (min 0.16mm) (opt 0.177mm) (max 0.19mm))
+	(constraint diff_pair_gap (min 0.18mm) (opt 0.20mm) (max 0.22mm)))
+
+(rule "PCIe and USB stay on outer layers"
+	(layer inner)
+	(condition "A.hasNetclass('PCIE_85R') || A.hasNetclass('USB_90R')")
+	(constraint disallow track))
+
+# Scoped escape exception, Micro-HDMI only (0.4 mm pitch, 0.23 mm pads). JLC multilayer minimums:
+# 0.09 mm track/space class, 0.15/0.25 mm via, via hole to copper 0.20 mm (https://jlcpcb.com/capabilities/pcb-capabilities).
+(rule "Micro-HDMI escape inside J61x courtyard"
+	(condition "A.intersectsCourtyard('J61*') && B.intersectsCourtyard('J61*')")
+	(constraint clearance (min 0.15mm))
+	(constraint hole_clearance (min 0.20mm)))
+
+(rule "USB-C fine-pitch pads"
+	(condition "A.memberOfFootprint('J500') && B.memberOfFootprint('J500')")
+	(constraint clearance (min 0.15mm)))

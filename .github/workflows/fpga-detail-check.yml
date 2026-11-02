@@ -7,6 +7,12 @@ on:
       - index.html
       - overview-2026-09-23.html
       - scripts/check_overview.mjs
+      - scripts/check_current_pcbs.mjs
+      - current-boards.json
+      - current-boards/**
+      - frontend/**
+      - xem8310/**
+      - direct-ldo/**
       - presentation/fpga/**
       - presentation/overview/**
       - presentation/reviews/**
@@ -106,7 +112,8 @@ jobs:
       - name: Test review, downloads, history and system entry
         run: |
           export CHROME_PATH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          node scripts/check_overview.mjs
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/current-pcbs-http.log 2>&1 &
+          SITE_URL=http://127.0.0.1:8765/ node scripts/check_overview.mjs
           node scripts/check_fpga_presentation.mjs
           VIEWER_OUTPUT_DIR=fpga-browser-check/native node scripts/check_fpga_viewer.mjs
       - uses: actions/upload-artifact@v4

@@ -1,14 +1,14 @@
 {
-  "revision": "V3",
-  "source_pcb_sha256": "6a5ca93aa53cf6f2fb77df658e2e62621c3ea34b4c0c7324d1356d9222fc29c4",
-  "source_schematic_sha256": "cbd1ca9254498a18e88456e869780d7dc248f26779dead5cc9740aec9f61e30b",
+  "revision": "V6",
+  "source_pcb_sha256": "3d51bc3b1b289cb9373efd66e11e958968e4925f9c5872d3b7a7701c4076d223",
+  "source_schematic_sha256": "4068e64d0a868a1aabad59e02347eba74eb9a0b67bc928d2645693c8959fcd23",
   "counts": {
-    "footprints": 269,
-    "electrical_components": 263,
-    "mechanical_features": 6,
+    "footprints": 279,
+    "electrical_components": 267,
+    "mechanical_features": 12,
     "independent_nominal_bodies": 238,
-    "copper_only_electrical_features": 25,
-    "copper_only_or_mechanical_total": 31,
+    "copper_only_electrical_features": 29,
+    "copper_only_or_mechanical_total": 41,
     "supplier_meshes": 0,
     "native_component_body_meshes": 0
   },
@@ -21,94 +21,6 @@
     "back_nominal_mount_y_m": 0
   },
   "components": [
-    {
-      "reference": "",
-      "value": "",
-      "footprint": "BRK8310_V4:BRK_Mechanical_d08bf7fa",
-      "position_mm": [
-        164.6763,
-        100.05357
-      ],
-      "rotation_deg": 0.0,
-      "side": "F",
-      "electrical_component": false,
-      "assigned_model_count": 0,
-      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "",
-      "position_m": [
-        0.1646763,
-        0.0015944,
-        0.10005357
-      ],
-      "representation": "copper_only_or_mechanical",
-      "body_bounds_xy_mm": [
-        161.1763,
-        96.55357,
-        168.1763,
-        103.55357
-      ],
-      "manufacturer_part_number": "",
-      "dnp": false,
-      "manufacturer": "",
-      "datasheet": "",
-      "pick_bounds_m": [
-        0.1611763,
-        -0.0001,
-        0.09655356999999999,
-        0.1681763,
-        0.0016944000000000002,
-        0.10355357
-      ],
-      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
-      "nominal_height_mm": 0,
-      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
-      "body_bounds_m": null,
-      "node_index": 7
-    },
-    {
-      "reference": "*",
-      "value": "Opal Kelly Logo",
-      "footprint": "BRK8310_V4:BRK_Logo_c689e08d",
-      "position_mm": [
-        137.17646,
-        140.38106
-      ],
-      "rotation_deg": 0.0,
-      "side": "F",
-      "electrical_component": false,
-      "assigned_model_count": 0,
-      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "*",
-      "position_m": [
-        0.13717646,
-        0.0015944,
-        0.14038106
-      ],
-      "representation": "copper_only_or_mechanical",
-      "body_bounds_xy_mm": [
-        136.92646,
-        137.843705,
-        154.25405,
-        140.76244
-      ],
-      "manufacturer_part_number": "",
-      "dnp": false,
-      "manufacturer": "",
-      "datasheet": "",
-      "pick_bounds_m": [
-        0.13692646,
-        -0.0001,
-        0.137843705,
-        0.15425405,
-        0.0016944000000000002,
-        0.14076244
-      ],
-      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
-      "nominal_height_mm": 0,
-      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
-      "body_bounds_m": null,
-      "node_index": 8
-    },
     {
       "reference": "C5",
       "value": "EEE-FK1E221P",
@@ -157,7 +69,7 @@
       "footprint": "BRK8310_V4:BRK_C6",
       "position_mm": [
         118.0,
-        68.0
+        61.5
       ],
       "rotation_deg": 90.0,
       "side": "F",
@@ -168,14 +80,14 @@
       "position_m": [
         0.118,
         0.0015944,
-        0.068
+        0.0615
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         117.71825,
-        67.46825,
+        60.96825,
         118.28175,
-        68.53175
+        62.03175
       ],
       "manufacturer_part_number": "TMK105BJ104KV-F",
       "dnp": false,
@@ -186,10 +98,10 @@
       "body_bounds_m": [
         0.11771825,
         0.0015944,
-        0.06746825,
+        0.060968249999999995,
         0.11828175,
         0.0021444000000000003,
-        0.06853175
+        0.062031750000000004
       ],
       "node_index": 10
     },
@@ -1080,26 +992,26 @@
       "value": "18p",
       "footprint": "Carrier_V5_Local:C503",
       "position_mm": [
-        174.8,
-        54.5
+        153.4,
+        60.9
       ],
-      "rotation_deg": 0.0,
-      "side": "B",
+      "rotation_deg": 90.0,
+      "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C503",
       "position_m": [
-        0.1748,
-        0.0,
-        0.0545
+        0.1534,
+        0.0015944,
+        0.060899999999999996
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        174.25,
-        54.2,
-        175.35,
-        54.8
+        153.1,
+        60.35,
+        153.7,
+        61.45
       ],
       "manufacturer_part_number": "C0402C180J5GACTU",
       "dnp": false,
@@ -1108,12 +1020,12 @@
       "nominal_height_mm": 0.55,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.17425,
-        -0.00055,
-        0.054200000000000005,
-        0.17535,
-        0.0,
-        0.054799999999999995
+        0.15309999999999999,
+        0.0015944,
+        0.06035,
+        0.15369999999999998,
+        0.0021444000000000003,
+        0.061450000000000005
       ],
       "node_index": 32
     },
@@ -1122,26 +1034,26 @@
       "value": "18p",
       "footprint": "Carrier_V5_Local:C504",
       "position_mm": [
-        177.0,
-        54.5
+        156.3,
+        60.6
       ],
-      "rotation_deg": 0.0,
-      "side": "B",
+      "rotation_deg": 90.0,
+      "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C504",
       "position_m": [
-        0.177,
-        0.0,
-        0.0545
+        0.15630000000000002,
+        0.0015944,
+        0.0606
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        176.45,
-        54.2,
-        177.55,
-        54.8
+        156.0,
+        60.05,
+        156.6,
+        61.15
       ],
       "manufacturer_part_number": "C0402C180J5GACTU",
       "dnp": false,
@@ -1150,12 +1062,12 @@
       "nominal_height_mm": 0.55,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.17645,
-        -0.00055,
-        0.054200000000000005,
-        0.17755,
-        0.0,
-        0.054799999999999995
+        0.156,
+        0.0015944,
+        0.06005,
+        0.1566,
+        0.0021444000000000003,
+        0.061149999999999996
       ],
       "node_index": 33
     },
@@ -2130,7 +2042,7 @@
       "value": "100n",
       "footprint": "Shared_JTAG_V9:C_0603_1608Metric",
       "position_mm": [
-        86.6,
+        98.899999,
         143.1
       ],
       "rotation_deg": 90.0,
@@ -2140,15 +2052,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C611",
       "position_m": [
-        0.0866,
+        0.09889999899999999,
         0.0,
         0.1431
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        86.15,
+        98.449999,
         142.25,
-        87.05,
+        99.349999,
         143.95
       ],
       "manufacturer_part_number": "",
@@ -2158,10 +2070,10 @@
       "nominal_height_mm": 0.8,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.08615,
+        0.09844999900000001,
         -0.0008,
         0.14225,
-        0.08705,
+        0.099349999,
         0.0,
         0.14395
       ],
@@ -2466,26 +2378,26 @@
       "value": "10uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        117.5,
-        52.0
+        121.8,
+        55.0
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C700",
       "position_m": [
-        0.1175,
+        0.12179999999999999,
         0.0015944,
-        0.052
+        0.055
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        116.2,
-        50.35,
-        118.8,
-        53.65
+        120.15,
+        53.7,
+        123.45,
+        56.3
       ],
       "manufacturer_part_number": "GRM32ER71H106KA12L",
       "dnp": false,
@@ -2494,12 +2406,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.1162,
+        0.12015,
         0.0015944,
-        0.05035,
-        0.1188,
+        0.053700000000000005,
+        0.12345,
         0.004094400000000001,
-        0.053649999999999996
+        0.056299999999999996
       ],
       "node_index": 65
     },
@@ -2508,26 +2420,26 @@
       "value": "10uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        117.882683,
-        56.923879
+        126.7,
+        55.0
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C701",
       "position_m": [
-        0.117882683,
+        0.1267,
         0.0015944,
-        0.056923879
+        0.055
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        116.582683,
-        55.273879,
-        119.182683,
-        58.573879
+        125.05,
+        53.7,
+        128.35,
+        56.3
       ],
       "manufacturer_part_number": "GRM32ER71H106KA12L",
       "dnp": false,
@@ -2536,12 +2448,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.116582683,
+        0.12505,
         0.0015944,
-        0.055273879,
-        0.119182683,
+        0.053700000000000005,
+        0.12835,
         0.004094400000000001,
-        0.058573878999999995
+        0.056299999999999996
       ],
       "node_index": 66
     },
@@ -2550,26 +2462,26 @@
       "value": "10uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        119.267766,
-        61.767766
+        121.8,
+        51.6
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C702",
       "position_m": [
-        0.119267766,
+        0.12179999999999999,
         0.0015944,
-        0.061767766
+        0.0516
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        117.967766,
-        60.117766,
-        120.567766,
-        63.417766
+        120.15,
+        50.3,
+        123.45,
+        52.9
       ],
       "manufacturer_part_number": "GRM32ER71H106KA12L",
       "dnp": false,
@@ -2578,12 +2490,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.117967766,
+        0.12015,
         0.0015944,
-        0.060117766,
-        0.120567766,
+        0.0503,
+        0.12345,
         0.004094400000000001,
-        0.063417766
+        0.052899999999999996
       ],
       "node_index": 67
     },
@@ -2592,26 +2504,26 @@
       "value": "10uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        120.328427,
-        66.828427
+        126.7,
+        51.6
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C703",
       "position_m": [
-        0.120328427,
+        0.1267,
         0.0015944,
-        0.06682842700000001
+        0.0516
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        119.028427,
-        65.178427,
-        121.628427,
-        68.478427
+        125.05,
+        50.3,
+        128.35,
+        52.9
       ],
       "manufacturer_part_number": "GRM32ER71H106KA12L",
       "dnp": false,
@@ -2620,12 +2532,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.11902842699999999,
+        0.12505,
         0.0015944,
-        0.065178427,
-        0.121628427,
+        0.0503,
+        0.12835,
         0.004094400000000001,
-        0.068478427
+        0.052899999999999996
       ],
       "node_index": 68
     },
@@ -2634,26 +2546,26 @@
       "value": "47uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        130.5,
-        52.0
+        121.8,
+        65.0
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C704",
       "position_m": [
-        0.1305,
+        0.12179999999999999,
         0.0015944,
-        0.052
+        0.065
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        129.2,
-        50.35,
-        131.8,
-        53.65
+        120.15,
+        63.7,
+        123.45,
+        66.3
       ],
       "manufacturer_part_number": "GRM32ER61C476KE15L",
       "dnp": false,
@@ -2662,12 +2574,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12919999999999998,
+        0.12015,
         0.0015944,
-        0.05035,
-        0.1318,
+        0.0637,
+        0.12345,
         0.004094400000000001,
-        0.053649999999999996
+        0.0663
       ],
       "node_index": 69
     },
@@ -2676,26 +2588,26 @@
       "value": "47uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        130.882683,
-        56.923879
+        126.7,
+        65.0
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C705",
       "position_m": [
-        0.130882683,
+        0.1267,
         0.0015944,
-        0.056923879
+        0.065
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        129.582683,
-        55.273879,
-        132.182683,
-        58.573879
+        125.05,
+        63.7,
+        128.35,
+        66.3
       ],
       "manufacturer_part_number": "GRM32ER61C476KE15L",
       "dnp": false,
@@ -2704,12 +2616,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.129582683,
+        0.12505,
         0.0015944,
-        0.055273879,
-        0.132182683,
+        0.0637,
+        0.12835,
         0.004094400000000001,
-        0.058573878999999995
+        0.0663
       ],
       "node_index": 70
     },
@@ -2718,26 +2630,26 @@
       "value": "47uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        130.5,
-        61.75
+        121.8,
+        68.4
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C706",
       "position_m": [
-        0.1305,
+        0.12179999999999999,
         0.0015944,
-        0.06175
+        0.0684
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        129.2,
-        60.1,
-        131.8,
-        63.4
+        120.15,
+        67.1,
+        123.45,
+        69.7
       ],
       "manufacturer_part_number": "GRM32ER61C476KE15L",
       "dnp": false,
@@ -2746,12 +2658,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12919999999999998,
+        0.12015,
         0.0015944,
-        0.0601,
-        0.1318,
+        0.06709999999999999,
+        0.12345,
         0.004094400000000001,
-        0.0634
+        0.0697
       ],
       "node_index": 71
     },
@@ -2760,26 +2672,26 @@
       "value": "47uF",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "position_mm": [
-        131.552379,
-        66.540668
+        126.7,
+        68.4
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C707",
       "position_m": [
-        0.131552379,
+        0.1267,
         0.0015944,
-        0.066540668
+        0.0684
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        130.252379,
-        64.890668,
-        132.852379,
-        68.190668
+        125.05,
+        67.1,
+        128.35,
+        69.7
       ],
       "manufacturer_part_number": "GRM32ER61C476KE15L",
       "dnp": false,
@@ -2788,12 +2700,12 @@
       "nominal_height_mm": 2.5,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.130252379,
+        0.12505,
         0.0015944,
-        0.064890668,
-        0.13285237900000002,
+        0.06709999999999999,
+        0.12835,
         0.004094400000000001,
-        0.068190668
+        0.0697
       ],
       "node_index": 72
     },
@@ -2802,8 +2714,8 @@
       "value": "22pF",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "position_mm": [
-        127.0,
-        62.5
+        132.0,
+        61.7
       ],
       "rotation_deg": 90.0,
       "side": "F",
@@ -2812,16 +2724,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C708",
       "position_m": [
-        0.127,
+        0.132,
         0.0015944,
-        0.0625
+        0.061700000000000005
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        126.55,
-        61.65,
-        127.45,
-        63.35
+        131.55,
+        60.85,
+        132.45,
+        62.55
       ],
       "manufacturer_part_number": "TCC0603COG220J500CT",
       "dnp": false,
@@ -2830,12 +2742,12 @@
       "nominal_height_mm": 0.8,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12655,
+        0.13155,
         0.0015944,
-        0.061649999999999996,
-        0.12745,
+        0.06085,
+        0.13244999999999998,
         0.0023944,
-        0.06335
+        0.06255
       ],
       "node_index": 73
     },
@@ -2844,7 +2756,7 @@
       "value": "100nF",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "position_mm": [
-        91.8,
+        104.1,
         142.0
       ],
       "rotation_deg": 0.0,
@@ -2854,15 +2766,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "C711",
       "position_m": [
-        0.09179999999999999,
+        0.1041,
         0.0,
         0.142
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        90.95,
+        103.25,
         141.55,
-        92.65,
+        104.95,
         142.45
       ],
       "manufacturer_part_number": "CC0603KRX7R9BB104",
@@ -2872,10 +2784,10 @@
       "nominal_height_mm": 0.8,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.09095,
+        0.10325,
         -0.0008,
         0.14155,
-        0.09265000000000001,
+        0.10495,
         0.0,
         0.14245
       ],
@@ -3181,7 +3093,7 @@
       "footprint": "Carrier_V5_Local:D500",
       "position_mm": [
         150.0,
-        57.0
+        57.6
       ],
       "rotation_deg": 90.0,
       "side": "F",
@@ -3192,14 +3104,14 @@
       "position_m": [
         0.15,
         0.0015944,
-        0.057
+        0.0576
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         148.5,
-        56.15,
+        56.75,
         151.5,
-        57.85
+        58.45
       ],
       "manufacturer_part_number": "USBLC6-2SC6",
       "dnp": false,
@@ -3210,10 +3122,10 @@
       "body_bounds_m": [
         0.1485,
         0.0015944,
-        0.05615,
+        0.05675,
         0.1515,
         0.0024944000000000003,
-        0.05785
+        0.05845
       ],
       "node_index": 82
     },
@@ -3222,7 +3134,7 @@
       "value": "RED",
       "footprint": "Carrier_V5_Local:LED_0603_1608Metric",
       "position_mm": [
-        95.9,
+        108.2,
         143.1
       ],
       "rotation_deg": 90.0,
@@ -3232,15 +3144,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "D701",
       "position_m": [
-        0.0959,
+        0.1082,
         0.0,
         0.1431
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        95.45,
+        107.75,
         142.25,
-        96.35,
+        108.65,
         143.95
       ],
       "manufacturer_part_number": "LTST-C190KRKT",
@@ -3250,10 +3162,10 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.09545000000000001,
+        0.10775,
         -0.0009,
         0.14225,
-        0.09634999999999999,
+        0.10865000000000001,
         0.0,
         0.14395
       ],
@@ -3642,8 +3554,8 @@
       "value": "600R",
       "footprint": "Carrier_V5_Local:FB502",
       "position_mm": [
-        177.3,
-        52.5
+        174.8,
+        54.25
       ],
       "rotation_deg": 0.0,
       "side": "B",
@@ -3652,16 +3564,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "FB502",
       "position_m": [
-        0.1773,
+        0.1748,
         0.0,
-        0.0525
+        0.05425
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        176.4365,
-        52.0365,
-        178.1635,
-        52.9635
+        173.9365,
+        53.7865,
+        175.6635,
+        54.7135
       ],
       "manufacturer_part_number": "BLM18AG601SN1D",
       "dnp": false,
@@ -3670,12 +3582,12 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.1764365,
+        0.1739365,
         -0.0009,
-        0.0520365,
-        0.1781635,
+        0.053786499999999994,
+        0.1756635,
         0.0,
-        0.052963500000000004
+        0.054713500000000005
       ],
       "node_index": 93
     },
@@ -3684,8 +3596,8 @@
       "value": "220R @100MHz",
       "footprint": "Carrier_V5_Local:FB503",
       "position_mm": [
-        180.75,
-        52.5
+        177.461939,
+        52.308658
       ],
       "rotation_deg": 0.0,
       "side": "B",
@@ -3694,16 +3606,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "FB503",
       "position_m": [
-        0.18075,
+        0.177461939,
         0.0,
-        0.0525
+        0.052308658
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        179.6865,
-        51.8115,
-        181.8135,
-        53.1885
+        176.398439,
+        51.620158,
+        178.525439,
+        52.997158
       ],
       "manufacturer_part_number": "BLM21PG221SN1D",
       "dnp": false,
@@ -3712,12 +3624,12 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.1796865,
+        0.176398439,
         -0.0009,
-        0.0518115,
-        0.18181350000000002,
+        0.051620158000000006,
+        0.178525439,
         0.0,
-        0.0531885
+        0.052997157999999996
       ],
       "node_index": 94
     },
@@ -3989,7 +3901,7 @@
       "footprint": "Carrier_V5_Local:J500",
       "position_mm": [
         150.0,
-        50.0
+        50.5
       ],
       "rotation_deg": 180.0,
       "side": "F",
@@ -4000,14 +3912,14 @@
       "position_m": [
         0.15,
         0.0015944,
-        0.05
+        0.0505
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         145.48,
-        46.275,
+        46.775,
         154.52,
-        53.725
+        54.225
       ],
       "manufacturer_part_number": "USB4110-GF-A",
       "dnp": false,
@@ -4018,10 +3930,10 @@
       "body_bounds_m": [
         0.14548,
         0.0015944,
-        0.046275,
+        0.046775,
         0.15452000000000002,
         0.0044944,
-        0.053725
+        0.054225
       ],
       "node_index": 101
     },
@@ -4664,6 +4576,358 @@
       "node_index": 116
     },
     {
+      "reference": "PCB_FEATURE_012",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_2091599f",
+      "position_mm": [
+        72.1761,
+        67.3036
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_012",
+      "position_m": [
+        0.0721761,
+        0.0015944,
+        0.0673036
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        69.1761,
+        64.3036,
+        75.1761,
+        70.3036
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.0691761,
+        -0.0001,
+        0.0643036,
+        0.07517610000000001,
+        0.0016944000000000002,
+        0.07030360000000001
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 117
+    },
+    {
+      "reference": "PCB_FEATURE_015",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_2a17f065",
+      "position_mm": [
+        227.82609,
+        143.80358
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_015",
+      "position_m": [
+        0.22782608999999998,
+        0.0015944,
+        0.14380358000000001
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        224.32609,
+        140.30358,
+        231.32609,
+        147.30358
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.22432609,
+        -0.0001,
+        0.14030358,
+        0.23132608999999998,
+        0.0016944000000000002,
+        0.14730358000000002
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 118
+    },
+    {
+      "reference": "PCB_FEATURE_038",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_543099df",
+      "position_mm": [
+        72.1761,
+        152.7036
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_038",
+      "position_m": [
+        0.0721761,
+        0.0015944,
+        0.1527036
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        69.1761,
+        149.7036,
+        75.1761,
+        155.7036
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.0691761,
+        -0.0001,
+        0.1497036,
+        0.07517610000000001,
+        0.0016944000000000002,
+        0.1557036
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 119
+    },
+    {
+      "reference": "PCB_FEATURE_064",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_95a58158",
+      "position_mm": [
+        85.1763,
+        52.4536
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_064",
+      "position_m": [
+        0.0851763,
+        0.0015944,
+        0.0524536
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        81.6763,
+        48.9536,
+        88.6763,
+        55.9536
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.0816763,
+        -0.0001,
+        0.0489536,
+        0.0886763,
+        0.0016944000000000002,
+        0.0559536
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 120
+    },
+    {
+      "reference": "PCB_FEATURE_082",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_af5aca70",
+      "position_mm": [
+        227.8263,
+        52.45357
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_082",
+      "position_m": [
+        0.2278263,
+        0.0015944,
+        0.05245357
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        224.3263,
+        48.95357,
+        231.3263,
+        55.95357
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.2243263,
+        -0.0001,
+        0.04895357,
+        0.2313263,
+        0.0016944000000000002,
+        0.05595357
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 121
+    },
+    {
+      "reference": "PCB_FEATURE_091",
+      "value": "Opal Kelly Logo",
+      "footprint": "BRK8310_V4:BRK_Logo_c689e08d",
+      "position_mm": [
+        137.17646,
+        140.38106
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_091",
+      "position_m": [
+        0.13717646,
+        0.0015944,
+        0.14038106
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        136.92646,
+        137.843705,
+        154.25405,
+        140.76244
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.13692646,
+        -0.0001,
+        0.137843705,
+        0.15425405,
+        0.0016944000000000002,
+        0.14076244
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 122
+    },
+    {
+      "reference": "PCB_FEATURE_098",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_d08bf7fa",
+      "position_mm": [
+        164.6763,
+        100.05357
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_098",
+      "position_m": [
+        0.1646763,
+        0.0015944,
+        0.10005357
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        161.1763,
+        96.55357,
+        168.1763,
+        103.55357
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.1611763,
+        -0.0001,
+        0.09655356999999999,
+        0.1681763,
+        0.0016944000000000002,
+        0.10355357
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 123
+    },
+    {
+      "reference": "PCB_FEATURE_102",
+      "value": "",
+      "footprint": "BRK8310_V4:BRK_Mechanical_d89f9f55",
+      "position_mm": [
+        85.1763,
+        143.8036
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": false,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "PCB_FEATURE_102",
+      "position_m": [
+        0.0851763,
+        0.0015944,
+        0.14380359999999998
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        81.6763,
+        140.3036,
+        88.6763,
+        147.3036
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.0816763,
+        -0.0001,
+        0.1403036,
+        0.0886763,
+        0.0016944000000000002,
+        0.14730359999999998
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 124
+    },
+    {
       "reference": "Q1",
       "value": "SI1922EDH-T1-GE3",
       "footprint": "BRK8310_Reference:BRK8310_Q1",
@@ -4703,7 +4967,7 @@
         0.0024944000000000003,
         0.1409476
       ],
-      "node_index": 117
+      "node_index": 125
     },
     {
       "reference": "R2",
@@ -4745,7 +5009,7 @@
         0.0020444,
         0.1332932
       ],
-      "node_index": 118
+      "node_index": 126
     },
     {
       "reference": "R7",
@@ -4787,7 +5051,7 @@
         0.0020444,
         0.13533366000000002
       ],
-      "node_index": 119
+      "node_index": 127
     },
     {
       "reference": "R9",
@@ -4829,7 +5093,7 @@
         0.0020444,
         0.14271330000000002
       ],
-      "node_index": 120
+      "node_index": 128
     },
     {
       "reference": "R10",
@@ -4871,7 +5135,7 @@
         0.0020444,
         0.1404207
       ],
-      "node_index": 121
+      "node_index": 129
     },
     {
       "reference": "R11",
@@ -4913,7 +5177,7 @@
         0.0020444,
         0.13812809999999998
       ],
-      "node_index": 122
+      "node_index": 130
     },
     {
       "reference": "R13",
@@ -4955,7 +5219,7 @@
         0.0020444,
         0.14291585
       ],
-      "node_index": 123
+      "node_index": 131
     },
     {
       "reference": "R14",
@@ -4997,7 +5261,7 @@
         0.0020444,
         0.13556585000000002
       ],
-      "node_index": 124
+      "node_index": 132
     },
     {
       "reference": "R15",
@@ -5039,7 +5303,7 @@
         0.0020444,
         0.13666152
       ],
-      "node_index": 125
+      "node_index": 133
     },
     {
       "reference": "R18",
@@ -5081,7 +5345,7 @@
         0.0020444,
         0.14870535000000001
       ],
-      "node_index": 126
+      "node_index": 134
     },
     {
       "reference": "R23",
@@ -5123,7 +5387,7 @@
         0.0020444,
         0.14291585
       ],
-      "node_index": 127
+      "node_index": 135
     },
     {
       "reference": "R24",
@@ -5165,7 +5429,7 @@
         0.0020444,
         0.14870535000000001
       ],
-      "node_index": 128
+      "node_index": 136
     },
     {
       "reference": "R25",
@@ -5207,7 +5471,7 @@
         0.0020444,
         0.13661584999999998
       ],
-      "node_index": 129
+      "node_index": 137
     },
     {
       "reference": "R28",
@@ -5249,7 +5513,7 @@
         0.0020444,
         0.15188534999999997
       ],
-      "node_index": 130
+      "node_index": 138
     },
     {
       "reference": "R30",
@@ -5291,7 +5555,7 @@
         0.0020444,
         0.13816585
       ],
-      "node_index": 131
+      "node_index": 139
     },
     {
       "reference": "R31",
@@ -5333,7 +5597,7 @@
         0.0020444,
         0.13816585
       ],
-      "node_index": 132
+      "node_index": 140
     },
     {
       "reference": "R32",
@@ -5375,7 +5639,7 @@
         0.0020444,
         0.13931585000000002
       ],
-      "node_index": 133
+      "node_index": 141
     },
     {
       "reference": "R33",
@@ -5417,7 +5681,7 @@
         0.0020444,
         0.14131152
       ],
-      "node_index": 134
+      "node_index": 142
     },
     {
       "reference": "R500",
@@ -5459,7 +5723,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 135
+      "node_index": 143
     },
     {
       "reference": "R501",
@@ -5501,7 +5765,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 136
+      "node_index": 144
     },
     {
       "reference": "R502",
@@ -5543,7 +5807,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 137
+      "node_index": 145
     },
     {
       "reference": "R503",
@@ -5585,7 +5849,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 138
+      "node_index": 146
     },
     {
       "reference": "R504",
@@ -5627,7 +5891,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 139
+      "node_index": 147
     },
     {
       "reference": "R505",
@@ -5669,7 +5933,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 140
+      "node_index": 148
     },
     {
       "reference": "R506",
@@ -5711,7 +5975,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 141
+      "node_index": 149
     },
     {
       "reference": "R507",
@@ -5753,7 +6017,7 @@
         0.0,
         0.05482
       ],
-      "node_index": 142
+      "node_index": 150
     },
     {
       "reference": "R509",
@@ -5761,7 +6025,7 @@
       "footprint": "Carrier_V5_Local:R509",
       "position_mm": [
         172.6,
-        54.5
+        55.75
       ],
       "rotation_deg": 0.0,
       "side": "B",
@@ -5772,14 +6036,14 @@
       "position_m": [
         0.1726,
         0.0,
-        0.0545
+        0.05575
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         172.025,
-        54.18,
+        55.43,
         173.175,
-        54.82
+        56.07
       ],
       "manufacturer_part_number": "CRCW040210K0FKED",
       "dnp": false,
@@ -5790,20 +6054,20 @@
       "body_bounds_m": [
         0.172025,
         -0.00045,
-        0.05418,
+        0.05543,
         0.17317500000000002,
         0.0,
-        0.05482
+        0.05607
       ],
-      "node_index": 143
+      "node_index": 151
     },
     {
       "reference": "R600",
       "value": "3.3k",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
-        99.0,
-        70.5
+        210.0,
+        61.0
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -5812,16 +6076,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R600",
       "position_m": [
-        0.099,
+        0.21,
         0.0015944,
-        0.0705
+        0.061
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        98.15,
-        70.0375,
-        99.85,
-        70.9625
+        209.15,
+        60.5375,
+        210.85,
+        61.4625
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -5830,14 +6094,14 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.09815,
+        0.20915,
         0.0015944,
-        0.07003749999999999,
-        0.09985,
+        0.0605375,
+        0.21084999999999998,
         0.0020444,
-        0.07096250000000001
+        0.061462499999999996
       ],
-      "node_index": 144
+      "node_index": 152
     },
     {
       "reference": "R601",
@@ -5879,7 +6143,7 @@
         0.0,
         0.06846250000000001
       ],
-      "node_index": 145
+      "node_index": 153
     },
     {
       "reference": "R602",
@@ -5921,7 +6185,7 @@
         0.0,
         0.071323537
       ],
-      "node_index": 146
+      "node_index": 154
     },
     {
       "reference": "R603",
@@ -5963,7 +6227,7 @@
         0.0,
         0.07352316
       ],
-      "node_index": 147
+      "node_index": 155
     },
     {
       "reference": "R605",
@@ -6005,7 +6269,7 @@
         0.0,
         0.06735
       ],
-      "node_index": 148
+      "node_index": 156
     },
     {
       "reference": "R606",
@@ -6047,7 +6311,7 @@
         0.0,
         0.06735
       ],
-      "node_index": 149
+      "node_index": 157
     },
     {
       "reference": "R607",
@@ -6089,7 +6353,7 @@
         0.0,
         0.06735
       ],
-      "node_index": 150
+      "node_index": 158
     },
     {
       "reference": "R608",
@@ -6131,7 +6395,7 @@
         0.0,
         0.06735
       ],
-      "node_index": 151
+      "node_index": 159
     },
     {
       "reference": "R613",
@@ -6173,7 +6437,7 @@
         0.0,
         0.06735
       ],
-      "node_index": 152
+      "node_index": 160
     },
     {
       "reference": "R614",
@@ -6215,7 +6479,7 @@
         0.0,
         0.07085
       ],
-      "node_index": 153
+      "node_index": 161
     },
     {
       "reference": "R615",
@@ -6257,7 +6521,7 @@
         0.0,
         0.074254329
       ],
-      "node_index": 154
+      "node_index": 162
     },
     {
       "reference": "R616",
@@ -6299,7 +6563,7 @@
         0.0,
         0.07085
       ],
-      "node_index": 155
+      "node_index": 163
     },
     {
       "reference": "R620",
@@ -6341,14 +6605,14 @@
         0.0,
         0.080137012
       ],
-      "node_index": 156
+      "node_index": 164
     },
     {
       "reference": "R621",
       "value": "10k",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
-        86.246446,
+        98.546446,
         147.146446
       ],
       "rotation_deg": 90.0,
@@ -6358,15 +6622,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R621",
       "position_m": [
-        0.086246446,
+        0.09854644600000001,
         0.0,
         0.147146446
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        85.783946,
+        98.083946,
         146.296446,
-        86.708946,
+        99.008946,
         147.996446
       ],
       "manufacturer_part_number": "",
@@ -6376,14 +6640,14 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.085783946,
+        0.09808394599999999,
         -0.00045,
         0.146296446,
-        0.086708946,
+        0.099008946,
         0.0,
         0.147996446
       ],
-      "node_index": 157
+      "node_index": 165
     },
     {
       "reference": "R622",
@@ -6425,7 +6689,7 @@
         0.0,
         0.138493
       ],
-      "node_index": 158
+      "node_index": 166
     },
     {
       "reference": "R623",
@@ -6467,7 +6731,7 @@
         0.0,
         0.128636
       ],
-      "node_index": 159
+      "node_index": 167
     },
     {
       "reference": "R624",
@@ -6509,7 +6773,7 @@
         0.0,
         0.118779
       ],
-      "node_index": 160
+      "node_index": 168
     },
     {
       "reference": "R625",
@@ -6551,7 +6815,7 @@
         0.0,
         0.108921
       ],
-      "node_index": 161
+      "node_index": 169
     },
     {
       "reference": "R626",
@@ -6593,7 +6857,7 @@
         0.0,
         0.099064
       ],
-      "node_index": 162
+      "node_index": 170
     },
     {
       "reference": "R627",
@@ -6635,7 +6899,7 @@
         0.0,
         0.089207
       ],
-      "node_index": 163
+      "node_index": 171
     },
     {
       "reference": "R628",
@@ -6677,7 +6941,7 @@
         0.0,
         0.07934999999999999
       ],
-      "node_index": 164
+      "node_index": 172
     },
     {
       "reference": "R629",
@@ -6719,7 +6983,7 @@
         0.0,
         0.08496250000000001
       ],
-      "node_index": 165
+      "node_index": 173
     },
     {
       "reference": "R640",
@@ -6727,56 +6991,14 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        142.45
+        144.35
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R640",
-      "position_m": [
-        0.0752,
-        0.0,
-        0.14245
-      ],
-      "representation": "independent_nominal_body",
-      "body_bounds_xy_mm": [
-        74.35,
-        141.9875,
-        76.05,
-        142.9125
-      ],
-      "manufacturer_part_number": "",
-      "dnp": false,
-      "manufacturer": "",
-      "datasheet": "https://jlcpcb.com/partdetail/C22775",
-      "nominal_height_mm": 0.45,
-      "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
-      "body_bounds_m": [
-        0.07435,
-        -0.00045,
-        0.14198750000000002,
-        0.07604999999999999,
-        0.0,
-        0.1429125
-      ],
-      "node_index": 166
-    },
-    {
-      "reference": "R641",
-      "value": "100R",
-      "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
-      "position_mm": [
-        75.2,
-        144.35
-      ],
-      "rotation_deg": 0.0,
-      "side": "B",
-      "electrical_component": true,
-      "assigned_model_count": 1,
-      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R641",
       "position_m": [
         0.0752,
         0.0,
@@ -6803,22 +7025,22 @@
         0.0,
         0.1448125
       ],
-      "node_index": 167
+      "node_index": 174
     },
     {
-      "reference": "R642",
+      "reference": "R641",
       "value": "100R",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
         146.25
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R642",
+      "node_name": "R641",
       "position_m": [
         0.0752,
         0.0,
@@ -6845,22 +7067,22 @@
         0.0,
         0.1467125
       ],
-      "node_index": 168
+      "node_index": 175
     },
     {
-      "reference": "R643",
+      "reference": "R642",
       "value": "100R",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
         148.15
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R643",
+      "node_name": "R642",
       "position_m": [
         0.0752,
         0.0,
@@ -6887,7 +7109,49 @@
         0.0,
         0.1486125
       ],
-      "node_index": 169
+      "node_index": 176
+    },
+    {
+      "reference": "R643",
+      "value": "100R",
+      "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
+      "position_mm": [
+        75.2,
+        142.45
+      ],
+      "rotation_deg": 180.0,
+      "side": "B",
+      "electrical_component": true,
+      "assigned_model_count": 1,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "R643",
+      "position_m": [
+        0.0752,
+        0.0,
+        0.14245
+      ],
+      "representation": "independent_nominal_body",
+      "body_bounds_xy_mm": [
+        74.35,
+        141.9875,
+        76.05,
+        142.9125
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "https://jlcpcb.com/partdetail/C22775",
+      "nominal_height_mm": 0.45,
+      "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
+      "body_bounds_m": [
+        0.07435,
+        -0.00045,
+        0.14198750000000002,
+        0.07604999999999999,
+        0.0,
+        0.1429125
+      ],
+      "node_index": 177
     },
     {
       "reference": "R644",
@@ -6895,9 +7159,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        132.593
+        134.492857
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -6906,14 +7170,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.132593
+        0.134492857
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        132.1305,
+        134.030357,
         76.05,
-        133.0555
+        134.955357
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -6924,12 +7188,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1321305,
+        0.13403035700000002,
         0.07604999999999999,
         0.0,
-        0.1330555
+        0.134955357
       ],
-      "node_index": 170
+      "node_index": 178
     },
     {
       "reference": "R645",
@@ -6937,9 +7201,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        134.493
+        136.392857
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -6948,14 +7212,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.134493
+        0.13639285699999998
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        134.0305,
+        135.930357,
         76.05,
-        134.9555
+        136.855357
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -6966,12 +7230,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1340305,
+        0.13593035699999997,
         0.07604999999999999,
         0.0,
-        0.1349555
+        0.136855357
       ],
-      "node_index": 171
+      "node_index": 179
     },
     {
       "reference": "R646",
@@ -6979,9 +7243,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        136.393
+        138.292857
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -6990,14 +7254,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.13639300000000001
+        0.138292857
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        135.9305,
+        137.830357,
         76.05,
-        136.8555
+        138.755357
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7008,12 +7272,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.13593049999999998,
+        0.137830357,
         0.07604999999999999,
         0.0,
-        0.13685550000000002
+        0.138755357
       ],
-      "node_index": 172
+      "node_index": 180
     },
     {
       "reference": "R647",
@@ -7021,9 +7285,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        138.293
+        132.592857
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7032,14 +7296,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.138293
+        0.132592857
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        137.8305,
+        132.130357,
         76.05,
-        138.7555
+        133.055357
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7050,12 +7314,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1378305,
+        0.132130357,
         0.07604999999999999,
         0.0,
-        0.1387555
+        0.13305535699999999
       ],
-      "node_index": 173
+      "node_index": 181
     },
     {
       "reference": "R648",
@@ -7063,9 +7327,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        122.736
+        124.635714
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7074,14 +7338,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.122736
+        0.124635714
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        122.2735,
+        124.173214,
         76.05,
-        123.1985
+        125.098214
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7092,12 +7356,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1222735,
+        0.124173214,
         0.07604999999999999,
         0.0,
-        0.1231985
+        0.12509821399999999
       ],
-      "node_index": 174
+      "node_index": 182
     },
     {
       "reference": "R649",
@@ -7105,9 +7369,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        124.636
+        126.535714
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7116,14 +7380,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.124636
+        0.126535714
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        124.1735,
+        126.073214,
         76.05,
-        125.0985
+        126.998214
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7134,12 +7398,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1241735,
+        0.126073214,
         0.07604999999999999,
         0.0,
-        0.1250985
+        0.126998214
       ],
-      "node_index": 175
+      "node_index": 183
     },
     {
       "reference": "R650",
@@ -7147,9 +7411,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        126.536
+        128.435714
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7158,14 +7422,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.126536
+        0.12843571399999998
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        126.0735,
+        127.973214,
         76.05,
-        126.9985
+        128.898214
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7176,12 +7440,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1260735,
+        0.127973214,
         0.07604999999999999,
         0.0,
-        0.12699850000000001
+        0.12889821399999998
       ],
-      "node_index": 176
+      "node_index": 184
     },
     {
       "reference": "R651",
@@ -7189,9 +7453,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        128.436
+        122.735714
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7200,14 +7464,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.128436
+        0.122735714
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        127.9735,
+        122.273214,
         76.05,
-        128.8985
+        123.198214
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7218,12 +7482,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1279735,
+        0.12227321399999999,
         0.07604999999999999,
         0.0,
-        0.1288985
+        0.12319821399999999
       ],
-      "node_index": 177
+      "node_index": 185
     },
     {
       "reference": "R652",
@@ -7231,9 +7495,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        112.879
+        114.778571
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7242,14 +7506,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.11287900000000001
+        0.114778571
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        112.4165,
+        114.316071,
         76.05,
-        113.3415
+        115.241071
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7260,12 +7524,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1124165,
+        0.11431607099999999,
         0.07604999999999999,
         0.0,
-        0.1133415
+        0.115241071
       ],
-      "node_index": 178
+      "node_index": 186
     },
     {
       "reference": "R653",
@@ -7273,9 +7537,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        114.779
+        116.678571
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7284,14 +7548,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.11477899999999999
+        0.11667857100000001
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        114.3165,
+        116.216071,
         76.05,
-        115.2415
+        117.141071
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7302,12 +7566,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1143165,
+        0.116216071,
         0.07604999999999999,
         0.0,
-        0.1152415
+        0.117141071
       ],
-      "node_index": 179
+      "node_index": 187
     },
     {
       "reference": "R654",
@@ -7315,9 +7579,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        116.679
+        118.578571
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7326,14 +7590,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.116679
+        0.118578571
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        116.2165,
+        118.116071,
         76.05,
-        117.1415
+        119.041071
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7344,12 +7608,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1162165,
+        0.118116071,
         0.07604999999999999,
         0.0,
-        0.1171415
+        0.119041071
       ],
-      "node_index": 180
+      "node_index": 188
     },
     {
       "reference": "R655",
@@ -7357,9 +7621,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        118.579
+        112.878571
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7368,14 +7632,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.11857899999999999
+        0.112878571
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        118.1165,
+        112.416071,
         76.05,
-        119.0415
+        113.341071
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7386,12 +7650,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1181165,
+        0.112416071,
         0.07604999999999999,
         0.0,
-        0.1190415
+        0.113341071
       ],
-      "node_index": 181
+      "node_index": 189
     },
     {
       "reference": "R656",
@@ -7399,9 +7663,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        103.021
+        104.921428
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7410,14 +7674,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.103021
+        0.10492142800000001
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        102.5585,
+        104.458928,
         76.05,
-        103.4835
+        105.383928
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7428,12 +7692,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1025585,
+        0.104458928,
         0.07604999999999999,
         0.0,
-        0.1034835
+        0.105383928
       ],
-      "node_index": 182
+      "node_index": 190
     },
     {
       "reference": "R657",
@@ -7441,9 +7705,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        104.921
+        106.821428
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7452,14 +7716,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.104921
+        0.106821428
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        104.4585,
+        106.358928,
         76.05,
-        105.3835
+        107.283928
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7470,12 +7734,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1044585,
+        0.106358928,
         0.07604999999999999,
         0.0,
-        0.10538349999999999
+        0.107283928
       ],
-      "node_index": 183
+      "node_index": 191
     },
     {
       "reference": "R658",
@@ -7483,9 +7747,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        106.821
+        108.721428
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7494,14 +7758,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.106821
+        0.10872142800000001
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        106.3585,
+        108.258928,
         76.05,
-        107.2835
+        109.183928
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7512,12 +7776,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.10635850000000001,
+        0.108258928,
         0.07604999999999999,
         0.0,
-        0.1072835
+        0.109183928
       ],
-      "node_index": 184
+      "node_index": 192
     },
     {
       "reference": "R659",
@@ -7525,9 +7789,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        108.721
+        103.021428
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7536,14 +7800,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.108721
+        0.103021428
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        108.2585,
+        102.558928,
         76.05,
-        109.1835
+        103.483928
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7554,12 +7818,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.1082585,
+        0.102558928,
         0.07604999999999999,
         0.0,
-        0.10918349999999999
+        0.103483928
       ],
-      "node_index": 185
+      "node_index": 193
     },
     {
       "reference": "R660",
@@ -7567,9 +7831,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        93.164
+        95.064285
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7578,14 +7842,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.093164
+        0.095064285
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        92.7015,
+        94.601785,
         76.05,
-        93.6265
+        95.526785
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7596,12 +7860,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.09270149999999999,
+        0.09460178500000001,
         0.07604999999999999,
         0.0,
-        0.09362649999999999
+        0.095526785
       ],
-      "node_index": 186
+      "node_index": 194
     },
     {
       "reference": "R661",
@@ -7609,9 +7873,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        95.064
+        96.964285
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7620,14 +7884,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.095064
+        0.096964285
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        94.6015,
+        96.501785,
         76.05,
-        95.5265
+        97.426785
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7638,12 +7902,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0946015,
+        0.09650178499999999,
         0.07604999999999999,
         0.0,
-        0.0955265
+        0.097426785
       ],
-      "node_index": 187
+      "node_index": 195
     },
     {
       "reference": "R662",
@@ -7651,9 +7915,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        96.964
+        98.864285
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7662,14 +7926,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.096964
+        0.098864285
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        96.5015,
+        98.401785,
         76.05,
-        97.4265
+        99.326785
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7680,12 +7944,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.09650149999999999,
+        0.098401785,
         0.07604999999999999,
         0.0,
-        0.0974265
+        0.099326785
       ],
-      "node_index": 188
+      "node_index": 196
     },
     {
       "reference": "R663",
@@ -7693,9 +7957,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        98.864
+        93.164285
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7704,14 +7968,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.09886400000000001
+        0.09316428500000001
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        98.4015,
+        92.701785,
         76.05,
-        99.3265
+        93.626785
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7722,12 +7986,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0984015,
+        0.092701785,
         0.07604999999999999,
         0.0,
-        0.0993265
+        0.093626785
       ],
-      "node_index": 189
+      "node_index": 197
     },
     {
       "reference": "R664",
@@ -7735,9 +7999,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        83.307
+        85.207142
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7746,14 +8010,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.083307
+        0.085207142
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        82.8445,
+        84.744642,
         76.05,
-        83.7695
+        85.669642
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7764,12 +8028,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0828445,
+        0.084744642,
         0.07604999999999999,
         0.0,
-        0.0837695
+        0.08566964199999999
       ],
-      "node_index": 190
+      "node_index": 198
     },
     {
       "reference": "R665",
@@ -7777,9 +8041,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        85.207
+        87.107142
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7788,14 +8052,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.08520699999999999
+        0.087107142
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        84.7445,
+        86.644642,
         76.05,
-        85.6695
+        87.569642
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7806,12 +8070,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0847445,
+        0.08664464200000001,
         0.07604999999999999,
         0.0,
-        0.0856695
+        0.087569642
       ],
-      "node_index": 191
+      "node_index": 199
     },
     {
       "reference": "R666",
@@ -7819,9 +8083,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        87.107
+        89.007142
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7830,14 +8094,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.087107
+        0.089007142
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        86.6445,
+        88.544642,
         76.05,
-        87.5695
+        89.469642
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7848,12 +8112,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0866445,
+        0.08854464199999999,
         0.07604999999999999,
         0.0,
-        0.08756950000000001
+        0.08946964199999999
       ],
-      "node_index": 192
+      "node_index": 200
     },
     {
       "reference": "R667",
@@ -7861,9 +8125,9 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        89.007
+        83.307142
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -7872,14 +8136,14 @@
       "position_m": [
         0.0752,
         0.0,
-        0.089007
+        0.083307142
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        88.5445,
+        82.844642,
         76.05,
-        89.4695
+        83.769642
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -7890,12 +8154,12 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0885445,
+        0.082844642,
         0.07604999999999999,
         0.0,
-        0.0894695
+        0.083769642
       ],
-      "node_index": 193
+      "node_index": 201
     },
     {
       "reference": "R668",
@@ -7903,56 +8167,14 @@
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        73.45
+        75.35
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R668",
-      "position_m": [
-        0.0752,
-        0.0,
-        0.07345
-      ],
-      "representation": "independent_nominal_body",
-      "body_bounds_xy_mm": [
-        74.35,
-        72.9875,
-        76.05,
-        73.9125
-      ],
-      "manufacturer_part_number": "",
-      "dnp": false,
-      "manufacturer": "",
-      "datasheet": "https://jlcpcb.com/partdetail/C22775",
-      "nominal_height_mm": 0.45,
-      "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
-      "body_bounds_m": [
-        0.07435,
-        -0.00045,
-        0.0729875,
-        0.07604999999999999,
-        0.0,
-        0.07391249999999999
-      ],
-      "node_index": 194
-    },
-    {
-      "reference": "R669",
-      "value": "100R",
-      "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
-      "position_mm": [
-        75.2,
-        75.35
-      ],
-      "rotation_deg": 0.0,
-      "side": "B",
-      "electrical_component": true,
-      "assigned_model_count": 1,
-      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R669",
       "position_m": [
         0.0752,
         0.0,
@@ -7979,22 +8201,22 @@
         0.0,
         0.0758125
       ],
-      "node_index": 195
+      "node_index": 202
     },
     {
-      "reference": "R670",
+      "reference": "R669",
       "value": "100R",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
         77.25
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R670",
+      "node_name": "R669",
       "position_m": [
         0.0752,
         0.0,
@@ -8021,33 +8243,33 @@
         0.0,
         0.0777125
       ],
-      "node_index": 196
+      "node_index": 203
     },
     {
-      "reference": "R671",
+      "reference": "R670",
       "value": "100R",
       "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
       "position_mm": [
         75.2,
-        79.15
+        79.149999
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "B",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
-      "node_name": "R671",
+      "node_name": "R670",
       "position_m": [
         0.0752,
         0.0,
-        0.07915000000000001
+        0.079149999
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         74.35,
-        78.6875,
+        78.687499,
         76.05,
-        79.6125
+        79.612499
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -8058,20 +8280,62 @@
       "body_bounds_m": [
         0.07435,
         -0.00045,
-        0.0786875,
+        0.07868749900000001,
         0.07604999999999999,
         0.0,
-        0.0796125
+        0.079612499
       ],
-      "node_index": 197
+      "node_index": 204
+    },
+    {
+      "reference": "R671",
+      "value": "100R",
+      "footprint": "Shared_JTAG_V9:R_0603_1608Metric",
+      "position_mm": [
+        75.2,
+        73.45
+      ],
+      "rotation_deg": 180.0,
+      "side": "B",
+      "electrical_component": true,
+      "assigned_model_count": 1,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "R671",
+      "position_m": [
+        0.0752,
+        0.0,
+        0.07345
+      ],
+      "representation": "independent_nominal_body",
+      "body_bounds_xy_mm": [
+        74.35,
+        72.9875,
+        76.05,
+        73.9125
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "https://jlcpcb.com/partdetail/C22775",
+      "nominal_height_mm": 0.45,
+      "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
+      "body_bounds_m": [
+        0.07435,
+        -0.00045,
+        0.0729875,
+        0.07604999999999999,
+        0.0,
+        0.07391249999999999
+      ],
+      "node_index": 205
     },
     {
       "reference": "R700",
       "value": "40.2k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        124.0,
-        62.5
+        129.4,
+        60.9
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -8080,16 +8344,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R700",
       "position_m": [
-        0.124,
+        0.12940000000000002,
         0.0015944,
-        0.0625
+        0.060899999999999996
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        123.15,
-        62.0375,
-        124.85,
-        62.9625
+        128.55,
+        60.4375,
+        130.25,
+        61.3625
       ],
       "manufacturer_part_number": "MCR03EZPFX4022",
       "dnp": false,
@@ -8098,22 +8362,22 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12315000000000001,
+        0.12855,
         0.0015944,
-        0.0620375,
-        0.12484999999999999,
+        0.0604375,
+        0.13025,
         0.0020444,
-        0.0629625
+        0.0613625
       ],
-      "node_index": 198
+      "node_index": 206
     },
     {
       "reference": "R701",
       "value": "10k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        124.0,
-        64.3
+        131.167766,
+        64.267766
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -8122,16 +8386,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R701",
       "position_m": [
-        0.124,
+        0.131167766,
         0.0015944,
-        0.0643
+        0.06426776599999999
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        123.15,
-        63.8375,
-        124.85,
-        64.7625
+        130.317766,
+        63.805266,
+        132.017766,
+        64.730266
       ],
       "manufacturer_part_number": "RC0603FR-0710KL",
       "dnp": false,
@@ -8140,40 +8404,40 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12315000000000001,
+        0.130317766,
         0.0015944,
-        0.0638375,
-        0.12484999999999999,
+        0.063805266,
+        0.13201776599999998,
         0.0020444,
-        0.0647625
+        0.064730266
       ],
-      "node_index": 199
+      "node_index": 207
     },
     {
       "reference": "R702",
       "value": "13k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        122.913417,
-        67.119397
+        129.16903,
+        59.204329
       ],
-      "rotation_deg": 90.0,
+      "rotation_deg": 0.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R702",
       "position_m": [
-        0.122913417,
+        0.12916903,
         0.0015944,
-        0.06711939700000001
+        0.059204329
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        122.450917,
-        66.269397,
-        123.375917,
-        67.969397
+        128.31903,
+        58.741829,
+        130.01903,
+        59.666829
       ],
       "manufacturer_part_number": "ERJ-H3EF1302V",
       "dnp": false,
@@ -8182,22 +8446,22 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.122450917,
+        0.12831903,
         0.0015944,
-        0.066269397,
-        0.123375917,
+        0.058741829,
+        0.13001902999999998,
         0.0020444,
-        0.067969397
+        0.059666829
       ],
-      "node_index": 200
+      "node_index": 208
     },
     {
       "reference": "R703",
       "value": "10k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        127.0,
-        66.0
+        129.223223,
+        57.523223
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -8206,16 +8470,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R703",
       "position_m": [
-        0.127,
+        0.129223223,
         0.0015944,
-        0.066
+        0.057523223
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        126.15,
-        65.5375,
-        127.85,
-        66.4625
+        128.373223,
+        57.060723,
+        130.073223,
+        57.985723
       ],
       "manufacturer_part_number": "RC0603FR-0710KL",
       "dnp": false,
@@ -8224,22 +8488,22 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.12615,
+        0.128373223,
         0.0015944,
-        0.0655375,
-        0.12785,
+        0.057060723,
+        0.13007322300000002,
         0.0020444,
-        0.06646250000000001
+        0.057985723
       ],
-      "node_index": 201
+      "node_index": 209
     },
     {
       "reference": "R711",
       "value": "37.4k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        95.726488,
-        146.973595
+        104.1,
+        140.35
       ],
       "rotation_deg": 0.0,
       "side": "B",
@@ -8248,16 +8512,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R711",
       "position_m": [
-        0.095726488,
+        0.1041,
         0.0,
-        0.14697359499999998
+        0.14035
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        94.876488,
-        146.511095,
-        96.576488,
-        147.436095
+        103.25,
+        139.8875,
+        104.95,
+        140.8125
       ],
       "manufacturer_part_number": "RC0603FR-0737K4L",
       "dnp": false,
@@ -8266,14 +8530,14 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.094876488,
+        0.10325,
         -0.00045,
-        0.146511095,
-        0.096576488,
+        0.1398875,
+        0.10495,
         0.0,
-        0.147436095
+        0.1408125
       ],
-      "node_index": 202
+      "node_index": 210
     },
     {
       "reference": "R712",
@@ -8315,7 +8579,7 @@
         0.0,
         0.1392055
       ],
-      "node_index": 203
+      "node_index": 211
     },
     {
       "reference": "R713",
@@ -8357,7 +8621,7 @@
         0.0,
         0.1293485
       ],
-      "node_index": 204
+      "node_index": 212
     },
     {
       "reference": "R714",
@@ -8399,7 +8663,7 @@
         0.0,
         0.1194915
       ],
-      "node_index": 205
+      "node_index": 213
     },
     {
       "reference": "R715",
@@ -8441,7 +8705,7 @@
         0.0,
         0.109633499
       ],
-      "node_index": 206
+      "node_index": 214
     },
     {
       "reference": "R716",
@@ -8483,7 +8747,7 @@
         0.0,
         0.0997765
       ],
-      "node_index": 207
+      "node_index": 215
     },
     {
       "reference": "R717",
@@ -8525,7 +8789,7 @@
         0.0,
         0.0899195
       ],
-      "node_index": 208
+      "node_index": 216
     },
     {
       "reference": "R718",
@@ -8567,15 +8831,15 @@
         0.0,
         0.0800625
       ],
-      "node_index": 209
+      "node_index": 217
     },
     {
       "reference": "R721",
       "value": "3.3k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "position_mm": [
-        98.209698,
-        146.243291
+        111.202608,
+        145.956278
       ],
       "rotation_deg": 90.0,
       "side": "B",
@@ -8584,16 +8848,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "R721",
       "position_m": [
-        0.098209698,
+        0.111202608,
         0.0,
-        0.146243291
+        0.145956278
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        97.747198,
-        145.393291,
-        98.672198,
-        147.093291
+        110.740108,
+        145.106278,
+        111.665108,
+        146.806278
       ],
       "manufacturer_part_number": "0603WAF3301T5E",
       "dnp": false,
@@ -8602,14 +8866,14 @@
       "nominal_height_mm": 0.45,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.097747198,
+        0.110740108,
         -0.00045,
-        0.145393291,
-        0.09867219799999999,
+        0.145106278,
+        0.111665108,
         0.0,
-        0.147093291
+        0.14680627799999998
       ],
-      "node_index": 210
+      "node_index": 218
     },
     {
       "reference": "R722",
@@ -8651,7 +8915,7 @@
         0.0,
         0.138193
       ],
-      "node_index": 211
+      "node_index": 219
     },
     {
       "reference": "R723",
@@ -8693,7 +8957,7 @@
         0.0,
         0.128336
       ],
-      "node_index": 212
+      "node_index": 220
     },
     {
       "reference": "R724",
@@ -8735,7 +8999,7 @@
         0.0,
         0.118479
       ],
-      "node_index": 213
+      "node_index": 221
     },
     {
       "reference": "R725",
@@ -8777,7 +9041,7 @@
         0.0,
         0.108621
       ],
-      "node_index": 214
+      "node_index": 222
     },
     {
       "reference": "R726",
@@ -8819,7 +9083,7 @@
         0.0,
         0.09876399999999999
       ],
-      "node_index": 215
+      "node_index": 223
     },
     {
       "reference": "R727",
@@ -8861,7 +9125,7 @@
         0.0,
         0.088907
       ],
-      "node_index": 216
+      "node_index": 224
     },
     {
       "reference": "R728",
@@ -8903,15 +9167,15 @@
         0.0,
         0.07905
       ],
-      "node_index": 217
+      "node_index": 225
     },
     {
       "reference": "SW600",
       "value": "SRBQ490100",
       "footprint": "Selector_V11:ALPS_SRBQ490100_1P9T",
       "position_mm": [
-        89.0,
-        57.0
+        196.0,
+        56.5
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -8920,16 +9184,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "SW600",
       "position_m": [
-        0.089,
+        0.196,
         0.0015944,
-        0.057
+        0.0565
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        83.25,
-        50.55,
-        94.75,
-        63.05
+        190.25,
+        50.05,
+        201.75,
+        62.55
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -8938,24 +9202,24 @@
       "nominal_height_mm": 7.5,
       "nominal_height_basis": "Independent nominal display mesh height:4.0mm housing plus stem reaching7.5mm total. No supplier dimensional/fit qualification.",
       "body_bounds_m": [
-        0.0832500010728836,
+        0.1902499943971634,
         0.0015944000333547592,
-        0.05104999989271164,
-        0.09475000202655792,
+        0.05054999887943268,
+        0.2017499953508377,
         0.009094400331377983,
-        0.06255000084638596
+        0.062049999833106995
       ],
       "body_bounds_basis": "Actual stored SW600 mesh vertex extrema in metres (float32); display geometry only.",
       "rendered_mesh_height_mm": 7.500000298023224,
-      "node_index": 218
+      "node_index": 226
     },
     {
       "reference": "SW601",
       "value": "JS202011JCQN",
       "footprint": "Carrier_V5_Local:SW700",
       "position_mm": [
-        99.0,
-        67.0
+        210.0,
+        56.5
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -8964,16 +9228,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "SW601",
       "position_m": [
-        0.099,
+        0.21,
         0.0015944,
-        0.067
+        0.0565
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        94.45,
-        65.15,
-        103.55,
-        68.85
+        205.45,
+        54.65,
+        214.55,
+        58.35
       ],
       "manufacturer_part_number": "",
       "dnp": false,
@@ -8982,14 +9246,14 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.09445,
+        0.20545,
         0.0015944,
-        0.06515,
-        0.10355,
+        0.05465,
+        0.21455000000000002,
         0.0024944000000000003,
-        0.06885
+        0.05835
       ],
-      "node_index": 219
+      "node_index": 227
     },
     {
       "reference": "TP9",
@@ -9033,7 +9297,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 220
+      "node_index": 228
     },
     {
       "reference": "TP10",
@@ -9077,7 +9341,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 221
+      "node_index": 229
     },
     {
       "reference": "TP11",
@@ -9121,7 +9385,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 222
+      "node_index": 230
     },
     {
       "reference": "TP12",
@@ -9165,7 +9429,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 223
+      "node_index": 231
     },
     {
       "reference": "TP13",
@@ -9209,7 +9473,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 224
+      "node_index": 232
     },
     {
       "reference": "TP14",
@@ -9253,7 +9517,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 225
+      "node_index": 233
     },
     {
       "reference": "TP15",
@@ -9297,7 +9561,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 226
+      "node_index": 234
     },
     {
       "reference": "TP16",
@@ -9341,7 +9605,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 227
+      "node_index": 235
     },
     {
       "reference": "TP20",
@@ -9385,7 +9649,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 228
+      "node_index": 236
     },
     {
       "reference": "TP21",
@@ -9429,15 +9693,15 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 229
+      "node_index": 237
     },
     {
       "reference": "TP700",
       "value": "TestPoint",
       "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
       "position_mm": [
-        134.0,
-        50.5
+        134.25,
+        65.5
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -9446,41 +9710,41 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "TP700",
       "position_m": [
-        0.134,
+        0.13425,
         0.0015944,
-        0.0505
+        0.0655
       ],
       "representation": "copper_only_or_mechanical",
       "body_bounds_xy_mm": [
-        132.725,
-        49.225,
-        135.275,
-        51.775
+        132.975,
+        64.225,
+        135.525,
+        66.775
       ],
       "manufacturer_part_number": "",
       "dnp": false,
       "manufacturer": "",
       "datasheet": "",
       "pick_bounds_m": [
-        0.13325,
+        0.1335,
         -0.0001,
-        0.04975,
-        0.13475,
+        0.06475,
+        0.135,
         0.0016944000000000002,
-        0.05125
+        0.06625
       ],
       "pick_bounds_basis": "Native pads and board thickness; selection envelope",
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 230
+      "node_index": 238
     },
     {
       "reference": "TP701",
       "value": "TestPoint",
       "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
       "position_mm": [
-        100.6,
+        113.399999,
         145.3
       ],
       "rotation_deg": 0.0,
@@ -9490,15 +9754,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "TP701",
       "position_m": [
-        0.1006,
+        0.11339999899999999,
         0.0,
         0.1453
       ],
       "representation": "copper_only_or_mechanical",
       "body_bounds_xy_mm": [
-        99.325,
+        112.124999,
         144.025,
-        101.875,
+        114.674999,
         146.575
       ],
       "manufacturer_part_number": "",
@@ -9506,10 +9770,10 @@
       "manufacturer": "",
       "datasheet": "",
       "pick_bounds_m": [
-        0.09985,
+        0.112649999,
         -0.0001,
         0.14455,
-        0.10135,
+        0.11414999899999999,
         0.0016944000000000002,
         0.14605
       ],
@@ -9517,7 +9781,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 231
+      "node_index": 239
     },
     {
       "reference": "TP702",
@@ -9561,7 +9825,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 232
+      "node_index": 240
     },
     {
       "reference": "TP703",
@@ -9605,7 +9869,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 233
+      "node_index": 241
     },
     {
       "reference": "TP704",
@@ -9649,7 +9913,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 234
+      "node_index": 242
     },
     {
       "reference": "TP705",
@@ -9693,7 +9957,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 235
+      "node_index": 243
     },
     {
       "reference": "TP706",
@@ -9737,7 +10001,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 236
+      "node_index": 244
     },
     {
       "reference": "TP707",
@@ -9781,7 +10045,7 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 237
+      "node_index": 245
     },
     {
       "reference": "TP708",
@@ -9825,15 +10089,15 @@
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 238
+      "node_index": 246
     },
     {
       "reference": "TP709",
       "value": "TestPoint",
       "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
       "position_mm": [
-        134.0,
-        54.0
+        133.5,
+        57.0
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -9842,34 +10106,210 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "TP709",
       "position_m": [
-        0.134,
+        0.1335,
         0.0015944,
-        0.054
+        0.057
       ],
       "representation": "copper_only_or_mechanical",
       "body_bounds_xy_mm": [
-        132.725,
-        52.725,
-        135.275,
-        55.275
+        132.225,
+        55.725,
+        134.775,
+        58.275
       ],
       "manufacturer_part_number": "",
       "dnp": false,
       "manufacturer": "",
       "datasheet": "",
       "pick_bounds_m": [
-        0.13325,
+        0.13275,
         -0.0001,
-        0.05325,
-        0.13475,
+        0.05625,
+        0.13425,
         0.0016944000000000002,
-        0.05475
+        0.05775
       ],
       "pick_bounds_basis": "Native pads and board thickness; selection envelope",
       "nominal_height_mm": 0,
       "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
       "body_bounds_m": null,
-      "node_index": 239
+      "node_index": 247
+    },
+    {
+      "reference": "TP710",
+      "value": "12V_IN",
+      "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
+      "position_mm": [
+        117.0,
+        58.0
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": true,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "TP710",
+      "position_m": [
+        0.117,
+        0.0015944,
+        0.058
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        115.725,
+        56.725,
+        118.275,
+        59.275
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.11625,
+        -0.0001,
+        0.05725,
+        0.11775,
+        0.0016944000000000002,
+        0.05875
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 248
+    },
+    {
+      "reference": "TP711",
+      "value": "1V8_XEM",
+      "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
+      "position_mm": [
+        139.0,
+        58.5
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": true,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "TP711",
+      "position_m": [
+        0.139,
+        0.0015944,
+        0.0585
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        137.725,
+        57.225,
+        140.275,
+        59.775
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.13825,
+        -0.0001,
+        0.05775,
+        0.13975,
+        0.0016944000000000002,
+        0.05925
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 249
+    },
+    {
+      "reference": "TP712",
+      "value": "3V3_XEM",
+      "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
+      "position_mm": [
+        139.0,
+        62.0
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": true,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "TP712",
+      "position_m": [
+        0.139,
+        0.0015944,
+        0.062
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        137.725,
+        60.725,
+        140.275,
+        63.275
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.13825,
+        -0.0001,
+        0.06125,
+        0.13975,
+        0.0016944000000000002,
+        0.06275
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 250
+    },
+    {
+      "reference": "TP713",
+      "value": "3V3_FTDI",
+      "footprint": "Carrier_V5_Local:TestPoint_Pad_D1.5mm",
+      "position_mm": [
+        170.5,
+        60.0
+      ],
+      "rotation_deg": 0.0,
+      "side": "F",
+      "electrical_component": true,
+      "assigned_model_count": 0,
+      "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
+      "node_name": "TP713",
+      "position_m": [
+        0.1705,
+        0.0015944,
+        0.06
+      ],
+      "representation": "copper_only_or_mechanical",
+      "body_bounds_xy_mm": [
+        169.225,
+        58.725,
+        171.775,
+        61.275
+      ],
+      "manufacturer_part_number": "",
+      "dnp": false,
+      "manufacturer": "",
+      "datasheet": "",
+      "pick_bounds_m": [
+        0.16975,
+        -0.0001,
+        0.05925,
+        0.17125,
+        0.0016944000000000002,
+        0.06075
+      ],
+      "pick_bounds_basis": "Native pads and board thickness; selection envelope",
+      "nominal_height_mm": 0,
+      "nominal_height_basis": "No separate body: retained copper pad/testpoint, mounting hole or fiducial.",
+      "body_bounds_m": null,
+      "node_index": 251
     },
     {
       "reference": "U2",
@@ -9911,7 +10351,7 @@
         0.0024944000000000003,
         0.1404476
       ],
-      "node_index": 240
+      "node_index": 252
     },
     {
       "reference": "U4",
@@ -9953,7 +10393,7 @@
         0.0024944000000000003,
         0.14029409
       ],
-      "node_index": 241
+      "node_index": 253
     },
     {
       "reference": "U5",
@@ -9995,7 +10435,7 @@
         0.0024944000000000003,
         0.1521871
       ],
-      "node_index": 242
+      "node_index": 254
     },
     {
       "reference": "U6",
@@ -10037,7 +10477,7 @@
         0.0024944000000000003,
         0.1404476
       ],
-      "node_index": 243
+      "node_index": 255
     },
     {
       "reference": "U501",
@@ -10079,7 +10519,7 @@
         0.0024944000000000003,
         0.06105
       ],
-      "node_index": 244
+      "node_index": 256
     },
     {
       "reference": "U505",
@@ -10121,7 +10561,7 @@
         0.0024944000000000003,
         0.0585
       ],
-      "node_index": 245
+      "node_index": 257
     },
     {
       "reference": "U602",
@@ -10163,7 +10603,7 @@
         0.0,
         0.0783
       ],
-      "node_index": 246
+      "node_index": 258
     },
     {
       "reference": "U603",
@@ -10205,7 +10645,7 @@
         0.0,
         0.0715
       ],
-      "node_index": 247
+      "node_index": 259
     },
     {
       "reference": "U605",
@@ -10247,7 +10687,7 @@
         0.0,
         0.0715
       ],
-      "node_index": 248
+      "node_index": 260
     },
     {
       "reference": "U610",
@@ -10289,14 +10729,14 @@
         0.0,
         0.08125
       ],
-      "node_index": 249
+      "node_index": 261
     },
     {
       "reference": "U611",
       "value": "TS3A27518EPWR",
       "footprint": "Shared_JTAG_V9:TSSOP-24_4.4x7.8mm_P0.65mm",
       "position_mm": [
-        80.817316,
+        93.117316,
         144.37612
       ],
       "rotation_deg": 0.0,
@@ -10306,15 +10746,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "U611",
       "position_m": [
-        0.080817316,
+        0.093117316,
         0.0,
         0.14437612
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        78.567316,
+        90.867316,
         140.42612,
-        83.067316,
+        95.367316,
         148.32612
       ],
       "manufacturer_part_number": "",
@@ -10324,14 +10764,14 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.07856731600000001,
+        0.090867316,
         -0.0009,
         0.14042612,
-        0.083067316,
+        0.09536731600000001,
         0.0,
         0.14832612
       ],
-      "node_index": 250
+      "node_index": 262
     },
     {
       "reference": "U612",
@@ -10373,7 +10813,7 @@
         0.0,
         0.139393
       ],
-      "node_index": 251
+      "node_index": 263
     },
     {
       "reference": "U613",
@@ -10415,7 +10855,7 @@
         0.0,
         0.129536
       ],
-      "node_index": 252
+      "node_index": 264
     },
     {
       "reference": "U614",
@@ -10457,7 +10897,7 @@
         0.0,
         0.11967900000000001
       ],
-      "node_index": 253
+      "node_index": 265
     },
     {
       "reference": "U615",
@@ -10499,7 +10939,7 @@
         0.0,
         0.109821
       ],
-      "node_index": 254
+      "node_index": 266
     },
     {
       "reference": "U616",
@@ -10541,7 +10981,7 @@
         0.0,
         0.099964
       ],
-      "node_index": 255
+      "node_index": 267
     },
     {
       "reference": "U617",
@@ -10583,7 +11023,7 @@
         0.0,
         0.09010699999999999
       ],
-      "node_index": 256
+      "node_index": 268
     },
     {
       "reference": "U618",
@@ -10625,7 +11065,7 @@
         0.0,
         0.08025
       ],
-      "node_index": 257
+      "node_index": 269
     },
     {
       "reference": "U700",
@@ -10633,7 +11073,7 @@
       "footprint": "BRK8310_Reference:TI_TPSM63606_RDL0020A_EVM",
       "position_mm": [
         124.0,
-        57.0
+        60.0
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -10644,14 +11084,14 @@
       "position_m": [
         0.124,
         0.0015944,
-        0.057
+        0.06
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
         121.375,
-        54.125,
+        57.125,
         126.625,
-        59.875
+        62.875
       ],
       "manufacturer_part_number": "TPSM63606RDLR",
       "dnp": false,
@@ -10662,19 +11102,19 @@
       "body_bounds_m": [
         0.121375,
         0.0015944,
-        0.054125,
+        0.057125,
         0.126625,
         0.0024944000000000003,
-        0.059875
+        0.062875
       ],
-      "node_index": 258
+      "node_index": 270
     },
     {
       "reference": "U701",
       "value": "TPS2553DBVR",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "position_mm": [
-        91.8,
+        104.1,
         145.3
       ],
       "rotation_deg": 0.0,
@@ -10684,15 +11124,15 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "U701",
       "position_m": [
-        0.09179999999999999,
+        0.1041,
         0.0,
         0.1453
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        90.95,
+        103.25,
         143.8,
-        92.65,
+        104.95,
         146.8
       ],
       "manufacturer_part_number": "TPS2553DBVR",
@@ -10702,14 +11142,14 @@
       "nominal_height_mm": 0.9,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.09095,
+        0.10325,
         -0.0009,
         0.1438,
-        0.09265000000000001,
+        0.10495,
         0.0,
         0.1468
       ],
-      "node_index": 259
+      "node_index": 271
     },
     {
       "reference": "U702",
@@ -10751,7 +11191,7 @@
         0.0,
         0.136943
       ],
-      "node_index": 260
+      "node_index": 272
     },
     {
       "reference": "U703",
@@ -10793,7 +11233,7 @@
         0.0,
         0.127086
       ],
-      "node_index": 261
+      "node_index": 273
     },
     {
       "reference": "U704",
@@ -10835,7 +11275,7 @@
         0.0,
         0.117229
       ],
-      "node_index": 262
+      "node_index": 274
     },
     {
       "reference": "U705",
@@ -10877,7 +11317,7 @@
         0.0,
         0.107371
       ],
-      "node_index": 263
+      "node_index": 275
     },
     {
       "reference": "U706",
@@ -10919,7 +11359,7 @@
         0.0,
         0.09751399999999999
       ],
-      "node_index": 264
+      "node_index": 276
     },
     {
       "reference": "U707",
@@ -10961,7 +11401,7 @@
         0.0,
         0.087657
       ],
-      "node_index": 265
+      "node_index": 277
     },
     {
       "reference": "U708",
@@ -11003,7 +11443,7 @@
         0.0,
         0.0778
       ],
-      "node_index": 266
+      "node_index": 278
     },
     {
       "reference": "U801",
@@ -11013,7 +11453,7 @@
         75.4,
         145.3
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11045,7 +11485,7 @@
         0.0024944000000000003,
         0.1466
       ],
-      "node_index": 267
+      "node_index": 279
     },
     {
       "reference": "U802",
@@ -11055,7 +11495,7 @@
         75.4,
         135.443
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11087,7 +11527,7 @@
         0.0024944000000000003,
         0.136743
       ],
-      "node_index": 268
+      "node_index": 280
     },
     {
       "reference": "U803",
@@ -11097,7 +11537,7 @@
         75.4,
         125.586
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11129,7 +11569,7 @@
         0.0024944000000000003,
         0.126886
       ],
-      "node_index": 269
+      "node_index": 281
     },
     {
       "reference": "U804",
@@ -11139,7 +11579,7 @@
         75.4,
         115.729
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11171,7 +11611,7 @@
         0.0024944000000000003,
         0.117029
       ],
-      "node_index": 270
+      "node_index": 282
     },
     {
       "reference": "U805",
@@ -11181,7 +11621,7 @@
         75.4,
         105.871
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11213,7 +11653,7 @@
         0.0024944000000000003,
         0.107171
       ],
-      "node_index": 271
+      "node_index": 283
     },
     {
       "reference": "U806",
@@ -11223,7 +11663,7 @@
         75.4,
         96.014
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11255,7 +11695,7 @@
         0.0024944000000000003,
         0.097314
       ],
-      "node_index": 272
+      "node_index": 284
     },
     {
       "reference": "U807",
@@ -11265,7 +11705,7 @@
         75.4,
         86.157
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11297,7 +11737,7 @@
         0.0024944000000000003,
         0.087457
       ],
-      "node_index": 273
+      "node_index": 285
     },
     {
       "reference": "U808",
@@ -11307,7 +11747,7 @@
         75.4,
         76.3
       ],
-      "rotation_deg": 0.0,
+      "rotation_deg": 180.0,
       "side": "F",
       "electrical_component": true,
       "assigned_model_count": 1,
@@ -11339,15 +11779,15 @@
         0.0024944000000000003,
         0.07759999999999999
       ],
-      "node_index": 274
+      "node_index": 286
     },
     {
       "reference": "Y500",
       "value": "7U12000E18UCG 12MHz",
       "footprint": "Carrier_V5_Local:Y500",
       "position_mm": [
-        169.0,
-        61.5
+        154.6,
+        57.6
       ],
       "rotation_deg": 0.0,
       "side": "F",
@@ -11356,16 +11796,16 @@
       "bounds_basis": "Saved Fab graphics excluding text; otherwise footprint envelope",
       "node_name": "Y500",
       "position_m": [
-        0.169,
+        0.1546,
         0.0015944,
-        0.0615
+        0.0576
       ],
       "representation": "independent_nominal_body",
       "body_bounds_xy_mm": [
-        167.3365,
-        60.1865,
-        170.6635,
-        62.8135
+        152.9365,
+        56.2865,
+        156.2635,
+        58.9135
       ],
       "manufacturer_part_number": "7U12000E18UCG",
       "dnp": false,
@@ -11374,15 +11814,15 @@
       "nominal_height_mm": 1.2,
       "nominal_height_basis": "Independent nominal display-height assumption; no supplier model geometry used.",
       "body_bounds_m": [
-        0.1673365,
+        0.1529365,
         0.0015944,
-        0.060186500000000004,
-        0.1706635,
+        0.056286499999999996,
+        0.1562635,
         0.0027944,
-        0.0628135
+        0.0589135
       ],
-      "node_index": 275
+      "node_index": 287
     }
   ],
-  "qualification": "All238 body previews are independently authored nominal geometry. Their X/Y envelopes derive from saved PCB drawings and positions; most display heights are assumptions. Coil height uses the published7.0mm maximum. Bodies support placement review, not physical mating/chassis, dimensions, manufacturing or powered qualification."
+  "qualification": "238 independently authored nominal bodies from saved footprint drawings. Display heights are assumptions; no assembled-fit or hardware qualification."
 }

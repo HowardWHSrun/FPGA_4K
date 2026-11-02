@@ -1,18 +1,13 @@
-# HDMI Extension Board — 1 November 2026
+# HDMI Extension Board V6 — full KiCad project
 
-- [View the current design](../../index.html)
-- [V5 one-page schematic PDF](../HDMI_Extension_Board_Schematic_V5.pdf)
-- [V5 schematic KiCad project and local libraries](HDMI_Extension_Board_Schematic_V5_KiCad.zip)
-- [V3 placement KiCad project, paired earlier schematic, rules and local libraries](HDMI_Extension_Board_Placement_V3_KiCad.zip)
-- [V3 3D placement preview](../hdmi-extension-placement-v3.glb)
-- [Component CSV](../components.csv)
-- [Source hashes](source-manifest.json)
-- [Native check summary](../publication-status.json)
+Captured 2026-11-01T20:25:58.055074-06:00. Open `HDMI_Extension_Board_Study_V6/HDMI_Extension_Board_Study_V6.kicad_pro` in KiCad 10.0.6 or newer after extracting the entire ZIP. Keep the PCB, schematic, settings, rules, symbol and footprint libraries, library tables and model folders together.
 
-Open the project file inside each extracted folder in KiCad 10.0.6 or newer. V5 is the current circuit source; V3 is the selected saved placement study. The V3 paired schematic predates TP710–TP713, and these four footprints are not placed. All 1,423 existing named pin/net memberships agree with current V5. These are separate revision tracks; V3 does not supersede the V5 schematic version.
+Eight custom Micro-HDMI links, individually switched 5 V feeds, USB-C JTAG and the XEM8310 PCIe interface. Layout and routing are in progress; clock, cable power and mechanical fit remain under review.
 
-The V3 board has 269 footprints, six layers, no routed tracks/vias and no copper pours. The included layer stack and design rules are working assumptions, not fabrication-approved impedance constraints. DRC remains open; inspect the saved reports and ignored checks. The earlier V2 review is not a full review or approval of V3. Bracket and plug fit, support holes, silkscreen, power/clock placement, cable power, routing and hardware qualification remain open.
+This package includes the complete saved project and available 3D model dependencies. Local model paths are retained or made relative for portability. Historical native filenames and library identifiers remain intact. Editor caches, lock files and automatic backups are excluded. Model coverage and unresolved paths are recorded in `package-manifest.json`; nominal or substitute models are not proof of assembled fit.
 
-Both KiCad packages include editable native content and project-local 2D dependencies. Supplier 3D payloads and their references are omitted; no broken native 3D paths are left. A separate GLB provides native PCB surfaces with 238 independently authored nominal component bodies. This does not model the assembled XEM, cables, bracket or enclosure and does not qualify fit. No Gerbers or fabrication release is supplied for this unrouted study.
+Native snapshot: 267 schematic components, 279 PCB footprints, 6 copper layers, 45 track/via objects and 2 copper zones. Check reports: 0 DRC errors, 234 DRC warnings, 499 unconnected-item reports, 0 schematic/PCB parity findings. These are saved-rule CAD checks, not hardware or fabrication qualification; ignored categories remain in the check summary.
 
-The product name is HDMI Extension Board. Historical BRK8310 source identifiers and existing library names remain for attribution and compatibility. The archived V10 page remains available separately. Other board projects and historical meeting assets are unchanged.
+Native source and manufacturer identifiers are retained. Existing third-party library and model terms continue to apply; this package grants no new rights to those materials. KiCad library license: https://www.kicad.org/libraries/license/ . Engineering references remain in the schematic and source fields.
+
+[Download full KiCad ZIP](HDMI_Extension_Board_V6_Full_KiCad.zip) · [Schematic PDF](../schematic-v6.pdf)

@@ -1,0 +1,185 @@
+(version 1)
+
+# V58 AUTHORIZED LOCAL ESCAPE STUDY ONLY; provisional inherited ten-layer construction.
+# Actual BGA/DF40 trial copper is allowed; no whole-board or fabrication release.
+# Layer roles: S/G/S/G/P/S/G/S/G/S; L1 F.Cu, L10 B.Cu.
+# JLCPCB 2+6+2 nominal family; exact stack, plating, filled/capped interfaces,
+# registration, finished-hole definitions and impedance profiles are UNISSUED.
+# https://jlcpcb.com/help/article/hdi-pcb-capabilities-faq
+# https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html#custom-design-rules
+# KiCad resolves each constraint from the last matching rule. Keep guards last.
+# Board min/default microvia drill must separately be 0.150 mm in .kicad_pro.
+# Main track floor stays 0.100 mm: no 0.090 mm impedance profile is approved.
+
+# Package copper is preserved. These rules distinguish same-component land gaps
+# from the existing 0.20 mm Default routing clearance. No DRC exclusions added.
+# U8 is now TI RSV0016A; current copper is preserved. This is a pad/pad minimum only.
+# U11 is now Nexperia SOT886; no inherited-device launch rationale is reused.
+(rule "U8 current RSV pad-to-pad inherited clearance"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('U8') && B.memberOfFootprint('U8')")
+ (constraint clearance (min 0.15mm)))
+(rule "U11 current SOT886 pad-to-pad inherited clearance"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('U11') && B.memberOfFootprint('U11')")
+ (constraint clearance (min 0.17mm)))
+(rule "U12 DSE manufacturer land spacing"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('U12') && B.memberOfFootprint('U12')")
+ (constraint clearance (min 0.15mm)))
+(rule "R44 0201 metric manufacturer land spacing"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('R44') && B.memberOfFootprint('R44')")
+ (constraint clearance (min 0.18mm)))
+# Molex 46765 signal lands: .40 mm pitch minus .25 mm copper = .15 mm.
+(rule "J3 Molex manufacturer land spacing"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('J3') && B.memberOfFootprint('J3')")
+ (constraint clearance (min 0.15mm)))
+# L1/L2 now use exact TDK .30 mm land gap; no ferrite clearance exception.
+
+# Fine escape uses KiCad courtyard-intersection semantics. Split track segments
+# at the U1 courtyard boundary: a crossing segment is selected as a whole.
+# General routing remains .20/.20; inspect the escape extent during routing.
+# No different-net SMD pad/pad gap is relaxed by this rule.
+# Zone and other object types are excluded; inner copper is handled below.
+(rule "U1 local BGA escape"
+ (layer outer)
+ (condition "(A.Type == 'Pad' || A.Type == 'Track' || A.Type == 'Via') && (B.Type == 'Pad' || B.Type == 'Track' || B.Type == 'Via') && (A.Type != 'Pad' || B.Type != 'Pad') && A.intersectsCourtyard('U1') && B.intersectsCourtyard('U1')")
+ (constraint clearance (min 0.10mm)))
+(rule "U1 local neckdown width"
+ (condition "A.Type == 'Track' && A.intersectsCourtyard('U1')")
+ (constraint track_width (min 0.10mm) (opt 0.20mm)))
+
+# J3 shell supports are plated COMPONENT slots, not via drills.
+# Published component-hole requirements remain separate from global via rules.
+(rule "J3 component hole to inner copper"
+ (layer inner)
+ (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole' && A.memberOfFootprint('J3')")
+ (constraint hole_clearance (min 0.30mm)))
+(rule "J3 component hole to outer track"
+ (layer outer)
+ (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole' && A.memberOfFootprint('J3') && B.Type == 'Track'")
+ (constraint hole_clearance (min 0.35mm)))
+(rule "Component plated hole separation"
+ (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Pad_Type == 'Through-hole' && B.Pad_Type == 'Through-hole'")
+ (constraint hole_to_hole (min 0.45mm)))
+
+# These exposed conductors require solid plane connections when zones are added.
+# U10's HotRod heat-spreading pads are POWER pads, not a ground exposed pad.
+(rule "TPS748 thermal ground connection"
+ (condition "A.Type == 'Pad' && (A.memberOfFootprint('U5') || A.memberOfFootprint('U6')) && A.Pad_Number == '11'")
+ (constraint zone_connection solid))
+(rule "TPS25947 power heat-spreading connection"
+ (condition "A.Type == 'Pad' && A.memberOfFootprint('U10') && (A.Pad_Number == '5' || A.Pad_Number == '6')")
+ (constraint zone_connection solid))
+
+
+# Width floor .10 is available for other fine-pitch pad neckdowns too.
+# Default preferred routing width/clearance remains .20/.20. The U1 escape and exact inner HDI
+# rules relax only their named copper checks, with whole-object selection.
+(rule "Through via conservative annulus"
+ (condition "A.Type == 'Via' && A.Via_Type == 'Through'")
+ (constraint annular_width (min 0.10mm)))
+(rule "Component plated hole annulus"
+ (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'")
+ (constraint annular_width (min 0.15mm)))
+# U8 has no broad fine Pad/Track clearance waiver. Its existing pad/pad
+# manufacturer exception remains above. A future bounded launch needs an
+# explicit, reviewed rule area and native validation; do not relax its courtyard.
+# No blanket same-net hole-overlap or physical drill-spacing waiver is added.
+
+# Every exact HDI family retains its physical capture lands. The virtual
+# joint model uses 0.100 mm foreign Via/Via copper clearance on SHARED INNER
+# layers, including G2/G4/P5/G7/G9. No plane Zone/Via or outer waiver follows.
+(rule "Conditional exact HDI inner via capture clearance"
+ (layer inner)
+ (condition "((A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'F.Cu' && A.Layer_Bottom == 'In1.Cu') || (A.Layer_Top == 'In1.Cu' && A.Layer_Bottom == 'In2.Cu') || (A.Layer_Top == 'In7.Cu' && A.Layer_Bottom == 'In8.Cu') || (A.Layer_Top == 'In8.Cu' && A.Layer_Bottom == 'B.Cu'))) || (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu')) && ((B.Type == 'Via' && B.Via_Type == 'Micro' && ((B.Layer_Top == 'F.Cu' && B.Layer_Bottom == 'In1.Cu') || (B.Layer_Top == 'In1.Cu' && B.Layer_Bottom == 'In2.Cu') || (B.Layer_Top == 'In7.Cu' && B.Layer_Bottom == 'In8.Cu') || (B.Layer_Top == 'In8.Cu' && B.Layer_Bottom == 'B.Cu'))) || (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu'))")
+ (constraint clearance (min 0.10mm)))
+
+# Signal L3: tracks and exact-stage HDI lands only; through vias stay conservative.
+(rule "Conditional HDI L3 exact-family track and via copper clearance"
+ (layer In2.Cu)
+ (condition "(A.Type == 'Track' || (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu') || (A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'In1.Cu' && A.Layer_Bottom == 'In2.Cu')))) && (B.Type == 'Track' || (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu') || (B.Type == 'Via' && B.Via_Type == 'Micro' && ((B.Layer_Top == 'In1.Cu' && B.Layer_Bottom == 'In2.Cu'))))")
+ (constraint clearance (min 0.10mm)))
+
+# Signal L6: tracks and exact-stage HDI lands only; through vias stay conservative.
+(rule "Conditional HDI L6 exact-family track and via copper clearance"
+ (layer In5.Cu)
+ (condition "(A.Type == 'Track' || (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu')) && (B.Type == 'Track' || (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu'))")
+ (constraint clearance (min 0.10mm)))
+
+# Signal L8: tracks and exact-stage HDI lands only; through vias stay conservative.
+(rule "Conditional HDI L8 exact-family track and via copper clearance"
+ (layer In7.Cu)
+ (condition "(A.Type == 'Track' || (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu') || (A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'In7.Cu' && A.Layer_Bottom == 'In8.Cu')))) && (B.Type == 'Track' || (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu') || (B.Type == 'Via' && B.Via_Type == 'Micro' && ((B.Layer_Top == 'In7.Cu' && B.Layer_Bottom == 'In8.Cu'))))")
+ (constraint clearance (min 0.10mm)))
+
+# Baseline plane copper clearance; existing component-hole guards stay intact.
+(rule "Shared GND plane clearance"
+ (condition "(A.Type == 'Zone' && A.NetName == 'GND') || (B.Type == 'Zone' && B.NetName == 'GND')")
+ (constraint clearance (min 0.20mm)))
+# Mixed reference profile: G2/G9 remain 0.200 mm; G4/G7 use 0.100 mm only
+# for the exact B38 span. These checks apply to intersecting physical via spans. They do not change global 0.200 mm hole-to-foreign-Cu.
+
+(rule "Conservative GND L2 reference to exact HDI family"
+ (layer In1.Cu)
+ (condition "(A.Type == 'Zone' && A.NetName == 'GND' && (B.Type == 'Via' && B.Via_Type == 'Micro' && ((B.Layer_Top == 'F.Cu' && B.Layer_Bottom == 'In1.Cu') || (B.Layer_Top == 'In1.Cu' && B.Layer_Bottom == 'In2.Cu')))) || (B.Type == 'Zone' && B.NetName == 'GND' && (A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'F.Cu' && A.Layer_Bottom == 'In1.Cu') || (A.Layer_Top == 'In1.Cu' && A.Layer_Bottom == 'In2.Cu'))))")
+ (constraint clearance (min 0.20mm)))
+
+(rule "Conditional GND L4 reference to exact HDI family"
+ (layer In3.Cu)
+ (condition "(A.Type == 'Zone' && A.NetName == 'GND' && (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu')) || (B.Type == 'Zone' && B.NetName == 'GND' && (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu'))")
+ (constraint clearance (min 0.10mm)))
+
+(rule "Conditional GND L7 reference to exact HDI family"
+ (layer In6.Cu)
+ (condition "(A.Type == 'Zone' && A.NetName == 'GND' && (B.Type == 'Via' && B.Via_Type == 'Buried' && B.Layer_Top == 'In2.Cu' && B.Layer_Bottom == 'In7.Cu')) || (B.Type == 'Zone' && B.NetName == 'GND' && (A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu'))")
+ (constraint clearance (min 0.10mm)))
+
+(rule "Conservative GND L9 reference to exact HDI family"
+ (layer In8.Cu)
+ (condition "(A.Type == 'Zone' && A.NetName == 'GND' && (B.Type == 'Via' && B.Via_Type == 'Micro' && ((B.Layer_Top == 'In7.Cu' && B.Layer_Bottom == 'In8.Cu') || (B.Layer_Top == 'In8.Cu' && B.Layer_Bottom == 'B.Cu')))) || (B.Type == 'Zone' && B.NetName == 'GND' && (A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'In7.Cu' && A.Layer_Bottom == 'In8.Cu') || (A.Layer_Top == 'In8.Cu' && A.Layer_Bottom == 'B.Cu'))))")
+ (constraint clearance (min 0.20mm)))
+
+# Exact adjacent laser stages, not a skip-via permission. The nominal 0.075 mm
+# radial ring is the published minimum, not a registration allowance guarantee.
+# Apply both native board microvia minimums and this scoped cell-size rule.
+(rule "Conditional adjacent HDI microvia 0.300-0.150"
+ (condition "(A.Type == 'Via' && A.Via_Type == 'Micro' && ((A.Layer_Top == 'F.Cu' && A.Layer_Bottom == 'In1.Cu') || (A.Layer_Top == 'In1.Cu' && A.Layer_Bottom == 'In2.Cu') || (A.Layer_Top == 'In7.Cu' && A.Layer_Bottom == 'In8.Cu') || (A.Layer_Top == 'In8.Cu' && A.Layer_Bottom == 'B.Cu')))")
+ (constraint hole_size (min 0.15mm) (opt 0.15mm) (max 0.15mm))
+ (constraint via_diameter (min 0.30mm) (opt 0.30mm))
+ (constraint annular_width (min 0.075mm)))
+# B38 is the mechanically drilled six-layer core L3 through L8, retaining all
+# intermediate lands. A larger 0.450/0.200 cell also satisfies these minima;
+# the virtual allocation fixes the actual size and requires re-screening if changed.
+(rule "Conditional HDI L3-L8 buried core minimum 0.350-0.150"
+ (condition "(A.Type == 'Via' && A.Via_Type == 'Buried' && A.Layer_Top == 'In2.Cu' && A.Layer_Bottom == 'In7.Cu')")
+ (constraint hole_size (min 0.15mm))
+ (constraint via_diameter (min 0.35mm))
+ (constraint annular_width (min 0.10mm)))
+# V50: absolute-coordinate J3 GND VIPPO exception retired after connector relocation.
+# No replacement J3 via reservation or fine via/pad clearance is approved.
+# V58 retires the stale U10 absolute-coordinate neck exceptions.
+# No U10 launch is routed by this BGA/DF40 study.
+
+# FINAL GUARD: P5 has no fine Zone/Via allowance. The default power copper
+# clearance is 0.200 mm, including all retained nonfunctional core lands.
+# Leave this after every clearance exception. Hole-to-foreign-Cu remains 0.200 mm.
+(rule "L5 power zone to via conservative copper clearance guard"
+ (layer In4.Cu)
+ (condition "(A.Type == 'Zone' && A.NetName != 'GND' && B.Type == 'Via') || (B.Type == 'Zone' && B.NetName != 'GND' && A.Type == 'Via')")
+ (constraint clearance (min 0.20mm)))
+
+# V58 plane ownership guards — signal and ground bridges belong on signal layers.
+# Plane/power copper uses zones; no routed tracks on these five layers.
+(rule "V58 no tracks on In1.Cu reference or power plane"
+ (layer In1.Cu)
+ (constraint disallow track))
+(rule "V58 no tracks on In3.Cu reference or power plane"
+ (layer In3.Cu)
+ (constraint disallow track))
+(rule "V58 no tracks on In4.Cu reference or power plane"
+ (layer In4.Cu)
+ (constraint disallow track))
+(rule "V58 no tracks on In6.Cu reference or power plane"
+ (layer In6.Cu)
+ (constraint disallow track))
+(rule "V58 no tracks on In8.Cu reference or power plane"
+ (layer In8.Cu)
+ (constraint disallow track))
