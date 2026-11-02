@@ -1,0 +1,50 @@
+(version 1)
+# Source: V3/impedance_solver.py on JLC06161H-2116; confirm with JLC before ordering.
+(rule "100R pairs on L3"
+	(layer "In2.Cu")
+	(condition "A.hasNetclass('REC_100R') || A.hasNetclass('CMD_100R')")
+	(constraint track_width (min 0.16mm) (opt 0.177mm) (max 0.19mm))
+	(constraint diff_pair_gap (min 0.18mm) (opt 0.20mm) (max 0.22mm)))
+
+(rule "PCIe and USB stay on outer layers"
+	(layer inner)
+	(condition "A.hasNetclass('PCIE_85R') || A.hasNetclass('USB_90R')")
+	(constraint disallow track))
+
+# Scoped escape exception, Micro-HDMI only (0.4 mm pitch, 0.23 mm pads). JLC multilayer minimums:
+# 0.09 mm track/space class, 0.15/0.25 mm via, via hole to copper 0.20 mm (https://jlcpcb.com/capabilities/pcb-capabilities).
+(rule "Micro-HDMI escape inside J61x courtyard"
+	(condition "A.intersectsCourtyard('J61*') && B.intersectsCourtyard('J61*')")
+	(constraint clearance (min 0.15mm))
+	(constraint hole_clearance (min 0.20mm)))
+
+# Hole-to-copper: the board floor is 0.20 mm only because KiCad cannot scope BELOW the board minimum (tested
+# 1 Nov 2026: with a 0.25 floor all 30 escape vias fail). The 0.4 mm pitch via-in-pad leaves at most ~0.21 mm
+# hole-to-adjacent-pad, so no via fits at 0.25 there. This rule restores 0.25 mm everywhere except item pairs
+# that are both inside a J61x courtyard (GT10 / addendum: keep 0.25 mm hole clearance, bounded local exceptions).
+(rule "Hole clearance 0.25 mm outside the Micro-HDMI escape"
+	(condition "!(A.intersectsCourtyard('J61*') && B.intersectsCourtyard('J61*'))")
+	(constraint hole_clearance (min 0.25mm)))
+
+(rule "USB-C fine-pitch pads"
+	(condition "A.memberOfFootprint('J500') && B.memberOfFootprint('J500')")
+	(constraint clearance (min 0.15mm)))
+
+# Outer layers only (review of 2 Nov 2026): without the layer clause this rule also widened the L2/L5 antipads round high-speed vias.
+# Ground pours on L1/L6 stay well off the high-speed pairs so microstrip impedance is set by the reference plane, not the
+# pour (Gerald: use pours; Phil's Lab #25: 3H is a floor). 0.6 mm is a working value, not a qualified one.
+(rule "L1 L6 DGND pour held off high-speed pairs"
+	(layer outer)
+	(condition "A.Type == 'Zone' && A.NetName == 'DGND' && (B.hasNetclass('REC_100R') || B.hasNetclass('CMD_100R') || B.hasNetclass('PCIE_85R'))")
+	(constraint clearance (min 0.6mm)))
+
+# USB 90 ohm profile on the outer layers (review of 2 Nov 2026); 0.2 mm is the J500 and D500 fan-out neck.
+(rule "USB trace width on outer layers"
+	(layer outer)
+	(condition "A.hasNetclass('USB_90R')")
+	(constraint track_width (min 0.2mm) (opt 0.316mm) (max 0.33mm)))
+
+# J4.1 carries the whole board input; four thermal spokes on 0.5 oz L4 are too thin (independent check of V18).
+(rule "J4 power pad solid"
+	(condition "A.Type == 'Pad' && A.memberOfFootprint('J4') && A.NetName == '+VDCIN'")
+	(constraint zone_connection solid))

@@ -1,0 +1,118 @@
+(kicad_symbol_lib
+  (version
+    20241209)
+  (generator
+    "kicad_symbol_editor")
+  (symbol
+    "TXU0304PWR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TXU0304PWR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/txu0304.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "TXU0304PWR_0_1" (rectangle (start -38.1 35.56) (end 38.1 -35.56) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "TXU0304PWR_1_1" (pin power_in line (at -15.24 40.64 270) (length 5.08) (name "VCCA_3V3" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin power_in line (at 15.24 40.64 270) (length 5.08) (name "VCCB_1V8" (effects (font (size 0.95 0.95)))) (number "14" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 15.24 0) (length 5.08) (name "A1_TCK" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 5.08 0) (length 5.08) (name "A2_TDI" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -5.08 0) (length 5.08) (name "A3_TMS" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95))))) (pin tri_state line (at -43.18 -15.24 0) (length 5.08) (name "A4Y_TDO" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 15.24 180) (length 5.08) (name "B1Y_TCK" (effects (font (size 0.95 0.95)))) (number "13" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 5.08 180) (length 5.08) (name "B2Y_TDI" (effects (font (size 0.95 0.95)))) (number "12" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 -5.08 180) (length 5.08) (name "B3Y_TMS" (effects (font (size 0.95 0.95)))) (number "11" (effects (font (size 0.95 0.95))))) (pin input line (at 43.18 -15.24 180) (length 5.08) (name "B4_TDO" (effects (font (size 0.95 0.95)))) (number "10" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -27.94 0) (length 5.08) (name "OE" (effects (font (size 0.95 0.95)))) (number "8" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 -40.64 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "7" (effects (font (size 0.95 0.95))))) (pin no_connect line (at -15.24 -40.64 90) (length 5.08) (name "NC" (effects (font (size 0.95 0.95)))) (number "6" (effects (font (size 0.95 0.95))))) (pin no_connect line (at 15.24 -40.64 90) (length 5.08) (name "NC" (effects (font (size 0.95 0.95)))) (number "9" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "TPS3808G01DBVR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TPS3808G01DBVR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps3808.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "TPS3808G01DBVR_0_1" (rectangle (start -20.32 20.32) (end 20.32 -20.32) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "TPS3808G01DBVR_1_1" (pin power_in line (at 0 25.4 270) (length 5.08) (name "VDD" (effects (font (size 0.95 0.95)))) (number "6" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 -25.4 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin input line (at -25.4 10.16 0) (length 5.08) (name "SENSE_0V405" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin input line (at -25.4 -2.54 0) (length 5.08) (name "~{MR}" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin open_collector line (at 25.4 2.54 180) (length 5.08) (name "~{RESET}" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin input line (at 15.24 -25.4 90) (length 5.08) (name "CT_OPEN" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "SN74LVC1G17DBVR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SN74LVC1G17DBVR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "SN74LVC1G17DBVR_0_1" (polyline (pts (xy -10.16 7.62) (xy -10.16 -7.62) (xy 10.16 0) (xy -10.16 7.62)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -5.08 -2.54) (xy -2.54 -2.54) (xy -2.54 2.54) (xy 0 2.54) (xy 0 0)) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "SN74LVC1G17DBVR_1_1" (pin input line (at -15.24 0 0) (length 5.08) (name "A" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin output line (at 15.24 0 180) (length 5.08) (name "Y" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 12.7 270) (length 5.08) (name "VCC" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 -12.7 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin no_connect line (at 7.62 -12.7 90) (length 5.08) (name "NC" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "TLV75518PDBVR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TLV75518PDBVR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv755p.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "TLV75518PDBVR_0_1" (rectangle (start -20.32 20.32) (end 20.32 -20.32) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "TLV75518PDBVR_1_1" (pin power_in line (at -25.4 10.16 0) (length 5.08) (name "IN" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin input line (at -25.4 -5.08 0) (length 5.08) (name "EN" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin power_out line (at 25.4 10.16 180) (length 5.08) (name "OUT_1V8" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 -25.4 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin no_connect line (at 15.24 -25.4 90) (length 5.08) (name "NC" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "R_V"
+    (pin_numbers (hide yes))
+    (pin_names (offset 0.8) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "R" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "R_V" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "R_V_0_1" (rectangle (start -1.016 2.54) (end 1.016 -2.54) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "R_V_1_1" (pin passive line (at 0 5.08 270) (length 2.54) (name "1" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin passive line (at 0 -5.08 90) (length 2.54) (name "2" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "R_H"
+    (pin_numbers (hide yes))
+    (pin_names (offset 0.8) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "R" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "R_H" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "R_H_0_1" (rectangle (start -2.54 1.016) (end 2.54 -1.016) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "R_H_1_1" (pin passive line (at -5.08 0 0) (length 2.54) (name "1" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin passive line (at 5.08 0 180) (length 2.54) (name "2" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "C_V"
+    (pin_numbers (hide yes))
+    (pin_names (offset 0.8) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "C_V" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "C_V_0_1" (polyline (pts (xy -2.54 1.016) (xy 2.54 1.016)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -2.54 -1.016) (xy 2.54 -1.016)) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "C_V_1_1" (pin passive line (at 0 5.08 270) (length 4.064) (name "1" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin passive line (at 0 -5.08 90) (length 4.064) (name "2" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "Grayhill56P30_1P8T_N"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "SW" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grayhill56P30_1P8T_N" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.grayhill.com/wp-content/uploads/media/56-datasheet.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "Grayhill56P30_1P8T_N_0_1" (rectangle (start -25.4 48.26) (end 25.4 -48.26) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -25.4 0) (xy -7.62 0) (xy 20.32 41.91)) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "Grayhill56P30_1P8T_N_1_1" (pin passive line (at -30.48 0 0) (length 5.08) (name "COMMON" (effects (font (size 0.95 0.95)))) (number "A" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 41.91 180) (length 5.08) (name "POS1" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 34.29 180) (length 5.08) (name "POS2" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 26.67 180) (length 5.08) (name "POS3" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 19.05 180) (length 5.08) (name "POS4" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 11.43 180) (length 5.08) (name "POS5" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 3.81 180) (length 5.08) (name "POS6" (effects (font (size 0.95 0.95)))) (number "6" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -3.81 180) (length 5.08) (name "POS7" (effects (font (size 0.95 0.95)))) (number "7" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -11.43 180) (length 5.08) (name "POS8" (effects (font (size 0.95 0.95)))) (number "8" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -19.05 180) (length 5.08) (name "POS9" (effects (font (size 0.95 0.95)))) (number "9" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -26.67 180) (length 5.08) (name "POS10" (effects (font (size 0.95 0.95)))) (number "10" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -34.29 180) (length 5.08) (name "POS11" (effects (font (size 0.95 0.95)))) (number "11" (effects (font (size 0.95 0.95))))) (pin passive line (at 30.48 -41.91 180) (length 5.08) (name "POS12" (effects (font (size 0.95 0.95)))) (number "12" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "TS3A27518EPWR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TS3A27518EPWR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ts3a27518e.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "TS3A27518EPWR_0_1" (rectangle (start -60.96 60.96) (end 60.96 -60.96) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "TS3A27518EPWR_1_1" (pin passive line (at -66.04 40.64 0) (length 5.08) (name "COM1" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 40.64 180) (length 5.08) (name "NO1" (effects (font (size 0.95 0.95)))) (number "11" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 -15.24 180) (length 5.08) (name "NC1_OPEN" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 30.48 0) (length 5.08) (name "COM2" (effects (font (size 0.95 0.95)))) (number "6" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 30.48 180) (length 5.08) (name "NO2" (effects (font (size 0.95 0.95)))) (number "13" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 -22.86 180) (length 5.08) (name "NC2_OPEN" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 20.32 0) (length 5.08) (name "COM3" (effects (font (size 0.95 0.95)))) (number "7" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 20.32 180) (length 5.08) (name "NO3" (effects (font (size 0.95 0.95)))) (number "15" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 -30.48 180) (length 5.08) (name "NC3_OPEN" (effects (font (size 0.95 0.95)))) (number "23" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 10.16 0) (length 5.08) (name "COM4" (effects (font (size 0.95 0.95)))) (number "9" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 10.16 180) (length 5.08) (name "NO4" (effects (font (size 0.95 0.95)))) (number "17" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 -38.1 180) (length 5.08) (name "NC4_OPEN" (effects (font (size 0.95 0.95)))) (number "21" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 0 0) (length 5.08) (name "COM5" (effects (font (size 0.95 0.95)))) (number "10" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 0 180) (length 5.08) (name "NO5" (effects (font (size 0.95 0.95)))) (number "18" (effects (font (size 0.95 0.95))))) (pin passive line (at 66.04 -45.72 180) (length 5.08) (name "NC5_OPEN" (effects (font (size 0.95 0.95)))) (number "19" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 -15.24 0) (length 5.08) (name "COM6_UNUSED" (effects (font (size 0.95 0.95)))) (number "12" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 -22.86 0) (length 5.08) (name "NO6_UNUSED" (effects (font (size 0.95 0.95)))) (number "16" (effects (font (size 0.95 0.95))))) (pin passive line (at -66.04 -30.48 0) (length 5.08) (name "NC6_UNUSED" (effects (font (size 0.95 0.95)))) (number "22" (effects (font (size 0.95 0.95))))) (pin no_connect line (at -66.04 -38.1 0) (length 5.08) (name "DEVICE_NC" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin input line (at -66.04 55.88 0) (length 5.08) (name "DISABLE_HIGH" (effects (font (size 0.95 0.95)))) (number "20" (effects (font (size 0.95 0.95))))) (pin input line (at -20.32 -66.04 90) (length 5.08) (name "IN1_HIGH" (effects (font (size 0.95 0.95)))) (number "24" (effects (font (size 0.95 0.95))))) (pin input line (at 0 -66.04 90) (length 5.08) (name "IN2_HIGH" (effects (font (size 0.95 0.95)))) (number "14" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 66.04 270) (length 5.08) (name "VCC_3V3" (effects (font (size 0.95 0.95)))) (number "8" (effects (font (size 0.95 0.95))))) (pin power_in line (at 40.64 -66.04 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95)))))))
+  (symbol
+    "SN74LVC540APWR"
+    (pin_names (offset 0.8))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 10 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SN74LVC540APWR" (at 0 -10 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/gpn/sn74lvc540a" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "SN74LVC540APWR_0_1" (rectangle (start -38.1 50.8) (end 38.1 -66.04) (stroke (width 0.254) (type default)) (fill (type none))))
+    (symbol "SN74LVC540APWR_1_1" (pin input line (at -43.18 35.56 0) (length 5.08) (name "A1" (effects (font (size 0.95 0.95)))) (number "2" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 25.4 0) (length 5.08) (name "A2" (effects (font (size 0.95 0.95)))) (number "3" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 15.24 0) (length 5.08) (name "A3" (effects (font (size 0.95 0.95)))) (number "4" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 5.08 0) (length 5.08) (name "A4" (effects (font (size 0.95 0.95)))) (number "5" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -5.08 0) (length 5.08) (name "A5" (effects (font (size 0.95 0.95)))) (number "6" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -15.24 0) (length 5.08) (name "A6" (effects (font (size 0.95 0.95)))) (number "7" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -25.4 0) (length 5.08) (name "A7" (effects (font (size 0.95 0.95)))) (number "8" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -35.56 0) (length 5.08) (name "A8" (effects (font (size 0.95 0.95)))) (number "9" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 35.56 180) (length 5.08) (name "Y1_INVERT" (effects (font (size 0.95 0.95)))) (number "18" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 25.4 180) (length 5.08) (name "Y2_INVERT" (effects (font (size 0.95 0.95)))) (number "17" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 15.24 180) (length 5.08) (name "Y3_INVERT" (effects (font (size 0.95 0.95)))) (number "16" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 5.08 180) (length 5.08) (name "Y4_INVERT" (effects (font (size 0.95 0.95)))) (number "15" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 -5.08 180) (length 5.08) (name "Y5_INVERT" (effects (font (size 0.95 0.95)))) (number "14" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 -15.24 180) (length 5.08) (name "Y6_INVERT" (effects (font (size 0.95 0.95)))) (number "13" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 -25.4 180) (length 5.08) (name "Y7_INVERT" (effects (font (size 0.95 0.95)))) (number "12" (effects (font (size 0.95 0.95))))) (pin tri_state line (at 43.18 -35.56 180) (length 5.08) (name "Y8_INVERT" (effects (font (size 0.95 0.95)))) (number "11" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -50.8 0) (length 5.08) (name "~{OE1}" (effects (font (size 0.95 0.95)))) (number "1" (effects (font (size 0.95 0.95))))) (pin input line (at -43.18 -60.96 0) (length 5.08) (name "~{OE2}" (effects (font (size 0.95 0.95)))) (number "19" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 55.88 270) (length 5.08) (name "VCC_3V3" (effects (font (size 0.95 0.95)))) (number "20" (effects (font (size 0.95 0.95))))) (pin power_in line (at 0 -71.12 90) (length 5.08) (name "GND" (effects (font (size 0.95 0.95)))) (number "10" (effects (font (size 0.95 0.95))))))))

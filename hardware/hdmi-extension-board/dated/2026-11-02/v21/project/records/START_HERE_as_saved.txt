@@ -1,0 +1,58 @@
+# HDMI Extension Board V21
+
+This folder holds only the current board and its JLC order files. Open [HDMI_Extension_Board_Study_V21.kicad_pro](HDMI_Extension_Board_Study_V21.kicad_pro) in KiCad.
+
+**Status:** ready to send to JLC with the order note. Nothing has been uploaded, ordered or shipped. This is not an approval: signal integrity, ESD, heat and bracket fit are unproven until boards are tested. V21 has not been independently reviewed.
+
+## Contents
+
+| Item | Use |
+|---|---|
+| `HDMI_Extension_Board_Study_V21.*` | KiCad board, schematic, project and design rules |
+| `fp-lib-table`, `sym-lib-table`, `libraries/` | Project libraries |
+| `models/` | The 3D models this board uses |
+| [JLC_Order/HDMI_Extension_Board_V21_Gerbers.zip](JLC_Order/HDMI_Extension_Board_V21_Gerbers.zip) | Gerbers and drill files, for the PCB order |
+| [JLC_Order/HDMI_Extension_Board_V21_BOM.csv](JLC_Order/HDMI_Extension_Board_V21_BOM.csv) | Parts list, 238 parts on 63 lines |
+| [JLC_Order/HDMI_Extension_Board_V21_CPL.csv](JLC_Order/HDMI_Extension_Board_V21_CPL.csv) | Placement file |
+| [JLC_Order/ORDER_NOTE_FOR_JLC.md](JLC_Order/ORDER_NOTE_FOR_JLC.md) | Paste into the order remark |
+
+The project filenames keep `Study_V21` so they match the Gerber names and the recorded hashes. KiCad creates a local settings file when the project is opened.
+
+## Order settings
+
+| Setting | Value |
+|---|---|
+| Base material, layers | FR-4, 6 |
+| Dimensions | 167.7 × 114.15 mm |
+| Quantity | 5 |
+| Delivery format | Panel by JLCPCB, with left and right edge rails |
+| Thickness | 1.6 mm |
+| Material | Shengyi S1000-2M TG170, if the form requires a choice for this stack |
+| Surface finish | ENIG, 2 µin |
+| Copper | 1 oz outer, 0.5 oz inner |
+| Specify Stackup | Yes, JLC06161H-2116 |
+| Impedance Control | ±10% |
+| Via Covering | Epoxy Filled & Capped |
+| Min via | 0.15 mm / (0.25/0.3 mm) |
+| Gold Fingers | Yes, Beveling 30° |
+| Confirm Production File | Yes |
+| Assembly | Standard PCBA, both sides |
+
+## Left to do
+
+1. Send `MC1`, `MC2`, `MC3`, `J500`, `J610`–`J617` and `J4` to JLC as consigned parts, enough sets for the boards being assembled.
+2. Upload the files, then check part rotations in JLC's placement viewer.
+3. Paste the order note and place the order.
+
+## Known limits
+
+- **Power:** there is no input fuse or reverse-polarity protection. The worst-case 6.3 A at `J4` exceeds its 5 A rating, so bench testing should measure it. Use a 12 V, 5 A adapter.
+- **Slot and bracket:** the card needs an x8 or larger slot and a custom bracket. Neither fit has been tried.
+- **Frontend:** the older 3.3 V Frontend V4 must not be plugged into these ports.
+
+## Records
+
+- [V21 audit](../2026-11-01_FPGA_Work/26_HDMI_Extension_Board_Placement_Study_V1/V21/ROUTING_AUDIT_V21.md), with the study folder's full V6–V21 history.
+- [Order package record](../2026-11-02_FPGA_Work/11_HDMI_Extension_Board_V21_JLC_Order/START_HERE.md), with the 25 JLC questions.
+- [Frontend V7 cross-check](../2026-11-02_FPGA_Work/21_HDMI_Extension_Board_Frontend_Cross_Check_V1/START_HERE.md).
+- [Archive of this folder's earlier contents](../2026-11-02_FPGA_Work/22_HDMI_Extension_Board_Folder_Archive_V1/START_HERE.md): V3–V5, the BRK8310 originals and all earlier studies that lived here.

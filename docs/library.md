@@ -1,6 +1,6 @@
 # Project files and documents
 
-**Current PCBs · 1 November 2026:** [Frontend FPGA Board V6](../frontend/) · [HDMI Extension Board V6](../xem8310/) · [Direct LDO Carrier V6](../direct-ldo/). Each page includes a full editable KiCad ZIP with schematic, PCB, settings, rules, local libraries and available 3D models. Development status is stated per board.
+**Current PCBs · 2 November 2026:** [Frontend FPGA Board V6](../frontend/) · [HDMI Extension Board V21](../xem8310/) · [Direct LDO Carrier V6](../direct-ldo/). Each page includes a full editable KiCad ZIP with schematic, PCB, settings, rules, local libraries and available 3D models. Development status is stated per board.
 
 
 ## Earlier dated records

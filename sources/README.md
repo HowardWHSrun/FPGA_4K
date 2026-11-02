@@ -1,5 +1,9 @@
 # Source provenance
 
+## HDMI Extension Board V21 · 2 November 2026
+
+[Current project and records](../hardware/hdmi-extension-board/dated/2026-11-02/v21/README.md) come from the active scratch folder. Portable packaging refreshes cached zone fills and model paths only; exact original main files are retained. Native routing, nets, pads, footprint geometry and zone boundaries are structurally equal. JLC files are unchanged source copies. All active board models resolve; retained historical library entries have 60 unresolved model references. Check reports and per-file hashes are included. This is a development publication, without factory or hardware approval.
+
 ## Three current PCB snapshots — 1 November 2026
 
 [Current board manifest](../current-boards.json) links three independently frozen V6 projects. Full KiCad packages retain native identities and all local dependencies, including available models; path-only portability adaptations and file hashes are recorded inside each ZIP. Web previews combine current native PCB surfaces with independently authored nominal component bodies. Existing source credits and terms remain; publishing is not hardware or fabrication qualification.

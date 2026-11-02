@@ -1,0 +1,3809 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-02T13:20:57",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "HDMI_Extension_Board_Study_V21.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Items not allowed (keepout area 'PCIe finger plane relief')",
+            "items": [
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "items_not_allowed"
+        },
+        {
+            "description": "Items not allowed (keepout area 'FID7 clear')",
+            "items": [
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "items_not_allowed"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'L4 DGND' [DGND] on L4-Power, priority 0",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "2fd0cc57-cc31-46fa-ada4-f9c4bfd9465f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'L4 DGND' [DGND] on L4-Power, priority 0",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "2fd0cc57-cc31-46fa-ada4-f9c4bfd9465f"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [Net-(D702-A)] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 97.85,
+                        "y": 134.6
+                    },
+                    "uuid": "0c9aee6f-b3f4-41ff-ab6d-6a4bac016e61"
+                },
+                {
+                    "description": "Zone 'L5 FE_5V' [FE_5V] on L5-GND, priority 2",
+                    "pos": {
+                        "x": 88.6,
+                        "y": 60.7
+                    },
+                    "uuid": "a8441929-7815-4807-8a40-13d5bb50a8ad"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [+3.3V_PCIE_C] on L6-Bottom, length 1.6000 mm",
+                    "pos": {
+                        "x": 117.85,
+                        "y": 155.9
+                    },
+                    "uuid": "fce2a00a-00b2-4f6e-8322-f6aa31c57206"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2348 mm)",
+            "items": [
+                {
+                    "description": "Track [+3.3V_PCIE_C] on L6-Bottom, length 2.1500 mm",
+                    "pos": {
+                        "x": 119.33,
+                        "y": 158.55
+                    },
+                    "uuid": "08d5a3cb-32d7-4eb1-b6ce-05712f70f0dc"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2348 mm)",
+            "items": [
+                {
+                    "description": "Track [+3.3V_PCIE_C] on L6-Bottom, length 0.1697 mm",
+                    "pos": {
+                        "x": 119.33,
+                        "y": 156.4
+                    },
+                    "uuid": "8a3e3081-1e92-45aa-a3a1-dfee4e3d5e95"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 64.0
+                    },
+                    "uuid": "e138143f-bb9e-48d4-896f-a8c50f1d0925"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 62.8
+                    },
+                    "uuid": "d63b1372-a4e9-4f38-9052-f35f9c1a2940"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 64.0
+                    },
+                    "uuid": "c6b29585-0a6c-45f2-8666-e5139fbfc5e4"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 67.099999
+                    },
+                    "uuid": "c2736113-c265-4c1c-b64d-c71371a3d328"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.5,
+                        "y": 67.6
+                    },
+                    "uuid": "a064832e-379e-4e0d-b434-dd1c7b64ad20"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 64.5
+                    },
+                    "uuid": "8811bf20-7bc1-4bfb-95b1-d8ebf0489897"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 63.3
+                    },
+                    "uuid": "87b36612-421e-4bb9-baca-7f67830459c2"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 67.8
+                    },
+                    "uuid": "5911a9a5-0f55-42c1-88a1-2d5b6251cf61"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 69.0
+                    },
+                    "uuid": "586b933a-48f1-482c-bf64-0cd25c788841"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 113.4,
+                        "y": 69.0
+                    },
+                    "uuid": "55e68da4-c450-40fa-9fc3-4feb544cbe02"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 62.8
+                    },
+                    "uuid": "3aa8eb32-be2e-4ef1-958c-a957ff5a9dcc"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 112.4,
+                        "y": 68.3
+                    },
+                    "uuid": "263ea13a-0730-4d95-9502-2b3c8875b165"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 66.599999
+                    },
+                    "uuid": "35b6e16a-e354-4f43-ac48-2329683f1a24"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 64.7
+                    },
+                    "uuid": "487bebe2-f111-4f4d-9dbf-fb7f540b8956"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.3,
+                        "y": 65.2
+                    },
+                    "uuid": "25dd1165-eb9f-430c-be83-8787e7464443"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'PWR_5V' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [FE_5V] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 114.5,
+                        "y": 68.3
+                    },
+                    "uuid": "236b8212-b590-4c91-ae59-d9e0a1d7fcb9"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L6-Bottom, length 0.4000 mm",
+                    "pos": {
+                        "x": 112.326,
+                        "y": 156.2
+                    },
+                    "uuid": "aebb3892-3a2b-48f2-ad8d-989065d953e1"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L1-Top, length 0.5000 mm",
+                    "pos": {
+                        "x": 111.326,
+                        "y": 156.6
+                    },
+                    "uuid": "4b95240c-95f0-49ca-a08c-67b69b9984c8"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L1-Top, length 1.9760 mm",
+                    "pos": {
+                        "x": 110.35,
+                        "y": 156.1
+                    },
+                    "uuid": "193de918-fafd-4d5d-81db-bf2d5c6744c6"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L1-Top, length 0.5000 mm",
+                    "pos": {
+                        "x": 112.326,
+                        "y": 156.6
+                    },
+                    "uuid": "d9e12894-c2f4-42e3-a2ea-9b55b76957a8"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L6-Bottom, length 1.0000 mm",
+                    "pos": {
+                        "x": 111.326,
+                        "y": 156.2
+                    },
+                    "uuid": "19df3669-4283-49bd-86e5-d35a4e69357d"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [/+12V_PCIE_C] on L6-Bottom, length 0.4000 mm",
+                    "pos": {
+                        "x": 111.326,
+                        "y": 156.6
+                    },
+                    "uuid": "d726f032-d6f3-4741-b320-366a08587929"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L4 DGND' [DGND] on L4-Power, priority 0",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "2fd0cc57-cc31-46fa-ada4-f9c4bfd9465f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L4 DGND' [DGND] on L4-Power, priority 0",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "2fd0cc57-cc31-46fa-ada4-f9c4bfd9465f"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [/+12V_PCIE_C] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 111.826,
+                        "y": 156.15
+                    },
+                    "uuid": "2ccdcbad-6e8a-41c3-bd3f-ee004426a6fd"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EEDATA] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 171.175,
+                        "y": 57.675
+                    },
+                    "uuid": "dcbbf40d-9bb5-413a-80d4-6b44519d3d5f"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'L2 DGND plane' [DGND] on L2-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "627902b8-73fd-478f-861c-0cb32e256541"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 160.6,
+                        "y": 52.0
+                    },
+                    "uuid": "cb4e29f2-d4a2-483f-b85b-f12d1eae5c63"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [+VDCIN] on L1-Top, length 2.3335 mm",
+                    "pos": {
+                        "x": 109.0761,
+                        "y": 59.6536
+                    },
+                    "uuid": "f405503d-f5f3-4feb-b1ac-d9b0dbdece0a"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1755 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Track [+VDCIN] on L1-Top, length 6.2739 mm",
+                    "pos": {
+                        "x": 110.7261,
+                        "y": 58.0036
+                    },
+                    "uuid": "f8efa67f-d5d6-4dab-aea5-d2aa5482f3d6"
+                },
+                {
+                    "description": "Zone 'Pour L1' [DGND] on L1-Top, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "3d1ea306-1b42-4cbe-b68e-093282bdbe4e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [/FTDI_EECS] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 154.55,
+                        "y": 55.6
+                    },
+                    "uuid": "01a6df82-1ed0-4cf3-8efe-6eff0fa2397d"
+                },
+                {
+                    "description": "Zone 'L5 DGND plane' [DGND] on L5-GND, priority 0",
+                    "pos": {
+                        "x": 232.3261,
+                        "y": 149.3036
+                    },
+                    "uuid": "d12e7887-e169-4804-9094-db6bfcfd8230"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 85.55,
+                        "y": 75.3
+                    },
+                    "uuid": "f34479fa-087a-4cbe-9ed2-cae9d8c0d780"
+                },
+                {
+                    "description": "Zone 'L5 +3.3V ports' [+3.3V] on L5-GND, priority 1",
+                    "pos": {
+                        "x": 77.0,
+                        "y": 71.0
+                    },
+                    "uuid": "448b0d08-41fa-4c82-8718-6a97c4d587dd"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.1605 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 153.69,
+                        "y": 53.4
+                    },
+                    "uuid": "e295e584-1175-4ad8-b38a-f964002c2b6d"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.2105 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 153.69,
+                        "y": 53.4
+                    },
+                    "uuid": "e295e584-1175-4ad8-b38a-f964002c2b6d"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 156.25,
+                        "y": 57.8
+                    },
+                    "uuid": "b350365a-b5a8-46f4-9b0e-f2ff35a3f17c"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 156.25,
+                        "y": 57.8
+                    },
+                    "uuid": "b350365a-b5a8-46f4-9b0e-f2ff35a3f17c"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 149.6,
+                        "y": 59.85
+                    },
+                    "uuid": "3b3d86e2-cb5d-4e5b-8765-6fb5887cd45b"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0500 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 149.6,
+                        "y": 59.85
+                    },
+                    "uuid": "3b3d86e2-cb5d-4e5b-8765-6fb5887cd45b"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 148.75,
+                        "y": 55.15
+                    },
+                    "uuid": "1f47f627-f10f-484e-b52d-ea826fac4c70"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 148.75,
+                        "y": 55.15
+                    },
+                    "uuid": "1f47f627-f10f-484e-b52d-ea826fac4c70"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.2255 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 166.15,
+                        "y": 50.5
+                    },
+                    "uuid": "0552c2e7-731e-4ccc-a878-3b4a9c1034ce"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 151.25,
+                        "y": 55.15
+                    },
+                    "uuid": "106ae8de-37fc-451c-9d8c-2ee8598cb9bd"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Hole clearance violation (rule 'Hole clearance 0.25 mm outside the Micro-HDMI escape' clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [DGND] on L1-Top - L6-Bottom",
+                    "pos": {
+                        "x": 151.25,
+                        "y": 55.15
+                    },
+                    "uuid": "106ae8de-37fc-451c-9d8c-2ee8598cb9bd"
+                },
+                {
+                    "description": "Zone 'L4 +VDCIN' [+VDCIN] on L4-Power, priority 3",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 49.0
+                    },
+                    "uuid": "689f61a6-d2f7-44a1-9fc3-d4993c6f159a"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (zone clearance 0.2500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad FID? [<no net>] of FID5 on L6-Bottom",
+                    "pos": {
+                        "x": 228.72,
+                        "y": 61.41
+                    },
+                    "uuid": "dc3e64d4-d9f4-43d7-8455-5e7890721650"
+                },
+                {
+                    "description": "Zone 'Pour L6' [DGND] on L6-Bottom, priority 1",
+                    "pos": {
+                        "x": 64.7,
+                        "y": 47.95
+                    },
+                    "uuid": "5683d7b0-1f20-4fdd-bd64-b97656225237"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Footprint 'BRK8310_J6' does not match copy in library 'BRK8310_Reference'",
+            "items": [
+                {
+                    "description": "Footprint J6",
+                    "pos": {
+                        "x": 121.8261,
+                        "y": 162.0536
+                    },
+                    "uuid": "634713e1-e94d-4605-b320-6b679350f28e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        }
+    ]
+}
