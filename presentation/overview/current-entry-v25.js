@@ -6,9 +6,9 @@
  const image=id=>'presentation/overview/'+(id==='carrier-schematic'?'image-viewer-v11.html':'image-viewer.html')+'?asset='+id+'&v='+(id==='carrier-schematic'?'20261018-v11':'20261015-v8');
  const assembly='presentation/overview/assembly-v8/index.html?v=20261015-v8';
  const systemMeeting='presentation/meetings/2026-10-28-v8/';
- const overviewAssembly=systemMeeting+'assets/system-viewer/index.html?embed=1';
+ const overviewAssembly='presentation/overview/system-assembly-v1/index.html?embed=1';
  const reviews={
-  assembly:{name:'Three current PCBs',caption:'Frontend FPGA Board · HDMI Extension Board · Direct LDO Carrier',scope:'Saved V6 checkpoints · full KiCad projects available',views:{'3d':'current-boards/'}},
+  assembly:{name:'System assembly · eight frontend stacks',caption:'Frontend stacks → HDMI Extension Board + XEM8310 → PCIe x4 → PC',scope:'Assembly concept · retained model geometry · current V6 board files are available beside the viewer',views:{'3d':overviewAssembly}},
   currentAsic:{name:'ASIC stack · 28 October concept',caption:'One frontend stack · four PCB-5-derived ASIC boards, FPGA-LDO PCB and Frontend FPGA Board',scope:'Thinner board and connector spacing are illustrative · eight stacks in the system view',views:{'3d':overviewAssembly}},
   adapter:{"name": "HDMI Extension Board \u00b7 V6", "caption": "Current V6 schematic, PCB and full KiCad project", "scope": "Eight custom Micro-HDMI links, individually switched 5 V feeds, USB-C JTAG and the XEM8310 PCIe interface. Layout and routing are in progress; clock, cable power and mechanical fit remain under review.", "download": "xem8310/assets/files/HDMI_Extension_Board_V6_Full_KiCad.zip", "views": {"3d": "xem8310/?embed=1&view=3d", "layout": "xem8310/?embed=1&view=layout", "schematic": "xem8310/?embed=1&view=schematic"}},
   asicReference:{name:"ASIC carrier · source reference",caption:"Original PCB-5 · two ASIC footprints",scope:"Board reference · populated mating and hardware operation unqualified",views:{'3d':'presentation/overview/asic-reference-v5.html'}},
@@ -29,7 +29,7 @@
   const mode={assembly:'all',currentAsic:'frontend',adapter:'host'}[active];
   try{
    const doc=frame.contentDocument;
-   if(!mode||!doc?.URL.includes('/2026-10-28-v8/assets/system-viewer/'))return;
+   if(!mode||!doc?.URL.includes('/overview/system-assembly-v1/'))return;
    if(doc.body?.dataset.ready==='true'){
     systemObserver?.disconnect();
     if(systemFocus!==mode){doc.getElementById(mode)?.click();systemFocus=mode;}
@@ -57,6 +57,7 @@
   const section=api.getState().slideId;active=section==='overview'?'assembly':section==='carriers'?(window.overviewApproach==='direct'?'asicReference':'currentAsic'):section==='routing'?powerOption:section;const review=reviews[active],on=Boolean(review);
   document.body.classList.toggle('carrier-inspection',active==='receiver');
   document.body.classList.toggle('assembly-inspection',active==='assembly');
+  $('overview-downloads').hidden=section!=='overview';
   frame.hidden=!on;$('scene-container').classList.toggle('current-preview-active',on);tabs.hidden=!on||Object.keys(review?.views||{}).length===1;camera.hidden=on;controls.hidden=on;power.hidden=section!=='routing';top.classList.toggle('current-preview',on);
   for(const id of ['scene','markers','camera-name','model-status'])$(id).hidden=on||(id==='model-status'&&api.getState().loaded);
   link('open-adapter-design',reviews.adapter.download,'Download full KiCad · HDMI Extension Board V6',section==='adapter');
@@ -119,7 +120,7 @@
    const doc=frame.contentDocument;if(!doc)return;
    doc.documentElement.dataset.overviewEmbed=frame.getAttribute('src')?.includes('assembly-v23/')?'V23':frame.getAttribute('src')?.includes('carrier-assembly-v2/')?'V25':frame.getAttribute('src')?.includes('carrier-v1/')?'V24':'V11';
    doc.documentElement.dataset.overviewSection=api.getState().slideId;
-   if(frame.getAttribute('src')?.includes('/2026-10-28-v8/'))return;
+   if(frame.getAttribute('src')?.includes('/2026-10-28-v8/')||frame.getAttribute('src')?.includes('/system-assembly-v1/'))return;
    if(frame.getAttribute('src')?.includes('carrier-v6/')||frame.getAttribute('src')?.includes('carrier-v3/')||['V23','V24','V25'].includes(doc.documentElement.dataset.overviewEmbed)||doc.getElementById('overview-embed-style'))return;
    const link=doc.createElement('link');link.id='overview-embed-style';link.rel='stylesheet';link.href=new URL('presentation/overview/embedded-controls-v11.css?v=20261018-v11',document.baseURI).href;doc.head.append(link);
   }catch{/* A standalone cross-origin viewer retains its own controls. */}

@@ -17,7 +17,7 @@
   routes[mode].forEach((id,index)=>{const number=document.querySelector('.system-nav [data-slide="'+id+'"]>span');if(number)number.textContent=String(index).padStart(2,'0');});
   const label='Three current PCBs';
   document.getElementById('overview-nav-context').textContent=label;
-  document.getElementById('adapter-overview-title').textContent='Selected path · '+label;
+  document.getElementById('adapter-overview-title').textContent='Two hardware paths';
  }
  function writeMode(mode,method='replaceState',hash=location.hash){const url=new URL(location.href);url.searchParams.set('approach',mode);url.hash=hash;history[method](null,'',url);}
  // Apply before compact/app.js initializes its hash, navigation and scene.

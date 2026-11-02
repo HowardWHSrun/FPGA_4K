@@ -1,4 +1,5 @@
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {checkAssemblyOverview} from './assembly_overview_checks.mjs';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=(process.env.SITE_URL||'https://howardwhsrun.github.io/FPGA_4K/').replace(/\/?$/,'/');
 const out=process.env.OVERVIEW_OUTPUT_DIR||'fpga-browser-check/overview';await mkdir(out,{recursive:true});
@@ -29,6 +30,7 @@ try{
  }
  await page.goto(base+'?approach=custom#overview',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.currentOverviewState?.board==='assembly');
  const nav=await page.locator('.system-nav [data-slide]:visible').evaluateAll(es=>es.map(e=>e.dataset.slide));check(JSON.stringify(nav)===JSON.stringify(['overview','fpga','adapter','receiver']),'Main navigation contains overview and only the three requested PCBs');
+ await checkAssemblyOverview({page,check,manifest,out});
  for(const b of manifest.boards){await page.locator('.system-nav [data-slide="'+ids[b.key]+'"]').click();await page.waitForFunction(slug=>window.currentOverviewState?.source?.startsWith(slug+'/'),b.slug);check((await page.locator('#slide-title').innerText()).includes(b.name),b.name+' current main title');await page.locator('[data-current-view="schematic"]').click();const f=await (await page.locator('#current-board-preview').elementHandle()).contentFrame();await f.waitForFunction(()=>window.carrierPage?.getState().schematicReady,null,{timeout:60000});const download=page.locator('#'+({frontend:'open-fpga-design',hdmi:'open-adapter-design',carrier:'open-receiver-design'}[b.key]));check(await download.isVisible()&&(await download.getAttribute('href'))===b.full_kicad,b.name+' current main download');}
  await page.screenshot({path:out+'/main-desktop.png'});
  await page.goto(base+'?approach=direct#receiver',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.currentOverviewState?.source?.startsWith('direct-ldo/'));check(true,'Existing direct-carrier URL resolves to the latest carrier');
