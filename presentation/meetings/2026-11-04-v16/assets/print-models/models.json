@@ -1,0 +1,197 @@
+{
+ "models": [
+  {
+   "key": "stack",
+   "name": "Head stack, as saved in CAD",
+   "group": "On the head",
+   "version": "4 Nov 2026",
+   "where": "Frontend + FPGA-LDO + 4 ASIC boards + HDMI plug",
+   "glb": null,
+   "stl": "downloads/Head_Stack_Real_Gaps_2026-11-04_print.stl",
+   "step": "downloads/Head_Stack_Real_Gaps_2026-11-04_print.step",
+   "size": [
+    24.1,
+    78.58,
+    16.77
+   ],
+   "note": "Real 1.5 mm DF40 gaps between boards. Without the plug and cable stub: 24.1 \u00d7 43.6 \u00d7 16.8 mm.",
+   "parts": [
+    {
+     "glb": "models/stack_part_0_fpgaldo.glb",
+     "name": "FPGA-LDO PCB",
+     "sub": "V17 \u00b7 base of the stack"
+    },
+    {
+     "glb": "models/stack_part_1_frontend.glb",
+     "name": "Frontend FPGA Board",
+     "sub": "V29 \u00b7 on top, 1.5 mm DF40 gap"
+    },
+    {
+     "glb": "models/stack_part_2_asic.glb",
+     "name": "ASIC board 1",
+     "sub": "above the FPGA-LDO J3"
+    },
+    {
+     "glb": "models/stack_part_3_asic.glb",
+     "name": "ASIC board 2",
+     "sub": "above ASIC board 1"
+    },
+    {
+     "glb": "models/stack_part_4_asic.glb",
+     "name": "ASIC board 3",
+     "sub": "below the FPGA-LDO J4"
+    },
+    {
+     "glb": "models/stack_part_5_asic.glb",
+     "name": "ASIC board 4",
+     "sub": "below ASIC board 3"
+    },
+    {
+     "glb": "models/stack_part_6_plug.glb",
+     "name": "Micro-HDMI cable plug",
+     "sub": "nominal size, not a vendor model"
+    }
+   ]
+  },
+  {
+   "key": "stack_solid",
+   "name": "Head stack, printable block",
+   "group": "On the head",
+   "version": "4 Nov 2026",
+   "where": "Same stack with the gaps filled, so it prints as one piece",
+   "glb": "models/Head_Stack_As_Saved_Printable_Solid.glb",
+   "stl": "downloads/Head_Stack_Printable_Solid_2026-11-04_print.stl",
+   "step": "downloads/Head_Stack_Printable_Solid_2026-11-04_print.step",
+   "size": [
+    24.1,
+    78.58,
+    16.77
+   ],
+   "note": "Easiest to print: one solid, same outer size as the real stack.",
+   "parts": null
+  },
+  {
+   "key": "frontend",
+   "name": "Frontend FPGA Board",
+   "group": "On the head",
+   "version": "V29 \u00b7 edited 4 Nov 2026, 00:07 CST",
+   "where": "top of the stack",
+   "glb": "models/Frontend_FPGA_Board_V29.glb",
+   "stl": "downloads/Frontend_FPGA_Board_V29_2026-11-04_0007_print.stl",
+   "step": "downloads/Frontend_FPGA_Board_V29_2026-11-04_0007_print.step",
+   "size": [
+    22.59,
+    26.04,
+    6.02
+   ],
+   "note": "Board 22.59 \u00d7 25.42 \u00d7 1.62 mm. The Micro-HDMI J3 sticks out 0.62 mm past the north edge.",
+   "parts": null
+  },
+  {
+   "key": "fpgaldo",
+   "name": "FPGA-LDO PCB",
+   "group": "On the head",
+   "version": "V17 \u00b7 edited 4 Nov 2026, 06:55 CST",
+   "where": "under the Frontend",
+   "glb": "models/FPGA_LDO_PCB_V17.glb",
+   "stl": "downloads/FPGA_LDO_PCB_V17_2026-11-04_0655_print.stl",
+   "step": "downloads/FPGA_LDO_PCB_V17_2026-11-04_0655_print.step",
+   "size": [
+    22.59,
+    42.5,
+    4.27
+   ],
+   "note": "Board 22.59 \u00d7 42.50 \u00d7 1.6 mm (latest saved layout; the one-column plan is not drawn yet). DF40 connectors and U1 drawn as nominal bodies.",
+   "parts": null
+  },
+  {
+   "key": "asic",
+   "name": "ASIC board",
+   "group": "On the head",
+   "version": "PCB-5 \u00b7 edited 3 Nov 2026, 00:51 CST",
+   "where": "four per stack",
+   "glb": "models/ASIC_Board_PCB5.glb",
+   "stl": "downloads/ASIC_Board_PCB5_2026-11-03_0051_print.stl",
+   "step": "downloads/ASIC_Board_PCB5_2026-11-03_0051_print.step",
+   "size": [
+    23.79,
+    17.03,
+    4.37
+   ],
+   "note": "Board 21.97 \u00d7 17.03 \u00d7 1.6 mm. Print four.",
+   "parts": null
+  },
+  {
+   "key": "hdmi",
+   "name": "HDMI Extension Board",
+   "group": "Bench (not on the head)",
+   "version": "V25 \u00b7 edited 3 Nov 2026, 23:11 CST",
+   "where": "by the PC",
+   "glb": "models/HDMI_Extension_Board_V25.glb",
+   "stl": "downloads/HDMI_Extension_Board_V25_2026-11-03_2311_print.stl",
+   "step": "downloads/HDMI_Extension_Board_V25_2026-11-03_2311_print.step",
+   "size": [
+    167.65,
+    115.23,
+    13.44
+   ],
+   "note": "Board 167.65 \u00d7 114.10 mm. XEM8310 module not included.",
+   "parts": null
+  },
+  {
+   "key": "directldo",
+   "name": "Direct LDO Carrier",
+   "group": "Bench (not on the head)",
+   "version": "V6 \u00b7 edited 1 Nov 2026, 20:34 CST",
+   "where": "direct approach",
+   "glb": "models/Direct_LDO_Carrier_V6.glb",
+   "stl": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.stl",
+   "step": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.step",
+   "size": [
+    53.0,
+    86.46,
+    16.37
+   ],
+   "note": "Board 53.0 \u00d7 83.0 mm. XEM8305 module not included.",
+   "parts": null
+  },
+  {
+   "key": "ldoexisting",
+   "name": "Existing LDO board",
+   "group": "Bench (not on the head)",
+   "version": "source baseline \u00b7 edited 2 Oct 2026, 11:37 CDT",
+   "where": "plugs into the carrier",
+   "glb": "models/Existing_LDO_Board.glb",
+   "stl": "downloads/Existing_LDO_Board_2026-10-02_1137_print.stl",
+   "step": "downloads/Existing_LDO_Board_2026-10-02_1137_print.step",
+   "size": [
+    42.03,
+    18.3,
+    3.6
+   ],
+   "note": "Board 42.03 \u00d7 18.30 mm. Part sizes are nominal boxes.",
+   "parts": null
+  }
+ ],
+ "zip": "downloads/Head_Fit_Print_Models_2026-11-04.zip",
+ "overlaps": [
+  {
+   "a": "ASIC up 1 J1",
+   "b": "ASIC up 2 J1",
+   "overlap_mm": [
+    3.4,
+    1.0,
+    0.67
+   ]
+  },
+  {
+   "a": "ASIC down 1 J1",
+   "b": "ASIC down 2 J1",
+   "overlap_mm": [
+    3.4,
+    1.0,
+    0.67
+   ]
+  }
+ ]
+}
