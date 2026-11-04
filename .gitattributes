@@ -93,3 +93,6 @@ direct-ldo/assets/files/*.kicad_* -text -whitespace
 # Preserve the existing JLC V21 CSV files byte-for-byte, including CRLF endings.
 xem8310/assets/files/HDMI_Extension_Board_V21_BOM.csv -text whitespace=cr-at-eol
 xem8310/assets/files/HDMI_Extension_Board_V21_CPL.csv -text whitespace=cr-at-eol
+
+# 4 November 2026 meeting deck: KiCad-generated SVG/PCB exports and vendored viewers keep their original spacing.
+presentation/meetings/2026-11-04-v16/** -text -whitespace

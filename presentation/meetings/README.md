@@ -2,6 +2,10 @@
 
 [Meeting hub](index.html) · [Latest recorded review](2026-10-02.html) · [Reusable template](template.html)
 
+## Wednesday presentation · 4 November 2026 · V16
+
+[Open the seven-slide weekly presentation](2026-11-04-v16/index.html). Probes assembled this week, the four board names with a clickable 3D overview of both approaches and per-board downloads, and the HDMI Extension Board, Frontend FPGA Board and ASIC board views.
+
 ## Wednesday presentation · 28 October 2026 · V8
 
 [Open the six-slide weekly presentation](2026-10-28-v8/index.html). The overview is followed by the whole system: eight Artix-7 FPGA/ASIC/LDO stacks, XEM8310/custom BRK and PCIe-to-PC context. Breakout and carrier schematic/layout/3D views are clickable; the 19-contact HDMI schematic supports discussion. Next steps close the deck. Comments beside Notes and Fullscreen accept an optional name and persist in the shared service. The breakout remains open for design. [Publication scope and hashes](2026-10-28-v8/Publication_Assets_V8.json).
