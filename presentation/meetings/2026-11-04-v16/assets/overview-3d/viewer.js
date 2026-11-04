@@ -1,5 +1,5 @@
 // System overview V10: the website's eight-stack connection structure with the current
-// HDMI Extension Board V22 and Frontend FPGA Board V21 models, plus the registered Direct LDO
+// HDMI Extension Board V25 and Frontend FPGA Board V29 models, plus the registered Direct LDO
 // Carrier V6 assembly. Click any board to see its name. Positions are illustrative.
 import * as THREE from 'three';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
@@ -46,18 +46,18 @@ function centred(gltf,thick,cx,cz){const g=compact(gltf.scene);g.scale.setScalar
 
 async function buildCustom(){
  const list=pickables.custom,root=roots.custom;
- const [hdmiG,xemG,feG,ldoG,asicG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v24.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-v21.glb'),loader.loadAsync('assets/fpga-ldo-v13.glb'),loader.loadAsync('assets/asic-board-pcb5.glb')]);
+ const [hdmiG,xemG,feG,ldoG,asicG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v25.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-v29.glb'),loader.loadAsync('assets/fpga-ldo-v13.glb'),loader.loadAsync('assets/asic-board-pcb5.glb')]);
  // HDMI Extension Board + XEM8310. MC1–MC3 coordinates are unchanged from BRK8310 Custom V1, so the earlier XEM registration applies.
  const host=new THREE.Group();host.position.set(160,0,0);root.add(host);
  const hdmi=compact(hdmiG.scene);hdmi.scale.setScalar(1000);const hb=new THREE.Box3().setFromObject(hdmi),hc=hb.getCenter(new THREE.Vector3());hdmi.position.set(-hc.x,0,-hc.z);const hdmiPart=new THREE.Group();hdmiPart.add(hdmi);host.add(tag(hdmiPart,'hdmi','HDMI Extension Board',list,true));hdmiPart.userData.anchor=[.82,.15];
  const xem=xemG.scene;xem.traverse(o=>{if(!o.isMesh)return;const ms=Array.isArray(o.material)?o.material:[o.material];o.material=ms.map(m=>{if(m.opacity>=1&&!m.transparent)return m;const c=m.clone();c.opacity=1;c.transparent=false;c.depthWrite=true;return c});if(o.material.length===1)o.material=o.material[0]});xem.matrixAutoUpdate=false;xem.matrix.set(-1,0,0,232.326,0,0,1,7.905,0,-1,0,135.154,0,0,0,1);xem.matrix.premultiply(new THREE.Matrix4().makeTranslation(-hc.x,0,-hc.z));const xemPart=new THREE.Group();xemPart.add(xem);host.add(tag(xemPart,'xem8310','XEM8310',list,true));
- // One stack: FPGA-LDO PCB (V13 model) at the base, Frontend FPGA Board V21 above, four ASIC boards (two below, two above).
+ // One stack: FPGA-LDO PCB (V13 model) at the base, Frontend FPGA Board V29 above, four ASIC boards (two below, two above).
  const ldo=compact(ldoG.scene);ldo.scale.setScalar(1000);ldo.position.set(-114,-.455,-115.125);
  const fe=centred(feG,1.62,113.505,109.21);// board-outline centre, native mm
  const asicModel=centred(asicG,1.6,135.323088,75.9562);// PCB-5 outline centre; same frame as the website's ASIC layout data
 const J3=new THREE.Vector3(112.5-fe.center.x,1.3,98.28-fe.center.z);// Micro-HDMI J3 on the frontend, native (112.5, 98.28)
  const thick=1.6,gap=3,y2=-(.5+thick/2+gap),y1=y2-thick-gap,y3=-y2,y4=y3+thick+gap;// website 'earlier view' profile: 1.6 mm PCB, 3.0 mm gap
- const ports=[76.3,86.157,96.014,105.871,115.729,125.586,135.443,145.3];// V24 J617…J610 centres (same as V22), x = 67.08
+ const ports=[53.6,66.7,79.8,92.9,106,119.1,132.2,145.3];// V25 J617…J610 centres (13.1 mm pitch), x = 67.08
  const modules=[];
  for(let i=0;i<8;i++){
   const m=new THREE.Group();m.position.set(-190+(i%4)*55,0,i<4?-55:55);root.add(m);modules.push(m);

@@ -1,13 +1,15 @@
 # Order note for JLCPCB
 
-Board: HDMI Extension Board V24, 6-layer PCIe x4 add-in card, 167.65 × 114.10 mm. Please review the production file before fabrication and contact us about anything below.
+Board: HDMI Extension Board V25, 6-layer PCIe x4 add-in card, 167.65 × 114.10 mm. Please review the production file before fabrication and contact us about anything below.
+
+Changed from V24: the eight Micro-HDMI connectors (J610–J617) and their support parts moved to an even 13.1 mm pitch, and three non-plated mounting holes at the bracket end were removed. The outline is unchanged.
 
 ## PCB
 
 1. **Stackup:** JLC06161H-2116. Please confirm it is built on the laminate your impedance calculator assumes.
 2. **Impedance, ±10%:** 85 Ω differential on L1/L6 (0.361/0.20 mm), 90 Ω differential on L1/L6 (0.316/0.20 mm), 100 Ω differential on L1 (0.243/0.20 mm), 100 Ω differential on L3 with L2 and L4 reference (0.177/0.20 mm). Please adjust line width in production if needed to hit target, and tell us if you do.
 3. **Short necks are intentional and not impedance controlled:** PCIe 0.28 mm width, 0.22 mm gap, 1.1–9 mm long. Recording pairs 0.14 mm width, about 1.4–1.6 mm long. Command and USB pairs 0.20 mm width, about 0.7–3.7 mm long.
-4. **Vias:** all through vias, epoxy filled and capped, including via-in-pad on both sides. 171 vias use a 0.15 mm drill, about 10.6:1 at 1.59 mm. They sit at fine-pitch connector pins and cannot be enlarged. Please contact us if this is not acceptable.
+4. **Vias:** all through vias, epoxy filled and capped, including via-in-pad on both sides. 170 vias use a 0.15 mm drill, about 10.6:1 at 1.59 mm. They sit at fine-pitch connector pins and cannot be enlarged. Please contact us if this is not acceptable.
 5. **Gold fingers:** ENIG, 30° bevel, on the card edge only (bottom edge of the outline). Finger tips are 1.40 mm from the edge, about 0.27 mm clear of the bevel. Mask windows are open to the edge. The closest via edges are 0.19–0.3 mm from the fingers on purpose; tell us if you need more.
 
 ## Assembly
