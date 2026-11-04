@@ -1,28 +1,30 @@
 # Team start page
 
-This repository is the shared working location for PCB design, interface decisions and reference material. Begin with the [contribution guide](../../CONTRIBUTING.md).
+**Everyone: please create your own named branch for PCB work.** Use `First-Last` with hyphens; keep your evolving design there and publish the branch so the team can inspect it.
 
 | I want to… | Open |
 |---|---|
-| Get the files and make a change | [Setup and daily workflow](../../CONTRIBUTING.md) |
-| Open the active FPGA CAD | [FPGA working draft](../../hardware/fpga-board/README.md) |
-| Find who owns a board or a decision | [Owners and open work](owners-and-work.md) |
-| Propose a task or claim layout work | [New PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) |
-| Record a pinout, power or protocol decision | [Interface decision template](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) |
-| Review a proposed change | [Pull requests](https://github.com/HowardWHSrun/FPGA_4K/pulls) |
-| See the original boards and meeting material | [Document library](../library.md) |
+| Create my own branch | [Setup and copyable commands](../../CONTRIBUTING.md#create-your-personal-branch) |
+| Open Howard Wang's PCB | [Howard-Wang branch](https://github.com/HowardWHSrun/FPGA_4K/tree/Howard-Wang) · [Design guide](https://github.com/HowardWHSrun/FPGA_4K/blob/Howard-Wang/hardware/fpga-board/README.md) |
+| Find other people's work | [Branch directory and open work](owners-and-work.md) |
+| Propose a design task | [New PCB task](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=pcb-task.yml) |
+| Record an interface decision | [Decision template](https://github.com/HowardWHSrun/FPGA_4K/issues/new?template=interface-decision.yml) |
+| Propose selected work for main | [Pull requests](https://github.com/HowardWHSrun/FPGA_4K/pulls) |
+| Find original boards and meeting material | [Document library](../library.md) |
 
-## Administrator setup
+`main` is the shared starting point for references and reviewed team material. Howard's personal CAD, draft BOM and reports live on `Howard-Wang`. They were previously published on `main` and remain accessible in Git history; this organization change does not erase history or make them private.
 
-The repository is public. Collaborators need an invitation for push access: open [Settings → Collaborators](https://github.com/HowardWHSrun/FPGA_4K/settings/access), choose **Add people**, and enter each teammate's GitHub username. Usernames and accepted responsibilities have not yet been supplied; the ownership table intentionally leaves them TBD.
+## First steps
 
-Use one approving review and the `documentation` repository check for `main`; block force pushes and branch deletion. This check covers documentation and CAD packaging, not electrical correctness. Repository protection does not assign engineering responsibility. Keep administrative bypass available for repository recovery, not routine design review.
+1. Clone and create your personal branch from `main`; publish it.
+2. Add your name, branch link, project location and KiCad version to the directory through a focused documentation pull request.
+3. Keep your README and design status current. Push your personal branch whenever there is useful progress to share.
+4. Coordinate connector/power/protocol decisions across the relevant owners. Use pull requests only for selected changes intended for the team baseline.
 
-## First team session
+## Access and review
 
-1. Assign the FPGA layout owner and reviewer, plus owners for carrier, routing/power, receiver and firmware work.
-2. Confirm the imported FPGA draft is the starting candidate or record the agreed replacement. Importing it does not constitute engineering approval.
-3. Each teammate clones and opens the project successfully with the agreed KiCad version.
-4. Put the next concrete task in an issue. Run one small change through branch, pull request, review and handoff.
+This is a public repository. Invite teammates for write access through [Settings → Collaborators](https://github.com/HowardWHSrun/FPGA_4K/settings/access). A branch name is an organizational convention, not an access restriction.
 
-There is one integrated FPGA working copy here. The earlier local study is the import source; edits to that external folder will not automatically appear in GitHub. New team work should use the cloned repository project.
+`main` requires one approving review and the `documentation` repository check, with force pushes and deletion blocked. Administrative bypass is retained. Personal branches allow ordinary work-in-progress pushes. Do not edit another person's branch without agreeing with them first.
+
+GitHub stores pushed commits; local CAD edits do not sync until committed and pushed. Close KiCad before switching branches or pulling changes.

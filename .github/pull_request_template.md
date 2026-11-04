@@ -1,6 +1,6 @@
 ## Change and reason
 
-Describe the problem and resulting behavior. Link the task/decision issue. Identify the board, sheets and layout owner when applicable.
+Describe the selected change intended for the shared baseline; keep unrelated personal PCB work on its owner’s branch. Describe the problem and resulting behavior. Link the task/decision issue. Identify the board, sheets and layout owner when applicable.
 
 ## Review evidence
 
