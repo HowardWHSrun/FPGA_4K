@@ -1,11 +1,13 @@
 # FPGA_4K
 
-**Current PCBs · 2 November 2026:** [Frontend FPGA Board V6](frontend/) · [HDMI Extension Board V21](xem8310/) · [Direct LDO Carrier V6](direct-ldo/). Each page includes a full editable KiCad ZIP with schematic, PCB, settings, rules, local libraries and available 3D models. Development status is stated per board.
+**Current overview · 4 November 2026:** [System overview V26](index.html) shows the boards, the two approaches, downloads and native views: Frontend FPGA Board V36, HDMI Extension Board V29, ASIC board PCB-5 and Direct LDO Carrier V6 (sent to fab). It follows the [4 November presentation](presentation/meetings/2026-11-04-v16/). The [previous overview V25](overview-2026-11-02-v25.html) is preserved.
 
 
 ## Earlier dated records
 
-These entries describe earlier deliveries. The three current board pages and downloads are linked above.
+These entries describe earlier deliveries. Current boards and downloads are in the overview linked above.
+
+**Board pages · 2 November 2026:** [Frontend FPGA Board V6](frontend/) · [HDMI Extension Board V21](xem8310/) · [Direct LDO Carrier V6](direct-ldo/). Each page includes a full editable KiCad ZIP with schematic, PCB, settings, rules, local libraries and available 3D models. These revisions are superseded except Direct LDO Carrier V6.
 
 **[HDMI Extension Board · earlier V5 schematic / V3 placement · 1 November 2026](xem8310/)** — one-page PDF and SVG, six-layer placement, interactive 3D, component search and [editable KiCad downloads](xem8310/#files). Four new test points await PCB placement; routing and hardware qualification remain open.
 
