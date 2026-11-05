@@ -1,6 +1,6 @@
 # FPGA_4K
 
-**Current overview · 5 November 2026:** [System overview V27](index.html) is one page with the board names, the two approaches in 3D, printable models and downloads: Frontend FPGA Board V36, HDMI Extension Board V29, ASIC board PCB-5 and Direct LDO Carrier V6 (sent to fab). It follows the [4 November presentation](presentation/meetings/2026-11-04-v16/). The [previous overview V25](overview-2026-11-02-v25.html) is preserved.
+**Current overview · 5 November 2026:** [System overview V27](index.html) is one page with the board names, the two approaches in 3D, printable models and downloads: Frontend FPGA Board V37, HDMI Extension Board V29, ASIC board PCB-5 and Direct LDO Carrier V6 (sent to fab). It follows the [4 November presentation](presentation/meetings/2026-11-04-v16/). The [previous overview V25](overview-2026-11-02-v25.html) is preserved.
 
 
 ## Earlier dated records
