@@ -11759,8 +11759,8 @@
       "status": "Current system overview V27 (single page); no fabrication release",
       "transformation": "V27: only the \"Board names and two approaches\" page of overview V26 (4 Nov deck slide 2), with its 3D overview, approach switch, printable models and board downloads; other slides and deck controls removed. The 8-slide V26 root is in git history (daf928c).",
       "note": "Previous root V25 preserved as overview-2026-11-02-v25.html. ?approach=custom|direct|print selects the view.",
-      "bytes": 10629,
-      "sha256": "acd61d7055a8c6821a1b0d278e0800c98c2ff5fbcff0143f87f4a527e691b859",
+      "bytes": 10524,
+      "sha256": "49ac3df29ca59d3bf92e3360984d455d4a36aeace13beead937670cafaf73796",
       "source_date": "2026-10-05",
       "updated_at": "2026-11-05"
     },
@@ -35901,6 +35901,76 @@
       "note": "Board PCB sha256 897061230ebc06b69080e79bfab8dcb878802e7aba12ff1ce37bbdcb411c230b. See index.html.",
       "bytes": 1018250,
       "sha256": "46de40eefa8fb9d1ea070e2124db689295784c0e34aa2455f3fefcdcab1ef17c"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/frontend-v37/index.html",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "Frontend FPGA Board V37 page: Layout tab (native KiCanvas view of the saved board) and Schematic tab (kicad-cli SVG with pan/zoom), plus downloads",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 8576,
+      "sha256": "70149a9284989d9f866c38af029d27eb8ed3a16564284452b0b73cd3926cc4e7"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/layout-viewer/frontend-v37/index.html",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "Layout viewer copied from presentation/meetings/2026-11-04-v16/assets/layout-viewer/frontend with the title changed to V37",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 1483,
+      "sha256": "0be4dd66d4db6f5ecda6e4d851157cf84d9c9fbc79f892aa752e958e7265fe40"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/layout-viewer/frontend-v37/viewer.js",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "Copied unchanged from the 4 Nov deck Frontend layout viewer",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 10360,
+      "sha256": "76bba5f9e484bb24798342a98094714f288bf6d9c831c1814316ec29b7897bcd"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/layout-viewer/frontend-v37/viewer.css",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "Copied unchanged from the 4 Nov deck Frontend layout viewer",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 2476,
+      "sha256": "d57234c06263d09adc7dc9618a1c9ccb164b11e6c88637ec5ec16a6348fb27ab"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/layout-viewer/frontend-v37/board.json",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "V37 identity: title, sha256 and expected native counts (segments 1924)",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 695,
+      "sha256": "cf6145e0cf12b1b71da61e8026871388de7848addadebacf47a50986d1493134"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/layout-viewer/frontend-v37/Frontend_FPGA_Board_V37.kicad_pcb",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "Unmodified copy of 2026-11-05_FPGA_Work/07_Artix_Frontend_V37_TX0_PG_Spacing/project/Artix_Frontend_V37.kicad_pcb",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 3942133,
+      "sha256": "897061230ebc06b69080e79bfab8dcb878802e7aba12ff1ce37bbdcb411c230b"
+    },
+    {
+      "path": "presentation/overview/2026-11-04-v26/assets/frontend/schematic-v37.svg",
+      "origin": "5 November 2026 system overview V27",
+      "source_date": "2026-11-05",
+      "status": "Engineering development snapshot; no fabrication release",
+      "transformation": "kicad-cli 10.0.6 sch export svg of Artix_Frontend_V37.kicad_sch (with drawing sheet)",
+      "note": "Linked from the Frontend FPGA Board card on index.html.",
+      "bytes": 15285185,
+      "sha256": "13fb3b4fcc1f650cd41d1ba5bfa2bad9bb9b36c3736e74e54ce11e88eb838656"
     }
   ],
   "scope": "Original team material, faithful meeting and slide representations, and dated FPGA review handoffs; source identities and qualification limits recorded per entry.",
