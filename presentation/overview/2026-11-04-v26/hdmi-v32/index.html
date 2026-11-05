@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HDMI Extension Board V32</title>
+<meta name="description" content="HDMI Extension Board V32 · edited 5 Nov 2026, 12:03 CST: routed 6-layer PCB layout and schematic, with downloads.">
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#172a32;--muted:#53656b;--accent:#126a71;--line:#d5dfe0;--paper:#fff;--bg:#edf0ef;--warn:#9a4b16;--canvas:#101b2b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{color:var(--accent)}
+header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 24px;background:var(--paper);border-bottom:1px solid var(--line)}
+header .brand{font-weight:700;color:var(--accent);text-decoration:none}
+header nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+header nav a{font-size:14px;text-decoration:none;border:1px solid #c8d3d6;border-radius:3px;padding:6px 11px;color:var(--ink);background:#fff}
+main{max-width:1500px;margin:0 auto;padding:18px 24px 28px}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+h1{margin:0;font-size:32px;line-height:1.15}
+.version{margin:6px 0 0;color:var(--muted);font-size:14px}
+.status{margin:4px 0 0;color:var(--warn);font-size:14px}
+.files{display:flex;flex-wrap:wrap;gap:6px}
+.files a{font-size:13px;text-decoration:none;border:1px solid #c8dcdb;border-radius:3px;padding:5px 9px;background:#f6faf9;white-space:nowrap}
+.files a:hover{background:#e3f0ef;border-color:var(--accent)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;padding:0;list-style:none;font-size:13.5px;color:var(--muted)}
+.facts b{color:var(--ink)}
+.panel{background:var(--paper);border:1px solid var(--line)}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:15px;border:0;border-bottom:3px solid transparent;background:none;padding:10px 18px;cursor:pointer;color:var(--muted)}
+.tabs button[aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.tabs .hint{margin-left:auto;padding:0 14px;font-size:12.5px;color:var(--muted)}
+.view{height:calc(100vh - 230px);min-height:460px;position:relative}
+.view[hidden]{display:none}
+iframe{width:100%;height:100%;border:0;display:block;background:var(--canvas)}
+#sch-host{position:absolute;inset:0;overflow:hidden;background:#f5f4ee;cursor:grab;touch-action:none}
+#sch-host.drag{cursor:grabbing}
+#sch-host svg{width:100%;height:100%;display:block}
+#sch-wait{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px}
+.sch-tools{position:absolute;top:10px;right:10px;display:flex;gap:6px;z-index:2}
+.sch-tools button,.sch-tools a{font:inherit;font-size:13px;border:1px solid #c8d3d6;border-radius:3px;background:#fff;color:var(--ink);padding:5px 10px;cursor:pointer;text-decoration:none}
+footer{margin-top:10px;font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){header,main{padding-left:16px;padding-right:16px}h1{font-size:25px}.view{height:70vh}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../../../../index.html?approach=custom">4K neural recording · System overview</a>
+  <nav><a href="../../../../index.html?approach=custom">← Back to overview</a></nav>
+</header>
+<main>
+  <section class="intro">
+    <div>
+      <h1>HDMI Extension Board</h1>
+      <p class="version">V32 · edited 5 Nov 2026, 12:03 CST · XEM8310 + eight Micro-HDMI ports · 6-layer · 167.65 × 114.10 mm</p>
+    </div>
+    <div class="files">
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_KiCad.zip" download>KiCad ↓</a>
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_Schematic.pdf" download>Schematic PDF</a>
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_Gerbers.zip" download>Gerbers</a>
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_BOM.csv" download>BOM</a>
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_CPL.csv" download>Placement</a>
+      <a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_JLC_Order_Note.md" download>JLC note</a>
+    </div>
+  </section>
+  <ul class="facts">
+    <li><b>DRC</b> 0 errors · 0 open connections · 0 schematic mismatches · ERC 0</li>
+    <li><b>Parts</b> 284 footprints</li>
+    <li><b>Copper</b> 2,561 track segments · 737 vias</li>
+    <li><b>Since V29</b> routing cleanup, 1 µF port output capacitors, PCIe TX capacitors 220 nF, HDMI-side hole removed</li>
+  </ul>
+  <section class="panel">
+    <div class="tabs" role="tablist" aria-label="Design view">
+      <button role="tab" id="tab-layout" aria-controls="view-layout" aria-selected="true">Layout</button>
+      <button role="tab" id="tab-schematic" aria-controls="view-schematic" aria-selected="false">Schematic</button>
+      <span class="hint" id="hint">Native KiCad board · Ctrl + scroll to zoom · drag with middle/right button to pan</span>
+    </div>
+    <div class="view" id="view-layout" role="tabpanel" aria-labelledby="tab-layout">
+      <iframe src="../assets/layout-viewer/hdmi-v32/index.html" title="HDMI Extension Board V32 PCB layout (native KiCad file)" loading="eager"></iframe>
+    </div>
+    <div class="view" id="view-schematic" role="tabpanel" aria-labelledby="tab-schematic" hidden>
+      <div class="sch-tools"><button id="sch-in" aria-label="Zoom in">+</button><button id="sch-out" aria-label="Zoom out">−</button><button id="sch-fit">Fit</button><a href="../assets/downloads/hdmi/HDMI_Extension_Board_V32_2026-11-05_1203_Schematic.pdf" target="_blank" rel="noopener">Open PDF ↗</a></div>
+      <div id="sch-host"><div id="sch-wait">Loading schematic…</div></div>
+    </div>
+  </section>
+  <footer>Both views come straight from the saved V32 KiCad files (board SHA-256 45d4b49…921b9). Order candidate for JLC; not yet fabricated.</footer>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const hints={layout:'Native KiCad board · Ctrl + scroll to zoom · drag with middle/right button to pan',schematic:'Scroll to zoom · drag to pan'};
+let schLoaded=false;
+function show(name){
+  for(const v of ['layout','schematic']){const on=v===name;$('tab-'+v).setAttribute('aria-selected',on);$('view-'+v).hidden=!on;}
+  $('hint').textContent=hints[name];
+  if(name==='schematic'&&!schLoaded)loadSchematic();
+  history.replaceState(null,'',name==='schematic'?'#schematic':'#layout');
+}
+$('tab-layout').onclick=()=>show('layout');$('tab-schematic').onclick=()=>show('schematic');
+
+let svg,full,vb;
+function setVB(b){vb=b;svg.setAttribute('viewBox',b.join(' '));}
+function fitVB(){const host=$('sch-host'),r=host.clientWidth/host.clientHeight,[x,y,w,h]=full;let W=w,H=h;if(w/h>r)H=w/r;else W=h*r;setVB([x-(W-w)/2,y-(H-h)/2,W,H]);}
+function zoomAt(f,cx,cy){const host=$('sch-host'),[x,y,w,h]=vb;const px=x+w*cx/host.clientWidth,py=y+h*cy/host.clientHeight;const nw=Math.min(Math.max(w/f,full[2]/400),full[2]*3),nh=nw*h/w;setVB([px-(px-x)*nw/w,py-(py-y)*nh/h,nw,nh]);}
+async function loadSchematic(){
+  schLoaded=true;
+  try{
+    const r=await fetch('../assets/hdmi/schematic-v32.svg');if(!r.ok)throw Error(r.status);
+    const doc=new DOMParser().parseFromString(await r.text(),'image/svg+xml');
+    svg=document.importNode(doc.documentElement,true);svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+    full=svg.getAttribute('viewBox').trim().split(/[\s,]+/).map(Number);
+    $('sch-host').replaceChildren(svg);fitVB();
+  }catch(e){$('sch-wait').textContent='The schematic could not load. Use "Open PDF".';schLoaded=false;}
+}
+const host=$('sch-host');
+host.addEventListener('wheel',e=>{if(!svg)return;e.preventDefault();const b=host.getBoundingClientRect();zoomAt(Math.exp(-e.deltaY*0.0015),e.clientX-b.left,e.clientY-b.top);},{passive:false});
+let drag=null;
+host.addEventListener('pointerdown',e=>{if(!svg)return;drag={x:e.clientX,y:e.clientY,vb:[...vb]};host.setPointerCapture(e.pointerId);host.classList.add('drag');});
+host.addEventListener('pointermove',e=>{if(!drag)return;const [x,y,w,h]=drag.vb;setVB([x-(e.clientX-drag.x)*w/host.clientWidth,y-(e.clientY-drag.y)*h/host.clientHeight,w,h]);});
+const end=()=>{drag=null;host.classList.remove('drag');};host.addEventListener('pointerup',end);host.addEventListener('pointercancel',end);
+$('sch-in').onclick=()=>svg&&zoomAt(1.5,host.clientWidth/2,host.clientHeight/2);
+$('sch-out').onclick=()=>svg&&zoomAt(1/1.5,host.clientWidth/2,host.clientHeight/2);
+$('sch-fit').onclick=()=>svg&&fitVB();
+addEventListener('resize',()=>{if(svg&&!$('view-schematic').hidden)fitVB();});
+show(location.hash==='#schematic'?'schematic':'layout');
+</script>
+</body>
+</html>
