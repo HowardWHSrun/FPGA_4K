@@ -218,12 +218,9 @@ document.querySelectorAll('[data-m]').forEach(b => b.onclick = () => { mode = b.
 const loader = new GLTFLoader();
 // Public copy: the boards are this project's own KiCad exports. Manufacturer connector models are not redistributed
 // here; if a file is missing the connector is drawn as a box at its data-sheet size.
-const opt = u => loader.loadAsync(u).catch(() => null);
-Promise.all([loader.loadAsync('models/ASIC_Board_PCB5.glb'), loader.loadAsync('models/Artix_Frontend_V37.glb'),
-  ...['DF40C-80DS', 'DF40C-80DP', 'DF40C-70DS', 'DF40C-70DP', 'SEAM8-20-S02.0-S-08-3', 'SEAF8-20-05.0-S-08-3', 'SEAF8-20-1-S-08-2-RA'].map(n => opt('models/' + n + '.glb'))])
-.then(([a, f, s80, p80, s70, p70, sm, sf, ra]) => {
+Promise.all([loader.loadAsync('models/ASIC_Board_PCB5.glb'), loader.loadAsync('models/Artix_Frontend_V37.glb')])
+.then(([a, f]) => {
   PCB5 = a.scene; PCB5.scale.setScalar(1000); FE = f.scene; FE.scale.setScalar(1000);
-  [['80DS', s80], ['80DP', p80], ['70DS', s70], ['70DP', p70], ['SEAM8', sm], ['SEAF8', sf], ['RA', ra]].forEach(([k, g]) => { if (g) { g.scene.scale.setScalar(1000); CONN[k] = g.scene; } });
   buildA(); buildB(); buildC(); apply();
 }).catch(e => console.error(e));
 function resize() { const w = view.clientWidth, h = view.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
