@@ -29,12 +29,13 @@ button.on{background:var(--acc);border-color:var(--acc);color:#fff}
 <div class="wrap" id="wrap"><div id="view"></div><aside id="info"></aside></div>
 </main>
 <script type="module">
-// FPGA-LDO stack options A-D, V17 (6 Nov 2026). Boards: PCB-5 (0.8 mm) and Artix Frontend V37 exported from KiCad as GLB.
-// Connectors: Hirose DF40 and Samtec SEAF8/SEAM8 manufacturer STEP models tessellated by KiCad when VENDOR is true,
-// otherwise boxes at data-sheet size. FX10 (option D) is always a box. Frame: X width, Y thickness, Z distance from probe edge (mm).
+// FPGA-LDO stack options A-D, V18 (6 Nov 2026). Boards: PCB-5 (0.8 mm) and Artix Frontend V37 exported from KiCad as GLB.
+// Connectors: drawn here from the catalogue dimensions (housing, every contact at its pitch, tails, fittings), placed with
+// the same outline as the manufacturer models. VENDOR = true (local copy) swaps in Hirose/Samtec STEP models tessellated by KiCad. Frame: X width, Y thickness, Z distance from probe edge (mm).
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 const view = document.getElementById('view');
 const scene = new THREE.Scene(); scene.background = new THREE.Color(0xffffff);
 const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 4000);
@@ -52,6 +53,98 @@ const C = { hub: 0x5f6b78, flex: 0xd4a017, stiff: 0x8d6e3f, plug: 0x8a5cc2, sock
 const mats = {}; const mat = (c, o) => { const k = c + JSON.stringify(o || {}); return mats[k] || (mats[k] = new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.6, metalness: 0.05 }, o || {}))); };
 function box(g, x0, x1, y0, y1, z0, z1, m) { const b = new THREE.Mesh(new THREE.BoxGeometry(x1 - x0, y1 - y0, z1 - z0), m); b.position.set((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2); g.add(b); }
 const CONN = {};
+// ---- drawn connector models: one merged mesh per material ----
+const CM = { gold: new THREE.MeshStandardMaterial({ color: 0xd9ad4a, metalness: 0.75, roughness: 0.3 }),
+  tin: new THREE.MeshStandardMaterial({ color: 0xbfc3c8, metalness: 0.75, roughness: 0.35 }),
+  ivory: new THREE.MeshStandardMaterial({ color: 0xebe4d1, roughness: 0.6 }),
+  black: new THREE.MeshStandardMaterial({ color: 0x2c2d31, roughness: 0.55 }) };
+function Part() {
+  const P = {};
+  return {
+    b(m, x0, x1, y0, y1, z0, z1) {
+      const [a0, a1] = [Math.min(x0, x1), Math.max(x0, x1)], [b0, b1] = [Math.min(y0, y1), Math.max(y0, y1)], [c0, c1] = [Math.min(z0, z1), Math.max(z0, z1)];
+      const g = new THREE.BoxGeometry(a1 - a0, b1 - b0, c1 - c0); g.translate((a0 + a1) / 2, (b0 + b1) / 2, (c0 + c1) / 2); (P[m] = P[m] || []).push(g);
+    },
+    done(g) { const G = g || new THREE.Group(); for (const m in P) G.add(new THREE.Mesh(mergeGeometries(P[m]), CM[m])); return G; } };
+}
+// Hirose DF40 (0.4 mm pitch, 1.5 mm mated), model frame as Hirose's STEP: X width, Y length, board face at z = 0, body toward -Z.
+// Receptacle DF40C-nnDS: 1.4 mm tall, outline 3.38 x (span + 3.0) mm; frame with a central contact island.
+function df40S(n) {
+  const p = Part(), k = n / 2, sp = (k - 1) * 0.4, L = sp + 3.0, Lh = L - 0.8, H = 1.4;
+  p.b('ivory', -1.35, 1.35, -Lh / 2, Lh / 2, -0.3, 0);                                         // floor
+  for (const s of [-1, 1]) {
+    p.b('ivory', s * 1.05, s * 1.35, -Lh / 2, Lh / 2, -H, -0.3);                              // side walls
+    p.b('ivory', -1.05, 1.05, s * (Lh / 2 - 0.45), s * Lh / 2, -H, -0.3);                     // end walls
+    p.b('tin', -1.15, 1.15, s * Lh / 2, s * L / 2, -1.2, 0.05);                                // metal fittings
+  }
+  p.b('ivory', -0.35, 0.35, -sp / 2 - 0.4, sp / 2 + 0.4, -1.05, -0.3);                        // contact island
+  for (let i = 0; i < k; i++) { const y = -sp / 2 + i * 0.4; for (const s of [-1, 1]) {
+    p.b('gold', s * 0.35, s * 0.39, y - 0.09, y + 0.09, -1.0, -0.35);                         // contact on the island
+    p.b('gold', s * 1.35, s * 1.69, y - 0.09, y + 0.09, -0.08, 0.05); } }                     // SMT tail
+  return p.done();
+}
+// Header DF40C-nnDP: 1.14 mm tall incl. tails, outline 2.97 x (span + 1.92) mm; its walls enter the receptacle frame.
+function df40P(n) {
+  const p = Part(), k = n / 2, sp = (k - 1) * 0.4, L = sp + 1.92, Lh = sp + 1.2;
+  for (const s of [-1, 1]) {
+    p.b('ivory', s * 0.42, s * 1.0, -Lh / 2, Lh / 2, -1.14, -0.1);                            // contact walls
+    p.b('ivory', -0.42, 0.42, s * (Lh / 2 - 0.15), s * Lh / 2, -1.14, -0.1);                  // end walls
+    p.b('tin', -0.9, 0.9, s * Lh / 2, s * L / 2, -0.12, 0);                                    // metal fittings
+  }
+  p.b('ivory', -0.42, 0.42, -Lh / 2, Lh / 2, -0.4, -0.1);                                     // web over the groove
+  for (let i = 0; i < k; i++) { const y = -sp / 2 + i * 0.4; for (const s of [-1, 1]) {
+    p.b('gold', s * 1.0, s * 1.04, y - 0.09, y + 0.09, -1.0, -0.3);
+    p.b('gold', s * 1.0, s * 1.485, y - 0.09, y + 0.09, -0.1, 0); } }
+  return p.done();
+}
+// Samtec SEARAY 8 x 20, 0.8 mm pitch, 7.0 mm mated. Model frame as Samtec's STEP: X length, Y width (centre 1.595).
+// SEAF8-20-05.0-S-08-3 socket: board face z = 0.57, body to z = -4.0; 160 contact openings on the mating face.
+const SR = (f) => { for (let i = 0; i < 20; i++) for (let j = 0; j < 8; j++) f((i - 9.5) * 0.8, 1.595 + (j - 3.5) * 0.8); };
+function seaf8() {
+  const p = Part(), cy = 1.595;
+  p.b('black', -10.4, 10.4, cy - 4.15, cy + 4.15, -4.0, 0.45);
+  SR((x, y) => { p.b('gold', x - 0.17, x + 0.17, y - 0.17, y + 0.17, -4.03, -3.99); p.b('tin', x - 0.2, x + 0.2, y - 0.2, y + 0.2, 0.45, 0.57); });
+  for (const s of [-1, 1]) p.b('tin', s * 10.4, s * 10.92, cy - 1.6, cy + 1.6, 0.2, 0.57);   // weld tabs
+  return p.done();
+}
+// SEAM8-20-S02.0-S-08-3 terminal: board face z = -0.95, housing 2.43 mm, 160 pins to z = 3.6 (4.55 mm above the board).
+function seam8() {
+  const p = Part(), cy = 1.595;
+  p.b('black', -10.4, 10.4, cy - 3.7, cy + 3.7, -0.83, 1.48);
+  SR((x, y) => { p.b('gold', x - 0.1, x + 0.1, y - 0.1, y + 0.1, 1.48, 3.6); p.b('tin', x - 0.2, x + 0.2, y - 0.2, y + 0.2, -0.95, -0.83); });
+  for (const s of [-1, 1]) p.b('tin', s * 10.4, s * 10.92, cy - 1.6, cy + 1.6, -0.95, -0.6);
+  return p.done();
+}
+// Hirose FX10A-140 (0.5 mm pitch, 70 per row), drawn in the stack frame: long axis X, centre (0, cz), board face at y.
+// Receptacle FX10A-140S/14-SV(71): 49.1 x 7.3 x 3.2 mm with ground plates; header FX10A-140P/14-SV1(91) enters it.
+function fx10S(g, y, cz) {
+  const p = Part(), sp = 69 * 0.5;
+  p.b('ivory', -23.6, 23.6, y, y + 0.5, cz - 3.15, cz + 3.15);
+  for (const s of [-1, 1]) {
+    p.b('ivory', -23.6, 23.6, y + 0.5, y + 3.2, cz + s * 2.65, cz + s * 3.15);
+    p.b('ivory', s * 23.1, s * 23.6, y + 0.5, y + 3.2, cz - 2.65, cz + 2.65);
+    p.b('tin', -sp / 2 - 1, sp / 2 + 1, y + 0.6, y + 3.0, cz + s * 3.15, cz + s * 3.22);       // ground plate
+    p.b('tin', s * 23.6, s * 24.55, y, y + 2.8, cz - 2.5, cz + 2.5);                           // fittings
+  }
+  p.b('ivory', -sp / 2 - 0.6, sp / 2 + 0.6, y + 0.5, y + 2.9, cz - 0.9, cz + 0.9);
+  for (let i = 0; i < 70; i++) { const x = -sp / 2 + i * 0.5; for (const s of [-1, 1]) {
+    p.b('gold', x - 0.1, x + 0.1, y + 1.0, y + 2.7, cz + s * 0.9, cz + s * 0.94);
+    p.b('gold', x - 0.1, x + 0.1, y, y + 0.1, cz + s * 3.22, cz + s * 3.65); } }
+  p.done(g);
+}
+function fx10P(g, y, cz) {
+  const p = Part(), sp = 69 * 0.5;
+  for (const s of [-1, 1]) {
+    p.b('ivory', -22.9, 22.9, y - 2.6, y - 0.1, cz + s * 0.95, cz + s * 2.6);
+    p.b('ivory', s * 22.4, s * 22.9, y - 2.6, y - 0.1, cz - 0.95, cz + 0.95);
+    p.b('tin', s * 22.9, s * 23.3, y - 2.0, y, cz - 2.0, cz + 2.0);
+  }
+  p.b('ivory', -22.9, 22.9, y - 0.9, y - 0.1, cz - 0.95, cz + 0.95);
+  for (let i = 0; i < 70; i++) { const x = -sp / 2 + i * 0.5; for (const s of [-1, 1]) {
+    p.b('gold', x - 0.1, x + 0.1, y - 2.4, y - 0.6, cz + s * 2.6, cz + s * 2.64);
+    p.b('gold', x - 0.1, x + 0.1, y - 0.1, y, cz + s * 2.6, cz + s * 3.1); } }
+  p.done(g);
+}
 const AX = { x: new THREE.Vector3(1, 0, 0), y: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
 // part on a board face: n = face normal axis, face = its coordinate, s = +1 body grows toward +n, -1 toward -n;
 // long = axis of the connector's long side; c = centre on the two in-plane axes
@@ -182,9 +275,9 @@ function buildD() {
   const L0 = LB + 0.5, LC = L0 + 4.25, hub = grp(o, 'hub');
   box(hub, -11.32, 11.32, 0, 1.6, HUB0, L0, mat(C.hub)); box(hub, -25.5, 25.5, 0, 1.6, L0, L0 + 8.5, mat(C.hub));
   dfPlug(hub, 1.6, true); dfSock(hub, 0, true);
-  box(hub, -24.55, 24.55, 1.6, 4.8, LC - 3.65, LC + 3.65, mat(0xd9d4c4));                  // FX10 receptacle
+  fx10S(hub, 1.6, LC);                                                                       // FX10 receptacle
   const y0 = 1.6 + 5.0, y1 = y0 + 1.6, hat = grp(o, 'hat');
-  box(hat, -24.0, 24.0, y0 - 2.6, y0, LC - 2.6, LC + 2.6, mat(0x3a3d42));                   // FX10 header (inside receptacle)
+  fx10P(hat, y0, LC);                                                                        // FX10 header (enters the receptacle)
   box(hat, -25.5, 25.5, y0, y1, L0, L0 + 25.47, mat(C.ldo));
   for (const x of [-7, -2.5, 2, 6.5]) for (const z of [L0 + 14, L0 + 18.5]) box(hat, x - 1.5, x + 1.5, y0 - 0.75, y0, z - 1.5, z + 1.5, mat(C.reg));
   box(hat, -9.5, -5.5, y0 - 0.9, y0, L0 + 21, L0 + 25, mat(C.reg));
@@ -312,13 +405,14 @@ document.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { cur = b.d
 document.querySelectorAll('[data-m]').forEach(b => b.onclick = () => { mode = b.dataset.m; if (playing) setPlay(false); else apply(); });
 document.getElementById('play').onclick = () => setPlay(!playing);
 const loader = new GLTFLoader();
-const VENDOR = false;   // public copy: connectors drawn as boxes at data-sheet size
+const VENDOR = false;   // public copy: connectors drawn from catalogue dimensions (manufacturer models may not be posted)
 const VENDOR_FILES = ['DF40C-80DS', 'DF40C-80DP', 'DF40C-70DS', 'DF40C-70DP', 'SEAM8-20-S02.0-S-08-3', 'SEAF8-20-05.0-S-08-3'];
 Promise.all([loader.loadAsync('models/ASIC_Board_PCB5_0p8mm.glb'), loader.loadAsync('models/Artix_Frontend_V37.glb'),
   ...(VENDOR ? VENDOR_FILES.map(n => loader.loadAsync('models/' + n + '.glb').catch(() => null)) : [])])
 .then(([a, f, ...v]) => {
   PCB5 = a.scene; PCB5.scale.setScalar(1000); FE = f.scene; FE.scale.setScalar(1000);
-  ['80DS', '80DP', '70DS', '70DP', 'SEAM8', 'SEAF8'].forEach((k, i) => { if (v[i]) { v[i].scene.scale.setScalar(1000); CONN[k] = v[i].scene; } });
+  const DRAWN = { '80DS': () => df40S(80), '80DP': () => df40P(80), '70DS': () => df40S(70), '70DP': () => df40P(70), SEAM8: seam8, SEAF8: seaf8 };
+  Object.keys(DRAWN).forEach((k, i) => { if (v[i]) { v[i].scene.scale.setScalar(1000); CONN[k] = v[i].scene; } else CONN[k] = DRAWN[k](); });
   buildA(); buildB(); buildC(); buildD(); apply();
 }).catch(e => console.error(e));
 function resize() { const w = view.clientWidth, h = view.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
