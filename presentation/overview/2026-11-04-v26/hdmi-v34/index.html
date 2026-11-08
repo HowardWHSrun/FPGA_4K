@@ -73,6 +73,7 @@ footer{margin-top:10px;font-size:12.5px;color:var(--muted)}
     <div class="tabs" role="tablist" aria-label="Design view">
       <button role="tab" id="tab-layout" aria-controls="view-layout" aria-selected="true">Layout</button>
       <button role="tab" id="tab-schematic" aria-controls="view-schematic" aria-selected="false">Schematic</button>
+      <button role="tab" id="tab-3d" aria-controls="view-3d" aria-selected="false">3D</button>
       <span class="hint" id="hint">Native KiCad board · Ctrl + scroll to zoom · drag with middle/right button to pan</span>
     </div>
     <div class="view" id="view-layout" role="tabpanel" aria-labelledby="tab-layout">
@@ -82,21 +83,25 @@ footer{margin-top:10px;font-size:12.5px;color:var(--muted)}
       <div class="sch-tools"><button id="sch-in" aria-label="Zoom in">+</button><button id="sch-out" aria-label="Zoom out">−</button><button id="sch-fit">Fit</button><a href="../assets/downloads/hdmi/HDMI_Extension_Board_V34_2026-11-08_0819_Schematic.pdf" target="_blank" rel="noopener">Open PDF ↗</a></div>
       <div id="sch-host"><div id="sch-wait">Loading schematic…</div></div>
     </div>
+    <div class="view" id="view-3d" role="tabpanel" aria-labelledby="tab-3d" hidden>
+      <iframe id="frame-3d" data-src="../assets/hdmi/3d-v34/index.html" title="HDMI Extension Board V34 in 3D (KiCad 3D export)"></iframe>
+    </div>
   </section>
-  <footer>Both views come straight from the saved V34 KiCad files (board SHA-256 8989fe4…bc2f6). Order candidate for JLC; not yet fabricated.</footer>
+  <footer>All three views come straight from the saved V34 KiCad files (board SHA-256 8989fe4…bc2f6). Order candidate for JLC; not yet fabricated.</footer>
 </main>
 <script>
 'use strict';
 const $=id=>document.getElementById(id);
-const hints={layout:'Native KiCad board · Ctrl + scroll to zoom · drag with middle/right button to pan',schematic:'Scroll to zoom · drag to pan'};
+const hints={layout:'Native KiCad board · Ctrl + scroll to zoom · drag with middle/right button to pan',schematic:'Scroll to zoom · drag to pan','3d':'KiCad 3D export with parts, copper and silkscreen · drag to rotate · scroll to zoom'};
 let schLoaded=false;
 function show(name){
-  for(const v of ['layout','schematic']){const on=v===name;$('tab-'+v).setAttribute('aria-selected',on);$('view-'+v).hidden=!on;}
+  for(const v of ['layout','schematic','3d']){const on=v===name;$('tab-'+v).setAttribute('aria-selected',on);$('view-'+v).hidden=!on;}
   $('hint').textContent=hints[name];
   if(name==='schematic'&&!schLoaded)loadSchematic();
-  history.replaceState(null,'',name==='schematic'?'#schematic':'#layout');
+  if(name==='3d'&&!$('frame-3d').src)$('frame-3d').src=$('frame-3d').dataset.src;
+  history.replaceState(null,'','#'+name);
 }
-$('tab-layout').onclick=()=>show('layout');$('tab-schematic').onclick=()=>show('schematic');
+$('tab-layout').onclick=()=>show('layout');$('tab-schematic').onclick=()=>show('schematic');$('tab-3d').onclick=()=>show('3d');
 
 let svg,full,vb;
 function setVB(b){vb=b;svg.setAttribute('viewBox',b.join(' '));}
@@ -122,7 +127,7 @@ $('sch-in').onclick=()=>svg&&zoomAt(1.5,host.clientWidth/2,host.clientHeight/2);
 $('sch-out').onclick=()=>svg&&zoomAt(1/1.5,host.clientWidth/2,host.clientHeight/2);
 $('sch-fit').onclick=()=>svg&&fitVB();
 addEventListener('resize',()=>{if(svg&&!$('view-schematic').hidden)fitVB();});
-show(location.hash==='#schematic'?'schematic':'layout');
+show({'#schematic':'schematic','#3d':'3d'}[location.hash]||'layout');
 </script>
 </body>
 </html>
