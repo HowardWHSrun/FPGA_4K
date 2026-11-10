@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HDMI Extension Board V37 · 3D</title>
+<script type="importmap">{"imports":{"three":"../../../../../fpga/3d/vendor/build/three.module.js","three/addons/":"../../../../../fpga/3d/vendor/examples/jsm/"}}</script>
+<style>
+html,body{margin:0;height:100%;background:#1b2330;font:13px system-ui,-apple-system,Segoe UI,sans-serif;color:#dfe6ee;overflow:hidden}
+#bar{position:absolute;top:0;left:0;right:0;display:flex;gap:6px;align-items:center;padding:8px 10px;background:#141b25;border-bottom:1px solid #2b3747;z-index:2;flex-wrap:wrap}
+#bar button{font:inherit;color:#dfe6ee;background:#223044;border:1px solid #34465e;border-radius:4px;padding:5px 11px;cursor:pointer}
+#bar button:hover{background:#2c3e57}#bar button[aria-pressed=true]{background:#2f6f8f;border-color:#4b93b5}
+#bar label{display:flex;gap:4px;align-items:center;margin-left:6px}
+#bar .sp{flex:1}#bar .note{color:#9fb0c3}
+#c{position:absolute;top:44px;left:0;right:0;bottom:0}
+#wait{position:absolute;inset:44px 0 0 0;display:flex;align-items:center;justify-content:center;color:#9fb0c3;font-size:15px}
+</style></head>
+<body>
+<div id="bar">
+  <button data-v="iso" aria-pressed="true">3D</button><button data-v="top">Top</button><button data-v="bottom">Bottom</button><button id="fit">Fit</button>
+  <label><input type="checkbox" id="parts" checked> Parts</label>
+  <span class="sp"></span><span class="note">Drag to rotate · scroll to zoom · right-drag to pan</span>
+</div>
+<div id="c"></div><div id="wait">Loading 3D model (8 MB)…</div>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const host=document.getElementById('c'), wait=document.getElementById('wait');
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace;host.appendChild(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x1b2330);
+scene.add(new THREE.HemisphereLight(0xffffff,0x445566,1.6));
+const key=new THREE.DirectionalLight(0xffffff,1.6);key.position.set(1,2,1.5);scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,0.8);fill.position.set(-1,-2,-1);scene.add(fill);
+const cam=new THREE.PerspectiveCamera(35,1,0.0001,100);
+const ctl=new OrbitControls(cam,renderer.domElement);ctl.enableDamping=true;ctl.screenSpacePanning=true;
+let root,box,center=new THREE.Vector3(),size=1,up=new THREE.Vector3(0,1,0),thin='y';
+function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();}
+addEventListener('resize',resize);resize();
+function view(v){
+  if(!root)return;
+  const n=new THREE.Vector3(0,0,0);n[thin]=1;           // board normal (top side)
+  const along=thin==='y'?new THREE.Vector3(0,0,1):new THREE.Vector3(0,1,0);
+  let dir;
+  if(v==='top'){dir=n.clone();cam.up.copy(thin==='y'?new THREE.Vector3(0,0,-1):new THREE.Vector3(0,1,0));}
+  else if(v==='bottom'){dir=n.clone().negate();cam.up.copy(thin==='y'?new THREE.Vector3(0,0,-1):new THREE.Vector3(0,1,0));}
+  else{dir=n.clone().add(along.clone().multiplyScalar(0.9));dir.normalize();cam.up.copy(n);}
+  const fov=cam.fov*Math.PI/180, d=size/(2*Math.tan(fov/2))*1.05/Math.min(1,cam.aspect);
+  cam.position.copy(center).addScaledVector(dir,d);cam.near=d/100;cam.far=d*20;cam.updateProjectionMatrix();
+  ctl.target.copy(center);ctl.update();
+  document.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
+}
+document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>view(b.dataset.v));
+let cur='iso';document.querySelectorAll('[data-v]').forEach(b=>b.addEventListener('click',()=>cur=b.dataset.v));
+document.getElementById('fit').onclick=()=>view(cur);
+async function load(){
+  const r=await fetch('HDMI_Extension_Board_V37.glb.gz');if(!r.ok)throw Error('HTTP '+r.status);
+  const buf=await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  const g=await new GLTFLoader().parseAsync(buf,'');
+  root=g.scene;scene.add(root);
+  box=new THREE.Box3().setFromObject(root);const s=box.getSize(new THREE.Vector3());box.getCenter(center);
+  thin=['x','y','z'].reduce((a,b)=>s[a]<s[b]?a:b);size=Math.max(s.x,s.y,s.z);
+  // parts toggle: merged meshes are named board_* (board, copper, silk, mask) or parts_*
+  const isBoard=o=>/^board_/.test(o.name||'');
+  document.getElementById('parts').onchange=e=>root.traverse(o=>{if(o.isMesh&&!isBoard(o))o.visible=e.target.checked;});
+  wait.remove();view('iso');
+}
+load().catch(e=>{wait.textContent='The 3D model could not load ('+e.message+'). Download the KiCad ZIP to view it in KiCad.';});
+(function tick(){requestAnimationFrame(tick);ctl.update();renderer.render(scene,cam);})();
+</script>
+</body></html>
