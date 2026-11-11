@@ -10,7 +10,7 @@
   function setApproach(next) {
     approach = next;
     buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.approach === next)));
-    document.querySelectorAll('.name-list').forEach(l => l.hidden = l.dataset.list !== next);
+    document.querySelectorAll('.name-list').forEach(l => l.hidden = l.dataset.list !== (next === 'head' ? 'custom' : next));
     document.querySelectorAll('.name-list button[data-key]').forEach(b => b.classList.remove('active'));
     const print = next === 'print';
     overviewBox.hidden = print; printBox.hidden = !print;
