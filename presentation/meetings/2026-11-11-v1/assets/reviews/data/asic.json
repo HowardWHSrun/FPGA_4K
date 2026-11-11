@@ -1,0 +1,888 @@
+{
+ "report": "ASIC board",
+ "reviewed": "PCB-5 · edited 3 Nov 2026, 00:51 CST",
+ "review_date": "11 November 2026",
+ "readiness": "Do not order yet: 2 blockers, 12 major items",
+ "headline": "The ASIC board exists only as the near board of each stacked pair and has no fabrication package of its own, so it cannot be ordered as drawn. The blockers are ASIC-01 (no far board, and two stacked copies would drive the same 24 output wires) and ASIC-02 (the blind and buried via set has no workable lamination sequence); twelve major items follow, chiefly the missing and unspecified decoupling (ASIC-05, ASIC-06), the wire-bond finish and pads (ASIC-07, ASIC-13), the undecided thickness (ASIC-08) and the die and probe fit (ASIC-11, ASIC-12). First design the far-board variant and agree a buildable stack (thickness, via spans, bondable finish) with the fabricator, then restore the decoupling with real values and make a fabrication package from the current board.",
+ "counts": {
+  "blocker": 2,
+  "major": 12,
+  "minor": 17,
+  "note": 5
+ },
+ "findings": [
+  {
+   "id": "ASIC-01",
+   "severity": "blocker",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "inputs/notes/fpga-ldo-v14.md ('Blocking finding' and a request for the 'Top' PCB-5 file); inputs/asic/sandwich_hub_options/START_HERE.md (Top file needed); inputs/ldo_a/parts_review_V21/index.html (second board must be the top variant). Both reviewers agree it is a blocker; one notes the deck status 'Top board ready' overstates it.",
+   "found_by": [
+    "asic-schematic",
+    "asic-reference"
+   ],
+   "title": "Only the near ASIC board of each stacked pair exists; stacking two copies would tie chip outputs together.",
+   "area": "Stacking / pin map",
+   "what": "Each FPGA-LDO port (J3 or J4) carries two stacked ASIC boards, a near board and a far board. On this board J3 and J4 are wired straight through, both chips drive odd-row 'direct' pins, and the 22 T_ pins only pass through to the next board with no chip on them. The far board must therefore be a different design whose chips drive the T_ pins, and no such design exists in the workspace. Stacking two copies of this board ties two chips' outputs to the same wires (output contention, where two drivers fight over one line) and leaves the T_ lines undriven.",
+   "where": "ASIC board J3 (DF40C-80DS, bottom) and J4 (DF40C-80DP, top). Chip 1 (U01_BCD1): D<1..8> on pins 79, 77, 75, 73, 43, 41, 39, 37; READ 35; CLK32MHZ 45; SYNC 47; DISC_OUT 5. Chip 2 (U01_BCD2): data on 33, 31, 29, 27, 17, 15, 13, 11; READ 9; CLK32MHZ 19; SYNC 21; DISC_OUT 3. T_ nets on even pins 10-22, 26-32 and 60-80. FPGA-LDO A and Option B router: J4 even pins to ASIC3/4, J3 even pins to ASIC7/8; pins 3 and 5 open.",
+   "evidence": "exports/asic/connectors.csv and netlist.xml: J3 pin n and J4 pin n carry the same net on all 80 pins (2, 4, 6, 8, 24, 58 unconnected) and share the same x/y. Each output net has 3 nodes (J3, J4, chip pin), e.g. /D<1> = J3.79, J4.79, U01_BCD1; all 22 /T_* nets have only 2 (J3, J4). 11 certain outputs per chip (8 data, READ, SYNC, CLK32MHZ) give 22 contending wires that reach the FPGA-LDO board; DISC_OUT on pins 3/5 adds 2 more, but it is unconnected on the FPGA-LDO boards and sits in a separate column of the designer's sheet with its termination undecided. exports/ldo_a and ldo_b_router connectors.csv assign the T_ pins to ASIC3/4/7/8 (e.g. J4.80 ASIC3_DATA1, J4.10 ASIC4_READ). Workspace search (214 .kicad_pcb files in the workspace; 1,106 including ~/kicad_work): only the 4 Nov 'Bottom' board and its copies, including the deck copy, have J3+J4 and T_ nets; the September single-J3 board (sha e01ee641...) and the July Board-1024.zip board (J1/J2) have no T_ nets; 'PCB - Bottom.zip' holds only the same 'Bottom' project. Rotating a second copy 180 degrees is worse: D<5> (pin 43) would land on VDD_DRIVER (pin 38). The deck record says 'Top board ready / Bottom board not ready yet' while the only CAD folder is named 'Bottom'; either way only one variant exists.",
+   "source": "The ASIC designer's pin workbook, inputs/asic/Pins__Sheet1.csv ('Not Shared' chip outputs D<1:8>, CLK32MHZ, SYNC, READ; DISC_OUT in a separate column); inputs/asic/ASIC_Reference/ASIC_REFERENCE.md section 2; FPGA-LDO A and Option B router J3/J4 net names (exports/ldo_a/connectors.csv, exports/ldo_b_router/connectors.csv). Engineering judgement.",
+   "consequence": "Only 4 of 8 ASICs (2,048 of 4,096 recording channels) per Frontend can work, and ASIC3/4/7/8 return nothing. Stacking four copies of this file gives fighting outputs and lost data; damage is possible but cannot be confirmed, because no file documents the ASIC output-stage type.",
+   "suggested_action": "Get the far ('Top') board file from the ASIC designer, or decide to make it, and check before ordering that its chips drive only the T_ pins and leave pins 3/5 open. Do not order four copies of this file; mark the second board of each pair as not designed."
+  },
+  {
+   "id": "ASIC-02",
+   "severity": "blocker",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "calculated",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "The ASIC board's via set has 28 crossing span pairs, so no normal lamination sequence can build it.",
+   "area": "Layout / fabrication",
+   "what": "The board uses one via, 0.15 mm drill with 0.25 mm pad, in 17 layer spans: from L1 down to every inner layer and from every inner layer to L10. Sequential lamination (pressing the board in stages and drilling between presses) can only make spans that nest or do not overlap; here 28 span pairs cross, for example 1-9 against 2-10, so at least one via of each pair would need controlled-depth drilling (drilling from the outside to a set depth). That works only to about 1:1 depth to width, and these holes reach 9.6:1. Two same-net via pairs also sit closer than the board's hole spacing minimum, which would need filled and capped vias that the board does not ask for.",
+   "where": "Whole ASIC board, all layers. 87 of the 133 non-through vias other than 1-2 sit in the J3/J4/capacitor band (y 67.4-73.5 mm). Examples: REF_VCM 1-5 and VDD_DRIVER 6-10 at (136.01, 68.44), 0.070 mm apart; DGND 9-10 and VDD_FE 1-3 at (134.45, 68.19), 0.068 mm apart; same-net pairs VDD_ADC 1-7/7-10 and REF_VDD 1-4/4-10.",
+   "evidence": "exports/asic/vias.csv and board.json: 501 vias, all 0.15/0.25 mm; spans 1-2 x139, 1-3 x8, 1-4 x8, 1-5 x9, 1-6 x14, 1-7 x17 (7 tagged buried by KiCad), 1-8 x8, 1-9 x24, 1-10 x229, 2-10 x4, 3-10 x4, 4-10 x4, 5-10 x4, 6-10 x8, 7-10 x9, 8-10 x4, 9-10 x8; KiCad reports 0 microvias. Crossing pairs (1-k against j-10 with j<k): 7+6+...+1 = 28. Depths from exports/asic/stackup.txt (0.035 mm copper, 0.1 mm prepreg and 0.1825 mm cores alternating): 1-9 and 2-10 = 1.445 mm, 1.445/0.15 = 9.6:1; 1-7 = 1.093 mm (7.3:1); 1-2 and 9-10 = 0.17 mm (1.1:1); through = 1.58 mm (10.5:1). exports/asic/drc.json hole_to_hole: VDD_ADC 0.0365 mm and REF_VDD 0.0979 mm against a 0.1016 mm minimum. 64 via pairs are closer than 0.326 mm; 18 are different-net pairs on spans that share no layer, so KiCad does not flag them, but the REF_VCM 1-5 and VDD_DRIVER 6-10 ends are separated only by the 0.1 mm L5-L6 prepreg, so a drilling depth error would join two rails. boards/asic/PCB.kicad_pcb: filling no, capping no, plugging no. Reviewers' clash check (tracks, pads and vias; pours ignored): 170 of the 272 non-through vias could become through vias, 102 could not. The June PCBWay set (inputs/asic/pcbway_fab) has only through vias, so this via scheme has never been built.",
+   "source": "PCBWay capabilities page, Advanced PCB, https://www.pcbway.com/capabilities.html: item 2 (1+1+...+N+...+1+1 HDI normal, any-layer HDI medium), item 5 (0.20 mm normal minimum mechanical drill), item 6 (aspect ratio 8 normal, 10 high difficulty, over 12 non-standard). The crossing-span rule and the roughly 1:1 controlled-depth limit are engineering judgement; the page does not cover controlled-depth drilling.",
+   "consequence": "A fabricator will reject the order or quote it as any-layer HDI with a different thin-dielectric, laser-drilled, filled stack, which matches neither the drawn 0.15 mm drilled vias nor the 0.1825 mm cores. Even the 229 through vias at 0.15 mm on 1.6 mm (10.5:1) are high difficulty at PCBWay.",
+   "suggested_action": "Ask the fabricator which spans and drill sizes it can build on this stack. Then reduce the set to the spans it accepts (for example through vias plus shallow 1-2 and 9-10): 170 of the 272 non-through vias convert to through directly, and the other 102 need local moves."
+  },
+  {
+   "id": "ASIC-03",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Upheld after a third independent check",
+   "basis": "confirmed_in_files",
+   "already_known": "The weekly deck record calls the ASIC board 'files ready' (inputs/system/weekly_deck/START_HERE.md); one reviewer disagrees because those files are not for this board. Parity 32 is listed in the review brief; the 0.8 vs 1.6 mm difference is noted in inputs/system/README_2026-11-11.md. No record lists the Gerber mismatch or the missing finish/bond data.",
+   "found_by": [
+    "asic-layout-fab",
+    "asic-reference"
+   ],
+   "title": "The only ASIC-board Gerber set is from an older single-ASIC board; the current two-ASIC board has none.",
+   "area": "Order files",
+   "what": "The PCBWay Gerber and drill set (the fabrication files) beside the board file was made on 21 June 2026 from an earlier board with one ASIC, a 50-pin DF40 header and only through vias. The two-ASIC board under review has never had Gerber, drill, placement or assembly files exported. Its files also leave out capacitor values, a stated wire-bondable surface finish, an agreed thickness and a wire-bond diagram (the drawing that tells the assembler which die pad bonds to which board pad). The project record already calls this board 'not ready yet', so the real risk is that the unlabelled June set is sent to the factory by mistake.",
+   "where": "inputs/asic/pcbway_fab/* (identical to boards/asic/board/pcbway and pcbway.zip, and the only fabrication set in 'PCB - Bottom.zip') against boards/asic/PCB.kicad_pcb and PCB.kicad_sch.",
+   "evidence": "PCB-job.gbrjob: CreationDate 2026-06-21T18:35:43, KiCad 9.0.7, 15.7113 x 16.9966 mm, 1.6 mm, Finish None (on-disk timestamps read 2 Nov). PCB-PTH.drl: T1 0.150 x315 vias and T2 0.500 x1 (J1 side pin), one span (Plated 1,10); PCB-NPTH.drl empty; no blind-span drill files. PCB-F_Cu.gbr: 315 via pads at 0.300 mm, U01_BCD1 (177 pads), C1-C48 and J1; PCB-B_Cu.gbr: 50 DF40 pads plus 4 mounting pads. The June backup and the July PCB.kicad_pcb in Board-1024.zip load in pcbnew as the same board (U01_BCD1, J2 Hirose_DF40C-50DP, C1-C48, 315 through vias at 0.15/0.30 mm). Current board: 21.97 x 17.03 mm (exports/asic/board_stats.txt), U01_BCD1 and U01_BCD2 (176 pads each), J3 DF40C-80DS, J4 DF40C-80DP, 18 placed capacitors (50 in the schematic, parity 32), 501 vias at 0.15/0.25 mm: 229 through and 272 blind by layer span (KiCad marks 7 as buried) over 17 spans. PCB.kicad_pcb line 169 copper_finish 'None'; thickness 1.6 mm against 0.8 mm in the deck and print models (inputs/system/README_2026-11-11.md line 51); no title block in the .kicad_pcb or .kicad_sch; exports/asic/bom.csv 'C1-C50 C_Small_US' with no MPN or voltage. No other .gbrjob for this project and no bond diagram or assembly drawing in ~/kicad_work or the Desktop workspace. exports/ldo_a/parts.csv: FPGA-LDO A J3 DF40C-80DP and J4 DF40C-80DS. inputs/system/weekly_deck/START_HERE.md: line 49 'ASIC board files ready' (21:40) is replaced at line 59 (22:20) by 'Top board ready / Bottom board not ready yet'.",
+   "source": "Engineering judgement: fabrication data must come from the released board file. PCBWay blog articles on gold wire bonding finish and on ENEPIG (pcbway.com, read through search results) recommend ENEPIG or bondable soft gold for gold wire bonding and ask for the finish to be stated on the order.",
+   "consequence": "Sending the June set builds the old single-chip board, whose 50-pin header cannot mate with the 80-pin J3/J4 on the FPGA-LDO boards, at the cost of a full board order. The current board cannot be quoted or assembled until stack, finish, values and bond data exist.",
+   "suggested_action": "Label the PCBWay set as belonging to the June single-ASIC board. After the via, decoupling and thickness findings are settled, get or generate a released set from the current file: Gerbers, per-span drill files, stack-up, bondable finish, capacitor BOM, placement, assembly drawing and bond diagram."
+  },
+  {
+   "id": "ASIC-04",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_decision",
+   "already_known": "inputs/notes/fpga-ldo-v14.md (line 13) records that the far board shares CLKH/SPI_CLK/SPI_DIN as a fact; no decision is recorded. Reviewers agree it needs a decision before ordering.",
+   "found_by": [
+    "asic-schematic",
+    "asic-reference"
+   ],
+   "title": "Each near/far ASIC pair shares one SPI data stream, so eight chips get only four configuration streams.",
+   "area": "ASIC configuration",
+   "what": "Each ASIC chip loads its gains, reference DAC settings and stimulation tables through its own serial (SPI) data lines, SPI_DINL and SPI_DINR. The ASIC board passes no T_ copy of these lines and leaves its spare pins open, so a far board can only reach the near board's SPI wires, and FPGA-LDO A, the Option B router and the Frontend carry only four data pairs. Each far chip therefore gets exactly the same configuration, stimulation tables included, as the near chip below it, and SPI_LATCH and CHIP_RESET are shared by all eight chips. The project's earlier 117-signal baseline had six data streams and a clock per board; the dropped nets are still marked 'to confirm'.",
+   "where": "ASIC board J3/J4: chip 1 SPI_DINL 59 / SPI_DINR 57, chip 2 SPI_DINL(2) 25 / SPI_DINR(2) 23, CLKH 7, SPI_CLK 63, SPI_LATCH 61, CHIP_RESET 71; spare pins 2, 4, 6, 8, 24, 58. FPGA-LDO A and Option B router: STIM_CHIP1/2_SPI_DL/DR on J4 59/57 and 25/23, STIM_CHIP3/4 on the same J3 pins, BOARD1/3_CLK, BOARD1/3_SPI_CLK, SPI_LATCH_SHARED, CHIP_RESET_SHARED. Frontend: STIM_CHIP1..4_SPI_DL/DR only.",
+   "evidence": "exports/asic/netlist.xml: J3 and J4 identical on all 80 pins; no T_ net for SPI, CLKH or LATCH (T_ nets are only READ, D<1:8>, CLK32MHZ, SYNC); pins 2, 4, 6, 8, 24, 58 unconnected. exports/ldo_a/netlist.xml and ldo_b_router/netlist.xml: 4 SPI_DL/DR pairs (STIM_CHIP1..4) for ASIC1..8; J3/J4 pins 2, 3, 4, 5, 6, 8, 24, 58 unconnected. exports/frontend/netlist.xml: no BOARD2/BOARD4 or NONSTIM nets. Resulting shared pairs: ASIC1/3, 2/4, 5/7, 6/8. inputs/asic/Pins__Sheet1.csv: SPI_DL and SPI_DR under 'Not Shared / Chip in'. inputs/asic/ASIC_Reference/ASIC_REFERENCE.md lines 43 and 57-64: the per-chip DR stream suffix holds gain, AR_DAC and DR_DAC, and the L/R stimulus tables are loaded per chip. Archived ASIC_117_Signal_Baseline.csv: STIM_CHIP1..4 independent, NONSTIM_BOARD1/2_SPI_DL/DR, BOARD1..4_CLK and BOARD1..4_SPI_CLK. The 9 Nov schematic V43 J1/J2 remap record (START_HERE.md line 13) lists the dropped nets as 'to confirm'; inputs/asic/sandwich_hub_options/START_HERE.md lists the top board file and the BOARD2/4 and NONSTIM pins as open. inputs/ldo_a/V12_record/START_HERE.md line 57: an order fixes pin map V5.",
+   "source": "The ASIC designer's pin workbook (inputs/asic/Pins__Sheet1.csv); inputs/asic/ASIC_Reference/ASIC_REFERENCE.md sections 2 and 4 (per-chip DR/DL configuration stream); the project's earlier 117-signal baseline (ASIC_117_Signal_Baseline.csv).",
+   "consequence": "Chips 1/3, 2/4, 5/7 and 6/8 always record with the same gains and stimulate with the same patterns at different brain sites, and a far chip cannot be kept from stimulating when its near chip does. Ordering FPGA-LDO A fixes pin map V5, so per-chip settings cannot be added later without new boards.",
+   "suggested_action": "Confirm with the ASIC designer and the experiment owner whether paired configuration is acceptable. If not, before ordering, give the far chips their own SPI data on spare pins (for example 24/58) and carry them through the near ASIC board (J3 to J4), the far variant, FPGA-LDO A/B and the Frontend."
+  },
+  {
+   "id": "ASIC-05",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "The 32-item parity appears in the review brief and today's DRC export only. No record states the per-rail loss or a decision about it.",
+   "found_by": [
+    "asic-schematic",
+    "asic-layout-fab",
+    "asic-reference"
+   ],
+   "title": "The ASIC board places 18 of its 50 schematic decoupling capacitors, two per rail, 5.9-10.8 mm from the dies.",
+   "area": "Power decoupling",
+   "what": "Decoupling capacitors are small local charge stores that keep a supply steady when a chip draws current in fast steps. The schematic has 50 but the board has 18, so each of the nine rails keeps exactly two, shared by both dies; 16 sit in a row on the far side of J4 from the dies and C6/C50 sit just east of J4. The cut came in the 2 Nov save that added J4 over the old capacitor area, and the designer's J3 spreadsheet lists exactly these 18, so it looks deliberate, but the schematic was not updated and no ASIC document gives a decoupling requirement. VDD_CGEN has no inner plane, so the far die's VDD_CGEN pin has no local storage.",
+   "where": "ASIC board, top side. Placed: C1, C2, C4, C5, C7, C14, C18, C19, C25, C26, C33, C34, C41, C42, C46, C48 at y 68.1 mm, x 129.6-140.3; C6 (145.53, 70.92) and C50 (145.55, 71.79). J4 pads span y 69.65-72.36; die pads y 75.36-83.96. Schematic-only: C3, C8-C13, C15-C17, C20-C24, C27-C32, C35-C40, C43-C45, C47, C49. VDD_CGEN at U01_BCD1.",
+   "evidence": "exports/asic/summary.txt and drc.json: parity 32 missing_footprint. Placed/schematic per rail (netlist.xml, pads.csv): VDD_FE 2/4, VDD_ADC 2/6, VDD_DRIVER 2/6, DVDD 2/8, REF_VDD 2/8, REF_VCM 2/4, VDD_CGEN 2/2, VDD10 2/6, VSS10 2/6 = 18/50. Nearest same-net die pad 5.9-10.8 mm from each capacitor (e.g. C1 10.15, C7 6.92, C50 5.88 mm), farthest 21.7 mm (C1 to U01_BCD2). Die power pads reach a same-net via within 0.38-0.72 mm, except VDD_CGEN (4.26 mm at U01_BCD2, 13.56 mm at U01_BCD1). exports/asic/zones.csv: VDD_CGEN has only L1 4.8 mm² and L10 2.9 mm², no plane; its trace totals 18.0 mm (L1 17.2 + L10 0.8, mostly 0.2 mm wide), 14.98 mm from the J4 pin at (143.34, 72.36) to the U01_BCD1 pad. Plane capacitance is only tens of pF (VDD_FE L3 over AGND L2: 324 mm², 0.1825 mm, εr 4.5, about 71 pF). Earlier layouts: the single-die board in Board-1024.zip has 48 capacitors at 2.42-8.27 mm; the 17 Sep archive PCB-5 has 50 at 2.31-9.10 mm. KiCad history in 'PCB - Bottom.zip': 50 capacitors at ae1a44a (2 Nov 22:35:48), 18 with J4 added at b6b662e (22:35:53). inputs/asic/J3_pinout__Power_Pins.csv 'Decoupling caps' column names exactly the 18. FPGA-LDO A and the B router place 1 µF 0402 parts (C51, C53-C57) on six ASIC rails at J3/J4. exports/asic/bom.csv: C1-C50, quantity 50, no values. Back side under the dies: 120 through vias and 63 B.Cu segments.",
+   "source": "No ASIC datasheet value exists (inputs/asic/ASIC_Reference/ASIC_REFERENCE.md, U02/U04: fitted R/C population unconfirmed). Design intent in PCB.kicad_sch and the ASIC designer's earlier layouts. Engineering judgement.",
+   "consequence": "Higher supply and reference noise at the ADC and low-noise front end is plausible but unproven (4-5 µVrms target, 6.5 µVrms measured in ASIC_REFERENCE.md), and the far die's VDD_CGEN sees about 15 mm of thin trace with no local capacitor. Ordering from the schematic BOM buys 50 parts for 18 sites.",
+   "suggested_action": "Ask the ASIC designer for the minimum capacitor set and values per rail per die, then either reduce the schematic to the 18 placed parts so parity is clean or add capacitors nearer the dies (at least VDD_CGEN at U01_BCD1). Before using the back side under the dies, check clearance to the lower board's dies and wire bonds in the 1.5 mm stack gap."
+  },
+  {
+   "id": "ASIC-06",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "inputs/notes/fpga-ldo-v14.md line 165 asks about the 0201 +/-10 V capacitor rating (open).",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "No ASIC-board capacitor has a value, voltage rating or part number, including four 0201 parts on ±10 V rails.",
+   "area": "Parts / BOM",
+   "what": "All 50 schematic capacitors carry only the symbol name 'C_Small_US' as their value, with no voltage rating, MPN (manufacturer part number), LCSC number or datasheet, so the board cannot be quoted or assembled from these files. Of the 18 capacitors on the board, four 0201 parts sit on the ±10 V stimulation rails; the schematic adds eight more that are not placed. An unspecified 0201 part could be rated 6.3 V or 10 V, which would put it at or above 100 % of its rating, and ceramic capacitors lose much of their capacitance under DC bias. 0201 parts rated 16-25 V exist, so the gap is the missing rating, not the package.",
+   "where": "ASIC board C1-C50 (schematic), 18 on the board. On the ±10 V rails on the board: C18, C19 (/VDD10 to /AGND) and C25, C26 (/VSS10 to /AGND), 0201, top side at y about 68.1 mm. Schematic-only on these rails: C15-C17, C20 (VDD10) and C21-C24 (VSS10).",
+   "evidence": "exports/asic/bom.csv: one line 'C1-C50, C_Small_US, Capacitor_SMD:C_0201_0603Metric, 50' with MPN, Manufacturer, LCSC and Datasheet empty. boards/asic/PCB.kicad_sch: 50 C_Small_US instances (51 strings including the library symbol). exports/asic/parts.csv and pads.csv: 18 capacitors on the board; /VDD10 pads only C18.1 and C19.1, /VSS10 only C25.1 and C26.1. inputs/asic/J3_pinout__Power_Pins.csv: VDD10 +10 V (C18, C19), VSS10 -10 V (C25, C26). exports/ldo_a/netlist.xml (schematic V30A): U9 LT3042 with R901 100k and U10 LT3094 with R1001 100k on SET; 100 µA x 100 kΩ = 10.0 V (SET current from memory, not re-read from the datasheet). The ±9.09 V figure comes from the older V21 parts review (inputs/ldo_a/parts_review_V21/index.html).",
+   "source": "Engineering judgement: the voltage rating should exceed the working voltage with derating. The LT3042 / LT3094 SET current and 0201 rating availability are from memory, not checked against the datasheet.",
+   "consequence": "The assembler cannot quote. A 10 V-rated part on a 10.0 V rail runs at about 100 % of its rating, with large capacitance loss and higher failure risk.",
+   "suggested_action": "Get the intended values from the ASIC designer and fill in value, rating (at least 16 V, preferably 25 V, for C18, C19, C25 and C26) and MPN in the schematic fields."
+  },
+  {
+   "id": "ASIC-07",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "Every ASIC bond pad is on the solder-paste layer, and no record specifies a wire-bondable surface finish.",
+   "area": "Wire bonding",
+   "what": "All 352 bond fingers (the board pads that the ASIC's bond wires land on) carry solder paste. The board also needs a top-side stencil for 18 0201 capacitors and J4, so a stencil cut from these files would print solder onto the fingers, and a soldered finger cannot be bonded reliably. The surface finish field reads \"None\", which is KiCad's default; the real finish is chosen on the order form, which is not in the workspace, so nothing records a bondable finish or the bond-wire type it must suit. The mask openings equal the pad size with 0.1016 mm webs, which is a smaller point: the fabricator will probably open the whole row.",
+   "where": "ASIC board, U01_BCD1 and U01_BCD2 (footprint chip:U01_BCD_OFF_CHIP), all 176 pads each, top side: F.Cu, F.Mask, F.Paste.",
+   "evidence": "boards/asic/PCB.kicad_pcb read with pcbnew: each U01 footprint has 176 SMD pads (128 at 0.1016 x 0.254 mm, 45 at 0.1016 x 0.635, 2 at 0.2032 x 0.254, 1 at 0.2032 x 0.635), all on F.Cu, F.Mask and F.Paste, with no pad or footprint paste/mask margin; board paste margin 0, pad_to_mask_clearance 0 (line 172), copper_finish \"None\" (line 169). Pad pitch 0.2032 mm, so gaps are 0.1016 mm (exports/asic/pads.csv). parts.csv, bom.csv and pos.csv list both U01 parts as placed and in the BOM with no DNP flag. The older single-ASIC PCBWay set (inputs/asic/pcbway_fab, 21 June 2026) flashes 177 bond-pad paste apertures and its PCB-job.gbrjob reads \"Finish\": \"None\". No record of finish, wire bond or stencil decision in inputs/asic, inputs/notes or inputs/system.",
+   "source": "PCBWay capabilities page, https://www.pcbway.com/capabilities.html: ENEPIG and hard gold in the Standard tier, soft gold and wire bonding not listed, green-mask bridge 4 mil normal. IPC-4556 scope (ENEPIG suits soldering and Au, Al and Cu wire bonding) seen only on a reseller page; the standard itself was not read. Otherwise engineering judgement.",
+   "consequence": "Solder printed on the fingers, or a finish that does not suit the bond wire, would leave the dies unbondable on that build.",
+   "suggested_action": "Remove F.Paste from the U01 pads (or blank those apertures on the stencil) and mark U01 as not placed by the assembler. Record the bond-wire type and order the matching bondable finish (for example ENEPIG or soft gold) in the order notes."
+  },
+  {
+   "id": "ASIC-08",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_decision",
+   "already_known": "inputs/system/README_2026-11-11.md notes the 0.8 vs 1.6 mm mismatch for the models only. The reviewer agrees it is open and rates it major.",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "The ASIC board file is a 10-layer 1.6 mm stack, but the recorded choice and the fit models use 0.8 mm.",
+   "area": "Stack-up",
+   "what": "The project record says 0.8 mm was chosen on 6 November and the deck's fit models draw the ASIC board at 0.8 mm, but the board file and its Gerber job still define a 1.6 mm board, so ordering the files as they stand gives 1.6 mm boards. No fabricator has been asked whether a 10-layer 0.8 mm board with this blind and buried via set can be built. Going thinner makes the vias easier (lower aspect ratio, the hole depth divided by its width); the real 0.8 mm risk is nine very thin dielectric layers and the impedance the fabricator can then offer. The J1 side pin clashes in the generic model at both thicknesses.",
+   "where": "ASIC board, boards/asic/PCB.kicad_pcb setup stack-up and line 6; boards/asic/board/pcbway/PCB-job.gbrjob; all 501 vias; J1.",
+   "evidence": "PCB.kicad_pcb line 6 (thickness 1.6); stackup.txt 10 x 0.035 Cu + 5 x 0.1 prepreg + 4 x 0.1825 core + 2 x 0.01 mask = 1.60 mm; PCB-job.gbrjob \"BoardThickness\": 1.6, LayerNumber 10, ImpedanceControlled true. inputs/notes/fpga-ldo-v14.md line 108 (0.8 mm chosen 6 Nov); inputs/system/README_2026-11-11.md lines 51 and 104; weekly_deck/START_HERE.md lines 14, 53, 61. All vias 0.15 mm drill (229 through, 265 blind, 7 buried): through-via ratio 1.6/0.15 = 10.7 at 1.6 mm, 0.8/0.15 = 5.3 at 0.8 mm. At 1.6 mm the four boards add 3.2 mm of board thickness; the overall envelope grows about 1 to 3.2 mm because the plug and the J1 tail set some extremes (README: Option A 13.82 mm without plug, 15.17 mm with). At 0.8 mm the dielectrics get 0.43 to 0.57 mm in total, 0.048 to 0.063 mm each. J1 (generic PinHeader_1x01_P1.00mm_Horizontal) tail ends 1.70 mm below the board at 0.8 mm (gap 1.5 mm) and the fit test at 1.6 mm found a 0.24 mm pin-to-pin overlap.",
+   "source": "PCBWay capabilities page, https://www.pcbway.com/capabilities.html: 10 layers at 1.40 mm or more normal, 1.20 mm medium, below 1.20 mm high difficulty; thickness-to-hole ratio up to 8 normal, 10 high, above 12 beyond limit.",
+   "consequence": "Ordered from the current files, the boards come out 1.6 mm and the head stack is taller than modelled. Ordered at 0.8 mm without a fabricator stack, the board falls in the high-difficulty range with unchecked impedance.",
+   "suggested_action": "Get the fabricator's 10-layer 0.8 mm stack (or confirm 1.6 mm), put it in the board file and Gerber job, and choose the real J1 part and tail length."
+  },
+  {
+   "id": "ASIC-09",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "ASIC board tracks, via rings and edge copper are at high fab difficulty, and the via-ring check is turned off.",
+   "area": "Fabrication capability",
+   "what": "The board uses 3 mil (0.0762 mm) tracks and gaps, and every via has a 0.05 mm copper ring around its hole, below the project's own 0.075 mm rule. That rule is hidden because the annular-ring check in KiCad is set to ignore; turned on, it reports 199 errors. Copper planes on L1 to L9 and some via pads come to about 0.10 mm from the routed board edge. Also, 272 of the 501 vias are blind or buried (not running through every layer) and use 0.15 mm mechanical holes over about 16 to 18 different layer spans, which needs many lamination cycles and is the strongest open question for the fabricator.",
+   "where": "Whole ASIC board: 1212 tracks of 0.0762 mm (824 on L1, 388 on L10); all 501 vias (0.25 mm pad, 0.15 mm hole); pours on L1 to L9 at the outline; through vias at (146.078, 80.786) REF_VCM and (124.566, 83.51) VDD_FE; AGND pads of C2, C18, C33, C41, C42.",
+   "evidence": "pcbnew on boards/asic/PCB.kicad_pcb: track widths F.Cu 0.0762 x824, B.Cu 0.0762 x388; board_stats.txt min clearance 0.0757 mm. Vias all 0.25/0.15 mm, ring 0.05 mm; PCB.kicad_pro min_via_annular_width 0.07493 with annular_width = ignore; scratch DRC with the check set to error gave 199 annular_width errors (actual 0.0500 mm) against none in exports/asic/drc.json. Through vias (229): 1.58 mm copper stack / 0.15 mm = 10.5 (10.7 at 1.6 mm finished). Blind 265, buried 7. Pours on F.Cu and In1 to In8 reach 0.1021 mm from the edge, the B.Cu pour 0.18 mm; nearest via copper 0.1016 mm; nearest pads 0.11 mm. Inner planes (zones.csv) are two ground layers (AGND In1, DGND In8) and six supply layers, including VDD10/VSS10 at 9.0 to 9.1 V nominal (ASIC_Nine_Rail_Design_Intent.csv). The PCBWay Gerber set in inputs is an older 15.71 x 17.00 mm layout with only through holes, so it does not show the current geometry can be made.",
+   "source": "PCBWay capabilities page, https://www.pcbway.com/capabilities.html, Advanced table: outer 35 um trace/space below 4/4 mil high difficulty; via ring below 3 mil high; drill below 0.2 mm at ratio 10 or more medium; copper to CNC edge 0.25 mm normal, below 0.20 mm high; blind/buried offered as HDI 1+N+1 builds.",
+   "consequence": "Higher price and lower yield, or a quote refusal for the blind/buried build. Copper 0.10 mm from a milled edge can be exposed or smeared across planes of different nets.",
+   "suggested_action": "Set annular_width back to error, then send the fabricator the via-span table, the 3/3 mil and 0.05 mm ring figures and the edge distance for a written yes, and pull planes back to 0.25 mm where room allows."
+  },
+  {
+   "id": "ASIC-10",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "Open vias sit inside the DF40 and 0201 capacitor pads, and no via filling or capping is specified.",
+   "area": "Assembly",
+   "what": "Many vias are drilled straight into the J3 and J4 connector pads and the 0201 capacitor pads. An open via hole inside a pad pulls molten solder down into the hole, which can starve a fine-pitch joint and leave a pin open. The board setup says the vias are not filled, plugged or capped; tenting (covering a via with solder mask) does not help inside a pad, because the pad is open in the mask. PCBWay does sell filled and plated-over vias, so the fix is an order option, not a redesign.",
+   "where": "ASIC board: J4 (DF40 header, top, pads 0.23 x 0.66 mm), J3 (DF40 receptacle, bottom, pads 0.2 x 0.7 mm), and all 18 placed 0201 capacitors (C1, C2, C4, C5, C6, C7, C14, C18, C19, C25, C26, C33, C34, C41, C42, C46, C48, C50).",
+   "evidence": "boards/asic/PCB.kicad_pcb lines 172 to 187: tenting yes/yes; covering, plugging, capping and filling no; pad_to_mask_clearance 0. All 501 vias 0.25/0.15 mm (vias.csv). pcbnew overlap check (scratch/verify-asic-f10-files): J4 has 30 through vias and 12 blind vias, every hole inside a pad; J3 has 25 through vias (15 to 16 with the hole in the pad, the rest touching) and 17 blind vias (16 hole in pad); the 18 capacitors have 38 vias, 33 with the hole in the pad, 15 of them centred 1-2 vias. The through vias in J4 pads come out under J3 pads, since J3 and J4 sit at the same XY. Volume: an open 0.15 mm x 1.6 mm barrel holds about 0.028 mm3, against roughly 0.009 to 0.012 mm3 of solder per DF40 joint (stencil thickness assumed). No via-fill specification for this layout exists in inputs; the PCBWay set there is an older through-hole-only layout.",
+   "source": "Engineering judgement. PCBWay Via in Pad help page, https://www.pcbway.com/helpcenter/ordering_parameter_instruction/Via_in_Pad.html (resin fill with plated cap); Via Filled with Copper page, https://www.pcbway.com/helpcenter/ordering_parameter_instruction/Via_Filled_with_Copper.html (copper-paste fill for 0.1 to 1.0 mm holes in 0.2 to 4.0 mm boards); HDI page, https://www.pcbway.com/hdi-pcb.html (resin fill from 0.254 mm). Hirose DF40 guideline not checked: hirose.com returned 403.",
+   "consequence": "Open or weak DF40 joints in the board-to-board stack, hidden under the connector body, and tombstoned or poorly soldered 0201 capacitors.",
+   "suggested_action": "Order copper-paste-filled, plated-over vias (via-in-pad) for the in-pad vias, after the fabricator confirms it covers a 0.15 mm drill in this board, and set filling and capping in the board setup; otherwise move the vias off the pads."
+  },
+  {
+   "id": "ASIC-11",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_vendor_answer",
+   "already_known": "Partly: findings/_raw/asic-layout-fab.json finding 8 notes 0.24 mm per side for the 8.1 mm die and rates it minor. It does not test the other orientation or the thickness rule. This reviewer rates it major.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "The bond-finger opening fits the 8.1 x 7 mm die only if the die is thin, and no file records its thickness.",
+   "area": "Wire bonding / die fit",
+   "what": "Each die sits in an 8.583 mm wide opening between the inner bond-finger columns, with 8.795 mm from the top finger row to the bottom board edge. One bonding house's guide asks for a die-to-finger gap of 1.5 x die thickness. With the 8.1 mm side across the opening the die must be no thicker than 0.16 mm; with the 7 mm side across it must be no thicker than 0.46 mm, and only if it sits flush with the board edge. Neither orientation keeps all wires in line with the fingers, which matters for gold ball bonding but not for aluminium wedge wire. No file records the die outline, thickness after backgrinding (thinning), pad map, wire type or orientation.",
+   "where": "ASIC board, L1: U01_BCD1 inner finger columns x 125.825 to 134.408, U01_BCD2 x 136.210 to 144.793; top-row inner edge y 75.6775; bottom board edge y 84.4724.",
+   "evidence": "exports/asic/board.json pad boxes: opening 134.4077 - 125.8246 = 8.583 mm (same for both dies); depth 84.4724 - 75.6775 = 8.795 mm (bottom edge from the Edge.Cuts gr_poly, PCB.kicad_pcb line 13168). Die 8.1 x 7 mm, no axis given (ASIC_REFERENCE.md line 35, B25). 8.1 mm across: (8.583 - 8.1)/2 = 0.242 mm per side, t <= 0.16 mm. 7 mm across: 0.792 mm per side, t <= 0.53 mm; in y 8.795 - 8.1 = 0.695 mm, t <= 0.46 mm with the die flush to the edge; the 0.5 mm die box in the fit models (README line 51) already fails this. Top row: 46 fingers spanning 9.45 mm; side fingers span 8.2 mm. Wire fan past the die edge: about 1.2 mm per end for the top row with 7 mm across; about 0.6 to 0.67 mm with 8.1 mm across, plus about 0.5 to 0.6 mm on the side wires. These limits assume a centred die with no placement tolerance or glue fillet. The footprint has no outline, courtyard or fab graphics; no die thickness, outline, pad map or orientation found in inputs/asic, inputs/notes or inputs/system.",
+   "source": "Wurth Elektronik CBT, 'Chip on Board / Wire Bonding - Design Rules', Version 1.2 / 12.2021 / 504618 EN, one-page sheet, Au and Al panels, https://www.we-online.com/files/pdf1/design-rules-wire-bonding-cbt-en.pdf (chip to substrate pad 1.5 x chip thickness; Au pads aligned in the same direction; Al any angle). One fabricator's rule; the chosen bonding house sets the real limit.",
+   "consequence": "A die that is too thick or placed the wrong way leaves wires too short and steep and lets die-attach glue reach the fingers, which can ruin the bond on a scarce die or force a new board.",
+   "suggested_action": "Get the die outline, thinned thickness, pad map, wire type and intended orientation from the ASIC designer, have the bonding house check them against this footprint, and record the result on the footprint before ordering."
+  },
+  {
+   "id": "ASIC-12",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_vendor_answer",
+   "already_known": "Edge copper on all layers is in findings/_raw/asic-layout-fab.json (scope 'Copper to board edge'). The probe-exit problem is not reported.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "Probes must leave each die at the bottom board edge, but no probe outline, keep-out or edge note exists.",
+   "area": "Probe attachment / board edge",
+   "what": "None of the bond fingers carries an electrode line, so the 512 recording and 128 stimulation lines must leave each die directly at its finger-free side, which faces the bottom board edge. This layout is deliberate and inherited from the June board, but the interface is not documented: the footprint has no die outline, probe outline, overhang, copper or via keep-out, or edge note, and no probe drawing exists. With the 7 mm side across, the die edge ends at most 0.25 to 0.40 mm from the board edge, so the probe joint will overhang it. The strip under both dies carries copper: planes on eight nets, tented vias and clock tracks.",
+   "where": "ASIC board bottom edge y 84.4724; chip 1 strip x 126.6 to 133.6, chip 2 strip x 137.0 to 144.0; F.Cu AGND blind vias at (137.13, 84.02), (140.10, 84.00), (142.30, 84.08), (143.97, 84.209); F.Cu CLKH track at y 84.23 (x 125.26 to 135.09); B.Cu CLKH at y 84.11; In1 to In8 planes.",
+   "evidence": "exports/asic/board.json: 176 pads per die on 42 nets, all power, reference, SPI, data, clock or strap, no electrode nets. PCB.kicad_pcb: no rule areas, U01 footprints have no graphic items. Die bottom with 7 mm across and the 1.5t gap: y 84.077 (t = 0.2 mm) or 84.227 (t = 0.3 mm), leaving 0.395 or 0.245 mm (an upper bound; thickness and orientation are not in any file). F.Cu coverage (pours plus tracks) for y >= 84.0: 40% under chip 1, 76% under chip 2. Via copper ends 0.327, 0.347, 0.267 and 0.138 mm from the edge for the four AGND vias; CLKH through via at (135.76, 84.11) 0.237 mm. In1 to In8 reach y 84.370 (0.102 mm from the edge) carrying AGND, VDD_FE, REF_VDD, REF_VCM, VDD_DRIVER, VDD_ADC, DVDD and DGND. With 8.1 mm across (valid only for t <= 0.16 mm) the 1.35 to 1.50 mm strip holds 11 vias under chip 1, 15 to 17 under chip 2, and 11 to 13 L1 track pieces under each. June board (scratch/asic-layout-fab/old_jul): lowest finger 0.145 mm from the edge. weekly_deck/START_HERE.md line 53: no probe CAD, probe drawing illustrative; inputs/notes/fpga-ldo-v14.md lines 55 to 57: probes leave the chip end.",
+   "source": "Engineering judgement; die position from Wurth Elektronik CBT, 'Chip on Board / Wire Bonding - Design Rules', Version 1.2 / 12.2021 / 504618 EN, https://www.we-online.com/files/pdf1/design-rules-wire-bonding-cbt-en.pdf (1.5 x chip thickness).",
+   "consequence": "The probe may not attach as planned, or is glued across an edge where routing burrs or exposed plane copper on eight nets sit next to the probe and the tissue end.",
+   "suggested_action": "Get the probe and die-to-probe joint drawing (base size and thickness, joint reach, any die overhang), then add a probe outline, a copper and via keep-out and a dimensioned edge note to the footprint before ordering."
+  },
+  {
+   "id": "ASIC-13",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Upheld after a third independent check",
+   "basis": "needs_vendor_answer",
+   "already_known": "Not reported. findings/_raw/asic-layout-fab.json covers paste on the fingers, the finish and general fab limits, but not finger size against a bonding rule.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "Each bond finger has its own zero-margin mask opening, and the fingers are narrower than one maker's rule.",
+   "area": "Bond finger design",
+   "what": "Bond fingers are the board pads that the bonding wire from the ASIC die is welded to. On the ASIC board each finger gets its own solder-mask opening exactly the size of the pad, which leaves 0.1016 mm mask strips between fingers with no allowance for the mask shifting during manufacture; the one published wire-bond rule found (Wurth Elektronik CBT) asks for one open block over the whole finger row. The fingers are also 0.1016 mm wide against that sheet's 150 um width, and the side fingers 0.254 mm long against its 300 um drawn length, but that sheet is one maker's guide for its own process and fingers about 100 um wide are often bonded with fine wire, so width and length are a question for the chosen PCB maker and bonding house rather than a shown failure. No bonding house or finger rule is recorded anywhere in the inputs.",
+   "where": "ASIC board, U01_BCD1 and U01_BCD2 (footprint chip:U01_BCD_OFF_CHIP), F.Cu / F.Mask. Per die: 128 side fingers 0.254 x 0.1016 mm in two columns 0.713 mm apart in x, 0.2032 mm pitch within a column (most inner-column fingers share the outer column's y positions; this is not a uniform half-pitch stagger); 45 top fingers 0.1016 x 0.635 mm at 0.2032 mm pitch (U01_BCD1 row at y 75.36). Closest gap 0.1015 mm (RDVDD_B2 to RVDD_FE4).",
+   "evidence": "boards/asic/PCB.kicad_pcb read with pcbnew: each die has 176 pads, 128 x (0.254 x 0.1016), 45 x (0.1016 x 0.635), 2 x (0.254 x 0.2032) for LDGND_11/RDGND_11 and 1 x (0.2032 x 0.635) for SPI_LDO_O; no pad or footprint mask margin; board setup pad_to_mask_clearance 0 (line 172); no F.Mask graphics or zones over the fingers. Minimum pad edge gap 0.1015 mm, 139 pairs at 0.1016 mm. On the left of U01_BCD1, 15 of 28 inner-column fingers line up with an outer finger in y and 6 to 7 are offset 0.1016 mm. inputs/asic/pcbway_fab/PCB-F_Mask.gbr (June, one-die version) uses mask apertures R0.254x0.1016 and R0.1016x0.635, the same as copper; its only two mask regions sit near x 135.6-137.6, y 73.1-74.5 mm, away from the finger rows. Width 0.1016 / 0.150 = 68 % of the sheet's width; a 0.05 mm mask shift covers about half of a 0.1016 mm finger.",
+   "source": "Wurth Elektronik CBT, Chip on Board / Wire Bonding - Design Rules, Version 1.2 / 12.2021 / 504618 EN, one page, panels for Au and Al wire bonding (pad width at least 150 um, space at least 100 um, pad length 300 um as a drawn dimension, mask opened as one block over the bond pads), https://www.we-online.com/files/pdf1/design-rules-wire-bonding-cbt-en.pdf. No second maker's or bonder's rule was checked.",
+   "consequence": "If the fab keeps the thin mask strips, normal mask misalignment can cover part of each finger and weaken or prevent bonds on the board that carries the only ASICs available; if the bonder needs wider fingers, the board needs another spin.",
+   "suggested_action": "Before ordering, get the chosen bonding house's minimum finger width, length and mask rule in writing, and open the solder mask as one block over each finger row."
+  },
+  {
+   "id": "ASIC-14",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-gap2-df40-hirose-mating-numbe"
+   ],
+   "title": "On FPGA-LDO A and the router, other-net copper runs under J4 receptacle contacts where Hirose forbids it.",
+   "area": "J4 connector land pattern",
+   "what": "Hirose's recommended land pattern for the DF40 receptacle marks a strip under each contact, between the pad's inner end and the 1.5 mm centre strip, where only that contact's own net may have copper; the catalog calls it an insulation area. On FPGA-LDO A V12 and the Option B router V2, bottom-layer tracks and pours of other nets run inside these strips under J4, the receptacle the ASIC board plugs into. On LDO A the 0.1 mm ASIC1_READ track runs under the even contacts 36 to 80, including the +10 V VDD10 contact (pin 36, partly) and the -10 V VSS10 contact (pin 54), so only solder mask separates those rails from a logic line under a contact that is mated and flexed repeatedly. The ASIC board's own J3 and the Frontend's J1/J2 are clean.",
+   "where": "FPGA-LDO A V12: J4 (DF40C-80DS, bottom, centre 99.783, 113.518), layer B.Cu (L6): /ASIC1_READ y 114.36 (x 98.783-108.19) under even pins 36-80; /ASIC2_DATA1 y 112.56 (x 89.11-98.383) under odd pins 1-31; /STIM_START_SHARED y 112.56 and /STIM_CLK_SHARED y 112.76 under odd pins 55-79; /ASIC_DVDD pour at pins 30/32. Router V2: J4 /ASIC1_READ y 114.378, /STIM_START_SHARED y 112.578, /STIM_CLK_SHARED y 112.778, /ASIC_VDD_CGEN pour at pins 3/5; J5 (DF40C-120DS) VDD_CGEN, DVDD, REF_VCM, REF_VDD and VDD_ADC pours.",
+   "evidence": "Hirose strip = the 0.2 mm pad column from 0.75 to 1.19 mm off the centre line (pattern dimensions 3.78 / 2.38 / 1.5 MAX). LDO A J4 pads 0.2 x 0.7 mm in rows at y 111.978 and 115.058, inner ends 112.328 and 114.708, so the strips are y 112.328-112.768 and 114.268-114.708. ASIC1_READ (y 114.31-114.41) lies wholly inside the upper strip; ASIC2_DATA1 (y 112.51-112.61) wholly inside the lower one. pcbnew strip-intersection scripts (two independent runs) on boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb, boards/ldo_b_router/FPGA_LDO_B_Router_Layout_V2.kicad_pcb, boards/asic/PCB.kicad_pcb and boards/frontend/Artix_Frontend_8L_V3.kicad_pcb: LDO A J4 54/80 contacts hit (3 of them, pins 3, 5, 58, are unconnected on this board); router J4 38/80 (on the router ASIC1_READ only clips a corner of pin 36's strip, 0.0033 mm2); router J5 18/120; ASIC J3 0/80; Frontend J1 0/70, J2 0/70. exports/ldo_a/nets.csv: J4.36 = /ASIC_VDD10 (U9 LT3042, R901 100k), J4.54 = /ASIC_VSS10 (U10 LT3094, R1001 100k); schematic states +/-10.0 V. The order Gerber inputs/ldo_a/V12_order/FPGA_LDO_A_V12_gerbers.zip, L6_BOT_PWR.gbl lines 2059-2064 and 2180-2186, holds these tracks. No project record mentions this rule.",
+   "source": "Hirose drawing EDC3-311352-00, DF40C-*DS-0.4V(51), sheet 1/2, revision mark 5, Recommended pattern and note 2, https://www.hirose.com/product/download?distributor=all&type=2d&lang=en&num=DF40C-80DS-0.4V%2851%29; Hirose DF40 series catalog p8, Note 3 (insulation area; its receptacle table includes DF40C-120DS), https://www.hirose.com/product/download?distributor=all&type=catalogue&lang=en&series=DF40. Read from a saved copy because hirose.com returned 403; the separate DF40C-120DS drawing for J5 was not opened.",
+   "consequence": "If the mask wears or cracks under a contact, +10 V or -10 V can short to an ASIC READ line that ends at the FPGA, or a logic line can short to an ASIC rail. The LDO A V12 order files already contain this copper.",
+   "suggested_action": "Before ordering, move these tracks on LDO A J4 and router J4 out of the 0.75-1.19 mm strips (into the centre strip or onto an inner layer), pull the router J5 pours back, and re-run the strip check."
+  },
+  {
+   "id": "ASIC-15",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Upheld after a third independent check",
+   "basis": "confirmed_in_files",
+   "already_known": "inputs/ldo_a/parts_review_V21/index.html S2 lists VDD_ADC only; the DVDD half is not recorded. The reviewer agrees it is must-confirm and rates both major.",
+   "found_by": [
+    "asic-reference"
+   ],
+   "title": "The DVDD and VDD_ADC regulators sit on the opposite ground from the one the ASIC board returns each rail on.",
+   "area": "Regulator ground returns",
+   "what": "On the ASIC board DVDD is decoupled to DGND and VDD_ADC to AGND, but on FPGA-LDO A the DVDD regulator U5 and its capacitors sit on AGND while the VDD_ADC regulator U3 and its capacitors sit on GND; NT1 (a net tie, a deliberate single copper joint between two ground nets) is the only AGND-GND bond on either board. The DC load current does not cross NT1 because of this: a linear regulator's load current returns to its input supply, and its GND pin carries only about 6.5 uA of quiescent current, so DVDD's DC return stays on GND. What does cross NT1 is the AC current drawn from the AGND-referenced capacitors C501, C502 and C54 (about 11 mm of the L2 AGND plane, away from the REF_VDD, REF_VCM and VDD_FE regulators), plus a small offset in each regulator's reference; the worst case is about 6 uV. The original LDO board had the same crossing, and the files cannot show whether the ASIC die bonds AGND and DGND internally.",
+   "where": "FPGA-LDO A: U5 TPS7A2015 (DVDD) GND pins 2/5, C501 (VIN_3V3), C502 and C54 (ASIC_DVDD) on AGND; U3 TPS7A2015 (VDD_ADC) pins 2/5, C301, C302 on GND; NT1 (100.58, 121.0) AGND-GND; AGND plane on L2. ASIC board: C7, C14 /DVDD-/DGND; C1, C34 /VDD_ADC-/AGND; J3/J4 pins 46/48 /DGND (GND on LDO A), pins 42/44 AGND.",
+   "evidence": "exports/ldo_a/pads.csv and netlist.xml: U5.2/U5.5 AGND, U3.2/U3.5 GND, C501 VIN_3V3-AGND, C502/C54 ASIC_DVDD-AGND, C301 VIN_3V3-GND, C302 ASIC_VDD_ADC-GND; only J3, J4 and NT1 touch both AGND and GND. exports/asic/pads.csv: C7/C14 /DVDD-/DGND, C1/C34 /VDD_ADC-/AGND; no discrete AGND-DGND bond. exports/ldo_a/zones.csv: AGND one piece on L2 (546 mm2, 30 um copper). Positions: NT1 (100.58, 121.0), U5 (89.95, 124.85), U2/U6/U8 at y 135.6. inputs/asic/J3_pinout__Power_Budget.csv: DVDD 1.39 mA per board (5.6 mA for four), VDD_ADC 4.18 mA per board. ASIC_Nine_Rail_Design_Intent.csv: original U2 VDD_ADC referenced to /DGND, U4 DVDD to /AGND. Calculation: about 0.57 mOhm/sq x 1-2 squares, about 1 mOhm; 5.6 mA x 1 mOhm, about 6 uV, AC only.",
+   "source": "Engineering judgement (return-current paths through a single-point ground). TI TPS7A20 product page, quiescent current 6.5 uA typical, datasheet Rev. H, Jul 2024, https://www.ti.com/product/TPS7A20; the datasheet layout section was not checked because the PDF could not be parsed.",
+   "consequence": "A small AC ground current and a microvolt-level reference offset on the low-noise side; not expected to cause a failure on its own.",
+   "suggested_action": "Ask the ASIC designer about the DVDD ground together with the recorded S2 (VDD_ADC) question, including whether the die bonds AGND and DGND internally; if regulator and load ground should match, move U5, C501, C502 and C54 to GND."
+  },
+  {
+   "id": "ASIC-16",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_vendor_answer",
+   "already_known": "inputs/ldo_a/parts_review_V21/index.html S3 (then for +/-9.09 V and 1.6 V; V12 now follows the sheet). The confirmation itself is not recorded. The reviewer agrees it is open.",
+   "found_by": [
+    "asic-reference"
+   ],
+   "title": "No tolerance or absolute maximum is recorded for the +/-10 V and 1.5 V ASIC rails that FPGA-LDO A now makes.",
+   "area": "ASIC rail voltages",
+   "what": "FPGA-LDO A V12 sets VDD10 to +10.0 V, VSS10 to -10.0 V and VDD_CGEN to a fixed 1.50 V, following the ASIC designer's November 2026 sheet, which matches the die pad names P10/M10 and the +/-10 V stimulator compliance in the chip specification. The older LDO Board A used 90k (+9.0 V) for VDD10 and 16k (1.6 V) for VDD_CGEN; its VSS10 came from a positive LT3042 floating on INPUT_VSS10, so it never set a -9.0 V relative to AGND and is no evidence the die was run at +/-9 V. The ASIC reference lists every rail's window, tolerance and absolute maximum as unknown, so nothing in the files shows how much margin the +/-10 V rails have (a 1 % resistor and the set-current tolerance could put a rail near 10.2 V).",
+   "where": "FPGA-LDO A V12: U9 LT3042 with R901 100k on SET (VDD10), U10 LT3094 with R1001 100k (VSS10), U7 TPS7A2015 fixed 1.5 V (VDD_CGEN); J3/J4 pins 36, 54, 1. ASIC board: J3/J4 pins 36/54/1 to P10_L/R, M10_L/R and VDD_CGEN of U01_BCD1 and U01_BCD2.",
+   "evidence": "exports/ldo_a/parts.csv and pads.csv: R901/R1001 100k 1 % from U9/U10 SET to AGND; U9 OUT /ASIC_VDD10, U10 OUT /ASIC_VSS10, U7 OUT /ASIC_VDD_CGEN. LDO A schematic note (change V23): +/-10.0 V per the November 2026 pin sheet; V19-V22 used 90.9k (+/-9.09 V). inputs/asic/J3_pinout__Power_Budget.csv and __Power_Pins.csv: all rails 1.5 V except REF_VCM and +/-10 V; pin 1 1.5 V, 36 +10 V, 54 -10 V. inputs/asic/ASIC_Reference/ASIC_Nine_Rail_Design_Intent.csv: U6 16000 ohm 1.6 V; U8/U9 90000 ohm 9.0 V (purchasing SKU C23265 is a 91k part, 9.1 V); U9 reference net INPUT_VSS10; window UNKNOWN for all nine rails. inputs/system/reference_LDO_Board_A/PCB_BOM.csv: R2 16k, R8/R9 90k. 100 uA x 100k = 10.0 V; the 100 uA SET current is from the schematic's own citation, not read from the datasheet.",
+   "source": "ASIC_REFERENCE.md section 1 (B15, B24), section 7 and open items U02/U03; TI TPS7A20 product page (fixed outputs including 1.5 V and 1.6 V, +/-1.5 % max), https://www.ti.com/product/TPS7A20. LT3042 and LT3094 data sheets not checked (analog.com timed out).",
+   "consequence": "If the die's absolute maximum sits close to 10 V, normal regulator tolerance could stress all eight ASICs on one LDO A; nothing in the files shows that it does.",
+   "suggested_action": "Get a written nominal, tolerance and absolute maximum for VDD10, VSS10 and VDD_CGEN from the ASIC designer and record it; change R901/R1001 or use the same-package 1.6 V TPS7A20 variant for U7 only if the answer requires it."
+  },
+  {
+   "id": "ASIC-17",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "Six BIT pads on each ASIC are unconnected, behind schematic wire stubs that look connected.",
+   "area": "Unconnected BIT pads",
+   "what": "On both ASICs, pads BITL<1..3> and BITR<1..3> each end in a 10.16 mm schematic wire with no label, so the drawing looks wired but the pads connect to nothing and have no copper on the board. The earlier one-chip board also left them unconnected: its schematic had BITL/BITR labels, but each was a one-pad net with no tracks. Their function is not in the ASIC reference or the designer's pin sheets, and their pin type is passive, so KiCad's electrical rule check (ERC) cannot tell whether they are inputs. If they are digital inputs, they float.",
+   "where": "ASIC board, U01_BCD1 and U01_BCD2 pads BITL<1..3>, BITR<1..3>. Schematic stubs at x 257.175-267.335 mm (chip 1) and 506.73-516.89 mm (chip 2), y 219-297 mm.",
+   "evidence": "exports/asic/erc.json: 24 pin_not_connected errors, 12 on these BIT pads (the other 12 on J3/J4 pins 2, 4, 6, 8, 24, 58). exports/asic/pads.csv: the 12 pads on nets 'unconnected-(U01_BCDx-PadBITx)', pin type passive. boards/asic/PCB.kicad_sch: each BIT pin has one 10.16 mm wire with nothing else attached and no label; every other strap stub carries a label at x 260.985 or 510.54. Board-1024.zip: labels BITL/BITR appear once each; the old board has /BITL<n> and /BITR<n> on the U01_BCD1 pads with no tracks or zones; inputs/asic/pcbway_fab/PCB-F_Cu.gbr shows them as one-pad nets. No BIT pad in ASIC_REFERENCE.md, Pins__Sheet1.csv or the J3_pinout CSVs.",
+   "source": "ASIC_REFERENCE.md section 10, U03 (pad electrical data absent); engineering judgement on floating CMOS inputs.",
+   "consequence": "If they are inputs: an undefined mode, extra supply current or noise. If they are outputs or test pads: no harm, but the drawing misleads.",
+   "suggested_action": "Ask the ASIC designer what BITL/BITR do and how to terminate them, then tie them as told or put no-connect flags on them."
+  },
+  {
+   "id": "ASIC-18",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "ASIC_REFERENCE.md U05 lists reset polarity as open; the CGEN_RST and EN_LDO straps are not recorded anywhere.",
+   "found_by": [
+    "asic-schematic",
+    "asic-reference"
+   ],
+   "title": "The ASIC strap pads and reset pulls are copied from earlier boards; no specification gives their polarity.",
+   "area": "ASIC straps and resets",
+   "what": "Strap pads are chip inputs tied permanently high or low to set a mode. On both ASICs CGEN_RST and SPI_LDO_O, SPI_LDO_P, SPI_LDO_P1 and SPI_LDO_P2 are tied to DVDD (1.5 V) and EN_LDO to DGND; if CGEN_RST is an active-high reset, the clock generator never runs and no CLK32MHZ returns. On FPGA-LDO A, R19 pulls CHIP_RESET_SHARED up to ASIC_DVDD and R16 pulls FE_RESET_SHARED down to GND, which assumes active-high resets as in the historical FPGA code. These match the June and July board files, and the project record reports July 2026 bench captures that worked, but which board those tests used is not recorded, so the files cannot show that these straps were proven in practice.",
+   "where": "ASIC board U01_BCD1: CGEN_RST (127.93, 75.36) /DVDD, EN_LDO (125.49, 75.36) /DGND, SPI_LDO_O 130.68, SPI_LDO_P 133.22, SPI_LDO_P1 127.53, SPI_LDO_P2 129.96 (x, mm) on /DVDD; U01_BCD2 the same, offset +10.39 mm in x. FPGA-LDO A R19 (/CHIP_RESET_SHARED to /ASIC_DVDD), R16 (/FE_RESET_SHARED to GND).",
+   "evidence": "exports/asic/pads.csv and netlist.xml: straps as listed, both chips. inputs/asic/pcbway_fab/PCB-F_Cu.gbr lines 371-377, 424-426, 756-758 (June): CGEN_RST /DVDD, EN_LDO /DGND, SPI_LDO_O /DVDD, plus a CGEN_BK pad on /CGEN_PAD that the current footprint no longer has. Old PCB.kicad_pcb in Board-1024.zip (July 26): same straps, 177 pads per die against 176 now. exports/ldo_a/pads.csv: R19 /CHIP_RESET_SHARED-/ASIC_DVDD, R16 /FE_RESET_SHARED-GND. rtl_primary_findings.md line 21: CHIP_RESET driven high for 2^20 cycles, active high as implemented, not specified. historical_primary_findings.md line 43 (H09): July 2026 ECP5/FT600 tests with midscale capture and normal FE-reset behaviour. No ASIC input mentions CGEN_RST, EN_LDO or SPI_LDO.",
+   "source": "ASIC_REFERENCE.md section 10, U05 (reset polarity not established) and U03; historical RTL findings (rtl_primary_findings.md).",
+   "consequence": "A wrong strap shows only after bonding (no clock, or a chip stuck in reset) and would need a board spin.",
+   "suggested_action": "Before bonding, ask the ASIC designer to confirm CGEN_RST, EN_LDO, SPI_LDO_* and CHIP_RESET/FE_RESET polarity, and record which board produced the July 2026 bench captures."
+  },
+  {
+   "id": "ASIC-19",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "The ASIC bond-finger footprint lost one pad and moved six versus the earlier board, with no library source.",
+   "area": "ASIC bond fingers",
+   "what": "Bond fingers are the board-side pads that the fine bond wires from the bare ASIC die are welded to, so the bond plan depends on their exact positions. The footprint on the current board differs from the one on the earlier, fabricated board: one finger is gone and six have moved, two of them by about 0.7-0.8 mm. The moves look like a deliberate re-stagger and may be a correction. The footprint library 'chip' is not in the project, so the files cannot say which finger map matches the die; only the die pad map or the ASIC designer can.",
+   "where": "ASIC board U01_BCD1 and U01_BCD2, footprint chip:U01_BCD_OFF_CHIP (earlier: IC:U01_BCD_OFF_CHIP), L1. Offsets are from the footprint origin.",
+   "evidence": "pcbnew comparison of footprint-relative pad positions, identical on both chips. Earlier footprint IC:U01_BCD_OFF_CHIP, 177 pads, used in both the June PCBWay Gerber and the July 26 PCB.kicad_pcb (Board-1024.zip); current boards/asic/PCB.kicad_pcb chip:U01_BCD_OFF_CHIP, 176 pads. CGEN_BK (net /CGEN_PAD) at (4.877, -4.134) removed; the June Gerber PCB-F_Cu.gbr flashes it at (135.441, 76.232), so the fabricated board used the old map. DISC_OUT moved 0.80 mm from the outer row (4.877, -3.930) to the inner row (4.166, -3.556); along y it now sits between M10_R and P10_R instead of before M10_R. RRST_DIGITAL moved 0.71 mm from (4.876, 3.759) to (4.166, 3.759). RAGND_15, RDGND_12 and RDGND_13 moved 0.033 mm; RDVDD_B2 moved 0.053 mm. exports/asic/drc.json lib_footprint_issues: library 'chip' not included, for U01_BCD1 and U01_BCD2; erc.json also reports symbol library 'IC' missing. boards/asic has no project fp-lib-table.",
+   "source": "Engineering judgement; the wire-bond diagram must match the bond-finger map.",
+   "consequence": "Bond wires may cross or run long at DISC_OUT, whose order relative to M10_R changed, and at RRST_DIGITAL, and the bonding house may reject the job or bond to the wrong finger.",
+   "suggested_action": "Have the ASIC designer or the bonding house check the bond diagram against the current finger map, including the removed CGEN_BK finger, and save the confirmed footprint into a project library."
+  },
+  {
+   "id": "ASIC-20",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_measurement",
+   "already_known": "",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "Each J3/J4 port has only 4 ground contacts to carry the return for 61 signal pins from four ASICs.",
+   "area": "J3/J4 pin map",
+   "what": "Every signal current must flow back to its source through ground; this return path is the 'signal return'. Each 80-pin J3/J4 port has 2 AGND and 2 DGND contacts for 61 signal pins, which include 44 outputs from four chips (this board's two plus the two passed through from the board above) switching at up to a nominal 32 MHz. The earlier one-chip 50-pin connector had 11 ground contacts. The DC current is tiny, but a fast return shared through a few contacts can cause ground bounce (the ground voltage jumping when many outputs switch) and crosstalk into AC_IN and the references.",
+   "where": "ASIC board J3 (receptacle) and J4 (header): AGND pins 42, 44; DGND pins 46, 48. Spare unconnected pins 2, 4, 6, 8, 24, 58. Same pins on LDO A and the LDO B router J3/J4.",
+   "evidence": "exports/asic/pads.csv, J3 pins 1-80: ground 42, 44 /AGND and 46, 48 /DGND; supply 1, 34, 36, 38, 40, 50, 52, 54, 56 (9 pins); unconnected 2, 4, 6, 8, 24, 58 (6 pins); 39 odd-row signals for the board's own two chips, including 22 outputs (D1-8, CLK32MHZ, SYNC and READ per chip), plus 22 even-row pass-through T_ outputs: 61 signal pins, 44 outputs from four chips. J4 matches J3 apart from unconnected-pad names. Old one-chip J2 from inputs/asic/pcbway_fab/PCB-B_Cu.gbr (TO.P/TO.N) and the July PCB.kicad_pcb: /AGND on 4, 18, 20, 27, 30, 32, 48 and /DGND on 22, 24, 26, 28 (11 contacts). exports/ldo_a and ldo_b_router pads.csv: J3/J4 pins 2, 4, 6, 8, 24, 58 unconnected; 42, 44 AGND; 46, 48 GND.",
+   "source": "Engineering judgement (signal-return path).",
+   "consequence": "Bit errors on the returned data or extra recording noise, found only at bring-up.",
+   "suggested_action": "At bring-up, measure bit errors and recording noise with all four ASIC boards running. If bounce or crosstalk shows, assign the six spare pins (unconnected on the ASIC board, LDO A and the LDO B router) to ground."
+  },
+  {
+   "id": "ASIC-21",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "The +/-10 V pins sit 0.17-0.20 mm from 1.5 V rail pins, so one solder bridge could hit up to eight ASICs.",
+   "area": "J3/J4 pin map",
+   "what": "On the 80-pin DF40 connectors, the +10 V pin sits between two 1.5 V rail pins, and the -10 V pin does too. A solder bridge (a blob of solder joining neighbouring pads) at any DF40 in the stack would drive +/-10 V into a 1.5 V rail. The rails are common to both J3 and J4 on each ASIC board and on the LDO boards, so one bridge can reach every ASIC on that LDO board, up to eight chips. The ASIC has no published absolute maximum rating, but a 10 V fault on a 1.5 V rail would very likely destroy it.",
+   "where": "ASIC board J3/J4 and LDO A / LDO B router J3/J4: pins 34 (DVDD), 36 (VDD10, +10 V), 38 (VDD_DRIVER); pins 52 (REF_VDD), 54 (VSS10, -10 V), 56 (VDD_ADC). Gap 0.17 mm on the 80DP headers (ASIC J4, LDO J3) and 0.20 mm on the 80DS receptacles (ASIC J3, LDO J4).",
+   "evidence": "exports/asic/pads.csv: J3 pads 0.20 x 0.70 mm at 0.4 mm pitch (gap 0.20 mm); J4 pads 0.23 x 0.66 mm (gap 0.17 mm); nets /DVDD, /VDD10, /VDD_DRIVER, /REF_VDD, /VSS10, /VDD_ADC. exports/ldo_a and ldo_b_router pads.csv: J3 (80DP) 0.23 mm and J4 (80DS) 0.20 mm pads; both connectors on one set of nets /ASIC_DVDD, /ASIC_VDD10, /ASIC_VDD_DRIVER, /ASIC_REF_VDD, /ASIC_VSS10, /ASIC_VDD_ADC. inputs/asic/J3_pinout__Power_Pins.csv: levels 1.5, 10, 1.5, 1.5, -10, 1.5 V. ASIC_REFERENCE.md U03: absolute limits absent. For comparison, the old one-chip J2 had VDD10 at pin 6 between AGND (4) and VDD_DRIVER (8), and VSS10 at pin 46 between VDD_DRIVER (44) and AGND (48).",
+   "source": "Engineering judgement; ASIC_REFERENCE.md U03 (no absolute maximum given).",
+   "consequence": "One assembly defect can destroy every ASIC fed by that LDO board, up to eight chips.",
+   "suggested_action": "Before first power, measure resistance from pins 36 and 54 to their neighbours on every assembled board and connector, and bring up +/-10 V last with a current limit."
+  },
+  {
+   "id": "ASIC-22",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "The ASIC footprints define no die-attach area, and pour, signal traces and tented vias run under the dies.",
+   "area": "Wire bonding / die attach",
+   "what": "Each bare ASIC die is glued to the board (die attach) inside its ring of bond pads and then wire-bonded. The U01 footprints are bond pads only, with no outline, die-attach pad, mask opening or keep-out, so traces and vias are routed under the die and the glue sits on an uneven, mask-covered surface. The files do not record the die-attach method, the back-side potential (what voltage the bottom of the die must sit at), or which way the 8.1 x 7 mm die is turned. The bond pads also carry solder paste and the copper finish is 'None', which also need settling for wire bonding. Only the ASIC designer and the bonding house can answer these.",
+   "where": "ASIC board U01_BCD1 (centre 130.37, 80.20) and U01_BCD2 (140.75, 80.20), L1 inside the bond ring.",
+   "evidence": "pcbnew on boards/asic/PCB.kicad_pcb: U01_BCD1/2 have 0 graphic items and no courtyard; 176 pads each on F.Cu, F.Mask and F.Paste; ring has two staggered columns left and right and one top row, no bottom row. Inner column edges x 125.823 and 134.41 (BCD1), 8.587 mm apart. Die 8.1 x 7 mm (ASIC_REFERENCE.md row B25, no orientation): gap to inner pad about 0.24 mm per side if 8.1 mm runs along x, about 0.79 mm if 7 mm does. Centred 8.1 x 7 mm window, BCD1: 49.34 mm2 masked AGND pour, 72 vias (43 AGND L1-L2 blind vias, 0.15 mm drill; the rest tented through vias on DGND, DVDD and signals such as FE_RESET, SPI_CLK, SPI_LATCH, STIM_*, CHIP_RESET), 74 L1 track segments ending inside. BCD2: 49.96 mm2 AGND, 67 vias (42 AGND L1-L2). Tenting front = true. copper_finish None in the stack-up and the PCBWay job file; PCBWay F_Paste Gerber has R0.1016x0.635 and R0.254x0.1016 apertures. drc.json ignores missing_courtyard.",
+   "source": "Engineering judgement. ASIC_REFERENCE.md U01 lists the die/bond revision as unknown.",
+   "consequence": "Tilted dies, voids or outgassing under the die, and glue spreading onto the inner bond fingers. If the back side must be biased, there is no exposed pad for it.",
+   "suggested_action": "Ask the ASIC designer for die orientation, back-side potential and die-attach method, then add a die-attach keep-out (and an exposed pad if needed) to U01 and settle the bond-pad paste and finish with the bonding house."
+  },
+  {
+   "id": "ASIC-23",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_decision",
+   "already_known": "inputs/system/README_2026-11-11.md (side-pin tail interference). The reviewer agrees it is minor.",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "The J1 side pin's tail hits the board below in the four-board stack, and its courtyard overlaps J4.",
+   "area": "Placement / stacking",
+   "what": "J1 is a single horizontal 1.00 mm header pin on AGND whose lead goes through the board. In the four-board stack its tail, the part of the pin that sticks out below the board, hits the board below and that board's J1. Its courtyard (the keep-clear outline around a part) overlaps J4's, which is the board's only DRC error, though copper is about 0.94 mm clear. The pin also reaches 1.875 mm past the right board edge, which is how a side pin is meant to work but matters for panel rails and enclosure fit. The real pin part and its tail length are not confirmed.",
+   "where": "ASIC board J1 at (144.875, 68.28), THT pad 0.85 mm, drill 0.5 mm, net /AGND, F.Cu and B.Cu; J4 courtyard x 126.245-144.835, y 68.79-73.22; right board edge x 146.30.",
+   "evidence": "exports/asic/drc.json: one error, courtyards_overlap J4/J1; other entries are warnings. pcbnew: J1 courtyard 143.85-148.65 x 67.255-69.305 overlaps J4's by about 0.99 x 0.52 mm. Nearest J4 MP pad corner (143.99, 69.32) is about 0.94 mm from the J1 pad edge. Edge.Cuts right side x 146.30 between y 67.44 and 75.25; J1 F.Fab lead reaches x 148.175, 1.875 mm past it. inputs/system/README_2026-11-11.md fit table and 'ASIC side pin tail' paragraph: 0.20/0.80/0.22 mm overlaps at 0.8 mm thickness; at the file's 1.6 mm, 0.90 mm tail, 0.55 mm clear to the router and 0.24 mm pin-to-pin overlap.",
+   "source": "Engineering judgement; fit record inputs/system/README_2026-11-11.md.",
+   "consequence": "With an untrimmed tail the stacked boards cannot seat on the DF40 pair. The overhanging pin also blocks a panel rail on that edge.",
+   "suggested_action": "Confirm the real pin part and its tail length, then trim the tail at assembly or move J1 so the pins of stacked boards do not line up."
+  },
+  {
+   "id": "ASIC-24",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "calculated",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "DVDD faces VDD_ADC and the +/-10 V planes face REF_VCM and DVDD across 0.1 mm with no ground between.",
+   "area": "Stack-up / plane assignment",
+   "what": "Two copper planes facing each other across thin insulation form a capacitor, so noise on one rail couples into the other. On the ASIC board, six supply planes (L3-L8) sit between AGND (L2) and DGND (L9), so several analog and digital rails face each other. The weak points are the digital supply DVDD facing the ADC supply VDD_ADC (about 104 pF over 0.1 mm), and the +/-10 V stimulation planes facing the reference REF_VCM and DVDD. DVDD already sits next to DGND and VDD_FE next to AGND; what is missing is a ground plane between DVDD and VDD_ADC.",
+   "where": "ASIC board L3 VDD_FE, L4 REF_VDD, L5 REF_VCM, L6 VDD_DRIVER + VDD10, L7 VDD_ADC + VSS10, L8 DVDD; AGND on L2, DGND on L9.",
+   "evidence": "exports/asic/stackup.txt: dielectrics 1-9 = 0.1, 0.1825, 0.1, 0.1825, 0.1, 0.1825, 0.1, 0.1825, 0.1 mm, er 4.5, copper 0.035 mm. zones.csv plane areas (mm2): AGND L2 325.6, VDD_FE L3 324.3, REF_VDD L4 324.7, REF_VCM L5 325.3, VDD_DRIVER 225.1 + VDD10 97.0 on L6, VSS10 59.5 + VDD_ADC 263.3 on L7, DVDD L8 328.2, DGND L9 332.9. Overlaps of filled zones on adjacent layers (pcbnew polygon intersection), C = e0 x 4.5 x A / d: VDD_FE/REF_VDD 129 pF over 0.1 mm; REF_VDD/REF_VCM 71 pF over 0.1825 mm; REF_VCM/VDD_DRIVER 89 pF and REF_VCM/VDD10 38 pF over 0.1 mm; VDD_ADC/DVDD 104 pF over 0.1 mm; VSS10/DVDD 23 pF over 0.1 mm; VDD10/VSS10 12 pF over 0.1825 mm (56.7 mm2 overlap). L7 VDD_ADC to L2 AGND is about 0.89 mm.",
+   "source": "Engineering judgement.",
+   "consequence": "Digital switching and stimulation edges can couple into the ADC supply and the reference, against a 6.5 uVrms front-end noise figure (ASIC_REFERENCE.md). How much depends on decoupling that is partly missing: 32 schematic capacitors are not on the board.",
+   "suggested_action": "When the stack is redone for the chosen board thickness, put a ground plane between DVDD and the analog planes, and keep the +/-10 V planes away from REF_VCM."
+  },
+  {
+   "id": "ASIC-25",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "The ASIC board has no fiducials, and parts or bond pads sit near every edge, leaving no clean edge for tabs.",
+   "area": "Assembly / panelisation",
+   "what": "At 21.97 x 17.03 mm the ASIC board must be built in a panel, an array of boards held together by small breakaway tabs or V-score grooves. Fiducials are copper marks that the paste printer, pick-and-place machine and wire bonder use to line up on the board; the board has none. Parts or bond pads come close to all four edges, so tabs or scoring on any edge would stress nearby parts or bond fingers. Panel layout and fiducials are left to the assembler.",
+   "where": "ASIC board outline x 124.34-146.30, y 67.44-84.472. Top edge: 0201 capacitor row (C41, C2, C18, C33, C42 and others). Right edge: C6, C50, J1. Bottom and left edges: U01_BCD1 / U01_BCD2 bond pads.",
+   "evidence": "exports/asic/parts.csv: 23 footprints (18 C_0201, J1, J3, J4, U01_BCD1, U01_BCD2), none a fiducial; pcbnew search found none. Edge.Cuts: top y 67.44, right x 146.30, bottom y 84.472, left x 124.34. Top: C41/C2/C18/C33/C42 pad tops at y 67.55 (0.11 mm in); 17 capacitor courtyards reach y 67.355-67.375, outside the edge. Right: C6/C50 pads about 0.2-0.3 mm in; J1 F.Fab reaches x 148.175, about 1.9 mm past the edge. Bottom: U01 pads end at y 84.015 (0.46 mm in). Left: U01_BCD1 pads start at x 124.855 (0.52 mm in).",
+   "source": "Engineering judgement.",
+   "consequence": "The assembler adds its own panel and fiducials or rejects the job, and depanelling can crack 0201 capacitors or damage bond fingers near the edge.",
+   "suggested_action": "Add two or three global fiducials and agree the panel and tab positions with the assembler, keeping the bottom (probe) edge tab-free as described in ASIC-28."
+  },
+  {
+   "id": "ASIC-26",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "The sheet itself marks REF_VDD/REF_VCM TBD; the V12 record lists 'ASIC rail currents' as open. The 2 mA vs 2.88 mA gap is not recorded.",
+   "found_by": [
+    "asic-reference"
+   ],
+   "title": "The ASIC power budget leaves REF_VDD and REF_VCM current unknown and may understate peak stimulator current.",
+   "area": "Power budget",
+   "what": "The ASIC designer's budget sheet gives currents for the four main 1.5 V rails but leaves the two reference rails, REF_VDD and REF_VCM, as TBD. It allows 2 mA per board on the stimulator rails VDD10/VSS10, while 128 stimulators at the 22.5 uA maximum would draw 2.88 mA per chip if all ran at full current at once; the specification does not say whether they can, so this is a worst-case bound, not a contradiction. REF_VCM is made by an LT3042, a regulator that only sources current; whether REF_VCM must also sink current is unknown. The files cannot settle this; the ASIC designer's figures for reference-rail current and direction and for peak stimulator current would.",
+   "where": "inputs/asic/J3_pinout__Power_Budget.csv and J3_pinout__Power_Pins.csv; FPGA-LDO A V12: U6 (LT3042, ASIC_REF_VDD), U8 (LT3042, ASIC_REF_VCM), U9 (LT3042, ASIC_VDD10), U10 (LT3094, ASIC_VSS10), 3.3 V input J2.68-J2.70 (VIN_3V3).",
+   "evidence": "Budget sheet per board: VDD_FE 4.526, VDD_ADC 4.178, VDD_DRIVER 1.509, DVDD 1.393 mA (x4 boards: 18.10, 16.71, 6.03, 5.57 mA); REF_VDD/REF_VCM TBD; VDD10/VSS10 '2 mA maximum each' per board, about 8 mA for four boards (parts_review_V21: 'about 8 mA total'). ASIC_REFERENCE.md B14 = 128 stimulators, B16 = 22.5 uA: 128 x 22.5 uA = 2.88 mA per chip, 5.76 mA per board, 23.0 mA for four boards, if all drive at once. The earlier concern of 155-215 mA on one 0.3 A contact (J1.68, parts_review_V21) is stale: pin map V5 / schematic V30 and exports/ldo_a/pads.csv put VIN_3V3 on J2.68, J2.69 and J2.70 (0.9 A total), which stays well inside its rating even with an extra worst-case 68-137 mA. The '% of DF40 0.3 A rating' column in J3_pinout__Power_Pins.csv holds fractions (AGND 0.0205 = 6.156/300 mA = 2.05 %). DVDD IO: with an assumed 15 pF per output, CLK32 alone is 15 pF x 1.5 V x 32 MHz = 0.72 mA per chip, against the sheet's 0.70 mA total IO per chip. The LT3042 datasheet could not be read (analog.com fetch timed out), so its inability to sink current was not checked against the datasheet.",
+   "source": "Original chip specification cells B14/B16 (inputs/asic/ASIC_Reference/ASIC_REFERENCE.md section 1); the ASIC designer's budget sheet (J3_pinout__Power_Budget.csv).",
+   "consequence": "The regulators have margin, but REF_VCM regulation is unproven if the rail must sink current, and VDD10/VSS10 may be loaded beyond the budget figure if stimulators can all run at full amplitude together.",
+   "suggested_action": "Ask the ASIC designer for REF_VDD and REF_VCM current and direction, and for peak VDD10/VSS10 current including any limit on how many stimulators run at once; recheck U8 and the stimulator rails with those numbers."
+  },
+  {
+   "id": "ASIC-27",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "calculated",
+   "already_known": "",
+   "found_by": [
+    "asic-reference"
+   ],
+   "title": "FPGA-LDO A brings the ASIC rails up in a fixed staggered order that has not been checked against the ASIC.",
+   "area": "Power sequencing",
+   "what": "All nine ASIC regulators on FPGA-LDO A share one enable signal, so their start order is set only by how fast each one ramps. The TPS7A2015 rails (DVDD, VDD_ADC, VDD_DRIVER, VDD_CGEN) come up fast, while the LT3042/LT3094 rails ramp slowly through the RC formed by their SET resistor and capacitor. Digital and driver rails therefore lead the references by tens of milliseconds and the +/-10 V stimulator rails by about a quarter second. The files cannot settle whether this is acceptable: the ASIC's sequence and powered-off limits are unknown, and only the ASIC designer can say.",
+   "where": "FPGA-LDO A V12: net EN_ASIC_RAILS (R1 10 k from VIN_3V3, C3 4.7 uF) to U1 LT3582-12 SHDN, U2/U6/U8/U9 LT3042 EN/UV, U10 LT3094 EN/UV, U3/U4/U5/U7 TPS7A2015 EN. SET parts R201/C203, R601/C603, R801/C803, R901/C903, R1001/C1003.",
+   "evidence": "exports/ldo_a/netlist.xml: EN_ASIC_RAILS = C3.1, R1.2, TP4, U1.8, U2/U6/U8/U9.3, U10.3, U3/U4/U5/U7.3; enable tau = 10 k x 4.7 uF = 47 ms nominal (less once C3 loses capacitance at DC bias). PGFB tied to IN on U2/U6/U8 (VIN_3V3), U9 (STIM_PRE_POS) and U10 (STIM_PRE_NEG), which disables fast start-up. LT3042 data sheet Rev C, Applications Information: 0-90 % rise is about 2.3 x RSET x CSET with fast start-up off (page not confirmed; PDF fetch timed out, text from a search extract). VDD_FE and REF_VDD: 2.3 x 15 k x 1 uF = about 35 ms; REF_VCM: 2.3 x 7.5 k x 1 uF = about 17 ms; VDD10/VSS10: 2.3 x 100 k x 1 uF = about 0.23 s to 90 % (about 0.5 s to 99 %) after the +/-12 V converter is up. The TPS7A2015 fast ramp (about 1 ms) is from memory: TI SBVS338H was fetched but could not be read as text. Enable thresholds differ between part families, adding a few ms of stagger along the 47 ms enable RC.",
+   "source": "inputs/asic/ASIC_Reference/ASIC_REFERENCE.md section 10, items U02/U03 (sequence and powered-off limits unknown); LT3042 data sheet Rev C, Applications Information, https://www.analog.com/media/en/technical-documentation/data-sheets/lt3042.pdf",
+   "consequence": "If the die needs its references before DVDD, or the high-voltage rails before VDD_DRIVER, start-up may latch up or leave the stimulator in an undefined state.",
+   "suggested_action": "Ask the ASIC designer for any required rail order or powered-off limits; if there are none, record 'any order allowed' in the rail plan."
+  },
+  {
+   "id": "ASIC-28",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_decision",
+   "already_known": "Corrects the suggested action of findings/_raw/asic-layout-fab.json (panel rails finding), which is already in the report.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "Panel tabs on the ASIC board's bottom edge would sit on the probe edge, and the left edge is not clean either.",
+   "area": "Panelisation / probe edge",
+   "what": "An earlier suggestion was to keep the bottom or left edge free for breakaway tabs. Both bond-finger rings are open towards the bottom edge, and the project notes say the probes leave the board at the chip end, so a tab nub, mouse-bite (a row of small holes that lets a tab snap off) or V-score there would sit where the die edge and probe are. The left edge is not a clean alternative: it is the short 17.03 mm side, bond fingers start 0.52 mm in, and the plane pours run to 0.10 mm of the edge, so breaking a tab there could expose or smear plane copper. Where tabs may go, and how far copper must be pulled back, is a decision the files do not make.",
+   "where": "ASIC board bottom edge y 84.4724, x 124.339-146.307; left edge x 124.339; U01_BCD1 / U01_BCD2 finger rings; pours on F.Cu and In1-In8.",
+   "evidence": "boards/asic/PCB.kicad_pcb lines 13170-13178: Edge.Cuts x 124.339-146.307, y 67.44-84.4724 (21.97 x 17.03 mm). exports/asic/board.json: U01_BCD1/2 have 176 pads each, a 46-pad top row at y 75.36 and side columns from y 75.868 to 83.964; pad boxes end at y 84.0149 (0.46 mm from the bottom edge); no bottom row. U01_BCD1 pad box starts at x 124.855 (0.516 mm from the left edge). pcbnew fill extents: F.Cu and In1-In8 pours span x 124.441-146.205, y 67.542-84.370 (0.102 mm from the left and bottom edges); B.Cu is 0.245 mm from the bottom edge. findings/_raw/asic-layout-fab.json suggested 'Leave one long edge (the bottom or left) free for tabs'. inputs/notes/fpga-ldo-v14.md line 55: probes leave at the chip end. A 0.25-0.40 mm die-to-edge gap is an estimate from an assumed orientation and die thickness, not from the board files.",
+   "source": "Engineering judgement.",
+   "consequence": "A depanelling nub on the bottom edge can stop a die being placed at the edge or damage the probe; tabs on the left edge can expose or smear plane copper.",
+   "suggested_action": "Add a fab note asking for a routed, tab-free bottom edge with a stated outline tolerance and saying where tabs may go, after checking how far pour copper must be pulled back on that edge."
+  },
+  {
+   "id": "ASIC-29",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "inputs/system/weekly_deck/START_HERE.md calls the probe illustrative but presents the die size as is.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "The deck draws each ASIC die as 10.5 x 8.97 mm, which is the bond-finger outline, not the 8.1 x 7 mm die.",
+   "area": "Fit models / records",
+   "what": "The weekly deck's 3D view draws each die as 10.5 x 8.97 mm, which is exactly the outer box of one die's 176 bond fingers. A real die that size would cover the fingers so nothing could be wire-bonded, and the two drawn boxes overlap each other in the middle. The print models also put 0.5 mm-tall boxes on the same pad area. The real die is 8.1 x 7 mm, and only that size fits in the opening between the inner fingers.",
+   "where": "Weekly deck 3D view of the ASIC board (inputs/system/weekly_deck/START_HERE.md line 53); print models (inputs/system/README_2026-11-11.md line 51); U01_BCD1 / U01_BCD2 pad areas.",
+   "evidence": "exports/asic/board.json: U01_BCD1 pad box x 124.855-135.373 (10.518 mm), y 75.0425-84.0149 (8.972 mm); U01_BCD2 x 135.241-145.759; overlap 0.132 mm (x 135.241-135.373). Inner finger edges x 125.8246 and 134.4077 give an opening 8.583 mm wide; top-row inner edge y 75.6775 is 8.795 mm from the bottom edge. A 10.5 or 8.97 mm side cannot fit (8.97 > 8.583). weekly_deck/START_HERE.md line 53: dies 'drawn as 10.5 × 8.97 mm'. README_2026-11-11.md line 51: 'The two dies are 0.5 mm boxes on their pad area'. ASIC_REFERENCE.md line 35: die area 8.1 x 7 mm (B25).",
+   "source": "inputs/asic/ASIC_Reference/ASIC_REFERENCE.md row B25 (die 8.1 x 7 mm).",
+   "consequence": "Fit, height and probe pictures shown to collaborators misplace the die edge and the probe start; no hardware is affected.",
+   "suggested_action": "Redraw each die as 7 x 8.1 mm inside the inner fingers, with the open side towards the board edge, once the orientation is confirmed."
+  },
+  {
+   "id": "ASIC-30",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "findings/_raw/system-mate-fe-ldo.json (same issue on Frontend/LDO J1/J2) and findings/_raw/ldo_b-parts.json (J5); not yet stated for the ASIC J3/J4 joints. The reviewer agrees with minor.",
+   "found_by": [
+    "asic-gap2-df40-hirose-mating-numbe"
+   ],
+   "title": "The ASIC board's DF40 connectors J3/J4 would get full-pad solder paste where Hirose asks for an 80% opening.",
+   "area": "ASIC board assembly",
+   "what": "Hirose recommends a 0.12 mm stencil (the metal sheet solder paste is printed through) with openings at 80% of each DF40 lead pad. The ASIC board's J3 and J4 footprints have no paste reduction and the board-wide paste margin is 0, so the stencil would open the full pad, about 25% more paste than Hirose asks for. LDO A J3/J4 are the same; router J3/J4 are already covered by an earlier finding. On this 0.4 mm pitch row, each +/-10 V stimulator pin sits between two 1.5 V rail pins.",
+   "where": "ASIC board J3 (B.Paste, 80 pads 0.2 x 0.7 mm) and J4 (F.Paste, 80 pads 0.23 x 0.66 mm plus 4 mounting pads 0.35 x 0.66 mm); J3 pins 34 DVDD, 36 VDD10, 38 VDD_DRIVER, 52 REF_VDD, 54 VSS10, 56 VDD_ADC. Also FPGA-LDO A J3/J4.",
+   "evidence": "boards/asic/PCB.kicad_pcb: no solder_paste_margin or solder_paste_ratio tokens; exports/asic/board.json setup paste_margin 0.0; J3 pads carry bpaste, J4 pads fpaste. exports/asic/pads.csv J3: 34 /DVDD, 36 /VDD10, 38 /VDD_DRIVER, 52 /REF_VDD, 54 /VSS10, 56 /VDD_ADC; ASIC_REFERENCE.md lines 128-131 give these as 1.5 V rails. LDO A board file: solder_paste_margin -0.065 only on U7, U5, U4, U3 (lines 5961, 7090, 9605, 13618), none on J3/J4; JLC_Remarks_paste.txt has no stencil opening note. Router board file: no paste margins. Hirose recommended pad 0.2 mm wide by (3.78-2.38)/2 = 0.7 mm, matching J3. The June PCBWay paste Gerbers belong to a different board, so no current stencil file overrides the footprints.",
+   "source": "Hirose drawing EDC3-311352-00 (DF40C-*DS-0.4V(51)), sheet 1/2, recommended metal mask 120 um, 80% opening for lead pad, https://www.hirose.com/product/download?distributor=all&type=2d&lang=en&num=DF40C-80DS-0.4V%2851%29; Hirose drawing EDC3-311351-00 sheet 1/3 (same note), https://www.hirose.com/product/download?distributor=all&type=2d&lang=en&num=DF40C-80DP-0.4V%2851%29",
+   "consequence": "Higher risk of solder bridges between adjacent 0.4 mm contacts; a bridge at 34/36, 36/38, 52/54 or 54/56 puts +/-10 V onto a 1.5 V ASIC rail.",
+   "suggested_action": "Reduce the DF40 paste openings to 80% of pad area, either in the footprints (a KiCad paste margin ratio of about -5% per side) or in the stencil order note, and state a 0.12 mm stencil."
+  },
+  {
+   "id": "ASIC-31",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-gap2-df40-hirose-mating-numbe"
+   ],
+   "title": "The Frontend and FPGA-LDO board mate through two DF40 pairs, which Hirose's drawing asks designers to avoid.",
+   "area": "System board mating",
+   "what": "Sheet 3 of Hirose's DF40 plug drawing asks designers not to put more than one mated DF40 pair between two stacked boards. If the pairs are slightly misaligned, a connector can break during or after mating; Hirose suggests splitting the board instead. The Frontend mates with the FPGA-LDO board through two 70-pin pairs, J1 and J2, in both Option A and Option B. The ASIC joints and the Option B J5 joint each use a single pair, so they follow the caution.",
+   "where": "Frontend J1 (122.245, 112.57) and J2 (104.745, 112.57), DF40C-70DS, bottom side; FPGA-LDO A J1 (91.255, 127.0) and J2 (108.755, 127.0), DF40C-70DP, top side; Option B LDO board J1/J2 at (91.255, 132.81) and (108.755, 132.81).",
+   "evidence": "exports/frontend/parts.csv, exports/ldo_a/parts.csv, exports/ldo_b_ldo/parts.csv: the two connectors sit 17.500 mm apart on every board, so nominal alignment is exact; the caution is about tolerance between two rigidly placed pairs. DF40 self-alignment range is +/-0.33 mm in X and Y (DF40 catalog p3). The same issue is also raised in findings/_raw/gapldo_b-gap3-df40-120-drawing.json, rated minor.",
+   "source": "Hirose drawing EDC3-311351-00, DF40C-*DP-0.4V(51), sheet 3/3, Mating method (4), caution for using multiple connectors; https://www.hirose.com/product/download?distributor=all&type=2d&lang=en&num=DF40C-80DP-0.4V%2851%29",
+   "consequence": "If the two pairs are not coplanar and aligned within tolerance, mating or unmating the Frontend can stress or crack one connector. No mounting feature shares the load.",
+   "suggested_action": "Ask Hirose whether two DF40C-70 pairs 17.5 mm apart on one board pair are acceptable and what placement tolerance they need; record the answer or a tolerance study."
+  },
+  {
+   "id": "ASIC-32",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "found_by": [
+    "asic-schematic"
+   ],
+   "title": "The ASIC designer's J3 pinout spreadsheet wrongly says the pin-20 via is on the wrong net and has no copper.",
+   "area": "Records",
+   "what": "The spreadsheet note for J3 pin 20 says the via under the pad is on net T_CLK32MHZ and that there is no copper. On the reviewed board the via is on the correct net, /T_CLK32MHZ(2), and it joins J4 pin 20 to J3 pin 20. The net has no tracks, only that via, which may be what the note was describing. The spreadsheet was written minutes before the reviewed board save, so the note probably describes an earlier state.",
+   "where": "ASIC board, J3 pin 20 (L10) and J4 pin 20 (L1), net /T_CLK32MHZ(2), via at (139.75, 69.90) mm, L1-L10, 0.15 mm drill / 0.25 mm land.",
+   "evidence": "exports/asic/board.json: via at (139.75, 69.9), net /T_CLK32MHZ(2). J4.20 at (139.74, 69.65) on L1 contains the via almost entirely; J3.20 at (139.74, 69.47) on L10 (pad y 69.12-69.82) overlaps the via land by about 0.045 mm, a neck about 0.19 mm wide, with no track. exports/asic/nets.csv: /T_CLK32MHZ(2) has 2 pads, 0 track, 1 via. exports/asic/drc.json: 0 unconnected items, no violation on this net. The pin-70 pass-through (/T_CLK32MHZ) has its own via at (129.75, 69.95) with a short L10 track. inputs/asic/J3_pinout__J3_Pinout.csv, pin 20 row. J3_pinout.xlsx metadata: modified 3 Nov 00:44 CST; board saved 00:51 CST.",
+   "source": "Engineering judgement.",
+   "consequence": "Someone reading the spreadsheet may 'fix' a connection that is already correct.",
+   "suggested_action": "Correct or delete the pin-20 remark in the spreadsheet."
+  },
+  {
+   "id": "ASIC-33",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "found_by": [
+    "asic-layout-fab"
+   ],
+   "title": "It is not shown that the bonded dies fit in the 1.5 mm gap under the next stacked ASIC board.",
+   "area": "Stacking height",
+   "what": "The two ASIC dies are wire-bonded on the top side of the ASIC board. In a stack they face the bare underside of the next ASIC board, 1.5 mm away (the nominal mated height of the DF40 pair). Die thickness, wire-loop height and any glob top (a blob of protective epoxy over the die and wires) must add up to less than that gap minus tolerance. The workspace does not hold these numbers, so the files cannot settle this; the die thickness and bonding/coating height from the ASIC designer or bonding house would.",
+   "where": "ASIC board, U01_BCD1 and U01_BCD2, top side, pads x 125.0-145.6 mm, y 75.4-84.0 mm. In Option A this affects the inner board of each pair: board 1 under board 2 and board 4 under board 3. Board 3's die area lies past the FPGA-LDO A edge and faces nothing.",
+   "evidence": "exports/asic/pads.csv: U01 pad extents x 124.98-145.63, y 75.36-83.96. exports/asic/parts.csv: J3 is the only bottom-side part (y about 71.0), so only bare PCB lies over the dies. inputs/system/README_2026-11-11.md lines 43-53: 1.5 mm DF40 gaps, dies modelled as 0.5 mm boxes, no tolerances modelled. Search of inputs/asic and inputs/system: no die thickness, loop height or encapsulation figure.",
+   "source": "Engineering judgement.",
+   "consequence": "If die plus wire loop plus coating exceeds the gap less tolerance, the coating touches the board above or the bond wires are crushed.",
+   "suggested_action": "Get the die thickness and bonding/coating height from the ASIC designer or bonding house and check the sum against 1.5 mm less DF40 and board tolerances."
+  },
+  {
+   "id": "ASIC-34",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "ASIC_REFERENCE.md section 10 lists U01-U09 as open.",
+   "found_by": [
+    "asic-reference"
+   ],
+   "title": "The ASIC reference still maps pins for the old 50-pin XEM8305 path, and none of its nine open items is closed.",
+   "area": "Requirements traceability",
+   "what": "ASIC_REFERENCE V1 (4 Oct 2026) maps rails and signals to the old 50-pin 'ASIC J2' connector of the inherited LDO board and to the XEM8305 FPC (flexible flat cable) chain. Those pin numbers do not apply to the current 80-pin J3/J4, and the reference gives no table for the current system. Its open items U01-U09 in section 10 are all still open. It also lists VDD10/VSS10 at 9.0/9.1 V, while FPGA-LDO A sets 10 V.",
+   "where": "inputs/asic/ASIC_Reference/ASIC_REFERENCE.md sections 6, 7 and 10; ASIC_Nine_Rail_Design_Intent.csv; ASIC board J3/J4.",
+   "evidence": "ASIC_Nine_Rail_Design_Intent.csv (ASIC_J2_pins): VDD_FE '12;38', VDD10 '46'; exports/asic/pads.csv: J3.50 VDD_FE, J3.36 VDD10. U01 (die/bond revision): inputs/asic/pcbway_fab/PCB-F_Cu.gbr (21 Jun 2026) has 177 U01_BCD1 pads; exports/asic/board.json U01_BCD1/2 have 176 each. U09: inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 1 says 'Not yet run in Vivado'. U08 (FPC) is superseded by the DF40 stack. FPGA-LDO A sets 10 V with RSET 100 k.",
+   "source": "ASIC_REFERENCE.md V1, 4 Oct 2026, sections 6, 7 and 10.",
+   "consequence": "Someone using the reference's pin tables would wire the wrong pins, and open requirements can be forgotten when boards are ordered.",
+   "suggested_action": "Add a short J3/J4 rail and signal table to the reference and carry U01-U07 and U09 forward as open items for this system."
+  },
+  {
+   "id": "ASIC-35",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "findings/_raw/asic-reference.json mentions it under not_checked and leaves it to the layout reviewer; not reported as a finding.",
+   "found_by": [
+    "asic-gap1-die-cavity-probe-edge"
+   ],
+   "title": "A dimension drawn on the top copper layer puts copper 0.37-3.85 mm beyond the ASIC board's probe edge.",
+   "area": "Fabrication data",
+   "what": "A width dimension ('21.7424', 1.5 mm text, 0.3 mm stroke) sits on F.Cu, the top copper layer, below the board's bottom (probe) edge. KiCad plots it into the top-copper Gerber. Fabricators normally drop copper outside the board outline, but it may raise a query, or on a panel it could become real copper on a rail next to the probe edge.",
+   "where": "ASIC board, boards/asic/PCB.kicad_pcb lines 13181-13217: dimension on F.Cu, points (124.56, 87.68)-(146.30, 87.68), text at (135.43, 85.88); board outline bottom at y 84.4724.",
+   "evidence": "Fresh F.Cu Gerber plot (kicad-cli, scratch/verify-asic-batch3/gerb): 90 draw points below y 84.4724, centres y 84.988-88.267, x 124.56-146.30; adding half the 0.3 mm stroke gives copper from about y 84.84 to 88.32, i.e. 0.37-3.85 mm beyond the edge. exports/asic/drc.json reports no violation for it. The June PCBWay F.Cu (inputs/asic/pcbway_fab) has no such copper, but it is for a different, smaller outline.",
+   "source": "Engineering judgement.",
+   "consequence": "A fabrication query, or stray copper on a panel rail beside the probe edge.",
+   "suggested_action": "Move the dimension to a User or Fab layer before making the fabrication package."
+  },
+  {
+   "id": "ASIC-36",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "calculated",
+   "already_known": "findings/_raw/system-mate-ldo-asic.json marks this not_checked; this closes it.",
+   "found_by": [
+    "asic-gap2-df40-hirose-mating-numbe"
+   ],
+   "title": "Hirose gives DF40 no contact numbers, so pin n on pin n rests only on board geometry, which checks out 80/80.",
+   "area": "ASIC J3/J4 mating",
+   "what": "This closes the open item on the DF40 pin-1-to-pin-1 convention. Hirose's DF40 drawings carry no contact numbers or pin-1 mark (the end triangle is only the maker's mark and cavity number), and the catalog says the connector has no polarity. Contacts therefore mate by position, and the KiCad pad numbers are only labels. In the recorded orientations every receptacle pad n sits over header pad n, and all land patterns match Hirose's; orientation depends only on how a board is turned, which the existing reversal finding covers.",
+   "where": "ASIC board J3/J4; FPGA-LDO A J3/J4; Option B router J3/J4.",
+   "evidence": "Script scratch/verify-asic-batch4/mate.py on exports/{asic,ldo_a,ldo_b_router}/pads.csv: ASIC J4 onto the next ASIC J3 at 0 deg, 80/80 (0/80 at 180 deg); ASIC J3/J4 onto FPGA-LDO A J3/J4 and router J3/J4 at 180 deg, 80/80 (0/80 at 0 deg). Along-row error 0.000 mm; constant across-row offset 0.185 mm on the same side (receptacle row 1.54 mm, header row 1.355 mm from centre). Patterns: DS 0.2 x 0.7 mm pads at 3.08 mm row spacing; DP 0.23 x 0.66 mm at 2.71 mm; fitting pads 0.35 x 0.66 mm, 0.475 mm beyond the end pins; span 15.6 mm. inputs/ldo_a/stack_fit_test_V10/START_HERE.md: ASIC board turned 180 deg about J3/J4.",
+   "source": "Hirose drawings EDC3-311352-00 (DF40C-*DS-0.4V(51)) and EDC3-311351-00 (DF40C-*DP-0.4V(51)), sheet 1, hirose.com type=2d downloads; Hirose DF40 catalog p8 Note 4 and p14 Note 5 (no polarity), https://www.hirose.com/product/download?distributor=all&type=catalogue&lang=en&series=DF40",
+   "consequence": "None if the boards are assembled in the recorded orientation.",
+   "suggested_action": "No board change. Keep the orientation rule (ASIC boards at 180 deg to the LDO board) in an assembly drawing."
+  }
+ ],
+ "checked_ok": [
+  {
+   "item": "J3 to J4 stacking pass-through",
+   "note": "All 80 pins: J3 pin n and J4 pin n carry the same net (74 named, 6 spare); DRC unconnected 0 (exports/asic/drc.json)"
+  },
+  {
+   "item": "ASIC J4 into the next ASIC J3",
+   "note": "Pin n meets pin n on 80/80, 0.000 mm along-row error; centres 71.010 vs 71.005 mm (pads.csv)"
+  },
+  {
+   "item": "ASIC board onto FPGA-LDO A and Option B router",
+   "note": "80/80 pin n on pin n at 180 deg on both joints; all 13 rail and ground pins land on the matching net"
+  },
+  {
+   "item": "FPGA-LDO A rail and ground pin numbers vs ASIC connector",
+   "note": "All 9 rails plus AGND x2 and DGND x2 on the same pins on LDO A J3/J4 and the router; 0 differences over 80 pins"
+  },
+  {
+   "item": "ASIC J3 receptacle land pattern",
+   "note": "80 pads 0.2 x 0.7 mm, rows 3.08 mm, span 15.6 mm: exact match to Hirose drawing EDC3-311352-00"
+  },
+  {
+   "item": "ASIC J4 header land pattern and retention tabs",
+   "note": "80 pads 0.23 x 0.66 mm, rows 2.71 mm, 4 tabs 0.35 mm at 0.475 mm: exact match to Hirose EDC3-311351-00"
+  },
+  {
+   "item": "LDO A and router J3/J4 land patterns",
+   "note": "Header and receptacle pads, row spacing and span match the Hirose drawings"
+  },
+  {
+   "item": "DF40 contact numbering and mating rule",
+   "note": "Hirose drawings and catalog give no contact numbers or polarity; contacts mate by plan position, checked by geometry above"
+  },
+  {
+   "item": "Bottom-side J3 orientation",
+   "note": "J3 pin 1 (143.34, 72.55) and J4 pin 1 (143.34, 72.36): same column and same side of the centre line"
+  },
+  {
+   "item": "J3 vs ASIC designer's J3 pinout spreadsheet",
+   "note": "0 mismatches over 80 pins (inputs/asic/J3_pinout__*.csv)"
+  },
+  {
+   "item": "Hirose no-other-circuit band under ASIC J3",
+   "note": "0 of 80 contacts have other-net copper in the 0.75-1.19 mm band (pcbnew check on B.Cu)"
+  },
+  {
+   "item": "Chip pad nets on U01_BCD1 and U01_BCD2",
+   "note": "176 pads each (AGND 44, DGND 31, DVDD 17 ...); same pad-to-net map as the June PCBWay board except the dropped CGEN_BK pad"
+  },
+  {
+   "item": "Chip outputs on one board kept separate",
+   "note": "D<1..8>, CLK32MHZ, SYNC, READ, DISC_OUT are per chip; every shared net is a chip input per the designer's Pins sheet"
+  },
+  {
+   "item": "Data output signal map to the FPGA",
+   "note": "D, READ, SYNC, CLK32MHZ per chip reach ASIC1/2/5/6 nets on LDO A; Frontend XDC uses LVCMOS15 on 1.5 V banks"
+  },
+  {
+   "item": "Data pad to D<n> order",
+   "note": "DATAL<4..1> to D<1..4> and DATAR<4..1> to D<5..8> on both chips, same as the earlier board"
+  },
+  {
+   "item": "CLKH, SPI_CLK and SPI_LATCH routing",
+   "note": "CLKH J3.7, SPI_CLK J3.63, SPI_LATCH J3.61 (R18 pull-down) map to the intended BOARD1/3 and shared LDO nets"
+  },
+  {
+   "item": "Shared control nets",
+   "note": "CHIP_RESET, FE_RESET, IMP_TEST, STIM_START/CLK/EN/CHB, AC_IN each one shared net on LDO A J3 and J4, with pulls present"
+  },
+  {
+   "item": "VDD_FE rail",
+   "note": "1.5 V, 8 pads per chip, pin 50, In2 plane 324 mm2; LDO A U2 LT3042 with R201 15 k"
+  },
+  {
+   "item": "VDD_DRIVER rail",
+   "note": "1.5 V, 10 pads per chip, pin 38, In5 plane 225 mm2; LDO A U4 TPS7A2015 on AGND"
+  },
+  {
+   "item": "REF_VDD rail",
+   "note": "1.5 V, 8 pads per chip, pin 52, In3 plane 325 mm2; LDO A U6 LT3042 with R601 15 k"
+  },
+  {
+   "item": "Ground arrangement on the ASIC board",
+   "note": "AGND and DGND kept separate; only bond is NT1 on the FPGA-LDO board, consistent with the single-bond plan"
+  },
+  {
+   "item": "Inner plane pieces per rail",
+   "note": "Each inner pour is one piece, e.g. L2 AGND 325.6 mm2, L9 DGND 332.9 mm2 (zones.csv)"
+  },
+  {
+   "item": "AGND reference plane continuity",
+   "note": "L2 AGND covers 87% of the board, 90% under each ASIC, 87% under the J3/J4 band"
+  },
+  {
+   "item": "Copper pours after refill",
+   "note": "DRC with zones refilled: same 9 violations, 0 isolated copper, 0 unconnected items"
+  },
+  {
+   "item": "Board outline",
+   "note": "Closed 8-point polygon, 21.97 x 17.03 mm; summary.txt 0 x 0 box is an exporter artefact"
+  },
+  {
+   "item": "Connector contact current",
+   "note": "Largest load about 9 mA through the near board's J3 vs 0.3 A per contact (Hirose spec sheet ELC-311352-51-51)"
+  },
+  {
+   "item": "Connector voltage rating and insulation",
+   "note": "50 V AC rating, 50 MOhm min insulation; worst neighbour difference 11.5 V gives at most 0.46 uA leakage"
+  },
+  {
+   "item": "J4 retention tabs",
+   "note": "4 MP pads have no net and carry paste, as Hirose DP note 2 requires"
+  },
+  {
+   "item": "Pin-1 marks on J3 and J4",
+   "note": "Silkscreen triangles at x 143.34 at the pin-1 end, outside the connector bodies"
+  },
+  {
+   "item": "DF40 stacking-height variants",
+   "note": "DF40C, DF40C(2.0) and DF40HC(3.0) receptacles share the 3.78/2.38 mm pattern and mate the same header (catalog)"
+  },
+  {
+   "item": "Opening between inner bond-finger columns",
+   "note": "8.583 mm for each die (board.json pad boxes)"
+  },
+  {
+   "item": "Opening depth to the probe edge",
+   "note": "8.795 mm from the top finger row to the board edge; no bottom finger row"
+  },
+  {
+   "item": "Merged middle bond fingers",
+   "note": "33 overlapping pad pairs between the dies, all same net; different-net spacing 0.1015-0.1016 mm"
+  },
+  {
+   "item": "Electrode lines not routed on the board",
+   "note": "None of the 176 pads per die carries an electrode net; recording and stimulation lines go die to probe"
+  },
+  {
+   "item": "Probe edge is the free end of the stack",
+   "note": "Option B fit_b_v2.json and Option A stack_fit_test_V10: ASIC boards extend about 10.3 mm past the next board"
+  },
+  {
+   "item": "Room for two probes per board",
+   "note": "Die centres 10.385 mm apart; each probe base must stay under about 10.3 mm wide"
+  },
+  {
+   "item": "Room for probes from four stacked boards",
+   "note": "Plane spacing 2.3 mm within a pair, 5.38 mm (A) or 4.6 mm (B) between pairs"
+  },
+  {
+   "item": "Solder mask and tenting at the probe edge",
+   "note": "Vias tented both sides; no mask opening near the bottom edge other than the finger pads"
+  },
+  {
+   "item": "J1 single pin and J4 mounting pads electrically",
+   "note": "J1 is a 0.5 mm drill pin on AGND, as on the earlier board; J4 MP pads have no net"
+  },
+  {
+   "item": "Remaining DRC warnings",
+   "note": "2 silk clipped, 2 chip library missing, C2/C42 pads shortened to 0.41/0.385 mm: cosmetic (exports/asic/drc.json)"
+  }
+ ],
+ "not_checked": [
+  "ASIC die electrical limits (input thresholds, absolute maximum, powered-off behaviour, BIT pad function, reset polarity): needs an ASIC specification (reference items U01-U05); none exists.",
+  "The far ASIC board of each pair: no layout or schematic is in the workspace; needs that design.",
+  "Bond-finger order against the die pad order: needs a bond diagram or die pad map.",
+  "Die thickness, outline tolerance, back-side potential, die-attach method and glue fillet, and which die edge faces the top finger row: needs die documentation.",
+  "Probe geometry and the die-to-probe joint: needs a probe drawing or CAD.",
+  "The bonding house's own finger and die-gap rules: needs that house's rule sheet; the Wurth guide was read from its text layer only, so its die-gap reference point is assumed.",
+  "A fabricator quote or HDI stack for 10 layers at 0.8 mm or 1.6 mm, and outline routing tolerance at the probe edge: needs a fabricator answer; only PCBWay's public capability page was read.",
+  "Capacitor datasheets: needs capacitor part numbers, which the files do not have.",
+  "LT3042 and LT3094 datasheet values (SET current, soft-start, sink capability): analog.com timed out; values used are from memory and need checking against the datasheets.",
+  "Impedance of CLK32MHZ, CLKH and the data lines, and signal integrity of CLKH and SPI_CLK fanned to four chips on two boards: needs a timing and impedance requirement.",
+  "Current capacity and voltage drop of the 0.076 mm L1 supply stubs: needs rail currents.",
+  "REF_VDD and REF_VCM load currents: not given in the power budget sheet; needs the ASIC specification or a measurement.",
+  "Whether the June single-chip board was built, bonded and used for the July bench tests: needs a build record.",
+  "Power-good or reset supervision on FPGA-LDO A and FPGA bank power order relative to the ASIC rails: left to the system and LDO reviewers.",
+  "Hirose handling guideline ETAD-H1015 was not read, and the reason for the receptacle no-other-circuit band needs a Hirose answer.",
+  "Whether LDO A's bottom solder mask covers the tracks inside the J4 band in the V12 Gerbers: the Gerbers were not opened.",
+  "Solder paste aperture on an actual stencil: no stencil file exists for the current board; the paste finding comes from the KiCad file only.",
+  "DF40 3D models and courtyards against Hirose body dimensions: only pad geometry was compared."
+ ],
+ "not_upheld": []
+}
