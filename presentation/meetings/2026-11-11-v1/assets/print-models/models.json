@@ -1,0 +1,286 @@
+{
+  "models": [
+    {
+      "key": "stack",
+      "name": "Option A head stack",
+      "group": "On the head",
+      "version": "Frontend 8L V3 (edited 10 Nov 2026, 21:03 CST) · FPGA-LDO A layout V12 (edited 10 Nov 2026, 16:06 CST)",
+      "where": "Frontend 8L V3 + FPGA-LDO A V12 + 4 ASIC boards + HDMI plug",
+      "glb": null,
+      "stl": "downloads/Option_A_Head_Stack_V12.stl",
+      "step": "downloads/Option_A_Head_Stack_V12.step",
+      "size": [
+        24.12,
+        78.64,
+        15.17
+      ],
+      "note": "Saved CAD outlines, 1.5 mm DF40C mated gaps, ASIC boards drawn 0.8 mm thick, nominal plug. Without the plug: 24.12 × 47.05 × 13.82 mm. In the model the ASIC side-pin tails reach 0.2 mm past the 1.5 mm gap.",
+      "parts": [
+        {
+          "glb": "models/Option_A_V12_part_0.glb",
+          "name": "FPGA-LDO Option A",
+          "sub": "Layout V12"
+        },
+        {
+          "glb": "models/Option_A_V12_part_1.glb",
+          "name": "Frontend FPGA Board",
+          "sub": "8L V3 · on the FPGA-LDO J1/J2"
+        },
+        {
+          "glb": "models/Option_A_V12_part_2.glb",
+          "name": "ASIC board 1",
+          "sub": "above the FPGA-LDO J3"
+        },
+        {
+          "glb": "models/Option_A_V12_part_3.glb",
+          "name": "ASIC board 2",
+          "sub": "above ASIC board 1"
+        },
+        {
+          "glb": "models/Option_A_V12_part_4.glb",
+          "name": "ASIC board 3",
+          "sub": "below the FPGA-LDO J4"
+        },
+        {
+          "glb": "models/Option_A_V12_part_5.glb",
+          "name": "ASIC board 4",
+          "sub": "below ASIC board 3"
+        },
+        {
+          "glb": "models/Option_A_V12_part_6.glb",
+          "name": "Micro-HDMI cable plug",
+          "sub": "nominal size, not a vendor model"
+        }
+      ]
+    },
+    {
+      "key": "stack_solid",
+      "name": "Option A stack, printable block",
+      "group": "On the head",
+      "version": "Frontend 8L V3 (edited 10 Nov 2026, 21:03 CST) · FPGA-LDO A layout V12 (edited 10 Nov 2026, 16:06 CST)",
+      "where": "Same stack with the gaps between boards filled, prints as one piece",
+      "glb": "models/Option_A_Head_Stack_V12_Solid.glb",
+      "stl": "downloads/Option_A_Head_Stack_V12_Solid.stl",
+      "step": "downloads/Option_A_Head_Stack_V12_Solid.step",
+      "size": [
+        24.12,
+        78.64,
+        15.17
+      ],
+      "note": "Gaps between mated boards filled. Same outside size as the Option A stack.",
+      "parts": null
+    },
+    {
+      "key": "stack_b",
+      "name": "Option B head stack",
+      "group": "On the head",
+      "version": "Frontend 8L V3 (edited 10 Nov 2026, 21:03 CST) · router and LDO board layouts V2 (edited 10 Nov 2026, 16:08 CST)",
+      "where": "Frontend 8L V3 + LDO board V2 + router V2 + 4 ASIC boards + HDMI plug",
+      "glb": null,
+      "stl": "downloads/Option_B_Head_Stack_V2.stl",
+      "step": "downloads/Option_B_Head_Stack_V2.step",
+      "size": [
+        27.9,
+        84.45,
+        13.77
+      ],
+      "note": "Arranged as the fit test (router on the LDO board J5, ASIC boards on the router), 1.5 mm DF40C mated gaps, ASIC boards drawn 0.8 mm thick, nominal plug. Without the plug: 27.90 × 52.88 × 13.77 mm. In the model the ASIC side-pin tails reach 0.2 mm past the 1.5 mm gap.",
+      "parts": [
+        {
+          "glb": "models/Option_B_V2_part_0.glb",
+          "name": "FPGA-LDO Option B LDO board",
+          "sub": "Layout V2"
+        },
+        {
+          "glb": "models/Option_B_V2_part_1.glb",
+          "name": "FPGA-LDO Option B router",
+          "sub": "Layout V2 · on the LDO board J5"
+        },
+        {
+          "glb": "models/Option_B_V2_part_2.glb",
+          "name": "Frontend FPGA Board",
+          "sub": "8L V3 · on the LDO board J1/J2"
+        },
+        {
+          "glb": "models/Option_B_V2_part_3.glb",
+          "name": "ASIC board 1",
+          "sub": "above the router J3"
+        },
+        {
+          "glb": "models/Option_B_V2_part_4.glb",
+          "name": "ASIC board 2",
+          "sub": "above ASIC board 1"
+        },
+        {
+          "glb": "models/Option_B_V2_part_5.glb",
+          "name": "ASIC board 3",
+          "sub": "below the router J4"
+        },
+        {
+          "glb": "models/Option_B_V2_part_6.glb",
+          "name": "ASIC board 4",
+          "sub": "below ASIC board 3"
+        },
+        {
+          "glb": "models/Option_B_V2_part_7.glb",
+          "name": "Micro-HDMI cable plug",
+          "sub": "nominal size, not a vendor model"
+        }
+      ]
+    },
+    {
+      "key": "stack_b_solid",
+      "name": "Option B stack, printable block",
+      "group": "On the head",
+      "version": "Frontend 8L V3 (edited 10 Nov 2026, 21:03 CST) · router and LDO board layouts V2 (edited 10 Nov 2026, 16:08 CST)",
+      "where": "Same stack with the gaps between boards filled, prints as one piece",
+      "glb": "models/Option_B_Head_Stack_V2_Solid.glb",
+      "stl": "downloads/Option_B_Head_Stack_V2_Solid.stl",
+      "step": "downloads/Option_B_Head_Stack_V2_Solid.step",
+      "size": [
+        27.9,
+        84.45,
+        13.77
+      ],
+      "note": "Gaps between mated boards filled. Same outside size as the Option B stack.",
+      "parts": null
+    },
+    {
+      "key": "frontend",
+      "name": "Frontend FPGA Board",
+      "group": "On the head",
+      "version": "8L V3 · edited 10 Nov 2026, 21:03 CST",
+      "where": "8L V3 · top of the stack",
+      "glb": "models/Frontend_8L_V3.glb",
+      "stl": "downloads/Frontend_8L_V3.stl",
+      "step": "downloads/Frontend_8L_V3.step",
+      "size": [
+        22.59,
+        26.04,
+        5.87
+      ],
+      "note": "8L V3. Board 22.59 × 25.42 × 1.53 mm; the Micro-HDMI socket overhangs the edge by 0.62 mm. J1/J2 and the five power modules are nominal boxes (no 3D model).",
+      "parts": null
+    },
+    {
+      "key": "fpgaldo",
+      "name": "FPGA-LDO Option A",
+      "group": "On the head",
+      "version": "Layout V12 · edited 10 Nov 2026, 16:06 CST",
+      "where": "Layout V12 · under the Frontend",
+      "glb": "models/FPGA_LDO_A_V12.glb",
+      "stl": "downloads/FPGA_LDO_A_V12.stl",
+      "step": "downloads/FPGA_LDO_A_V12.step",
+      "size": [
+        22.64,
+        36.76,
+        4.4
+      ],
+      "note": "Layout V12. Board 22.64 × 36.76 × 1.58 mm. Part boxes from the KiCad 3D bodies.",
+      "parts": null
+    },
+    {
+      "key": "router_b",
+      "name": "FPGA-LDO Option B router",
+      "group": "On the head",
+      "version": "Layout V2 · edited 10 Nov 2026, 16:08 CST",
+      "where": "Layout V2 · carries the ASIC boards",
+      "glb": "models/FPGA_LDO_B_Router_V2.glb",
+      "stl": "downloads/FPGA_LDO_B_Router_V2.stl",
+      "step": "downloads/FPGA_LDO_B_Router_V2.step",
+      "size": [
+        27.9,
+        12.62,
+        4.27
+      ],
+      "note": "Layout V2. Board 27.90 × 12.62 × 1.60 mm. J5 (120 pins) is a nominal box (no 3D model).",
+      "parts": null
+    },
+    {
+      "key": "ldo_b",
+      "name": "FPGA-LDO Option B LDO board",
+      "group": "On the head",
+      "version": "Layout V2 · edited 10 Nov 2026, 16:08 CST",
+      "where": "Layout V2 · under the Frontend and router",
+      "glb": "models/FPGA_LDO_B_LDO_Board_V2.glb",
+      "stl": "downloads/FPGA_LDO_B_LDO_Board_V2.stl",
+      "step": "downloads/FPGA_LDO_B_LDO_Board_V2.step",
+      "size": [
+        27.9,
+        35.3,
+        4.42
+      ],
+      "note": "Layout V2. Board 27.90 × 35.30 × 1.60 mm. J5 (120 pins) is a nominal box (no 3D model).",
+      "parts": null
+    },
+    {
+      "key": "asic",
+      "name": "ASIC board",
+      "group": "On the head",
+      "version": "PCB-5 · 0.8 mm fit profile",
+      "where": "PCB-5 · four per stack",
+      "glb": "models/ASIC_PCB5_0p8mm.glb",
+      "stl": "downloads/ASIC_PCB5_0p8mm.stl",
+      "step": "downloads/ASIC_PCB5_0p8mm.step",
+      "size": [
+        23.79,
+        17.03,
+        3.77
+      ],
+      "note": "PCB-5 outline 21.97 × 17.03 mm, drawn 0.8 mm thick (the saved file says 1.6 mm). Dies and both DF40 connectors are nominal boxes; the side pin is taken from its KiCad model.",
+      "parts": null
+    },
+    {
+      "key": "hdmi",
+      "name": "HDMI Extension Board",
+      "group": "Bench (not on the head)",
+      "version": "V37 · edited 10 Nov 2026, 13:38 CST",
+      "where": "V37 · by the PC",
+      "glb": "models/HDMI_Extension_V37.glb",
+      "stl": "downloads/HDMI_Extension_V37.stl",
+      "step": "downloads/HDMI_Extension_V37.step",
+      "size": [
+        167.65,
+        115.23,
+        13.44
+      ],
+      "note": "V37. Board 167.65 × 114.10 mm with the two 3.2 mm holes MH2/MH3. The separate XEM8310 module is not included.",
+      "parts": null
+    },
+    {
+      "key": "directldo",
+      "name": "Direct LDO Carrier",
+      "group": "Bench (not on the head)",
+      "version": "V6 · edited 1 Nov 2026, 20:34 CST",
+      "where": "direct approach",
+      "glb": "models/Direct_LDO_Carrier_V6.glb",
+      "stl": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.stl",
+      "step": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.step",
+      "size": [
+        53.0,
+        86.46,
+        16.37
+      ],
+      "note": "Board 53.0 × 83.0 mm. XEM8305 module not included.",
+      "parts": null
+    },
+    {
+      "key": "ldoexisting",
+      "name": "Existing LDO board",
+      "group": "Bench (not on the head)",
+      "version": "source baseline · edited 2 Oct 2026, 11:37 CDT",
+      "where": "plugs into the carrier",
+      "glb": "models/Existing_LDO_Board.glb",
+      "stl": "downloads/Existing_LDO_Board_2026-10-02_1137_print.stl",
+      "step": "downloads/Existing_LDO_Board_2026-10-02_1137_print.step",
+      "size": [
+        42.03,
+        18.3,
+        3.6
+      ],
+      "note": "Board 42.03 × 18.30 mm. Part sizes are nominal boxes.",
+      "parts": null
+    }
+  ],
+  "zip": "downloads/FPGA_Head_Fit_Models_2026-11-11_V2.zip"
+}

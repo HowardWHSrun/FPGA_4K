@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "revision": "V2",
+  "current_carrier_PCB_sha256": "5caf9b364ec5ce7ba98a2e82c6d69d306f2a07f1fd13243a46281236f8e50fcc",
+  "carrier_center_native_mm": [
+    127.5,
+    67.5
+  ],
+  "XEM": {
+    "old_public_geometry_to_current_native_XY": {
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    "connector_origin_max_residual_mm": 0,
+    "mounting_hole_max_residual_mm": 0,
+    "nominal_PCB_face_gap_mm": 5,
+    "midplane_world_z_mm": 6.5469454,
+    "geometry_scope": "Simplified XEM board, four holes, three mating markers and ten major package envelopes; not a complete module component census."
+  },
+  "LDO": {
+    "old_registered_public_geometry_to_current_native_XY": {
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "translation": [
+        76.2375,
+        186.85
+      ]
+    },
+    "original_LDO_source_to_current_native_XY": {
+      "matrix": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "translation": [
+        147.6875,
+        239.15
+      ]
+    },
+    "pairs": [
+      [
+        "LDO J1",
+        "Carrier J1"
+      ],
+      [
+        "LDO J19",
+        "Carrier J2"
+      ]
+    ],
+    "connector_origin_max_residual_mm": 7.105427357601002e-15,
+    "nominal_PCB_face_gap_mm": 2,
+    "midplane_world_z_mm": -3.6,
+    "outline_bounds_world_XY_mm": [
+      -43.6875,
+      -0.3,
+      -1.6625,
+      18.0
+    ],
+    "geometry_scope": "Native-source LDO outline, 61 nominal component boxes and two complete-mate connector markers, freshly registered to current carrier J1/J2.",
+    "source_PCB": {
+      "path": "2026-10-02_FPGA_Work/04_LDO_Routing_Board/source_baseline/PCB.kicad_pcb",
+      "sha256": "74ed99fa1a91cc73ad9b93946fd1b386a5a99355ad15efb51276b0db660e3425"
+    },
+    "contact_registration": {
+      "electrical_contact_rows_checked": 74,
+      "max_longitudinal_pad_tail_offset_mm": 1.4210854715202004e-14,
+      "J1_same_numbers": true,
+      "J19_number_mapping": "Source1..12 -> carrier even2..24; source13..24 -> carrier odd1..23. Source pads 25-28 are mechanical solder anchors and are excluded from the 24 signal contacts.",
+      "J1_transverse_solder_tail_offset_mm": 0.185,
+      "J19_transverse_solder_tail_offset_mm": 0.14,
+      "scope": "Opposing DP/DS solder tails have different transverse locations; their longitudinal rows align. This is not a terminal-contact or toleranced-housing fit measurement."
+    },
+    "overhang_beyond_left_carrier_edge_mm": 17.1875
+  },
+  "terminal_pad_registration": "74 LDO electrical contact rows checked; nominal connector origins and longitudinal rows align, with expected opposite-footprint solder-tail offsets recorded under LDO. Source contacts are not identical XY copper pads.",
+  "intentional_connector_envelope_overlap": "Current carrier DF40 socket boxes and inherited LDO complete-mate markers overlap in nominal seating; boxes are abstract package markers, not production housing/terminal geometry.",
+  "qualification": "Nominal reference assembly only; source CAD unchanged.",
+  "status": "PASS_NOMINAL_REGISTRATION_AND_ENVELOPE_SCREEN",
+  "envelope_screen": {
+    "carrier_body_count": 80,
+    "LDO_component_box_count": 61,
+    "XEM_major_box_count": 10,
+    "carrier_body_attachment_slab_interferences": [],
+    "carrier_attachment_body_interferences": [],
+    "intentional_mating_connector_envelopes_excluded": true,
+    "scope": "Slab/AABB screen of public nominal boxes only. Exact housings, terminals, standoffs, screws, fasteners, tolerance, bow and retention are not qualified.",
+    "attachment_body_vs_carrier_slab_checked": 76,
+    "attachment_body_vs_carrier_slab_interferences": [],
+    "reverse_screen_scope": "Nominal attachment-envelope AABBs versus the current rectangular carrier slab, including the five attachment connector markers."
+  },
+  "manufacturer_nominal_heights": {
+    "carrier_faces_mm": [
+      -0.8,
+      0.8
+    ],
+    "XEM_board_faces_mm": [
+      5.8,
+      7.293890881538392
+    ],
+    "XEM_nominal_mated_gap_mm": 5,
+    "LDO_board_faces_mm": [
+      -4.4,
+      -2.8
+    ],
+    "LDO_nominal_mated_gap_mm": 2,
+    "XEM_gap_source": "https://docs.opalkelly.com/xem8305/expansion-connectors/",
+    "LDO_gap_sources": [
+      "https://www.hirose.com/en/product/p/CL0684-4091-0-51",
+      "https://www.hirose.com/en/product/p/CL0684-4041-2-51"
+    ],
+    "source_check_date": "2026-10-26",
+    "height_scope": "Manufacturer nominal mating heights for named families; source model PCB thickness and generic package envelopes do not establish installed/toleranced fit."
+  }
+}

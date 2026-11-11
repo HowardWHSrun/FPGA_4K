@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HDMI Extension Board enclosure V2</title><link rel="icon" href="data:,">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<style>
+:root{--ink:#eef1f3;--mute:#a3adb5;--line:#4a535b;--panel:rgba(38,44,50,.78);--accent:#7fd4dc}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:#1c2024}
+#stage{position:fixed;inset:0}canvas{display:block;width:100%;height:100%;touch-action:none}
+.panel{position:fixed;background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+#head{top:16px;left:16px;padding:14px 16px;max-width:340px}
+#head h1{font-size:17px;margin:0 0 2px;font-weight:650;letter-spacing:-.01em}
+#head .ver{color:var(--mute);font-size:12.5px;font-variant-numeric:tabular-nums}
+#head dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:10px 0 0;font-size:12.5px}
+#head dt{color:var(--mute)}#head dd{margin:0;font-variant-numeric:tabular-nums}
+#head .sel{margin:8px 0 0;font-size:12.5px}#head .sel b{color:var(--accent)}
+#head .note{margin:10px 0 0;font-size:12px;color:var(--mute)}
+#bar{bottom:16px;left:50%;transform:translateX(-50%);padding:6px;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 32px)}
+button{font:inherit;border:0;background:transparent;padding:7px 12px;border-radius:9px;cursor:pointer;color:var(--ink);white-space:nowrap}
+button:hover{background:rgba(255,255,255,.09)}button.on{background:#eef1f3;color:#16191c}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.sep{width:1px;background:var(--line);margin:4px 4px}
+#parts{top:16px;right:16px;padding:12px 14px;width:270px;font-size:12.5px;max-height:calc(100vh - 100px);overflow:auto}
+#parts h2{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);margin:0 0 8px;font-weight:600}
+#parts ul{list-style:none;margin:0;padding:0}
+#parts li{display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:center;padding:5px 4px;border-radius:7px;cursor:default}
+#parts li:hover{background:rgba(255,255,255,.07)}
+#parts .sw{width:12px;height:12px;border-radius:3px;border:1px solid rgba(255,255,255,.3)}
+#parts small{display:block;color:var(--mute)}
+#parts a{color:var(--accent);text-decoration:none;margin-left:6px}#parts a:hover{text-decoration:underline}
+#loading{position:fixed;inset:0;display:grid;place-items:center;color:var(--mute);pointer-events:none}
+#tParts{display:none}
+@media (max-width:1100px){#parts{display:none;top:auto;bottom:76px;right:16px}#parts.show{display:block}#tParts{display:inline-block}#head{max-width:300px;padding:10px 12px}#head dl{display:none}#head .note{margin-top:6px}}
+</style></head><body>
+<div id="stage"><canvas id="c" aria-label="Interactive 3D view of the enclosure. Drag to rotate, scroll to zoom."></canvas></div>
+<div id="loading">Loading the board and enclosure…</div>
+<section id="head" class="panel">
+ <h1>HDMI Extension Board enclosure</h1>
+ <div class="ver">V2 · edited 10 Nov 2026, 13:03 CST · around board V35 + XEM8310</div>
+ <dl><dt>Outside</dt><dd>184.1 × 128.8 × 34.4 mm (39.9 on feet)</dd>
+ <dt>Shell</dt><dd>clear, 7 mm walls, 3 mm top and floor</dd>
+ <dt>Inside</dt><dd>silver deck (1.5 mm) and plate (2 mm)</dd>
+ <dt>Heat sinks</dt><dd>top and bottom on U700, 1.0 mm pad gaps</dd>
+ <dt>Selector</dt><dd>dial on SW600, 9 × 40°, index mark on the lid</dd>
+ <dt>On/off</dt><dd>slider on SW601, ON and OFF engraved</dd>
+ <dt>Mark</dt><dd>HW monogram · Xie Luan Lab, on the deck</dd></dl>
+ <p class="sel">JTAG selector → <b id="sel">XEM8310</b> · SW601 <b id="pwr">ON</b></p>
+ <p class="note">Checked in CAD only. Thermal performance and physical fit are not verified.</p>
+</section>
+<aside id="parts" class="panel"><h2>Parts and files</h2><ul id="plist"></ul></aside>
+<nav id="bar" class="panel" aria-label="View">
+ <button data-view="closed" class="on">Closed</button><button data-view="exploded">Exploded</button><button data-view="open">Lid off</button><button data-view="under">Underside</button><button data-view="ports">HDMI side</button><button data-view="power">Power corner</button><button data-view="knob">Selector</button>
+ <span class="sep"></span><button id="tTurn">Turn selector ↻</button><button id="tPwr">Slide SW601</button><button id="tDeck" class="on" aria-pressed="true">Silver deck</button><button id="tShell" class="on" aria-pressed="true">Clear shell</button><button id="tParts" aria-pressed="false">Parts and files</button>
+</nav>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from './vendor/GLTFLoader.js';
+import {OrbitControls} from './vendor/OrbitControls.js';
+import {toCreasedNormals,mergeGeometries} from './vendor/BufferGeometryUtils.js';
+
+const canvas=document.getElementById('c'),stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x1c2024);
+const camera=new THREE.PerspectiveCamera(32,1,5,4000);
+const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.12;controls.minDistance=60;controls.maxDistance=900;
+
+// Soft studio environment (procedural, no external files): bright ceiling and two side panels for metal reflections.
+{const env=new THREE.Scene();env.background=new THREE.Color(0x8f979d);
+ const mk=(w,h,c,i,p,r)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i),side:THREE.DoubleSide}));m.position.set(...p);m.rotation.set(...r);env.add(m)};
+ mk(900,900,0xffffff,2.6,[0,300,0],[Math.PI/2,0,0]);mk(900,900,0x4a5157,1,[0,-300,0],[Math.PI/2,0,0]);
+ mk(300,300,0xffffff,6,[-430,150,-100],[0,Math.PI/2,0]);mk(200,300,0xdfeaff,4,[430,150,100],[0,Math.PI/2,0]);
+ mk(600,120,0xffffff,4,[0,200,-430],[.4,0,0]);mk(600,200,0x2c3136,1,[0,80,430],[0,0,0]);
+ const pm=new THREE.PMREMGenerator(renderer);scene.environment=pm.fromScene(env,.03).texture;pm.dispose()}
+const sun=new THREE.DirectionalLight(0xffffff,2.2);sun.position.set(-120,260,-160);scene.add(sun);
+scene.add(new THREE.HemisphereLight(0xffffff,0x59626a,.9));
+
+const clearMat=new THREE.MeshPhysicalMaterial({color:0xf4f8fa,metalness:0,roughness:.07,transmission:1,ior:1.49,thickness:3,attenuationColor:new THREE.Color(0xd4e6ec),attenuationDistance:160,clearcoat:1,clearcoatRoughness:.05,specularIntensity:1,envMapIntensity:1.15,side:THREE.DoubleSide});
+const silverMat=new THREE.MeshStandardMaterial({color:0xf2f3f5,metalness:1,roughness:.3,envMapIntensity:1.15});
+const sinkMat=new THREE.MeshStandardMaterial({color:0xdde0e4,metalness:1,roughness:.42,envMapIntensity:1.1});
+const padMat=new THREE.MeshStandardMaterial({color:0x6f8fb0,roughness:.9});
+const ghostMat=new THREE.MeshBasicMaterial({color:0x2a3237,wireframe:true,transparent:true,opacity:.07});
+
+// Viewer frame: X = board x, Y = height above the board's bottom face, Z = board y (mm).
+const C=new THREE.Vector3(149.55,8,104.975);                       // enclosure centre
+const root=new THREE.Group();root.position.set(-C.x,0,-C.z);scene.add(root);
+const G={};for(const k of ['lid','deck','hsTop','xem','board','plate','base','hsBot','stem','dial','slide'])root.add(G[k]=new THREE.Group());
+const PARTS=[
+ ['lid','Clear lid','clear resin, acrylic or PETG','Clear_Lid_V2','#eaf3f6'],
+ ['base','Clear base','clear resin, acrylic or PETG','Clear_Base_V2','#eaf3f6'],
+ ['deck','Silver top deck','1.5 mm aluminium, bead-blasted','Silver_Top_Deck_V2','#cfd3d8'],
+ ['plate','Silver bottom plate','2.0 mm aluminium, bead-blasted','Silver_Bottom_Plate_V2','#cfd3d8'],
+ ['hsTop','Top heat sink','aluminium 6061, on U700','Heat_Sink_Top_V2','#aeb4bb'],
+ ['hsBot','Bottom heat sink','aluminium 6061, under U700','Heat_Sink_Bottom_V2','#aeb4bb'],
+ ['dial','Selector dial','aluminium or printed, reversible','Selector_Dial_V2','#cfd3d8'],
+ ['stem','Selector stem','printed nylon/PETG or aluminium','Selector_Stem_V2','#aeb4bb'],
+ ['slide','Power slider (SW601)','printed nylon/PETG','Power_Slider_V2','#cfd3d8']];
+const list=document.getElementById('plist');
+for(const [k,name,mat,file,sw] of PARTS){const li=document.createElement('li');li.dataset.k=k;
+ li.innerHTML=`<span class="sw" style="background:${sw}"></span><span>${name}<small>${mat}</small></span><span><a href="../downloads/enclosure/models/${file}.step" download>STEP</a><a href="../downloads/enclosure/models/${file}.stl" download>STL</a></span>`;list.append(li)}
+for(const [k,name] of [['board','HDMI Extension Board V35'],['xem','XEM8310 (illustrative model)']]){const li=document.createElement('li');li.dataset.k=k;li.innerHTML=`<span class="sw" style="background:${k==='board'?'#1d6b4c':'#244d73'}"></span><span>${name}<small>${k==='board'?'KiCad 3D export':'placed on MC1–MC3'}</small></span><span></span>`;list.append(li)}
+
+const loader=new GLTFLoader();let need=true;const invalidate=()=>{need=true};
+function crease(scene,mat,angle=.6){const out=new THREE.Group();scene.updateMatrixWorld(true);scene.traverse(o=>{if(!o.isMesh)return;let g=o.geometry.clone().applyMatrix4(o.matrixWorld);for(const a of Object.keys(g.attributes))if(a!=='position')g.deleteAttribute(a);g=toCreasedNormals(g,angle);out.add(new THREE.Mesh(g,mat))});return out}
+function compact(src){src.updateMatrixWorld(true);const out=new THREE.Group(),b=new Map();src.traverse(o=>{if(!o.isMesh)return;const ms=Array.isArray(o.material)?o.material:[o.material];if(ms.length!==1)return;let m=ms[0];if(m.transparent&&m.opacity>=.99){m=m.clone();m.transparent=false}const g=o.geometry.clone().applyMatrix4(o.matrixWorld);for(const a of Object.keys(g.attributes))if(a!=='position'&&a!=='normal')g.deleteAttribute(a);if(!g.attributes.normal)g.computeVertexNormals();const key=[m.color?.getHex(),m.metalness,m.roughness,m.opacity,m.transparent,!!g.index].join('|');if(!b.has(key))b.set(key,{m,gs:[]});b.get(key).gs.push(g)});for(const {m,gs} of b.values()){const g=gs.length===1?gs[0]:mergeGeometries(gs,false);if(g)out.add(new THREE.Mesh(g,m))}return out}
+
+const A='assets/';
+const jobs=[
+ loader.loadAsync(A+'hdmi-extension-v35.glb').then(g=>{const b=compact(g.scene);b.scale.setScalar(1000);G.board.add(b)}),
+ loader.loadAsync(A+'xem8310.glb').then(g=>{const x=g.scene;x.traverse(o=>{if(o.isMesh&&o.material){const m=o.material.clone();m.transparent=false;m.opacity=1;m.depthWrite=true;o.material=m}});
+   x.matrixAutoUpdate=false;x.matrix.set(-1,0,0,232.326,0,0,1,7.905,0,-1,0,135.154,0,0,0,1);G.xem.add(x)}),   // deck's XEM8310 registration on MC1–MC3
+ ...[['lid','Clear_Lid_V2',clearMat],['base','Clear_Base_V2',clearMat],['deck','Silver_Top_Deck_V2',silverMat],['plate','Silver_Bottom_Plate_V2',silverMat],['hsTop','Heat_Sink_Top_V2',sinkMat],['hsBot','Heat_Sink_Bottom_V2',sinkMat]]
+   .map(([k,f,m])=>loader.loadAsync(A+f+'.glb').then(g=>{G[k].add(crease(g.scene,m))}))];
+// Selector knob: stem + dial turn together about the SW600 axis (x 196, y 56.5); 40 degrees per position.
+const KX=196,KZ=56.5,pivS=new THREE.Group(),pivD=new THREE.Group();for(const [g,pv] of [[G.stem,pivS],[G.dial,pivD]]){pv.position.set(KX,0,KZ);g.add(pv)}
+const inPivot=(pv,o)=>{o.position.set(-KX,0,-KZ);pv.add(o)};
+jobs.push(loader.loadAsync(A+'Selector_Stem_V2.glb').then(g=>inPivot(pivS,crease(g.scene,sinkMat))),loader.loadAsync(A+'Selector_Dial_V2.glb').then(g=>inPivot(pivD,crease(g.scene,silverMat))));
+const TARGETS=['XEM8310','Port 1','Port 2','Port 3','Port 4','Port 5','Port 6','Port 7','Port 8'],LAB=['X','1','2','3','4','5','6','7','8'];
+{const cv=document.createElement('canvas');cv.width=cv.height=560;const x=cv.getContext('2d');x.fillStyle='#22272b';x.textAlign='center';x.textBaseline='middle';x.font='800 96px -apple-system,Helvetica,Arial,sans-serif';
+ LAB.forEach((t,k)=>{const a=k*40*Math.PI/180;x.save();x.translate(280+206*Math.sin(a),280-206*Math.cos(a));x.rotate(a+Math.PI);x.fillText(t,0,4);x.restore()});
+ const tx=new THREE.CanvasTexture(cv);tx.colorSpace=THREE.SRGBColorSpace;tx.anisotropy=8;
+ const m=new THREE.Mesh(new THREE.PlaneGeometry(14,14),new THREE.MeshBasicMaterial({map:tx,alphaTest:.45,toneMapped:false}));
+ m.matrixAutoUpdate=false;m.matrix.makeBasis(new THREE.Vector3(1,0,0),new THREE.Vector3(0,0,-1),new THREE.Vector3(0,1,0)).setPosition(0,31.24,0);pivD.add(m);
+ const tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.Float32BufferAttribute([194.4,25.46,45.6, 196,25.46,48.4, 197.6,25.46,45.6],3));
+ G.lid.add(new THREE.Mesh(tg,new THREE.MeshBasicMaterial({color:0x7fe3ea,side:THREE.DoubleSide,toneMapped:false})))}
+jobs.push(loader.loadAsync(A+'Power_Slider_V2.glb').then(g=>G.slide.add(crease(g.scene,silverMat))));
+let pwr=true,pwrCur=1;const pwrOut=document.getElementById('pwr');
+document.getElementById('tPwr').onclick=()=>{pwr=!pwr;pwrOut.textContent=pwr?'ON':'OFF';if(view!=='knob')setView('knob');invalidate()};
+let sel=0,selCur=0;const selOut=document.getElementById('sel');
+function setSel(k){sel=k;selOut.textContent=TARGETS[((k%9)+9)%9];invalidate()}
+document.getElementById('tTurn').onclick=()=>{setSel(sel+1);if(view!=='knob')setView('knob')};
+// thermal pads (1.0 mm) between the pedestals and U700 / the board underside
+{const pad=(y0,y1)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(8,y1-y0,8),padMat);m.position.set(124,(y0+y1)/2,60);return m};G.hsTop.add(pad(5.711,6.711));G.hsBot.add(pad(-1,0))}
+
+// Name and lab on the silver deck (engraved 0.5 mm in the CAD; drawn here as a dark paint fill so it reads on screen).
+{const cv=document.createElement('canvas');cv.width=1440;cv.height=440;const x=cv.getContext('2d'),ink='#2b3035';x.fillStyle=ink;x.strokeStyle=ink;x.textAlign='center';x.textBaseline='middle';
+ const F='-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif';
+ x.lineWidth=20;x.beginPath();x.arc(240,220,180,0,Math.PI*2);x.stroke();
+ x.font='800 168px '+F;x.fillText('HW',240,230);
+ x.letterSpacing='10px';x.font='700 104px '+F;x.fillText('XIE LUAN LAB',960,150);
+ x.fillRect(540,230,840,10);
+ x.letterSpacing='9px';x.font='600 58px '+F;x.fillText('HDMI EXTENSION BOARD',960,312);
+ const tx=new THREE.CanvasTexture(cv);tx.colorSpace=THREE.SRGBColorSpace;tx.anisotropy=8;
+ const m=new THREE.Mesh(new THREE.PlaneGeometry(72,22),new THREE.MeshBasicMaterial({map:tx,alphaTest:.45,toneMapped:false}));
+ m.matrixAutoUpdate=false;m.matrix.makeBasis(new THREE.Vector3(-1,0,0),new THREE.Vector3(0,0,1),new THREE.Vector3(0,1,0)).setPosition(104,22.43,112);G.deck.add(m)}
+const VIEWS={
+ closed:{off:{},dir:[-.7,.6,-.85],dist:360},
+ exploded:{off:{lid:70,deck:48,hsTop:96,xem:16,plate:-26,base:-48,hsBot:-76,stem:34,dial:112,slide:34},dir:[-.75,.42,-.95],dist:690,ty:12},
+ open:{off:{lid:150,deck:150,hsTop:150,dial:150},hide:['lid','deck','hsTop','dial'],dir:[-.5,.85,-.75],dist:400},
+ under:{off:{},dir:[-.55,-.8,-.7],dist:430},
+ ports:{off:{},dir:[-1,.22,-.12],dist:330},
+ knob:{off:{},dir:[-.1,.85,-.6],dist:135,tx:46.45,ty:28,tz:-48.5},
+ power:{off:{},dir:[-.35,.55,-1],dist:250,tx:-36,tz:-45}};
+const cur={},goal={};for(const k in G){cur[k]=0;goal[k]=0}
+let showDeck=true,showShell=true,view='closed',fly=null;
+function applyVis(){const hide=new Set(VIEWS[view].hide||[]);for(const k in G)G[k].visible=!hide.has(k);if(!showDeck)G.deck.visible=false;
+ for(const k of ['lid','base'])G[k].traverse(o=>{if(o.isMesh)o.material=showShell?clearMat:ghostMat});invalidate()}
+function setView(v,move=true){view=v;const V=VIEWS[v];for(const k in G)goal[k]=V.off[k]||0;applyVis();
+ document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+ if(move){const t=new THREE.Vector3(V.tx||0,(V.ty??8),V.tz||0),d=new THREE.Vector3(...V.dir).normalize(),asp=camera.aspect<1?1/camera.aspect:1;
+  fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:t.clone().addScaledVector(d,V.dist*asp),t1:t,s:performance.now()}}}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+const tD=document.getElementById('tDeck'),tS=document.getElementById('tShell');
+tD.onclick=()=>{showDeck=!showDeck;tD.classList.toggle('on',showDeck);tD.setAttribute('aria-pressed',showDeck);applyVis()};
+const tP=document.getElementById('tParts'),pp=document.getElementById('parts');tP.onclick=()=>{const on=pp.classList.toggle('show');tP.classList.toggle('on',on);tP.setAttribute('aria-pressed',on)};
+tS.onclick=()=>{showShell=!showShell;tS.classList.toggle('on',showShell);tS.setAttribute('aria-pressed',showShell);applyVis()};
+list.addEventListener('pointerover',e=>{const li=e.target.closest('li');if(li)hl(li.dataset.k)});
+list.addEventListener('pointerleave',()=>hl(null));
+const box=new THREE.Box3Helper(new THREE.Box3(),0x7fd4dc);box.visible=false;scene.add(box);
+function hl(k){if(!k||!G[k].visible){box.visible=false;invalidate();return}box.box.setFromObject(G[k]);box.visible=true;invalidate()}
+
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();invalidate()}
+new ResizeObserver(resize).observe(stage);controls.addEventListener('change',invalidate);
+function tick(now){requestAnimationFrame(tick);
+ if(fly){const u=Math.min(1,(now-fly.s)/700),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;camera.position.lerpVectors(fly.p0,fly.p1,e);controls.target.lerpVectors(fly.t0,fly.t1,e);if(u>=1)fly=null;need=true}
+ for(const k in G){const d=goal[k]-cur[k];if(Math.abs(d)>.05){cur[k]+=d*.16;G[k].position.y=cur[k];need=true}else if(cur[k]!==goal[k]){cur[k]=goal[k];G[k].position.y=cur[k];need=true}}
+ {const g=sel*40*Math.PI/180,d=g-selCur;if(Math.abs(d)>.002){selCur+=d*.2;need=true}else selCur=g;pivS.rotation.y=pivD.rotation.y=selCur}
+ {const g=pwr?1:-1,d=g-pwrCur;if(Math.abs(d)>.01){pwrCur+=d*.25;need=true}else pwrCur=g;G.slide.children.forEach(c=>c.position.z=pwrCur)}
+ if(controls.update())need=true;
+ if(need){need=false;renderer.render(scene,camera)}}
+resize();camera.position.set(-180,190,-260);controls.target.set(0,8,0);setView('closed');fly=null;
+{const V=VIEWS.closed,d=new THREE.Vector3(...V.dir).normalize(),asp=camera.aspect<1?1/camera.aspect:1;camera.position.copy(new THREE.Vector3(0,8,0).addScaledVector(d,V.dist*asp))}
+requestAnimationFrame(tick);
+Promise.all(jobs).then(()=>{document.getElementById('loading').remove();applyVis();window.__ready=true}).catch(e=>{document.getElementById('loading').textContent='Could not load the models: '+e.message;console.error(e)});
+</script></body></html>

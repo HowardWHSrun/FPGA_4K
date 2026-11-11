@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PCB 3D view</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="viewer.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<script type="module" src="board.js?v=20261111-fe14"></script>
+</head>
+<body>
+<div class="controls"><strong id="title">PCB 3D view</strong><div class="tools" aria-label="Camera views">
+<button data-view="iso">Isometric</button><button data-view="top">Top</button><button data-view="bottom">Bottom</button>
+</div></div>
+<div id="stage"><canvas id="canvas" aria-label="Interactive PCB model"></canvas><div id="loading" role="status">Loading board…</div></div>
+<div class="caption"><span>Drag to rotate · scroll to zoom · right-drag to pan</span><span id="detail"></span></div>
+</body>
+</html>

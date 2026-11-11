@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Printable models · actual size</title><link rel="icon" href="data:,"><link rel="stylesheet" href="viewer.css?v=20261104-p1"><script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script><script type="importmap">{"imports":{"three":"../overview-3d/vendor/three.module.js"}}</script><script type="module" src="viewer.js?v=20261111-v2"></script></head><body>
+<div class="layout">
+<aside id="list" aria-label="Models"><p class="list-title">Printable models, actual size</p><div id="items"></div><a id="zip" class="zip" download>Download all (STL + STEP, ZIP) ↓</a><p class="how">Simplified: board outline at real thickness plus the parts that set the outer size (FPGA, connectors, regulators, large capacitors). Small resistors and capacitors are left out. Units mm, so print at 100 %.</p></aside>
+<section class="view">
+<div class="controls"><div class="readout"><strong id="m-name"></strong><span id="m-size"></span></div><div class="tools"><button id="dims" aria-pressed="true">Size box</button><button id="fit">Fit view</button><a id="dl-stl" class="dl" download>STL ↓</a><a id="dl-step" class="dl" download>STEP ↓</a></div></div>
+<div id="stage"><canvas id="canvas" aria-label="3D model at actual size. Drag to rotate, scroll to zoom."></canvas><div id="loading">Loading…</div><div id="labels"></div><div id="tip" hidden></div><p id="note"></p></div>
+<div class="caption"><span>Grid: 1 mm lines, 10 mm squares. Drag to rotate · scroll to zoom</span><span id="m-version"></span></div>
+</section></div>
+</body></html>
