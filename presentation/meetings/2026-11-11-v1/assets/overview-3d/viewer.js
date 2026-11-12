@@ -11,7 +11,7 @@ const INFO={
  frontend:{name:'Frontend FPGA Board',kicker:'8L V3 · 14 layers · every connection routed',role:'Reads its ASIC boards and sends the data over one HDMI cable.',was:'Was: Artix-7 FPGA board, 35T FPGA PCB, custom FPGA'},
  fpgaldo:{name:'FPGA-LDO PCB · Option A',kicker:'Layout V12 · four of the eight stacks',role:'One board under the Frontend FPGA Board; powers the four ASIC boards.',was:''},
  fpgaldob:{name:'FPGA-LDO PCB · Option B',kicker:'Router V2 + LDO board V2 · four of the eight stacks',role:'Same circuit on two boards: the router carries the ASIC boards, the plug-in LDO board sits under the Frontend, joined by the 120-pin J5.',was:''},
- asic:{name:'ASIC boards · top and bottom',kicker:'V3 · two bottom and two top boards per stack',role:'Two ASICs per board, each with its four-shank probe leaving the board edge. On each FPGA-LDO port a bottom board plugs in and a top board stacks on it.',was:''},
+ asic:{name:'ASIC boards · top and bottom',kicker:'V4 · two bottom and two top boards per stack',role:'Two ASICs per board, each with its four-shank probe leaving the board edge. On each FPGA-LDO port a bottom board plugs in and a top board stacks on it.',was:''},
  cable:{name:'HDMI cable',kicker:'One per stack',role:'Connects a Frontend FPGA Board to one HDMI Extension Board port.',was:''},
  directldo:{name:'Direct LDO Carrier',kicker:'V6 · JLCPCB placement review',role:'Carries the XEM8305 and connects the existing LDO board directly, with no custom FPGA board. Our first board sent to fabrication.',was:'Was: XEM8305 carrier, LDO carrier'},
  xem8305:{name:'XEM8305',kicker:'Opal Kelly module',role:'FPGA module that mounts on the Direct LDO Carrier (MC1–MC3).',was:''},
@@ -63,7 +63,7 @@ function nativeBoard(gltf,x,y,z,rotation=0){
 
 async function buildCustom(){
  const list=pickables.custom,root=roots.custom;
- const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG,asicTG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-8l-v3.glb?v=14l'),loader.loadAsync('assets/fpga-ldo-a-v12.glb'),loader.loadAsync('assets/asic-bottom-v3-0p8mm.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb'),loader.loadAsync('assets/asic-top-v3-0p8mm.glb')]);
+ const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG,asicTG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-8l-v3.glb?v=14l'),loader.loadAsync('assets/fpga-ldo-a-v12.glb'),loader.loadAsync('assets/asic-bottom-v4-0p8mm.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb'),loader.loadAsync('assets/asic-top-v4-0p8mm.glb')]);
  // HDMI Extension Board + XEM8310. MC1–MC3 coordinates are unchanged from BRK8310 Custom V1, so the earlier XEM registration applies.
  const host=new THREE.Group();host.position.set(160,0,0);root.add(host);
  const hdmi=compact(hdmiG.scene);hdmi.scale.setScalar(1000);const hb=new THREE.Box3().setFromObject(hdmi),hc=hb.getCenter(new THREE.Vector3());hdmi.position.set(-hc.x,0,-hc.z);const hdmiPart=new THREE.Group();hdmiPart.add(hdmi);host.add(tag(hdmiPart,'hdmi','HDMI Extension Board',list,true));hdmiPart.userData.anchor=[.82,.15];
