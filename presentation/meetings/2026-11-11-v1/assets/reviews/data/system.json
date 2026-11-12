@@ -2,15 +2,49 @@
  "report": "System review",
  "reviewed": "All boards together: connectors, power, signals, mechanics, bring-up",
  "review_date": "11 November 2026",
- "readiness": "Do not order yet: 8 major system items",
- "headline": "The boards mate pin for pin and the power and signal chains are consistent, and the ASIC boards top and bottom V3 now close the far-board and SPI-stream items (SYS-05, SYS-04). The system is still not ready to order: the GT rate was sized for one ASIC instead of eight (SYS-01), and stack power, heat, ground returns, mounting, polarization, the 0.05 mm capacitor gap and ASIC rail start-up are unresolved (SYS-02, SYS-03, SYS-06 to SYS-10). First recompute the GT line rate and the per-stack power and heat budget against a chosen cable.",
+ "readiness": "Do not order yet: 11 major system items",
+ "headline": "The boards mate pin for pin, and the ASIC boards top and bottom V3 close the far-board item (SYS-05): all 88 chip outputs of a stack reach their own FPGA input in both options. The evening re-check added three system items and kept SYS-04 open: the top chips share SPI with the chip below them, which the ASIC designer's sheet marks \"Not Shared\" (SYS-04); the 1.6 mm boards make each stack about 17 mm tall, not 13.8 mm (R2S-03); and each port's 44 outputs return through two DGND contacts while the spare pins stay open on the FPGA-LDO boards (R2S-05). Still open as before: the GT rate (SYS-01), stack power and heat (SYS-02, SYS-03), Option B returns (SYS-06), mounting, polarization, the 0.05 mm capacitor gap and ASIC rail start-up (SYS-07 to SYS-10). First get the ASIC designer's answer on shared SPI and pick the board thickness, then recompute the GT line rate and the per-stack power and heat budget.",
  "counts": {
   "blocker": 0,
-  "major": 8,
-  "minor": 31,
-  "note": 11
+  "major": 11,
+  "minor": 32,
+  "note": 13
  },
  "findings": [
+  {
+   "id": "R2S-03",
+   "severity": "major",
+   "board": "system",
+   "title": "The V3 boards are 1.6 mm, so each head stack is about 17.0 mm tall, not 13.8 mm, and the four probe rows are 3.1 / 6.2 / 3.1 mm apart, not 2.3 / 5.4 / 2.3 mm.",
+   "what": "Both V3 board files are ten-layer, 1.6 mm. The project record says the ASIC board will be 0.8 mm (6 Nov), and the print models, the deck's head view on the sheep and the Option A fit use 0.8 mm. With four 1.6 mm ASIC boards each stack grows by about 3.1-3.2 mm and 2.3-2.9 g. Each board's dies sit on its top face and its probes leave the same edge (y 100.0 in the FPGA-LDO frame), so the four probe rows of a stack spread over 12.4 mm instead of 10.0 mm. The V3 record lists thickness as needing input; until it is decided, the models used to judge fit on the animal and the probe plan do not match the board files.",
+   "where": "V3 Top_board and Bottom_board PCB.kicad_pcb (thickness 1.6, 10 copper layers); inputs/system/README_2026-11-11.md (print models V2); inputs/notes/fpga-ldo-v14.md lines 108-110; inputs/system/weekly_deck/START_HERE.md 11 Nov 08:24 head view.",
+   "evidence": "W/scratch/r2-system/stack_calc_out.txt. Option A (z = 0 at LDO A bottom, LDO 1.58 mm): board top faces with 0.8 mm boards -3.80, -1.50, 3.88, 6.18 (pitch 2.3 / 5.38 / 2.3, span 9.98 mm); with 1.6 mm -4.60, -1.50, 4.68, 7.78 (3.1 / 6.18 / 3.1, span 12.38 mm). Option B (z = 0 at LDO board bottom): 0.8 mm -0.70, 1.60, 7.00, 9.30 (2.3 / 5.4 / 2.3, span 10.0); 1.6 mm -1.50, 1.60, 7.80, 10.90 (3.1 / 6.2 / 3.1, span 12.4). Envelope without plug, record conventions (receptacle box 1.44 mm from 0.09 mm off the board, header box up to 1.44 mm): Option A 13.82 -> 16.95 mm, Option B 13.77 -> 16.97 mm; both ends are now ASIC boards. Mass: outline 21.97 x 17.03 mm, +0.8 mm at 1.9-2.4 g/cm3 = 0.57-0.72 g per board, 2.3-2.9 g per stack, 18-23 g for eight stacks, against the record's 10-12 g on-head estimate (fpga-ldo-v14.md line 110). Side pin: at 1.6 mm the near board's J1 tail clears the LDO A / router top by 0.55 mm; at 0.8 mm it reaches 0.25 mm into it.",
+   "source": "Engineering judgement; project records listed.",
+   "consequence": "The printed heads and the head view are about 3 mm short and show the wrong probe-row spacing, so an animal fit judged on them can fail; switching to 0.8 mm later changes via aspect ratio, impedance and the side-pin result on both ASIC boards.",
+   "suggested_action": "Decide 1.6 mm or a fabricator-quoted thin ten-layer stack before the ASIC pair is ordered, then rebuild the fit and print models and the head view with that thickness and the V3 capacitor placement.",
+   "basis": "needs_decision",
+   "already_known": "changed SYS-29",
+   "relation": "changed SYS-29",
+   "verification": "Re-check 11 Nov evening · verified",
+   "found_by": []
+  },
+  {
+   "id": "R2S-05",
+   "severity": "major",
+   "board": "system",
+   "title": "Each port's 44 chip outputs return through two DGND contacts, and the far chips' outputs return through the REF_VDD and VDD_DRIVER planes, AGND contacts 42/44 and NT1.",
+   "what": "Each 80-pin port has AGND only on pins 42/44 and DGND only on 46/48. With two real boards stacked, the 44 outputs of four chips return through the two DGND contacts at the FPGA-LDO joint, and the far board's 22 outputs also cross a second joint with the same four returns. On the far (top) board those outputs, including both returned CLK32MHZ clocks, run 4-7.5 mm on In4 between the REF_VDD plane (In3) and the VDD10/VDD_DRIVER plane (In5). Their return current reaches ground mainly through rail capacitors that go to AGND (and plane-to-plane capacitance), then leaves the stack on AGND pins 42/44 and crosses to GND at NT1 on the FPGA-LDO board, through the reference and analog ground of every chip in the port. SYS-41 asked that the second board keep clock lanes on a DGND-referenced layer; V3 does not. The six spare pins 2/4/6/8/24/58 are now nets on both V3 boards but no-connect on FPGA-LDO A and the router, so using them as extra grounds later needs an FPGA-LDO change. The files cannot show how large the effect is.",
+   "where": "V3 top board In4: T_CLK32MHZ 5.06 mm, T_CLK32MHZ(2) 6.66 mm, T_D<1..8>, T_D<1..8>(2), T_READ, T_SYNC and their (2) copies 3.97-7.47 mm each; In3 /REF_VDD, In4 /REF_VCM, In5 /VDD10 + /VDD_DRIVER. J3/J4 AGND 42/44, DGND 46/48, spares SPARE_P2..P58. FPGA-LDO A and router J3/J4 pins 2/4/6/8/24/58 unconnected; NT1 on FPGA-LDO A at (100.58, 121.0). Option B adds J5 (GND 3/65, AGND 62).",
+   "evidence": "W/scratch/r2-system/layers.py on V3_Top: zones In1 AGND, In2 VDD_FE, In3 REF_VDD, In4 REF_VCM, In5 VDD10/VDD_DRIVER, In6 VDD_ADC/VSS10, In7 DVDD, In8 DGND; T_ track lengths as listed. Capacitor nets on both boards: REF_VCM, REF_VDD, VDD_ADC, VDD_DRIVER, VDD_FE to AGND (4 each), DVDD to DGND (4), VDD10/VSS10/VDD_CGEN to AGND on top. W/scratch/r2-system/sigmap.json: 44 outputs per port; spares open on ldo_a and ldo_b_router. Order of magnitude only (assumed 1.5 ns edges, about 12 pF per line, 0.4 nH for two contacts in parallel; none from a datasheet): 32 data lines switching together give about 0.38 A and about 0.1 V per joint, about 0.2 V for the far chips relative to the FPGA. Option B J5 return count unchanged (SYS-06).",
+   "source": "Engineering judgement; SYS-23 and SYS-41 suggested actions.",
+   "consequence": "Digital edge current flows in the ASICs' reference supply and analog ground and through NT1, which can add noise to all eight recordings and disturb the returned clocks; the cheap fix on the spare pins is lost once FPGA-LDO A is ordered.",
+   "suggested_action": "Before ordering FPGA-LDO A, ask the ASIC designer whether pins 2/4/6/8/24/58 may be DGND on the ASIC pair and, if so, tie them to GND on FPGA-LDO A and the router; on the top board, keep the T_ lanes over DGND or AGND (B.Cu/In8 or F.Cu/In1 side) rather than In4; measure AGND-DGND noise at bring-up.",
+   "basis": "needs_decision",
+   "already_known": "changed SYS-23",
+   "relation": "changed SYS-23",
+   "verification": "Re-check 11 Nov evening · verified",
+   "found_by": []
+  },
   {
    "id": "SYS-01",
    "severity": "major",
@@ -69,6 +103,26 @@
    "source": "Engineering judgement (lumped surface model). The IEC 60601-1 applied-part surface limit of about 43 C for long contact is from secondary sources and was not read; tissue-heating limits (usually about 1-2 K brain temperature rise) are stricter. Efficiency curves of the LT3582-12, MPM3833C and TPS74801 were not checked against the datasheets.",
    "consequence": "Stack surfaces above body-contact limits, heat conducted down the shanks into the brain, and hot FPGA and ASIC junctions; the planned commercial-grade U1 (XC7A35T-2CSG325C, 0-85 C) leaves less junction margin. This may force a heat sink, duty cycling or a head-mount change after eight stacks are built.",
    "suggested_action": "Set a head-surface and tissue-heating limit, then measure one powered stack (thermocouple or IR) in still air with the real bitstream before ordering eight."
+  },
+  {
+   "id": "SYS-04",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_decision",
+   "already_known": "inputs/notes/fpga-ldo-v14.md (6 Nov: far board shares CLKH/SPI_CLK/SPI_DIN) records sharing as accepted, without addressing the designer's 'Not Shared' grouping; inputs/asic/sandwich_hub_options/START_HERE.md lists as open whether the far board gets BOARD2/BOARD4 clocks and separate SPI pins, and Frontend V46 has since dropped those lines. Both reviewers rate it major because the order files are ready.",
+   "found_by": [
+    "system-mate-ldo-asic",
+    "system-signals"
+   ],
+   "title": "Each stack has four stimulation SPI data pairs for eight ASICs, so paired near and far chips get one stream.",
+   "area": "ASIC SPI control",
+   "what": "Each ASIC has its own SPI_DL and SPI_DR inputs (the serial lines that load its configuration and stimulation tables), and the ASIC designer's pin sheet lists them under 'Not Shared'. The Frontend brings out only four pairs (STIM_CHIP1..4_SPI_DL/DR), and the ASIC board passes SPI_DINR/SPI_DINL straight from J3 to J4 with no T_ copy, so the far board's chip in each position receives the near chip's stream. With SPI_CLK and SPI_LATCH also shared and no chip address in the stream, each pair gets the same gain, DAC settings and stimulation table, and a far chip cannot be left idle. The sheet groups the pins but does not forbid sharing, so this is a decision for the ASIC designer and the board's owner; if a far-board variant instead moved SPI to the spare pins 2/4/6/8/24/58, those pins are open on both FPGA-LDO designs and the far chips would get no SPI at all.",
+   "where": "Frontend U1 C11/G14 (CHIP1), C14/C16 (CHIP2), V7/V6 (CHIP3), N17/N18 (CHIP4). FPGA-LDO A and Option B router: J4 pins 57/59 (STIM_CHIP1) and 23/25 (CHIP2), J3 pins 57/59 (CHIP3) and 23/25 (CHIP4); J3/J4 pins 2, 4, 6, 8, 24, 58 open. ASIC board J3 = J4 on SPI_DINR 57, SPI_DINL 59, SPI_DINR(2) 23, SPI_DINL(2) 25. Pairs: CHIP1 -> ASIC1 + ASIC3, CHIP2 -> ASIC2 + ASIC4, CHIP3 -> ASIC5 + ASIC7, CHIP4 -> ASIC6 + ASIC8.",
+   "evidence": "exports/ldo_a/netlist.xml: /STIM_CHIP1_SPI_DL = J2.46 + J4.59 only; /STIM_CHIP4_SPI_DR = J1.20 + J3.23 only; 8 STIM_CHIP SPI nets where 16 are needed (same in ldo_b_router, ldo_b_ldo and frontend). inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc lines 91-110: only BOARD1/3_CLK, BOARD1/3_SPI_CLK and STIM_CHIP1..4_SPI_DL/DR. exports/asic/netlist.xml: /SPI_DINL = J3.59, J4.59, U01_BCD1; /SPI_DINR(2) = J3.23, J4.23, U01_BCD2; CLKH, SPI_CLK and SPI_LATCH go to both chips; the 22 T_ nets are D, CLK32MHZ, SYNC and READ only. ldo_a J4.79 = ASIC1_DATA1 (near), J4.80 = ASIC3_DATA1 (T_, far). inputs/asic/Pins__Sheet1.csv rows 1-4: 'Shared' = Bias, Control; 'Not Shared' = Chip in (SPI_DL, SPI_DR), Chip out. ASIC_REFERENCE.md lines 59-64: 12-bit DAC/gain suffix, no chip address. Frontend schematic V43 note (kept in V46): BOARD2/4 and NONSTIM_BOARD1/2 SPI lines removed; 'confirm identical configuration of stacked boards' listed as unverified. Spare pins: 15 at the Frontend-LDO joint (J1.29-33, 35-37, 39, 43, 45, 47, 49 and J2.40, J2.42) and 6 per LDO J3/J4; a fix needs 4 per ASIC port.",
+   "source": "ASIC designer's pin workbook Pins.xlsx Sheet1 (inputs/asic/Pins__Sheet1.csv); ASIC reference V1 (inputs/asic/ASIC_Reference/ASIC_REFERENCE.md) line 43 and section 4; engineering judgement.",
+   "consequence": "Gain, DAC settings and stimulation tables cannot be set per chip for four of the eight ASICs in each stack, and paired chips stimulate the same pattern. Changing this after the Frontend and LDO boards are made needs a spin of both.",
+   "suggested_action": "Ask the ASIC designer whether paired chips may share one SPI stream. If not, route eight more SPI data lines (four per ASIC port) over the spare connector pins on the Frontend and the FPGA-LDO before ordering either."
   },
   {
    "id": "SYS-06",
@@ -169,6 +223,23 @@
    "source": "TI TPS7A20 datasheet SBVS338H, electrical characteristics (VEN(HI) 0.9 V, VEN(LOW) 0.3 V, tSTR 750/1150 us) and pin table (500k EN pulldown); ADI LT3042 datasheet, EN/UV rising threshold 1.18/1.24/1.32 V, https://www.analog.com/en/products/lt3042.html; MPS MPM3833C datasheet Rev 1.0 (soft-start 1.3 ms, PG delay 100 us); AMD DS181 Artix-7 data sheet v1.27.1, Tables 1-2 (I/O input voltage to VCCO + 0.55 V, 10 mA clamp current in a powered or unpowered bank, recommended power-on order); inputs/asic/ASIC_Reference/ASIC_REFERENCE.md U02/U03/U05/U07 (sequencing, powered-off pin limits and reset behaviour unresolved); engineering judgement.",
    "consequence": "The FPGA cannot sequence the ASICs, keep them off during FPGA bring-up, shut down the +/-12 V converter or react to a failed rail. If the ASIC turns out to need a set power order, adding control after ordering changes the J1/J2 contract on both the Frontend and the LDO board; meanwhile ASIC boards can only be changed with the cable unplugged or by hot-plugging onto live rails.",
    "suggested_action": "Get the ASIC power-up and power-down order and powered-off pin limits from the ASIC designer, and decide before ordering whether the FPGA gates the rails; if so, route a Frontend-driven enable on a spare pin (for example J1.29) to EN_ASIC_RAILS with R1 as a pull-down and return a wired-OR power-good. If not, write 'cable unplugged before any DF40 is mated or unmated' into the bring-up procedure and capture the power-down order on a scope."
+  },
+  {
+   "id": "R2S-07",
+   "severity": "minor",
+   "board": "system",
+   "title": "No ASIC's DISC_OUT reaches the FPGA, yet the V3 question to the ASIC designer asks only about the top chips.",
+   "what": "The bottom chips drive DISC_OUT on pins 3/5, which are no-connect on FPGA-LDO A and the router and have no Frontend line; V3 cut the top chips' DISC_OUT completely. So the system cannot read DISC_OUT from any of the eight chips. The ASIC designer's pin sheet lists DISC_OUT as an output whose termination is undecided. The V3 record asks \"is DISC_OUT needed from the top chips?\", but the real question is whether it is needed at all, because adding it later means new lines on the Frontend, FPGA-LDO A and the router.",
+   "where": "ASIC pins 3 (DISC_OUT(2), U01_BCD2) and 5 (DISC_OUT, U01_BCD1) on both V3 boards; top chips' pads on T_DISC_OUT / T_DISC_OUT(2) only; FPGA-LDO A / router J3/J4 pins 3/5 unconnected.",
+   "evidence": "W/scratch/r2-system/compose.py: \"output reaches no FPGA\" for DISC_OUT on both ports and both options; V3 dumps: T_DISC_OUT nets have one pad each. ASIC_REFERENCE.md section 2: DISC_OUT appears in E3, E4 leaves its termination undecided. 08 V3 report question list.",
+   "source": "ASIC designer's Pins sheet; ASIC_REFERENCE.md section 2.",
+   "consequence": "If DISC_OUT turns out to be a needed status or safety output, the boards to be ordered cannot see it from any chip.",
+   "suggested_action": "Ask the ASIC designer whether DISC_OUT is needed from any chip, and how it should be terminated if not read, before the Frontend and FPGA-LDO A are ordered.",
+   "basis": "needs_vendor_answer",
+   "already_known": "",
+   "relation": "new",
+   "verification": "Re-check 11 Nov evening",
+   "found_by": []
   },
   {
    "id": "SYS-11",
@@ -765,6 +836,40 @@
    "suggested_action": "When the second, not yet drawn ASIC board is laid out, keep clock lanes on the DGND-referenced layer end to end; on the existing board, measure AGND-DGND noise at J3/J4 while CLKH runs, before relying on it for recording."
   },
   {
+   "id": "R2S-09",
+   "severity": "note",
+   "board": "system",
+   "title": "Firmware must follow a fixed chip numbering, a reversed DATA order and four shared SPI streams, and the pin file records none of it.",
+   "what": "Facts the FPGA design needs, read from the files. ASIC numbers: on the FPGA-LDO underside port (J4), ASIC1 = near board U01_BCD1, ASIC2 = near U01_BCD2, ASIC3 = far U01_BCD1, ASIC4 = far U01_BCD2; on the top-side port (J3), ASIC5/6 near and ASIC7/8 far, same order. Within every chip, DATAL<4..1> arrive as DATA1..4 and DATAR<4..1> as DATA5..8. Each chip's returned clock is on the P side of an SRCC/MRCC clock-capable pair in the same bank as its data: R2, D13, P4, E16, R3, R16, N3, P15 for ASIC1..8; ASIC1/3/5/7 in bank 34, ASIC2/4 in bank 15, ASIC6/8 in bank 14. SPI: stream STIM_CHIP1 loads ASIC1 and ASIC3, CHIP2 loads ASIC2 and ASIC4, CHIP3 loads ASIC5 and ASIC7, CHIP4 loads ASIC6 and ASIC8 (stream number and ASIC number differ for 3 and 4); BOARD1_SPI_CLK clocks ASIC1-4, BOARD3_SPI_CLK ASIC5-8, one SPI_LATCH for all eight. CLKH: BOARD1_CLK to ASIC1-4, BOARD3_CLK to ASIC5-8. STIM_EN, STIM_START, STIM_CLK, STIM_CHB (both CHBL and CHBR), CHIP_RESET (RRST_DIGITAL and RST_DRIVER), FE_RESET (RST_FEL and RST_FER) and IMP_TST go to all eight. No FPGA pin sees any DISC_OUT; AC_IN is only a 10k to AGND and TP7. The XDC has pin locations only: no create_clock or input-delay constraints for the eight returned clocks.",
+   "where": "inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc; FPGA-LDO A / router J3/J4; V3 boards U01_BCD1/U01_BCD2.",
+   "evidence": "W/scratch/r2-system/table.py output (per-chip pad -> connector pin -> FPGA net -> ball -> bank), package file scratch/frontend-io/xc7a35tcsg325pkg.txt (AMD xc7a35tcsg325, 12/3/2013). Example: ASIC1 DATAL<4> pin 79 -> ASIC1_DATA1 ball U2; DATAR<1> pin 37 -> ASIC1_DATA8 ball L3; CLK32MHZ pin 45 -> R2 IO_L13P_T2_MRCC_34. LDO A R6 10k ASIC_AC_IN to AGND, TP7.",
+   "source": "AMD 7 Series FPGAs Clocking Resources UG472 (clock-capable inputs; not re-read); ASIC_REFERENCE.md section 3 (capture on each chip's own returned clock).",
+   "consequence": "A decoder that assumes DATA1 = DATAL<1>, or that STIM_CHIP3 is ASIC3, will scramble channels or configure the wrong chips.",
+   "suggested_action": "Write this map into the Frontend firmware notes (or as comments in the XDC) and add clock constraints for the eight returned clocks before the first build.",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "relation": "new",
+   "verification": "Re-check 11 Nov evening",
+   "found_by": []
+  },
+  {
+   "id": "R2S-10",
+   "severity": "note",
+   "board": "system",
+   "title": "On the FPGA-LDO underside port the near board mates through its J4 plug, not its J3, so the \"top\" board hangs lowest and its J3 receptacle is the open end.",
+   "what": "FPGA-LDO A J4 and router J4 are DF40C-80DS receptacles on the bottom face, so the board under them must offer a plug: the near board hangs face up and mates with its J4, and the far board mates its J4 into the near board's J3. This works electrically because both V3 boards pass all 80 pins from J3 to J4. But the round-2 description (near board plugs in with its J3; the far board's J4 has nothing above it) holds only for the top-side port. On the underside port the far (\"Top\") board is the lowest board in the stack, its J4 must be fitted and its J3 receptacle is the exposed end; on the top-side port its J4 plug is the exposed end. Both free ends carry +10 V and -10 V on pins 36/54.",
+   "where": "FPGA-LDO A and router: J3 DF40C-80DP top, J4 DF40C-80DS bottom, both at (99.783, 113.51). V3 boards: J3 DS on B.Cu, J4 DP on F.Cu. Option A levels (z = 0 at LDO A bottom): near -3.10 to -1.50, far -6.20 to -4.60 on the underside port.",
+   "evidence": "exports/ldo_a/parts.csv and exports/ldo_b_router/parts.csv (connector types and sides); V3 dumps; ASIC J4 to LDO A / router J4 fit 180 deg, 0.185 mm, pin n on pin n (W/scratch/r2-system/sigmap.py); W/scratch/r2-system/stack_calc_out.txt.",
+   "source": "Engineering judgement.",
+   "consequence": "Assembly notes, a cost-down that leaves one connector off the top board, or a cover for the open connector would be wrong for one of the two ports if written from the J3-port picture.",
+   "suggested_action": "Use near/far, not bottom/top, in assembly and firmware notes; fit both connectors on the far board, or make one variant per port; choose a cover for the exposed plug or receptacle.",
+   "basis": "confirmed_in_files",
+   "already_known": "",
+   "relation": "new",
+   "verification": "Re-check 11 Nov evening",
+   "found_by": []
+  },
+  {
    "id": "SYS-42",
    "severity": "note",
    "status": "kept",
@@ -974,27 +1079,6 @@
    "source": "AMD DS181 v1.27.1 Table 4 (HR bank overshoot: VCCO + 0.55 V for 100 % of the unit interval, VCCO + 0.95 V for 0.24 %) and Table 8, https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content; inputs/asic/ASIC_Reference/ASIC_REFERENCE.md item U03 (ASIC VOH/VOL and drive strength unknown).",
    "consequence": "Probably works. With a strong, fast ASIC driver the FPGA clock inputs would see overshoot beyond AMD's limit on every cycle.",
    "suggested_action": "At first power-up, probe one returned CLK32MHz at the Frontend J2 pad; if the peak exceeds about 2.05 V, ask the ASIC designer whether the output drive can be reduced."
-  },
-  {
-   "id": "SYS-04",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_decision",
-   "already_known": "inputs/notes/fpga-ldo-v14.md (6 Nov: far board shares CLKH/SPI_CLK/SPI_DIN) records sharing as accepted, without addressing the designer's 'Not Shared' grouping; inputs/asic/sandwich_hub_options/START_HERE.md lists as open whether the far board gets BOARD2/BOARD4 clocks and separate SPI pins, and Frontend V46 has since dropped those lines. Both reviewers rate it major because the order files are ready.",
-   "found_by": [
-    "system-mate-ldo-asic",
-    "system-signals"
-   ],
-   "title": "Each stack has four stimulation SPI data pairs for eight ASICs, so paired near and far chips get one stream.",
-   "area": "ASIC SPI control",
-   "what": "Each ASIC has its own SPI_DL and SPI_DR inputs (the serial lines that load its configuration and stimulation tables), and the ASIC designer's pin sheet lists them under 'Not Shared'. The Frontend brings out only four pairs (STIM_CHIP1..4_SPI_DL/DR), and the ASIC board passes SPI_DINR/SPI_DINL straight from J3 to J4 with no T_ copy, so the far board's chip in each position receives the near chip's stream. With SPI_CLK and SPI_LATCH also shared and no chip address in the stream, each pair gets the same gain, DAC settings and stimulation table, and a far chip cannot be left idle. The sheet groups the pins but does not forbid sharing, so this is a decision for the ASIC designer and the board's owner; if a far-board variant instead moved SPI to the spare pins 2/4/6/8/24/58, those pins are open on both FPGA-LDO designs and the far chips would get no SPI at all.",
-   "where": "Frontend U1 C11/G14 (CHIP1), C14/C16 (CHIP2), V7/V6 (CHIP3), N17/N18 (CHIP4). FPGA-LDO A and Option B router: J4 pins 57/59 (STIM_CHIP1) and 23/25 (CHIP2), J3 pins 57/59 (CHIP3) and 23/25 (CHIP4); J3/J4 pins 2, 4, 6, 8, 24, 58 open. ASIC board J3 = J4 on SPI_DINR 57, SPI_DINL 59, SPI_DINR(2) 23, SPI_DINL(2) 25. Pairs: CHIP1 -> ASIC1 + ASIC3, CHIP2 -> ASIC2 + ASIC4, CHIP3 -> ASIC5 + ASIC7, CHIP4 -> ASIC6 + ASIC8.",
-   "evidence": "exports/ldo_a/netlist.xml: /STIM_CHIP1_SPI_DL = J2.46 + J4.59 only; /STIM_CHIP4_SPI_DR = J1.20 + J3.23 only; 8 STIM_CHIP SPI nets where 16 are needed (same in ldo_b_router, ldo_b_ldo and frontend). inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc lines 91-110: only BOARD1/3_CLK, BOARD1/3_SPI_CLK and STIM_CHIP1..4_SPI_DL/DR. exports/asic/netlist.xml: /SPI_DINL = J3.59, J4.59, U01_BCD1; /SPI_DINR(2) = J3.23, J4.23, U01_BCD2; CLKH, SPI_CLK and SPI_LATCH go to both chips; the 22 T_ nets are D, CLK32MHZ, SYNC and READ only. ldo_a J4.79 = ASIC1_DATA1 (near), J4.80 = ASIC3_DATA1 (T_, far). inputs/asic/Pins__Sheet1.csv rows 1-4: 'Shared' = Bias, Control; 'Not Shared' = Chip in (SPI_DL, SPI_DR), Chip out. ASIC_REFERENCE.md lines 59-64: 12-bit DAC/gain suffix, no chip address. Frontend schematic V43 note (kept in V46): BOARD2/4 and NONSTIM_BOARD1/2 SPI lines removed; 'confirm identical configuration of stacked boards' listed as unverified. Spare pins: 15 at the Frontend-LDO joint (J1.29-33, 35-37, 39, 43, 45, 47, 49 and J2.40, J2.42) and 6 per LDO J3/J4; a fix needs 4 per ASIC port.",
-   "source": "ASIC designer's pin workbook Pins.xlsx Sheet1 (inputs/asic/Pins__Sheet1.csv); ASIC reference V1 (inputs/asic/ASIC_Reference/ASIC_REFERENCE.md) line 43 and section 4; engineering judgement.",
-   "consequence": "Gain, DAC settings and stimulation tables cannot be set per chip for four of the eight ASICs in each stack, and paired chips stimulate the same pattern. Changing this after the Frontend and LDO boards are made needs a spin of both.",
-   "suggested_action": "Ask the ASIC designer whether paired chips may share one SPI stream. If not, route eight more SPI data lines (four per ASIC port) over the spare connector pins on the Frontend and the FPGA-LDO before ordering either.",
-   "closed_by": "Settled by the ASIC V2/V3 decision (11 Nov): each top chip takes the same SPI data, clock and latch as the bottom chip below it, as pin map V5 assumed. No extra FPGA outputs."
   },
   {
    "id": "SYS-05",

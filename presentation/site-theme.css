@@ -1,0 +1,20 @@
+/* Site theme, 11 Nov 2026: one design language across the 4K site (the deck and review tokens: Arial, ink #172a32, accent #126a71,
+   page #edf0ef, 54 px white header bar). Loaded last by pages that were built with an older look (Meetings, Library). */
+:root{color-scheme:light;--ink:#172a32;--muted:#53656b;--accent:#126a71;--line:#e0e6e7;--paper:#fff;--bg:#edf0ef;--cream:#edf0ef;--navy:#126a71;--blue:#126a71;font-family:Arial,Helvetica,sans-serif}
+html body{font-family:Arial,Helvetica,sans-serif;background:#edf0ef;color:#172a32}
+html body :is(h1,h2,h3,h4,p,li,td,th,dt,dd,button,input,select,a,span,small,strong,b,label,figcaption,summary,blockquote){font-family:inherit}
+html body h1{font-weight:600;letter-spacing:-1px;color:#172a32}
+html body :is(h2,h3,h4){font-weight:600;color:#172a32}
+html body a{color:#126a71}
+html body :is(.eyebrow,.kicker){color:#126a71;letter-spacing:.04em}
+html body :is(.lead,.caption,.context-note){color:#53656b}
+html body :is(.qa-navigation-header,.project-header){background:#fff;border-bottom:1px solid #e0e6e7;min-height:54px;max-height:none;padding:6px 22px;display:flex;align-items:center;justify-content:flex-start;gap:8px 18px;flex-wrap:wrap;font-size:13px;font-family:Arial,Helvetica,sans-serif;position:sticky;top:0;z-index:50;box-shadow:none}
+html body :is(.qa-navigation-header,.project-header) .brand{font-weight:600;color:#126a71;text-decoration:none;font-size:13px;margin-right:auto;letter-spacing:0}
+html body :is(.qa-navigation-header,.project-header) .brand span{color:inherit}
+html body :is(.qa-navigation-header,.project-header) nav{display:flex;flex-wrap:wrap;gap:4px}
+html body :is(.qa-navigation-header,.project-header) nav a{color:#172a32;text-decoration:none;padding:5px 9px;border:1px solid transparent;border-radius:3px;background:none;font-size:13px;font-weight:400}
+html body :is(.qa-navigation-header,.project-header) nav a:hover{background:#eff6f5}
+html body :is(.qa-navigation-header,.project-header) nav a[aria-current=page]{color:#126a71;border-color:#126a71}
+html body :is(.button,button){border-radius:3px}
+html body :is(.button.primary,a.button.primary){background:#126a71;border-color:#126a71;color:#fff}
+html body section:not(.slide){border-color:#e0e6e7}

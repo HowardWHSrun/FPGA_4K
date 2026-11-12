@@ -2,11 +2,11 @@
  "report": "FPGA-LDO PCB · Option A",
  "reviewed": "Layout V12 · edited 10 Nov 2026, 16:06 CST · schematic V30A",
  "review_date": "11 November 2026",
- "readiness": "Do not order yet: 9 major items to settle, no blocker",
- "headline": "FPGA-LDO Option A layout V12 passes DRC and parity, its order files match the board, and no blocker was found. The ASIC boards top and bottom V3 close the ASIC pin-use items (LDOA-03, LDOA-04), leaving 9 major items: parts that cannot be bought or are not chosen (LDOA-07 U1, LDOA-01 L11/L12), +/-10 V polarity at power-down (LDOA-08, LDOA-09), and converter ripple through AGND and NT1 (LDOA-02, LDOA-05, LDOA-06, LDOA-10, LDOA-11). Secure U1 and the L11/L12 inductors, then fix the power-down clamps and the ground and input-capacitor layout in one revision.",
+ "readiness": "Do not order yet: 10 major items to settle, no blocker",
+ "headline": "FPGA-LDO Option A layout V12 passes DRC and parity, its order files match the board, and no blocker was found. The ASIC boards top and bottom V3 close LDOA-03 (every chip output now reaches its FPGA net), but LDOA-04 stays open: the top chips share SPI with the chip below them, which the ASIC designer's sheet marks \"Not Shared\". The other majors are parts that cannot be bought or are not chosen (LDOA-07 U1, LDOA-01 L11/L12), +/-10 V polarity at power-down (LDOA-08, LDOA-09), and converter ripple through AGND and NT1 (LDOA-02, LDOA-05, LDOA-06, LDOA-10, LDOA-11). Settle shared SPI and decide whether the spare ASIC-connector pins become grounds before ordering (system re-check R2S-05).",
  "counts": {
   "blocker": 0,
-  "major": 9,
+  "major": 10,
   "minor": 17,
   "note": 8
  },
@@ -50,6 +50,25 @@
    "source": "Engineering judgement (mixed-signal grounding: high-frequency return current flows in the nearest plane, and an analog reference plane should not carry digital return current). Related: ADI LT3042 data sheet 3042fa, Rev A, p.12 (SET pin, RSET ground Kelvin-connected to the load) and p.15 (CSET and output-capacitor grounds), https://www.analog.com/media/en/technical-documentation/data-sheets/lt3042.pdf (read from a saved copy).",
    "consequence": "Edge currents from the 32 MHz-class lanes of eight ASICs move AGND relative to GND beside the reference regulators and at the port, and the ASIC sees that noise between its AGND and DGND pads. Expect spurs on REF_VCM, REF_VDD, VDD_FE and AGND in a microvolt recording system; the size is unknown and nothing is measured.",
    "suggested_action": "Decide before ordering: either make the lanes reference GND (GND on L2 under the lane corridors, AGND kept as islands under the LDO cells tied at NT1), or keep the layout and plan a bring-up measurement of noise on REF_VCM and AGND while the lanes toggle."
+  },
+  {
+   "id": "LDOA-04",
+   "severity": "major",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_decision",
+   "already_known": "Schematic V30A port note; also raised in the system reviews. The reviewer agrees with major.",
+   "found_by": [
+    "ldo_a-connectivity"
+   ],
+   "title": "Option A has four SPI data pairs for eight ASICs, so each near/far ASIC pair gets identical configuration.",
+   "area": "Shared vs per-chip signals",
+   "what": "Each ASIC is set up over SPI (a serial configuration bus); its data inputs SPI_DINL/SPI_DINR carry its gains, DAC settings and stimulus tables. Option A routes only four pairs (STIM_CHIP1..4) to pins 57/59 and 23/25 of each port, and the ASIC board buses those pins straight through to the stacked board with no separate pass-through copy, so ASIC1/3, 2/4, 5/7 and 6/8 receive identical data. The ASIC designer's Pins sheet lists SPI_DL/SPI_DR as per-chip inputs. SPI_CLK (per port), SPI_LATCH and the stimulation controls are also shared, so a far board cannot be set to record only.",
+   "where": "FPGA-LDO A V12: STIM_CHIP1 DR/DL J2.44/46 to J4.57/59; STIM_CHIP2 J1.59/57 to J4.23/25; STIM_CHIP3 J2.19/17 to J3.57/59; STIM_CHIP4 J1.20/22 to J3.23/25. BOARD1_SPI_CLK on J4.63, BOARD3_SPI_CLK on J3.63. ASIC board J3/J4 pins 57/59 (U01_BCD1) and 23/25 (U01_BCD2).",
+   "evidence": "exports/ldo_a/netlist.xml: 8 STIM_CHIPn_SPI_DL/DR nets, 2 nodes each. exports/asic/connectors.csv: J3.n = J4.n; pins 57/59 are /SPI_DINR and /SPI_DINL, 23/25 are /SPI_DINR(2) and /SPI_DINL(2), with no T_ copies. inputs/asic/Pins__Sheet1.csv: SPI_DL and SPI_DR under 'Not Shared / Chip in'; SPI_CLK, SPI_LATCH, CLKH and STIM controls under 'Shared'. ASIC_REFERENCE.md section 4: the SPI stream carries DR_DAC, AR_DAC, Gain_Right, Gain_Left and the L/R stimulus tables. Spares: Option A J1 has 13 unconnected contacts (29-33, 35-37, 39, 43, 45, 47, 49); the Frontend's J1 has the same pins unconnected; ASIC board pins 2/4/6/8/24/58 are separate unconnected nets on J3 and J4. Frontend V43 schematic note: NONSTIM SPI and BOARD2/4 clock nets removed, identical configuration of stacked boards listed as unverified. Schematic V30A port note: 'recording-only boards sharing stim-chip SPI data' unverified.",
+   "source": "ASIC designer's Pins sheet (inputs/asic/Pins__Sheet1.csv); ASIC reference ASIC_REFERENCE.md section 4; schematic V30A port note.",
+   "consequence": "The two chips in the same position on a stacked pair cannot be configured or stimulated independently. Reversing this after ordering means respinning both Option A and the Frontend.",
+   "suggested_action": "Get the ASIC designer's decision before ordering. If per-chip SPI is needed, add four pairs through the J1 spares on both the Frontend (FPGA pins and firmware) and Option A, to ASIC pins 2/4/6/8 or 24/58, with matching wiring on the far variant and pass-through on the near board."
   },
   {
    "id": "LDOA-05",
@@ -681,26 +700,6 @@
    "consequence": "Two copies of the existing board on one port would put two output drivers on each odd data line (corrupting ASIC1/2/5/6 data too), tie the DISC_OUT outputs on pins 3 and 5 together, and leave four of the eight ASICs connected to nothing. If the far variant's pins differ from Option A's even-pin map, a board spin follows.",
    "suggested_action": "Before ordering, obtain (or have drawn) the far-board 'Top' ASIC board with its chips on the even T_ pins and DISC_OUT off pins 3/5, then run the same pin-by-pin check against Option A J3/J4.",
    "closed_by": "Closed by the ASIC boards top and bottom V3: two different boards (bottom passes the top board's lanes through), with the original pin order. ASIC3/4/7/8 now reach their FPGA nets (44 / 44 per port) and no two outputs share a pin."
-  },
-  {
-   "id": "LDOA-04",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_decision",
-   "already_known": "Schematic V30A port note; also raised in the system reviews. The reviewer agrees with major.",
-   "found_by": [
-    "ldo_a-connectivity"
-   ],
-   "title": "Option A has four SPI data pairs for eight ASICs, so each near/far ASIC pair gets identical configuration.",
-   "area": "Shared vs per-chip signals",
-   "what": "Each ASIC is set up over SPI (a serial configuration bus); its data inputs SPI_DINL/SPI_DINR carry its gains, DAC settings and stimulus tables. Option A routes only four pairs (STIM_CHIP1..4) to pins 57/59 and 23/25 of each port, and the ASIC board buses those pins straight through to the stacked board with no separate pass-through copy, so ASIC1/3, 2/4, 5/7 and 6/8 receive identical data. The ASIC designer's Pins sheet lists SPI_DL/SPI_DR as per-chip inputs. SPI_CLK (per port), SPI_LATCH and the stimulation controls are also shared, so a far board cannot be set to record only.",
-   "where": "FPGA-LDO A V12: STIM_CHIP1 DR/DL J2.44/46 to J4.57/59; STIM_CHIP2 J1.59/57 to J4.23/25; STIM_CHIP3 J2.19/17 to J3.57/59; STIM_CHIP4 J1.20/22 to J3.23/25. BOARD1_SPI_CLK on J4.63, BOARD3_SPI_CLK on J3.63. ASIC board J3/J4 pins 57/59 (U01_BCD1) and 23/25 (U01_BCD2).",
-   "evidence": "exports/ldo_a/netlist.xml: 8 STIM_CHIPn_SPI_DL/DR nets, 2 nodes each. exports/asic/connectors.csv: J3.n = J4.n; pins 57/59 are /SPI_DINR and /SPI_DINL, 23/25 are /SPI_DINR(2) and /SPI_DINL(2), with no T_ copies. inputs/asic/Pins__Sheet1.csv: SPI_DL and SPI_DR under 'Not Shared / Chip in'; SPI_CLK, SPI_LATCH, CLKH and STIM controls under 'Shared'. ASIC_REFERENCE.md section 4: the SPI stream carries DR_DAC, AR_DAC, Gain_Right, Gain_Left and the L/R stimulus tables. Spares: Option A J1 has 13 unconnected contacts (29-33, 35-37, 39, 43, 45, 47, 49); the Frontend's J1 has the same pins unconnected; ASIC board pins 2/4/6/8/24/58 are separate unconnected nets on J3 and J4. Frontend V43 schematic note: NONSTIM SPI and BOARD2/4 clock nets removed, identical configuration of stacked boards listed as unverified. Schematic V30A port note: 'recording-only boards sharing stim-chip SPI data' unverified.",
-   "source": "ASIC designer's Pins sheet (inputs/asic/Pins__Sheet1.csv); ASIC reference ASIC_REFERENCE.md section 4; schematic V30A port note.",
-   "consequence": "The two chips in the same position on a stacked pair cannot be configured or stimulated independently. Reversing this after ordering means respinning both Option A and the Frontend.",
-   "suggested_action": "Get the ASIC designer's decision before ordering. If per-chip SPI is needed, add four pairs through the J1 spares on both the Frontend (FPGA pins and firmware) and Option A, to ASIC pins 2/4/6/8 or 24/58, with matching wiring on the far variant and pass-through on the near board.",
-   "closed_by": "Settled by the ASIC V2/V3 decision (11 Nov): near and far chips share the SPI stream by design, as pin map V5 assumed."
   }
  ],
  "checked_ok": [

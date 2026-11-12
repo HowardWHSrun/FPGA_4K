@@ -1,11 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASIC Pair Pin Order</title><style>:root{--ink:#1d2329;--mute:#5b6670;--line:#d9dee3;--bg:#fff;--card:#f7f8f9;--accent:#0e5a61;--ok:#2e7d32;--bad:#b3261e}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#e6e9ec;--mute:#a3adb6;--line:#38414a;--bg:#14181c;--card:#1c2228;--accent:#5fb3ba;--ok:#81c784;--bad:#ef9a9a}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
-main{max-width:1080px;margin:0 auto;padding:28px 16px 60px}h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
-.sub{color:var(--mute);margin:0 0 18px}.tiles{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.tile{flex:1 1 150px;background:var(--card);border-left:4px solid var(--ok);padding:10px 12px;border-radius:3px}
-.tile b{font-size:22px;display:block}table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}th,td{border:1px solid var(--line);padding:3px 6px;text-align:left}th{background:var(--card)}
-.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.wrap{overflow-x:auto}img{max-width:100%;border:1px solid var(--line);background:#fff;margin:6px 0}
-.dl a{display:inline-block;margin:4px 8px 4px 0;padding:6px 12px;border-radius:3px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}a{color:var(--accent)}.meta{color:var(--mute);font-size:13px}ul{padding-left:20px}</style></head><body><main><p class="meta"><a href="../../../../index.html#slide-2">← Weekly deck, slide 2</a></p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASIC Pair Pin Order</title><link rel="stylesheet" href="../../review.css"><link rel="stylesheet" href="../../asic-pair/pair.css"></head><body>
+<header class="bar"><span class="brand">Design review V1 · 11 November 2026</span><nav><a class="back" href="../../../../index.html#slide-2">← Weekly deck, slide 2</a><a href="../../index.html">All reports</a><a href="../../system.html">System</a><a href="../../hdmi.html">HDMI Extension Board</a><a href="../../frontend.html">Frontend FPGA Board</a><a href="../../fpga-ldo-a.html">FPGA-LDO · Option A</a><a href="../../fpga-ldo-b.html">FPGA-LDO · Option B</a><a href="../../asic-pair/index.html">ASIC boards top/bottom</a><a href="../../asic.html">ASIC board PCB-5</a></nav></header>
+
+<main>
 <h1>ASIC board pair: original pin order restored</h1>
 <p class="sub">Top board V2 · edited 11 Nov 2026, 19:58 CST · bottom board V2 · edited 11 Nov 2026, 19:58 CST · built on power-via V1</p>
 <p>The pair now presents the original PCB-5 order (pin map V5) at the FPGA-LDO side, so FPGA-LDO A V12 and the Option B router V2 need no change. Every top-chip output lands on the FPGA net named for it, on both ports of both FPGA-LDO boards. This closes review blocker P-B1 and major P-M2 (no extra FPGA outputs are needed).</p>

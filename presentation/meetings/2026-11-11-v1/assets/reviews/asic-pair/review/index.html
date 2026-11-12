@@ -1,18 +1,8 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASIC Board Pair Review</title><style>
-:root{--ink:#1d2329;--mute:#5b6670;--line:#d9dee3;--bg:#fff;--card:#f7f8f9;--accent:#0e5a61;--blocker:#b3261e;--major:#a15c00;--minor:#2f5d8a;--note:#5b6670}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#e6e9ec;--mute:#a3adb6;--line:#38414a;--bg:#14181c;--card:#1c2228;--accent:#5fb3ba}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
-main{max-width:1080px;margin:0 auto;padding:28px 16px 60px}h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
-.sub{color:var(--mute);margin:0 0 18px}.tiles{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.tile{flex:1 1 120px;background:var(--card);border-left:4px solid;padding:10px 12px;border-radius:3px}
-.tile b{font-size:24px;display:block}.blocker{border-color:var(--blocker)}.major{border-color:var(--major)}.minor{border-color:var(--minor)}.note{border-color:var(--note)}
-.f{background:var(--card);border-left:4px solid;border-radius:3px;margin:10px 0;padding:10px 14px}.f h3{margin:0 0 4px;font-size:16px}.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 7px;border-radius:9px;color:#fff;margin-right:6px}
-.tag.blocker{background:var(--blocker)}.tag.major{background:var(--major)}.tag.minor{background:var(--minor)}.tag.note{background:var(--note)}.meta{color:var(--mute);font-size:13px}
-details{margin-top:6px}summary{cursor:pointer;color:var(--accent);font-size:14px}dl{margin:6px 0 0}dt{font-weight:600;font-size:13px;margin-top:6px}dd{margin:0 0 0 0;font-size:14px;overflow-wrap:anywhere}
-table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}th,td{border:1px solid var(--line);padding:4px 7px;text-align:left}th{background:var(--card)}
-img{max-width:100%;border:1px solid var(--line);background:#fff;margin:6px 0}.dl a{display:inline-block;margin:4px 8px 4px 0;padding:6px 12px;border-radius:3px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-a{color:var(--accent)}ul{padding-left:20px}
-</style></head><body><main><p class="meta"><a href="../../../../index.html#slide-2">← Weekly deck, slide 2</a></p>
+<title>ASIC Board Pair Review</title><link rel="stylesheet" href="../../review.css"><link rel="stylesheet" href="../../asic-pair/pair.css"></head><body>
+<header class="bar"><span class="brand">Design review V1 · 11 November 2026</span><nav><a class="back" href="../../../../index.html#slide-2">← Weekly deck, slide 2</a><a href="../../index.html">All reports</a><a href="../../system.html">System</a><a href="../../hdmi.html">HDMI Extension Board</a><a href="../../frontend.html">Frontend FPGA Board</a><a href="../../fpga-ldo-a.html">FPGA-LDO · Option A</a><a href="../../fpga-ldo-b.html">FPGA-LDO · Option B</a><a href="../../asic-pair/index.html">ASIC boards top/bottom</a><a href="../../asic.html">ASIC board PCB-5</a></nav></header>
+
+<main>
 <h1>ASIC board pair: review and connector power vias</h1>
 <p class="sub">Top and bottom ASIC boards as received 11 Nov 2026, 15:40 CST (top board saved 15:50) · power-via V1 · edited 11 Nov 2026, 16:00 CST</p>
 <p><b>Do not order the pair yet: 2 blockers.</b> The two boards wire correctly to each other: all 80 pins mate pin to pin, and each chip output has its own line. But the pass-through pins were renamed into a new order, and the FPGA-LDO boards (Option A V12 and the Option B router V2) still use the old one. Only 4 of the 28 top-board lines per port land on the right signal, so ASIC3/4/7/8 cannot be configured or read. The via set also still cannot be laminated, as in ASIC-02 this morning.</p>

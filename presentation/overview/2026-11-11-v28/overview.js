@@ -1,4 +1,4 @@
-// Site root overview V28: copy of the 11 Nov deck overview.js with repo-root asset paths.
+// Site root overview: copy of the 11 Nov deck overview.js with repo-root asset paths and ?approach=.
 (() => {
   const frame = document.getElementById('overview-frame');
   const printFrame = document.getElementById('print-frame');

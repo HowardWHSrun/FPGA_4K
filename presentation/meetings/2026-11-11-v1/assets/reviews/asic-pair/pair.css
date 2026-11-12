@@ -1,0 +1,16 @@
+/* ASIC boards pages: page-specific parts on top of review.css (same tokens as the deck and the review pages). */
+main>h1{margin-top:6px}main>h2{margin:30px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+main>p,main>ul,main>table,main>.wrap,main>details,main>img{max-width:100%}
+.tiles{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:14px 0}
+.tile{border-left-color:var(--accent);font-size:13px;color:var(--muted)}.tile b{color:var(--ink)}
+.tile.blocker{border-left-color:var(--blocker)}.tile.blocker b{color:var(--blocker)}.tile.major{border-left-color:var(--minor)}.tile.minor,.tile.note{border-left-color:#93aeb0}
+.dl a{display:inline-block;margin:4px 8px 4px 0;padding:6px 12px;border-radius:3px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:14px}.dl a:hover{background:#0b4a50}
+.meta{color:var(--muted);font-size:13px}.wrap{overflow-x:auto}
+table{background:#fff}th,td{padding-left:8px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;color:#2c5a8a;background:#e6eef7;white-space:nowrap;margin-right:6px}
+.tag.blocker{background:#fbeaea;color:#a3262a}.tag.major,.tag.part{background:#e6eef7;color:#2c5a8a}.tag.minor,.tag.note,.tag.open{background:#eef1f1;color:#53656b}.tag.ok{background:#e3f1e7;color:#1f6b3a}
+.ok{color:#1f6b3a;font-weight:600}.bad{color:#a3262a;font-weight:600}
+.f{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);padding:12px 16px;margin:10px 0}.f h3{margin:0 0 4px;font-size:17px;font-weight:600}
+.f.blocker{border-left-color:var(--blocker)}.f.major{border-left-color:var(--minor)}.f.minor,.f.note{border-left-color:#93aeb0}
+dl{margin:6px 0 0}dt{font-weight:600;font-size:13px;margin-top:6px;color:var(--muted)}dd{margin:0;font-size:14px;overflow-wrap:anywhere}
+img{max-width:100%;border:1px solid var(--line);background:#fff;margin:6px 0}
