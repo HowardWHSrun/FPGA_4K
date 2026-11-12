@@ -11,7 +11,7 @@ const INFO={
  frontend:{name:'Frontend FPGA Board',kicker:'8L V3 · 14 layers · every connection routed',role:'Reads its ASIC boards and sends the data over one HDMI cable.',was:'Was: Artix-7 FPGA board, 35T FPGA PCB, custom FPGA'},
  fpgaldo:{name:'FPGA-LDO PCB · Option A',kicker:'Layout V12 · four of the eight stacks',role:'One board under the Frontend FPGA Board; powers the four ASIC boards.',was:''},
  fpgaldob:{name:'FPGA-LDO PCB · Option B',kicker:'Router V2 + LDO board V2 · four of the eight stacks',role:'Same circuit on two boards: the router carries the ASIC boards, the plug-in LDO board sits under the Frontend, joined by the 120-pin J5.',was:''},
- asic:{name:'ASIC board',kicker:'Four per stack',role:'Two ASICs per board, each with its four-shank probe leaving the board edge; four ASIC boards per Frontend FPGA Board.',was:''},
+ asic:{name:'ASIC boards · top and bottom',kicker:'V3 · two bottom and two top boards per stack',role:'Two ASICs per board, each with its four-shank probe leaving the board edge. On each FPGA-LDO port a bottom board plugs in and a top board stacks on it.',was:''},
  cable:{name:'HDMI cable',kicker:'One per stack',role:'Connects a Frontend FPGA Board to one HDMI Extension Board port.',was:''},
  directldo:{name:'Direct LDO Carrier',kicker:'V6 · JLCPCB placement review',role:'Carries the XEM8305 and connects the existing LDO board directly, with no custom FPGA board. Our first board sent to fabrication.',was:'Was: XEM8305 carrier, LDO carrier'},
  xem8305:{name:'XEM8305',kicker:'Opal Kelly module',role:'FPGA module that mounts on the Direct LDO Carrier (MC1–MC3).',was:''},
@@ -63,7 +63,7 @@ function nativeBoard(gltf,x,y,z,rotation=0){
 
 async function buildCustom(){
  const list=pickables.custom,root=roots.custom;
- const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-8l-v3.glb?v=14l'),loader.loadAsync('assets/fpga-ldo-a-v12.glb'),loader.loadAsync('assets/asic-pcb5-real.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb')]);
+ const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG,asicTG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-8l-v3.glb?v=14l'),loader.loadAsync('assets/fpga-ldo-a-v12.glb'),loader.loadAsync('assets/asic-bottom-v3-0p8mm.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb'),loader.loadAsync('assets/asic-top-v3-0p8mm.glb')]);
  // HDMI Extension Board + XEM8310. MC1–MC3 coordinates are unchanged from BRK8310 Custom V1, so the earlier XEM registration applies.
  const host=new THREE.Group();host.position.set(160,0,0);root.add(host);
  const hdmi=compact(hdmiG.scene);hdmi.scale.setScalar(1000);const hb=new THREE.Box3().setFromObject(hdmi),hc=hb.getCenter(new THREE.Vector3());hdmi.position.set(-hc.x,0,-hc.z);const hdmiPart=new THREE.Group();hdmiPart.add(hdmi);host.add(tag(hdmiPart,'hdmi','HDMI Extension Board',list,true));hdmiPart.userData.anchor=[.82,.15];
@@ -72,20 +72,21 @@ async function buildCustom(){
  // and the 80-pin centres for PCB-5. Heights use nominal 1.5 mm DF40 mating gaps.
  const ldo=nativeBoard(ldoG,-100,0,-128.72);
  const fe=nativeBoard(feG,113.505,3.1,110.855,Math.PI);
- addPcb5Bodies(asicG.scene);
- const asic=nativeBoard(asicG,135.323,0,55.803,Math.PI);
+ // ASIC boards V3 (drawn at the 0.8 mm the stack fit uses): the bottom board sits next to the FPGA-LDO connector, the top board on it.
+ addPcb5Bodies(asicG.scene);addPcb5Bodies(asicTG.scene);
+ const asic=nativeBoard(asicG,135.323,0,55.803,Math.PI),asicT=nativeBoard(asicTG,135.323,0,55.803,Math.PI);
  const j3=new THREE.Vector3(113.505-112.5,3.1+3.0,110.855-96.5);// J3 (112.5, 98.28) plug mouth at the board edge y = 96.5
  const asicHeights=[-4.60,-2.30,3.10,5.40];
  // Option B stack, arranged as the Option B fit test (2026-11-10 23_): LDO board top at 0, router and Frontend bottoms at 1.5,
  // ASIC boards on the router (0.8 mm boards, 1.5 mm DF40 gaps). Router and LDO board models are already centred on the stack;
  // the whole stack is shifted so the Frontend's Micro-HDMI mouth sits where the cable ends.
- const BZ=-8.525,feB=nativeBoard(feG,113.505,1.5,119.38+BZ,Math.PI),asicB=nativeBoard(asicG,135.32,0,58.52+BZ,Math.PI);
+ const BZ=-8.525,feB=nativeBoard(feG,113.505,1.5,119.38+BZ,Math.PI),asicB=nativeBoard(asicG,135.32,0,58.52+BZ,Math.PI),asicTB=nativeBoard(asicTG,135.32,0,58.52+BZ,Math.PI);
  const centred=(g,y)=>{const o=compact(g.scene);o.scale.setScalar(1000);o.position.set(0,y,BZ);return o};
  const routerB=centred(routerBG,1.5),ldoB=centred(ldoBG,-1.6);
  const j5=new THREE.Mesh(new THREE.BoxGeometry(24.9,1.5,2.6),connMat);j5.position.set(-.217,.75,-5.8+BZ);// 120-pin J5 pair between LDO board and router (no vendor model)
  const j3B=new THREE.Vector3(113.505-112.5,1.5+1.53+1.5,119.38+BZ-96.5);
  const asicHeightsB=[-3.10,-.80,4.60,6.90];
- Object.assign(kit,{ldo,fe,asic,feB,asicB,routerB,ldoB,j5,j3,j3B,asicHeights,asicHeightsB,edgeA:55.803-84.47,edgeB:58.52+BZ-84.47});// ASIC board edge (board y 84.47), where the shanks leave
+ Object.assign(kit,{ldo,fe,asic,asicT,asicTB,feB,asicB,routerB,ldoB,j5,j3,j3B,asicHeights,asicHeightsB,edgeA:55.803-84.47,edgeB:58.52+BZ-84.47});// ASIC board edge (board y 84.47), where the shanks leave
  const ports=[53.6,66.7,79.8,92.9,106,119.1,132.2,145.3];// J617…J610 centres (13.1 mm pitch), x = 67.08
  const modules=[];
  stacks.length=0;
@@ -95,12 +96,12 @@ async function buildCustom(){
   if(!optB){
    const l=new THREE.Group();l.add(ldo.clone());m.add(tag(l,'fpgaldo','FPGA-LDO Option A',list,i===2));parts.push([l,0,-8]);
    const f=new THREE.Group();f.add(fe.clone());m.add(tag(f,'frontend','Frontend FPGA Board',list,i===1));
-   const asics=new THREE.Group();asicHeights.forEach((y,k)=>{const a=asic.clone();a.position.y=y;asics.add(a);parts.push([a,y,[-20,-14,-3,4][k]])});m.add(tag(asics,'asic','ASIC boards ×4',list,i===0));
+   const asics=new THREE.Group();asicHeights.forEach((y,k)=>{const a=(k===1||k===2?asic:asicT).clone();a.position.y=y;asics.add(a);parts.push([a,y,[-20,-14,-3,4][k]])});m.add(tag(asics,'asic','ASIC boards ×4',list,i===0));
   }else{
    const l=new THREE.Group();l.add(ldoB.clone(),j5.clone());m.add(tag(l,'fpgaldob','Option B LDO board',list,i===5));parts.push([l,0,-8]);
    const r=new THREE.Group();r.add(routerB.clone());m.add(tag(r,'fpgaldob','Option B router',list,i===6));
    const f=new THREE.Group();f.add(feB.clone());m.add(tag(f,'frontend','Frontend FPGA Board',list,false));
-   const asics=new THREE.Group();asicHeightsB.forEach((y,k)=>{const a=asicB.clone();a.position.y=y;asics.add(a);parts.push([a,y,[-12,-6,5,10][k]])});m.add(tag(asics,'asic','ASIC boards ×4',list,false));
+   const asics=new THREE.Group();asicHeightsB.forEach((y,k)=>{const a=(k===1||k===2?asicB:asicTB).clone();a.position.y=y;asics.add(a);parts.push([a,y,[-12,-6,5,10][k]])});m.add(tag(asics,'asic','ASIC boards ×4',list,false));
   }
   stacks.push(parts);
   const start=new THREE.Vector3(160+64.68-hc.x,1.6+1.5,ports[i<4?3-i:i]-hc.z),end=m.position.clone().add(optB?j3B:j3);
@@ -118,7 +119,7 @@ function headStack(opt,i,list){
  const g=new THREE.Group(),parts=[];
  const add=(objs,key,label,perm,primary)=>{const p=new THREE.Group();objs.forEach(o=>p.add(o));g.add(p);tag(p,key,label,list,primary&&i===0);p.userData.perm=perm;parts.push(p);return p};
  const j3=(opt==='A'?kit.j3:kit.j3B).clone(),plug=new THREE.Mesh(new THREE.BoxGeometry(10.5,5.5,PLUG),connMat);plug.position.set(j3.x,j3.y,j3.z+PLUG/2);
- const asics=()=>(opt==='A'?kit.asicHeights:kit.asicHeightsB).map(y=>{const a=(opt==='A'?kit.asic:kit.asicB).clone();a.position.y=y;return a});
+ const asics=()=>(opt==='A'?kit.asicHeights:kit.asicHeightsB).map((y,k)=>{const a=(opt==='A'?(k===1||k===2?kit.asic:kit.asicT):(k===1||k===2?kit.asicB:kit.asicTB)).clone();a.position.y=y;return a});
  let asicPart;
  if(opt==='A'){add([kit.ldo.clone()],'fpgaldo','FPGA-LDO Option A','stay',true);add([kit.fe.clone(),plug],'frontend','Frontend FPGA Board','off',true);asicPart=add(asics(),'asic','ASIC boards ×4','stay',true)}
  else{add([kit.ldoB.clone(),kit.j5.clone()],'fpgaldob','Option B LDO board','off',true);add([kit.routerB.clone()],'fpgaldob','Option B router','stay',true);add([kit.feB.clone(),plug],'frontend','Frontend FPGA Board','off',true);asicPart=add(asics(),'asic','ASIC boards ×4','stay',true)}
