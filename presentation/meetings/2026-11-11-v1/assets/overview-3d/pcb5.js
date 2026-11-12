@@ -4,10 +4,11 @@ import * as THREE from 'three';
 // The board export carries the real Hirose DF40C-80 connectors and the side pin. The two ASIC dies are
 // wire-bonded and have no footprint body, so they are drawn here (10.5 × 8.97 mm each), each with its probe:
 // four shanks leaving the board edge (y = 84.47). Probe size is illustrative: 8 mm shanks at 1 mm pitch.
-export function addPcb5Bodies(scene){
+// lift: extra height (mm) for a thicker board; the top and bottom boards V3 are 1.6 mm, PCB-5 was drawn at 0.8 mm.
+export function addPcb5Bodies(scene, lift=0){
  const add = (size,center,mat) => {
   const mesh = new THREE.Mesh(new THREE.BoxGeometry(...size.map(v=>v/1000)),mat);
-  mesh.position.set(...center.map(v=>v/1000));
+  mesh.position.set(center[0]/1000,(center[1]+lift)/1000,center[2]/1000);
   scene.add(mesh);
  };
  const die = new THREE.MeshStandardMaterial({color:0x353c48,roughness:.5,metalness:.2});

@@ -1,13 +1,15 @@
 import * as THREE from 'three';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {OrbitControls} from './vendor/OrbitControls.js';
-import {addPcb5Bodies} from './pcb5.js?v=2';
+import {addPcb5Bodies} from './pcb5.js?v=3';
 
 const boards = {
  hdmi: ['HDMI Extension Board · V37','hdmi-extension-v37.glb','Pre-fab review fixes; nine voltage test holes at J920'],
  frontend: ['Frontend FPGA Board · 8L V3','frontend-8l-v3.glb?v=14l','14 layers · every connection routed'],
  ldo: ['FPGA-LDO Option A · V12','fpga-ldo-a-v12.glb','JLC-checked · vendor connector models · local review'],
  asic: ['ASIC board · PCB-5','asic-pcb5-real.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
+ asic_top: ['ASIC board · top · V3','asic-top-v3.glb','1.6 mm board in the file · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
+ asic_bottom: ['ASIC board · bottom · V3','asic-bottom-v3.glb','1.6 mm board in the file · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
  ldob_router: ['FPGA-LDO Option B · router V2','fpga-ldo-b-router-v2.glb','On the head · J5 (120-pin) has no vendor model yet'],
  ldob_ldo: ['FPGA-LDO Option B · LDO board V2','fpga-ldo-b-ldo-v2.glb','Plug-in board · J5 (120-pin) has no vendor model yet']
 };
@@ -40,6 +42,7 @@ async function showBoard(){
  const gltf = await new GLTFLoader().loadAsync('assets/'+filename);
  const board = gltf.scene;
  if(key==='asic') addPcb5Bodies(board);
+ if(key==='asic_top'||key==='asic_bottom') addPcb5Bodies(board,0.8);
  board.scale.setScalar(1000);
  scene.add(board);
  const bounds = new THREE.Box3().setFromObject(board);
