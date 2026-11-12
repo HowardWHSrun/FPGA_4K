@@ -1,5 +1,5 @@
 
-:root{--ink:#172a32;--muted:#53656b;--accent:#126a71;--line:#e0e6e7;--paper:#fff;--bg:#edf0ef;--blocker:#a3262a;--blocker-bg:#fbeaea;--major:#7a5200;--major-bg:#fbf2dd;--minor:#2c5a8a;--minor-bg:#e6eef7;--note:#53656b;--note-bg:#eef1f1}
+:root{--ink:#172a32;--muted:#53656b;--accent:#126a71;--line:#e0e6e7;--paper:#fff;--bg:#edf0ef;--blocker:#a3262a;--blocker-bg:#fbeaea;--major:#2c5a8a;--major-bg:#e6eef7;--minor:#53656b;--minor-bg:#eef1f1;--note:#7a8a90;--note-bg:#f4f6f6}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5}
@@ -79,3 +79,15 @@ ul.plain{margin:0;padding-left:20px}ul.plain li{margin:7px 0;max-width:85ch}
 .card.wide{grid-column:1/-1}
 @media(max-width:760px){h1{font-size:27px}main{padding:18px 16px 60px}.bar{padding:9px 16px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}dl{grid-template-columns:1fr;gap:2px 0}dt{margin-top:8px}.cards{grid-template-columns:1fr}section,details.files,details.nu{padding:16px}}
 @media print{.bar,.filters,.dl{display:none}body{background:#fff}section,details.files,details.nu,.finding{break-inside:avoid}details>*{display:block}}
+
+.catsec{margin-top:22px}.catsec>h2{display:flex;align-items:baseline;gap:10px}.catsec>h2 small{font-size:14px;font-weight:400;color:var(--muted)}
+.tag.new{color:#1f6b3a;border-color:#bfdcc8;background:#e3f1e7;font-weight:600}.tag.chg{color:var(--major);border-color:#bcd0e6;background:var(--major-bg);font-weight:600}
+.v2note{margin:6px 0 8px;padding:6px 10px;border-left:3px solid var(--major);background:#f4f8fc;font-size:14px}
+.actions ol{margin:8px 0 0;padding-left:22px}.actions li{margin:6px 0;max-width:85ch}
+table.matrix td,table.matrix th{text-align:center}table.matrix td:first-child,table.matrix th:first-child{text-align:left}
+table.matrix td a{text-decoration:none;font-weight:600}
+.plan h3{font-size:17px;margin:16px 0 6px}.plan .item{border-top:1px solid var(--line);padding:10px 0}.plan .item:first-of-type{border-top:0}.plan .ids{font-size:13px;color:var(--muted)}
+.chg-line{font-size:15px;color:var(--muted);margin:10px 0 0}
+table.checks td small{color:var(--muted);font-size:12px}
+.hint{color:var(--muted);font-size:14px}
+.merged{border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}.merged p{margin:0 0 4px}
