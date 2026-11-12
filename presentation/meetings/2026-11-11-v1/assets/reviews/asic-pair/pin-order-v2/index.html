@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASIC Pair Pin Order</title><style>:root{--ink:#1d2329;--mute:#5b6670;--line:#d9dee3;--bg:#fff;--card:#f7f8f9;--accent:#0e5a61;--ok:#2e7d32;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#e6e9ec;--mute:#a3adb6;--line:#38414a;--bg:#14181c;--card:#1c2228;--accent:#5fb3ba;--ok:#81c784;--bad:#ef9a9a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:28px 16px 60px}h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--mute);margin:0 0 18px}.tiles{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.tile{flex:1 1 150px;background:var(--card);border-left:4px solid var(--ok);padding:10px 12px;border-radius:3px}
+.tile b{font-size:22px;display:block}table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}th,td{border:1px solid var(--line);padding:3px 6px;text-align:left}th{background:var(--card)}
+.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.wrap{overflow-x:auto}img{max-width:100%;border:1px solid var(--line);background:#fff;margin:6px 0}
+.dl a{display:inline-block;margin:4px 8px 4px 0;padding:6px 12px;border-radius:3px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}a{color:var(--accent)}.meta{color:var(--mute);font-size:13px}ul{padding-left:20px}</style></head><body><main><p class="meta"><a href="../../../../index.html#slide-2">← Weekly deck, slide 2</a></p>
+<h1>ASIC board pair: original pin order restored</h1>
+<p class="sub">Top board V2 · edited 11 Nov 2026, 19:58 CST · bottom board V2 · edited 11 Nov 2026, 19:58 CST · built on power-via V1</p>
+<p>The pair now presents the original PCB-5 order (pin map V5) at the FPGA-LDO side, so FPGA-LDO A V12 and the Option B router V2 need no change. Every top-chip output lands on the FPGA net named for it, on both ports of both FPGA-LDO boards. This closes review blocker P-B1 and major P-M2 (no extra FPGA outputs are needed).</p>
+<div class="tiles"><div class="tile"><b>44 / 44</b>chip outputs on the right FPGA net, per port (was 26 / 44)</div>
+<div class="tile"><b>8 / 8</b>top-chip SPI inputs driven by the FPGA (was 0 / 8)</div><div class="tile"><b>0</b>unconnected, parity 0, same DRC/ERC as V1</div><div class="tile"><b>1 piece</b>every plane on both boards</div></div>
+<p class="dl"><a href="downloads/ASIC_Bottom_Board_Pin_Order_V2_KiCad.zip">Bottom board V2 KiCad ↓</a><a href="downloads/ASIC_Top_Board_Pin_Order_V2_KiCad.zip">Top board V2 KiCad ↓</a><a href="downloads/stack_check_V2.csv">Pin-by-pin stack table ↓</a></p>
+<h2>What changed</h2><ul>
+<li><b>Top board, In4:</b> the 18 moved data lines (11 for U01_BCD2, 7 for U01_BCD1) are re-routed from their existing chip-side vias to the original pins, plus the two U01_BCD2 SPI ties. Straight 0/45/90° segments, 0.0762 mm as before, no new vias. In4 track length 136.4 → 125.2 mm.</li>
+<li><b>Top board, SPI inputs:</b> each top chip now takes SPI_DINR/L, SPI_CLK and SPI_LATCH from the shared odd-row lines, the same lines as the bottom chip in the same position (U01_BCD2: pins 23/25, U01_BCD1: pins 57/59; latch 61, clock 63). For U01_BCD1, CLK, LATCH and DINL are short F.Cu ties and DINR a B.Cu tie, because In4 is full there. The three chip-side vias these ties made unused were removed.</li>
+<li><b>Bottom board:</b> copper unchanged. The pass-through nets are renamed back to the original order (schematic and PCB).</li>
+<li><b>Pins 2, 4, 6, 8, 24, 58</b> are spare again (SPARE_Pn, still passed through). The FPGA-LDO boards leave them open, as before.</li>
+<li><b>Schematics:</b> J3/J4 labels on both boards and the eight chip SPI labels on the top board. KiCad parity 0 on both.</li></ul>
+<h2>Trade-off</h2><p>The rework gave the top chips their own SPI lines; this V2 gives that up, as pin map V5 always assumed. The top chip in each position receives the same configuration stream as the bottom chip under it (ASIC7 with ASIC5, ASIC8 with ASIC6, and so on). If independent top-chip configuration is needed later, it needs 12 more FPGA outputs and a new FPGA-LDO map.</p>
+<h2>Still open</h2><ul><li>Blocker P-B2: 28 crossing via-span pairs (unchanged; see the review page).</li><li>DISC_OUT on pins 3/5 still ties two chips per pin.</li><li>The other major items from the review are unchanged.</li></ul>
+<p class="meta"><a href="../review/index.html">Review and power-via V1 page</a></p>
+<h2>Stack check</h2><table><tr><th>FPGA-LDO board</th><th>Port</th><th>V1: outputs right</th><th>V2: outputs right</th></tr>
+<tr><td>Option A V12</td><td>J3</td><td class="bad">26 / 44</td><td class="ok">44 / 44</td></tr>
+<tr><td>Option A V12</td><td>J4</td><td class="bad">26 / 44</td><td class="ok">44 / 44</td></tr>
+<tr><td>Option B router V2</td><td>J3</td><td class="bad">26 / 44</td><td class="ok">44 / 44</td></tr>
+<tr><td>Option B router V2</td><td>J4</td><td class="bad">26 / 44</td><td class="ok">44 / 44</td></tr>
+</table><table><tr><th>Board</th><th>Unconnected</th><th>Parity</th><th>DRC errors</th><th>DRC warnings</th><th>ERC errors</th></tr>
+<tr><td>Top V1</td><td>0</td><td>0</td><td>1</td><td>4</td><td>12</td></tr>
+<tr><td>Top V2</td><td>0</td><td>0</td><td>1</td><td>4</td><td>12</td></tr>
+<tr><td>Bottom V1</td><td>0</td><td>0</td><td>1</td><td>4</td><td>12</td></tr>
+<tr><td>Bottom V2</td><td>0</td><td>0</td><td>1</td><td>4</td><td>12</td></tr>
+</table><p class="meta">The one DRC error is the J4/J1 courtyard overlap already in the received files; ERC errors are the same 12 pin_not_connected as received.</p>
+<h2>Pin map (FPGA-LDO A, J3)</h2><div class="wrap"><table><tr><th>Pin</th><th>FPGA-LDO net</th><th>Top board V1</th><th>Top board V2</th><th>Top chip pad (V2)</th><th>Check</th></tr>
+<tr><td>2</td><td>unconnected-(J3-Pad2)</td><td>T_READ(2)</td><td>SPARE_P2</td><td></td><td class="">spare</td></tr>
+<tr><td>4</td><td>unconnected-(J3-Pad4)</td><td>T_D&lt;8&gt;(2)</td><td>SPARE_P4</td><td></td><td class="">spare</td></tr>
+<tr><td>6</td><td>unconnected-(J3-Pad6)</td><td>T_D&lt;7&gt;(2)</td><td>SPARE_P6</td><td></td><td class="">spare</td></tr>
+<tr><td>8</td><td>unconnected-(J3-Pad8)</td><td>T_D&lt;6&gt;(2)</td><td>SPARE_P8</td><td></td><td class="">spare</td></tr>
+<tr><td>10</td><td>ASIC8_READ</td><td>T_D&lt;5&gt;(2)</td><td>T_READ(2)</td><td>U01_BCD2.READ</td><td class="ok">ok</td></tr>
+<tr><td>12</td><td>ASIC8_DATA8</td><td>T_CLK32MHZ(2)</td><td>T_D&lt;8&gt;(2)</td><td>U01_BCD2.DATAR&lt;1&gt;</td><td class="ok">ok</td></tr>
+<tr><td>14</td><td>ASIC8_DATA7</td><td>T_SYNC(2)</td><td>T_D&lt;7&gt;(2)</td><td>U01_BCD2.DATAR&lt;2&gt;</td><td class="ok">ok</td></tr>
+<tr><td>16</td><td>ASIC8_DATA6</td><td>T_SPI_DINR(2)</td><td>T_D&lt;6&gt;(2)</td><td>U01_BCD2.DATAR&lt;3&gt;</td><td class="ok">ok</td></tr>
+<tr><td>18</td><td>ASIC8_DATA5</td><td>T_SPI_DINL(2)</td><td>T_D&lt;5&gt;(2)</td><td>U01_BCD2.DATAR&lt;4&gt;</td><td class="ok">ok</td></tr>
+<tr><td>20</td><td>ASIC8_CLK32MHz_Out</td><td>T_D&lt;4&gt;(2)</td><td>T_CLK32MHZ(2)</td><td>U01_BCD2.CLK32MHZ</td><td class="ok">ok</td></tr>
+<tr><td>22</td><td>ASIC8_SYNC</td><td>T_D&lt;3&gt;(2)</td><td>T_SYNC(2)</td><td>U01_BCD2.SYNC</td><td class="ok">ok</td></tr>
+<tr><td>24</td><td>unconnected-(J3-Pad24)</td><td>T_D&lt;2&gt;(2)</td><td>SPARE_P24</td><td></td><td class="">spare</td></tr>
+<tr><td>26</td><td>ASIC8_DATA4</td><td>T_D&lt;1&gt;(2)</td><td>T_D&lt;4&gt;(2)</td><td>U01_BCD2.DATAL&lt;1&gt;</td><td class="ok">ok</td></tr>
+<tr><td>28</td><td>ASIC8_DATA3</td><td>T_READ</td><td>T_D&lt;3&gt;(2)</td><td>U01_BCD2.DATAL&lt;2&gt;</td><td class="ok">ok</td></tr>
+<tr><td>30</td><td>ASIC8_DATA2</td><td>T_D&lt;8&gt;</td><td>T_D&lt;2&gt;(2)</td><td>U01_BCD2.DATAL&lt;3&gt;</td><td class="ok">ok</td></tr>
+<tr><td>32</td><td>ASIC8_DATA1</td><td>T_D&lt;7&gt;</td><td>T_D&lt;1&gt;(2)</td><td>U01_BCD2.DATAL&lt;4&gt;</td><td class="ok">ok</td></tr>
+<tr><td>58</td><td>unconnected-(J3-Pad58)</td><td>T_D&lt;6&gt;</td><td>SPARE_P58</td><td></td><td class="">spare</td></tr>
+<tr><td>60</td><td>ASIC7_READ</td><td>T_D&lt;5&gt;</td><td>T_READ</td><td>U01_BCD1.READ</td><td class="ok">ok</td></tr>
+<tr><td>62</td><td>ASIC7_DATA8</td><td>T_CLK32MHZ</td><td>T_D&lt;8&gt;</td><td>U01_BCD1.DATAR&lt;1&gt;</td><td class="ok">ok</td></tr>
+<tr><td>64</td><td>ASIC7_DATA7</td><td>T_SYNC</td><td>T_D&lt;7&gt;</td><td>U01_BCD1.DATAR&lt;2&gt;</td><td class="ok">ok</td></tr>
+<tr><td>66</td><td>ASIC7_DATA6</td><td>T_SPI_DINR</td><td>T_D&lt;6&gt;</td><td>U01_BCD1.DATAR&lt;3&gt;</td><td class="ok">ok</td></tr>
+<tr><td>68</td><td>ASIC7_DATA5</td><td>T_SPI_DINL</td><td>T_D&lt;5&gt;</td><td>U01_BCD1.DATAR&lt;4&gt;</td><td class="ok">ok</td></tr>
+<tr><td>70</td><td>ASIC7_CLK32MHz_Out</td><td>T_SPI_LATCH</td><td>T_CLK32MHZ</td><td>U01_BCD1.CLK32MHZ</td><td class="ok">ok</td></tr>
+<tr><td>72</td><td>ASIC7_SYNC</td><td>T_SPI_CLK</td><td>T_SYNC</td><td>U01_BCD1.SYNC</td><td class="ok">ok</td></tr>
+<tr><td>74</td><td>ASIC7_DATA4</td><td>T_D&lt;4&gt;</td><td>T_D&lt;4&gt;</td><td>U01_BCD1.DATAL&lt;1&gt;</td><td class="ok">ok</td></tr>
+<tr><td>76</td><td>ASIC7_DATA3</td><td>T_D&lt;3&gt;</td><td>T_D&lt;3&gt;</td><td>U01_BCD1.DATAL&lt;2&gt;</td><td class="ok">ok</td></tr>
+<tr><td>78</td><td>ASIC7_DATA2</td><td>T_D&lt;2&gt;</td><td>T_D&lt;2&gt;</td><td>U01_BCD1.DATAL&lt;3&gt;</td><td class="ok">ok</td></tr>
+<tr><td>80</td><td>ASIC7_DATA1</td><td>T_D&lt;1&gt;</td><td>T_D&lt;1&gt;</td><td>U01_BCD1.DATAL&lt;4&gt;</td><td class="ok">ok</td></tr>
+</table></div>
+<h2>Top board copper</h2><p class="meta">Red: lines that moved. Chip-side vias at the bottom, connector vias at the top.</p>
+<img src="top_In4_V1.svg" alt="Top board In4 received order" loading="lazy">
+<img src="top_In4_V2.svg" alt="Top board In4 original order" loading="lazy">
+<img src="top_FCu_V2.svg" alt="Top board F.Cu SPI ties" loading="lazy">
+<img src="top_BCu_V2.svg" alt="Top board B.Cu SPI tie" loading="lazy">
+<h2>Routes</h2><table><tr><th>Line</th><th>Layer</th><th>To pin</th><th>Length (mm)</th><th>Bends</th></tr>
+<tr><td>T_READ(2)</td><td>In4.Cu</td><td>10</td><td>5.66</td><td>3</td></tr>
+<tr><td>T_D&lt;8&gt;(2)</td><td>In4.Cu</td><td>12</td><td>5.46</td><td>1</td></tr>
+<tr><td>T_D&lt;7&gt;(2)</td><td>In4.Cu</td><td>14</td><td>4.81</td><td>4</td></tr>
+<tr><td>T_D&lt;6&gt;(2)</td><td>In4.Cu</td><td>16</td><td>5.38</td><td>4</td></tr>
+<tr><td>T_D&lt;5&gt;(2)</td><td>In4.Cu</td><td>18</td><td>4.77</td><td>3</td></tr>
+<tr><td>T_CLK32MHZ(2)</td><td>In4.Cu</td><td>20</td><td>6.66</td><td>3</td></tr>
+<tr><td>T_SYNC(2)</td><td>In4.Cu</td><td>22</td><td>5.89</td><td>3</td></tr>
+<tr><td>T_D&lt;4&gt;(2)</td><td>In4.Cu</td><td>26</td><td>4.08</td><td>3</td></tr>
+<tr><td>T_D&lt;3&gt;(2)</td><td>In4.Cu</td><td>28</td><td>5.55</td><td>3</td></tr>
+<tr><td>T_D&lt;2&gt;(2)</td><td>In4.Cu</td><td>30</td><td>3.97</td><td>2</td></tr>
+<tr><td>T_D&lt;1&gt;(2)</td><td>In4.Cu</td><td>32</td><td>5.42</td><td>3</td></tr>
+<tr><td>SPI_DINR(2)</td><td>In4.Cu</td><td>23</td><td>2.24</td><td>1</td></tr>
+<tr><td>SPI_DINL(2)</td><td>In4.Cu</td><td>25</td><td>2.85</td><td>2</td></tr>
+<tr><td>SPI_CLK</td><td>F.Cu</td><td>63</td><td>3.58</td><td>3</td></tr>
+<tr><td>SPI_LATCH</td><td>F.Cu</td><td>61</td><td>2.95</td><td>3</td></tr>
+<tr><td>SPI_DINL</td><td>F.Cu</td><td>59</td><td>3.34</td><td>4</td></tr>
+<tr><td>SPI_DINR</td><td>B.Cu</td><td>57</td><td>3.22</td><td>2</td></tr>
+<tr><td>T_SYNC</td><td>In4.Cu</td><td>72</td><td>7.47</td><td>7</td></tr>
+<tr><td>T_CLK32MHZ</td><td>In4.Cu</td><td>70</td><td>5.06</td><td>5</td></tr>
+<tr><td>T_D&lt;5&gt;</td><td>In4.Cu</td><td>68</td><td>5.84</td><td>6</td></tr>
+<tr><td>T_D&lt;6&gt;</td><td>In4.Cu</td><td>66</td><td>4.54</td><td>5</td></tr>
+<tr><td>T_D&lt;7&gt;</td><td>In4.Cu</td><td>64</td><td>6.44</td><td>8</td></tr>
+<tr><td>T_D&lt;8&gt;</td><td>In4.Cu</td><td>62</td><td>5.42</td><td>5</td></tr>
+<tr><td>T_READ</td><td>In4.Cu</td><td>60</td><td>6.80</td><td>8</td></tr>
+</table><p class="meta">Routed by script with KiCad 10.0.6 Python (45° grid router, board clearances plus margin), then checked with kicad-cli DRC (refill, schematic parity) and ERC. Not fabrication approval.</p></main></body></html>
