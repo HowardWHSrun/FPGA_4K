@@ -3,7 +3,7 @@
   var buttons=document.querySelectorAll('.filters button');
   function apply(f){
     buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f));});
-    document.querySelectorAll('.finding').forEach(function(x){x.hidden=!(f==='all'||x.dataset.sev===f||(f==='new'&&x.dataset.origin==='new'));});
+    document.querySelectorAll('.finding').forEach(function(x){x.hidden=!(f==='all'||x.dataset.sev===f||(f==='new'&&x.dataset.origin==='new')||(f==='upd'&&x.dataset.upd));});
     document.querySelectorAll('.catsec').forEach(function(s){s.hidden=!s.querySelector('.finding:not([hidden])');});
   }
   buttons.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.f);});});

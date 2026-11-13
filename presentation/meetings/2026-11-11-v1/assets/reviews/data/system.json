@@ -3,43 +3,23 @@
  "reviewed": "All boards together, with the ASIC boards top and bottom V4",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 0 blockers, 19 majors, 41 minors, 22 notes open. The pin map V6 blocker that holds the Frontend and FPGA-LDO orders is on the ASIC list (AB-01).",
- "headline": "Keeping the ASIC designer's V4 boards closes shared SPI (SYS-04) and the unfilled DF40 pad vias (SYS-24), but the Frontend and both FPGA-LDO options still follow pin map V5, so 12 far-chip outputs per stack reach no FPGA pin until pin map V6 is built, and the far chips need a new pin file (blocker A-P, now AB-01). V6 is a re-plan, not 12 extra routes: FPGA-LDO A V12 fits only 3-4 new lines as laid out and the only full re-route found fails DRC and JLC's via spacing (SYS-53, SYS-59), Option B's J5 cannot carry V6 (SYS-54), and 3 spare contacts are too few for rail control plus DISC_OUT (SYS-63); the Frontend can take all of it (SYS-82). New majors also cover no ESD protection on the bare head plugs (SYS-55), supply return on the ASIC recording ground if stacks are joined at the animal (SYS-56), Frontend break-off tabs 0.567 mm from an ASIC board (SYS-57) and no heat sink for the XEM8310 (SYS-58), alongside the open GT-rate, power, heat, mounting and keying majors.",
+ "readiness": "Do not order yet: 0 blockers, 16 majors, 38 minors, 18 notes open. The pin map V6 blocker on the ASIC list (AB-01) is now built on every board and waits for approval (SYS-84).",
+ "headline": "The meeting with the ASIC designer on 12 November settled the pin order, DISC_OUT, the power-up order and the two grounds, and pin map V6 is now built into every board: ASIC boards V7, FPGA-LDO A layout V14 and Frontend 14 layers V5, with every ASIC connector pin followed through copper to its FPGA pin. That closes the re-plan of FPGA-LDO A (SYS-53, SYS-59), the clock swaps (SYS-65), DISC_OUT (R2S-07) and the spare-contact shortage (SYS-63). What still stops an order: pin map V6 waits for approval (SYS-84); the fabricator has not confirmed ten layers in 0.8 mm for the ASIC boards (R2S-03); and the majors on GT rate, cable power, heat, mounting, keying, ESD and grounding at the animal are unchanged (SYS-01, SYS-02, SYS-03, SYS-07, SYS-09, SYS-55, SYS-56). Option B is on hold, so its items stay open as they were.",
  "top_actions": [
-  "Before freezing pin map V6, get the ASIC designer's answers on: whether any chip's DISC_OUT is needed (R2S-07); whether the far chips' SPI_CLK and SPI_LATCH may join the near ones, which frees 4 contacts (SYS-63); reset polarity, safe idle states and power-up order (SYS-28, SYS-50, SYS-76); and die plus bond-loop height under the 0201 capacitors (SYS-31).",
-  "Settle Option A or B now, because Option B's J5 cannot carry V6 (SYS-54). Then freeze V6 with contacts kept for rail enable and power-good (SYS-10) and any DISC_OUT, the four clock swaps on the Frontend (SYS-65), pull-downs on the new latch lines (SYS-62) and a capture-clock plan for ASIC3 and ASIC7 (SYS-64, SYS-73).",
-  "Re-plan FPGA-LDO A's lane field for V6 as one job, not 12 added routes; the only complete route found so far (about 45 laser-on-buried vias, 50-80 mm of new L2 AGND pockets) fails DRC and JLC's via spacing, so plan the lanes first and get JLC's written yes on any laser-on-buried via (SYS-53, SYS-59). The Frontend side needs no layer or outline change (SYS-82).",
-  "Decide the head mechanics before ordering: ASIC board thickness (R2S-03), a housing or clamp with a physical key (SYS-07, SYS-09), thinner C4/C42/C59 under the Frontend (SYS-08), covers and ESD handling for the bare DF40 plugs (SYS-55, SYS-72), and no break-off tabs on edges that face another board (SYS-57, SYS-71).",
-  "Rewrite the rig grounding rule so no stack's supply return flows through ASIC AGND, and add a leakage rule for the animal (SYS-56, SYS-11, SYS-78); choose extra ground contacts outside the 80-pin joint, or accept the joint and measure noise at bring-up (R2S-05).",
-  "Set the GT line rate and the stack power and heat limits, then measure one powered stack on a real cable before buying eight (SYS-01, SYS-02, SYS-03); make room for the XEM8310 heat sink in enclosure V3 (SYS-58); and write the bring-up and handling procedure (SYS-61)."
+  "Approve or refuse pin map V6 as built (SYS-84). A no means redrawing the top-chip copper on FPGA-LDO A and the Frontend, so decide before either board is uploaded.",
+  "Ask the fabricator to confirm ten layers in 0.8 mm and the stack for ASIC boards V7 before any order, then rebuild the fit and print models (R2S-03). Get the capacitor values, the bond diagram and the die and bond-loop height from the ASIC designer (SYS-31).",
+  "Send the ASIC designer the questions the meeting left open: reset polarity and what the stimulation registers hold after power-up (SYS-28, SYS-60), pad limits and static protection in writing (SYS-40, SYS-55), whether CLKH must stop while SPI is loaded (SYS-76), the VDD_CGEN level (SYS-85), whether the unused pins 3 and 5 may become grounds (SYS-23, SYS-75), and the data bit order and timing (R2S-09).",
+  "Decide the head mechanics before ordering: a housing or clamp with a physical key (SYS-07, SYS-09), thinner C4/C42/C59 under the Frontend (SYS-08), covers and ESD handling for the bare DF40 plugs (SYS-55, SYS-72), the panel and break-off tabs of the Frontend and FPGA-LDO A (SYS-57, SYS-71), and the two resistors beside the Frontend connector (SYS-86).",
+  "Write the rig grounding rule and the bring-up and handling procedure: one ground point at the animal with no supply return through ASIC AGND (SYS-56, SYS-11, SYS-78), cable unplugged before any board is mated or removed (SYS-66, SYS-10), rails measured with no ASIC board fitted (SYS-16, SYS-14), all in one page (SYS-61).",
+  "Set the GT line rate and the stack power and heat limits, then measure one powered stack on a real cable before buying eight (SYS-01, SYS-02, SYS-03); make room for the XEM8310 heat sink in enclosure V3 (SYS-58)."
  ],
  "counts": {
   "blocker": 0,
-  "major": 19,
-  "minor": 41,
-  "note": 22
+  "major": 16,
+  "minor": 38,
+  "note": 18
  },
  "findings": [
-  {
-   "id": "R2S-07",
-   "severity": "major",
-   "board": "system",
-   "title": "No ASIC's DISC_OUT reaches the FPGA, yet the V3 question to the ASIC designer asks only about the top chips.",
-   "what": "The bottom chips drive DISC_OUT on pins 3/5, which are no-connect on FPGA-LDO A and the router and have no Frontend line; V3 cut the top chips' DISC_OUT completely. So the system cannot read DISC_OUT from any of the eight chips. The ASIC designer's pin sheet lists DISC_OUT as an output whose termination is undecided. The V3 record asks \"is DISC_OUT needed from the top chips?\", but the real question is whether it is needed at all, because adding it later means new lines on the Frontend, FPGA-LDO A and the router.",
-   "where": "ASIC pins 3 (DISC_OUT(2), U01_BCD2) and 5 (DISC_OUT, U01_BCD1) on both V3 boards; top chips' pads on T_DISC_OUT / T_DISC_OUT(2) only; FPGA-LDO A / router J3/J4 pins 3/5 unconnected.",
-   "evidence": "W/a review working file (not published) \"output reaches no FPGA\" for DISC_OUT on both ports and both options; V3 dumps: T_DISC_OUT nets have one pad each. ASIC_REFERENCE.md section 2: DISC_OUT appears in E3, E4 leaves its termination undecided. 08 V3 report question list.",
-   "source": "ASIC designer's Pins sheet; ASIC_REFERENCE.md section 2.",
-   "consequence": "If DISC_OUT turns out to be a needed status or safety output, the boards to be ordered cannot see it from any chip.",
-   "suggested_action": "Ask the ASIC designer whether DISC_OUT is needed from any chip, and how it should be terminated if not read, before the Frontend and FPGA-LDO A are ordered.",
-   "basis": "needs_vendor_answer",
-   "already_known": "",
-   "relation": "new",
-   "verification": "Re-check 11 Nov evening",
-   "found_by": [],
-   "origin": "changed",
-   "v2note": "With the ASIC boards V4, no chip's DISC_OUT reaches the FPGA, and there is no longer room to add it. All 80 J3/J4 pins now carry nets because V3's spares 2/4/6/8/24/58 carry far-chip lines, so the far chips' bare DISC_OUT pads need a new ASIC pin map unless the ASIC designer allows the shared pins 3/5 he originally drew; and pin map V6 as planned uses 12 of the 15 spare Frontend–FPGA-LDO contacts, leaving 3 (1 with SYS-10) for the near chips' 4 DISC_OUT lines per stack. The designer's DISC_OUT answer is therefore needed before pin map V6 is frozen; if the answer is \"needed\", V6 must reserve contacts, for example by tying the far boards' SPI_CLK/SPI_LATCH to the near boards' lines, which frees 4. See SYS-63. Second check: the higher severity is upheld. All numbers hold. Both V4 boards use all 80 J3 pins. T_DISC_OUT and T_DISC_OUT(2) are one-pad nets with no copper. The near chips' DISC_OUT reach pins 3/5, which are unconnected on FPGA-LDO A and the router. Each J1/J2 joint has 15 spare contacts. V6 adds 12, leaving 3, or 1 with SYS-10's enable and power-good, for 4 lines. The answer gates the V6 freeze, which is major on the scale. Need is unlikely: the designer calls DISC_OUT a test pin he may ground.",
-   "category": "Pin map & connectors"
-  },
   {
    "id": "SYS-09",
    "severity": "major",
@@ -51,7 +31,7 @@
     "system-mate-fe-ldo",
     "system-bringup"
    ],
-   "title": "Unkeyed DF40 pairs let an ASIC board mate rotated 180 degrees, putting +/-10 V onto ASIC clock and data pins.",
+   "title": "Unkeyed DF40 pairs let an ASIC board mate rotated 180 degrees, putting +/-8 V onto ASIC clock and data pins.",
    "area": "Connector keying",
    "what": "Hirose states the DF40 connector is not polarized, and no head board has a key, hole, standoff or an orientation mark that stays visible after mating (the Frontend has no silkscreen; the LDO and ASIC boards have only pin-1 triangles, hidden under the mated connector). A rotated Frontend cannot mate in a full stack, because its bottom parts sit over the LDO J3 (Option B: J5) header and it overlaps the ASIC board or router in the same 1.5 mm plane, so it rests at least 1.6 mm high and its contacts never touch. The real exposure is ASIC boards on the LDO underside connector J4 (router J4 on Option B) and ASIC boards stacked on ASIC boards, where nothing stops a rotated fit; on LDO A J4 only about 0.1-0.3 mm of 1206 capacitor height is in the way, less than the 0.45 mm engagement. A partly built stack (a Frontend fitted before the J3 ASIC board, or the Option B LDO board without its router) is also exposed.",
    "where": "ASIC board J3/J4 on FPGA-LDO A J4 (bottom), on router J4, and ASIC board on ASIC board; also LDO A J3 and Frontend J1/J2 on LDO J1/J2 in a partly built stack. Nets: LDO /ASIC_VDD10 (U9 LT3042, +10 V), /ASIC_VSS10 (U10 LT3094, -10 V), /ASIC_DVDD; ASIC board /AGND, /DGND.",
@@ -62,7 +42,9 @@
    "origin": "carried",
    "category": "Pin map & connectors",
    "dupnote": "AB-09 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still open: Frontend 14 layers V5, FPGA-LDO A layout V14 and ASIC boards V7 have no key, no hole and no mark that stays visible after mating. The stimulation rails are now +8 V and -8 V, not +/-10 V, so a turned ASIC board would put +/-8 V on clock and data pins. The ASIC boards are now 0.8 mm thick, so a turned Frontend would rest about 0.8 mm high, not 1.6 mm, which is still more than the 0.45 mm engagement.",
+   "title_was": "Unkeyed DF40 pairs let an ASIC board mate rotated 180 degrees, putting +/-10 V onto ASIC clock and data pins."
   },
   {
    "title": "Option B cannot carry pin map V6: J5 would need at least 132 contacts, the DF40 series stops at 120, and the 5.3 mm router/LDO-board overlap has no room for a second connector.",
@@ -88,7 +70,25 @@
    "category": "Pin map & connectors",
    "check2": "Second check: upheld",
    "dupnote": "Same problem as LDOB-35 on the FPGA-LDO Option B page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Option B is on hold (decision of 12 Nov 2026). The ASIC designer would allow Option B to share the top chips' SPI clock and latch, but the meeting record still counts 126 to 128 contacts against the 120 of J5."
+  },
+  {
+   "id": "SYS-84",
+   "severity": "major",
+   "board": "system",
+   "category": "Pin map & connectors",
+   "basis": "needs_decision",
+   "verification": "Update 13 Nov",
+   "title": "Pin map V6 is built into every board but is not yet approved, and it differs from the plan in which wires are new.",
+   "what": "Pin map V6 is the contract between the ASIC boards, FPGA-LDO A and the Frontend. As built, the top chips' west bus on each port is moved four contacts over, so the six new wires per port are on port pins 24, 26, 28, 30, 32 and 58. The plan of 12 Nov 2026 and the pin picture show them on pins 2, 4, 6, 8, 24 and 58. The ASIC 80-pin order is not touched. With the shifted bus, 22 existing lanes on FPGA-LDO A were re-drawn at the ASIC connectors and only two clock lanes are swapped on the Frontend instead of four.",
+   "where": "Pin map V6, tables V2 (140 contacts of J1 / J2, 160 pins of J3 / J4); FPGA-LDO A layout V14, J3 / J4 west bus; Frontend 14 layers V5, 12 new lines and the ASIC3 and ASIC7 clock lanes.",
+   "evidence": "The pin map checker passes all 70 checks. An end-to-end check on 12 Nov 2026 followed all 160 ASIC connector pins through the copper of FPGA-LDO A and the Frontend to their FPGA pins: none ends nowhere, none shares a pin, no direction is wrong. The pin map itself is marked not frozen. The plan's own variant was never drawn on FPGA-LDO A; the review had found no short routes for it (SYS-53).",
+   "source": "Pin map V6 record of 12 and 13 Nov 2026; plan after the meeting with the ASIC designer, step 2.",
+   "consequence": "If the shifted bus is refused, the top-chip copper on FPGA-LDO A (12 new wires, 22 lanes) and on the Frontend (12 new lines, the clock swaps) and the pin file must be redone before either board is ordered.",
+   "suggested_action": "Approve or refuse the shifted bus before either board is uploaded. If approved, mark pin map V6 frozen and update the pin picture and the plan text to match.",
+   "origin": "new13",
+   "upd": "new"
   },
   {
    "id": "SYS-02",
@@ -110,37 +110,14 @@
    "consequence": "In the high case the port switch goes into current limit or cycles, VIN_5V falls toward U16's undervoltage lockout, and the Frontend and the LDO/ASIC rails brown out or reset. Slim cables, which the 9.86 mm port pitch pushes toward, make this more likely.",
    "suggested_action": "Get a Vivado report_power or XPE estimate for the Frontend and measure the pin-19 plus return loop resistance of the chosen cable; accept only cables below about 0.9 Ohm loop. If the high case is real, cut the stack load rather than raise the limit (30.1k gives 794 mA min but 936 mA max, above the 0.8 A contact rating).",
    "origin": "carried",
-   "category": "Power & regulators"
-  },
-  {
-   "id": "SYS-10",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Upheld after a third independent check",
-   "basis": "needs_decision",
-   "already_known": "ldo_a/parts_review_V21/START_HERE.md S8 (control lines float while the FPGA loads) covers part of this (system-bringup agrees it is minor); ASIC_REFERENCE.md lists ASIC sequencing and absolute maximums as unresolved; the rail enable / PG link to the FPGA is not recorded.",
-   "found_by": [
-    "system-mate-fe-ldo",
-    "system-power",
-    "system-bringup"
-   ],
-   "title": "The FPGA cannot switch or monitor the ASIC rails or +/-12 V converter; they are on whenever the cable is live.",
-   "area": "Power sequencing",
-   "what": "On the FPGA-LDO boards the shared enable for all nine ASIC regulators and the LT3582 +/-12 V converter is only a resistor and capacitor from VIN_3V3, and VIN_3V3 itself is always on once the cable is powered. No enable signal comes from the FPGA and no power-good (a regulator's 'output is in range' signal) goes back, so the FPGA cannot hold off, sequence, watch or shut down the ASIC supplies, and swapping an ASIC board means pulling the cable or hot-plugging. The back-powering at start-up claimed in the original does not happen: the ASIC rails rise about 15-22 ms after VIN_3V3, well after the FPGA's 1.5 V I/O bank (about 3 ms), while the FPGA pins are still undriven. Power-down order is not settled by the files and needs a scope capture; the open point is whether the ASIC designer's still-unknown sequencing and pin limits require FPGA control, which is cheap to add only before ordering.",
-   "where": "FPGA-LDO A and Option B LDO board: R1 (10k to /VIN_3V3), C3 (4.7 uF), /EN_ASIC_RAILS to U1 (LT3582-12) pin 8 SHDN and U2-U10 EN; R19 (10k, /CHIP_RESET_SHARED J2.58 to /ASIC_DVDD); PG pins of U2, U6, U8, U9, U10 unconnected. Frontend: U16 (VIN_3V3, EN on VIN_5V), U2 PG_CORE_1V0 to U4 EN (VCCO_1V5), U1 ball C9. Spare joint pins J1.29-33, 35-37, 39, 43, 45, 47, 49 and J2.40/42 on Frontend and LDO boards. HDMI board: PORT_ENABLE from U700 pin 13 to U701-U708 EN.",
-   "evidence": "exports/ldo_a/netlist.xml and exports/ldo_b_ldo/netlist.xml: /EN_ASIC_RAILS = R1.2, C3.1, TP4, U1.8 SHDN, U2-U10 EN or EN/UV; C3 CL10A475KP8NNNC. 'EN_ASIC_RAILS' appears 0 times in every connectors.csv. exports/frontend/netlist.xml: U16 EN = VIN_5V; U2 EN = VIN_3V3; U2 PG = PG_CORE_1V0 to U4 EN; FPGA_PUDC_B tied to VCCO_1V5 through R25 470R, so FPGA I/O stay 3-stated with pull-ups off until configuration. Timing: enable node tau = (10k || 125k, the four TPS7A20 500k pulldowns) x 4.7 uF = 43.5 ms, final 3.06 V; it crosses 0.9 V (TPS7A20 VEN(HI) max) at 15.2 ms and 1.24 V (LT3042 typical) at 22.7 ms; even at VEN(LOW) 0.3 V plus 750 us start-up, DVDD is up about 5 ms after VIN_3V3. VCCO_1V5 is up about 2.7 ms after VIN_3V3 (MPM3833C 1.3 ms soft-start, 100 us PG delay). R19 can inject at most 1.5 V / 10k = 0.15 mA, against the DS181 10 mA clamp-current limit. Capacitance: ASIC_DVDD 2.0 uF on the LDO board (ASIC boards add unvalued C7-C14), VCCO_1V5 about 113 uF. STIM_EN_SHARED (Frontend U1.J6, J2.63) has R2 10k to GND on the LDO board, so stimulation enable defaults low. exports/hdmi/netlist.xml: PORT_ENABLE = U700.13 PG and U701-U708 pin 3.",
-   "source": "TI TPS7A20 datasheet SBVS338H, electrical characteristics (VEN(HI) 0.9 V, VEN(LOW) 0.3 V, tSTR 750/1150 us) and pin table (500k EN pulldown); ADI LT3042 datasheet, EN/UV rising threshold 1.18/1.24/1.32 V, https://www.analog.com/en/products/lt3042.html; MPS MPM3833C datasheet Rev 1.0 (soft-start 1.3 ms, PG delay 100 us); AMD DS181 Artix-7 data sheet v1.27.1, Tables 1-2 (I/O input voltage to VCCO + 0.55 V, 10 mA clamp current in a powered or unpowered bank, recommended power-on order); inputs/asic/ASIC_Reference/ASIC_REFERENCE.md U02/U03/U05/U07 (sequencing, powered-off pin limits and reset behaviour unresolved); engineering judgement.",
-   "consequence": "The FPGA cannot sequence the ASICs, keep them off during FPGA bring-up, shut down the +/-12 V converter or react to a failed rail. If the ASIC turns out to need a set power order, adding control after ordering changes the J1/J2 contract on both the Frontend and the LDO board; meanwhile ASIC boards can only be changed with the cable unplugged or by hot-plugging onto live rails.",
-   "suggested_action": "Get the ASIC power-up and power-down order and powered-off pin limits from the ASIC designer, and decide before ordering whether the FPGA gates the rails; if so, route a Frontend-driven enable on a spare pin (for example J1.29) to EN_ASIC_RAILS with R1 as a pull-down and return a wired-OR power-good. If not, write 'cable unplugged before any DF40 is mated or unmated' into the bring-up procedure and capture the power-down order on a scope.",
-   "origin": "changed",
-   "v2note": "SYS-10's 2-contact enable/power-good fix has to be reserved during the pin map V6 allocation. V6 as traced takes 12 of the 15 spare Frontend-to-FPGA-LDO contacts (J1.29-33, 35-37, 39, 43, 45, 47, 49, J2.40, J2.42) and leaves 3: enough for enable and power-good, but not for the near chips' 4 DISC_OUT lines, which fit only if the FPGA-LDO board joins the top chips' SPI_CLK/SPI_LATCH (pins 72/70) to the near board's shared ones (63/61); V6 would then need 8 contacts instead of 12. The power-good half also needs regulator changes: PGFB is tied to IN on all five LT3042/LT3094 (U2, U6, U8, U9, U10), which the data sheets say disables power good, and the four TPS7A2015 rails (VDD_ADC, VDD_DRIVER, DVDD, VDD_CGEN) and the LT3582-12 have no PG pin, so a wired PG line reports no rail as built and at most 5 of the 9 rails even after PGFB dividers are added.",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Frontend 14 layers V5 now also passes the cable's 5 V to one contact toward the FPGA-LDO board. FPGA-LDO A layout V14 has only a test pad on it, so the load is the same today. Any later use of that 5 V adds to this port's current."
   },
   {
    "id": "R2S-05",
    "severity": "major",
    "board": "system",
-   "title": "Each port's 44 chip outputs return through two DGND contacts, and the far chips' outputs return through the REF_VDD and VDD_DRIVER planes, AGND contacts 42/44 and NT1.",
+   "title": "Each port's 44 chip outputs return through two DGND contacts; the far chips' lines now run beside the DGND plane but still start over AGND.",
    "what": "Each 80-pin port has AGND only on pins 42/44 and DGND only on 46/48. With two real boards stacked, the 44 outputs of four chips return through the two DGND contacts at the FPGA-LDO joint, and the far board's 22 outputs also cross a second joint with the same four returns. On the far (top) board those outputs, including both returned CLK32MHZ clocks, run 4-7.5 mm on In4 between the REF_VDD plane (In3) and the VDD10/VDD_DRIVER plane (In5). Their return current reaches ground mainly through rail capacitors that go to AGND (and plane-to-plane capacitance), then leaves the stack on AGND pins 42/44 and crosses to GND at NT1 on the FPGA-LDO board, through the reference and analog ground of every chip in the port. SYS-41 asked that the second board keep clock lanes on a DGND-referenced layer; V3 does not. The six spare pins 2/4/6/8/24/58 are now nets on both V3 boards but no-connect on FPGA-LDO A and the router, so using them as extra grounds later needs an FPGA-LDO change. The files cannot show how large the effect is.",
    "where": "V3 top board In4: T_CLK32MHZ 5.06 mm, T_CLK32MHZ(2) 6.66 mm, T_D<1..8>, T_D<1..8>(2), T_READ, T_SYNC and their (2) copies 3.97-7.47 mm each; In3 /REF_VDD, In4 /REF_VCM, In5 /VDD10 + /VDD_DRIVER. J3/J4 AGND 42/44, DGND 46/48, spares SPARE_P2..P58. FPGA-LDO A and router J3/J4 pins 2/4/6/8/24/58 unconnected; NT1 on FPGA-LDO A at (100.58, 121.0). Option B adds J5 (GND 3/65, AGND 62).",
    "evidence": "W/a review working file (not published) on V3_Top: zones In1 AGND, In2 VDD_FE, In3 REF_VDD, In4 REF_VCM, In5 VDD10/VDD_DRIVER, In6 VDD_ADC/VSS10, In7 DVDD, In8 DGND; T_ track lengths as listed. Capacitor nets on both boards: REF_VCM, REF_VDD, VDD_ADC, VDD_DRIVER, VDD_FE to AGND (4 each), DVDD to DGND (4), VDD10/VSS10/VDD_CGEN to AGND on top. W/a review working file (not published) 44 outputs per port; spares open on ldo_a and ldo_b_router. Order of magnitude only (assumed 1.5 ns edges, about 12 pF per line, 0.4 nH for two contacts in parallel; none from a datasheet): 32 data lines switching together give about 0.38 A and about 0.1 V per joint, about 0.2 V for the far chips relative to the FPGA. Option B J5 return count unchanged (SYS-06).",
@@ -156,7 +133,10 @@
    "v2note": "On ASIC boards V4, pins 2/4/6/8/24/58 are no longer spare: they carry six outputs from the far (top) chips. Under pin map V6, each 80-pin port therefore routes 65 signals (44 chip outputs and 21 FPGA-driven inputs) over the same four returns (AGND 42/44, DGND 46/48). Pins 2/4/6/8 sit 6.8-8.0 mm from the nearest return, and on the top board In4 carries 28 T_ lines (22 outputs and 6 T_SPI inputs) through the REF_VCM layer, between REF_VDD (In3) and VDD10/VDD_DRIVER (In5). The old fix (tie those pins to DGND/GND) is withdrawn because grounding them on FPGA-LDO A or the router would short top-chip outputs. Before FPGA-LDO A and the ASIC pair are ordered, the owner must choose between extra ground contacts outside the 80-pin joint and accepting the design, then measuring AGND-DGND noise and returned-clock jitter at bring-up. See LDOA-41.",
    "category": "Grounding & return paths",
    "dupnote": "AB-17 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "On the ASIC top board V7 the far chips' 28 lines no longer run on inner layer 4 between the reference supply planes. They now run on inner layer 7, 0.05 mm above the DGND plane, with DGND copper directly below about nine tenths of that length. What remains: each port still has only two DGND contacts (pins 46 and 48) for 44 chip outputs, each of these lines still starts with 0.6 to 6 mm on the top layer over AGND, and the AGND to DGND noise is still to be measured at bring-up.",
+   "title_was": "Each port's 44 chip outputs return through two DGND contacts, and the far chips' outputs return through the REF_VDD and VDD_DRIVER planes, AGND contacts 42/44 and NT1.",
+   "upd": "changed"
   },
   {
    "id": "SYS-06",
@@ -179,7 +159,8 @@
    "origin": "carried",
    "category": "Grounding & return paths",
    "dupnote": "Same problem as LDOB-01 on the FPGA-LDO Option B page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Option B is on hold (decision of 12 Nov 2026)."
   },
   {
    "title": "If all eight stacks share one head ground electrode, as SYS-11 advises, every J1 lead becomes a supply-return path through ASIC AGND (where REF_1-4 are bonded) and NT1, carrying about 4-27 mA in a typical lead and 9-62 mA (up to 89 mA) in the most-loaded one, so load steps put up to about 13 mV on the recording reference.",
@@ -204,7 +185,8 @@
    "origin": "new",
    "category": "Grounding & return paths",
    "check2": "Second check: corrected",
-   "check2note": "Confirmed: J1.1 and all eight REF pads on /AGND (both V4 boards); NT1 is the only AGND-GND tie; router has no GND pad. Reproduced independently: worst lead median 9-63 mA, p95 13-89 mA; typical lead 4-27 mA; +0.08 A step 9-60 mA; separate electrodes 5-25 mV. The title's 10-90 mA is the worst lead, not each J1. DF40 p.2 (0.3 A, 90 mOhm max) and TDT guide say what is cited; the lac.us link returns 404. Major holds."
+   "check2note": "Confirmed: J1.1 and all eight REF pads on /AGND (both V4 boards); NT1 is the only AGND-GND tie; router has no GND pad. Reproduced independently: worst lead median 9-63 mA, p95 13-89 mA; typical lead 4-27 mA; +0.08 A step 9-60 mA; separate electrodes 5-25 mV. The title's 10-90 mA is the worst lead, not each J1. DF40 p.2 (0.3 A, 90 mOhm max) and TDT guide say what is cited; the lac.us link returns 404. Major holds.",
+   "upd_note": "FPGA-LDO A layout V14 did not add a GND strap pad: GND and AGND still have only 1.0 mm test pads and still meet only at the one tie NT1. On the ASIC boards V7 the one-pin header J1 is left unfitted (its pad stays on AGND), so where the animal ground wire attaches is not yet decided."
   },
   {
    "id": "SYS-01",
@@ -227,31 +209,6 @@
    "suggested_action": "Record the lane rate and framing (2.5 Gb/s with packed 12-bit data, or 3.125 Gb/s with raw frames) and reopen the HDMI-board items tied to the rate. Run an IBERT eye and loss check over one real cable at 1.25-1.56 GHz Nyquist before buying eight sets.",
    "origin": "carried",
    "category": "Signals, clocks & timing"
-  },
-  {
-   "title": "On FPGA-LDO A V12 at most about 3-4 of the 12 new V6 lines get short routes through the existing copper; the rest need long multi-via detours, more L2 AGND cuts or moved lanes, so V6 needs a re-planned lane field, not 12 extra routes.",
-   "severity": "major",
-   "board": "ldo_a",
-   "area": "Pin map V6 / J1-J3-J4 lane field",
-   "what": "The known plan treats V6 on FPGA-LDO A as 12 added routes plus 4 swaps. The 13 J1 spares lie south of the 11 ASIC8 lanes that fill L1 between J1 and J3. Below them, L5 carries the ASIC1-4 lane bundle, L6 carries the J4 staircase lanes and rail pours, and L2 is the AGND plane, already cut by the lane hops. A rule-based search on the saved copper finds short paths in only two places: one 0.57 mm strip of L2 AGND west of J1's outer row (2-3 tracks wide), and one path from J3.58 to J2.40. J4.58 has no exit at all. Every other line is either unroutable or a 43-56 mm detour around J2.",
-   "where": "FPGA-LDO A V12. Spares: J1.29-49 (x 92.61 inner / 89.90 outer, y 125.8-129.8, L1) and J2.40/42 (107.40, 127.8/128.2). Targets: J3 pins 2/4/6/8/24/58 (x 91.983-93.183, 96.383, 103.183; y 114.868; L1) and the same J4 pins (y 115.058, L6). The free strip on L2 is x 89.03-89.60. J4.58 is boxed in by the /ASIC_VSS10 via (102.383, 114.8), the /ASIC_VDD_ADC via (102.783, 115.1) and its 0.2 mm track, the /ASIC3_READ lane (x 103.583), the /ASIC1_READ lane (y 114.36), and J3.58's pad 0.19 mm above it on L1.",
-   "evidence": "Grid search at 0.02 mm with the V12 rules: 0.1 mm track and clearance, 0.2 mm hole clearance, 0.3 mm edge, the V12 via types (micro 1-2, buried 2-5, micro 5-6, through 1-6), no stacked vias (V12 has none). Results: (a) L1/L5/L6 only, pours intact: 1 of 12 (J3.58 to J2.40, 16.2 mm). (b) With V12-style L2 hops, in either port order: 3-4 short paths (J3.2 to J1.30 12.1 mm, J3.4 to J1.32 12.0 mm, J3.6 to J1.36 13.7 mm, J3.58 to J2.40 15.9 mm); 2-4 detours of 43.7-55.6 mm with 5-9 vias; the rest no path. (c) Each line alone: 11 of 12 reach a spare, 10 of them through the same L2 strip; J4.58 none, even with all L1/L6 pours treated as removable. Exact geometry: above J4.58 the track-centre window is 114.560-114.578 mm, and it closes at the VSS10 via. For comparison, the V5 lanes are 6.3-31.6 mm.",
-   "source": "Project files: boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb, .kicad_dru (JLC 0.2 mm hole clearance, 0.3 mm edge), .kicad_pro (0.1 mm); exports/ldo_a/connectors.csv and board.json; known/pinmap_v6_trace.csv; inputs/ldo_a/pin_map_V5_schematic_V30/START_HERE.md. Method and logs: a review working file (not published), route_ldoa.py, out/ldoa_*.log. Engineering judgement for the search method.",
-   "consequence": "V6 will not close on FPGA-LDO A as an incremental edit. Forcing the lines through the L2 AGND plane, or as 45-55 mm detours, adds more cuts to the analog ground. Either way the V12 order files, JLC checks and DRC become void, so a new layout revision has to be scheduled.",
-   "suggested_action": "Run the lane planner (plan_v11.py) on pin map V6 as one full plan for all 120 signals, freeing J4.58 by moving /ASIC1_READ or the VSS10/VDD_ADC vias. Budget this as layout V13 before any other FPGA-LDO A edit.",
-   "basis": "calculated",
-   "relation": "changes A-P",
-   "confidence": "medium",
-   "found_by": [
-    "pinmap-v6"
-   ],
-   "corrected": "On FPGA-LDO A V12 the 12 new V6 lines cannot be added as plain extra routes. J4.58 has no legal exit: its only slot, between the J4 pad row and the L6 /ASIC1_READ track, is 0.298 mm wide where 0.300 mm is needed, and the VDD_ADC pour plus the L5 and L2 lanes block every via site below it. Without new tracks on the L2 AGND plane at most one line fits (J3.58 to J2). With L2 tracks, only about 3-5 lines get short (12-16 mm) routes, through the 3-track L2 west strip, the L5 west corridor and J3.58's L1 channel; the rest need 44-56 mm detours with 5-9 vias. So V6 needs a re-planned lane field in a new layout revision (V13).",
-   "verification": "verified by an independent skeptic (corrected)",
-   "id": "SYS-53",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "check2": "Second check: corrected",
-   "check2note": "Reproduced on the V12 file with exact polygons: the L2 west strip (x 89.03-89.60) holds 3 tracks; 11 of 12 lines reach a spare alone. J4.58's slot is 0.298 mm (0.300 needed) and, at V12's 0.2 mm hole rule, no via site exists even without pours. JLC's HDI table allows 0.15 mm; then a microvia fits at (103.23, 117.85) once the VDD_ADC pour is notched. Router vias sat 0.28 mm from the edge, so 3-4 is an upper bound."
   },
   {
    "title": "In Option A the Frontend's south edge, where its order asks for break-off tabs, sits only 0.567 mm from the near ASIC board beside it.",
@@ -277,40 +234,15 @@
    "category": "Layout & manufacturing",
    "check2": "Second check: upheld",
    "dupnote": "FE-07 on the Frontend page.",
-   "dupkind": "overlapping"
-  },
-  {
-   "title": "The only complete V6 grid route found for FPGA-LDO A fails KiCad DRC, has 37 laser vias too close to same-net buried vias for JLC and cuts L2 AGND by 62 mm², so a re-route under V12's rules is still unproven.",
-   "severity": "major",
-   "board": "ldo_a",
-   "area": "Pin-map V6 routing capacity (full re-plan)",
-   "what": "This is the first test of whether a re-planned FPGA-LDO A can carry the V6 pin map. With all signal copper removed and the LDOA-05 GND vias and ASIC-14 strips added, no straight cut is close to full: every horizontal cut from y 115.6 to 125 and every connector face has at least 1.5 times its demand on L1, L5 and L6 alone. A negotiated grid router then routed all 121 nets with legal clearances, but only by running L2 tracks outside today's AGND pockets and by putting about 45 laser vias on, or within 0.3 mm of, a buried via of the same net, which V12 never does. Held to today's pockets, the best route left 12 of 121 nets unrouted, and the same router misses 6-10 of V12's own 109 nets on the case V12 proves routable, so the strict case is still undecided.",
-   "where": "FPGA-LDO A V12. J3 (L1) and J4 (L6) at x 91.98-107.58, y 111.98-115.06 connect to J1 (x 89.90/92.61) and J2 (x 107.40/110.11) at y 120.2-133.8, on layers L1, L2 (AGND), L5 and L6. New L2 copper in the complete strip-clean route: 35.6 mm in the J1 wing and 41.5 mm in the J2 wing. By band: 13.1 mm under J3/J4, 22.5 mm at y 115.6-120, 41.5 mm along the J1/J2 rows.",
-   "evidence": "Demand (demand.json): 121 nets, 120 of which cross to J1/J2 (60 to each). The re-plan removes 644 signal tracks and 223 signal vias. Capacity in 0.1 mm tracks at V12 rules (0.10 clearance, 0.20 hole clearance, 0.30 edge, 0.10 to kept pours), as L1/L5/L6/L2 pockets/L2 open vs demand: y115.6 77/110/84/46/108 vs 120; y117.5 79/110/76/46/108 vs 120; y119.5 65/109/77/46/107 vs 120; y120.4 68/107/7/62/108 vs 116; y121.6 68/110/4/75/108 vs 104; y122.8 68/99/19/17/98 vs 94; y125.0 66/110/22/78/108 vs 72; J1 faces 107/105/26/38/117 vs 60; J2 faces 92/82/27/49/119 vs 60; J3/J4 field 98/136/101/46/134 vs 121. The limiting cut is none. The tightest is y 120.4-121.6, with L1+L5+L6 at 182 vs 104-116, where L6 drops to 4-7 tracks under the regulator pours (178 with 0.2 mm pour clearance). V12 already uses 108 tracks at y 117.5. Router model: 0.1 mm grid, tracks at 0.2 mm pitch, via spacing 0.40-0.60 mm, no via copper in the J4 strips. Complete route V_H40s2: 121/121 nets; an independent check (verify_route.py) finds 0 clearance violations and every net connected. It uses 516 vias: 203 laser L1-L2, 159 buried, 115 laser L5-L6, 39 through. It puts 77.1 mm of L2 track outside today's pockets in 85 pieces, 66 of them under 1 mm, removing about 44 mm2 of AGND. It has 45 same-net laser/buried pairs closer than 0.3 mm; V12 has none, and its closest such pair is 0.43 mm. Three earlier complete routes, which let 1-6 vias touch the strip band, used 46.9, 62.8 and 85.7 mm of new L2. Inside today's pockets: 109, 109 and 106 of 121 nets over 3 seeds, even with about 20 close pairs. Allowing explicit stacked vias gave 108/121. Calibration on V12's own nets: 100, 99 and 103 of 109. Files: a review working file (not published) (cuts_h_z0.10.log, facecuts.log, route_V_H40s2.log, route_R3_pocket*.log, route_CAL_pocket*.log, l2_open_detail_V_H40s2.log) and img/route_V_H40s2_L*.png.",
-   "source": "Project files: boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb, .kicad_dru and .kicad_pro (track 0.1, clearance 0.1, hole clearance 0.2, hole-to-hole 0.25, edge 0.3); exports/ldo_a/board_stats.txt for via types (laser 0.10/0.26, buried 0.20/0.40, through 0.15/0.35); known/pinmap_v6_trace.csv; a review working file (not published); known/ldo_a.json LDOA-05; known/asic.json ASIC-14. The strip limits are taken from ASIC-14, which cites the Hirose DF40 catalogue p.8 note 3 and drawing EDC3-311352-00 note 2, https://www.hirose.com/product/download?distributor=all&type=catalogue&lang=en&series=DF40; I did not re-read those. JLCPCB HDI PCB capabilities FAQ, https://jlcpcb.com/help/article/hdi-pcb-capabilities-faq, read 12 Nov 2026. It defines stacked vias as blind and buried vias at the same position. It says buried vias are resin plugged and capped. It sets a 0.13 mm minimum from a blind-via edge to a same-net hole. It does not say stacked vias are offered for this stack.",
-   "consequence": "Option A is the only board left for the 'keep V4, fix the rest' plan, and the change is not a patch. Every signal track and via must be re-routed, and the V12 order files become obsolete. Without stacked vias and new AGND pockets, nothing yet shows that the re-route closes. Ordering on the assumption that it does risks another spin, and the earlier 3-4 of 12 limit only applies to a patch.",
-   "suggested_action": "Ask JLC whether a laser via may sit on a capped buried via in stack JLCH061611Y1-1078. Decide whether 50-80 mm of new L2 signal pockets in the connector wings are acceptable for AGND. Then re-route the board in one pass with the V6 map, the LDOA-05 vias and the ASIC-14 strips, or first try a pocket-only route by hand, and check DRC and parity before ordering.",
-   "basis": "needs_decision",
-   "relation": "new",
-   "confidence": "medium",
-   "found_by": [
-    "gap"
-   ],
-   "corrected": "The only complete V6 grid route found for FPGA-LDO A (V_H40s2) does not pass KiCad DRC when rebuilt on a V12 copy. A through via shorts an L6 AGND track at (91.08, 130.60), there are six clearance misses of 0.004-0.007 mm, and its L2 tracks cut L2 AGND from 546 to 484 mm² and isolate R6's AGND corner. The route also has 49 same-net laser/buried hole pairs closer than V12's 0.25 mm hole spacing. Only 2 are aligned stacks; 37 are offset 0.10-0.22 mm, which JLC's 0.13 mm same-net rule forbids even if stacking is approved. Pocket-only runs reached 106-109 of 121 nets, but they already assumed 14 stacked LDOA-05 GND vias, and the same router misses 6-10 of V12's own 109 nets, so it is still undecided whether a V6 re-route closes under V12's rules.",
-   "verification": "verified by an independent skeptic (corrected)",
-   "id": "SYS-59",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "check2": "Second check: corrected",
-   "check2note": "Reproduced: V_H40s2 has 516 vias (203/159/115/39) and 49 same-net laser-buried pairs under 0.25 mm: 2 aligned, 37 offset 0.10-0.22 mm, breaking JLC's 0.13 mm rule; V12's closest is 0.43 mm. KiCad rebuild: via shorts V12's L6 AGND track at (91.08,130.60); L2 AGND 546→484 mm², 21.8 mm² island near R6. JLC page matches. Original title wrong: only 2 true stacks. Infeasibility unproven: cuts keep ≥1.5× margin; 109 of 121 nets keep V12 pins, so a full rip-up is not proven necessary.",
-   "dupnote": "SYS-53.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "The gap is unchanged at 0.567 mm with Frontend 14 layers V5, FPGA-LDO A layout V14 and ASIC boards V7. The Frontend order remark no longer asks for tabs on the south and east edges; it now says only the south edge can take tabs and that they must be sanded flush, as a choice still to be made before upload. What remains: no panel is drawn, the tab choice is not made, and the order does not ask for +/-0.1 mm outline routing.",
+   "upd": "changed"
   },
   {
    "id": "R2S-03",
    "severity": "major",
    "board": "system",
-   "title": "The V3 boards are 1.6 mm, so each head stack is about 17.0 mm tall, not 13.8 mm, and the four probe rows are 3.1 / 6.2 / 3.1 mm apart, not 2.3 / 5.4 / 2.3 mm.",
+   "title": "ASIC boards V7 are now 0.8 mm thick, so the head stack is back at about 13.8 mm, but the fabricator has not confirmed ten layers in 0.8 mm and the fit models were not rebuilt.",
    "what": "Both V3 board files are ten-layer, 1.6 mm. The project record says the ASIC board will be 0.8 mm (6 Nov), and the print models, the deck's head view on the sheep and the Option A fit use 0.8 mm. With four 1.6 mm ASIC boards each stack grows by about 3.1-3.2 mm and 2.3-2.9 g. Each board's dies sit on its top face and its probes leave the same edge (y 100.0 in the FPGA-LDO frame), so the four probe rows of a stack spread over 12.4 mm instead of 10.0 mm. The V3 record lists thickness as needing input; until it is decided, the models used to judge fit on the animal and the probe plan do not match the board files.",
    "where": "V3 Top_board and Bottom_board PCB.kicad_pcb (thickness 1.6, 10 copper layers); inputs/system/README_2026-11-11.md (print models V2); inputs/notes/fpga-ldo-v14.md lines 108-110; inputs/system/weekly_deck/START_HERE.md 11 Nov 08:24 head view.",
    "evidence": "W/a review working file (not published) Option A (z = 0 at LDO A bottom, LDO 1.58 mm): board top faces with 0.8 mm boards -3.80, -1.50, 3.88, 6.18 (pitch 2.3 / 5.38 / 2.3, span 9.98 mm); with 1.6 mm -4.60, -1.50, 4.68, 7.78 (3.1 / 6.18 / 3.1, span 12.38 mm). Option B (z = 0 at LDO board bottom): 0.8 mm -0.70, 1.60, 7.00, 9.30 (2.3 / 5.4 / 2.3, span 10.0); 1.6 mm -1.50, 1.60, 7.80, 10.90 (3.1 / 6.2 / 3.1, span 12.4). Envelope without plug, record conventions (receptacle box 1.44 mm from 0.09 mm off the board, header box up to 1.44 mm): Option A 13.82 -> 16.95 mm, Option B 13.77 -> 16.97 mm; both ends are now ASIC boards. Mass: outline 21.97 x 17.03 mm, +0.8 mm at 1.9-2.4 g/cm3 = 0.57-0.72 g per board, 2.3-2.9 g per stack, 18-23 g for eight stacks, against the record's 10-12 g on-head estimate (fpga-ldo-v14.md line 110). Side pin: at 1.6 mm the near board's J1 tail clears the LDO A / router top by 0.55 mm; at 0.8 mm it reaches 0.25 mm into it.",
@@ -348,7 +280,10 @@
     }
    ],
    "dupnote": "Same problem as AB-08 on the ASIC boards page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "ASIC boards V7 are now 0.8 mm thick in both board files (ten layers), by decision of 12 Nov 2026 after the ASIC designer's answer. By the finding's own method the four probe rows are back at 2.3 / 5.4 / 2.3 mm (span 10.0 mm) and the stack at about 13.8 mm, which is what the fit and print models use. What remains: the fabricator has not confirmed ten layers in 0.8 mm, and the fit and print models and the head view were not rebuilt (last built 10 and 11 Nov 2026); they still show the older ASIC boards with the J1 pin, which is no longer fitted (SYS-13). It stays a major until the fabricator confirms the build, because ten layers in 0.8 mm is outside its standard range.",
+   "title_was": "The V3 boards are 1.6 mm, so each head stack is about 17.0 mm tall, not 13.8 mm, and the four probe rows are 3.1 / 6.2 / 3.1 mm apart, not 2.3 / 5.4 / 2.3 mm.",
+   "upd": "changed"
   },
   {
    "id": "SYS-03",
@@ -369,7 +304,8 @@
    "consequence": "Stack surfaces above body-contact limits, heat conducted down the shanks into the brain, and hot FPGA and ASIC junctions; the planned commercial-grade U1 (XC7A35T-2CSG325C, 0-85 C) leaves less junction margin. This may force a heat sink, duty cycling or a head-mount change after eight stacks are built.",
    "suggested_action": "Set a head-surface and tissue-heating limit, then measure one powered stack (thermocouple or IR) in still air with the real bitstream before ordering eight.",
    "origin": "carried",
-   "category": "Mechanical, stack & thermal"
+   "category": "Mechanical, stack & thermal",
+   "upd_note": "Still no heat estimate and no temperature limit on record. The plan after the meeting of 12 Nov 2026 lists a heat measurement on one built head before eight are bought. The stack size used here (13.82 mm tall) now matches ASIC boards V7 at 0.8 mm."
   },
   {
    "id": "SYS-07",
@@ -416,7 +352,8 @@
    "category": "Mechanical, stack & thermal",
    "v2note": "See LDOA-37.",
    "dupnote": "Same problem as FE-04 on the Frontend page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Unchanged on Frontend 14 layers V5: C4, C42 and C59 are the same 0805 parts in the same places on the underside, and the order list still orders them. The 'PRE-' silkscreen on FPGA-LDO A layout V14 is also where it was. The Frontend record lists the choice of these three parts as still open."
   },
   {
    "id": "SYS-31",
@@ -440,7 +377,8 @@
    "v2note": "On the ASIC boards V4, both board types carry the same 24 0201 capacitors on B.Cu inside the 8.58 mm die openings. ASIC boards mate J4 into J3 with no rotation, so at each ASIC-to-ASIC joint the upper board's capacitors hang over the lower board's dies (four ASICs per stack), leaving about 1.15 mm (1.5 mm DF40 − 0.33 mm 0201 − about 0.02 mm solder), not 1.5 mm, for die, attach, bond loops and any glob-top; no file records those heights, so this is the same major item as A-1 / R2S-02 and SYS-31 should be merged into it. Second check: the higher severity is upheld. Confirmed on V4: both boards have 24 0201 caps on B.Cu at identical XY (x 129.55-141.00, y 79.90-83.35), 12 inside each bond-finger ring (side rows 8.585 mm apart). J3/J4 share XY (pin n within 0.19 mm, nets 80/80), so each upper ASIC board's caps sit over the lower board's dies. Gap is about 1.5 (DF40C-80DS/DP) - 0.33 (0201 T 0.30±0.03) - 0.02 = 1.15 mm. No die, loop or glob-top height on file. Major matches A-1/R2S-02; blocker unproven.",
    "category": "Mechanical, stack & thermal",
    "dupnote": "AB-06 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still no die thickness, bond loop height or encapsulation height on record. The question was on the sheet for the meeting with the ASIC designer on 12 Nov 2026 and got no answer; the designer said the die attach is plain epoxy and will send a bond diagram. The values of the 24 back-side capacitors on ASIC boards V7 are not given yet either, so the 1.15 mm figure assumes ordinary 0201 parts; the tallest 0201 kind would leave about 0.9 mm."
   },
   {
    "title": "Enclosure V3 has no recorded room for the XEM8310's fansink, so the 10-15 W module has no heat sink in a box without a fan and may exceed its 0-70 C rating.",
@@ -467,7 +405,7 @@
    "check2": "Second check: upheld"
   },
   {
-   "title": "If the Frontend is unplugged between sessions, as the records assume for Option A, FPGA-LDO A's two DF40C-70DP plugs sit bare on the head with 108 contacts wired straight to ASIC die pads and no ESD protection.",
+   "title": "If the Frontend is unplugged between sessions, as the records assume for Option A, FPGA-LDO A's two DF40C-70DP plugs sit bare on the head with 120 signal contacts wired straight to ASIC die pads and no ESD protection.",
    "severity": "major",
    "board": "system",
    "area": "ESD at exposed connectors",
@@ -489,7 +427,9 @@
    "origin": "new",
    "category": "Safety, ESD & bring-up",
    "check2": "Second check: corrected",
-   "check2note": "Reproduced: J1/J2 are DF40C-70DP plugs on the top face. 108 signal contacts reach only J3/J4 (8 have 10k pulls), with no clamps, and the metal fittings are unconnected. On V4, all 58 lines per port land on die pads: 52 near, 50 far, 22 both, 80/80, 13 of them rails or grounds. Frontend removal is assumed (deck line 67, SYS-22). R2S-10 is a note, not a minor. Major matches LDOB-08, which stands; its fix plan's 'prefer A' line fails."
+   "check2note": "Reproduced: J1/J2 are DF40C-70DP plugs on the top face. 108 signal contacts reach only J3/J4 (8 have 10k pulls), with no clamps, and the metal fittings are unconnected. On V4, all 58 lines per port land on die pads: 52 near, 50 far, 22 both, 80/80, 13 of them rails or grounds. Frontend removal is assumed (deck line 67, SYS-22). R2S-10 is a note, not a minor. Major matches LDOB-08, which stands; its fix plan's 'prefer A' line fails.",
+   "upd_note": "Still no cover, no ESD part and no handling rule. On FPGA-LDO A layout V14 the two plugs now carry 120 signal contacts to the ASIC ports (was 108), 16 of them with only a 10k pull resistor; on ASIC boards V7, 78 of the 80 port contacts reach a die pad (pins 3 and 5 no longer do). The ASIC designer's answer on static protection was unclear, so the pads are treated as unprotected. J1 is no longer fitted (SYS-13).",
+   "title_was": "If the Frontend is unplugged between sessions, as the records assume for Option A, FPGA-LDO A's two DF40C-70DP plugs sit bare on the head with 108 contacts wired straight to ASIC die pads and no ESD protection."
   },
   {
    "id": "SYS-20",
@@ -513,53 +453,31 @@
    "category": "Pin map & connectors"
   },
   {
-   "title": "After V6 only 3 of the 15 Frontend-LDO spare contacts remain, too few for the rail enable/power-good pair plus the bottom chips' four DISC_OUT lines.",
+   "id": "SYS-10",
    "severity": "minor",
-   "board": "system",
-   "area": "Pin map V6 / connector pin budget and DISC_OUT",
-   "what": "R2S-07 left open whether DISC_OUT must be read. V6 uses 12 of the 15 Frontend-to-FPGA-LDO spare contacts, including both J2 spares, and also K5/K6, the last free balls in bank 34. That leaves 3 contacts, all on J1, or only 1 if the proposed ASIC rail enable/power-good pair (SYS-10, LDOA-15) is added, while bringing the bottom chips' DISC_OUT (J3/J4 pins 3 and 5, open on FPGA-LDO A today) to the FPGA needs 4. The top chips' DISC_OUT has no connector pin at all on the V4 boards: all 80 J3/J4 pins are assigned, including pins 4 and 6, which R2E-04 proposed for it and which now carry T_D<8>(2) and T_D<7>(2). Option B's J5 has no spare.",
-   "where": "Frontend and FPGA-LDO A spares J1.29-33, 35-37, 39, 43, 45, 47, 49 (10 used by V6) and J2.40, 42 (both used). FPGA-LDO A J3.3, J3.5, J4.3, J4.5 unconnected. ASIC V4 J3/J4 pins 4/6 (T_D<8>(2), T_D<7>(2)); on the top board, /T_DISC_OUT and /T_DISC_OUT(2) reach only their chips.",
-   "evidence": "exports/ldo_a and exports/frontend connectors.csv: 15 unconnected J1/J2 contacts; FPGA-LDO A J3/J4 unconnected pins are 2, 3, 4, 5, 6, 8, 24 and 58. known/pinmap_v6_trace.csv: 12 'NEW ROUTE' rows (pins 2/4/6/8/24/58 on each port), so 15 - 12 = 3. exports/asic_bottom/nets.csv: /DISC_OUT = J3.5, J4.5, U01_BCD1; /DISC_OUT(2) = J3.3, J4.3, U01_BCD2. exports/asic_top/nets.csv and netlist.xml: /T_DISC_OUT = U01_BCD1 only and /T_DISC_OUT(2) = U01_BCD2 only, with no J3/J4 pad. exports/asic_top/connectors.csv and exports/asic_bottom/connectors.csv: all 80 J3/J4 pins are on nets; only the mounting pads are unassigned. Bank 34 becomes 50 of 50. known/fix_plans_11nov_evening_on_V3.json critic: 'V6 needs 12 of them plus 2 for EN/PG, which leaves 1'. known/asic_r2.json R2E-04 suggested action (pins 4 and 6).",
-   "source": "ASIC designer's Pins.xlsx (inputs/asic/Pins__Sheet1.csv: DISC_OUT termination undecided); known/system.json R2S-07 and SYS-10; known/ldo_a.json LDOA-15; known/fix_plans_11nov_evening_on_V3.json (pin choices for SYS-10 and LDOA-15); project files as listed; engineering judgement.",
-   "consequence": "If DISC_OUT or rail control is wanted after the V6 boards are ordered, no contact is left for it: the bottom chips' copy then needs larger joint connectors and another spin of the Frontend and FPGA-LDO A, and the top chips' copy needs a new ASIC board.",
-   "suggested_action": "Before V6 routing starts, settle DISC_OUT use with the ASIC designer and decide the enable/power-good option and any per-port STIM_EN split (see the finding on shared STIM lines) together, then record the remaining spares in the pin map. If any DISC_OUT must be read, reserve four joint contacts now (drop the power-good line, or use larger DF40s for J1/J2) and tell the ASIC designer that the top chips need a connector pin for it.",
+   "status": "kept",
+   "verification": "Upheld after a third independent check",
    "basis": "needs_decision",
-   "relation": "changes R2S-07",
-   "confidence": "high",
+   "already_known": "ldo_a/parts_review_V21/START_HERE.md S8 (control lines float while the FPGA loads) covers part of this (system-bringup agrees it is minor); ASIC_REFERENCE.md lists ASIC sequencing and absolute maximums as unresolved; the rail enable / PG link to the FPGA is not recorded.",
    "found_by": [
-    "pinmap-v6",
-    "signals"
+    "system-mate-fe-ldo",
+    "system-power",
+    "system-bringup"
    ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "SYS-63",
-   "origin": "new",
-   "category": "Pin map & connectors",
-   "dupnote": "R2S-07.",
-   "dupkind": "overlapping"
-  },
-  {
-   "title": "The four V6 clock swaps belong on the Frontend: there each pair routes in 2-13 mm, while on FPGA-LDO A they need the same scarce space as the new lines and the ASIC3 swap has no path.",
-   "severity": "minor",
-   "board": "frontend",
-   "area": "Pin map V6 / returned 32 MHz clocks",
-   "what": "In V6 the top chips' returned clocks arrive on lanes that end at non-clock-capable balls (U16, L4, B17, R7). The known plan swaps four lane pairs on FPGA-LDO A. On V12, 7 of the 8 crossed lanes route on their own, but the ASIC8 and ASIC4 swaps use the inter-row pocket at x about 92.9 that J3/J4 pins 2-8 need, and J4.62 to J2.35 (the ASIC3 clock) has no path. On the Frontend every crossed pair routes on its own using the existing 7-via stack. After the swap the four clocks sit on P-side clock-capable balls.",
-   "where": "Frontend 8L V3 pairs: J1.5/J1.13 with U16/P15 (ASIC8), J2.36/J2.26 with L4/N3 (ASIC7), J1.64/J1.56 with B17/E16 (ASIC4), J2.25/J2.35 with R7/P4 (ASIC3). Matching FPGA-LDO A lanes: J3.12/20, J3.62/70, J4.12/20, J4.62/70.",
-   "evidence": "Frontend search with its rules (0.09 mm track and clearance, 0.15 mm hole clearance, 0.24 mm hole-to-hole, 0.5 mm edge; JLC spans 1-2/2-3/3-4/4-11/11-12/12-13/13-14; ASIC lanes on L1/L8/L10/L12/L14): J1.5 to P15 2.04 mm, J1.13 to U16 2.18, J2.36 to N3 6.43, J2.26 to L4 5.82, J1.64 to E16 3.01, J1.56 to B17 1.96, J2.25 to P4 9.46, J2.35 to R7 13.07, each with 7-8 vias. FPGA-LDO A: J3.12 to J1.13 11.2 mm, J3.20 to J1.5 12.5, J4.12 to J1.56 19.6 and J4.20 to J1.64 23.0, with vias at (92.82-92.86, 113.8-114.5); J3.62 to J2.26 12.0, J3.70 to J2.36 19.1, J4.70 to J2.25 17.1; J4.62 to J2.35 no path. Ball types from the AMD package file: P15 IO_L11P_T1_SRCC_14, N3 IO_L11P_T1_SRCC_34, E16 IO_L14P_T2_SRCC_15, P4 IO_L12P_T1_MRCC_34.",
-   "source": "AMD xc7a35tcsg325 package file (12/3/2013): https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/xc7a35tcsg325pkg.txt. AMD UG472, 7 Series FPGAs Clocking Resources v1.14, single-ended clock on the P side of a clock-capable pair: from memory, not re-read (https://docs.amd.com/v/u/en-US/ug472_7Series_Clocking did not load). Project files: boards/frontend/Artix_Frontend_8L_V3.kicad_pcb, .kicad_dru, .kicad_pro; boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb. Logs: a review working file (not published) and out/ldoa_swaps.log.",
-   "consequence": "Doing the swaps on FPGA-LDO A uses up its little free routing space and leaves the ASIC3 clock on R7, a non-clock-capable ball.",
-   "suggested_action": "Make all 4 swaps on the Frontend V6 copy and leave FPGA-LDO A lanes 12/20/62/70 as they are. Route the swaps together with the 12 new Frontend lines, then run KiCad DRC.",
-   "basis": "calculated",
-   "relation": "changes A-P",
-   "confidence": "medium",
-   "found_by": [
-    "pinmap-v6"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "SYS-65",
-   "origin": "new",
-   "category": "Pin map & connectors"
+   "title": "The FPGA cannot switch or monitor the ASIC rails or +/-12 V converter; they are on whenever the cable is live.",
+   "area": "Power sequencing",
+   "what": "On the FPGA-LDO boards the shared enable for all nine ASIC regulators and the LT3582 +/-12 V converter is only a resistor and capacitor from VIN_3V3, and VIN_3V3 itself is always on once the cable is powered. No enable signal comes from the FPGA and no power-good (a regulator's 'output is in range' signal) goes back, so the FPGA cannot hold off, sequence, watch or shut down the ASIC supplies, and swapping an ASIC board means pulling the cable or hot-plugging. The back-powering at start-up claimed in the original does not happen: the ASIC rails rise about 15-22 ms after VIN_3V3, well after the FPGA's 1.5 V I/O bank (about 3 ms), while the FPGA pins are still undriven. Power-down order is not settled by the files and needs a scope capture; the open point is whether the ASIC designer's still-unknown sequencing and pin limits require FPGA control, which is cheap to add only before ordering.",
+   "where": "FPGA-LDO A and Option B LDO board: R1 (10k to /VIN_3V3), C3 (4.7 uF), /EN_ASIC_RAILS to U1 (LT3582-12) pin 8 SHDN and U2-U10 EN; R19 (10k, /CHIP_RESET_SHARED J2.58 to /ASIC_DVDD); PG pins of U2, U6, U8, U9, U10 unconnected. Frontend: U16 (VIN_3V3, EN on VIN_5V), U2 PG_CORE_1V0 to U4 EN (VCCO_1V5), U1 ball C9. Spare joint pins J1.29-33, 35-37, 39, 43, 45, 47, 49 and J2.40/42 on Frontend and LDO boards. HDMI board: PORT_ENABLE from U700 pin 13 to U701-U708 EN.",
+   "evidence": "exports/ldo_a/netlist.xml and exports/ldo_b_ldo/netlist.xml: /EN_ASIC_RAILS = R1.2, C3.1, TP4, U1.8 SHDN, U2-U10 EN or EN/UV; C3 CL10A475KP8NNNC. 'EN_ASIC_RAILS' appears 0 times in every connectors.csv. exports/frontend/netlist.xml: U16 EN = VIN_5V; U2 EN = VIN_3V3; U2 PG = PG_CORE_1V0 to U4 EN; FPGA_PUDC_B tied to VCCO_1V5 through R25 470R, so FPGA I/O stay 3-stated with pull-ups off until configuration. Timing: enable node tau = (10k || 125k, the four TPS7A20 500k pulldowns) x 4.7 uF = 43.5 ms, final 3.06 V; it crosses 0.9 V (TPS7A20 VEN(HI) max) at 15.2 ms and 1.24 V (LT3042 typical) at 22.7 ms; even at VEN(LOW) 0.3 V plus 750 us start-up, DVDD is up about 5 ms after VIN_3V3. VCCO_1V5 is up about 2.7 ms after VIN_3V3 (MPM3833C 1.3 ms soft-start, 100 us PG delay). R19 can inject at most 1.5 V / 10k = 0.15 mA, against the DS181 10 mA clamp-current limit. Capacitance: ASIC_DVDD 2.0 uF on the LDO board (ASIC boards add unvalued C7-C14), VCCO_1V5 about 113 uF. STIM_EN_SHARED (Frontend U1.J6, J2.63) has R2 10k to GND on the LDO board, so stimulation enable defaults low. exports/hdmi/netlist.xml: PORT_ENABLE = U700.13 PG and U701-U708 pin 3.",
+   "source": "TI TPS7A20 datasheet SBVS338H, electrical characteristics (VEN(HI) 0.9 V, VEN(LOW) 0.3 V, tSTR 750/1150 us) and pin table (500k EN pulldown); ADI LT3042 datasheet, EN/UV rising threshold 1.18/1.24/1.32 V, https://www.analog.com/en/products/lt3042.html; MPS MPM3833C datasheet Rev 1.0 (soft-start 1.3 ms, PG delay 100 us); AMD DS181 Artix-7 data sheet v1.27.1, Tables 1-2 (I/O input voltage to VCCO + 0.55 V, 10 mA clamp current in a powered or unpowered bank, recommended power-on order); inputs/asic/ASIC_Reference/ASIC_REFERENCE.md U02/U03/U05/U07 (sequencing, powered-off pin limits and reset behaviour unresolved); engineering judgement.",
+   "consequence": "The FPGA cannot sequence the ASICs, keep them off during FPGA bring-up, shut down the +/-12 V converter or react to a failed rail. If the ASIC turns out to need a set power order, adding control after ordering changes the J1/J2 contract on both the Frontend and the LDO board; meanwhile ASIC boards can only be changed with the cable unplugged or by hot-plugging onto live rails.",
+   "suggested_action": "Get the ASIC power-up and power-down order and powered-off pin limits from the ASIC designer, and decide before ordering whether the FPGA gates the rails; if so, route a Frontend-driven enable on a spare pin (for example J1.29) to EN_ASIC_RAILS with R1 as a pull-down and return a wired-OR power-good. If not, write 'cable unplugged before any DF40 is mated or unmated' into the bring-up procedure and capture the power-down order on a scope.",
+   "origin": "changed",
+   "v2note": "SYS-10's 2-contact enable/power-good fix has to be reserved during the pin map V6 allocation. V6 as traced takes 12 of the 15 spare Frontend-to-FPGA-LDO contacts (J1.29-33, 35-37, 39, 43, 45, 47, 49, J2.40, J2.42) and leaves 3: enough for enable and power-good, but not for the near chips' 4 DISC_OUT lines, which fit only if the FPGA-LDO board joins the top chips' SPI_CLK/SPI_LATCH (pins 72/70) to the near board's shared ones (63/61); V6 would then need 8 contacts instead of 12. The power-good half also needs regulator changes: PGFB is tied to IN on all five LT3042/LT3094 (U2, U6, U8, U9, U10), which the data sheets say disables power good, and the four TPS7A2015 rails (VDD_ADC, VDD_DRIVER, DVDD, VDD_CGEN) and the LT3582-12 have no PG pin, so a wired PG line reports no rail as built and at most 5 of the 9 rails even after PGFB dividers are added.",
+   "category": "Power & regulators",
+   "upd_note": "The ASIC designer said on 12 Nov 2026 that the power-up and power-down order does not matter and that signals on an unpowered chip do not matter, so the FPGA does not have to switch the rails. Pin map V6 carries no enable or power-good line, and on FPGA-LDO A layout V14 all rails still turn on from the 3.3 V input alone. What remains: the FPGA cannot switch off or see a failed rail, only one spare contact is left for a later change, and the rule to unplug the cable before an ASIC board is fitted or removed is not yet written down.",
+   "upd": "changed",
+   "upd_sev_was": "major"
   },
   {
    "id": "SYS-16",
@@ -580,7 +498,8 @@
    "consequence": "One open or swapped 0402 resistor could put an overvoltage at power-up on a rail shared by all eight ASICs of a head; whether they survive is unknown.",
    "suggested_action": "Make it a bring-up rule to measure every rail at J3/J4 with no ASIC board mated, after assembly and after any rework. An overvoltage supervisor or clamp is optional and needs the ASIC limits first.",
    "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "On FPGA-LDO A layout V14 the stimulation rails are now set to ±8.06 V (80.6 kOhm), not ±10 V. The fault voltages did not change: an open SET resistor still lets a rail rise to about 3.2 V or ±11.7 V, which is now about 3.6 V above the stimulation setting. There is still no clamp, and no ASIC absolute maximum is on record."
   },
   {
    "id": "SYS-25",
@@ -695,7 +614,8 @@
    "category": "Grounding & return paths",
    "v2note": "See SYS-56.",
    "dupnote": "SYS-56.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "No grounding rule for the eight stacks was written in the records of 12 and 13 Nov 2026. The ASIC designer confirmed two grounds joined at one point on the FPGA-LDO board and said the one-pin ground header J1 is not needed; it is left unfitted on the ASIC boards V7, with its pad still on AGND. See SYS-56."
   },
   {
    "id": "SYS-23",
@@ -719,7 +639,8 @@
    "v2note": "Each J3/J4 joint still has only four ground contacts (AGND on pins 42/44, DGND on 46/48), but on both V4 ASIC boards they now serve 67 assigned signal pins, up from 61 on the old board (SYS-23's figures of 62 and 60 counted VDD_CGEN as a signal). Pin map V6 takes FPGA-LDO A and the router from 59 to 65 signals, so 25 (J3) and 27 (J4) are more than 5 mm from a return (worst 8.0 mm, at pin 2), against 29/27 on the ASIC side (worst 8.20 mm). The fix of grounding the six spare pins is gone, because V4 uses pins 2/4/6/8/24/58 for the far chips' READ/DATA outputs. Only pins 3/5 (DISC_OUT, open on the FPGA-LDO) could still become returns, and only if the ASIC designer's DISC_OUT answer (R2S-07) allows it; that would cut J3's count over 5 mm from 29 to 11. Otherwise, measure crosstalk at bring-up. Merge this item with ASIC-20 under R2S-05. See SYS-75.",
    "category": "Grounding & return paths",
    "dupnote": "AB-17 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Counted again on FPGA-LDO A layout V14 and ASIC boards V7: each port still has four ground contacts (AGND 42 and 44, DGND 46 and 48) for 65 signals; 25 (J3) and 27 (J4) of them are more than 5 mm from a ground, worst 8.0 mm at pin 2. DISC_OUT is gone, so pins 3 and 5 are unused on every board and could become grounds, which would cut those counts to 10 and 11. That question was not raised with the ASIC designer on 12 Nov 2026, and the pins are still open."
   },
   {
    "id": "SYS-41",
@@ -743,7 +664,8 @@
    "v2note": "SYS-41 is broader and stays minor. On both V4 boards, CLKH, STIM_CLK, CHIP_RESET and each board's own SPI clock and latch switch between AGND-referenced F.Cu and DGND-referenced B.Cu through 2-6 through vias, and no part joins AGND and DGND (26 capacitors go to AGND; only C7/C14/C61/C62 go DVDD to DGND). The V4 0.25 mm plane pull-back also leaves CLKH's 9.84 mm F.Cu run along the bottom edge (y 84.23) straddling the In1 AGND edge on both boards; PCB-5 covered it fully. The far board's In4 segments belong to A-6/R2E-01 (major). Laying out the second board differently is now moot, but three actions remain: get the ASIC designer's answer on the AGND/DGND bond (ASIC_REFERENCE U04), consider a few AGND-DGND capacitors near the layer-change vias or J3/J4, and do the bring-up noise measurement.",
    "category": "Grounding & return paths",
    "dupnote": "AB-17 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still true on the ASIC boards V7: the clock, strobe and reset lanes run 5 to 12 mm on the top layer over AGND and 13 to 39 mm on the bottom layer under DGND, through 2 to 6 vias each, and no part joins AGND and DGND. The ASIC designer confirmed on 12 Nov 2026 that the two grounds stay separate and meet at one point on the FPGA-LDO board, so a tie on the ASIC board is not planned. The noise measurement at bring-up is still to do."
   },
   {
    "title": "Even with 20 full ground stacks around J2, 11 west-side J2 lanes keep a 1.06-1.50 mm return path, so the 1.0 mm aim is not reachable there.",
@@ -767,7 +689,8 @@
    "origin": "new",
    "category": "Grounding & return paths",
    "dupnote": "Same problem as FE-10 on the Frontend page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Frontend 14 layers V4 and V5 did not add the ground stacks. The J2 field has the same 32 ground vias and one full ground stack as 14 layers V3, and none of the 20 proposed positions holds a stack. The positions were worked out on a trial layout and have not been checked against the lanes as built in 14 layers V5."
   },
   {
    "id": "SYS-12",
@@ -810,7 +733,9 @@
    "suggested_action": "Ask the ASIC designer for the reset polarity and the safe idle state of CLKH and SPI, then add pull-downs on the LDO board for the floating lines rather than setting PUDC_B low, whose weak pull-ups would fight the 10k pull-downs on STIM_EN, STIM_START and FE_RESET. Set BITSTREAM.CONFIG.CONFIGRATE as high as the U8 translator timing allows.",
    "origin": "changed",
    "v2note": "With the ASIC boards V4, SYS-28 is broader. The far (top) chips have their own SPI clock (pin 72), latch (pin 70) and two data lines per chip (66/68 and 16/18), so pin map V6 adds 6 FPGA-driven lines per port. That is 12 per head stack, or 24 unpulled FPGA-to-ASIC lines with the existing 12, and all of them float for about 7 s while PUDC_B is high. The two new latch lines (T_SPI_LATCH) also lack the 10k pull-down that R18 gives SPI_LATCH_SHARED on FPGA-LDO A and the Option B LDO board. During the V6 re-route, add a pull-down on each far latch (or tie it to SPI_LATCH_SHARED if the ASIC designer confirms the latch may be shared), and decide whether the far SPI clock and data lines need pulls. On today's V5-based files these far-chip inputs sit on FPGA input balls and float permanently, which is part of blocker A-P. See SYS-62.",
-   "category": "Signals, clocks & timing"
+   "category": "Signals, clocks & timing",
+   "upd_note": "FPGA-LDO A layout V14 now has 10k pull-downs on both CLKH lines, all four SPI clocks and all three SPI latches (R18, R20 to R27), so floating data can no longer be clocked or latched into the chips before the FPGA is configured. The ASIC designer said on 12 Nov 2026 that power-up order and unpowered inputs do not matter and that the pads have no internal pulls. Still open: the 16 SPI data inputs have no pull and float for about 7 s, the reset polarity was not answered, the boot clock is still 3 MHz, and the pull-downs R20 to R23 still wait for a final yes.",
+   "upd": "changed"
   },
   {
    "id": "SYS-40",
@@ -831,83 +756,9 @@
    "consequence": "If the ASIC pads tolerate only about 0.3 V outside their rail, the upper end of this overshoot could stress the input protection of dies that cannot be replaced, and the damage would be hard to trace.",
    "suggested_action": "Ask the ASIC designer for the pad absolute-maximum and clamp ratings. Meanwhile use DRIVE 8 SLEW SLOW and probe CLKH at the far die's bond finger at first power-up with a probe of 1 GHz or more.",
    "origin": "carried",
-   "category": "Signals, clocks & timing"
-  },
-  {
-   "title": "Pin map V6 gives the top chips their own SPI latch line with no pull-down, so it floats for about 7 s at every power-up while the bottom chips' latch is held low by R18.",
-   "severity": "minor",
-   "board": "system",
-   "area": "Pin map V6 / ASIC control-line state at power-up",
-   "what": "Under pin map V6 the top (far) chips get their own SPI latch on J3/J4 pin 70, SPI clock on pin 72 and SPI data on pins 16/18/66/68. All six per port are existing two-pin lanes that today carry ASIC outputs and have no resistor, and the V6 change list adds no parts, while the bottom chips keep SPI_LATCH_SHARED on pin 61 with R18 (10k to GND). The ASIC rails are up 15-22 ms after power, but the FPGA leaves its pins undriven with pull-ups off (PUDC_B high) until configuration ends about 7 s later (SYS-28), and again at every reconfiguration, so the top chips' latch and clock float in those windows; V6 adds 12 such floating FPGA outputs per stack to the 12 in SYS-28. Because the assembler does not program the boot flash, a new Frontend (or one with a bad image) never configures, and these lines then float until a bitstream arrives over JTAG.",
-   "where": "FPGA-LDO A (and the Option B router and LDO board if kept): J3/J4 pins 16, 18, 66, 68 (top SPI data), 70 (T_SPI_LATCH; today /ASIC3_CLK32MHz_Out on the J2.35-J4.70 lane and /ASIC7_CLK32MHz_Out on J2.26-J3.70) and 72 (T_SPI_CLK; today /ASIC3_SYNC and /ASIC7_SYNC). If the four planned clock swaps are made on FPGA-LDO A, the latch moves to the lanes that today carry /ASIC3_DATA8 (J2.25-J4.62) and /ASIC7_DATA8 (J2.36-J3.62). Pin 61: /SPI_LATCH_SHARED with R18 10k (J2.48, J3.61, J4.61). Frontend: balls P4/N3 (R7/L4 after the swaps); U7 W25Q128JWYIQ boot flash; PUDC_B pulled high through R25.",
-   "evidence": "exports/ldo_a/netlist.xml and nets.csv: /SPI_LATCH_SHARED = J2.48, J3.61, J4.61, R18.1 (R18 10k to GND), which reaches the near board's /SPI_LATCH (exports/asic_bottom/connectors.csv). Two-node lanes with no other part: /ASIC3_CLK32MHz_Out = J2.35, J4.70; /ASIC3_SYNC = J2.37, J4.72; /ASIC7_CLK32MHz_Out = J2.26, J3.70; /ASIC7_SYNC = J2.24, J3.72; /ASIC3_DATA8 = J2.25, J4.62; /ASIC7_DATA8 = J2.36, J3.62; the ASIC3/4/7/8 DATA5/6 lanes are the same. known/pinmap_v6_trace.csv: these 12 rows (A/J3/70, A/J3/72, A/J4/70, A/J4/72 and the SPI data rows) become ASIC3_4 and ASIC7_8 TOP_SPI_LATCH and TOP_SPI_CLK and ASIC3/4/7/8 SPI_DR/SPI_DL, dir out, status 'rename (existing line)'. exports/asic_top/netlist.xml and pads.csv: both top chips' SPI_LATCH are on /T_SPI_LATCH (J3.70/J4.70), and pins 70 and 72 reach both far dies. The V6 change list in known/asic_open.json A-P (12 new routes plus 4 clock swaps) adds no resistor. Frontend_V46_pins_V2.xdc sets no PULLUP or PULLDOWN; Frontend R25 470R ties PUDC_B to VCCO_1V5 (SYS-28). inputs/frontend/V3_order/JLC_ORDER_NOTES.txt: the assembly remark asks for no flash programming, and U7 is still to be sourced. ASIC_REFERENCE.md section 4: SPI_LATCH is a positive pulse, so it idles low. Per stack in V6: 12 existing floating FPGA outputs (SYS-28) plus 12 new = 24.",
-   "source": "AMD UG470 v1.17, 7 Series FPGAs Configuration User Guide, Table 2-4 p.22 ('When PUDC_B is High, internal pull-up resistors are disabled'), https://docs.amd.com/v/u/en-US/ug470_7Series_Config . inputs/asic/ASIC_Reference/ASIC_REFERENCE.md section 4; boards/asic_bottom/CHANGES.md (SPI_CLK 63 and SPI_LATCH 61 serve the near board's chips only); known/pinmap_v6_trace.csv; exports/ldo_a/netlist.xml; known/system.json SYS-28 (about 7 s unconfigured); engineering judgement.",
-   "consequence": "Noise on the floating latch can copy random shift-register contents into the four top ASICs' configuration at every boot and reconfiguration. Stimulation stays off only while the ASIC honours STIM_EN held low by R2; after that, because the stimulation lines are shared (see the finding on shared STIM lines), such a chip can stimulate when another chip does unless firmware first rewrites every top chip's configuration. A first bring-up with a blank flash leaves all eight ASICs powered with floating clock and SPI inputs for as long as the head is on.",
-   "suggested_action": "In the V6 FPGA-LDO A change, add a 10k pull-down to GND beside R18 on each of the two new top-latch nets (J3.70, J4.70), and on the Option B board that carries R18 if Option B is kept; add the two top SPI clock nets (pin 72) to SYS-28's pull-down list. Program each Frontend's flash before any bonded ASIC board is mated.",
-   "basis": "confirmed_in_files",
-   "relation": "changes SYS-28",
-   "confidence": "high",
-   "found_by": [
-    "power",
-    "signals",
-    "safety-bringup"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "SYS-62",
-   "origin": "new",
    "category": "Signals, clocks & timing",
-   "dupnote": "Same problem as LDOA-49 on the FPGA-LDO Option A page.",
-   "dupkind": "same_problem"
-  },
-  {
-   "title": "Under pin map V6 as traced, ASIC3 and ASIC7 each bring READ, DATA7 and DATA8 into a different FPGA bank from their returned clock, breaking the Frontend's one-bank-per-ASIC rule.",
-   "severity": "minor",
-   "board": "system",
-   "area": "Pin map V6 / FPGA banks and ASIC capture clocking",
-   "what": "The Frontend was laid out so each ASIC's returned clock sits on a clock-capable ball in the same bank as its other ten lines, so each chip can be captured on its own I/O clock buffer, which reaches only its own bank (BUFIO) or its own clock region (BUFR). In V6 the far chips' READ, DATA8 and DATA7 come in on J3/J4 pins 28/30/32, whose lanes end on Frontend J1, so even after the four clock swaps ASIC3's clock is on P4 (bank 34) while its T_READ, T_D<8> and T_D<7> arrive on F18, F17 and G17 (bank 15), and ASIC7's clock is on N3 (bank 34) while the same three lines arrive on M16, L14 and K15 (bank 14). Bank 34 has only K5 and K6 free, the nearest balls for the two new DATA6 lines, and restoring one bank per group would mean moving 6 outputs and 6 inputs across the BGA; ASIC8 and ASIC4 can stay whole in banks 14 and 15. Capture still works at 32 MHz on a global clock buffer with timing constraints, so this constrains the firmware and the V6 routing choice; it is not a failure.",
-   "where": "Frontend U1 banks 14, 15 and 34. ASIC7: READ/DATA8/DATA7 on M16, L14, K15 (bank 14); the rest on K3, N3, M5, P6, P5, R6, R1 and K5 (bank 34). ASIC3: READ/DATA8/DATA7 on F18, F17, G17 (bank 15); the rest on T2, P4, T3, N6, N2, M6, L5 and K6 (bank 34). Returned clocks after the swaps: P4 (IO_L12P_T1_MRCC_34) and N3 (IO_L11P_T1_SRCC_34). FPGA-LDO A: J4 pins 28/30/32 go to J1.48/46/44, and J3 pins 28/30/32 go to J1.21/23/25. Spare joint contacts J2.40/J2.42; free bank-34 balls K5/K6. The rule is stated in inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 2 and in the schematic V46 J1/J2 note.",
-   "evidence": "a review working file (not published) over exports/{asic_top,asic_bottom,ldo_a,frontend}/netlist.xml and known/pinmap_v6_trace.csv, with ball names from AMD's package file: ASIC3's bank-15 balls F18 (IO_L19N_T3_A21_VREF_15), F17 (IO_L24P_T3_RS1_15) and G17 (IO_L19P_T3_A22_15); ASIC7's bank-14 balls M16 (IO_L7P_T1_D09_14), L14 (IO_0_14) and K15 (IO_L5N_T0_D07_14). The trace keeps rows A,J3,28/30/32 on J1.21/23/25 and A,J4,28/30/32 on J1.48/46/44. Free user I/O counted from exports/frontend/pads.csv: bank 14 has 14, bank 15 has 14, bank 34 has 2 (K5, K6). Frontend J2 spares are only 40 and 42; J1 has 13. In the Frontend search, ASIC8's 5 new lines reach J14/K17/T12/T13/U12 (1.1-7.7 mm) and ASIC4's reach F15/G15/H16/F14/H14 (0-1.2 mm). XDC line 2 reads 'CLK32 returns sit on P-side MRCC/SRCC balls in their group bank'; the schematic V46 J1/J2 note says each ASIC group (CLK32 + SYNC + READ + 8 data) sits in one FPGA bank with its clock on a P-side MRCC/SRCC ball. Global-buffer timing: DS181 Table 44 gives 2.65 ns setup / -0.29 ns hold at the pins (XC7A35T, -2) against a 15.6 ns half period.",
-   "source": "AMD xc7a35tcsg325 package file (12/3/2013), https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/xc7a35tcsg325pkg.txt . AMD UG953 7 Series Libraries Guide, BUFIO (drives only I/O in its own bank) and BUFR (drives I/O and logic in its own clock region), read from AMD page text in search results because the pages did not load directly: https://docs.amd.com/r/2022.2-English/ug953-vivado-7series-libraries/BUFIO and https://docs.amd.com/r/2023.2-English/ug953-vivado-7series-libraries/BUFR . AMD UG472 v1.14 (BUFMR only vertically adjacent regions): from memory, not re-read (https://docs.amd.com/v/u/en-US/ug472_7Series_Clocking did not load). AMD DS181 v1.27.1 Table 44 p.45, https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet . Project files: known/pinmap_v6_trace.csv; inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc; boards/frontend/Artix_Frontend_8L_V3.kicad_sch (V46 J1/J2 note); exports/frontend/pads.csv.",
-   "consequence": "Firmware written to the recorded V5 rule (each chip on its own regional I/O clock with IOB flip-flops, R2S-09) will not place for ASIC3 and ASIC7, which have to be captured differently. Without clock and input-delay constraints the 32 MHz capture margin is not checked. If the two new DATA6 lines are routed through J1 spares, they also land outside bank 34.",
-   "suggested_action": "In the V6 plan, route the two new DATA6 lines through J2.40/J2.42 to K5/K6 (J4.58 first needs an exit on FPGA-LDO A; see the finding on the V6 lane field). Then either swap LDO A pins 28/30/32 with three of the bank-34 lanes V6 gives to the top SPI outputs (J2.31/33/37 for ASIC3, J2.24/28/30 for ASIC7), or record that ASIC3 and ASIC7 are captured on a global clock buffer (BUFG or MMCM). In the V6 pin file, correct the header, add create_clock and input-delay constraints for all eight returned clocks, set DRIVE/SLEW on the 12 new outputs (SYS-51), and replace R2S-09's firmware map with the V6 one: separate SPI for every chip (8 data streams, four SPI clocks, three latches), SPI_LATCH_SHARED and BOARD1/3_SPI_CLK loading only the bottom chips, and STIM_CHIP3/STIM_CHIP4 driving ASIC5/ASIC6.",
-   "basis": "confirmed_in_files",
-   "relation": "changes R2S-09",
-   "confidence": "high",
-   "found_by": [
-    "pinmap-v6",
-    "signals"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "SYS-64",
-   "origin": "new",
-   "category": "Signals, clocks & timing",
-   "merged": [
-    {
-     "title": "ASIC3 and ASIC7 READ/DATA8/DATA7 cannot move into bank 34: its only free balls, K5 and K6, are already needed for the two new DATA6 lines.",
-     "severity": "minor",
-     "board": "frontend",
-     "area": "V6 pin map: returned-clock bank grouping",
-     "what": "In V6 the top chips' READ, DATA8 and DATA7 arrive on J1 and land in bank 14 (ASIC7) and bank 15 (ASIC3). Their returned 32 MHz clocks land in bank 34 (N3 and P4 after the Frontend swaps). Bank 34 already uses 48 of its 50 I/O. K5 and K6, the only free balls, take ASIC7_DATA6 and ASIC3_DATA6, so V6 fills bank 34 and leaves no ball for the six split lines. A clock buffer driven by the returned clock (BUFIO or BUFR, which serve one bank or region only) cannot reach those lines, because banks 14/15 and bank 34 sit in different I/O columns. The only repair on the Frontend alone is to swap each split input with one of the same chip's V6 outputs in bank 34. That means twelve lanes crossing the whole BGA, and it rarely worked cleanly in the test.",
-     "where": "Frontend U1. ASIC7: J1.21/J1.23/J1.25 -> M16/L14/K15 (bank 14), clock J2.36 -> N3. ASIC3: J1.48/J1.46/J1.44 -> F18/F17/G17 (bank 15), clock J2.25 -> P4. Free bank-34 balls K5 (112.62, 113.40) and K6 (113.42, 113.40) are taken by J2.40 and J2.42. Bank-34 V6 outputs that could be displaced: M2, M4, N4, L4 (ASIC7) and T7, R5, P3, R7 (ASIC3).",
-     "evidence": "AMD package file (fetched 12 Nov): K5 IO_L1N_T0_34, K6 IO_L1P_T0_34, N3 IO_L11P_T1_SRCC_34, P4 IO_L12P_T1_MRCC_34; M16, L14, K15 in bank 14; F18, F17, G17 in bank 15. exports/frontend/pads.csv: bank 34 holds 11 balls each for ASIC1, ASIC3, ASIC5 and ASIC7, plus V7, V6, V8 and J6 (STIM_CHIP3_SPI_DL/DR, BOARD3_SPI_CLK, STIM_EN_SHARED). Only K5 and K6 are free. known/pinmap_v6_trace.csv rows A/J3/28-32 and A/J4/28-32 give the split. Repair test (stage4.py on top of all 20 V6 nets and 28 stacks; each variant drawn, refilled and DRC-checked): 8 variants, i.e. 4 orders, with outer layers either free or limited to 1.2 mm escapes. 1 clean: rep2_asic3_first, 12/12, 211.8 mm, 104 vias, 55.0 mm on L1/L14 including a 17.0 mm bottom run, DRC 0 errors, 0 unconnected, MGTAVCC L4 -7.1%. 6 split the 1V4_GTP_IN plane on L4 into 21.24 + 4.04 mm2 (DRC unconnected C86.1 to C47.2). 2 found no path for J2.28->L14 anywhere on the board (out/rep2_*.log, out/repE2_*.log, out/drc_rep*.json, out/post_rep*.log).",
-     "source": "AMD xc7a35tcsg325 package file (dated 12/3/2013), https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/xc7a35tcsg325pkg.txt. AMD UG475 v1.20 (13 Mar 2024), p.25 Table 1-12 MRCC row, and p.35 Figure 1-6 (XC7A35T: banks 14/15 in the left I/O column, bank 34 in the right), https://docs.amd.com/go/en-US/ug475_7Series_Pkg_Pinout. That URL returned 404 today, so UG475 was read from the cached AMD text a review working file (not published) AMD XAPP1017 v1.0 (22 Jul 2016), p.1 and p.4 'Clocking Guidelines' (BUFIO/BUFR within one clock region; BUFMR reaches three vertically adjacent regions), https://docs.amd.com/api/khub/documents/QcBgQYDpfbSHlNLy0kPe7A/content. UG472 did not load (404). Pin-file intent: inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 2 ('CLK32 returns sit on P-side MRCC/SRCC balls in their group bank'). Test files: a review working file (not published)",
-     "consequence": "The pin file assumes each chip's inputs are captured in the bank of its returned clock. Unless firmware uses a global clock, 3 of the 11 inputs on ASIC3 and on ASIC7 cannot be captured that way. A Frontend repair adds about 210 mm of crossing lanes and in 7 of 8 trials broke a supply plane or left a line unrouted. Bank 34 also has no spare ball left for later additions such as DISC_OUT.",
-     "suggested_action": "Decide before writing the V6 pin file. One choice: capture ASIC3 and ASIC7 (all 11 inputs each) on a BUFG or MMCM clock from N3/P4 and close 32 MHz timing in Vivado; no copper change is needed. The other: make the swap upstream on FPGA-LDO A (J3/J4 pins 28-32 to J2 contacts) instead of with twelve Frontend crossings.",
-     "basis": "calculated",
-     "relation": "new",
-     "confidence": "high",
-     "found_by": [
-      "gap"
-     ],
-     "corrected": "In V6, ASIC7's and ASIC3's READ/DATA8/DATA7 land in banks 14 and 15, while their returned clocks (N3, P4) and other inputs sit in bank 34. Bank 34 is full once K5/K6 take the two new DATA6 lines, so these six inputs cannot be clocked by a BUFIO/BUFR from their own clock. No copper change is needed: a BUFG capture at 32 MHz has more than 10 ns of margin, and ASIC7 can also use a BUFH because bank 14 sits beside bank 34. Record the capture clock in the V6 pin file instead of the 12-lane Frontend crossing, which came out clean in only 1 of 8 trials.",
-     "verification": "verified by an independent skeptic (corrected)",
-     "id": "SYS-73",
-     "origin": "new",
-     "category": "Signals, clocks & timing"
-    }
-   ]
+   "upd_note": "Pin file V3 now sets DRIVE 8 and SLEW SLOW on all 32 FPGA-to-ASIC outputs, the interim step this finding asked for; in the review's simple model that keeps the peak at about 1.5 to 1.6 V. The question was put to the ASIC designer on 12 Nov 2026, but the answer on pad limits and static protection was unclear, so the pads are treated as unprotected. Still open: the pad limits in writing, no series resistor on any of these lines, and a probe check of CLKH at the far chip at first power-up.",
+   "upd": "changed"
   },
   {
    "id": "SYS-21",
@@ -928,7 +779,8 @@
    "consequence": "Higher chance of bridged or wicked contacts at 0.4 mm pitch, on joints that are hard to inspect once mated.",
    "suggested_action": "Set a -20 % paste ratio on the DF40 pads, or tell the assembler in the order notes to use 80 % apertures on every DF40.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "Still true on Frontend 14 layers V5, FPGA-LDO A layout V14 and ASIC boards V7: every DF40 paste opening equals its pad. The FPGA-LDO A order remark now asks for a 0.10 mm stencil on the bottom side, but no order asks for the 80 % opening on the DF40 pads."
   },
   {
    "id": "SYS-39",
@@ -952,7 +804,8 @@
    "category": "Layout & manufacturing",
    "v2note": "Contradicted by SYS-57.",
    "dupnote": "FE-07 on the Frontend page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Option B is on hold (decision of 12 Nov 2026). The Frontend order remark now names the south edge as the only edge that can take tabs and says they must be sanded flush; see SYS-57."
   },
   {
    "title": "Neither the Frontend nor the FPGA-LDO A order asks for the 0.02 mm board flatness Hirose requires under each DF40, although both boards carry unbalanced copper.",
@@ -975,7 +828,9 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-70",
    "origin": "new",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "The Frontend order remark now asks for 0.02 mm flatness along J1 and J2, low bow and twist, a report of the measured bow, and no balancing copper inside the outline. The FPGA-LDO A layout V14 order remark still has no flatness line, and the ASIC boards V7, now ten layers in 0.8 mm, have no order files yet. What remains: add the flatness request to the FPGA-LDO A and ASIC board orders and get the fabricators' bow and twist limits.",
+   "upd": "changed"
   },
   {
    "title": "The FPGA-LDO A order leaves break-off tab positions to JLC, although J1/J2 sit 0.88 mm from both long edges and only short edge stretches meet JLC's own tab keep-out.",
@@ -1000,7 +855,9 @@
    "origin": "new",
    "category": "Layout & manufacturing",
    "dupnote": "LDOA-38 on the FPGA-LDO Option A page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "The FPGA-LDO A layout V14 order remark now marks the panel as a choice to make before upload and says the boards must be separated by routed break-off tabs, and its record lists the edge stretches free of part pads. A new pull-down resistor, R20, now sits in the west stretch (y 115.95 to 118.69) that this finding listed as clear. What remains: no panel is drawn, and the order still names no tab positions and no keep-away from J1 to J4.",
+   "upd": "changed"
   },
   {
    "id": "SYS-30",
@@ -1021,7 +878,8 @@
    "consequence": "An assembler or buyer can fit a 2.0 mm or taller receptacle; all stack clearances and the side-by-side fit with the Frontend then change.",
    "suggested_action": "Put DF40C-80DS-0.4V(51) on J3 and DF40C-80DP-0.4V(51) on J4 in the ASIC board's schematic fields, BOM and assembly notes.",
    "origin": "carried",
-   "category": "Parts, BOM & sourcing"
+   "category": "Parts, BOM & sourcing",
+   "upd_note": "Still true on ASIC boards V7: J3 and J4 have no part number and an empty Datasheet field in the schematic and on the board, and no BOM has been made. The ASIC designer only said to use the DF40 parts already on record."
   },
   {
    "id": "SYS-33",
@@ -1043,55 +901,6 @@
    "suggested_action": "Write a cable spec (Micro-HDMI both ends, plug moulding at most about 12.5 mm wide and 8.5 mm thick, length and power-wire size from the power review) and check samples against a printed stack.",
    "origin": "carried",
    "category": "Parts, BOM & sourcing"
-  },
-  {
-   "id": "SYS-13",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "calculated",
-   "already_known": "inputs/ldo_b/V2_record/START_HERE.md ('0.24 mm overlap in the library model', real pin not confirmed) and inputs/system/README_2026-11-11.md. Recorded as an open model question; the reviewer rates it major because it affects every ASIC-to-ASIC joint in both options.",
-   "found_by": [
-    "system-mechanical"
-   ],
-   "title": "Each stacked ASIC board's J1 pin tail lands on the J1 below and holds two DF40 joints about 0.24 mm open.",
-   "area": "Stack mechanical clearance",
-   "what": "J1 on the ASIC board is a single 1.00 mm right-angle pin on AGND whose tail goes through the board. All four ASIC boards put J1 at the same x/y, so in KiCad's generic 3D model each upper board's tail comes down onto the bent lead of the J1 below. That holds the DF40 board-to-board joint between those two boards about 0.24 mm short of fully mated, about half of its 0.45 mm effective mating length (the travel over which the contacts touch). Both pins are AGND, so this is a seating problem, not a short; the pin has no part number, so the real tail length is unknown and only the chosen pin's drawing can settle the true overlap.",
-   "where": "ASIC board J1 (PinHeader_1x01_P1.00mm_Horizontal, /AGND, 0.85 mm pad, 0.5 mm drill), top side at (144.875, 68.28); at (90.448, 116.243) in the LDO A / router frame. Affects the ASIC1-ASIC2 and ASIC3-ASIC4 joints in both Option A and Option B.",
-   "evidence": "Stock KiCad model PinHeader_1x01_P1.00mm_Horizontal.step (parsed): vertical pin z -2.55 to +0.785 mm, horizontal lead z 0.485 to 0.785 mm out to x +3.3 mm, body z 0 to 1.27 mm. Board thickness 1.6 mm (boards/asic/PCB.kicad_pcb, exports/asic/board_stats.txt, inputs/asic/pcbway_fab/PCB-job.gbrjob BoardThickness 1.6); DF40 stack gap 1.5 mm. Upper tail end above lower board top = 1.5 + 1.6 - 2.55 = 0.55 mm; lower lead top 0.785 mm, so overlap = 0.235 mm. inputs/ldo_b/V2_fit/fit_b_v2.json lists the same 0.24 mm for both ASIC pairs. Body to board above = 1.5 - 1.27 = 0.23 mm (nominal, generic model). The lowest ASIC tail clears the LDO A / router top by 0.55 mm. The 0.8 mm thickness appears only in the weekly deck's display profile, not in any fab file; at 0.8 mm the pin-on-pin overlap would be about 1.04 mm, and only then would ASIC1's tail reach LDO A L1, where the nearest foreign track (/ASIC6_DATA1) is 0.65 mm from the tail centre. exports/asic/parts.csv: J1 has no MPN.",
-   "source": "Hirose DF40 Series catalog, Feb. 2024, p2 (effective mating length 0.45 mm at 1.5 mm stacking height), p8 and p14 (heights), read from the LCSC copy https://datasheet.lcsc.com/datasheet/pdf/145ab5d527b34eafa7a47375cb561c6a.pdf?productCode=C3640153 (series page https://www.hirose.com/en/product/series/DF40); engineering judgement for the pin.",
-   "consequence": "If assembled with an uncut long-tail pin, the ASIC1-ASIC2 and ASIC3-ASIC4 DF40 joints sit about half their effective mating length short, and contacts may be intermittent.",
-   "suggested_action": "Add an assembly rule to trim J1's tail to about 0.5 mm below the board, or fit a short-tail or SMT pin (or J1 on one board only), then check the 0.23 mm body clearance against the chosen pin's drawing. No PCB change is needed.",
-   "origin": "changed",
-   "category": "Mechanical, stack & thermal",
-   "v2note": "See SYS-69.",
-   "merged": [
-    {
-     "title": "Both V4 ASIC boards still fit J1, and at the thin end of a ±10 % thickness tolerance the upper J1 tail can hold the ASIC-to-ASIC DF40 joint about 0.33 mm open.",
-     "severity": "minor",
-     "board": "asic",
-     "area": "Side pin J1 and DF40 engagement",
-     "what": "J1, a generic one-pin right-angle header, is fitted at the same spot on both V4 boards, so in every pair the upper board's pin tail lands on the lower board's pin. On KiCad's own model the overlap is about 0.16-0.19 mm at the nominal 1.60 mm, slightly less than the 0.235 mm recorded in R2S-06. The overlap grows one for one as the board gets thinner: at 1.44 mm (-10 %) it is 0.32-0.35 mm, 70-77 % of the DF40's 0.45 mm effective mating length, before any mated-height tolerance. The fix planned for R2S-06 (J1 not fitted on the far board) is not in V4.",
-     "where": "J1 (PinHeader_1x01_P1.00mm_Horizontal, /AGND, 0.5 mm drill) at (144.875, 68.28), top side, on boards/asic_top and boards/asic_bottom PCB.kicad_pcb; (90.448, 116.243) in the FPGA-LDO frame. Affects the near-to-far joint on both ports in both options.",
-     "evidence": "exports/asic_top/parts.csv and exports/asic_bottom/parts.csv: J1 fitted (not DNP), no MPN. The KiCad library model Connector_PinHeader_1.00mm.3dshapes/PinHeader_1x01_P1.00mm_Horizontal.step was parsed with cadquery (a review working file (not published)): 0.3 x 0.3 mm pin, tail to z -2.50, bend top 0.755 at the pin axis, lead top 0.785, body z 0-1.27 at x 0.25-1.25. The upper tail tip sits 1.5 + t - 2.50 above the lower board, so overlap = (0.755 to 0.785) - (t - 1.0): 0.155-0.185 mm at t = 1.60, 0.315-0.345 mm at 1.44, and -0.005 to 0.025 mm at 1.76 (numbers.txt). known/fix_plans_11nov_evening_on_V3.json, R2S-06 plan: J1 DNP on the far board; not applied in V4.",
-     "source": "Hirose DF40 Series catalog, Jun 1 2024, p2 (effective mating length 0.45 mm at 1.5 mm stacking), LCSC copy https://datasheet.lcsc.com/datasheet/pdf/145ab5d527b34eafa7a47375cb561c6a.pdf?productCode=C3640153. JLCPCB PCB capabilities: thickness tolerance ±10 % for boards of 1.0 mm and over, https://jlcpcb.com/capabilities/pcb-capabilities (the ASIC fabricator is not chosen; ±10 % is used as the common figure). KiCad 10.0.6 library 3D model as cited.",
-     "consequence": "On a thin-side board the near-to-far joint keeps only about 0.1 mm of engagement. That joint carries all 80 lines, including the far chips' power and clock, so shock or a small tilt can open contacts intermittently.",
-     "suggested_action": "Apply the planned fix in V4: mark J1 DNP on the far (top) board, or specify a pin whose tail ends no more than 0.5 mm below the board and put it in the assembly notes.",
-     "basis": "calculated",
-     "relation": "changes SYS-13",
-     "confidence": "medium",
-     "found_by": [
-      "mech-thermal"
-     ],
-     "corrected": "",
-     "verification": "checked by an independent reviewer",
-     "id": "SYS-69",
-     "origin": "new",
-     "category": "Mechanical, stack & thermal"
-    }
-   ],
-   "dupnote": "Same problem as AB-07 on the ASIC boards page.",
-   "dupkind": "same_problem"
   },
   {
    "id": "SYS-22",
@@ -1134,7 +943,8 @@
    "consequence": "Prying from the probe end can crack the DF40 housing or lift pads and puts tools next to bond wires and probe shanks. Option A service means handling the Frontend and two mated ASIC pairs.",
    "suggested_action": "Before stacking boards with ASICs, define a spreader tool that separates boards evenly along the connector's long side and a written mate/unmate order, and weigh this in the Option A/B choice.",
    "origin": "carried",
-   "category": "Mechanical, stack & thermal"
+   "category": "Mechanical, stack & thermal",
+   "upd_note": "Option A is the build to finish first (decision of 12 Nov 2026), so the trapped FPGA-LDO board applies to the first heads. ASIC boards V7 are 0.8 mm thick and bend more easily than the 1.6 mm boards this finding was written on; the connector positions are unchanged. No tool and no mate and unmate order are on record."
   },
   {
    "id": "SYS-34",
@@ -1178,7 +988,25 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-72",
    "origin": "new",
-   "category": "Mechanical, stack & thermal"
+   "category": "Mechanical, stack & thermal",
+   "upd_note": "Still no cover and no cleaning method chosen. On FPGA-LDO A layout V14 the 140 contacts of J1 and J2 are now 120 signals, 15 grounds, 3 on 3.3 V, 1 on 5 V (new, between two ground contacts) and 1 spare."
+  },
+  {
+   "id": "SYS-86",
+   "severity": "minor",
+   "board": "system",
+   "category": "Mechanical, stack & thermal",
+   "basis": "needs_measurement",
+   "verification": "Update 13 Nov",
+   "title": "Two resistors on the top side of FPGA-LDO A sit right beside the Frontend's mating connector, with only 0.22 mm on the footprint drawings.",
+   "what": "FPGA-LDO A layout V14 has two 0402 pull-down resistors, R23 (new) and R4 (moved 0.85 mm), on its top side just north of J2, under the Frontend board. R23's pad copper is 0.22 mm from the body of the Frontend's mating connector, taken from the footprint drawings. The clearance was not checked against the Hirose drawing or in a 3D fit, and what the Frontend carries on its facing side at that spot was not checked.",
+   "where": "FPGA-LDO A layout V14, top side: R23 at about X 110.4, Y 117.7 and R4 at about X 110.5, Y 115.7, beside J2. The Frontend sits 1.5 mm above.",
+   "evidence": "Build notes of FPGA-LDO A layout V13, part 3: \"R23 pad copper to the body of the Frontend's mating connector on J2: 0.22 mm\", with the note that the figure comes from footprint drawings. The copper is the same in layout V14.",
+   "source": "Hirose DF40 drawing (not re-read for this item); FPGA-LDO A layout V14 and Frontend 14 layers V5 board files.",
+   "consequence": "If the real connector body or solder fillet is larger than drawn, or a Frontend part faces the same spot, the boards may not seat fully or R23 may be hard to solder.",
+   "suggested_action": "Check R23 and R4 against the Hirose DF40 drawing and the Frontend's underside in the 3D fit model before FPGA-LDO A is ordered; move R23 if the clearance is not real.",
+   "origin": "new13",
+   "upd": "new"
   },
   {
    "id": "SYS-14",
@@ -1199,7 +1027,8 @@
    "consequence": "One bridge or bent contact at these pairs could damage every ASIC on the head and the regulator on that rail, and on J5 the FPGA input U1.K1.",
    "suggested_action": "Before the first mate, measure resistance VDD10 to DVDD/VDD_DRIVER and VSS10 to REF_VDD/VDD_ADC on every assembled board (for example C902 to C502/C402 and C1002 to C602/C302). On LDO B J5, optionally move ASIC1_DATA4 off pin 71 and put a ground or a free pin beside pins 55 and 73.",
    "origin": "carried",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "The stimulation rails are now ±8.06 V on FPGA-LDO A layout V14, so a bridge would put about 6.6 V or 9.6 V across a 1.5 V rail (was 8.5 V or 11.5 V). Which pins sit beside them is unchanged, and the ASIC designer confirmed the pin order is final. No resistance check before the first mate is written down. For the J5 part of this finding: Option B is on hold (decision of 12 Nov 2026)."
   },
   {
    "id": "SYS-15",
@@ -1220,7 +1049,8 @@
    "consequence": "Rail checks before mating are slow and risky, so they may be skipped, and a wrong rail is then found by the ASICs.",
    "suggested_action": "Add nine 1 mm rail pads on LDO A and the LDO B LDO board, preferably on the bottom beside the output capacitors since the cable plug overhangs the top strip; or build a DF40-80 breakout that brings every J3/J4 contact to pads for first power-up.",
    "origin": "carried",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "FPGA-LDO A layout V14 has ten test pads (layout V12 had nine); the new one, TP10, is on the 5 V provision. None is on any of the nine ASIC rails; the build notes say rail pads were left out for lack of room on the underside. The two stimulation rails to check are now ±8.06 V."
   },
   {
    "id": "SYS-18",
@@ -1331,7 +1161,8 @@
    "consequence": "Debugging the first ASIC link needs scope access to these lines, and the stacked head does not give it.",
    "suggested_action": "Add six to eight small top-side pads on one ASIC's lines in the free strip at y 143-147 on LDO A (and on the router for Option B), or put them on a dummy-ASIC breakout board.",
    "origin": "carried",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "Still no test pad on these lines on FPGA-LDO A layout V14, Frontend 14 layers V5 or ASIC boards V7. Layout V14 adds eight 10k pull-down resistors on the clock, SPI clock and top-chip latch lines; three of them sit on the underside outside the area the ASIC boards cover and can be touched with a fine probe, but they are small 0402 parts, not test pads. The line names and pins in this finding changed with pin map V6."
   },
   {
    "title": "STIM_EN, STIM_START, STIM_CLK and STIM_CHB reach all eight ASICs of a stack and the ASIC configuration cannot be read back, so an ASIC not loaded with a safe table can stimulate whenever another ASIC does.",
@@ -1355,7 +1186,9 @@
    "verification": "verified by an independent skeptic (corrected)",
    "id": "SYS-60",
    "origin": "new",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "With pin map V6 as built (FPGA-LDO A layout V14, Frontend 14 layers V5, ASIC boards V7), each of the eight chips has its own two SPI data lines to its own FPGA pins, and the top chips have their own SPI clock and latch with pull-downs. So every chip can be loaded with a safe table on its own, and the case of top chips that can never be configured is gone for Option A. What remains: STIM_EN, STIM_START, STIM_CLK and STIM_CHB, and both resets, are still one line each for all eight chips, and the configuration cannot be read back. The ASIC designer did not say what the stimulation registers hold after power-up or which table switches every stimulator off, and pin map V6 still waits for approval.",
+   "upd": "changed"
   },
   {
    "title": "No bring-up or handling procedure exists, yet 21 open items, four of them major, rely on one as their only protection for the first build.",
@@ -1378,7 +1211,8 @@
    "verification": "verified by an independent skeptic (corrected)",
    "id": "SYS-61",
    "origin": "new",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "Still no bring-up or handling procedure; a search of the records of 12 and 13 Nov 2026 found none. The ASIC designer said power-up order and driven inputs on an unpowered chip do not matter, which eases some of the rules, but the pads are to be treated as unprotected against static. ASIC boards V7 still carry no marking and no key, and J1 is no longer fitted (SYS-13)."
   },
   {
    "title": "Rocking either V4 ASIC board on or off with the cable live leaves +10 V or -10 V and three 1.5 V rails connected after all four ground contacts have opened.",
@@ -1401,7 +1235,8 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-66",
    "origin": "new",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "The pin order on ASIC boards V7 and FPGA-LDO A layout V14 is unchanged, so the four ground contacts still open before the rails on either side. The stimulation rails are now ±8.06 V. The ASIC designer said power-up order does not matter, but a lost ground with the rails live was not asked, and no handling rule is written."
   },
   {
    "title": "On the Frontend cable connector, the 5 V pad sits 0.15 mm from the FPGA's TCK pad, and neither JTAG line has a series resistor.",
@@ -1472,30 +1307,9 @@
    "category": "Firmware & constraints",
    "v2note": "See FE-46.",
    "dupnote": "Same problem as FE-08 on the Frontend page.",
-   "dupkind": "same_problem"
-  },
-  {
-   "id": "SYS-45",
-   "severity": "note",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_vendor_answer",
-   "already_known": "inputs/notes/fpga-ldo-v14.md (+/-10 V question dropped, treated as an assumption).",
-   "found_by": [
-    "system-mate-ldo-asic"
-   ],
-   "title": "The stimulation rails are set to +/-10.0 V, but no ASIC supply absolute maximum is on record.",
-   "area": "Rails to ASIC pads",
-   "what": "VDD10 and VSS10 are set to +10.0 V and -10.0 V and reach the ASIC connectors, as the ASIC designer's power-pin sheet asks. The inherited regulator design used 9.0/9.1 V, and the ASIC reference treats the +/-10 V chip figure as a stimulation compliance range (the voltage the outputs can swing to), not a supply rating. The files cannot settle whether 10 V is safe; only the chip's absolute maximum supply rating from the ASIC designer can. The project record shows the newer +/-10 V levels were chosen on purpose.",
-   "where": "Option A: U9 LT3042 (R901 100k 1 %) and U10 LT3094 (R1001 100k 1 %) to J3/J4 pins 36 (ASIC_VDD10) and 54 (ASIC_VSS10). Option B: the same regulators on the LDO board, through J5 pins 55/73 to router J3/J4 pins 36/54. ASIC board: J3/J4 pin 36 to P10_L/R, pin 54 to M10_L/R on both chips.",
-   "evidence": "Vout = ISET x RSET = 100 uA x 100 kOhm = 10.0 V. LT3042/LT3094 ISET 98-102 uA over full conditions plus a 1 % resistor gives about +/-3 %, i.e. 9.7-10.3 V. Connections from exports/ldo_a, ldo_b_router, ldo_b_ldo and asic netlist.xml and parts.csv. inputs/asic/J3_pinout__Power_Pins.csv rows 36 (10 V) and 54 (-10 V). inputs/asic/ASIC_Reference/ASIC_Nine_Rail_Design_Intent.csv: 9.0 / 9.1 V, approved window UNKNOWN; ASIC_REFERENCE.md lines 134-137. inputs/notes/fpga-ldo-v14.md line 127 (+/-10 V chosen).",
-   "source": "ASIC designer's sheet J3_pinout__Power_Pins.csv; inputs/asic/ASIC_Reference/ASIC_REFERENCE.md lines 134-137; Analog Devices LT3042 and LT3094 data sheets (ISET).",
-   "consequence": "If the chip's supply limit is near 10 V, the +/-3 % regulator setpoint error leaves no margin and could overstress the ASICs.",
-   "suggested_action": "Get the stimulation supply absolute maximum from the ASIC designer; if it is below about 10.5 V, change R901/R1001 to 91k to restore 9.1 V.",
-   "origin": "carried",
-   "category": "Power & regulators",
-   "dupnote": "Same problem as LDOA-13 on the FPGA-LDO Option A page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Pin file V3 now says that M15 must be driven high in every image, and that an image without this port must switch off the default pull-down on unused pins. The circuit itself is unchanged on Frontend 14 layers V5 (schematic V48): the GT regulator's power-good still feeds the reset chip, so an image that drives M15 low would still loop, and the part field still promises a shutdown function. Still open: taking that power-good out of the reset chain, or correcting the field, in a later schematic revision.",
+   "upd": "changed"
   },
   {
    "id": "SYS-46",
@@ -1518,29 +1332,6 @@
    "origin": "carried",
    "category": "Power & regulators",
    "dupnote": "HDMI-24 on the HDMI Extension Board page.",
-   "dupkind": "overlapping"
-  },
-  {
-   "id": "SYS-50",
-   "severity": "note",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_vendor_answer",
-   "already_known": "",
-   "found_by": [
-    "system-bringup"
-   ],
-   "title": "The ASIC rails come up in a fixed order, ±10 V last at about 0.25-0.5 s, and no required order is known.",
-   "area": "Power sequencing",
-   "what": "All ASIC regulators share one enable net that rises slowly through a resistor-capacitor (RC) delay, and each low-noise regulator's output follows a second RC on its SET pin, so the rails come up one after another. The 1.5 V TPS7A2015 rails start first (about 15 ms), the ±12 V boost/inverter rails are up by about 30 ms, VDD_FE and REF_VDD reach 90% at about 57 ms, and VDD10/VSS10 reach 90% at about 0.25 s and 99% at about 0.5 s. This low-voltage-first, ±10 V-last order is conventional and nothing in the files says it is wrong. The files cannot settle whether the ASIC accepts it, because no ASIC document states a required power-up order; only the ASIC designer can answer that.",
-   "where": "FPGA-LDO Option A and Option B LDO board (same parts): net EN_ASIC_RAILS with R1 (10k from VIN_3V3) and C3 (4.7 uF), driving U1 (LT3582-12) SHDN, U3/U4/U5/U7 (TPS7A2015) EN, U2/U6/U8/U9 (LT3042) and U10 (LT3094) EN/UV; SET networks R201/R601 15k, R801 7.5k, R901/R1001 100k, each with 1 uF (C203, C603, C803, C903, C1003); LT3582 ramp capacitors C16/C17 10 nF.",
-   "evidence": "exports/ldo_a/netlist.xml and exports/ldo_b_ldo/netlist.xml: values and EN_ASIC_RAILS fan-out as above; PGFB tied to IN on U2/U6/U8/U9/U10, so fast start-up is off and the SET RC governs; exports/ldo_a/parts.csv JP1 'Bridged'. With the LT3582 222k SHDN pull-down: Thevenin 3.158 V, 9.57k, tau about 45 ms; EN reaches 0.9 V at 15.1 ms (TPS7A20), 1.1 V at 19.3 ms (LT3582), 1.24 V at 22.4 ms (LT3042). LT3582 ramp 1.5 V/ms with 10 nF. SET: 2.3 x 15 ms = 34.5 ms to 90% (99% by about 95 ms); 2.3 x 100 ms = 230 ms to 90%, 5 x 100 ms = 500 ms. inputs/asic/ASIC_Reference/power_primary_findings.md line 69 lists rail-order limits as missing.",
-   "source": "TI TPS7A20 SBVS338H p.7 section 5.5 (VEN(HI) 0.9 V), https://www.ti.com/lit/ds/symlink/tps7a20.pdf; Analog Devices LT3042 Rev A (3042fa) EN/UV threshold and p.18 SET-pin soft start; LT3094 EN/UV threshold; LT3582 (3582512fb) SHDN threshold and ramp current, https://www.analog.com; inputs/asic/ASIC_Reference/ASIC_REFERENCE.md U02/U03.",
-   "consequence": "Probably none, but an ASIC that needs a different order could be stressed or start in a bad state at every power-up.",
-   "suggested_action": "Ask the ASIC designer whether the ASIC has any required power-up or power-down order before the first ASIC board is attached.",
-   "origin": "carried",
-   "category": "Power & regulators",
-   "dupnote": "SYS-10.",
    "dupkind": "overlapping"
   },
   {
@@ -1587,7 +1378,26 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-81",
    "origin": "new",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "On FPGA-LDO A layout V14 the DVDD regulator U5 and its capacitors now sit on GND, the ground DVDD uses on the ASIC boards (on layout V12 they were on AGND). The output-driver current therefore no longer crosses the ground tie NT1. What remains: the real DVDD current was not discussed with the ASIC designer on 12 Nov 2026, so the 5 to 6 mA per board is still an estimate to carry into the power budget.",
+   "upd": "changed"
+  },
+  {
+   "id": "SYS-85",
+   "severity": "note",
+   "board": "system",
+   "category": "Power & regulators",
+   "basis": "needs_vendor_answer",
+   "verification": "Update 13 Nov",
+   "title": "VDD_CGEN is supplied at 1.5 V, while the earlier LDO design on record used 1.6 V, and the meeting gave no level.",
+   "what": "On FPGA-LDO A layout V14 the VDD_CGEN rail (port pin 1) comes from a fixed 1.5 V regulator, U7. The ASIC reference records 1.6 V for this rail in the earlier LDO design. At the meeting of 12 Nov 2026 the ASIC designer said only that VDD_CGEN is a supply from the LDO board.",
+   "where": "FPGA-LDO A layout V14: U7 (TPS7A2015), output on ASIC_VDD_CGEN, J3 pin 1 and J4 pin 1.",
+   "evidence": "End-to-end check of 12 Nov 2026: ASIC_VDD_CGEN reaches J3.1 and J4.1 from U7 pin 1, a fixed 1.5 V part. ASIC reference, section 7: \"U6 VDD_CGEN ... 1.6 V\". Meeting question A5 asked the voltage and current and got no figure.",
+   "source": "ASIC reference, section 7; meeting notes of 12 Nov 2026, answer A5.",
+   "consequence": "If the clock generator needs 1.6 V, it runs 0.1 V low on every chip of the head.",
+   "suggested_action": "Ask the ASIC designer for the VDD_CGEN level and current. If 1.6 V is right, fit an adjustable regulator or a 1.6 V part of the same family at U7.",
+   "origin": "new13",
+   "upd": "new"
   },
   {
    "title": "V6 puts the far chips' READ strobes on J3/J4 pin 2, 8.0 mm from the nearest ground contact, the worst position on the 80-pin joint.",
@@ -1612,7 +1422,8 @@
    "origin": "new",
    "category": "Grounding & return paths",
    "dupnote": "AB-17 on the ASIC boards page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Built this way on FPGA-LDO A layout V14 and ASIC boards V7: pin 2 carries the far chips' READ, 8.0 mm from the nearest ground contact. Pins 3 and 5 at the same end of the connector are now unused (DISC_OUT was removed) and could become grounds, but that was not raised with the ASIC designer on 12 Nov 2026."
   },
   {
    "title": "Ground stacks fit within 1.1 mm of all eight FE-21 capacitors, but they take about 2.5% of MGTAVCC and 1.5% of MGTAVTT on L4.",
@@ -1636,7 +1447,8 @@
    "origin": "new",
    "category": "Grounding & return paths",
    "dupnote": "Same problem as FE-21 on the Frontend page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Frontend 14 layers V4 and V5 did not add these ground stacks. Measured on 14 layers V5, the eight capacitors are still 1.6 to 3.9 mm from the nearest full ground stack, the same as on 14 layers V3. The positions have not been checked against the lanes as built."
   },
   {
    "id": "SYS-43",
@@ -1681,7 +1493,61 @@
    "consequence": "Probably works. With a strong, fast ASIC driver the FPGA clock inputs would see overshoot beyond AMD's limit on every cycle.",
    "suggested_action": "At first power-up, probe one returned CLK32MHz at the Frontend J2 pad; if the peak exceeds about 2.05 V, ask the ASIC designer whether the output drive can be reduced.",
    "origin": "carried",
-   "category": "Signals, clocks & timing"
+   "category": "Signals, clocks & timing",
+   "upd_note": "The ASIC designer said on 12 Nov 2026 that the chip uses 1.5 V logic with edges generally not faster than about 1 ns; no drive strength was given and details are to follow by message. At 1 ns the review's model stays under about 1.7 V for a 30 ohm driver and reaches 1.9 to 2.1 V only for a 15 ohm driver, so the 2.5 V case looks unlikely. Under pin map V6 the ASIC3 clock now runs from port pin 62 through contact J2.25 to ball P4, still with no series resistor. Still open: the driver strength, and the probe check of one returned clock at first power-up.",
+   "upd": "changed"
+  },
+  {
+   "title": "Under pin map V6 as traced, ASIC3 and ASIC7 each bring READ, DATA7 and DATA8 into a different FPGA bank from their returned clock, breaking the Frontend's one-bank-per-ASIC rule.",
+   "severity": "note",
+   "board": "system",
+   "area": "Pin map V6 / FPGA banks and ASIC capture clocking",
+   "what": "The Frontend was laid out so each ASIC's returned clock sits on a clock-capable ball in the same bank as its other ten lines, so each chip can be captured on its own I/O clock buffer, which reaches only its own bank (BUFIO) or its own clock region (BUFR). In V6 the far chips' READ, DATA8 and DATA7 come in on J3/J4 pins 28/30/32, whose lanes end on Frontend J1, so even after the four clock swaps ASIC3's clock is on P4 (bank 34) while its T_READ, T_D<8> and T_D<7> arrive on F18, F17 and G17 (bank 15), and ASIC7's clock is on N3 (bank 34) while the same three lines arrive on M16, L14 and K15 (bank 14). Bank 34 has only K5 and K6 free, the nearest balls for the two new DATA6 lines, and restoring one bank per group would mean moving 6 outputs and 6 inputs across the BGA; ASIC8 and ASIC4 can stay whole in banks 14 and 15. Capture still works at 32 MHz on a global clock buffer with timing constraints, so this constrains the firmware and the V6 routing choice; it is not a failure.",
+   "where": "Frontend U1 banks 14, 15 and 34. ASIC7: READ/DATA8/DATA7 on M16, L14, K15 (bank 14); the rest on K3, N3, M5, P6, P5, R6, R1 and K5 (bank 34). ASIC3: READ/DATA8/DATA7 on F18, F17, G17 (bank 15); the rest on T2, P4, T3, N6, N2, M6, L5 and K6 (bank 34). Returned clocks after the swaps: P4 (IO_L12P_T1_MRCC_34) and N3 (IO_L11P_T1_SRCC_34). FPGA-LDO A: J4 pins 28/30/32 go to J1.48/46/44, and J3 pins 28/30/32 go to J1.21/23/25. Spare joint contacts J2.40/J2.42; free bank-34 balls K5/K6. The rule is stated in inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 2 and in the schematic V46 J1/J2 note.",
+   "evidence": "a review working file (not published) over exports/{asic_top,asic_bottom,ldo_a,frontend}/netlist.xml and known/pinmap_v6_trace.csv, with ball names from AMD's package file: ASIC3's bank-15 balls F18 (IO_L19N_T3_A21_VREF_15), F17 (IO_L24P_T3_RS1_15) and G17 (IO_L19P_T3_A22_15); ASIC7's bank-14 balls M16 (IO_L7P_T1_D09_14), L14 (IO_0_14) and K15 (IO_L5N_T0_D07_14). The trace keeps rows A,J3,28/30/32 on J1.21/23/25 and A,J4,28/30/32 on J1.48/46/44. Free user I/O counted from exports/frontend/pads.csv: bank 14 has 14, bank 15 has 14, bank 34 has 2 (K5, K6). Frontend J2 spares are only 40 and 42; J1 has 13. In the Frontend search, ASIC8's 5 new lines reach J14/K17/T12/T13/U12 (1.1-7.7 mm) and ASIC4's reach F15/G15/H16/F14/H14 (0-1.2 mm). XDC line 2 reads 'CLK32 returns sit on P-side MRCC/SRCC balls in their group bank'; the schematic V46 J1/J2 note says each ASIC group (CLK32 + SYNC + READ + 8 data) sits in one FPGA bank with its clock on a P-side MRCC/SRCC ball. Global-buffer timing: DS181 Table 44 gives 2.65 ns setup / -0.29 ns hold at the pins (XC7A35T, -2) against a 15.6 ns half period.",
+   "source": "AMD xc7a35tcsg325 package file (12/3/2013), https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/xc7a35tcsg325pkg.txt . AMD UG953 7 Series Libraries Guide, BUFIO (drives only I/O in its own bank) and BUFR (drives I/O and logic in its own clock region), read from AMD page text in search results because the pages did not load directly: https://docs.amd.com/r/2022.2-English/ug953-vivado-7series-libraries/BUFIO and https://docs.amd.com/r/2023.2-English/ug953-vivado-7series-libraries/BUFR . AMD UG472 v1.14 (BUFMR only vertically adjacent regions): from memory, not re-read (https://docs.amd.com/v/u/en-US/ug472_7Series_Clocking did not load). AMD DS181 v1.27.1 Table 44 p.45, https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet . Project files: known/pinmap_v6_trace.csv; inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc; boards/frontend/Artix_Frontend_8L_V3.kicad_sch (V46 J1/J2 note); exports/frontend/pads.csv.",
+   "consequence": "Firmware written to the recorded V5 rule (each chip on its own regional I/O clock with IOB flip-flops, R2S-09) will not place for ASIC3 and ASIC7, which have to be captured differently. Without clock and input-delay constraints the 32 MHz capture margin is not checked. If the two new DATA6 lines are routed through J1 spares, they also land outside bank 34.",
+   "suggested_action": "In the V6 plan, route the two new DATA6 lines through J2.40/J2.42 to K5/K6 (J4.58 first needs an exit on FPGA-LDO A; see the finding on the V6 lane field). Then either swap LDO A pins 28/30/32 with three of the bank-34 lanes V6 gives to the top SPI outputs (J2.31/33/37 for ASIC3, J2.24/28/30 for ASIC7), or record that ASIC3 and ASIC7 are captured on a global clock buffer (BUFG or MMCM). In the V6 pin file, correct the header, add create_clock and input-delay constraints for all eight returned clocks, set DRIVE/SLEW on the 12 new outputs (SYS-51), and replace R2S-09's firmware map with the V6 one: separate SPI for every chip (8 data streams, four SPI clocks, three latches), SPI_LATCH_SHARED and BOARD1/3_SPI_CLK loading only the bottom chips, and STIM_CHIP3/STIM_CHIP4 driving ASIC5/ASIC6.",
+   "basis": "confirmed_in_files",
+   "relation": "changes R2S-09",
+   "confidence": "high",
+   "found_by": [
+    "pinmap-v6",
+    "signals"
+   ],
+   "corrected": "",
+   "verification": "checked by an independent reviewer",
+   "id": "SYS-64",
+   "origin": "new",
+   "category": "Signals, clocks & timing",
+   "merged": [
+    {
+     "title": "ASIC3 and ASIC7 READ/DATA8/DATA7 cannot move into bank 34: its only free balls, K5 and K6, are already needed for the two new DATA6 lines.",
+     "severity": "minor",
+     "board": "frontend",
+     "area": "V6 pin map: returned-clock bank grouping",
+     "what": "In V6 the top chips' READ, DATA8 and DATA7 arrive on J1 and land in bank 14 (ASIC7) and bank 15 (ASIC3). Their returned 32 MHz clocks land in bank 34 (N3 and P4 after the Frontend swaps). Bank 34 already uses 48 of its 50 I/O. K5 and K6, the only free balls, take ASIC7_DATA6 and ASIC3_DATA6, so V6 fills bank 34 and leaves no ball for the six split lines. A clock buffer driven by the returned clock (BUFIO or BUFR, which serve one bank or region only) cannot reach those lines, because banks 14/15 and bank 34 sit in different I/O columns. The only repair on the Frontend alone is to swap each split input with one of the same chip's V6 outputs in bank 34. That means twelve lanes crossing the whole BGA, and it rarely worked cleanly in the test.",
+     "where": "Frontend U1. ASIC7: J1.21/J1.23/J1.25 -> M16/L14/K15 (bank 14), clock J2.36 -> N3. ASIC3: J1.48/J1.46/J1.44 -> F18/F17/G17 (bank 15), clock J2.25 -> P4. Free bank-34 balls K5 (112.62, 113.40) and K6 (113.42, 113.40) are taken by J2.40 and J2.42. Bank-34 V6 outputs that could be displaced: M2, M4, N4, L4 (ASIC7) and T7, R5, P3, R7 (ASIC3).",
+     "evidence": "AMD package file (fetched 12 Nov): K5 IO_L1N_T0_34, K6 IO_L1P_T0_34, N3 IO_L11P_T1_SRCC_34, P4 IO_L12P_T1_MRCC_34; M16, L14, K15 in bank 14; F18, F17, G17 in bank 15. exports/frontend/pads.csv: bank 34 holds 11 balls each for ASIC1, ASIC3, ASIC5 and ASIC7, plus V7, V6, V8 and J6 (STIM_CHIP3_SPI_DL/DR, BOARD3_SPI_CLK, STIM_EN_SHARED). Only K5 and K6 are free. known/pinmap_v6_trace.csv rows A/J3/28-32 and A/J4/28-32 give the split. Repair test (stage4.py on top of all 20 V6 nets and 28 stacks; each variant drawn, refilled and DRC-checked): 8 variants, i.e. 4 orders, with outer layers either free or limited to 1.2 mm escapes. 1 clean: rep2_asic3_first, 12/12, 211.8 mm, 104 vias, 55.0 mm on L1/L14 including a 17.0 mm bottom run, DRC 0 errors, 0 unconnected, MGTAVCC L4 -7.1%. 6 split the 1V4_GTP_IN plane on L4 into 21.24 + 4.04 mm2 (DRC unconnected C86.1 to C47.2). 2 found no path for J2.28->L14 anywhere on the board (out/rep2_*.log, out/repE2_*.log, out/drc_rep*.json, out/post_rep*.log).",
+     "source": "AMD xc7a35tcsg325 package file (dated 12/3/2013), https://download.amd.com/adaptive-socs-and-fpgas/developer/adaptive-socs-and-fpgas/package-pinout-files/a7packages/xc7a35tcsg325pkg.txt. AMD UG475 v1.20 (13 Mar 2024), p.25 Table 1-12 MRCC row, and p.35 Figure 1-6 (XC7A35T: banks 14/15 in the left I/O column, bank 34 in the right), https://docs.amd.com/go/en-US/ug475_7Series_Pkg_Pinout. That URL returned 404 today, so UG475 was read from the cached AMD text a review working file (not published) AMD XAPP1017 v1.0 (22 Jul 2016), p.1 and p.4 'Clocking Guidelines' (BUFIO/BUFR within one clock region; BUFMR reaches three vertically adjacent regions), https://docs.amd.com/api/khub/documents/QcBgQYDpfbSHlNLy0kPe7A/content. UG472 did not load (404). Pin-file intent: inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 2 ('CLK32 returns sit on P-side MRCC/SRCC balls in their group bank'). Test files: a review working file (not published)",
+     "consequence": "The pin file assumes each chip's inputs are captured in the bank of its returned clock. Unless firmware uses a global clock, 3 of the 11 inputs on ASIC3 and on ASIC7 cannot be captured that way. A Frontend repair adds about 210 mm of crossing lanes and in 7 of 8 trials broke a supply plane or left a line unrouted. Bank 34 also has no spare ball left for later additions such as DISC_OUT.",
+     "suggested_action": "Decide before writing the V6 pin file. One choice: capture ASIC3 and ASIC7 (all 11 inputs each) on a BUFG or MMCM clock from N3/P4 and close 32 MHz timing in Vivado; no copper change is needed. The other: make the swap upstream on FPGA-LDO A (J3/J4 pins 28-32 to J2 contacts) instead of with twelve Frontend crossings.",
+     "basis": "calculated",
+     "relation": "new",
+     "confidence": "high",
+     "found_by": [
+      "gap"
+     ],
+     "corrected": "In V6, ASIC7's and ASIC3's READ/DATA8/DATA7 land in banks 14 and 15, while their returned clocks (N3, P4) and other inputs sit in bank 34. Bank 34 is full once K5/K6 take the two new DATA6 lines, so these six inputs cannot be clocked by a BUFIO/BUFR from their own clock. No copper change is needed: a BUFG capture at 32 MHz has more than 10 ns of margin, and ASIC7 can also use a BUFH because bank 14 sits beside bank 34. Record the capture clock in the V6 pin file instead of the 12-lane Frontend crossing, which came out clean in only 1 of 8 trials.",
+     "verification": "verified by an independent skeptic (corrected)",
+     "id": "SYS-73",
+     "origin": "new",
+     "category": "Signals, clocks & timing"
+    }
+   ],
+   "upd_note": "The split is now built in: on Frontend 14 layers V5, ASIC3's clock is on P4 in bank 34 while its READ, DATA6, DATA7 and DATA8 are in bank 15, and ASIC7's clock is on N3 in bank 34 while its READ, DATA6 and DATA8 are in bank 14 and DATA7 in bank 15. Pin file V3 and pin map V6 record that these two chips are captured on a global clock buffer, and the pin file has a clock constraint for each of the eight returned clocks. Still open: the input-delay lines are empty templates because the ASIC data timing is not known, and the pin file has not been run in Vivado.",
+   "upd": "changed",
+   "upd_sev_was": "minor"
   },
   {
    "id": "SYS-48",
@@ -1703,29 +1569,8 @@
    "suggested_action": "Tell the assembler not to give any board a third reflow and to reflow the DF40 face last on the Frontend and the Option B LDO board; do rework by hand iron only.",
    "origin": "changed",
    "category": "Layout & manufacturing",
-   "v2note": "See SYS-70."
-  },
-  {
-   "title": "Nothing on the Frontend blocks the V6 change set: all 20 nets route together with 28 ground stacks and need no layer, outline or ball change.",
-   "severity": "note",
-   "board": "frontend",
-   "area": "V6 routing feasibility, all changes together",
-   "what": "The 12 new spare-contact lines, the 4 returned-clock swaps moved off FPGA-LDO A (8 nets) and the FE-10/FE-21 ground stacks were placed together on a copy of the board, stacks first. All 20 nets then route over the whole board in both orders. This holds whether the outer layers may carry long runs or only escapes of 1.2 mm or less, as the existing lanes do. The copy uses only the board's seven via spans, keeps the Hirose strips clean, and has 0 DRC errors and 0 unconnected items, with every plane still one piece. One ball needs care. K17 has no room for a via under it, because the CABLE_CMDSYNC LVDS pair runs 0.155 mm from its centre on L10. J1.29 therefore reaches K17 with a 1.18 mm top-layer track between BGA balls, which passes the 0.09 mm solder-mask web check.",
-   "where": "Copy a review working file (not published) (sha256 ea99e3eea5bca6fc...). J1 spare contacts 29-49 to bank 14/15 balls; J2.40/J2.42 to K5/K6; swaps J1.5, J1.13, J1.56, J1.64, J2.25, J2.26, J2.35, J2.36.",
-   "evidence": "Each route as length / vias (lateral layers). Swaps: J1.5->P15 2.08/7 (L12 1.26, L14 0.65, L1 0.16); J1.13->U16 2.40/7 (L12); J2.26->L4 6.64/8 (L12 4.62, L8 2.01); J2.36->N3 7.73/9 (L12 5.44, L8 1.48, L10 0.82); J1.56->B17 2.16/8 (L8 1.15, L14 0.85, L1 0.16); J1.64->E16 3.35/7 (L12 2.03, L14 1.32); J2.25->P4 9.64/8 (L10 7.91, L12 1.72); J2.35->R7 14.58/9 (L8 8.33, L10 6.25). New lines: J1.39->J14 1.09/8 (L8); J1.29->K17 1.18/7 (L1); J1.31->T12 6.43/7 (L12 4.73, L1 1.22, L14 0.48); J1.30->T13 7.14/8 (L8); J1.33->U12 8.54/8 (L8 3.81, L12 3.74, L14 0.99); J1.47->F15 0/7 and J1.43->G15 0/7 (straight via columns); J1.37->H16 0.28/7 (L12); J1.49->F14 0.49/7 (L14); J1.35->H14 1.13/7 (L14 1.03, L1 0.10); J2.40->K5 6.81/7 (L12 6.23, L1 0.48); J2.42->K6 8.82/7 (L12 7.69, L14 1.13). Total 90.5 mm, 150 vias, unrouted 0. drc_v6.json: 143 warnings, 0 errors, 0 unconnected, against today's 144/0 (holes_co_located 81 -> 80). The other order and the unrestricted variants give 141-143 warnings and 0 unconnected. Plane losses are at most 4.3% (MGTAVCC L4), every fill stays one piece. With escapes of 0.5 mm or less, J1.29->K17 has no path, even alone.",
-   "source": "Board rules boards/frontend/Artix_Frontend_8L_V3.kicad_dru and .kicad_pro, used unchanged. KiCad 10.0.6 'kicad-cli pcb drc --refill-zones --severity-all'. fe_candidate column of a review working file (not published) known/asic_open.json item A-P. Hirose DF40 catalogue p.8 note 3 (insulation area), https://www.hirose.com/product/download?distributor=all&type=catalogue&lang=en&series=DF40 (not re-read; 0.75-1.19 mm strip limits taken as stated in ASIC-14). Results in a review working file (not published) and out/r_esc12_*.json, out/r_all_*.json, out/post_v6_*.json.",
-   "consequence": "The Frontend side of A-P can be closed in one layout change. What stays open is the FPGA-LDO A routing (no rule-respecting V12 path for most new lines), the V6 pin file, and the bank-34 decision.",
-   "suggested_action": "Treat the copy as feasibility evidence only (grid-routed, not proposed copper). When the V6 layout is drawn, route by hand on these layers. For ASIC8_DATA8, keep the 1.2 mm top-layer escape at K17, or move it to a free bank-14 ball with via room (U10, U11, V11 or V14). Then run DRC with schematic parity against the V6 schematic.",
-   "basis": "calculated",
-   "relation": "changes A-P",
-   "confidence": "high",
-   "found_by": [
-    "gap"
-   ],
-   "verification": "single reviewer (gap round)",
-   "id": "SYS-82",
-   "origin": "new",
-   "category": "Layout & manufacturing"
+   "v2note": "See SYS-70.",
+   "upd_note": "The ASIC boards are now 0.8 mm thick (ASIC boards V7), not 1.6 mm. Option B is on hold (decision of 12 Nov 2026). No order remark yet tells the assembler about the two-reflow limit."
   },
   {
    "id": "SYS-49",
@@ -1771,7 +1616,8 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-78",
    "origin": "new",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "J1, the pin this finding names as the reference connection, is no longer fitted on ASIC boards V7 (SYS-13). The ground path is otherwise unchanged: AGND still joins GND at the single tie on FPGA-LDO A layout V14 and runs through the cable to the host. Still no isolation and no leakage rule on record."
   },
   {
    "title": "A bench supply hot-connected to the Frontend's TP14 can ring VIN_5V to 7.5-8 V, while cable hot-plug stays below about 5.6 V.",
@@ -1796,7 +1642,8 @@
    "origin": "new",
    "category": "Safety, ESD & bring-up",
    "dupnote": "FE-19 on the Frontend page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "The Frontend input parts are unchanged on Frontend 14 layers V5. The 5 V net now also reaches a new test pad, TP10, on FPGA-LDO A layout V14 through one connector contact, so the same rule applies to a bench supply clipped there; that single contact is rated 0.3 A."
   },
   {
    "id": "R2S-09",
@@ -1816,7 +1663,9 @@
    "found_by": [],
    "origin": "changed",
    "v2note": "The claim that R2S-09 is wrong was not upheld in full by the second check: Holds in part. V4 netlists: near chips use SPI pins 57/59 and 23/25, CLK 63, LATCH 61, CLK32 45/19. Far chips use 66/68 and 16/18, CLK 72, LATCH 70, CLK32 62/12. So STIM_CHIP1-4 reach only ASIC1/2/5/6, each BOARD1/3_SPI_CLK reaches two chips and SPI_LATCH_SHARED four. Far clocks land on R7, B17, L4 and U16, none MRCC/SRCC. Still true: chip numbering, reversed DATA, CLKH split, shared controls, no DISC_OUT, no clock constraints. The XDC header still claims CC clocks. See SYS-64.",
-   "category": "Firmware & constraints"
+   "category": "Firmware & constraints",
+   "upd_note": "Pin file V3 now carries the firmware map for pin map V6: chip numbers per port, the two CLKH lines, the top chips' own SPI data, clock and latch, no DISC_OUT, and a clock constraint for each of the eight returned clocks. Out of date in this finding: STIM_CHIP1 to 4 now load only ASIC1, 2, 5 and 6, the shared latch reaches only those four chips, and ASIC3 and ASIC7 no longer sit in one bank (SYS-64). Still open: the reversed data order (DATA1 to 4 are DATAL 4 to 1, DATA5 to 8 are DATAR 4 to 1) is in the pin map V6 tables but not in the pin file, the input-delay lines are empty, and the ASIC designer has not yet given the bit order and timing.",
+   "upd": "changed"
   },
   {
    "id": "SYS-42",
@@ -1840,7 +1689,9 @@
    "origin": "carried",
    "category": "Firmware & constraints",
    "dupnote": "Same problem as FE-20 on the Frontend page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "The Frontend's pin file V3 now carries the reminder: set TXPOLARITY = 1 in the Frontend transceiver, keep RXPOLARITY = 0 on the XEM side, and do not invert at both ends. The XEM-side constraint file of the HDMI Extension Board has not changed since 8 Nov 2026 and still has no such line. Still open: that one comment line on the XEM side.",
+   "upd": "changed"
   },
   {
    "id": "SYS-47",
@@ -1860,27 +1711,6 @@
    "source": "Engineering judgement; AMD DS931 (Artix UltraScale+ transceiver lock time) for bring-up timing.",
    "consequence": "Field recovery and flash updates need someone at the switch. Link bring-up must be designed one-way: the Frontend sends idle characters after configuration, the XEM locks, and the XEM reports lock back over the LVDS command pair.",
    "suggested_action": "Define a command-channel 'reconfigure' (IPROG) and a link-status reply in firmware before bring-up; accept the manual JTAG switch for now.",
-   "origin": "carried",
-   "category": "Firmware & constraints"
-  },
-  {
-   "id": "SYS-51",
-   "severity": "note",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "calculated",
-   "already_known": "",
-   "found_by": [
-    "system-gap1-stack-clock-fanout-si"
-   ],
-   "title": "The Frontend pin file leaves drive strength and slew rate of the shared ASIC outputs on Vivado defaults.",
-   "area": "FPGA pin constraints",
-   "what": "The seven FPGA outputs shared by all eight ASICs (latch, stimulation clock, board clocks, SPI clocks, reset) have only a pin and an I/O standard in the pin file, so Vivado uses its defaults: 12 mA drive and SLOW slew (edge speed). Each runs about 117 mm through three boards and three DF40 contacts with no series resistor. In a simple lossless line model the edges are clean at the defaults, and also with a faster 0.6 ns, 20 ohm edge even at 8 nH per DF40 contact. A double crossing of mid-rail on SPI_LATCH_SHARED, which could latch the ASIC shift registers twice, appeared only in the harshest corner (0.3 ns, 15 ohm edge, 8 nH per contact), so nothing is wrong as drawn; writing the setting explicitly guards against a later change.",
-   "where": "Frontend FPGA Board U1: D11 SPI_LATCH_SHARED, B11 STIM_CLK_SHARED, G16/V17 BOARD1_CLK/BOARD3_CLK, D10/V8 SPI_CLK, C9 CHIP_RESET_SHARED; inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc lines 91-108; FPGA-LDO Option A J3/J4 pins 7, 53, 61, 63, 71.",
-   "evidence": "Frontend_V46_pins_V2.xdc: 0 DRIVE or SLEW lines; lines 91 (BOARD1_CLK G16), 98 (SPI_LATCH_SHARED D11), 108 (STIM_CLK_SHARED B11) have only PACKAGE_PIN and IOSTANDARD LVCMOS15. Topology: exports/frontend/nets.csv SPI_LATCH_SHARED 12.23 mm; exports/ldo_a/nets.csv J2.48/J3.61/J4.61/R18.1, 27.40 mm, no series part; exports/asic/nets.csv /SPI_LATCH 20.16 mm, 4 vias. exports/ldo_a/pads.csv: J4 pin 61 is 4.16 mm and pin 7 is 8.2 mm from the nearest GND contact. Re-run of the model with 2 pF loads: SPI_LATCH at 0.3 ns/15 ohm gives a 0.046 V back-step with one crossing at 5 nH and 0.097 V with two crossings at 8 nH; at 0.6 ns/20 ohm and 8 nH, no back-step; STIM_CLK 0.052/0.073 V with one crossing; BOARD1_CLK never stepped back. DS181 Table 17: LVCMOS15 S12 and S16 delays equal, F12 about 0.23 ns faster, so a 0.3 ns FAST edge is likely pessimistic.",
-   "source": "AMD UG912 v2022.1 (DRIVE pp. 216-217, default 12; SLEW p. 381, default SLOW), https://www.xilinx.com/support/documents/sw_manuals/xilinx2022_1/ug912-vivado-properties.pdf; AMD DS181 v1.27.1 Table 8 note 4 and Table 17, https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content. Not checked against Artix-7 IBIS models or UG471. Model limits: linear source without clamp diodes, same lumped inductance on every DF40 contact, far ASIC board (no CAD) assumed equal to the near board, ASIC latch edge sensitivity unknown (ASIC reference U05).",
-   "consequence": "Nothing fails as drawn. If firmware later sets SLEW FAST or a higher drive on these pins and the contact inductance is near the pessimistic end, the ASICs could latch configuration twice, which would look like random configuration errors.",
-   "suggested_action": "Add explicit 'DRIVE 8 SLEW SLOW' (or 12/SLOW) to the seven shared FPGA-to-ASIC outputs in the pin file; an IBIS run on SPI_LATCH_SHARED would confirm the margin if wanted.",
    "origin": "carried",
    "category": "Firmware & constraints"
   },
@@ -1905,30 +1735,8 @@
    "verification": "checked by an independent reviewer",
    "id": "SYS-76",
    "origin": "new",
-   "category": "Firmware & constraints"
-  },
-  {
-   "title": "None of the 88 ASIC-to-FPGA input lines has a pull resistor on any board or in the pin file, so a missing or unpowered ASIC board leaves its returned clocks and data inputs floating.",
-   "severity": "note",
-   "board": "frontend",
-   "area": "FPGA pin constraints",
-   "what": "Each ASIC drives 11 lines to the FPGA: 8 data, READ, SYNC and the returned clock. On the Frontend and FPGA-LDO boards these are bare two-pin nets, and the pin file sets no PULLDOWN. When a board is not fitted (for example during a staged bring-up with one ASIC board per port) or its rails are off, 22 FPGA inputs per missing board float, including two returned clocks. A floating clock input can toggle on noise and run capture logic on garbage, and floating input buffers draw extra current.",
-   "where": "inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc lines 3-90 (88 ASIC inputs, LVCMOS15). FPGA-LDO A nets /ASICn_DATA1-8, /ASICn_READ, /ASICn_SYNC and /ASICn_CLK32MHz_Out.",
-   "evidence": "exports/ldo_a/netlist.xml and exports/frontend/netlist.xml: all 88 ASIC input nets contain only connector and U1 pins. Frontend_V46_pins_V2.xdc: no PULLDOWN, PULLUP or PULLTYPE. DS181 v1.27.1 Table 3: internal pull-down 68-330 uA (stated at VIN = 3.3 V); pad capacitance 8 pF.",
-   "source": "AMD DS181 v1.27.1 Table 3 p.3, https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet; engineering judgement.",
-   "consequence": "Absent chips produce spurious frames at bring-up, which may be forwarded over the GT lane, and fault finding gets harder.",
-   "suggested_action": "Add PULLDOWN TRUE to the 88 ASIC inputs in the pin file; an ASIC push-pull output easily overrides a weak pull-down. Have firmware check each returned clock's frequency before using that chip's data.",
-   "basis": "confirmed_in_files",
-   "relation": "new",
-   "confidence": "high",
-   "found_by": [
-    "signals"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "SYS-77",
-   "origin": "new",
-   "category": "Firmware & constraints"
+   "category": "Firmware & constraints",
+   "upd_note": "This was asked at the meeting of 12 Nov 2026. The ASIC designer said control and start-up behaviour should not matter much at this point, which does not say whether CLKH must be stopped while SPI is loaded or whether tables may be reloaded during recording."
   },
   {
    "id": "R2S-10",
@@ -1949,28 +1757,86 @@
    "origin": "carried",
    "category": "Records & documentation",
    "dupnote": "SYS-55.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still true with ASIC boards V7, which pass all 80 pins from J3 to J4 on both boards. The rails on the open end are now +8 V and -8 V, not +/-10 V."
+  },
+  {
+   "id": "R2S-07",
+   "title": "No ASIC's DISC_OUT reaches the FPGA, yet the V3 question to the ASIC designer asks only about the top chips.",
+   "severity": "note",
+   "closed_by": "The ASIC designer said on 12 Nov 2026 that DISC_OUT is not needed and need not even be connected to the chip. On ASIC boards V7 the DISC_OUT pads of all chips are left unconnected, and pins 3 and 5 only pass from one connector to the other. FPGA-LDO A layout V14 leaves pins 3 and 5 open, so no line is needed on the Frontend."
+  },
+  {
+   "id": "SYS-53",
+   "title": "On FPGA-LDO A V12 at most about 3-4 of the 12 new V6 lines get short routes through the existing copper; the rest need long multi-via detours, more L2 AGND cuts or moved lanes, so V6 needs a re-planned lane field, not 12 extra routes.",
+   "severity": "note",
+   "closed_by": "FPGA-LDO A was re-planned as layout V13 and carried into layout V14 with the same copper. Layout V14 carries all 120 signal lines of pin map V6, including the 12 new ones and port J4 pin 58, with 0 DRC errors, 0 open connections and 0 differences to the schematic under the unchanged V12 rules. Pin map V6 still waits for a final yes before it is frozen."
+  },
+  {
+   "id": "SYS-59",
+   "title": "The only complete V6 grid route found for FPGA-LDO A fails KiCad DRC, has 37 laser vias too close to same-net buried vias for JLC and cuts L2 AGND by 62 mm², so a re-route under V12's rules is still unproven.",
+   "severity": "note",
+   "closed_by": "A full re-route now exists and passes: FPGA-LDO A layout V14 carries all 120 signal lines with 0 DRC errors, 0 open connections and 0 differences to the schematic, under the V12 rule set with no exclusions. It uses the same four via kinds as V12 (112 and 99 laser, 81 buried, 74 through) and no stacked vias. The closest laser via to a buried via of the same net is 0.42 mm centre to centre (V12: 0.43 mm), so the JLC question no longer arises. The L2 AGND plane lost 18.9 mm² against V12 (546.0 to 527.1 mm², 3.5 %) and is still one piece."
+  },
+  {
+   "id": "SYS-63",
+   "title": "After V6 only 3 of the 15 Frontend-LDO spare contacts remain, too few for the rail enable/power-good pair plus the bottom chips' four DISC_OUT lines.",
+   "severity": "note",
+   "closed_by": "The two needs behind this finding are gone: the ASIC designer said DISC_OUT is not needed and that the power-up order does not matter, so no enable or power-good line is planned. As built on Frontend 14 layers V5 and FPGA-LDO A layout V14, the 15 spare contacts carry the 12 new lines, one 5 V contact, one extra ground beside it and one spare. That last spare is wired to a free FPGA pin on the Frontend and is open on FPGA-LDO A."
+  },
+  {
+   "id": "SYS-65",
+   "title": "The four V6 clock swaps belong on the Frontend: there each pair routes in 2-13 mm, while on FPGA-LDO A they need the same scarce space as the new lines and the ASIC3 swap has no path.",
+   "severity": "note",
+   "closed_by": "All eight returned clocks now reach clock-capable FPGA pins on the built boards. The ASIC3 and ASIC7 swaps were made on Frontend 14 layers V5, as suggested. ASIC4 and ASIC8 were solved by the re-drawn lanes of FPGA-LDO A layout V14, which the full re-plan had room for. Both boards pass DRC with 0 errors and 0 open connections."
+  },
+  {
+   "id": "SYS-82",
+   "title": "Nothing on the Frontend blocks the V6 change set: all 20 nets route together with 28 ground stacks and need no layer, outline or ball change.",
+   "severity": "note",
+   "closed_by": "The change set is now built, not only shown to be possible. Frontend 14 layers V5 carries the 12 new lines, the two clock swaps it needed, the 5 V contact and one spare, with 0 DRC errors, 0 open connections and 0 differences to the schematic. The line to ball K17 is a short top-layer track, as foreseen. Pin file V3 is written; pin map V6 still waits for a final yes before it is frozen."
   },
   {
    "id": "SYS-44",
-   "severity": "note",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "confirmed_in_files",
-   "already_known": "",
-   "found_by": [
-    "system-mate-ldo-asic"
-   ],
    "title": "The only ASIC-board Gerber set in the workspace is an older one-chip design with no pass-through lanes.",
-   "area": "ASIC board files",
-   "what": "Gerbers are the files a factory uses to make a board. The only Gerber set for the ASIC board was made on 21 June 2026 from an older design with one chip and connectors J1/J2. The two-chip ASIC board reviewed here (two ASICs, J3/J4, pass-through lanes) has no Gerber set anywhere in the workspace. Boards made from the June set cannot sit in a stacked pair with the pass-through pin map.",
-   "where": "inputs/asic/pcbway_fab/*.gbr (same files as boards/asic/board/pcbway.zip and inside Board-1024.zip); reviewed design boards/asic PCB.kicad_pcb (U01_BCD1/U01_BCD2, J3/J4).",
-   "evidence": "pcbway_fab: 17 Gerbers, TF.CreationDate 2026-06-21T18:35, KiCad 9.0.7; component attributes name only J1, J2, U01_BCD1 and capacitors; 45 unique net names, none containing 'T_' or '(2)'. exports/asic/nets.csv: 97 rows (one is the no-net row), 22 containing T_ and 25 containing (2). Board-1024.zip: its PCB.kicad_pcb (26 Jul 2026) has no U01_BCD2 and only J1/J2, and its Gerbers are the same June set. No Gerber containing U01_BCD2 was found in the Desktop workspace.",
-   "source": "Engineering judgement.",
-   "consequence": "Any ASIC boards already made or ordered may not match the two-chip pass-through pin map that both FPGA-LDO options assume.",
-   "suggested_action": "Confirm with the ASIC designer which design files the existing or ordered ASIC boards were made from.",
-   "origin": "carried",
-   "category": "Records & documentation"
+   "severity": "note",
+   "closed_by": "The ASIC designer confirmed on 12 Nov 2026 that nothing from the two-chip board pair has been ordered and that the updated pair is the one to use. ASIC boards V7 are built on that pair. No Gerber set has been made from them yet; that waits for the fabricator to confirm the stack."
+  },
+  {
+   "id": "SYS-45",
+   "title": "The stimulation rails are set to +/-10.0 V, but no ASIC supply absolute maximum is on record.",
+   "severity": "note",
+   "closed_by": "Closed by the decision of 12 Nov 2026 and the board files. FPGA-LDO A layout V14 sets the stimulation rails to ±8.06 V (80.6 kOhm, about 7.8 to 8.3 V with tolerances), the level the ASIC designer runs the chips at today. The chip's absolute maximum is still not on record; that now matters only for the fault case in SYS-16."
+  },
+  {
+   "id": "SYS-50",
+   "title": "The ASIC rails come up in a fixed order, ±10 V last at about 0.25-0.5 s, and no required order is known.",
+   "severity": "note",
+   "closed_by": "Closed by the ASIC designer's answer of 12 Nov 2026: the power-up and power-down order does not matter. For the record, FPGA-LDO A layout V14 keeps the same order, with the stimulation rails (now ±8 V) last, at 90 % about 0.2 s after power is applied."
+  },
+  {
+   "id": "SYS-62",
+   "title": "Pin map V6 gives the top chips their own SPI latch line with no pull-down, so it floats for about 7 s at every power-up while the bottom chips' latch is held low by R18.",
+   "severity": "note",
+   "closed_by": "Fixed on FPGA-LDO A layout V14: each top latch has its own 10k pull-down to ground (R26, R27) and so has each top SPI clock (R24, R25), read from schematic V35 and from the board. The top chips' latch is now held low before the FPGA is configured, like the bottom chips' latch. The top chips' SPI data lines still have no pull; that part stays under SYS-28."
+  },
+  {
+   "id": "SYS-51",
+   "title": "The Frontend pin file leaves drive strength and slew rate of the shared ASIC outputs on Vivado defaults.",
+   "severity": "note",
+   "closed_by": "Fixed in pin file V3: all 32 FPGA-to-ASIC outputs carry DRIVE 8 and SLEW SLOW, the seven shared lines of this finding and the 12 new top-chip SPI lines included. The list was matched name by name against the 32 output lines on FPGA-LDO A layout V14 and none is missing. The pin file has not been run in Vivado yet, and no IBIS run was made."
+  },
+  {
+   "id": "SYS-77",
+   "title": "None of the 88 ASIC-to-FPGA input lines has a pull resistor on any board or in the pin file, so a missing or unpowered ASIC board leaves its returned clocks and data inputs floating.",
+   "severity": "note",
+   "closed_by": "Fixed in pin file V3: all 88 ASIC-to-FPGA inputs (8 data, READ, SYNC and the returned clock of each of the eight chips) have PULLDOWN, so a missing or unpowered ASIC board reads as steady low once the FPGA is configured. The boards carry no resistors on these lines, as before. The check of each returned clock's frequency is so far only a reminder line in the pin file, since no firmware exists yet, and the pin file has not been run in Vivado."
+  },
+  {
+   "id": "SYS-13",
+   "title": "Each stacked ASIC board's J1 pin tail lands on the J1 below and holds two DF40 joints about 0.24 mm open.",
+   "severity": "note",
+   "closed_by": "J1 is marked not fitted on both ASIC boards V7 (board and schematic: do not populate, not in the parts list, not in the placement file), after the ASIC designer said it is not needed. With no pin there is no tail to hold the joints open. The hole and its pad stay on the boards."
   },
   {
    "id": "SYS-05",
@@ -1990,5 +1856,6 @@
    "severity": "note",
    "closed_by": "Closed in V3: Closed by ASIC boards V4: every via whose hole or ring touches a J3/J4 DF40 pad is set filled and capped. That is 62 vias on the top board (18 J3 only, 29 J3+J4, 15 J4 only) and 45 on the bottom board (34 J3+J4, 11 J4 only), all 0.15/0.25 mm F.Cu-B.Cu. The pass-through lanes that had no track now have B.Cu stubs, and the closest open via (bottom board, DISC_OUT(2), ring 0.06 mm from J4-3) is tented. The remaining risk sits in A-4: the fabricator must accept filled-and-capped 0.15 mm via-in-pad (10.7:1 at 1.6 mm), and the order must say so. KiCad's normal Excellon drill set carries no fill data; only the Gerber-format filling/capping drill files (100 top / 83 bottom holes) or IPC-2581 do."
   }
- ]
+ ],
+ "updated": "13 November 2026"
 }
