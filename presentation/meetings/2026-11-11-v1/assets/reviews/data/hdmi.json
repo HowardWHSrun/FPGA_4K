@@ -3,7 +3,7 @@
  "reviewed": "V37 · edited 10 Nov 2026, 13:38 CST",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 0 blockers, 1 major, 27 minors, 27 notes open. The one major is parts supply (HDMI-42), not the design.",
+ "readiness": "Do not order yet: 0 blockers, 1 major, 27 minors, 27 notes open.",
  "headline": "HDMI Extension Board V37 is unchanged since the 11 November review (same file hashes), KiCad's DRC, ERC and schematic-parity checks are still 0 (exports/hdmi/drc.json, erc.json), and no blocker was found. The one major item is supply, not design: on 12 November JLC showed no orderable MC1/MC2, MC3 or C5, so the assembly order cannot be filled as the BOM stands (HDMI-42). The other 16 new items are small BOM, silkscreen, assembly and XEM8310 flash-boot fixes, plus power-up, fault-protection and thermal checks that need the first board (HDMI-43 to HDMI-58).",
  "top_actions": [
   "Settle supply before ordering (HDMI-42, HDMI-12). On 12 Nov (05:32) JLC showed MC1/MC2 (https://jlcpcb.com/partdetail/C2914307) at 10 in stock and -8 orderable; MC3 (5 already held) and C5 (cart already on C401715) are not new shortages. Confirm the 5 × MC3 pre-order due about 13 Nov (inputs/system/parts_sourcing_V1/JLC_BUY_LIST.md) has reached the JLC parts inventory, or use QTH-040-01-L-D-DP-A (C5714582, 41 orderable); buy or consign MC1/MC2; choose C5's source (EEE-FK1E221GP, C401715, 503 orderable, is rated 2000 h, not 5000 h, at 105 C); then make the BOM match.",
@@ -1307,5 +1307,6 @@
    "origin": "carried",
    "category": "Records & documentation"
   }
- ]
+ ],
+ "updated": "13 November 2026"
 }

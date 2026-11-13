@@ -3,7 +3,7 @@
  "reviewed": "Router V2 and LDO board V2 · edited 10 Nov 2026, 16:08 CST · schematic V33B",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 1 blocker, 18 majors, 22 minors, 7 notes open. No order files exist; the first decision is whether Option B stays (LDOB-35).",
+ "readiness": "Do not order yet: 1 blocker, 18 majors, 22 minors, 7 notes open.",
  "headline": "Option B (router V2 and LDO board V2, schematic V33B) cannot carry pin map V6, which the ASIC boards V4 need. J5 already uses all 120 contacts, V6 needs 126-144 positions (132 as traced), and no DF40 has more than 120 (LDOB-35, blocker). Every V6 layout adds a second mated pair on the joint that is unplugged every session (LDOB-41), and calculations show that a live J5 mate overstresses the ±10 V rails, the contacts and the ASIC dies (LDOB-42, -43, -50). Most B fixes would have to be redone on a re-laid board, so the first decision is whether Option B stays.",
  "top_actions": [
   "Decide whether Option B stays (SYS-06). Under pin map V6, J5 would need 126-144 positions (132 as traced), but the DF40 stops at 120 (LDOB-35). If B is dropped, freeze its CAD and move the items that also apply to Option A (LDOB-04, -08, -11, -12, -28, -39, -54) to the Option A and system lists.",
@@ -1296,5 +1296,6 @@
    "origin": "carried",
    "category": "Records & documentation"
   }
- ]
+ ],
+ "updated": "13 November 2026"
 }

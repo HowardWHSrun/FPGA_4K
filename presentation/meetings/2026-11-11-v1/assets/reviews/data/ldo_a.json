@@ -3,21 +3,19 @@
  "reviewed": "Layout V12 · edited 10 Nov 2026, 16:06 CST · schematic V30A",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 0 blockers, 16 majors, 26 minors, 11 notes open. Layout V12 still follows pin map V5 (AB-01).",
- "headline": "FPGA-LDO A layout V12 (edited 10 Nov 2026, 16:06 CST) passes KiCad's checks (DRC, ERC and parity all 0), but it still follows pin map V5. It needs a pin map V6 revision (A-P on the ASIC list) before any order. The ASIC boards V4 close LDOA-04, because every chip now has its own SPI data lanes. This review adds 26 items, 8 of them major: Frontend capacitors over ±12 V copper, no panel method or tab positions set (V-cut is ruled out), switching noise that can upset CLK32 and the stimulation controls, controls that float when an ASIC joint is partly seated, and Option B repeating the ±10 V power-down fault. The 9 older majors are still open: the L11/L12 and U1 parts, ±10 V power-down, the LT3582 input capacitor, converter ripple and lane returns in AGND, and the thin J1/J2 ground. U1 is now in stock at DigiKey.",
+ "readiness": "Do not order yet: 0 blockers, 12 majors, 20 minors, 10 notes open.",
+ "headline": "FPGA-LDO A layout V16 carries pin map V6, the ±8 V stimulation rails and the top-chip pull-downs, and passes every KiCad check. Closed since 12 November: the L11/L12 inductors and D11/D12 diodes are chosen and stocked (LDOA-01, LDOA-23), four vias now carry the 3.3 V input (LDOA-18), the ±8 V setting removes the over-voltage worry (LDOA-13), and the ASIC designer's answers settle power-up order and rail discharge (LDOA-15, LDOA-28). 12 majors remain. Three are small circuit fixes that can be made now: an input capacitor at the LT3582 (LDOA-06) and power-down clamps on the ±8 V regulators (LDOA-08, LDOA-09). The rest are ground-return and signal-integrity risks to measure on the first board (LDOA-02, LDOA-05, LDOA-10, LDOA-41, LDOA-42), joint-lift risks of the unclamped head (LDOA-43, LDOA-44), and U1, which JLC must source (LDOA-07).",
  "top_actions": [
-  "Allocate pin map V6 together with the Frontend in one pass (A-P): 12 new lanes on J3/J4 pins 2/4/6/8/24/58, the 4 returned CLK32 lines moved to clock-capable balls, a 10k pull-down on J3.70 and J4.70 (LDOA-49 and LDOA-58 are one change), DRIVE/SLEW set in the new pin file (LDOA-62), and the PCB-5 notes rewritten (LDOA-17).",
-  "Send the ASIC designer one list of questions: input thresholds (LDOA-42), the VDD10/VSS10 maximum (LDOA-13), which ground each rail uses (LDOA-16), the REF_VCM load (LDOA-14) and the power-down order (LDOA-28).",
-  "Make one ground decision before re-routing: GND, not AGND, under the lane and CLK32 corridors (LDOA-02, LDOA-54); keep converter ripple off AGND and NT1, and put each regulator on the ground of the ASIC rail it feeds (LDOA-10, LDOA-11, LDOA-12, LDOA-16).",
-  "Settle the mating risks. Lower or remove Frontend C4/C42/C59, or clear the ±12 V copper under them (LDOA-37, with SYS-08/FE-04). Decide how the stimulation and reset inputs stay defined when a J3/J4 or near-to-far joint is partly seated: pulls on each ASIC board, or mating with power off plus a seating check (LDOA-43, LDOA-44, LDOA-56, LDOA-57).",
-  "Build V13 power first, then route the V6 lanes. Add vias in every J1/J2 GND pad (LDOA-05, LDOA-40); add a local LT3582 input capacitor and the Figure 12 grounding (LDOA-06, LDOA-51); add VDD10/VSS10 Schottky clamps (LDOA-08, LDOA-09; LDOA-39 if Option B stays); add more VIN and regulator ground vias (LDOA-18, LDOA-19, LDOA-52). Then simulate or measure CLK32 and STIM_START/EN while 10-14 outputs switch (LDOA-41, LDOA-42).",
-  "Close the order items. Secure U1 from DigiKey stock and add a '-12 only' note (LDOA-50, LDOA-07). Choose L11/L12 (LDOA-01). Decide D11/D12: the in-stock JSCJ B5819WS fits (LDOA-48). Reserve 20 TPS7A2015 (LDOA-32). Agree a panel with JLC (LDOA-38) and check the CPL rotations in JLC's preview (LDOA-24, LDOA-46)."
+  "Add the LT3582 input capacitor and the two power-down clamp diodes in a V17 before ordering (LDOA-06, LDOA-08, LDOA-09).",
+  "Check the panel tabs beside C701, C17, C1 and J1-J4 with JLC (LDOA-38, SYS-71).",
+  "On the first board, measure ground bounce, CLK32 and NT1 ripple with the ASICs streaming (LDOA-10, LDOA-41, LDOA-42).",
+  "Source U1 LT3582EUD-12 in the parts step (LDOA-07)."
  ],
  "counts": {
   "blocker": 0,
-  "major": 16,
-  "minor": 26,
-  "note": 11
+  "major": 12,
+  "minor": 20,
+  "note": 10
  },
  "findings": [
   {
@@ -43,7 +41,8 @@
    "origin": "new",
    "category": "Pin map & connectors",
    "check2": "Second check: corrected",
-   "check2note": "Reproduced: R2-R6 and R16-R19 are only on FPGA-LDO A. Neither ASIC V4 netlist has a resistor. All controls are on the odd row; the rails and grounds are on the even row, except VDD_CGEN. With the pin-1 end seated and 0.45 mm engagement: CHIP_RESET opens at 0.50 mm lift, SPI_LATCH at 0.585 mm, first rail at 0.65 mm. All nine open only at 0.73 mm, after four rails. Across-row needs a nearly-out joint: contacts ~1.1 mm apart, not 2.71/3.08. DF40 pages confirmed. Major, matching LDOB-07."
+   "check2note": "Reproduced: R2-R6 and R16-R19 are only on FPGA-LDO A. Neither ASIC V4 netlist has a resistor. All controls are on the odd row; the rails and grounds are on the even row, except VDD_CGEN. With the pin-1 end seated and 0.45 mm engagement: CHIP_RESET opens at 0.50 mm lift, SPI_LATCH at 0.585 mm, first rail at 0.65 mm. All nine open only at 0.73 mm, after four rails. Across-row needs a nearly-out joint: contacts ~1.1 mm apart, not 2.71/3.08. DF40 pages confirmed. Major, matching LDOB-07.",
+   "upd_note": "Still open. The ASIC designer confirmed on 12 Nov 2026 that the chip pads have no internal pull resistors, so the pulls on FPGA-LDO A (now 15 pull-downs and one pull-up) are the only ones, and the ASIC boards V7 add none. No clamp holds the J3/J4 joints; the owner has set the housing and clamp aside for now."
   },
   {
    "title": "The far ASICs get their stimulator and reset controls through a second unretained DF40 joint, out of reach of any pull on or below the near board, so lifting one end of that joint 0.50-0.76 mm can float them while rails stay connected.",
@@ -70,7 +69,8 @@
    "check2": "Second check: corrected",
    "check2note": "The problem is real and major is right. Both V4 netlists pass J3.n straight to J4.n with no resistor. Pins 49-55 and 65-71 are odd-row and reach the far chips only through this joint. The far chips' SPI lines (16/18, 66-72) are even-row. All pulls are on FPGA-LDO A. The centroid sits 4.95 mm toward the odd row. The DF40 p.2/6/21 claims check out. One error: catalogue p.2 puts the contact rows about 1.1 mm apart, so the 0.215 mm lift needs about 11 degrees, not 4.0-4.5.",
    "dupnote": "LDOA-43.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still open. The ASIC designer confirmed on 12 Nov 2026 that the chip pads have no internal pull resistors and that J1 is not needed. Nothing holds the joint between the two ASIC boards; the owner has set the housing and clamp aside for now."
   },
   {
    "id": "LDOA-06",
@@ -91,7 +91,8 @@
    "consequence": "Switching noise and ringing on VIN_3V3, which also feeds the seven regulators U2-U8 beside the low-noise LT3042 rows, and possibly erratic switching. This is plausible but not shown; only a measurement after build would show its size.",
    "suggested_action": "Move C11 (or add a 1-4.7 uF ceramic plus 100 nF) directly at U1 pin 5 on the island, with a short ground via, and check the placement against data sheet Figure 12.",
    "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: U1's supply pin 5 is still fed through two small vias and the inner-layer trace from C1, about 8.4 mm away. The nearest 3.3 V capacitor, C11, is 4.4 mm away."
   },
   {
    "id": "LDOA-08",
@@ -113,7 +114,8 @@
    "suggested_action": "Add a Schottky from AGND (anode) to ASIC_VDD10 (cathode) beside C902, and optionally one from ASIC_VSS10 (anode) to AGND (cathode) beside C1002, rated VR of at least 20 V with VF under 0.3 V at 10-25 mA. Confirm with a scope on the first board, powering down with and without ASIC boards.",
    "origin": "changed",
    "category": "Power & regulators",
-   "v2note": "See LDOA-39."
+   "v2note": "See LDOA-39.",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: there is still no clamp diode on either stimulation rail; D11 and D12 are the only diodes, both in the converter. The rails are now +/-8 V instead of +/-10 V, which does not remove the power-down case (LT3042 data sheet: https://www.analog.com/media/en/technical-documentation/data-sheets/lt3042.pdf)."
   },
   {
    "id": "LDOA-09",
@@ -134,7 +136,8 @@
    "consequence": "Every unloaded power cycle forward-biases a substrate junction in U10 at about 1-2 mA for tens of milliseconds, and every TP4 shutdown does so for about 200 ms. Damage is not certain, but reliability and latch-up behaviour are unspecified, and the exposure grows if an FPGA-driven enable is added later.",
    "suggested_action": "Add a small Schottky with anode on STIM_PRE_NEG and cathode on ASIC_VSS10 beside U10 (reverse-biased by about 2 V in normal use; VF under 0.3 V at about 3-5 mA), or get ADI's written acceptance of this power-down case.",
    "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: no diode or bleed resistor joins the -8 V regulator's input and output, and the enable delay (R1 10 kOhm, C3 4.7 uF) is the same. The rail is now -8 V instead of -10 V, which does not remove the power-down case. The ASIC designer's answer that power-up order does not matter is about the chips, not about this regulator's own limit (LT3094 data sheet: https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf)."
   },
   {
    "title": "Option B's LDO board V2 copies Option A's ±10 V supply exactly, so the LDOA-08/LDOA-09 power-down polarity problem applies to Option B too, and neither Option B board has a clamp.",
@@ -160,7 +163,8 @@
    "category": "Power & regulators",
    "check2": "Second check: upheld",
    "dupnote": "Same problem as LDOB-38 on the FPGA-LDO Option B page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Still open. Option B is on hold since the owner's decision of 12 Nov 2026 (Option A first), its boards are unchanged, and Option A has no clamp yet either (LDOA-08, LDOA-09). Option A's rails are now +/-8 V."
   },
   {
    "id": "LDOA-02",
@@ -182,7 +186,8 @@
    "consequence": "Edge currents from the 32 MHz-class lanes of eight ASICs move AGND relative to GND beside the reference regulators and at the port, and the ASIC sees that noise between its AGND and DGND pads. Expect spurs on REF_VCM, REF_VDD, VDD_FE and AGND in a microvolt recording system; the size is unknown and nothing is measured.",
    "suggested_action": "Decide before ordering: either make the lanes reference GND (GND on L2 under the lane corridors, AGND kept as islands under the LDO cells tied at NT1), or keep the layout and plan a bring-up measurement of noise on REF_VCM and AGND while the lanes toggle.",
    "origin": "carried",
-   "category": "Grounding & return paths"
+   "category": "Grounding & return paths",
+   "upd_note": "Still true in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: inner layer L2 is still the analog-ground plane under the top-layer signal lanes. The ASIC designer asked on 12 Nov 2026 to keep the two grounds separate and joined at one point on this board, which the board does (NT1); that does not settle where these lanes' return currents flow. The choice between re-referencing the lanes and a bring-up noise measurement is still open."
   },
   {
    "id": "LDOA-05",
@@ -194,7 +199,7 @@
    "found_by": [
     "ldo_a-layout"
    ],
-   "title": "The 14 Frontend GND pins on J1/J2 reach the ground planes only through thin L1 traces and three laser vias.",
+   "title": "9 of the 15 Frontend ground pins on J1/J2 still reach the ground planes only through thin top-layer traces.",
    "area": "Ground return path",
    "what": "J1 and J2 each have 7 GND pins spread over y 122.6-133.0. On this board each connector's GND pins are joined only by a 0.2 mm, 10.4 mm L1 trace, which drops to the L3/L4 GND planes through a 0.10 mm laser via (a small via through one thin layer) and a buried via: one such pair for J2, two for J1. These few vias carry the return current of about 108 signals on J1/J2 and the supply return of VIN_3V3 on J2.68-70. The trace adds roughly 2.5-7 nH of return inductance shared by up to 7 pins, which gives away most of the benefit of having 7 ground pins.",
    "where": "FPGA-LDO A V12. J1 GND pins 14/15/27/34/41/50/66: L1 trace at x 91.25, y 122.6-133.0 -> laser via (91.25, 133.00) L1-L2 -> 0.6 mm on L2 -> buried via (91.25, 133.60); J1.50 also -> laser via (89.90, 129.80) -> 4.1 mm of 0.15 mm on L2 -> buried via (94.00, 129.80). J2 same pins: L1 trace at x 108.75 -> laser via (108.75, 133.00) -> buried via (108.75, 133.60). VIN_3V3 on J2.68-70.",
@@ -231,7 +236,10 @@
      "check2": "Second check: corrected",
      "check2note": "Confirmed: each connector's 7 GND pads join one 0.2 x 10.4 mm L1 trunk and one laser+buried via (J1.50 adds a 4.1 mm L2 path); 44 ASIC outputs each. My nodal ladder reproduces J2 (CLK32 49-56 mV/line at 0.44 nH/mm, 39-62 overall) but gives J1 29-45, not 35-51. J3/J4 give 20-40 (1.94 mm) to 39-82 (3.24 mm), so not largest everywhere. Current at the FPGA end ramps 21-28 mA/ns, not 30-34. DS181 values right; CIN is p.3. Major stands."
     }
-   ]
+   ],
+   "upd_note": "Better, not fixed. On FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST the two Frontend connectors have 15 ground pins (J1.30 is new). 6 have a via in or at the pad: J1 pins 14, 30, 34, 50, 66 (laser vias) and J2 pin 66 (through via). The other 9 (J1 pins 15, 27, 41 and J2 pins 14, 15, 27, 34, 41, 50) still reach the planes only along thin top-layer traces, mostly 0.15 mm wide. The J2 trace group now ends in four through vias and one laser via; the J1 group in three laser vias.",
+   "title_was": "The 14 Frontend GND pins on J1/J2 reach the ground planes only through thin L1 traces and three laser vias.",
+   "upd": "changed"
   },
   {
    "id": "LDOA-10",
@@ -277,52 +285,8 @@
      "origin": "carried",
      "category": "Grounding & return paths"
     }
-   ]
-  },
-  {
-   "id": "LDOA-11",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "calculated",
-   "already_known": "Already reported as minor: 'The DVDD and VDD_ADC regulators return to the opposite ground from the one the ASIC board decouples those rails to' (ldo_a-regulators, ldo_a-connectivity). Reviewer raises it to major because the ripple term, not the DC offset, dominates. VDD_DRIVER on the NT1.2 trace is new.",
-   "found_by": [
-    "ldo_a-gap2-lt3582-light-load-ripple"
    ],
-   "title": "U3, U4 and U5 regulate against a different ground point from the ASIC's, so NT1 ripple lands on three rails.",
-   "area": "Rail ground reference",
-   "what": "A regulator holds its output steady relative to its own ground pin, so if the load is decoupled to a different ground, any voltage between the two grounds appears on the rail at the load. U3 (VDD_ADC) is on GND, but the ASIC board decouples VDD_ADC to AGND; U5 (DVDD) is on AGND, but the ASIC board decouples DVDD to DGND; U4 (VDD_DRIVER) and its capacitors sit on an L6 AGND island that reaches the L2 plane only through NT1.2, about halfway along the NT1 tie. The NT1 ripple from the LT3582 therefore appears on these rails at the ASIC, hundreds of times above the ripple the TPS7A20 regulators pass from VIN_3V3. The effect on recordings is not established, because the ASIC's supply rejection on these rails is not documented; DVDD is a digital rail, where about 1 mV rms is harmless.",
-   "where": "FPGA-LDO Option A V12: U3 pins 2/5 and C301/C302 on GND (VDD_ADC to J3/J4.56); U5 pins 2/5, C501, C502 and C54 on AGND (DVDD to J3/J4.34); U4 pins 2/5, C401, C402 and C53 (VDD_DRIVER to J3/J4.38) on an L6 AGND island with C51 (VDD_FE), C55 (REF_VDD) and C57 (REF_VCM), joined to L2 only through NT1.2 and the traces to the J4.42/J4.44 vias.",
-   "evidence": "exports/ldo_a/netlist.xml: U3.2/.5, C301.2, C302.2 on GND; U4/U5 grounds and C401/C402/C501/C502/C53/C54/C57 on AGND; VDD_ADC has only C302 on this board (no C52). exports/asic/netlist.xml: VDD_ADC capacitors C1, C34-C38 and VDD_DRIVER capacitors C3, C39-C43 to /AGND; DVDD capacitors C7-C14 to /DGND; no AGND-DGND part. exports/asic/parts.csv: only 2 of 6, 2 of 8 and 2 of 6 of these 0201 capacitors are placed, none with a value. Nodal solve of the L6 copper (a review working file (not published)): tie 14.6 mOhm pad to pad, NT1.2 to L2 8.5 mOhm, U4.5 to L2 20.0 mOhm, against 27.5 and 13.4 mOhm in the original. Rerun of the original ripple model with 14.6 mOhm: VDD_ADC and DVDD about 0.4/1.0/1.3-1.6 mV rms and VDD_DRIVER about 0.2/0.5/0.7 mV rms (50 kHz-2 MHz, at 2/10/25 mA per +/-12 V output), against uV-level VIN ripple after the TPS7A20. inputs/asic/J3_pinout__Power_Budget.csv gives VDD10/VSS10 a 2 mA maximum each; with about 2 mA of LDO quiescent current the realistic load is 2-5 mA per output, so the 2 mA column applies. inputs/notes/fpga-ldo-v14.md lists 'VDD_ADC ground' as still open. ASIC_REFERENCE.md section 7 shows the crossed ground assignment was inherited.",
-   "source": "TI TPS7A20 data sheet SBVS338H (July 2024): electrical table PSRR rows (75 dB at 100 kHz, 45 dB at 1 MHz, 20 mA) and note (3), voltages with respect to the GND pin. https://www.ti.com/lit/ds/symlink/tps7a20.pdf (one checker could not re-extract the PSRR rows; the conclusion does not depend on them). Engineering judgement for the ground-reference analysis.",
-   "consequence": "The ADC and driver supplies carry roughly 0.2-1 mV rms of converter ripple at realistic loads, which may fold into the recording band. Its effect in ADC codes cannot be stated without the ASIC designer's supply-rejection figures.",
-   "suggested_action": "Before ordering, put U3 and its capacitors on AGND, put U5 and its capacitors on GND (the ASIC's DGND), and give U4 and its capacitors their own via to the L2 AGND plane instead of the NT1.2 trace.",
-   "origin": "carried",
-   "category": "Grounding & return paths",
-   "merged": [
-    {
-     "id": "LDOA-16",
-     "severity": "minor",
-     "status": "kept",
-     "verification": "Confirmed by one independent re-check",
-     "basis": "needs_vendor_answer",
-     "already_known": "Only the VDD_ADC half is recorded: parts_review_V21 START_HERE.md / index.html item S2 (inherited from LDO Board A). The DVDD half is not recorded. Both reviewers agree with minor.",
-     "found_by": [
-      "ldo_a-regulators",
-      "ldo_a-connectivity"
-     ],
-     "title": "The DVDD and VDD_ADC regulators return to the opposite ground from the one the ASIC board decouples them to.",
-     "area": "Grounds: rail returns",
-     "what": "U5 (DVDD) and its capacitors return to AGND, but the ASIC board decouples DVDD to its digital ground; U3 (VDD_ADC) and its capacitors return to GND, but the ASIC board decouples VDD_ADC to its analog ground. The ASIC board has no tie between its two grounds, so the net tie NT1 (a deliberate single-point copper joint between AGND and GND) is the only bond, and both rails' load current must cross it. The TPS7A20 has no sense pin, so any voltage or noise between AGND and GND appears on the ADC supply. Both arrangements are inherited from LDO Board A; the files cannot show whether the ASIC bonds its grounds inside, and only the ASIC designer can say which ground each rail should reference.",
-     "where": "FPGA-LDO A: U5 GND pins 2/5, C502.2 and C54.2 on AGND; U3 (110.25, 124.85) GND pins 2/5, C301.2 and C302.2 on GND; NT1 (100.58, 121.0) pin 1 GND, pin 2 AGND; J3/J4 pins 42/44 AGND, 46/48 GND, pin 56 VDD_ADC. ASIC board: placed DVDD capacitors C7, C14 to /DGND (schematic also lists C8-C13); placed VDD_ADC capacitors C1, C34 to /AGND (schematic also lists C35-C38); J3 pins 46/48 = /DGND.",
-     "evidence": "exports/ldo_a/netlist.xml: U3 GND_2/GND_5 = GND, C301.2/C302.2 = GND; U5 GND_2/GND_5 = AGND, C502.2/C54.2 = AGND; U2/U4/U6/U7/U8/U9/U10 grounds = AGND. exports/asic/pads.csv: only J3, J4 and the two ASICs touch both /AGND and /DGND, so the board has no tie. ASIC_Nine_Rail_Design_Intent.csv: LDO Board A U2 /VDD_ADC referenced to /DGND, U4 /DVDD referenced to /AGND. J3_pinout__Power_Budget.csv: DVDD 1.39 mA and VDD_ADC 4.18 mA per board; x4 boards = 5.6 mA and 16.7 mA through NT1.",
-     "source": "TI TPS7A20 data sheet SBVS338H, Pin Functions p.4 (output capacitor close to the OUT and GND pins of the device), https://www.ti.com/lit/ds/symlink/tps7a20.pdf; engineering judgement.",
-     "consequence": "ASIC digital I/O current returns through the analog ground bond, and the ADC supply is referenced to digital ground and shares the single AGND-GND bond. The DC error is negligible; the noise effect is unmeasured.",
-     "suggested_action": "Ask the ASIC designer which ground each rail should reference. Then move the ground nets of U3 and U5 and their capacitors to match the ASIC board's decoupling.",
-     "origin": "carried",
-     "category": "Grounding & return paths"
-    }
-   ]
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST. The single tie NT1 is what the ASIC designer asked for (two grounds joined at one point on this board), but the converter's input and output capacitors are still placed as before and the stimulation regulators' input capacitors C901 and C1001 still return to AGND. Neither the ferrite option nor a bring-up measurement has been decided."
   },
   {
    "title": "Option A's CLK32 edges at the FPGA can cross the LVCMOS15 band twice when 10-14 ASIC outputs switch with them, and the J3/J4 joints keep part of that risk after the J1/J2 fix.",
@@ -346,7 +310,8 @@
    "id": "LDOA-41",
    "origin": "new",
    "category": "Signals, clocks & timing",
-   "check2": "Second check: upheld"
+   "check2": "Second check: upheld",
+   "upd_note": "Still open. The ASIC designer said on 12 Nov 2026 that the chip outputs are 1.5 V logic with edges generally not faster than about 1 ns, so edges can still be faster than the 2 ns this finding uses as its line. J3/J4 pins 3 and 5 are now unused (DISC_OUT is not needed) but are left open, not tied to ground, and only part of LDOA-05 is fixed. A measurement of the clocks at the FPGA on a first board is still needed."
   },
   {
    "title": "Assuming 25 ohm, 1 ns ASIC drivers, 10-14 switching ASIC outputs can put about 0.6-1.1 V of ground bounce, mostly from the LDOA-05 J1/J2 trunk, on the idle-low STIM_START and STIM_EN inputs at the ASIC.",
@@ -371,54 +336,8 @@
    "origin": "new",
    "category": "Signals, clocks & timing",
    "check2": "Second check: corrected",
-   "check2note": "Geometry and J2 trunk confirmed; table values reproduce. My check, 1.19 nH (J2) plus 0.51-1.02 nH (J3/J4) per line at 32-35 mA/ns, gives 0.65-0.83 V for 10 lines and 0.88-1.13 V for 14 (25 ohm, 1 ns). The model fed STIM_START its own 41.6 mA/ns, 15-20 % high. Title omits the driver assumption; 0.6 V is below 0.75 V. On the J4 port pad vias still leave 0.48-0.64 V. Line 177 (U05) is reset/SPI; U07 fits."
-  },
-  {
-   "title": "The order leaves the panel method and tab positions to JLC, but copper 0.30 mm from every edge rules out V-cut, and with a 1 mm keep-off only a west 8.3 mm and an east 4.5 mm stretch can take a tab.",
-   "severity": "major",
-   "board": "ldo_a",
-   "area": "Panel / depaneling",
-   "what": "The board is too small for JLC's assembly line, so the order asks JLC to make a panel but says neither how the boards are separated nor where. A V-score (a groove so boards snap apart) needs copper at least 0.4 mm from the score, but tracks and microvias sit 0.30 mm and pads 0.31-0.34 mm from the edge. Break-off tabs need 4-5 mm of edge, and with a 1 mm keep-off from parts only two stretches qualify. Seven small ceramic capacitors lie 0.31-0.51 mm from an edge with their long axis across it, the orientation most prone to flex cracking when the panel is broken.",
-   "where": "FPGA-LDO A V12 outline x 88.68-111.32, y 110.34-147.10. East: C301/C302 pads 0.31 mm in (U3 input VIN_3V3 and output VDD_ADC), R2/R3/R5/U3 0.59 mm, J2 DF40 pads 0.88 mm. West: C501, C502, C54, C701, C702 0.51 mm, J1 pads 0.89 mm. South: C16 0.34 mm, TP2/TP4 0.60 mm. North: R6 0.33 mm, J4/J3 courtyards 0.74/0.94 mm. Copper: L5 tracks /ASIC2_DATA1 at x 89.03 and /STIM_START_SHARED at x 110.97 (y 118.9-123.5) and L5-L6 microvias (89.11, 115.15), (110.89, 115.15), (110.89, 118.35) at 0.30 mm; all plane and pour fills 0.50 mm.",
-   "evidence": "pcbnew pad and courtyard boxes on a scratch copy (a review working file (not published), edgeclear.py) and exports/ldo_a/board.json. Clear stretches with a 1.0 mm keep-off from pads and courtyards: north none longer than 1.3 mm; east y 112.42-115.53 (3.1 mm) and y 135.31-139.78 (4.5 mm); south x 88.68-91.70 (3.0 mm) and 94.89-98.00 (3.1 mm); west y 110.34-118.69 (8.3 mm, with a microvia 0.30 mm in at y 115.15) and y 144.91-147.10 (2.2 mm). inputs/ldo_a/V12_order/JLC_Remarks_paste.txt: 'panel by JLCPCB with assembly rails ... for example 3 x 2 boards with 5 mm rails', no separation method or tab positions, and 'the closest part courtyard is 0.14 mm from the edge (C301, C302)'. C301/C302/C501/C502/C54/C701/C702 at rotation 0/180 (long axis across the east/west edge); C16 at -90 (across the south edge). parts.csv: no fiducials; no panel drawn. Merge check of the remark (lines 6-7): its example, 3 x 2 boards of 22.64 x 36.76 mm making about 71.9 x 85.5 mm with 5 mm rails, works out to 2 mm gaps between boards, which implies routed separation rather than a V-score, but neither the method nor the tab positions are stated.",
-   "source": "JLCPCB PCB Manufacturing & Assembly Capabilities, panelization rows (V-cut copper clearance >= 0.4 mm, zero board spacing; tab routing 1.6/2 mm spacing, breakaway tab >= 4 mm, >= 5 mm with mouse bites), https://jlcpcb.com/capabilities/pcb-capabilities; JLCPCB 'Technical Guidance: V-Cut Panelization Standards' (updated 10 Nov 2026: 0.4 mm minimum, 1.0 mm recommended, >= 2.0 mm for stress-sensitive components), https://jlcpcb.com/blog/v-cut-panelization-standards; JLCPCB Help 'PCB Panelization' (V-cut zero spacing, fiducials only on rails), https://jlcpcb.com/help/article/pcb-panelization; Murata 'What kind of layout helps prevent chip MLCCs from cracking?' (mount parallel to and away from the separation line; read via search summary), https://article.murata.com/en-global/article/layout-helps-prevent-chip-mlcc-from-cracking; known/frontend.json FE-07 for the same issue on the Frontend.",
-   "consequence": "JLC must either query the order or pick a method itself: a V-score breaks its own 0.4 mm copper rule, and tabs at mid-edge sit beside the J1/J2 joints and these capacitors. A flex-cracked C301 or C501 later shorts VIN_3V3, the whole stack's 3.3 V; a cracked C302, C502 or C54 shorts VDD_ADC or DVDD for all eight ASICs. Such cracks often pass test and fail in use.",
-   "suggested_action": "Before ordering, state the panel in the remark or draw it: routed separation with 2 mm gaps, no V-score, tabs only at the west edge y 110.3-118.7 and the east edge y 135.3-139.8, and ask JLC to confirm. Where the layout allows, turn C301/C302 and the west-edge capacitors parallel to the edge or move them 1 mm in.",
-   "basis": "needs_decision",
-   "relation": "new",
-   "confidence": "high",
-   "found_by": [
-    "fresh"
-   ],
-   "corrected": "The order remark asks JLC to panelize the 22.64 x 36.76 mm board but does not say how the boards are separated or where the tabs go. A V-score (V-cut) is ruled out on every edge: the L2-L4 planes and several L1/L6 pours fill to 0.30 mm from all four edges, tracks and microvias sit at 0.30 mm and pads at 0.31-0.34 mm, against JLC's 0.4 mm minimum. Yet the remark's own 71.9 x 85.5 mm example adds up only with zero-gap rails on the north and south edges, which only a V-cut allows. A routed panel with 1.6-2 mm gaps is possible. With a 1 mm keep-off, though, only the west edge from the NW corner to J1 (7.5-8.4 mm) clearly fits JLC's 5 mm mouse-bite tab. The east stretch at y 135.3-139.8 (4.6 mm, or 3.6 mm if the keep-off also applies sideways from J2's courtyard) takes at most a 4 mm plain tab. Eight 0402 capacitors (C301, C302, C501, C502, C54, C701, C702, C16) sit 0.31-0.51 mm from an edge with their long axis across it.",
-   "verification": "verified by an independent skeptic (corrected)",
-   "id": "LDOA-38",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "check2": "Second check: corrected",
-   "check2note": "Reproduced: order Gerbers put L1-L4 copper 0.30 mm from every edge (the 'where' text's 0.50 mm fill is wrong; the corrected text is right); L5 tracks/microvias 0.30 mm; pads 0.31-0.34 mm; eight crosswise 0402s 0.31-0.51 mm. JLC: V-cut needs ≥0.4 mm, tab routing only ≥0.2 mm with 4/5 mm tabs, so a routed panel is legal and 'no panel possible' is wrong. 1 mm keep-off stretches: west 8.3 mm, east 4.5 mm. Remark names no method. Major fits (FE-07 precedent)."
-  },
-  {
-   "id": "LDOA-01",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_decision",
-   "already_known": "V12_record/START_HERE.md (Parts table) and V12_order/FPGA_LDO_A_V12_BOM_JLC.csv list the part as unchosen. Both reviewers agree it blocks ordering. The record does not say the 0.70 A option may be too small for L12; one reviewer says the record quotes Itemp as the current rating of C307855.",
-   "found_by": [
-    "ldo_a-regulators",
-    "ldo_a-parts-order"
-   ],
-   "title": "No orderable part is chosen for inductors L11/L12, so the +/-12 V converter cannot be assembled as ordered.",
-   "area": "Parts / order files",
-   "what": "The two 6.8 uH inductors L11 and L12 of the LT3582 boost/inverting converter carry Murata part number DFE201610E-6R8M=P2, which no distributor lists, so the JLC bill of materials (BOM) line has no part number and is marked 'PART TO CHOOSE'. The inductor's saturation current (Isat, the current at which its inductance falls sharply) must exceed the worst-case peak current: about 0.78 A in L12 and 0.48 A in L11. Both in-stock TDK candidates named in the record meet this: the record's 0.70 A and 0.87 A are TDK's 'rated current', the smaller of Isat and the heating current Itemp, not saturation figures. What remains is to pick one and check its land pattern and height.",
-   "where": "FPGA-LDO A V12, bottom side, footprint FPGA_LDO_V30A:L_Murata_DFE201610P. L11 at (94.45, 140.55), pads /VIN_3V3 and /SW_P (boost). L12 at (103.85, 142.9), rotation -90, pads /SW_N and GND (inverting). U1 LT3582EUD-12#PBF pins 3/4 (/SW_N), 12 (/SW_P), 5 (/VIN_3V3).",
-   "evidence": "inputs/ldo_a/V12_order/FPGA_LDO_A_V12_BOM_JLC.csv line 15: 'L11,L12', JLCPCB Part # empty, note 'PART TO CHOOSE'; parts_status.csv line 15 'no part chosen'; JLC_Remarks_paste.txt line 29 'to be confirmed'. LT3582 p.3: ILIMIT_N 490/600/720 mA, ILIMIT_P 285/350/430 mA; p.18: IPK = ILIMIT + VIN x TOS / L, TOS 125 ns (inverting), 100 ns (boost). L12: 720 + 3.3 x 125 / 6.8 = 781 mA (796 mA if L is 20 % low; 661 mA at the typical limit). L11: 430 + 3.3 x 100 / 6.8 = 479 mA. TDK data sheets (LCSC copies): VLS201610HBX-6R8M-1 (C307855) Isat 0.88 A, Itemp 0.70 A, 1.0 mm tall; VLS201612HBX-6R8M-1 (C501945) Isat 0.91 A, Itemp 0.87 A, 1.2 mm tall; Isat defined at a 30 % inductance drop. V12_record/START_HERE.md line 52 quotes 0.70 A and 0.87 A. Land pattern: TDK 0.5 x 1.6 mm pads, 1.0 mm gap; board (exports/ldo_a/pads.csv) 0.55 x 1.60 mm, 0.90 mm gap; both 2.0 mm overall. Schematic MPN fields differ: L11 'Isat >= 0.6 A', L12 'Isat >= 0.8 A'.",
-   "source": "ADI LT3582/LT3582-5/LT3582-12 data sheet 3582512fb, Rev B, p.3 (switch current limits) and p.18 'Choosing Inductors', https://www.analog.com/media/en/technical-documentation/data-sheets/3582512fb.pdf (read from a saved copy; analog.com timed out). TDK VLS201610HBX-1 / VLS201612HBX-1 data sheets p.1-3 (LCSC copies for C307855 and C501945).",
-   "consequence": "Until a part is chosen the order cannot proceed, or JLC flags the line and leaves L11/L12 unplaced, and the +/-12 V stimulation rails do not work. A substitute with Isat below about 0.8 A would saturate in L12 at the switch current limit.",
-   "suggested_action": "Pick C307855 or C501945 for both L11 and L12 after checking its land pattern and its 1.0 or 1.2 mm height on the bottom side. Enter the MPN and LCSC number on both parts and regenerate the JLC BOM.",
-   "origin": "carried",
-   "category": "Parts, BOM & sourcing"
+   "check2note": "Geometry and J2 trunk confirmed; table values reproduce. My check, 1.19 nH (J2) plus 0.51-1.02 nH (J3/J4) per line at 32-35 mA/ns, gives 0.65-0.83 V for 10 lines and 0.88-1.13 V for 14 (25 ohm, 1 ns). The model fed STIM_START its own 41.6 mA/ns, 15-20 % high. Title omits the driver assumption; 0.6 V is below 0.75 V. On the J4 port pad vias still leave 0.48-0.64 V. Line 177 (U05) is reset/SPI; U07 fits.",
+   "upd_note": "Still open. The ASIC designer said on 12 Nov 2026 that the chip inputs are Schmitt triggers with hysteresis and that edges are generally not faster than about 1 ns, which matches this finding's assumption, but he gave no threshold or hysteresis figures. Only part of LDOA-05's ground vias exist, and the stimulator lanes on the bottom layer still run 0.10 mm apart (LDOA-53)."
   },
   {
    "id": "LDOA-07",
@@ -430,7 +349,7 @@
    "found_by": [
     "ldo_a-parts-order"
    ],
-   "title": "U1 LT3582EUD-12#PBF is out of stock at JLC, and the order files do not forbid a non -12 substitute.",
+   "title": "U1 LT3582EUD-12#PBF is still out of stock at JLC; the order files now forbid other versions.",
    "area": "Parts sourcing",
    "what": "U1 is the boost/inverting converter that makes the +/-12 V stimulation supply. JLC shows 0 in stock and 0 orderable, so it needs Global Sourcing or a pre-order. On this board U1's I2C pins CA, SDA and SCL are tied to GND and VPP (the pin used to program its OTP, one-time-programmable, memory) is left open, so the chip can never be configured on the board. Only the -12 version, which leaves the factory set to +/-12 V, works here: a plain LT3582 ships with blank OTP that keeps both outputs off, and an LT3582-5 gives only +/-5 V, too little for the +/-10 V LDOs. The schematic states that the -12 version is needed, but the JLC remark, BOM and START_HERE parts table do not forbid a substitute.",
    "where": "FPGA-LDO Option A V12, U1 LT3582EUD-12#PBF, bottom side at (100.0, 142.6), rotation 180. Pin 1 CA, pin 15 SDA, pin 16 SCL and EP 17 on GND; pin 14 VPP unconnected; pin 9 on STIM_POS_12V, pin 2 on STIM_NEG_12V, pin 8 SHDN on EN_ASIC_RAILS.",
@@ -442,34 +361,10 @@
    "category": "Parts, BOM & sourcing",
    "v2note": "See LDOA-50.",
    "dupnote": "LDOA-50.",
-   "dupkind": "overlapping"
-  },
-  {
-   "title": "On FPGA-LDO A V12, Frontend C4, C42 and C59 sit over masked ±12 V stimulation copper, so if a worst-case contact wears through the mask, C4 could push +12 V into the FPGA core (1.1 V absolute maximum), while C42 and C59 would mainly short the -12 V supply.",
-   "severity": "major",
-   "board": "ldo_a",
-   "area": "Stack clearance / copper under mated parts",
-   "what": "SYS-08 found that Frontend capacitors C4, C42 and C59 can be 1.45 mm tall in the 1.5 mm gap above this board, and noted only tracks and vias below them. The copper directly under their metal end caps is the stimulation supply: C4's VCCINT end sits over the +12 V pour, both ends of C42 (VCCO_1V5 and GND) over the -12 V STIM_PRE_NEG pour and a -12 V via, and C59's GND end over the -12 V STIM_NEG_12V pour. Only solder mask, a printed coating about 10-25 um thick, separates them, and the 'PRE-' silkscreen there adds height. If the tolerance stack closes the gap and mating force or head movement wears the mask, +/-12 V reaches a 1.0-1.8 V FPGA supply.",
-   "where": "FPGA-LDO A V12 top (L1) under Frontend bottom C4 (VCCINT_1V0/GND, LDO frame x 89.70-91.70, y 137.87-139.12), C42 (VCCO_1V5/GND, x 108.34-110.34, y 141.22-142.47) and C59 (VCCAUX_1V8/GND, x 105.85-107.10, y 140.12-142.12). LDO pours /STIM_POS_12V (L1, bbox x 90.33-93.80, y 136.32-146.60), /STIM_PRE_NEG (x 108.17-110.82, y 140.88-145.60), /STIM_NEG_12V (x 104.47-109.30, y 140.43-146.60); /STIM_PRE_NEG through via at (109.30, 141.85). DNP C89 would land over the same +12 V pour.",
-   "evidence": "Mate transform LDO = (213.5 - x, 239.57 - y), fitted to the J1/J2 connector centres in exports/frontend/pads.csv and exports/ldo_a/pads.csv (same as SYS-08). pcbnew zone fill on a scratch copy (a review working file (not published), under3.py): under the 2.0 x 1.25 mm bodies, L1 copper is STIM_POS_12V 1.33 mm2 (C4), STIM_PRE_NEG 2.42 mm2 plus the via and a track (C42), STIM_NEG_12V 0.79 mm2 plus a GND via (C59). Under the 0.45 mm end bands: C4 VCCINT end over STIM_POS_12V 0.28 mm2; C42 VCCO_1V5 end 0.48 mm2 and GND end 0.56 mm2 over STIM_PRE_NEG; C59 GND end 0.26 mm2 over STIM_NEG_12V. Gap per SYS-08: 1.5 mm stack minus 1.45 mm maximum part = 0.05 mm, before the Frontend pad and solder stand-off and the LDO's 0.035 mm copper plus mask. Merge re-check: a separate pcbnew fill of a scratch copy (a review working file (not published), 441 sample points per body) gives L1 copper under the bodies of 49 % STIM_POS_12V (C4), 95 % STIM_PRE_NEG (C42) and 32 % STIM_NEG_12V (C59); exports/ldo_a/zones.csv lists all three L1 pours. The SYS-08 fix plan (known/fix_plans_11nov_evening_on_V3.json) fits 0.95 mm-maximum GRM219R60J476ME44D parts and judged the tented +/-12 V vias under the capacitors acceptable; it does not mention the +/-12 V pours.",
-   "source": "known/system.json SYS-08 and known/frontend.json FE-04 (part thickness 1.25 +/-0.2 mm from the Murata GRM21BR60J107ME15 reference sheet and Yageo CC0805MKX5R5BB476 data; not re-read here); Hirose DF40 series page (1.5 mm stacking height, as cited there), https://www.hirose.com/en/product/series/DF40; boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb; exports/frontend/pads.csv; known/fix_plans_11nov_evening_on_V3.json (SYS-08 plan); engineering judgement for the failure mode.",
-   "consequence": "Nominally about 0.1 mm of air remains, but at the tolerance limit the capacitor presses on mask over +/-12 V. Solder mask is not a rated insulation barrier under pressure and rubbing; a breach puts +12 V on VCCINT or -12 V on VCCO_1V5 and destroys the FPGA, on a stack that moves with the animal.",
-   "suggested_action": "Either fit the 1.1 mm-or-lower capacitors SYS-08 proposes at C4, C42 and C59, or on FPGA-LDO A clear the STIM_POS_12V, STIM_PRE_NEG and STIM_NEG_12V L1 copper and the -12 V via from under those outlines plus 0.3 mm, and remove the 'PRE-' silk there.",
-   "basis": "confirmed_in_files",
-   "relation": "changes SYS-08, FE-04",
-   "confidence": "high",
-   "found_by": [
-    "fresh"
-   ],
-   "corrected": "On FPGA-LDO A V12, the masked L1 copper under the Frontend's 1.25 ±0.2 mm bottom capacitors is ±12 V stimulation supply, not just tracks and vias. Both C42 terminations (VCCO_1V5 and GND) sit over the -12 V STIM_PRE_NEG pour at every termination width; C59's GND end sits over -12 V STIM_NEG_12V; and C4's VCCINT end sits over the edge of the +12 V STIM_POS_12V copper (0 to 0.59 mm2 for Murata e = 0.2 to 0.7 mm). If SYS-08's worst case (about 0.05 mm at a 1.45 mm part; about 0.2 to 0.25 mm nominal, not 0.1 mm) ever wears through the 10 to 15 um mask, C4 could dump +12 V into VCCINT (1.1 V absolute maximum). The C42 and C59 contacts would only short the -12 V rail, because the 3 A 1.5 V buck holds VCCO. This broadens SYS-08/FE-04, which stay major and do not become a blocker: the ≤0.95 mm part swap or DNP C4 closes it, and FE-04's 'keep C4 and accept the 0.05 mm gap' option should be rejected unless the +12 V copper under C4 is cleared. DNP C89's terminations are not over ±12 V.",
-   "verification": "verified by an independent skeptic (corrected)",
-   "id": "LDOA-37",
-   "origin": "new",
-   "category": "Mechanical, stack & thermal",
-   "check2": "Second check: corrected",
-   "check2note": "The saved L1 fills, which match the skeptic's refill, reproduce the overlaps. C42's ends sit over 0.48 and 0.56 mm² of the -12 V pour; C59's GND end over 0.26 mm². C4's VCCINT end covers 0, 0.28 or 0.59 mm² of +12 V copper for Murata end bands of 0.2, 0.45 or 0.7 mm (part thickness 1.25 ±0.2 mm). Only C4 can overstress the FPGA: C14's +12 V charge would flow into VCCINT (DS181 maximum 1.1 V). The 1.5 V buck holds VCCO. Major fits. Nominal gap ≈0.25 mm, not 0.1. C89's ends are not over ±12 V.",
-   "dupnote": "Same problem as FE-04 on the Frontend page.",
-   "dupkind": "same_problem"
+   "dupkind": "overlapping",
+   "upd_note": "Half done. The parts list and the assembly remark of FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST now say that only LT3582EUD-12#PBF or #TRPBF is acceptable, never the base LT3582 or the -5 version. U1 is still not stocked at JLC (0 free to order on 13 Nov 2026, 10:36 CST) and goes through JLC Global Sourcing; no lead time is quoted. Buying is handled as its own step once the designs are settled.",
+   "title_was": "U1 LT3582EUD-12#PBF is out of stock at JLC, and the order files do not forbid a non -12 substitute.",
+   "upd": "changed"
   },
   {
    "title": "The 3.3 V contact J2.69 sits next to STIM_START_SHARED on J2.67, so one solder bridge puts 3.3 V on a 1.5 V FPGA output and all eight ASIC inputs.",
@@ -492,54 +387,8 @@
    "verification": "checked by an independent reviewer",
    "id": "LDOA-45",
    "origin": "new",
-   "category": "Pin map & connectors"
-  },
-  {
-   "title": "Pin map V6 also needs a pull-down on each port's new top-chip SPI_LATCH line (J3/J4 pin 70), which V12 routes as a plain data lane.",
-   "severity": "minor",
-   "board": "ldo_a",
-   "area": "Straps / safe idle",
-   "what": "This board holds every FPGA-to-ASIC control line at a safe level while the FPGA configures, because the Frontend sets PUDC_B high and leaves its pins floating; its own note says SPI_LATCH held low blocks any SPI update. On the received ASIC boards V4 the top chips take their latch and SPI clock from pins 70 and 72 (T_SPI_LATCH, T_SPI_CLK), not from the shared pins 61 and 63. V12 routes pins 70/72 as returned CLK32 and SYNC lanes with no pull, and the V6 change list (12 new routes, 4 clock swaps) adds none, so the top four chips' latch would float during configuration.",
-   "where": "FPGA-LDO A V12: J3.70 /ASIC7_CLK32MHz_Out (J2.26), J4.70 /ASIC3_CLK32MHz_Out (J2.35); R18 10k pulls only /SPI_LATCH_SHARED (J2.48, J3.61, J4.61). ASIC V4 top board: /T_SPI_LATCH on J3.70/J4.70 to U01_BCD1 and U01_BCD2 SPI_LATCH.",
-   "evidence": "exports/asic_top/netlist.xml: /T_SPI_LATCH = J3.70, J4.70, U01_BCD1/BCD2 SPI_LATCH; /T_SPI_CLK = J3.72, J4.72. exports/asic_bottom/netlist.xml: /SPI_LATCH = J3.61, J4.61. exports/ldo_a/netlist.xml: the J3.70 and J4.70 nets have two nodes each, no resistor. known/pinmap_v6_trace.csv rows A,J3,70 and A,J4,70: 'rename (existing line)'; known/asic_open.json A-P. exports/frontend/netlist.xml: FPGA_PUDC_B = R25 (470R) and U1.J18. Schematic V30A text block 'ASIC CONTROL SAFE IDLE'. Known context: known/system.json SYS-28 lists the lines that float at the ASICs during configuration (clocks, SPI clocks and SPI data have no pull on any board) and proposes pull-downs; it predates pin map V6 and does not include T_SPI_LATCH or T_SPI_CLK, and no pull-down for pin 70 appears in known/fix_plans_11nov_evening_on_V3.json.",
-   "source": "boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_sch ('ASIC CONTROL SAFE IDLE' note, which cites AMD UG470 for PUDC_B; not re-read); boards/asic_top/PCB.kicad_sch (ASIC designer's V4 top board); known/pinmap_v6_trace.csv; known/system.json SYS-28; engineering judgement.",
-   "consequence": "During the roughly 7 s configuration (SYS-28) and any later reconfiguration the top chips' latch floats, so noise could latch garbage into their SPI registers; whether CHIP_RESET also blocks this is not known.",
-   "suggested_action": "In the V6 revision add a 10k pull-down to GND on J3.70 and J4.70, like R18 (and the same on Option B), and ask the ASIC designer whether the top chips' SPI clock on pin 72 needs one too.",
-   "basis": "confirmed_in_files",
-   "relation": "changes A-P, SYS-28",
-   "confidence": "high",
-   "found_by": [
-    "fresh"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "LDOA-49",
-   "origin": "new",
    "category": "Pin map & connectors",
-   "merged": [
-    {
-     "title": "Pin map V6 makes the far chips' SPI latch an FPGA output with no pull-down, while the near chips' latch keeps R18.",
-     "severity": "minor",
-     "board": "ldo_a",
-     "area": "Pin map V6: far-chip latch",
-     "what": "On ASIC V4 the near chips latch on pin 61, which R18 holds low on FPGA-LDO A, but the far chips latch on pin 70 (T_SPI_LATCH). The V6 trace only renames pin 70 on each port to an FPGA output (ASIC3_4_TOP_SPI_LATCH, ASIC7_8_TOP_SPI_LATCH) and adds no resistor. V12 has none on that net either; today the net goes to an FPGA input. The far chips' latch therefore floats whenever the FPGA is not driving it: during the roughly 7 s of FPGA configuration, and in any partial-seat window that opens pin 70. In a pin-80-end lift, pin 70 opens at 0.52 mm together with AC_IN.",
-     "where": "FPGA-LDO A J3.70 (/ASIC7_CLK32MHz_Out to J2.26) and J4.70 (/ASIC3_CLK32MHz_Out to J2.35), even row, x 105.583. On ASIC V4, J3/J4.70 T_SPI_LATCH goes to top U01_BCD1/2 SPI_LATCH. R18 (10k) is only on /SPI_LATCH_SHARED (J2.48, J3.61, J4.61).",
-     "evidence": "W2/known/pinmap_v6_trace.csv rows A,J3,70 and A,J4,70: 'rename (existing line)', direction out. W2/a review working file (not published) adds no resistor. W2/exports/ldo_a/netlist.xml: both pin-70 nets are two-pin nets (J2 and J3/J4). W2/exports/asic_top/netlist.xml: SPI_LATCH (pin 61) has no chip, and T_SPI_LATCH reaches U01_BCD1/2 SPI_LATCH. SYS-28: FPGA I/O float for about 7 s at power-up (PUDC_B high).",
-     "source": "ASIC_REFERENCE.md section 4 line 68 (SPI_LATCH is a positive pulse after shift data) and item U05 (W2/inputs/asic/ASIC_Reference/ASIC_REFERENCE.md). W2/known/system.json SYS-28. Engineering judgement.",
-     "consequence": "A floating far latch can load whatever the floating SPI lines shift in, so the far chips can start from an undefined configuration while the near chips are protected. STIM_EN and START stay held low by R2/R3 as long as J3/J4 is seated.",
-     "suggested_action": "In the V6 re-plan, add a 10k pull-down on each TOP_SPI_LATCH net on FPGA-LDO A, as R18 does for pin 61. Handle the new TOP_SPI_CLK nets the same way as the SYS-28 lines.",
-     "basis": "confirmed_in_files",
-     "relation": "new",
-     "confidence": "high",
-     "found_by": [
-      "gap"
-     ],
-     "verification": "single reviewer (gap round)",
-     "id": "LDOA-58",
-     "origin": "new",
-     "category": "Pin map & connectors"
-    }
-   ]
+   "upd_note": "Still true: pin map V6 was frozen as built on 13 Nov 2026, and J2 pin 67 (STIM_START_SHARED) still sits next to the 3.3 V pin 69, with pins 68 to 70 all 3.3 V. Moving it would need a pin map change on both boards."
   },
   {
    "title": "LDOB-07's fix moves the pulls to the router, which still leaves them across router J3/J4 and the near-to-far joint.",
@@ -564,7 +413,8 @@
    "origin": "new",
    "category": "Pin map & connectors",
    "dupnote": "LDOA-43.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still open. Option B is on hold since the owner's decision of 12 Nov 2026 (Option A first), and it was not dropped, so its router boards are unchanged. The ASIC designer confirmed that the chip pads have no internal pull resistors."
   },
   {
    "title": "A J3/J4 joint lifted at the pin-1 end, or rocked toward the probe edge, can open all four grounds while rails, including -10 V, stay connected.",
@@ -588,28 +438,8 @@
    "origin": "new",
    "category": "Pin map & connectors",
    "dupnote": "Same problem as SYS-66 on the Whole system page.",
-   "dupkind": "same_problem"
-  },
-  {
-   "id": "LDOA-13",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_vendor_answer",
-   "already_known": "parts_review_V21 START_HERE.md S3 (resolved in V23 by following the designer's +/-10 V sheet); the schematic note asks to confirm the ASIC board 0201 rating (>= 16 V). The reviewer agrees the confirmation is still open and minor.",
-   "found_by": [
-    "ldo_a-regulators"
-   ],
-   "title": "The +/-10 V stimulation rails can reach +/-10.3 V, with no ASIC or capacitor rating to show that is safe.",
-   "area": "Power: ASIC rail limits",
-   "what": "R901 and R1001 (100k, 1%) set the stimulation rails ASIC_VDD10 and ASIC_VSS10 to +10.0 V and -10.0 V. The regulator output equals its SET pin current times the SET resistor, and that current varies from 98 to 102 uA over temperature, so the rails can span about 9.70 to 10.30 V in size. The only requirement on file is the ASIC designer's pin sheet, which gives +/-10 V with no maximum or tolerance; the ASIC reference says the chip's '+/-10 V' figure is stimulator output range, not a supply rating. The files cannot settle whether 10.3 V is within the rating of the ASIC and of the four 0201 capacitors on these rails on the ASIC board; a written answer from the ASIC designer would.",
-   "where": "FPGA-LDO A: U9/R901 (/ASIC_VDD10) and U10/R1001 (/ASIC_VSS10); J3/J4 pin 36 (VDD10) and pin 54 (VSS10). ASIC board: C18, C19 on /VDD10 and C25, C26 on /VSS10, 0201 size.",
-   "evidence": "exports/ldo_a/netlist.xml: R901 100k 1% from Net-(U9-SET) to AGND; R1001 100k 1% from Net-(U10-SET) to AGND. Worst case 102 uA x 101 kOhm = 10.30 V; 98 uA x 99 kOhm = 9.70 V. inputs/asic/ASIC_Reference/ASIC_Nine_Rail_Design_Intent.csv: inherited LDO Board A U8 /VDD10 RSET 90000 -> 9.0 V (supplier BOM 91000 -> 9.1 V), approved voltage window UNKNOWN. ASIC_REFERENCE.md section 7: the +/-10 V figure is stimulation-output compliance; open item U02. J3_pinout__Power_Pins.csv: VDD10 10 V, VSS10 -10 V. exports/asic/pads.csv: only C18, C19, C25 and C26 are placed on these rails (C15-C17 and C20-C24 exist only in the schematic); exports/asic/parts.csv gives value 'C_Small_US' with no voltage or MPN field.",
-   "source": "ADI LT3042 data sheet Rev A, p.3, and LT3094 data sheet Rev 0, p.4 (SET current 98-102 uA over temperature); ASIC_REFERENCE.md section 7 and open item U02.",
-   "consequence": "If the ASIC's high-voltage devices or the 0201 capacitors are rated at 10 V, every ASIC could sit at or above its rating, with no way to trim the rails on the board.",
-   "suggested_action": "Get the ASIC designer's written VDD10/VSS10 maximum and the voltage rating of the ASIC board's 0201 rail capacitors. If either is 10 V, change R901/R1001 to 93.1k-95.3k (about 9.3-9.5 V).",
-   "origin": "carried",
-   "category": "Power & regulators"
+   "dupkind": "same_problem",
+   "upd_note": "Still open. The ASIC designer confirmed on 12 Nov 2026 that the 80-pin order is final, so no spare ground contact can be added, and the owner has set the housing and clamp aside for now."
   },
   {
    "id": "LDOA-14",
@@ -656,51 +486,8 @@
      "origin": "new",
      "category": "Power & regulators"
     }
-   ]
-  },
-  {
-   "id": "LDOA-15",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_decision",
-   "already_known": "",
-   "found_by": [
-    "ldo_a-regulators"
    ],
-   "title": "One RC starts every ASIC rail with no FPGA control or power-good; the +/-10 V rails need up to about 0.5 s.",
-   "area": "Power: rail sequencing",
-   "what": "One resistor-capacitor delay (R1, C3) drives EN_ASIC_RAILS, which enables the LT3582 converter and every regulator; the FPGA cannot switch any rail, and the power-good (PG) outputs that report a rail is in regulation are all left open. Fast start-up is off (PGFB tied to IN), so each rail ramps slowly at a rate set by its SET resistor and capacitor: the 1.5 V LT3042 rails settle about 90 ms after 3.3 V appears and the +/-10 V rails take up to about 0.48 s. The inherited firmware releases CHIP_RESET about 65 ms after FPGA configuration, so it may do so before VDD10/VSS10 are valid. The ASIC reference defines no rail order, so the files cannot say whether this matters; the owner has to decide on firmware delay or hardware control.",
-   "where": "FPGA-LDO A: R1 (109.4, 140.3), C3 (106.9, 140.3), net /EN_ASIC_RAILS to U1 pin 8 (SHDN), TP4 and the EN pins of U2-U10; PG pin 4 of U2, U6, U8, U9 and U10 unconnected. EN_ASIC_RAILS does not reach J1 or J2. Stimulation power can only be removed by the solder jumpers JP1/JP2.",
-   "evidence": "exports/ldo_a/netlist.xml: /EN_ASIC_RAILS = C3, R1, TP4, U1.8 and U2-U10 EN; PG pins 'unconnected-'; PGFB = IN on all five LT3042/LT3094. RC timing: R1 10k from VIN_3V3, C3 4.7 uF; Thevenin 10k || 222k (LT3582 SHDN bias) || 125k (four 500k TPS7A20 pull-downs) = 8.9 kOhm, Vinf = 2.93 V, tau = 41.8 ms; 0.9 V reached at 15.3 ms, 1.24 V at 23.0 ms. Soft start, 99% at 4.6 x RSET x CSET: 15k x 1 uF -> 69 ms; 100k x 1 uF -> 460 ms. DC-bias loss on the 25 V 0603 SET capacitors (C903, C1003) probably shortens this to about 0.3-0.45 s (typical X5R behaviour, from memory, not a vendor curve). Schematic note: firmware drives CHIP_RESET high for 2^20 cycles (about 65 ms) at boot. J1 has 13 no-connect pins on both the LDO A and Frontend sides.",
-   "source": "ADI LT3042 Rev A p.4 (EN/UV threshold) and p.12 (PGFB, fast start-up); ADI LT3094 Rev 0 (start-up time grows with CSET); ADI LT3582 3582512fb (SHDN threshold and current); TI TPS7A20 SBVS338H p.4 and p.7; ASIC_REFERENCE.md open item U02 (no rail sequence).",
-   "consequence": "The ASICs may leave reset or receive stimulation commands before the +/-10 V rails are valid, and firmware cannot detect it. There is no software way to remove stimulation power in a fault.",
-   "suggested_action": "At minimum, have firmware wait at least 0.6 s after power-up before releasing CHIP_RESET or enabling stimulation. Better, bring EN_ASIC_RAILS, or a separate enable for U1/U9/U10, to a spare J1 contact driven by the FPGA, which also needs a Frontend change.",
-   "origin": "carried",
-   "category": "Power & regulators",
-   "dupnote": "SYS-10 on the Whole system page.",
-   "dupkind": "overlapping"
-  },
-  {
-   "id": "LDOA-18",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "confirmed_in_files",
-   "already_known": "",
-   "found_by": [
-    "ldo_a-layout"
-   ],
-   "title": "All 3.3 V input current for the board passes through a single 0.15 mm through via.",
-   "area": "Layout: power copper",
-   "what": "VIN_3V3 enters on J2.68-70 on the top layer (L1) and reaches the bottom-layer (L6) pour that feeds every regulator through one through via. The only other L1-L6 VIN_3V3 via serves just test point TP1. The expected 167 mA (335 mA in the high case) is well within this via's capacity, and the converter's local input capacitors C1 and C2 sit on L6, so capacity and noise are not the problem. The issue is that there is no second path if this one plated hole is defective, which falls short of the owner's rule that power copper should be thick and thorough.",
-   "where": "FPGA-LDO A: J2.68/69/70 -> L1 pour L1_PWR_VIN_3V3 (6.3 mm2 piece) -> through via at (109.00, 135.00), 0.15 mm drill, 0.35 mm pad -> L6 pour L6_PWR_VIN_3V3 (113.2 mm2). Other via at (93.725, 140.15) serves TP1 only.",
-   "evidence": "KiCad pcbnew connectivity on boards/ldo_a/FPGA_LDO_A_Layout_V12.kicad_pcb (a review working file (not published), copies of conn.py/conn2.py): VIN_3V3 is one component of 92 nodes; removing via (109.00, 135.00) splits off {J2.68, J2.69, J2.70, the 6.3 and 0.8 mm2 L1 pieces} from the other 83 nodes; removing via (93.72, 140.15) isolates only TP1 and a 22.3 mm2 L1 piece. board.json: VIN_3V3 has two through vias (both 0.15/0.35 mm) and two L5-L6 microvias feeding U1.5 and C1; L1 feed tracks 0.20 mm (J2 pads) and 0.25 mm (to the via); L6 tracks 0.4 mm. Current from system-power result.json: 167 mA expected, 335 mA high on J2.68-70. Via resistance = 1.72e-8 x 1.584e-3 / (pi x 0.17 mm x 0.02 mm), about 2.5 mOhm.",
-   "source": "Engineering judgement; the owner's rule that power copper should be thick and thorough.",
-   "consequence": "A single plating void or crack in this via removes power from the whole board.",
-   "suggested_action": "Add two or three more through vias between the J2 VIN_3V3 pour on L1 and the VIN_3V3 pour on L6.",
-   "origin": "carried",
-   "category": "Power & regulators"
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: no resistor loads ASIC_REF_VCM, and the ASIC designer has not yet given the REF_VCM current (to follow by email)."
   },
   {
    "id": "LDOA-22",
@@ -722,7 +509,8 @@
    "suggested_action": "Read Samsung's DC-bias curves for these parts at 10 V and 12 V (or measure them); if the -10 V total falls below about 13 uF at 25 C, make C1004 a second 22 uF 1206.",
    "origin": "changed",
    "category": "Power & regulators",
-   "v2note": "See LDOA-60."
+   "v2note": "See LDOA-60.",
+   "upd_note": "Still unchecked. The rail is now -8 V instead of -10 V, which makes the capacitance loss smaller, and the parts are unchanged (C1002 22 uF 1206 and C1004 10 uF 0805). The maker's bias curves at 8 V have still not been read."
   },
   {
    "id": "LDOA-26",
@@ -743,28 +531,8 @@
    "consequence": "If enough ripple survives the ASIC's supply rejection (no ASIC specification gives it), recordings could show narrow tones in the 0.3-10 kHz band whose frequency depends on the unit and the static stimulator load. A bad result costs a jumper cut and a bench supply, not a board spin.",
    "suggested_action": "At bring-up, record ASIC shorted-input spectra with U1 running and with JP1/JP2 cut and bench ±12 V on TP8/TP9, at idle and with dummy loads, and look for tones at |f_sw - n x 31.25 kHz| against the 6.5 uVrms noise figure.",
    "origin": "carried",
-   "category": "Power & regulators"
-  },
-  {
-   "id": "LDOA-28",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_vendor_answer",
-   "already_known": "system-power.json and system-bringup.json note that no ASIC power-up order is known; neither covers power-down. Reviewer agrees with minor.",
-   "found_by": [
-    "ldo_a-gap1-bipolar-rail-polarity-cl"
-   ],
-   "title": "Nothing discharges the ±10 V ASIC rails, so they can stay charged for seconds after the 1.5 V rails fall.",
-   "area": "Power-down sequencing",
-   "what": "When VIN_3V3 goes away, the 1.5 V regulators lose their input and their outputs fall with it. ASIC_VDD10 and ASIC_VSS10 have no bleed resistor and drain only through the ASIC and regulator leakage, so with little ASIC current they stay near ±10 V for hundreds of milliseconds to seconds. The built-in discharge features do not help: the TPS7A2015 pulldown acts only while EN is low and input is still present, and the LT3582 discharge acts only on its own ±12 V outputs, not on the LT3042/LT3094 outputs. No ASIC power-down requirement exists, so the files cannot say whether the ASIC tolerates live stimulator rails over an unpowered core; only the ASIC designer can.",
-   "where": "FPGA-LDO Option A: ASIC_VDD10 (U9 LT3042 OUT, C902 22 uF, J3/J4 pin 36) and ASIC_VSS10 (U10 LT3094 OUT, C1002 22 uF + C1004 10 uF, J3/J4 pin 54). 1.5 V rails from U3/U4/U5/U7 TPS7A2015PDQNR and U2/U6/U8 LT3042, all fed from VIN_3V3. EN_ASIC_RAILS from R1 10k / C3 4.7 uF.",
-   "evidence": "exports/ldo_a/nets.csv: /ASIC_VDD10 = C902.1, J3.36, J4.36, U9.9/10 only; /ASIC_VSS10 = C1002.1, C1004.1, J3.54, J4.54, U10.10-12 only, so no bleed path. /EN_ASIC_RAILS drives U1 SHDN and U2-U10 EN; R1 10k, C3 4.7 uF (47 ms), reaching 0.3 V about 106 ms after VIN_3V3 collapses. TPS7A20 SBVS338H: 150 ohm output pulldown only when VEN < VEN(LOW) = 0.3 V (spec at VIN 3.1 V). LT3582 3582512fb: VIN minimum 2.4-2.55 V (p.2); output discharge permanently enabled on the -12 version and acts on SHDN falling (p.10, p.16). Prior shutdown model (shutdown2_out.txt) at 0 mA ASIC load: VDD10 still 10.00 V at 0.8 s (idealised, no leakage), VSS10 to about -9.45 / -8.19 V through the LT3094 OUT-to-IN path. ASIC_REFERENCE.md sections 4, 7 and 10 give no rail sequence or window.",
-   "source": "TI TPS7A20 data sheet SBVS338H, p.3 EN pin and p.7 electrical characteristics, https://www.ti.com/lit/ds/symlink/tps7a20.pdf; ADI LT3582 data sheet 3582512fb Rev B, p.2, p.10, p.16, https://www.analog.com/media/en/technical-documentation/data-sheets/3582512fb.pdf. No ASIC power-down requirement exists; otherwise engineering judgement.",
-   "consequence": "If the ASIC needs its ±10 V rails to fall before or with its 1.5 V rails, every unplug or host shutdown leaves the stimulator supply live over an unpowered core, with undefined stimulator state. If it does not, there is no effect.",
-   "suggested_action": "Ask the ASIC designer whether VDD10/VSS10 may stay live while the 1.5 V rails are off; if not, add a bleed resistor from each ±10 V rail to AGND (for example 10-22 kOhm, about 5-10 mW).",
-   "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Still open; only a measurement on a first board can settle it. The ASIC designer stressed on 12 Nov 2026 that the stimulation rails must be very low noise, because they reach the probe inputs. U1 is unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST."
   },
   {
    "title": "The LT3582 layout leaves out the ground-plane cuts and the extra exposed-pad vias of data sheet Figure 12, so its switching currents spread through the L3/L4 GND planes.",
@@ -788,7 +556,57 @@
    "verification": "checked by an independent reviewer",
    "id": "LDOA-51",
    "origin": "new",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: U1's exposed pad still has two vias and there are no ground-plane cuts around the converter."
+  },
+  {
+   "id": "LDOA-11",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "calculated",
+   "already_known": "Already reported as minor: 'The DVDD and VDD_ADC regulators return to the opposite ground from the one the ASIC board decouples those rails to' (ldo_a-regulators, ldo_a-connectivity). Reviewer raises it to major because the ripple term, not the DC offset, dominates. VDD_DRIVER on the NT1.2 trace is new.",
+   "found_by": [
+    "ldo_a-gap2-lt3582-light-load-ripple"
+   ],
+   "title": "U4's ground still shares a track with the AGND-GND tie NT1, so some tie ripple still reaches that rail.",
+   "area": "Rail ground reference",
+   "what": "A regulator holds its output steady relative to its own ground pin, so if the load is decoupled to a different ground, any voltage between the two grounds appears on the rail at the load. U3 (VDD_ADC) is on GND, but the ASIC board decouples VDD_ADC to AGND; U5 (DVDD) is on AGND, but the ASIC board decouples DVDD to DGND; U4 (VDD_DRIVER) and its capacitors sit on an L6 AGND island that reaches the L2 plane only through NT1.2, about halfway along the NT1 tie. The NT1 ripple from the LT3582 therefore appears on these rails at the ASIC, hundreds of times above the ripple the TPS7A20 regulators pass from VIN_3V3. The effect on recordings is not established, because the ASIC's supply rejection on these rails is not documented; DVDD is a digital rail, where about 1 mV rms is harmless.",
+   "where": "FPGA-LDO Option A V12: U3 pins 2/5 and C301/C302 on GND (VDD_ADC to J3/J4.56); U5 pins 2/5, C501, C502 and C54 on AGND (DVDD to J3/J4.34); U4 pins 2/5, C401, C402 and C53 (VDD_DRIVER to J3/J4.38) on an L6 AGND island with C51 (VDD_FE), C55 (REF_VDD) and C57 (REF_VCM), joined to L2 only through NT1.2 and the traces to the J4.42/J4.44 vias.",
+   "evidence": "exports/ldo_a/netlist.xml: U3.2/.5, C301.2, C302.2 on GND; U4/U5 grounds and C401/C402/C501/C502/C53/C54/C57 on AGND; VDD_ADC has only C302 on this board (no C52). exports/asic/netlist.xml: VDD_ADC capacitors C1, C34-C38 and VDD_DRIVER capacitors C3, C39-C43 to /AGND; DVDD capacitors C7-C14 to /DGND; no AGND-DGND part. exports/asic/parts.csv: only 2 of 6, 2 of 8 and 2 of 6 of these 0201 capacitors are placed, none with a value. Nodal solve of the L6 copper (a review working file (not published)): tie 14.6 mOhm pad to pad, NT1.2 to L2 8.5 mOhm, U4.5 to L2 20.0 mOhm, against 27.5 and 13.4 mOhm in the original. Rerun of the original ripple model with 14.6 mOhm: VDD_ADC and DVDD about 0.4/1.0/1.3-1.6 mV rms and VDD_DRIVER about 0.2/0.5/0.7 mV rms (50 kHz-2 MHz, at 2/10/25 mA per +/-12 V output), against uV-level VIN ripple after the TPS7A20. inputs/asic/J3_pinout__Power_Budget.csv gives VDD10/VSS10 a 2 mA maximum each; with about 2 mA of LDO quiescent current the realistic load is 2-5 mA per output, so the 2 mA column applies. inputs/notes/fpga-ldo-v14.md lists 'VDD_ADC ground' as still open. ASIC_REFERENCE.md section 7 shows the crossed ground assignment was inherited.",
+   "source": "TI TPS7A20 data sheet SBVS338H (July 2024): electrical table PSRR rows (75 dB at 100 kHz, 45 dB at 1 MHz, 20 mA) and note (3), voltages with respect to the GND pin. https://www.ti.com/lit/ds/symlink/tps7a20.pdf (one checker could not re-extract the PSRR rows; the conclusion does not depend on them). Engineering judgement for the ground-reference analysis.",
+   "consequence": "The ADC and driver supplies carry roughly 0.2-1 mV rms of converter ripple at realistic loads, which may fold into the recording band. Its effect in ADC codes cannot be stated without the ASIC designer's supply-rejection figures.",
+   "suggested_action": "Before ordering, put U3 and its capacitors on AGND, put U5 and its capacitors on GND (the ASIC's DGND), and give U4 and its capacitors their own via to the L2 AGND plane instead of the NT1.2 trace.",
+   "origin": "carried",
+   "category": "Grounding & return paths",
+   "merged": [
+    {
+     "id": "LDOA-16",
+     "severity": "minor",
+     "status": "kept",
+     "verification": "Confirmed by one independent re-check",
+     "basis": "needs_vendor_answer",
+     "already_known": "Only the VDD_ADC half is recorded: parts_review_V21 START_HERE.md / index.html item S2 (inherited from LDO Board A). The DVDD half is not recorded. Both reviewers agree with minor.",
+     "found_by": [
+      "ldo_a-regulators",
+      "ldo_a-connectivity"
+     ],
+     "title": "The DVDD and VDD_ADC regulators return to the opposite ground from the one the ASIC board decouples them to.",
+     "area": "Grounds: rail returns",
+     "what": "U5 (DVDD) and its capacitors return to AGND, but the ASIC board decouples DVDD to its digital ground; U3 (VDD_ADC) and its capacitors return to GND, but the ASIC board decouples VDD_ADC to its analog ground. The ASIC board has no tie between its two grounds, so the net tie NT1 (a deliberate single-point copper joint between AGND and GND) is the only bond, and both rails' load current must cross it. The TPS7A20 has no sense pin, so any voltage or noise between AGND and GND appears on the ADC supply. Both arrangements are inherited from LDO Board A; the files cannot show whether the ASIC bonds its grounds inside, and only the ASIC designer can say which ground each rail should reference.",
+     "where": "FPGA-LDO A: U5 GND pins 2/5, C502.2 and C54.2 on AGND; U3 (110.25, 124.85) GND pins 2/5, C301.2 and C302.2 on GND; NT1 (100.58, 121.0) pin 1 GND, pin 2 AGND; J3/J4 pins 42/44 AGND, 46/48 GND, pin 56 VDD_ADC. ASIC board: placed DVDD capacitors C7, C14 to /DGND (schematic also lists C8-C13); placed VDD_ADC capacitors C1, C34 to /AGND (schematic also lists C35-C38); J3 pins 46/48 = /DGND.",
+     "evidence": "exports/ldo_a/netlist.xml: U3 GND_2/GND_5 = GND, C301.2/C302.2 = GND; U5 GND_2/GND_5 = AGND, C502.2/C54.2 = AGND; U2/U4/U6/U7/U8/U9/U10 grounds = AGND. exports/asic/pads.csv: only J3, J4 and the two ASICs touch both /AGND and /DGND, so the board has no tie. ASIC_Nine_Rail_Design_Intent.csv: LDO Board A U2 /VDD_ADC referenced to /DGND, U4 /DVDD referenced to /AGND. J3_pinout__Power_Budget.csv: DVDD 1.39 mA and VDD_ADC 4.18 mA per board; x4 boards = 5.6 mA and 16.7 mA through NT1.",
+     "source": "TI TPS7A20 data sheet SBVS338H, Pin Functions p.4 (output capacitor close to the OUT and GND pins of the device), https://www.ti.com/lit/ds/symlink/tps7a20.pdf; engineering judgement.",
+     "consequence": "ASIC digital I/O current returns through the analog ground bond, and the ADC supply is referenced to digital ground and shares the single AGND-GND bond. The DC error is negligible; the noise effect is unmeasured.",
+     "suggested_action": "Ask the ASIC designer which ground each rail should reference. Then move the ground nets of U3 and U5 and their capacitors to match the ASIC board's decoupling.",
+     "origin": "carried",
+     "category": "Grounding & return paths"
+    }
+   ],
+   "upd_note": "Two of the three rails are fixed and the third is much improved. In FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST U3 and its capacitors return to AGND and U5 and its capacitors to GND, the grounds their rails use on the ASIC boards. U4 got its own via pair into the analog ground plane (1.05 mm from its ground pin), as asked, but its ground track still also runs to the tie NT1. By a resistance estimate of that copper, U4's ground now moves about 1.6 mV per amp of tie current instead of about 8.4 mV, roughly five times less. Not measured.",
+   "title_was": "U3, U4 and U5 regulate against a different ground point from the ASIC's, so NT1 ripple lands on three rails.",
+   "upd": "changed",
+   "upd_sev_was": "major"
   },
   {
    "id": "LDOA-19",
@@ -800,7 +618,7 @@
    "found_by": [
     "ldo_a-layout"
    ],
-   "title": "U9, U10 and the TPS7A20 regulators reach ground only through long, shared thin traces; U9's pad has no via.",
+   "title": "U5 and the +/-8 V regulators' set networks still reach ground through traces, and under U3 and U10 the analog plane is only a strip.",
    "area": "Regulator grounds",
    "what": "L6 has no ground pour, so U9 (LT3042, VDD10), U10 (LT3094, VSS10) and the TPS7A20 regulators U3/U4/U5 reach their ground plane through daisy-chained 0.10-0.30 mm traces, and U9's exposed pad (the metal pad under the package) has no via. A low-noise regulator sets its output from the voltage on its SET resistor, so any voltage drop between the SET resistor's ground and the plane adds straight onto the output. For U9 that drop path also carries C901's input ripple return and U5's capacitor currents. For U10 the SET resistor's ground leg carries the output capacitors' transient current and U10's own ground current, but not the DC load return of this negative regulator.",
    "where": "FPGA-LDO Option A V12. U9: EP at (95.40,126.34) with no via; chain C902.2 -> 0.30 mm trace to x 90.62 -> 0.15 mm trace along x 90.64 past U5.2/U5.5 and C501.2 -> R901/C903 tap at y 126.81 -> 0.20 mm traces -> via (93.15,130.60) L5-L6 -> buried via (92.90,131.30) L2-L5. U10: C1001.2 -> R1001.2 -> C1003.2 -> C1004.2 -> C1002.2 -> vias (106.45,130.25)/(106.25,131.30). U4.5 returns through the NT1 trace to the J4.42 via. U3 (GND) runs about 10 mm of 0.10-0.20 mm trace to L3 vias (110.78,134.05)/(110.35,134.00).",
@@ -835,10 +653,13 @@
      "origin": "new",
      "category": "Grounding & return paths"
     }
-   ]
+   ],
+   "upd_note": "Mostly fixed in layouts V15 and V16. U9 and U10 now have a via in a ground pin pad, U7 in its centre pad, U3 a through via 0.11 mm from its ground pin, and U4 a via pair 1.05 mm away. Left: U5 (now on GND) has its nearest via about 1.7 mm away; the set-network grounds of the +/-8 V regulators (R901 with C903, R1001 with C1003) still reach a via only along traces, the nearest 2.4 mm away; and under U10 and U3 the analog plane is a narrow strip between signal lanes, not a sheet.",
+   "title_was": "U9, U10 and the TPS7A20 regulators reach ground only through long, shared thin traces; U9's pad has no via.",
+   "upd": "changed"
   },
   {
-   "title": "The L2 AGND plane is missing under most of the ASIC7 and ASIC8 CLK32 lanes and under 37 % of ASIC5's, partly because the fill deletes a 15.9 mm2 AGND island under ASIC7.",
+   "title": "The L2 analog ground plane is missing under all of ASIC8's clock lane, 40 % of ASIC7's and 37 % of ASIC5's.",
    "severity": "minor",
    "board": "ldo_a",
    "area": "Clock reference plane",
@@ -857,7 +678,10 @@
    "verification": "single reviewer (gap round)",
    "id": "LDOA-54",
    "origin": "new",
-   "category": "Grounding & return paths"
+   "category": "Grounding & return paths",
+   "upd_note": "The lanes were re-drawn, but the gaps remain, with new numbers. On FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST, measured with the pours refilled: ASIC8's clock runs 9.2 mm on the top layer with no analog ground under it at all; ASIC7's runs 15.1 mm, of which 6.0 mm (40 %) has none, 2.7 mm of that directly over the J4 port's top-chip SPI latch; ASIC5's runs 19.7 mm, of which 7.2 mm (37 %) has none. The cut-off analog-ground island (now 13.3 mm2) is no longer under ASIC7's clock.",
+   "title_was": "The L2 AGND plane is missing under most of the ASIC7 and ASIC8 CLK32 lanes and under 37 % of ASIC5's, partly because the fill deletes a 15.9 mm2 AGND island under ASIC7.",
+   "upd": "changed"
   },
   {
    "title": "The ASIC1 CLK32 lane and the STIM_CLK/EN/START trio run about 8 mm on L6 at a 0.10 mm gap, 0.30 mm above their plane, the worst lane crosstalk on Option A.",
@@ -879,10 +703,11 @@
    "verification": "single reviewer (gap round)",
    "id": "LDOA-53",
    "origin": "new",
-   "category": "Signals, clocks & timing"
+   "category": "Signals, clocks & timing",
+   "upd_note": "Unchanged on the bottom layer of FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: ASIC1's clock runs about 8.9 mm at a 0.10 mm gap between ASIC1_DATA5 and ASIC1_SYNC, and STIM_CLK runs about 8.2 mm between STIM_EN and STIM_START. The V16 track shifts were on inner layer L5 only."
   },
   {
-   "title": "ASIC8's CLK32 lies directly over ASIC6's CLK32 for 7.4 mm, coupling about 115-120 mV each way, and the V4 pin map puts switching data lanes over or under both clocks instead.",
+   "title": "ASIC7's clock runs 2.7 mm over the J4 port's top-chip SPI latch, and a data lane runs 2.3 mm over that port's top-chip SPI clock.",
    "severity": "minor",
    "board": "ldo_a",
    "area": "Broadside coupling",
@@ -901,7 +726,10 @@
    "verification": "single reviewer (gap round)",
    "id": "LDOA-55",
    "origin": "new",
-   "category": "Signals, clocks & timing"
+   "category": "Signals, clocks & timing",
+   "upd_note": "The clock-over-clock stack is gone: on FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST ASIC8's clock no longer runs over ASIC6's (0.7 mm over ASIC6_DATA8 is the most), and the other old pairs are gone too. Two shorter clock overlaps remain: ASIC7's clock over the J4 port's top-chip SPI latch for 2.7 mm, and ASIC7_DATA5 over the J4 port's top-chip SPI clock for 2.3 mm. Long data-over-data runs are listed under LDOA-29.",
+   "title_was": "ASIC8's CLK32 lies directly over ASIC6's CLK32 for 7.4 mm, coupling about 115-120 mV each way, and the V4 pin map puts switching data lanes over or under both clocks instead.",
+   "upd": "changed"
   },
   {
    "id": "LDOA-21",
@@ -922,7 +750,8 @@
    "consequence": "A rotated X2SON regulator can pass visual inspection and be found only at power-up, because U3-U5 orientation rests on placement-file rotations that have not been checked against JLC's part images.",
    "suggested_action": "Confirm U3/U4/U5 pin 1 (and the U1-U10 rotations) in JLC's placement preview, and move the U4/U5 dots to the pad-1 corner if the silkscreen is touched; optionally fill in the title block.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: U3 has no pin-1 mark, and the U4 and U5 dots still sit nearer pad 2. The order now carries a pin-1 table and pin-1 drawings and asks JLC to place by pin 1, and the title block is filled in; checking U3-U5 in JLC's preview is still needed."
   },
   {
    "id": "LDOA-24",
@@ -934,7 +763,7 @@
    "found_by": [
     "ldo_a-parts-order"
    ],
-   "title": "The CPL copies KiCad rotations unchecked for the polarized bottom-side parts U1-U10, D11 and D12; DF40 connectors J1-J4 placed 180 degrees round cannot swap nets.",
+   "title": "JLC's reading of the bottom-side angles is still unconfirmed, so pin 1 of the polarised bottom parts and the DF40 connectors must be checked in JLC's preview.",
    "area": "Order files",
    "what": "The CPL (the placement file that tells JLC where and at what angle to place each part) copies KiCad's rotation and side for all 72 parts with no per-package correction. JLC's library parts often use a different zero angle, and nobody has compared the rotations with JLC's part images. The Hirose DF40 connectors have no polarity key, so a 180-degree placement error on J1-J4 would not be caught when the boards are mated. On J2 that error would put VIN_3V3 onto ASIC signal lines.",
    "where": "FPGA-LDO Option A V12 CPL: J1, J2 (top, -90), J3 (top, 0), J4 (bottom, 0), U1-U10, D11, D12. J2 pins 68-70 (VIN_3V3) swap with pins 3/2/1 (ASIC5_SYNC, ASIC5_READ, STIM_CHB_SHARED); J3/J4 pin 1 (ASIC_VDD_CGEN) swaps with pin 80 (ASIC7_DATA1 / ASIC3_DATA1).",
@@ -946,28 +775,39 @@
    "category": "Layout & manufacturing",
    "v2note": "See LDOA-46. Contradicted by LDOB-54. Second check: the DF40 part of this item is withdrawn (see LDOB-54); the rest holds. The connector part of LDOA-24 is wrong. Turned 180 degrees about their CPL centres, all pads of J1-J4 (74/74/84/80, MP included) land on matching pads with 0.000 mm error. Hirose p.8 note 4 and p.14 note 5 say the connector has no polarity, so a turned part makes the same connections. The rest still holds. make_jlc_v12.py copies KiCad rotations with no offsets. All 12 polarized parts are on the bottom side and have not been checked against JLC's part images. The record lists this check, and the order remarks say \"Confirm parts placement: yes\".",
    "dupnote": "LDOA-46.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Partly done. Since layout V13 the placement file is checked against JLC's own library footprints: 7 of 80 angles were corrected (U2, U6, U8, U9, U10, D11, D12), and the order now carries a pin-1 table and pin-1 drawings and asks JLC to place every polarised part by pin 1 and to confirm placement before production. What remains: JLC has not said how it reads bottom-side angles, and the check cannot tell the DF40 connector rows apart, so pin 1 of J1-J4, U1-U10 and the D11/D12 cathodes must still be checked in JLC's placement preview.",
+   "title_was": "The CPL copies KiCad rotations unchecked for the polarized bottom-side parts U1-U10, D11 and D12; DF40 connectors J1-J4 placed 180 degrees round cannot swap nets.",
+   "upd": "changed"
   },
   {
-   "id": "LDOA-27",
+   "title": "The FPGA-LDO A panel is now drawn, but three break-off tabs end within 0.6 mm of fitted capacitors and JLC has not confirmed the panel.",
    "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_vendor_answer",
-   "already_known": "",
+   "board": "ldo_a",
+   "area": "Panel / depaneling",
+   "what": "The board is too small for JLC's assembly line, so the order asks JLC to make a panel but says neither how the boards are separated nor where. A V-score (a groove so boards snap apart) needs copper at least 0.4 mm from the score, but tracks and microvias sit 0.30 mm and pads 0.31-0.34 mm from the edge. Break-off tabs need 4-5 mm of edge, and with a 1 mm keep-off from parts only two stretches qualify. Seven small ceramic capacitors lie 0.31-0.51 mm from an edge with their long axis across it, the orientation most prone to flex cracking when the panel is broken.",
+   "where": "FPGA-LDO A V12 outline x 88.68-111.32, y 110.34-147.10. East: C301/C302 pads 0.31 mm in (U3 input VIN_3V3 and output VDD_ADC), R2/R3/R5/U3 0.59 mm, J2 DF40 pads 0.88 mm. West: C501, C502, C54, C701, C702 0.51 mm, J1 pads 0.89 mm. South: C16 0.34 mm, TP2/TP4 0.60 mm. North: R6 0.33 mm, J4/J3 courtyards 0.74/0.94 mm. Copper: L5 tracks /ASIC2_DATA1 at x 89.03 and /STIM_START_SHARED at x 110.97 (y 118.9-123.5) and L5-L6 microvias (89.11, 115.15), (110.89, 115.15), (110.89, 118.35) at 0.30 mm; all plane and pour fills 0.50 mm.",
+   "evidence": "pcbnew pad and courtyard boxes on a scratch copy (a review working file (not published), edgeclear.py) and exports/ldo_a/board.json. Clear stretches with a 1.0 mm keep-off from pads and courtyards: north none longer than 1.3 mm; east y 112.42-115.53 (3.1 mm) and y 135.31-139.78 (4.5 mm); south x 88.68-91.70 (3.0 mm) and 94.89-98.00 (3.1 mm); west y 110.34-118.69 (8.3 mm, with a microvia 0.30 mm in at y 115.15) and y 144.91-147.10 (2.2 mm). inputs/ldo_a/V12_order/JLC_Remarks_paste.txt: 'panel by JLCPCB with assembly rails ... for example 3 x 2 boards with 5 mm rails', no separation method or tab positions, and 'the closest part courtyard is 0.14 mm from the edge (C301, C302)'. C301/C302/C501/C502/C54/C701/C702 at rotation 0/180 (long axis across the east/west edge); C16 at -90 (across the south edge). parts.csv: no fiducials; no panel drawn. Merge check of the remark (lines 6-7): its example, 3 x 2 boards of 22.64 x 36.76 mm making about 71.9 x 85.5 mm with 5 mm rails, works out to 2 mm gaps between boards, which implies routed separation rather than a V-score, but neither the method nor the tab positions are stated.",
+   "source": "JLCPCB PCB Manufacturing & Assembly Capabilities, panelization rows (V-cut copper clearance >= 0.4 mm, zero board spacing; tab routing 1.6/2 mm spacing, breakaway tab >= 4 mm, >= 5 mm with mouse bites), https://jlcpcb.com/capabilities/pcb-capabilities; JLCPCB 'Technical Guidance: V-Cut Panelization Standards' (updated 10 Nov 2026: 0.4 mm minimum, 1.0 mm recommended, >= 2.0 mm for stress-sensitive components), https://jlcpcb.com/blog/v-cut-panelization-standards; JLCPCB Help 'PCB Panelization' (V-cut zero spacing, fiducials only on rails), https://jlcpcb.com/help/article/pcb-panelization; Murata 'What kind of layout helps prevent chip MLCCs from cracking?' (mount parallel to and away from the separation line; read via search summary), https://article.murata.com/en-global/article/layout-helps-prevent-chip-mlcc-from-cracking; known/frontend.json FE-07 for the same issue on the Frontend.",
+   "consequence": "JLC must either query the order or pick a method itself: a V-score breaks its own 0.4 mm copper rule, and tabs at mid-edge sit beside the J1/J2 joints and these capacitors. A flex-cracked C301 or C501 later shorts VIN_3V3, the whole stack's 3.3 V; a cracked C302, C502 or C54 shorts VDD_ADC or DVDD for all eight ASICs. Such cracks often pass test and fail in use.",
+   "suggested_action": "Before ordering, state the panel in the remark or draw it: routed separation with 2 mm gaps, no V-score, tabs only at the west edge y 110.3-118.7 and the east edge y 135.3-139.8, and ask JLC to confirm. Where the layout allows, turn C301/C302 and the west-edge capacitors parallel to the edge or move them 1 mm in.",
+   "basis": "needs_decision",
+   "relation": "new",
+   "confidence": "high",
    "found_by": [
-    "ldo_a-gap3-bottom-mask-paste-fine-p"
+    "fresh"
    ],
-   "title": "The order sets no bottom stencil thickness; above 0.10 mm the X2SON pin apertures release paste poorly.",
-   "area": "Assembly / solder paste",
-   "what": "Solder paste leaves a stencil hole cleanly only if the hole's open area is large compared with its wall area; this 'area ratio' is usually kept at 0.66 or more (IPC-7525 guideline). The X2SON pin apertures of the four TPS7A2015 regulators copy TI's own example stencil, which TI bases on a 0.075-0.1 mm stencil, giving 0.61 at 0.10 mm, 0.51 at 0.12 mm and 0.41 at 0.15 mm. The assembly remark does not name a stencil thickness, and JLC publishes no default for its assembly service; because the bottom side also carries the 0.4 mm pitch J4, 0.10-0.12 mm is the likely choice and 0.15 mm unlikely. Separately, the exposed-pad (EP, the centre thermal pad) paste is a 45-degree rounded square with 24 % more paste than TI's round aperture.",
-   "where": "FPGA-LDO Option A V12, bottom side, 16 pin apertures: U3 (x 109.925-110.575, y 124.42-125.28), U4 (97.825-98.475, 124.42-125.28), U5 (89.625-90.275, 124.42-125.28), U7 (89.625-90.275, 141.07-141.93). Outputs ASIC_VDD_ADC, ASIC_VDD_DRIVER, ASIC_DVDD, ASIC_VDD_CGEN.",
-   "evidence": "B_Paste.gbp in FPGA_LDO_A_V12_gerbers.zip and footprint Texas_X2SON-4_1x1mm_P0.65mm.kicad_mod: pin aperture 0.40 x 0.21 mm with 0.18 mm chamfer, area 0.0678 mm2, perimeter 1.115 mm. Area ratio A/(P x t) = 0.61 / 0.51 / 0.41 at t = 0.10 / 0.12 / 0.15 mm. J4 (0.4 mm DF40, bottom): 0.80 / 0.67 / 0.54 at the same thicknesses; DFN and QFN pins about 0.83-0.84 at 0.12 mm. EP paste 0.197 mm2 against 0.159 mm2 for TI's 0.45 mm round; EP-to-pin paste ratio 2.9 against TI's 2.35. inputs/ldo_a/V12_order/JLC_Remarks_paste.txt names no stencil thickness.",
-   "source": "TI TPS7A20 data sheet SBVS338H, DQN0004A Example Stencil Design (4215302/E): 4X 0.21 x 0.4 mm pins, 0.45 mm round EP, 88 % coverage, based on 0.075-0.1 mm stencil, note 9 (IPC-7525), https://www.ti.com/lit/ds/symlink/tps7a20.pdf. JLC stencil guide (0.4 mm pitch common 0.10 mm, 0.5 mm 0.12 mm, 0.65 mm 0.15 mm), https://jlcpcb.com/blog/how-to-choose-a-solder-paste-stencil; JLC stencil and PCBA capability pages (no PCBA default stated).",
-   "consequence": "If JLC picks 0.12 mm or more, paste release on the four 1 x 1 mm regulators varies from print to print, which can leave weak or open pin joints on four of the nine ASIC rails. Repair is hot-air rework of 1 x 1 mm bottom-side parts, not a board spin.",
-   "suggested_action": "Add 'bottom stencil 0.10 mm, laser-cut, electropolished' (or a step-down at U3/U4/U5/U7) to the assembly remark and ask JLC to confirm the stencil thickness it will use.",
-   "origin": "carried",
-   "category": "Layout & manufacturing"
+   "corrected": "The order remark asks JLC to panelize the 22.64 x 36.76 mm board but does not say how the boards are separated or where the tabs go. A V-score (V-cut) is ruled out on every edge: the L2-L4 planes and several L1/L6 pours fill to 0.30 mm from all four edges, tracks and microvias sit at 0.30 mm and pads at 0.31-0.34 mm, against JLC's 0.4 mm minimum. Yet the remark's own 71.9 x 85.5 mm example adds up only with zero-gap rails on the north and south edges, which only a V-cut allows. A routed panel with 1.6-2 mm gaps is possible. With a 1 mm keep-off, though, only the west edge from the NW corner to J1 (7.5-8.4 mm) clearly fits JLC's 5 mm mouse-bite tab. The east stretch at y 135.3-139.8 (4.6 mm, or 3.6 mm if the keep-off also applies sideways from J2's courtyard) takes at most a 4 mm plain tab. Eight 0402 capacitors (C301, C302, C501, C502, C54, C701, C702, C16) sit 0.31-0.51 mm from an edge with their long axis across it.",
+   "verification": "verified by an independent skeptic (corrected)",
+   "id": "LDOA-38",
+   "origin": "new",
+   "category": "Layout & manufacturing",
+   "check2": "Second check: corrected",
+   "check2note": "Reproduced: order Gerbers put L1-L4 copper 0.30 mm from every edge (the 'where' text's 0.50 mm fill is wrong; the corrected text is right); L5 tracks/microvias 0.30 mm; pads 0.31-0.34 mm; eight crosswise 0402s 0.31-0.51 mm. JLC: V-cut needs ≥0.4 mm, tab routing only ≥0.2 mm with 4/5 mm tabs, so a routed panel is legal and 'no panel possible' is wrong. 1 mm keep-off stretches: west 8.3 mm, east 4.5 mm. Remark names no method. Major fits (FE-07 precedent).",
+   "upd_note": "The panel is now drawn and stated in the order: FPGA-LDO A panel V1 · edited 13 Nov 2026, 10:21 CST puts the board alone in a 70 x 70 mm frame with a 2 mm routed slot, no V-cut and six 5 mm break-off tabs (two north, two south, one west, one east), each with five 0.60 mm holes. The remark asks JLC to ship the panels whole. Measured on the panel: three tabs end 0.56 to 0.61 mm from fitted capacitors (C701 at the west tab, C17 and C1 at the south tab), closer than the 1 mm keep-off this finding used, and one sits 0.87 mm from R6. JLC has not reviewed the panel.",
+   "title_was": "The order leaves the panel method and tab positions to JLC, but copper 0.30 mm from every edge rules out V-cut, and with a 1 mm keep-off only a west 8.3 mm and an east 4.5 mm stretch can take a tab.",
+   "upd": "changed",
+   "upd_sev_was": "major"
   },
   {
    "title": "Three polarized bottom parts (U1, D12, J4) are at 0 or 180 degrees in the CPL, and a half-turn on U1 or D12 shorts the 3.3 V input or drives the -12 V rail positive.",
@@ -990,56 +830,9 @@
    "verification": "checked by an independent reviewer",
    "id": "LDOA-46",
    "origin": "new",
-   "category": "Layout & manufacturing"
-  },
-  {
-   "id": "LDOA-23",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "needs_decision",
-   "already_known": "V12_record/START_HERE.md; the reviewer agrees.",
-   "found_by": [
-    "ldo_a-parts-order"
-   ],
-   "title": "D11 and D12 (B0540WS-7) are out of stock at JLC, and the proposed B5819WS substitute is unchecked.",
-   "area": "Sourcing",
-   "what": "The two Schottky diodes of the LT3582 boost and inverting converter showed 0 in stock at JLC, and the LT3582 data sheet names the B0540WS for this job. The 5 Nov cart's substitute, B5819WS, has not been checked against the circuit's limits. A substitute needs a 40 V-class reverse rating, a peak current rating above the inverting switch limit of 720 mA, an average rating only above the small output load, low leakage when hot, and the same SOD-323 pad.",
-   "where": "FPGA-LDO Option A V12, bottom side, SOD-323. D11: anode /SW_P (U1 pin 12, L11), cathode /CAPP (U1 pins 10/11, C15). D12: cathode /SW_N (U1 pins 3/4, L12), anode /STIM_NEG_12V (U1 pin 2).",
-   "evidence": "inputs/ldo_a/V12_order/parts_status.csv row C98664: stock 0, orderable -173 (read 10 Nov 2026, 16:04). Reverse voltage about 15.3 V on D12 and about 12.3-12.8 V on D11 (netlist.xml topology). LT3582 Rev B p.4: inverting switch limit 490/600/720 mA, boost 285/350/430 mA, output disconnect 124/155/186 mA. Schematic note: inductor peaks 0.42/0.69 A. pads.csv: 0.60 x 0.45 mm pads at 2.10 mm centres (2.70 mm overall). LCSC C98664: 40 V, 500 mA, 5 uA at 30 V.",
-   "source": "ADI LT3582 data sheet Rev B (3582512fb), p.4 electrical characteristics, p.19 'Diode Selection', Fig. 13 p.22, https://www.analog.com/media/en/technical-documentation/data-sheets/3582512fb.pdf (read from a local copy). Diodes DS30524 could not be opened.",
-   "consequence": "The board cannot be assembled until a diode is sourced. A leaky substitute lowers efficiency when warm.",
-   "suggested_action": "Order B0540WS-7 through JLC Global Sourcing, or check B5819WS (or another part) against the limits above before putting it in the BOM.",
-   "origin": "changed",
-   "category": "Parts, BOM & sourcing",
-   "v2note": "See LDOA-48. See LDOB-39.",
-   "merged": [
-    {
-     "title": "B0540WS-7 has no stock at DigiKey either until Jan-Feb 2027, while the in-stock JSCJ B5819WS meets the LT3582's diode needs apart from higher leakage.",
-     "severity": "minor",
-     "board": "ldo_a",
-     "area": "Parts sourcing: D11/D12",
-     "what": "LDOA-23 left the B5819WS substitute unchecked. JSCJ's data sheet rates it at 40 V and 1 A average, with a 1.5 A repetitive peak (above the 0.48/0.78 A worst-case inductor peaks) and a 9 A surge. Forward drop is 0.6 V at 1 A and capacitance is 120 pF, about the same as the B0540WS's 125 pF. Its SOD-323 body fits the board pads. The weak point is leakage: up to 1 mA at 40 V and 25 C, against 5 uA at 30 V for the B0540WS. That is the efficiency loss the LT3582 data sheet warns about for leaky Schottky diodes, and it is small at 12-15 V reverse. The original part is scarce: DigiKey shows 0 stock, a 32-week lead time and its next deliveries in Jan-Feb 2027.",
-     "where": "FPGA-LDO A V12, D11 (boost, about 12.3-12.8 V reverse) and D12 (inverting, about 15.3 V reverse), footprint FPGA_LDO_V30A:D_SOD-323, pads 0.60 x 0.45 mm at 2.10 mm centres.",
-     "evidence": "JSCJ B5817WS-5819WS data sheet Rev 1.0, p.1: VRRM 40 V, IO 1 A, IFRM 1.5 A, IFSM 9 A (8.3 ms), VF 0.6 V at 1 A, IR 1 mA maximum at VR 40 V, CD 120 pF at 4 V/1 MHz. p.3: E1 2.55-2.75 mm, height 1.0 mm maximum, suggested pads 0.7 x 0.7 mm at 2.15 mm. The board pads' outer extent is 2.70 mm, so lead tips may overhang by up to 0.025 mm per side. JSCJ text extracted to a review working file (not published) DigiKey B0540WS-7, read 12 Nov 2026: Active, 0 in stock, 294 due 18 Jan 2027 and 2,706 due 22 Feb 2027, 32-week lead time, 5 uA at 30 V, 125 pF at 0 V. JLC C22624: 744,835 in stock on 6 Nov (inputs/system/parts_sourcing_V1/JLC_STOCK_RECHECK_6NOV.csv line 40); C98664 orderable -173 on 10 Nov (parts_status.csv). Peak currents from LDOA-01. Known context: the 11 Nov fix plan for LDOA-23 (known/fix_plans_11nov_evening_on_V3.json) instead proposes B0540WS from other makers (JSCJ B0540WS C2961214; MCC B0540WS-TP C668860) and says not to use B5819WS until its hot leakage at 15 V is checked. The JSCJ leakage figure above is a 25 C maximum at 40 V and this finding gives no hot-leakage figure, so that check is still open.",
-     "source": "JSCJ B5817WS-5819WS data sheet Rev 1.0 (distributor copy hosted by Oneyac), p.1 and p.3, https://uploadcdn.oneyac.com/attachments/files/brand_pdf/jscj/65/1E/JSCJ-B5819WS.pdf. LCSC C22624, https://www.lcsc.com/product-detail/C22624.html. DigiKey B0540WS-7, https://www.digikey.com/en/products/detail/diodes-incorporated/B0540WS-7/816524. ADI LT3582 data sheet Rev B (3582512fb), p.19 Diode Selection, https://www.analog.com/media/en/technical-documentation/data-sheets/3582512fb.pdf (saved copy). Known lists: known/ldo_a.json LDOA-23; known/fix_plans_11nov_evening_on_V3.json (LDOA-23 plan).",
-     "consequence": "Without a decision, D11/D12 hold up assembly until 2027 or a Global Sourcing buy. With the B5819WS the converter works, only slightly less efficient when warm.",
-     "suggested_action": "Either enter JSCJ B5819WS (C22624) as the MPN and JLC part for D11/D12, or commit to a Global Sourcing buy of B0540WS-7. In either case check the cathode bar in JLC's placement preview.",
-     "basis": "needs_decision",
-     "relation": "changes LDOA-23",
-     "confidence": "high",
-     "found_by": [
-      "gaps"
-     ],
-     "corrected": "B0540WS-7 has 0 stock at DigiKey, with deliveries on 18 Jan and 22 Feb 2027 and a 32-week lead time. JSCJ B5819WS (C22624, in JLC stock) meets the 40 V rating, the repetitive-peak current (1.5 A against 0.78 A worst case) and the SOD-323 pads, but leaks up to 1 mA at 40 V and 25 C, and JSCJ gives no hot-leakage data for it; the D11/D12 decision should also weigh the B0540WS parts from other makers already proposed (JSCJ C2961214, MCC C668860), whose JLC stock is not shown on their pages.",
-     "verification": "checked by an independent reviewer",
-     "id": "LDOA-48",
-     "origin": "new",
-     "category": "Parts, BOM & sourcing"
-    }
-   ],
-   "dupnote": "Same problem as LDOB-39 on the FPGA-LDO Option B page.",
-   "dupkind": "same_problem"
+   "category": "Layout & manufacturing",
+   "upd_note": "Partly done. The assembly remark now asks JLC to place every polarised part by pin 1, gives a pin-1 table and drawings, and asks JLC to confirm placement before production; the placement file was checked against JLC's library footprints. D12 now sits at 180 degrees because JLC's footprint for the new diode has pin 1 on the anode. U1 (180 degrees) and J4 (0 degrees) are unchanged, and JLC has not said how it reads bottom-side angles, so the half-turn risk stays until their preview is checked.",
+   "upd": "changed"
   },
   {
    "id": "LDOA-25",
@@ -1051,7 +844,7 @@
    "found_by": [
     "ldo_a-parts-order"
    ],
-   "title": "29 of 72 placed parts have no MPN, so the order BOM's JLC part choices exist only in a script table.",
+   "title": "27 of 80 placed parts still have no manufacturer part number in the schematic, though every one now has its JLC number.",
    "area": "Schematic part fields",
    "what": "An MPN (manufacturer part number) and an LCSC number (JLC's stock code) in each symbol tell anyone building a BOM exactly which part to buy. On this schematic 29 of the 72 placed parts have no MPN and only five carry an LCSC number. The order BOM instead picks each JLC part from a value-and-footprint table inside make_jlc_v12.py. A BOM regenerated from the schematic alone would lose the JLC numbers and the passive part choices, though it would keep the 43 MPNs that are present (every IC, connector, diode and the 0805/1206 capacitors).",
    "where": "FPGA-LDO Option A, schematic V30A. No MPN: C1, C2, C11, C16, C17, C51, C53-C57, C203, C603, C803, R1-R6, R16-R19, R201, R601, R801, R901, R1001. LCSC field only on U2, U6, U8, U9 (C580010) and U10 (C670492). L11/L12 MPN field DFE201610E-6R8M=P2.",
@@ -1060,30 +853,10 @@
    "consequence": "A later BOM, or reuse of this schematic for Option B, could order different passives than the ones chosen for V12 without anyone noticing. The C1/C2 voltage mismatches point to a higher rating on the ordered part, so they carry no electrical risk.",
    "suggested_action": "Copy the MPN and LCSC numbers from the JLC BOM into the symbol fields, correct the C1/C2 voltage fields, and confirm or replace the L11/L12 MPN.",
    "origin": "carried",
-   "category": "Parts, BOM & sourcing"
-  },
-  {
-   "title": "U1 LT3582EUD-12#PBF is Active and in stock at DigiKey (359 pcs, 10-week lead time), so U1 can be bought now; only the '-12 only' order note is still missing.",
-   "severity": "minor",
-   "board": "ldo_a",
-   "area": "Parts sourcing: U1",
-   "what": "LDOA-07 rated U1's JLC stock gap as major and could not confirm a lead time. DigiKey lists the exact part as Active, with 359 in stock in tubes and a 10-week standard lead time. Five boards need five parts, so U1 can be bought now and sent to JLC, or ordered through JLC Global Sourcing. What remains of LDOA-07 is that the BOM and assembly remark still do not restrict U1 to the -12 suffix.",
-   "where": "FPGA-LDO A V12, U1 LT3582EUD-12#PBF (JLC C670975); inputs/ldo_a/V12_order/FPGA_LDO_A_V12_BOM_JLC.csv U1 line; JLC_Remarks_paste.txt stock line.",
-   "evidence": "DigiKey product page read 12 Nov 2026: status Active, 359 in stock, standard lead time 10 weeks, $8.25 for 1 and $6.385 each for 10, tube, data sheet link 3582512fb.pdf (the Rev B used for this review). LCSC/JLC C670975 pages show no stock figure in their text (it loads by script). parts_status.csv shows JLC stock 0 and orderable 0 on 10 Nov. The order remark lists the stock gap but no variant restriction. Known context: the 11 Nov fix plan for LDOA-07 (known/fix_plans_11nov_evening_on_V3.json) already recorded the same DigiKey figures (359 in stock, Active, 10-week lead time, read 11 Nov 2026) and proposes buying six and consigning them to JLC; the open list (known/ldo_a.json) still rates LDOA-07 major with the lead time unverified, which this 12 Nov re-read settles.",
-   "source": "DigiKey LT3582EUD-12#PBF, https://www.digikey.com/en/products/detail/analog-devices-inc/LT3582EUD-12-PBF/2107620. JLC part page https://jlcpcb.com/partdetail/C670975. ADI LT3582 data sheet Rev B, p.12 (base part ships with outputs disabled; -12 version preconfigured), https://www.analog.com/media/en/technical-documentation/data-sheets/3582512fb.pdf (saved copy). Known lists: known/ldo_a.json LDOA-07; known/fix_plans_11nov_evening_on_V3.json (LDOA-07 plan).",
-   "consequence": "The sourcing risk is lower than recorded. A wrong-suffix substitute (base LT3582 or -5) is still possible and would give no ±12 V or only ±5 V.",
-   "suggested_action": "Buy 5-6 LT3582EUD-12#PBF now, or order through JLC Global Sourcing. Add 'LT3582EUD-12 only, no base or -5 part' to the BOM comment and assembly remark.",
-   "basis": "needs_decision",
-   "relation": "changes LDOA-07",
-   "confidence": "high",
-   "found_by": [
-    "gaps"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "LDOA-50",
-   "origin": "new",
-   "category": "Parts, BOM & sourcing"
+   "category": "Parts, BOM & sourcing",
+   "upd_note": "Mostly done. In schematic V35 · edited 13 Nov 2026, 00:27 CST every fitted part carries its JLC number in the schematic, and L11/L12 and D11/D12 name the parts actually ordered. Left: 27 of 80 placed parts (mostly resistors and capacitors, for example C1, C11, R1-R6) still have no manufacturer part number field, and the voltage fields of C1 (10 V) and C2 (16 V) still differ from the ordered 25 V and 50 V parts.",
+   "title_was": "29 of 72 placed parts have no MPN, so the order BOM's JLC part choices exist only in a script table.",
+   "upd": "changed"
   },
   {
    "id": "LDOA-20",
@@ -1106,7 +879,8 @@
    "origin": "carried",
    "category": "Safety, ESD & bring-up",
    "dupnote": "Same problem as SYS-15 on the Whole system page.",
-   "dupkind": "same_problem"
+   "dupkind": "same_problem",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: the ten test pads are VIN_3V3, +12 V, -12 V, the two stimulation regulator inputs, enable, GND, AGND, AC_IN and the new 5 V provision. None of the nine ASIC rails has one."
   },
   {
    "title": "The +12 V test pad TP2 is 0.6 mm from the enable pad TP4, so one probe slip puts about 12 V on enable pins rated 6-6.5 V.",
@@ -1129,7 +903,8 @@
    "verification": "checked by an independent reviewer",
    "id": "LDOA-47",
    "origin": "new",
-   "category": "Safety, ESD & bring-up"
+   "category": "Safety, ESD & bring-up",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: TP2 (+12 V) and TP4 (enable) are still 1.6 mm apart centre to centre, a 0.6 mm gap between the 1.0 mm pads."
   },
   {
    "id": "LDOA-17",
@@ -1141,7 +916,7 @@
    "found_by": [
     "ldo_a-connectivity"
    ],
-   "title": "Four schematic statements no longer match the board or the Frontend it mates with.",
+   "title": "Two schematic statements still name older revisions.",
    "area": "Schematic notes",
    "what": "Project rules require each circuit block's notes to state its source and changes correctly, and four statements are out of date. The mating note and the J1/J2 description fields name 'Artix Frontend 8L V1', though the mating board is 8L V3, and say the Frontend has not adopted this pin map, though all 140 J1/J2 contacts carry the same nets on both boards. The LT3582 and VIN_3V3 notes refer to current or sag 'at the J1 contacts', but VIN_3V3 enters on J2.68-70. The rail-capacitor note puts C51 and C53-C57 'right at the J3/J4 ports', which holds for C51, C53, C55 and C57 but not for C54 or C56.",
    "where": "FPGA-LDO A schematic FPGA_LDO_A_Layout_V12.kicad_sch: the Frontend mating, LT3582, VIN_3V3 and rail-capacitor text boxes (among FRONTEND MATING, STIMULATION SUPPLY, VIN_3V3 ENTRY, RAIL CAPACITORS AT THE ASIC PORTS); J1/J2 description fields.",
@@ -1151,7 +926,10 @@
    "suggested_action": "Correct the four statements and the J1/J2 description fields in the next schematic revision. No copper change is needed.",
    "origin": "changed",
    "v2note": "Besides the four statements already listed, the V12 ASIC PORTS block (title and text box, schematic lines 635-636) and the twelve 'spare (PCB-5 n/c)' labels on J3/J4 pins 2/4/6/8/24/58 still describe PCB-5. Under ASIC V4 those six pins carry far-chip outputs, and the far board has its own SPI data (pins 16/18/66/68), latch (70) and clock (72), so only CLKH, the four STIM lines, FE_RESET, IMP_TEST, AC_IN and CHIP_RESET are shared between the near and far boards. Rewrite these notes in the pin map V6 revision, not with the fix plan's 'pin map V5 adopted' text; this is a text-only change and stays minor.",
-   "category": "Records & documentation"
+   "category": "Records & documentation",
+   "upd_note": "Mostly fixed in schematic V35 · edited 13 Nov 2026, 00:27 CST: the four statements of 12 Nov now name the 8L V3 Frontend and pin map V6, the 3.3 V input on J2 pins 68 to 70, the J2 contacts, and C54 beside U5 and C56 beside U7. Two small ones remain: the schematic's title comment still says layout V14, and the J3 and J4 mating fields name ASIC bottom board V6, where the boards are now V7.",
+   "title_was": "Four schematic statements no longer match the board or the Frontend it mates with.",
+   "upd": "changed"
   },
   {
    "id": "LDOA-30",
@@ -1172,7 +950,8 @@
    "consequence": "Possible small switching spur on REF_VCM, the ASIC's common-mode reference.",
    "suggested_action": "On the first board, measure REF_VCM noise around the LT3582 switching frequency at idle and under load.",
    "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: the boost switch node is still about 2 mm (1.98 mm edge to edge) from the REF_VCM regulator's set trace on the bottom layer. Needs the noise measurement on a first board."
   },
   {
    "id": "LDOA-33",
@@ -1193,7 +972,8 @@
    "consequence": "Probably harmless for stimulation, but VSS10 also feeds the ASIC and shares its AGND, so unmeasured high-frequency content is a possible path for noise into recordings.",
    "suggested_action": "Add VSS10 and VDD10 at the J4 pins to the bring-up ripple measurement, using a 20 MHz-bandwidth probe with a short ground spring.",
    "origin": "carried",
-   "category": "Power & regulators"
+   "category": "Power & regulators",
+   "upd_note": "Still open; needs the ripple measurement on a first board. The rails are now +/-8 V, and the ASIC designer asked for them to be very low noise."
   },
   {
    "title": "C1001 and C901 probably fall below the LT3094's 10 uF and the LT3042's 4.7 uF minimum input capacitance at 12 V bias; only the output side was being tracked.",
@@ -1218,7 +998,8 @@
    "origin": "new",
    "category": "Power & regulators",
    "dupnote": "LDOA-22.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Unchanged: C901 and C1001 are still 10 uF 0805 parts at about 12 V bias, and the maker's bias data has not been read."
   },
   {
    "id": "LDOA-29",
@@ -1242,7 +1023,9 @@
    "category": "Signals, clocks & timing",
    "v2note": "See LDOA-55.",
    "dupnote": "LDOA-55.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Still true, with new figures after the lanes were re-drawn. On FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST the longest stacked runs are ASIC7_DATA6 over STIM_CHIP3_SPI_DR (8.8 mm) and ASIC7_DATA5 over STIM_CHIP3_SPI_DL (8.2 mm), about 120 mm in all. Inner-layer L5 lanes run over bottom-layer pours for 94 mm (3.3 V input), 58 mm (DVDD), 47 and 38 mm (the two stimulation regulator inputs), 38.5 mm (VDD_ADC), 34.5 mm (-8 V) and 28.6 mm (+8 V).",
+   "upd": "changed"
   },
   {
    "id": "LDOA-31",
@@ -1263,7 +1046,8 @@
    "consequence": "No effect on the current files; JLC's CAM also handles its own mask bridges. A sliver added by a later edit would pass DRC unreported.",
    "suggested_action": "Set the board's minimum mask web to 0.10 mm (JLC green) and re-run DRC; it is clean today at that value.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "Unchanged: the minimum solder-mask web of FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST is still 0."
   },
   {
    "id": "LDOA-34",
@@ -1284,7 +1068,8 @@
    "consequence": "Builds as drawn within JLC's limits. A solder bridge at this spot would short the -12 V stimulation supply to ground at power-up.",
    "suggested_action": "Optionally move the 0.25 mm segment at x = 102.1 about 0.05 mm east so the gap is about 0.15 mm.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "Unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: the -12 V trace is still 0.10 mm from U1's ground pin 1."
   },
   {
    "id": "LDOA-36",
@@ -1305,7 +1090,8 @@
    "consequence": "If the filled-and-capped option or the remark were dropped on a re-order or with another factory, solder would wick into the exposed-pad vias and the pads could end up with voids or too little solder.",
    "suggested_action": "Keep the filled-and-capped option and the via-in-pad remark on every order, and note the requirement in the board's fabrication notes.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "Unchanged: the order remark still asks for filled and capped vias (now 123 laser and 79 through-via ends in pads), but the board file of FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST still records only tenting, with filling and capping set to no."
   },
   {
    "id": "LDOA-32",
@@ -1326,31 +1112,8 @@
    "consequence": "If the stock is gone at order time the boards wait, or the 1.5 V rails need a substitute LDO with a different footprint.",
    "suggested_action": "Secure the 20 parts (pre-order or reserve) at the same time as the U1 order, and re-read JLC stock just before ordering.",
    "origin": "carried",
-   "category": "Parts, BOM & sourcing"
-  },
-  {
-   "title": "The Frontend pin constraints set no DRIVE or SLEW on the FPGA outputs to the ASICs, so their edge rate is never chosen.",
-   "severity": "note",
-   "board": "frontend",
-   "area": "FPGA I/O constraints",
-   "what": "Every ASIC-facing ball is set only to LVCMOS15, so Vivado uses its defaults of 12 mA drive and SLOW slew. SLOW is the right choice for these 32-60 kHz strobes and slow SPI lines. Writing DRIVE 4 or 8 and SLEW SLOW explicitly would lower their dI/dt and the STIM_CLK-to-STIM_START/EN crosstalk, and would protect them against a later global change. This does not help the CLK32 clocks, whose aggressors are ASIC outputs.",
-   "where": "W2/inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc: STIM_START/EN/CLK/CHB_SHARED (B10, J6, B11, V9), BOARD1/3_CLK (G16, V17), BOARD1/3_SPI_CLK (D10, V8), SPI_LATCH_SHARED (D11), CHIP_RESET_SHARED (C9), STIM_CHIP1-4_SPI_DL/DR and the V4 top-chip SPI outputs.",
-   "evidence": "grep of the XDC: 116 constraints, no DRIVE, SLEW or PULL property. Crosstalk from STIM_CLK onto STIM_START at the ASIC is 91 mV at 1 ns and 124 mV at 0.5 ns (25 ohm), and 27-28 mV at 2 ns (run2ns.json).",
-   "source": "AMD UG471 7 Series FPGAs SelectIO Resources User Guide v1.10 (8 May 2018), p.48 (SLEW default SLOW; DRIVE default 12; Table 1-8: LVCMOS15 HR 4, 8, 12 or 16 mA) and p.56 (Table 1-14); https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO (returned HTTP 404 today; read from a review working file (not published)).",
-   "consequence": "None today, because SLOW is the default. The FPGA-side edge rate is unrecorded, so the 0.5 ns cases cannot be ruled out on paper.",
-   "suggested_action": "Add DRIVE 8 (or 4) and SLEW SLOW to the ASIC-facing output constraints, and check the edge rate in Vivado's IBIS export.",
-   "basis": "confirmed_in_files",
-   "relation": "new",
-   "confidence": "high",
-   "found_by": [
-    "gap"
-   ],
-   "verification": "single reviewer (gap round)",
-   "id": "LDOA-62",
-   "origin": "new",
-   "category": "Firmware & constraints",
-   "dupnote": "Same problem as SYS-51 on the Whole system page.",
-   "dupkind": "same_problem"
+   "category": "Parts, BOM & sourcing",
+   "upd_note": "Still tight: JLC showed 40 TPS7A2015PDQNR free to order for the 20 needed on 13 Nov 2026, 10:36 CST, and a cart does not reserve them. Buying is handled as its own step once the designs are settled."
   },
   {
    "id": "LDOA-35",
@@ -1362,7 +1125,7 @@
    "found_by": [
     "ldo_a-gap3-bottom-mask-paste-fine-p"
    ],
-   "title": "The V12 record's 0.12 mm smallest mask bridge is the copper gap; the real smallest mask dam is 0.17 mm.",
+   "title": "The board's minimum mask web is still not set; the old record's wrong mask figure is no longer repeated.",
    "area": "Solder mask",
    "what": "A mask dam is the strip of solder mask left between two neighbouring pad openings. Measured directly from both mask Gerbers, no dam on the board is below JLC's 0.10 mm limit: the smallest is 0.200 mm on the bottom and 0.170 mm on the top. The only merged openings are the bridged jumpers JP1 and JP2, which are meant to be one opening. The V12 record gives 0.12 mm (X2SON) as the smallest mask bridge, but that is the copper pad-to-pad gap; the X2SON mask openings sit 0.05 mm inside the copper, so the real X2SON dam is 0.2196 mm.",
    "where": "FPGA-LDO A V12: B_Mask.gbs (0.200 mm at J4 0.4 mm pitch pads and between U2/U6/U8 DFN pins and their exposed pads); F_Mask.gts (0.170 mm at J1, J2 and J3, 0.23 mm pads at 0.4 mm pitch); X2SON U3/U4/U5/U7 pin to EP 0.2196 mm; JP1 (90.15, 136.2), JP2 (109.75, 142.5).",
@@ -1371,10 +1134,13 @@
    "consequence": "No effect on this order. The minimum-web-0 setting matters only for later edits, because DRC still would not catch a new sliver.",
    "suggested_action": "Correct the record's 0.12 mm figure to 0.17 mm (mask dam), and set the board's minimum mask web to 0.10 mm so later edits are checked.",
    "origin": "carried",
-   "category": "Records & documentation"
+   "category": "Records & documentation",
+   "upd_note": "The records of layouts V13 to V16 no longer state the wrong 0.12 mm mask figure. The second half of the action, a 0.10 mm minimum mask web in the board settings, is still not done and is tracked as LDOA-31.",
+   "title_was": "The V12 record's 0.12 mm smallest mask bridge is the copper gap; the real smallest mask dam is 0.17 mm.",
+   "upd": "changed"
   },
   {
-   "title": "D11/D12 and L11/L12 have no data sheet link, and the LT3042/LT3094 symbols have no data sheet revision, against the project's rule for schematic references.",
+   "title": "The LT3042/LT3094 symbols still have no data sheet revision.",
    "severity": "note",
    "board": "ldo_a",
    "area": "Schematic data sheet fields",
@@ -1394,7 +1160,76 @@
    "verification": "checked by an independent reviewer",
    "id": "LDOA-61",
    "origin": "new",
-   "category": "Records & documentation"
+   "category": "Records & documentation",
+   "upd_note": "Half done. In schematic V35 · edited 13 Nov 2026, 00:27 CST D11, D12, L11 and L12 have data sheet links and revisions. The LT3042 and LT3094 symbols (U2, U6, U8, U9, U10) still have an empty data sheet revision field.",
+   "title_was": "D11/D12 and L11/L12 have no data sheet link, and the LT3042/LT3094 symbols have no data sheet revision, against the project's rule for schematic references.",
+   "upd": "changed"
+  },
+  {
+   "id": "LDOA-01",
+   "title": "No orderable part is chosen for inductors L11/L12, so the +/-12 V converter cannot be assembled as ordered.",
+   "severity": "note",
+   "closed_by": "FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST and schematic V35 · edited 13 Nov 2026, 00:27 CST name TDK VLS201612HBX-6R8M-1 (JLC C501945) for L11 and L12, in the schematic and on the JLC parts list. Its saturation current is 0.91 A (TDK data sheet: https://datasheet.lcsc.com/datasheet/pdf/dce85b51190e1e89e74a90d08568b6cf.pdf), above the 0.48 A and 0.78 A peaks. The board pads are 0.55 x 1.6 mm, 2.0 mm over all, against TDK's 0.5 x 1.6 mm, 2.0 mm. JLC showed 193 in stock for 10 needed on 13 Nov 2026; buying is handled as its own step once the designs are settled."
+  },
+  {
+   "id": "LDOA-13",
+   "title": "The +/-10 V stimulation rails can reach +/-10.3 V, with no ASIC or capacitor rating to show that is safe.",
+   "severity": "note",
+   "closed_by": "The owner set the stimulation rails to +/-8 V on 12 Nov 2026, the level the ASIC designer runs them at today. In schematic V35 · edited 13 Nov 2026, 00:27 CST, R901 and R1001 are 80.6 kOhm 1 %, so with the regulators' 100 uA SET current the rails sit at about +/-8.06 V (LT3042: https://www.analog.com/media/en/technical-documentation/data-sheets/lt3042.pdf, LT3094: https://www.analog.com/media/en/technical-documentation/data-sheets/lt3094.pdf). A few percent of tolerance keeps them well below 10 V, so a 10 V rating is no longer reached."
+  },
+  {
+   "id": "LDOA-15",
+   "title": "One RC starts every ASIC rail with no FPGA control or power-good; the +/-10 V rails need up to about 0.5 s.",
+   "severity": "note",
+   "closed_by": "Settled by the ASIC designer's answer of 12 Nov 2026: the power-up and power-down order does not matter, and inputs while unpowered do not matter. So the chips need no FPGA-controlled enable or power-good signal, and no wait before reset for the stimulation rails. The single RC start (R1, C3) is unchanged in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST."
+  },
+  {
+   "id": "LDOA-18",
+   "title": "All 3.3 V input current for the board passes through a single 0.15 mm through via.",
+   "severity": "note",
+   "closed_by": "FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST joins the top-layer 3.3 V copper at J2 pins 68 to 70 to the bottom-layer 3.3 V copper with four 0.15 mm through vias (at x 109.0 and 109.55, y 135.0 and 135.6) instead of one."
+  },
+  {
+   "id": "LDOA-28",
+   "title": "Nothing discharges the ±10 V ASIC rails, so they can stay charged for seconds after the 1.5 V rails fall.",
+   "severity": "note",
+   "closed_by": "Settled by the ASIC designer's answer of 12 Nov 2026: the power-up and power-down order does not matter, and inputs while unpowered do not matter, so the +/-8 V rails may stay charged after the 1.5 V rails fall. No bleed resistor is needed for the chips."
+  },
+  {
+   "id": "LDOA-49",
+   "title": "Pin map V6 also needs a pull-down on each port's new top-chip SPI_LATCH line (J3/J4 pin 70), which V12 routes as a plain data lane.",
+   "severity": "note",
+   "closed_by": "Since layout V13, and still in FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST, each port's top-chip SPI latch has its own 10 kOhm pull-down to GND (R26 on J4 pin 70, R27 on J3 pin 70), and each top-chip SPI clock on pin 72 has one too (R24, R25)."
+  },
+  {
+   "id": "LDOA-62",
+   "title": "The Frontend pin constraints set no DRIVE or SLEW on the FPGA outputs to the ASICs, so their edge rate is never chosen.",
+   "severity": "note",
+   "closed_by": "The Frontend pin file V3 (used by Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST) sets DRIVE 8 and SLEW SLOW on all 32 outputs to the ASICs, including the stimulator, reset, latch, clock and SPI lines. The edge rate has not been checked in an IBIS simulation."
+  },
+  {
+   "id": "LDOA-37",
+   "title": "On FPGA-LDO A V12, Frontend C4, C42 and C59 sit over masked ±12 V stimulation copper, so if a worst-case contact wears through the mask, C4 could push +12 V into the FPGA core (1.1 V absolute maximum), while C42 and C59 would mainly short the -12 V supply.",
+   "severity": "note",
+   "closed_by": "Settled on the Frontend side. In Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST, C4 and C59 are not fitted (left out of the placement file) and C42 is a thinner Murata GRM219R60J476ME44D (JLC C471380), 0.85 mm nominal instead of up to 1.45 mm, which leaves about 0.5 mm or more in the 1.5 mm gap. The FPGA-LDO A copper under them is unchanged. The maker's maximum thickness for the new C42 was not read."
+  },
+  {
+   "id": "LDOA-23",
+   "title": "D11 and D12 (B0540WS-7) are out of stock at JLC, and the proposed B5819WS substitute is unchecked.",
+   "severity": "note",
+   "closed_by": "D11 and D12 are now MCC B0540WS-TP (JLC C668860) in schematic V35 · edited 13 Nov 2026, 00:27 CST and on the parts list: 40 V, 0.5 A, same SOD-323 case and lead span as the Diodes part (MCC data sheet: https://datasheet.lcsc.com/datasheet/pdf/231bf9d51761a20ad69da348e7944c17.pdf). The B5819WS idea was dropped. JLC showed 6,204 in stock for 10 needed on 13 Nov 2026; buying is handled as its own step. Like the original part, its sheet gives no repetitive peak current rating for the 0.78 A peaks."
+  },
+  {
+   "id": "LDOA-27",
+   "title": "The order sets no bottom stencil thickness; above 0.10 mm the X2SON pin apertures release paste poorly.",
+   "severity": "note",
+   "closed_by": "The assembly remark of the current order now asks JLC to use a 0.10 mm bottom stencil (or a step-down at U3, U4, U5 and U7) and to say which thickness it will use. JLC's answer comes with the order."
+  },
+  {
+   "id": "LDOA-50",
+   "title": "U1 LT3582EUD-12#PBF is Active and in stock at DigiKey (359 pcs, 10-week lead time), so U1 can be bought now; only the '-12 only' order note is still missing.",
+   "severity": "note",
+   "closed_by": "The missing order note is now there: the parts list and the assembly remark say that only LT3582EUD-12#PBF or #TRPBF is acceptable, never the base or -5 version. Buying U1 (through JLC Global Sourcing or a distributor) is handled as its own step once the designs are settled; distributor stock was not read again."
   },
   {
    "id": "LDOA-03",
@@ -1408,5 +1243,6 @@
    "severity": "note",
    "closed_by": "Closed in V3: Closed by the ASIC boards V4 and the owner's 11 Nov evening decision. Each far (top) chip now has its own SPI_DINR/DINL: pins 16/18 for U01_BCD2 and 66/68 for U01_BCD1. The far board also has its own latch on pin 70 and clock on pin 72, which the near board only passes through. FPGA-LDO A V12 and the Frontend already carry these 12 lanes as routed copper to 12 separate U1 balls (T15, R13, M2, M4, N3, N4; C18, D18, T7, R5, P4, P3). So all 16 SPI data inputs in a stack reach 16 different FPGA balls, and near/far chips cannot get identical configuration. The remaining work belongs to A-P. The V6 pin file and gateware must drive these balls as LVCMOS15 outputs; until then, the far chips' SPI inputs float on FPGA inputs. One minor item goes on the V6 change list: J3.70/J4.70 have no 10k pull-down like R18 on SPI_LATCH_SHARED. While the FPGA configures, the far chips are guarded only by the CHIP_RESET pull-up R19, and its reset polarity comes from firmware and is unverified."
   }
- ]
+ ],
+ "updated": "13 November 2026"
 }

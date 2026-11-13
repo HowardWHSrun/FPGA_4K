@@ -3,19 +3,18 @@
  "reviewed": "All boards together, with the ASIC boards top and bottom V4",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 0 blockers, 16 majors, 38 minors, 18 notes open. The pin map V6 blocker on the ASIC list (AB-01) is now built on every board and waits for approval (SYS-84).",
- "headline": "The meeting with the ASIC designer on 12 November settled the pin order, DISC_OUT, the power-up order and the two grounds, and pin map V6 is now built into every board: ASIC boards V7, FPGA-LDO A layout V14 and Frontend 14 layers V5, with every ASIC connector pin followed through copper to its FPGA pin. That closes the re-plan of FPGA-LDO A (SYS-53, SYS-59), the clock swaps (SYS-65), DISC_OUT (R2S-07) and the spare-contact shortage (SYS-63). What still stops an order: pin map V6 waits for approval (SYS-84); the fabricator has not confirmed ten layers in 0.8 mm for the ASIC boards (R2S-03); and the majors on GT rate, cable power, heat, mounting, keying, ESD and grounding at the animal are unchanged (SYS-01, SYS-02, SYS-03, SYS-07, SYS-09, SYS-55, SYS-56). Option B is on hold, so its items stay open as they were.",
+ "readiness": "Do not order yet: 0 blockers, 14 majors, 38 minors, 18 notes open. Pin map V6 is frozen (SYS-84 closed).",
+ "headline": "Pin map V6 is frozen and built into every head board, the end-to-end trace from each ASIC connector pin to its FPGA ball passes, and the tall capacitors under the Frontend are gone. No system blocker is left; 14 majors are. Before any head is ordered: the fabricator must confirm ten layers in 0.8 mm for the ASIC boards (R2S-03), the ASIC designer still owes the capacitor values, the bond diagram and the die height (SYS-31), and the Frontend panel puts break-off tabs on the edge 0.567 mm from the near ASIC board (SYS-57). Cable current, link rate and heat (SYS-01, SYS-02, SYS-03) can only be settled on a first built stack, so one stack should be built and measured before eight. Keying, fixing and handling of the head (SYS-07, SYS-09, SYS-55) are set aside by the owner for now.",
  "top_actions": [
-  "Approve or refuse pin map V6 as built (SYS-84). A no means redrawing the top-chip copper on FPGA-LDO A and the Frontend, so decide before either board is uploaded.",
-  "Ask the fabricator to confirm ten layers in 0.8 mm and the stack for ASIC boards V7 before any order, then rebuild the fit and print models (R2S-03). Get the capacitor values, the bond diagram and the die and bond-loop height from the ASIC designer (SYS-31).",
-  "Send the ASIC designer the questions the meeting left open: reset polarity and what the stimulation registers hold after power-up (SYS-28, SYS-60), pad limits and static protection in writing (SYS-40, SYS-55), whether CLKH must stop while SPI is loaded (SYS-76), the VDD_CGEN level (SYS-85), whether the unused pins 3 and 5 may become grounds (SYS-23, SYS-75), and the data bit order and timing (R2S-09).",
-  "Decide the head mechanics before ordering: a housing or clamp with a physical key (SYS-07, SYS-09), thinner C4/C42/C59 under the Frontend (SYS-08), covers and ESD handling for the bare DF40 plugs (SYS-55, SYS-72), the panel and break-off tabs of the Frontend and FPGA-LDO A (SYS-57, SYS-71), and the two resistors beside the Frontend connector (SYS-86).",
-  "Write the rig grounding rule and the bring-up and handling procedure: one ground point at the animal with no supply return through ASIC AGND (SYS-56, SYS-11, SYS-78), cable unplugged before any board is mated or removed (SYS-66, SYS-10), rails measured with no ASIC board fitted (SYS-16, SYS-14), all in one page (SYS-61).",
-  "Set the GT line rate and the stack power and heat limits, then measure one powered stack on a real cable before buying eight (SYS-01, SYS-02, SYS-03); make room for the XEM8310 heat sink in enclosure V3 (SYS-58)."
+  "Send the ASIC boards V7 stack and via table to PCBWay and get a written yes for ten layers in 0.8 mm with ENEPIG and laser vias (R2S-03, AB-42).",
+  "Get the capacitor values, the bond diagram and the die and bond-loop height from the ASIC designer (SYS-31), and ask the questions the meeting left open (SYS-28, SYS-60, SYS-40, SYS-76, SYS-85, R2S-09).",
+  "Move the Frontend panel's two south tabs off the edge that faces the near ASIC board, or write the filing step down (SYS-57, SYS-61); check the FPGA-LDO A tabs beside J1-J4 with JLC (SYS-71).",
+  "Upload the Frontend and FPGA-LDO A files and panels to JLC for its engineering review before paying; buying parts stays a separate step.",
+  "Build and measure one full stack on a real cable before eight: port current, GT link at the chosen rate, heat (SYS-01, SYS-02, SYS-03)."
  ],
  "counts": {
   "blocker": 0,
-  "major": 16,
+  "major": 14,
   "minor": 38,
   "note": 18
  },
@@ -72,23 +71,6 @@
    "dupnote": "Same problem as LDOB-35 on the FPGA-LDO Option B page.",
    "dupkind": "same_problem",
    "upd_note": "Option B is on hold (decision of 12 Nov 2026). The ASIC designer would allow Option B to share the top chips' SPI clock and latch, but the meeting record still counts 126 to 128 contacts against the 120 of J5."
-  },
-  {
-   "id": "SYS-84",
-   "severity": "major",
-   "board": "system",
-   "category": "Pin map & connectors",
-   "basis": "needs_decision",
-   "verification": "Update 13 Nov",
-   "title": "Pin map V6 is built into every board but is not yet approved, and it differs from the plan in which wires are new.",
-   "what": "Pin map V6 is the contract between the ASIC boards, FPGA-LDO A and the Frontend. As built, the top chips' west bus on each port is moved four contacts over, so the six new wires per port are on port pins 24, 26, 28, 30, 32 and 58. The plan of 12 Nov 2026 and the pin picture show them on pins 2, 4, 6, 8, 24 and 58. The ASIC 80-pin order is not touched. With the shifted bus, 22 existing lanes on FPGA-LDO A were re-drawn at the ASIC connectors and only two clock lanes are swapped on the Frontend instead of four.",
-   "where": "Pin map V6, tables V2 (140 contacts of J1 / J2, 160 pins of J3 / J4); FPGA-LDO A layout V14, J3 / J4 west bus; Frontend 14 layers V5, 12 new lines and the ASIC3 and ASIC7 clock lanes.",
-   "evidence": "The pin map checker passes all 70 checks. An end-to-end check on 12 Nov 2026 followed all 160 ASIC connector pins through the copper of FPGA-LDO A and the Frontend to their FPGA pins: none ends nowhere, none shares a pin, no direction is wrong. The pin map itself is marked not frozen. The plan's own variant was never drawn on FPGA-LDO A; the review had found no short routes for it (SYS-53).",
-   "source": "Pin map V6 record of 12 and 13 Nov 2026; plan after the meeting with the ASIC designer, step 2.",
-   "consequence": "If the shifted bus is refused, the top-chip copper on FPGA-LDO A (12 new wires, 22 lanes) and on the Frontend (12 new lines, the clock swaps) and the pin file must be redone before either board is ordered.",
-   "suggested_action": "Approve or refuse the shifted bus before either board is uploaded. If approved, mark pin map V6 frozen and update the pin picture and the plan text to match.",
-   "origin": "new13",
-   "upd": "new"
   },
   {
    "id": "SYS-02",
@@ -235,7 +217,7 @@
    "check2": "Second check: upheld",
    "dupnote": "FE-07 on the Frontend page.",
    "dupkind": "overlapping",
-   "upd_note": "The gap is unchanged at 0.567 mm with Frontend 14 layers V5, FPGA-LDO A layout V14 and ASIC boards V7. The Frontend order remark no longer asks for tabs on the south and east edges; it now says only the south edge can take tabs and that they must be sanded flush, as a choice still to be made before upload. What remains: no panel is drawn, the tab choice is not made, and the order does not ask for +/-0.1 mm outline routing.",
+   "upd_note": "The gap is unchanged at 0.567 mm. The Frontend now has a drawn panel (Frontend panel V1 · edited 13 Nov 2026, 11:33 CST, built on Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST), and it puts two of its four break-off tabs on the south edge, the edge that faces the near ASIC board; both sit in front of that board. The break-off holes reach 0.24 mm past the edge, so an unfiled tab nub can leave about 0.33 mm of the gap. The panel record says each nub must be filed flush and the frame says \"cut the tabs, do not snap\", but no written procedure covers it yet (SYS-61). The order still does not ask for +/-0.1 mm outline routing (https://jlcpcb.com/capabilities/pcb-capabilities).",
    "upd": "changed"
   },
   {
@@ -305,7 +287,8 @@
    "suggested_action": "Set a head-surface and tissue-heating limit, then measure one powered stack (thermocouple or IR) in still air with the real bitstream before ordering eight.",
    "origin": "carried",
    "category": "Mechanical, stack & thermal",
-   "upd_note": "Still no heat estimate and no temperature limit on record. The plan after the meeting of 12 Nov 2026 lists a heat measurement on one built head before eight are bought. The stack size used here (13.82 mm tall) now matches ASIC boards V7 at 0.8 mm."
+   "upd_note": "Still no heat estimate and no temperature limit on record; the plan lists a heat measurement on one built head before eight are bought. New since the morning: Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST fits the commercial-grade FPGA XC7A35T-2CSG325C (the chip already held in the JLC inventory, owner decision of 13 Nov 2026). Its junction limit is 85 °C, not the 100 °C of the industrial grade named before, so the head has 15 °C less room before the FPGA leaves its rating. AMD Artix-7 data sheet DS181: https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet",
+   "upd": "changed"
   },
   {
    "id": "SYS-07",
@@ -328,32 +311,6 @@
    "suggested_action": "Before ordering, decide how the stack is held: a housing or edge clamp around the Frontend (its edges have no room for holes) with the cable anchored to it, plus holes or notches on the board that stays on the head (Option A board or Option B router) if wanted. Then measure the unplug force of a built Frontend-LDO pair.",
    "origin": "carried",
    "category": "Mechanical, stack & thermal"
-  },
-  {
-   "id": "SYS-08",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "calculated",
-   "already_known": "frontend/schematic_V45_record/START_HERE.md (proposed replacement, 'Not applied'); inputs/ldo_b/V2_record/START_HERE.md ('their replacement is the Frontend chat's open item'); inputs/ldo_a/stack_fit_test_V10/START_HERE.md. Still open in the Frontend V3 order files; both reviewers agree it must be closed before ordering.",
-   "found_by": [
-    "system-mate-fe-ldo",
-    "system-mechanical"
-   ],
-   "title": "Three 0805 capacitors under the Frontend can be 1.45 mm tall in the 1.5 mm gap, leaving 0.05 mm worst case.",
-   "area": "Stack clearance",
-   "what": "The mated DF40C-70DS / DF40C-70DP pair sets a 1.5 mm gap between the Frontend and the FPGA-LDO board. C4, C42 and C59 sit on the Frontend underside inside that gap and can be up to 1.45 mm thick, which leaves 0.25 mm nominal and 0.05 mm worst case before solder standoff, solder mask and board bow. The LDO top under them has no parts, but the silkscreen text 'PRE-' runs under C42 and C59 on Option A and under C42 on Option B, so the worst case can reach zero or slight interference. Contact is unlikely with typical part thickness, but the margin is gone and the parts are still in the V3 order.",
-   "where": "Frontend bottom: C4 at (122.8, 101.08), 100 uF Murata GRM21BR60J107ME15L on VCCINT_1V0; C42 at (104.16, 97.725) on VCCO_1V5 and C59 at (107.03, 98.45) on VCCAUX_1V8, both 47 uF Yageo CC0805MKX5R5BB476. They land over the LDO A top at about (90.70, 138.49), (109.34, 141.85) and (106.47, 141.12); on the Option B LDO board at the same x with y +5.81 mm. C89 (DNP, same part as C4) would be the same if fitted.",
-   "evidence": "exports/frontend/parts.csv: C4, C42, C59 bottom and fitted; C89 DNP. inputs/frontend/V3_order: BOM_JLC.csv orders C4 as C141660 and C15, C42, C59 as C109461 (C15 is on top); CPL_JLC.csv places C4, C42, C59 on the bottom. Thickness: Murata reference sheet T = 1.25 +/-0.2 mm (1.45 mm max); Yageo part 1.45 mm max per DigiKey and a third-party listing. Gap: 1.5 - 1.45 = 0.05 mm worst case; 1.5 - 1.25 = 0.25 mm nominal (a review working file (not published) rows A1, B1). Next tallest Frontend bottom parts U5, U6, Y1 at 1.0 mm leave 0.50 mm (heights not re-checked). Board mapping LDO = (213.5 - x, 239.57 - y), plus 5.81 mm in y for Option B, matches the J1/J2 pad nets. Under the capacitors on both LDO boards: no top parts, one via each. pcbnew silkscreen scan: 'PRE-' at x 106.55-110.94, y 141.84-143.54 on ldo_a (overlaps C42 and C59) and x 107.75-110.99, y 146.23-147.61 on ldo_b_ldo (overlaps C42). frontend/schematic_V45_record/START_HERE.md line 30: proposed GRM219R60J476ME44D (0.95 mm max), not applied.",
-   "source": "Hirose DF40 catalog, 2014 copy: 1.5 mm stacking table listing DF40C-70DS-0.4V(51), standard header height 1.14 +/-0.15 mm for DF40C-70DP-0.4V(51), effective mating length 0.45 mm at 1.5 mm (p1, p4, p10); Feb. 2024 edition (LCSC copy) p8; https://www.hirose.com/en/product/series/DF40. Murata GRM21BR60J107ME15 reference sheet (specifications as of Jun. 25 2026), dimensions, T = 1.25 +/-0.2 mm. Yageo CC0805MKX5R5BB476 thickness not checked against the Yageo datasheet.",
-   "consequence": "The connectors may not seat fully within their 0.45 mm engagement, or a 100 uF or 47 uF capacitor on VCCINT, VCCO or VCCAUX takes the mating force and cracks, which can short the rail.",
-   "suggested_action": "Before the Frontend is ordered, fit parts of about 1.1 mm maximum thickness at C4, C42 and C59 (for example the proposed 0.95 mm-max GRM219R60J476ME44D; at C4 this halves VCCINT bulk unless C89 is fitted, which the record ties to an MPM3833C output-capacitance limit) or move them to the top, and clear the 'PRE-' silkscreen under them on both LDO boards.",
-   "origin": "changed",
-   "category": "Mechanical, stack & thermal",
-   "v2note": "See LDOA-37.",
-   "dupnote": "Same problem as FE-04 on the Frontend page.",
-   "dupkind": "same_problem",
-   "upd_note": "Unchanged on Frontend 14 layers V5: C4, C42 and C59 are the same 0805 parts in the same places on the underside, and the order list still orders them. The 'PRE-' silkscreen on FPGA-LDO A layout V14 is also where it was. The Frontend record lists the choice of these three parts as still open."
   },
   {
    "id": "SYS-31",
@@ -734,7 +691,7 @@
    "origin": "changed",
    "v2note": "With the ASIC boards V4, SYS-28 is broader. The far (top) chips have their own SPI clock (pin 72), latch (pin 70) and two data lines per chip (66/68 and 16/18), so pin map V6 adds 6 FPGA-driven lines per port. That is 12 per head stack, or 24 unpulled FPGA-to-ASIC lines with the existing 12, and all of them float for about 7 s while PUDC_B is high. The two new latch lines (T_SPI_LATCH) also lack the 10k pull-down that R18 gives SPI_LATCH_SHARED on FPGA-LDO A and the Option B LDO board. During the V6 re-route, add a pull-down on each far latch (or tie it to SPI_LATCH_SHARED if the ASIC designer confirms the latch may be shared), and decide whether the far SPI clock and data lines need pulls. On today's V5-based files these far-chip inputs sit on FPGA input balls and float permanently, which is part of blocker A-P. See SYS-62.",
    "category": "Signals, clocks & timing",
-   "upd_note": "FPGA-LDO A layout V14 now has 10k pull-downs on both CLKH lines, all four SPI clocks and all three SPI latches (R18, R20 to R27), so floating data can no longer be clocked or latched into the chips before the FPGA is configured. The ASIC designer said on 12 Nov 2026 that power-up order and unpowered inputs do not matter and that the pads have no internal pulls. Still open: the 16 SPI data inputs have no pull and float for about 7 s, the reset polarity was not answered, the boot clock is still 3 MHz, and the pull-downs R20 to R23 still wait for a final yes.",
+   "upd_note": "On FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST the 10k pull-downs stay on both CLKH lines, all four SPI clocks and all three SPI latches (R18, R20 to R27); the owner confirmed on 13 Nov 2026 that R20 to R23 are kept. So floating data can no longer be clocked or latched into the chips before the FPGA is configured. The ASIC designer said on 12 Nov 2026 that power-up order and unpowered inputs do not matter and that the pads have no internal pulls. Still open: the 16 SPI data inputs have no pull and float for about 7 s, the reset polarity was not answered, and the boot clock is still 3 MHz.",
    "upd": "changed"
   },
   {
@@ -805,7 +762,7 @@
    "v2note": "Contradicted by SYS-57.",
    "dupnote": "FE-07 on the Frontend page.",
    "dupkind": "overlapping",
-   "upd_note": "Option B is on hold (decision of 12 Nov 2026). The Frontend order remark now names the south edge as the only edge that can take tabs and says they must be sanded flush; see SYS-57."
+   "upd_note": "Option B is on hold (decision of 12 Nov 2026). The Frontend's drawn panel (Frontend panel V1 · edited 13 Nov 2026, 11:33 CST) puts two break-off tabs on the south edge, the edge that would face the router in Option B, plus one on each of the east and west edges; see SYS-57."
   },
   {
    "title": "Neither the Frontend nor the FPGA-LDO A order asks for the 0.02 mm board flatness Hirose requires under each DF40, although both boards carry unbalanced copper.",
@@ -829,7 +786,7 @@
    "id": "SYS-70",
    "origin": "new",
    "category": "Layout & manufacturing",
-   "upd_note": "The Frontend order remark now asks for 0.02 mm flatness along J1 and J2, low bow and twist, a report of the measured bow, and no balancing copper inside the outline. The FPGA-LDO A layout V14 order remark still has no flatness line, and the ASIC boards V7, now ten layers in 0.8 mm, have no order files yet. What remains: add the flatness request to the FPGA-LDO A and ASIC board orders and get the fabricators' bow and twist limits.",
+   "upd_note": "The Frontend order remark (now for its panel, built on Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST) still asks for 0.02 mm flatness along J1 and J2, bow and twist of 0.5 % or better, a report of the measured bow, and no balancing copper inside the outline. The FPGA-LDO A panel remark (for FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST) still has no flatness line, and the ASIC boards V7, ten layers in 0.8 mm, have no order files yet. Each board now sits alone in a mostly bare 70 x 70 mm frame, whose effect on bow was not assessed. What remains: add the flatness request to the FPGA-LDO A and ASIC board orders and get the fabricators' bow and twist limits.",
    "upd": "changed"
   },
   {
@@ -856,7 +813,7 @@
    "category": "Layout & manufacturing",
    "dupnote": "LDOA-38 on the FPGA-LDO Option A page.",
    "dupkind": "overlapping",
-   "upd_note": "The FPGA-LDO A layout V14 order remark now marks the panel as a choice to make before upload and says the boards must be separated by routed break-off tabs, and its record lists the edge stretches free of part pads. A new pull-down resistor, R20, now sits in the west stretch (y 115.95 to 118.69) that this finding listed as clear. What remains: no panel is drawn, and the order still names no tab positions and no keep-away from J1 to J4.",
+   "upd_note": "A panel is now drawn: FPGA-LDO A panel V1 · edited 13 Nov 2026, 10:21 CST holds one board in a 70 x 70 mm frame on six 5 mm break-off tabs, and the order remark names the panel and asks JLC to ship it whole. The tab spots are therefore fixed, but four of the six sit close to the board-to-board connectors: the two north tabs are 1.29 mm from the pads of J4 and J3, and the east and west tabs start just past the last pads of J2 and J1, about 0.9 mm from them. That is under the 2 mm this finding asked for and under JLC's 1.5 mm tab keep-out (https://jlcpcb.com/blog/pcb-mouse-bites). The south tabs are 0.6 mm from capacitors C17 and test pads TP2 and TP4. The frame says \"cut the tabs, do not snap\", which lowers the bending risk; cutting and filing are not yet in any written procedure (SYS-61).",
    "upd": "changed"
   },
   {
@@ -1005,6 +962,7 @@
    "source": "Hirose DF40 drawing (not re-read for this item); FPGA-LDO A layout V14 and Frontend 14 layers V5 board files.",
    "consequence": "If the real connector body or solder fillet is larger than drawn, or a Frontend part faces the same spot, the boards may not seat fully or R23 may be hard to solder.",
    "suggested_action": "Check R23 and R4 against the Hirose DF40 drawing and the Frontend's underside in the 3D fit model before FPGA-LDO A is ordered; move R23 if the clearance is not real.",
+   "upd_note": "Unchanged on FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST: R23 and R4 are where they were (no part moved). Measured on the board files: R23's pad copper ends 0.20 mm from the outline the Frontend board file draws around its mating connector J2, and no other part on the Frontend's underside faces R23; R4 lies just outside the Frontend's outline. Still not checked against the Hirose drawing or in a 3D fit.",
    "origin": "new13",
    "upd": "new"
   },
@@ -1187,7 +1145,7 @@
    "id": "SYS-60",
    "origin": "new",
    "category": "Safety, ESD & bring-up",
-   "upd_note": "With pin map V6 as built (FPGA-LDO A layout V14, Frontend 14 layers V5, ASIC boards V7), each of the eight chips has its own two SPI data lines to its own FPGA pins, and the top chips have their own SPI clock and latch with pull-downs. So every chip can be loaded with a safe table on its own, and the case of top chips that can never be configured is gone for Option A. What remains: STIM_EN, STIM_START, STIM_CLK and STIM_CHB, and both resets, are still one line each for all eight chips, and the configuration cannot be read back. The ASIC designer did not say what the stimulation registers hold after power-up or which table switches every stimulator off, and pin map V6 still waits for approval.",
+   "upd_note": "With pin map V6, frozen by the owner on 13 Nov 2026 at 08:36 CST and built into FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST, Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST and ASIC boards V7, each of the eight chips has its own two SPI data lines to its own FPGA pins, and the top chips have their own SPI clock and latch with pull-downs. So every chip can be loaded with a safe table on its own, and the case of top chips that can never be configured is gone for Option A. What remains: STIM_EN, STIM_START, STIM_CLK and STIM_CHB, and both resets, are still one line each for all eight chips, and the configuration cannot be read back. The ASIC designer did not say what the stimulation registers hold after power-up or which table switches every stimulator off.",
    "upd": "changed"
   },
   {
@@ -1833,10 +1791,22 @@
    "closed_by": "Fixed in pin file V3: all 88 ASIC-to-FPGA inputs (8 data, READ, SYNC and the returned clock of each of the eight chips) have PULLDOWN, so a missing or unpowered ASIC board reads as steady low once the FPGA is configured. The boards carry no resistors on these lines, as before. The check of each returned clock's frequency is so far only a reminder line in the pin file, since no firmware exists yet, and the pin file has not been run in Vivado."
   },
   {
+   "id": "SYS-08",
+   "title": "Three 0805 capacitors under the Frontend can be 1.45 mm tall in the 1.5 mm gap, leaving 0.05 mm worst case.",
+   "severity": "note",
+   "closed_by": "Fixed on Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST (schematic V50), by the owner's decision of 13 Nov 2026. C4 and C59 are now not fitted: marked so on the board and left out of the parts list and placement file. C42 is now a thinner part, Murata GRM219R60J476ME44D, about 0.85 mm thick (Murata size code), instead of the 0805 part of up to 1.45 mm. Even at 1.0 mm it leaves about 0.5 mm in the 1.5 mm gap to the FPGA-LDO board, so the \"PRE-\" marking under it no longer matters. The lower bulk capacitance on two Frontend supplies is a Frontend question, not a fit question. Part page: https://pim.murata.com/en-us/pim/details/?partNum=GRM219R60J476ME44D"
+  },
+  {
    "id": "SYS-13",
    "title": "Each stacked ASIC board's J1 pin tail lands on the J1 below and holds two DF40 joints about 0.24 mm open.",
    "severity": "note",
    "closed_by": "J1 is marked not fitted on both ASIC boards V7 (board and schematic: do not populate, not in the parts list, not in the placement file), after the ASIC designer said it is not needed. With no pin there is no tail to hold the joints open. The hole and its pad stay on the boards."
+  },
+  {
+   "id": "SYS-84",
+   "title": "Pin map V6 is built into every board but is not yet approved, and it differs from the plan in which wires are new.",
+   "severity": "note",
+   "closed_by": "Settled by the owner's decision: pin map V6 was frozen as built on 13 Nov 2026 at 08:36 CST, with the top-chip bus shifted by four pins (new wires per port on pins 24, 26, 28, 30, 32 and 58). No wire, contact or FPGA pin changed with the freeze, and the boards built since (Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST and FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST) changed no net. Any later change is a new pin map and needs the owner's yes first."
   },
   {
    "id": "SYS-05",

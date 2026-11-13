@@ -3,45 +3,21 @@
  "reviewed": "14 layers V3 · edited 11 Nov 2026, 08:57 CST · schematic V46",
  "review": "V3",
  "review_date": "12 November 2026",
- "readiness": "Do not order yet: 0 blockers, 9 majors, 29 minors, 18 notes open. Pin map V6 (AB-01) still needs 12 new Frontend routes and a new pin file.",
- "headline": "The Frontend 14 layers V3 is unchanged since the 11 November review and still passes KiCad's checks, but it cannot fully serve the ASIC boards V4 until the system pin-map blocker A-P gives it 12 new U1-to-J1/J2 routes and a new pin file. This review adds two majors in the order data: the placement file would turn U1 90 degrees against JLC's footprint, putting supply balls on ground pads (FE-44), and R13 is still out of stock, though in-stock 0.1 % parts can set both GTP rails (FE-43). Fourteen new minor and note items are mostly placement, pin-1 mark, pull-up and flatness details; FE-16 closes because Vivado lists the fitted flash, and the seven earlier majors (FE-01 to FE-07) stay open.",
+ "readiness": "Do not order yet: 0 blockers, 5 majors, 23 minors, 19 notes open.",
+ "headline": "Frontend 14 layers V7 follows the frozen pin map V6 and passes KiCad's checks. Since 12 November the commercial FPGA is named everywhere (FE-13), the placement file now matches JLC's footprints for U1, J3 and the five bottom ICs (FE-44, FE-50, FE-51), C4 and C59 are not fitted and C42 is thinner (FE-04), and the pin file carries the configuration, GT and M15 rules (FE-08, FE-14). Five majors stay open: two out-of-stock feedback resistors and the boot flash (FE-05, FE-06, FE-43), the 5 V port margin at high load (FE-02) and the heat margin of the 0-85 °C FPGA (FE-03). Parts buying is its own step once the designs are settled.",
  "top_actions": [
-  "Plan pin map V6 on the Frontend first (system blocker A-P, known/asic_open.json): reserve corridors for its 12 new U1-to-J1/J2 routes before adding the FE-10 and FE-21 ground stacks, then write one new pin file with the renamed lines, clock-capable balls for the returned clocks, the FE-14 and FE-20 settings and EN_GTPWR_1V5 driven high in every image (FE-08, FE-46), and run it through Vivado once (FE-35).",
-  "Close the stock gaps: replace the out-of-stock R7, R10, R13 and R27, using in-stock 0.1 % pairs with R2 at or below 4.99 kOhm on both TPS74801 dividers (FE-43, FE-06, FE-18; TI SBVS074N section 7.1.1 p.23, https://www.ti.com/lit/ds/symlink/tps74801.pdf); get a lead time or consignment for U7, because the W25Q64JW fallback is not on Vivado's flash list (FE-05, see closed FE-16); and decide U1's grade so schematic and BOM match (FE-03, FE-13).",
-  "Make the value changes in one schematic edit: C4 and C59 DNP or MPS's approval of the fitted output capacitance (FE-01), every fitted bottom 0805 low-profile or DNP (FE-04), no paste on DNP pads (FE-40), R17, R18, R19 and R9 at the AMD and TI pull-up values (FE-48), and the Molex drawing in J3's Datasheet field so FE-27 can close (FE-41).",
-  "When the order files are regenerated, match JLC's library footprints for U1's angle (FE-44), U8, U11, U15, U17 and U18 (FE-50) and J3's origin (FE-51), mark U7's real A1 corner on the bottom assembly drawing (FE-45 and FE-52 are the same mark), and check every IC in JLC's placement preview (FE-12).",
-  "Before paying, draw the panel with no east-edge tabs (FE-07) and get JLC's written answers on its bottom-side rotation rule (FE-49), stacked microvias (FE-11), the 0.15-0.20 mm hole-to-copper gaps (FE-29), a J1/J2 flatness limit (FE-53), balancing copper (FE-58) and the impedance line (FE-22).",
-  "On the first assembled stack, before ordering eight, measure 5 V current at TP14 through the +/-12 V start-up (FE-02), U1 temperature under load (FE-03), the VIN_5V hot-plug peak (FE-19) and the gap under the bottom capacitors (FE-04)."
+  "Replace or source R10, R13 and the boot flash U7 before ordering; never build without R10 and R13 (FE-06, FE-43, FE-05).",
+  "Move the panel tabs away from J1, J2 and U4, or have JLC confirm cut-and-file tabs there (FE-07).",
+  "Run pin file V3 through Vivado once (FE-35) and make a thermal estimate for the 0-85 °C FPGA (FE-03).",
+  "Have JLC confirm its bottom-side rotation rule before placement (FE-49)."
  ],
  "counts": {
   "blocker": 0,
-  "major": 9,
-  "minor": 29,
-  "note": 18
+  "major": 5,
+  "minor": 23,
+  "note": 19
  },
  "findings": [
-  {
-   "id": "FE-01",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_vendor_answer",
-   "already_known": "Partly: schematic V46 note on the VCCINT bypass group (V42: 'fitted total still exceeds the MPS limit') and the C89 Qualification field in Artix_Frontend_8L_V3.kicad_sch cover VCCINT only; no record lists it as an open item or covers VCCAUX, VCCO or VIN_3V3. Both reviewers rate it major, not a note.",
-   "found_by": [
-    "frontend-power",
-    "frontend-parts"
-   ],
-   "title": "Output capacitance on MPM3833C rails exceeds the datasheet's 100 uF maximum, clearly so on VCCINT (186 uF).",
-   "area": "Regulator output capacitance",
-   "what": "The MPM3833C datasheet lists 10 uF minimum, 22 uF typical and 100 uF maximum output capacitance, measured at one test point (1.2 V out, 2 A) on engineering samples. The module uses constant-on-time control (each switching pulse lasts a fixed time), and too much output capacitance can make its load-step response unstable. U2 on VCCINT has 186 uF fitted, still about 140-150 uF after the capacitors lose value under DC voltage, and also has a 22 pF feed-forward capacitor (C3, output to FB) that the MPS circuit does not show. VCCAUX (144 uF nominal) is borderline after derating, while VCCO and VIN_3V3 are probably below 100 uF effective; MPS does not show that any of these combinations is stable.",
-   "where": "Frontend. U2 (VCCINT_1V0): C4 100u, C10 47u, C2 22u, C5/C6/C90 4.7u, C7/C8/C9/C11/C91/C92/C93 0.47u, CFF C3 22 pF; C89 100u is DNP. U3 (VCCAUX_1V8): C15/C59 47u, C13 22u, C16/C17/C94/C95/C96 4.7u, small parts, CFF C14. U4 (VCCO_1V5): C42 47u, C22 22u, 8 x 4.7u, 11 x 0.47u, CFF C23. U16 (VIN_3V3, no CFF): Frontend capacitors, SWITCHED_3V3 behind U10, and the FPGA-LDO board's /VIN_3V3 through J2 pins 68-70.",
-   "evidence": "Fitted capacitors to GND summed from exports/frontend/netlist.xml with DNP flags from Artix_Frontend_8L_V3.kicad_sch: VCCINT_1V0 186.4 uF; VCCAUX_1V8 143.6 uF; VCCO_1V5 113.0 uF (11 x 0.47 uF, not 12); VIN_3V3 164.1 uF on the Frontend (mostly 6.3 V 0603 22 uF parts), plus 44.1 uF on SWITCHED_3V3 (C104, C76) when U10 is on, plus 60.8 uF on exports/ldo_a /VIN_3V3; 1V4_GTP_IN 31.4 uF (within limit). 88 uF of the VIN_3V3 total is the required 22 uF input capacitors of U2, U3, U4 and U13 (C1, C12, C21, C85). The JLC BOM fits C4 (GRM21BR60J107ME15L, C141660). C15, C59 and C42 are Yageo CC0805MKX5R5BB476. Effective values after DC-bias derating are estimates; the schematic Effective_capacitance fields say pending except C5/C6. An MPS forum reply (thread 1886) warns of instability above 100 uF, and a user's 1.2 V simulation there went unstable on a 3 A step above about 180 uF of low-ESR ceramics.",
-   "source": "MPS MPM3833C datasheet Rev 1.0 (12/3/2018): p5 Converter System table, COUT 10/22/100 uF at VIN 3.6 V, VOUT 1.2 V, IOUT 2 A (note 6, engineering-sample test); p14 COT control; pp15-16 output capacitor section; p17 Fig. 4 (no CFF). https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPM3833CGRH-Z/document_id/4426/",
-   "consequence": "VCCINT, and possibly VCCAUX, may ring or oscillate on load steps once the FPGA design runs. Start-up is not at risk (1.3 ms soft-start needs well under 1 A to charge these values).",
-   "suggested_action": "Ask MPS to confirm U2 and U3 with these COUT values and the 22 pF CFF, or mark C4 not fitted so VCCINT drops below 100 uF; then do a load-step check on the first boards.",
-   "origin": "carried",
-   "category": "Power & regulators"
-  },
   {
    "id": "FE-02",
    "severity": "major",
@@ -67,53 +43,6 @@
    "dupkind": "same_problem"
   },
   {
-   "id": "FE-07",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "needs_decision",
-   "already_known": "START_HERE.md decision 1; JLC_CHECKLIST.csv 'Room for break-off tabs' (Ask JLC). The record calls the east edge free at 0.6 mm keep-off, but J1's joints are 0.665 mm in. Reviewer agrees it is a pre-order decision.",
-   "found_by": [
-    "frontend-order"
-   ],
-   "title": "No panel is drawn, and the order remark sends break-off tabs to the east edge, 0.665 mm from J1's pads.",
-   "area": "Panel and assembly",
-   "what": "JLC's Standard PCBA (assembly) service needs a board or panel of at least 70 x 70 mm with edge rails and fiducials (optical alignment marks). The Frontend is 22.59 x 25.42 mm, has no fiducials, and no panel is drawn; the PCB remark leaves the panel to JLC and asks for break-off tabs ('mouse bites', small perforated bridges snapped after assembly) on the south and east edges only. Along most of the east edge the 70-pin, 0.4 mm-pitch DF40 connector J1 sits 0.665 mm from the edge, and along the south edge small capacitors, a resistor and bare test pads sit 0.50 to 0.66 mm in. The project record judged the east edge free at a 0.6 mm keep-off, which ignores the clearance a tab needs.",
-   "where": "Frontend outline x 102.21-124.80, y 96.50-121.92 mm. East edge: J1 (bottom, DF40C-70DS) pads x 120.355-124.135 over y 105.67-119.47, courtyard to x 124.68 (0.12 mm from the edge). West edge: J2 pads 0.645 mm in. South edge: test pads TP1/6/7/8/9/10/11/13 0.50 mm, C45/C49 (0402 4.7 uF, bottom) 0.52 mm, R9 (0201 resistor, top) 0.66 mm.",
-   "evidence": "exports/frontend/board.json pad boxes with a 1.0 mm keep-off: the east edge is clear only at y 103.77-105.67 (1.9 mm) and y 119.47-121.92 (2.45 mm); the south edge has clear stretches of 3.54, 2.62, 1.95 and 4.58 mm, the two widest next to the ends of J2 and J1, whose courtyards are 0.975 mm from the south edge. With pcbnew courtyards (boards/frontend/Artix_Frontend_8L_V3.kicad_pcb) no edge has a 1.0 mm clear stretch; the best is 0.98 mm at the east edge, y 120.94-121.92. parts.csv has no fiducial footprints. inputs/frontend/V3_order/JLC_ORDER_NOTES.txt asks for tabs 'on the south and east edges only' and for JLC to add rails, fiducials and tooling holes. JLC_CHECKLIST.csv rows 34-37 call the east edge free at 0.6 mm keep-off (margin 0.065 mm).",
-   "source": "JLCPCB PCB Assembly Capabilities (Standard PCBA: 70 x 70 mm minimum board or panel; edge rails and fiducials necessary), https://jlcpcb.com/capabilities/pcb-assembly-capabilities; JLCPCB HDI PCB page (minimum V-cut panel 30 x 60 mm; smaller panels need tab-routing or stamp-hole panelization), https://jlcpcb.com/pcb-fabrication/hdi-pcb; JLC blog panelization guidance (1.5 to 5 mm component-to-tab clearance, figures vary between posts). Tab stress on J1 joints and the stack-fit effect of leftover nubs is engineering judgement.",
-   "consequence": "JLC can probably add rails and tabs itself, but at a place of its choosing, and the remark currently points it at the east edge beside J1. Snapping a tab there can crack J1 solder joints or the small south-edge parts, and leftover nubs sit on edges that set the stack fit.",
-   "suggested_action": "Before ordering, draw the panel (rails, fiducials, tooling holes) with tabs only in the clear south stretches and east-edge corners, or ask JLC to route the boards out fully; either way remove 'east' from the tab instruction.",
-   "origin": "carried",
-   "category": "Layout & manufacturing"
-  },
-  {
-   "title": "The placement file turns the FPGA U1 by 90 degrees against JLC's library footprint, and every ball still lands on a pad.",
-   "severity": "major",
-   "board": "frontend",
-   "area": "Placement file (top side)",
-   "what": "JLC places a part by turning its own library footprint by the CPL angle. JLC's footprint for C1521720 has ball A1 at the bottom-left corner. The KiCad footprint on the board has A1 at the top-left. The CPL gives U1 0 degrees, so JLC would fit the FPGA 90 degrees turned. The 18 x 18 grid is full, so all 324 balls would still sit on pads. The X-ray the order asks for would therefore look normal.",
-   "where": "Frontend U1 (XC7A35T-2CSG325C, JLC C1521720), top side. CPL row: U1, 116.2200mm, -113.0000mm, Top, 0. Board A1 pad at (109.42, 106.20), net GND; CPL (109.42, -106.20). File: inputs/frontend/V3_order/Artix_Frontend_8L_V3_14L_V3_CPL_JLC.csv.",
-   "evidence": "JLC/EasyEDA footprint NFBGA-324_L15.0-W15.0-R18-C18-P0.80-BL, fetched 12 Nov. Head (4000, 3000); A1 (3973.228, 3026.772); A18 (3973.228, 2973.228); V1 (4026.772, 3026.772); V18 (4026.772, 2973.228); J9/K10 at the centre; pin-1 silk circle (3973.228, 3031.402). So A1 is 6.8 mm left and 6.8 mm below centre, letters run right and numbers run up.\n\nBoard (exports/frontend/board.json): U1 at (116.22, 113.00), rotation 0. A1 (109.42, 106.20), A2 (110.22, 106.20), B1 (109.42, 107.00), so A1 is top-left.\n\na review working file (not published) worst ball-to-pad error 13.60 mm at 0 and 0.000 mm at 270.\n\nscripts/u1_turned.py at 0 degrees: all 324 balls sit exactly on a pad, but only 19 are on their own net. 24 supply balls (VCCINT_1V0, VCCAUX_1V8, VCCO_1V5, MGTAVTT_1V2) land on GND pads. 29 GND balls land on supply pads: 16 VCCINT_1V0, 7 VCCAUX_1V8, 5 VCCO_1V5, 1 MGTAVTT_1V2. At 270 all 324 nets match.\n\nJLC's A1 dot would show at (109.42, 120.98), the bottom-left corner, while the board's silk triangle is at (108.48, 105.81).\n\nThe owner's HDMI V37 CPL already applies this kind of offset: U501 KiCad 0 -> CPL 270; U801 (C106794) 180 -> 90. The FE-12 fix plan and V3_record/START_HERE.md line 101 list only bottom parts for the preview check.",
-   "source": "EasyEDA component API for C1521720 (packageDetail NFBGA-324_L15.0-W15.0-R18-C18-P0.80-BL), read 12 Nov 2026: https://easyeda.com/api/products/C1521720/components?version=6.4.19.5\n\nJLCPCB 'PCB Assembly FAQs (Part 2)', last updated 9 Sep 2026. Q2: the design's 0-degree reference can differ from JLC's. Q10: polarity is judged from the silkscreen, which wins over the CPL by default. https://jlcpcb.com/help/article/pcb-assembly-faqs-part-2\n\nJLCPCB 'Pick & Place File for PCB Assembly', last updated 9 Sep 2026: positive angles are counter-clockwise; no 0-degree reference is given. https://jlcpcb.com/help/article/pick-place-file-for-pcb-assembly\n\nKiBot 'Notes about the position file' (as of Nov 2023): KiCad puts pin 1 at top-left and JLC's zero differs. https://kibot.readthedocs.io/en/latest/notes_position.html\n\nProject files: inputs/hdmi/V37_order/HDMI_Extension_Board_V37_CPL.csv; exports/hdmi/board.json.",
-   "consequence": "Two checks stand in the way: JLC's silk check and the owner's preview check. If both miss it, the FPGA is soldered turned. At first power-up, VCCINT, VCCAUX, VCCO and MGTAVTT are shorted to ground through the FPGA's own ground balls. The FPGA and the board are lost, and BGA rework is not practical.",
-   "suggested_action": "Write 270 for U1 in the CPL, as the HDMI files do for such parts. Otherwise, at least add U1 to the preview checklist: JLC's A1 dot must sit at CPL (109.42, -106.20), beside the silk triangle.",
-   "basis": "confirmed_in_files",
-   "relation": "changes FE-12",
-   "confidence": "high",
-   "found_by": [
-    "gap"
-   ],
-   "corrected": "",
-   "verification": "verified by an independent skeptic",
-   "id": "FE-44",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "check2": "Second check: upheld",
-   "dupnote": "FE-12.",
-   "dupkind": "overlapping"
-  },
-  {
    "id": "FE-05",
    "severity": "major",
    "status": "kept",
@@ -135,7 +64,8 @@
    "suggested_action": "Before the PCBA order, get a quoted lead time and minimum quantity from Winbond or a distributor, or consign parts to JLC.",
    "origin": "changed",
    "category": "Parts, BOM & sourcing",
-   "v2note": "See FE-47."
+   "v2note": "See FE-47.",
+   "upd_note": "U7 is still W25Q128JWYIQ and still goes through JLC Global Sourcing: 0 free to order at JLC when stock was read on 13 Nov 2026, 10:36 CST. Sourcing note: the owner handles part buying as its own step once the designs are settled."
   },
   {
    "id": "FE-06",
@@ -147,7 +77,7 @@
    "found_by": [
     "frontend-order"
    ],
-   "title": "Three out-of-stock parts are feedback resistors; building without them drives GTP rails above absolute max.",
+   "title": "Two out-of-stock parts are feedback resistors (R10, R13); building without them drives GTP rails above absolute max.",
    "area": "BOM stock",
    "what": "R7, R10 and R13 have no JLC stock and are the upper feedback resistors (output to FB pin) of U4, U5 and U6. If the order is built with these lines not placed, each lower resistor holds FB at 0 V and the regulator drives its output toward its input. MGTAVCC and MGTAVTT, the FPGA transceiver supplies, would then rise to about 1.35-1.4 V, above their 1.10 V and 1.32 V absolute maximums. VCCO_1V5 would rise to about 3.3 V; that is within the bank's 3.6 V absolute maximum, but it puts 3.3 V levels on 1.5 V lines to the ASIC boards, and U4's power-good stays low, holding U6 off and the FPGA in reset.",
    "where": "Frontend: R7 (VCCO_1V5 to Net-(U4-FB), U4 = MPM3833C, IN = VIN_3V3), R10 (MGTAVCC_1V0 to Net-(U5-FB)), R13 (MGTAVTT_1V2 to Net-(U6-FB)); U5/U6 = TPS74801, IN = 1V4_GTP_IN. Lower resistors R8, R11, R14. Also out of stock: R27 (1k pull-up from VCCAUX_1V8 to CABLE_TARGET_SENSE, J3 pin 1; not part of the boot flash) and U7 (boot flash).",
@@ -157,7 +87,10 @@
    "suggested_action": "Secure R7, R10 and R13 before ordering (Global Sourcing, consignment or an in-stock equivalent of the same value and tolerance), and add to the assembly remark that the board must not be built with any of them missing.",
    "origin": "changed",
    "category": "Parts, BOM & sourcing",
-   "v2note": "See FE-43."
+   "v2note": "See FE-43.",
+   "upd_note": "R7 is now Yageo RT0402BRD07150KL, which JLC stocks (C852538). R10 (1.3 k) and R13 (2.49 k), the feedback resistors of the two transceiver-supply regulators, still go through JLC Global Sourcing (0 free to order at JLC on 13 Nov 2026, 10:36 CST). The assembly remark lists them but does not say the board must not be built without them; built without either one, that rail rises above its absolute maximum. The owner handles part buying as its own step once the designs are settled.",
+   "title_was": "Three out-of-stock parts are feedback resistors; building without them drives GTP rails above absolute max.",
+   "upd": "changed"
   },
   {
    "title": "R13 still has no JLC stock and the evening fix plan sends it to outside sourcing, but in-stock 0.1 % parts can set both GTP rails without it.",
@@ -183,7 +116,8 @@
    "category": "Parts, BOM & sourcing",
    "check2": "Second check: upheld",
    "dupnote": "FE-06.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Unchanged: R10 and R13 still have their original values and still come through Global Sourcing (0 free to order at JLC on 13 Nov 2026, 10:36 CST); the in-stock 0.1 % dividers were not adopted. The owner handles part buying as its own step once the designs are settled."
   },
   {
    "id": "FE-03",
@@ -195,7 +129,7 @@
    "found_by": [
     "frontend-power"
    ],
-   "title": "The JLC BOM fits the commercial 0-85 C FPGA, and no thermal estimate shows the Frontend stays below 85 C.",
+   "title": "The Frontend uses the commercial 0-85 C FPGA by the owner's choice, and no thermal estimate shows it stays below 85 C.",
    "area": "Thermal / FPGA grade",
    "what": "The JLC BOM places JLC part C1521720, which the project record identifies as the commercial XC7A35T-2CSG325C (junction limit 85 C); the schematic names the industrial -2CSG325I (100 C). The 22.59 x 25.42 mm Frontend dissipates about 0.9 W at the expected load and about 1.6 W in the high case, and its bottom face sits 1.5 mm above the FPGA-LDO board. Simple still-air screens give a rise of roughly 35-55 K at expected load and up to about 85 K in the high case for the board on its own; heat shared with the stack lowers this and the close facing board raises it. The junction could pass 85 C in the high case or in a warm head-worn environment; the files cannot settle this, and an XPE figure plus a thermocouple test on a heated stack would.",
    "where": "Frontend U1 (top, 116.22, 113.0); regulators U2/U3/U4/U13 near the west edge and U16 at the north-east corner (122.74, 98.55); the whole Option A head stack.",
@@ -204,50 +138,36 @@
    "consequence": "A commercial-grade U1 may run past its rated junction temperature in the high case, with timing and leakage drift. Surface temperature of a head-worn stack of about 1.35 W is a separate open limit.",
    "suggested_action": "Decide record decision 2 before ordering: fit the I-grade part the schematic names, or get an XPE figure and run a heated-stack test with a thermocouple on U1 first.",
    "origin": "carried",
-   "category": "Mechanical, stack & thermal"
+   "category": "Mechanical, stack & thermal",
+   "upd_note": "The owner chose the commercial XC7A35T-2CSG325C already held at JLC (13 Nov 2026), and schematic V50 · edited 13 Nov 2026, 11:15 CST and the order now both name it. Its junction limit is 85 C (AMD DS181, https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet). Still no power or thermal estimate for the Frontend exists; the schematic now says to read the FPGA's temperature monitor at bring-up. An XPE figure or a heated-stack test with a thermocouple on U1 would settle it.",
+   "title_was": "The JLC BOM fits the commercial 0-85 C FPGA, and no thermal estimate shows the Frontend stays below 85 C.",
+   "upd": "changed"
   },
   {
-   "id": "FE-04",
-   "severity": "major",
-   "status": "kept",
-   "verification": "Upheld after a third independent check",
-   "basis": "needs_measurement",
-   "already_known": "inputs/ldo_a/stack_fit_test_V10/START_HERE.md (0.05 mm clearance). The FE-LDO mate review in this round also rates it major. Reviewer agrees with major.",
-   "found_by": [
-    "frontend-layout"
-   ],
-   "title": "Three fitted 0805 capacitors under the Frontend leave 0.05 mm worst-case clearance to the FPGA-LDO board.",
-   "area": "Stack clearance",
-   "what": "The DF40C connector pair sets a 1.5 mm gap between the Frontend bottom and the FPGA-LDO top. Three fitted 0805 bulk capacitors on the Frontend bottom are 1.25 +/- 0.2 mm thick, which leaves 0.25 mm at nominal and 0.05 mm at maximum thickness, before solder mask on the LDO board and connector seating tolerance (Hirose gives none). Contact loss on the connector is unlikely, because the DF40 still engages with 0.45 mm of mating length; the real risk is a capacitor that carries the mating force and cracks. The files cannot settle the true gap; a measurement on the first assembled pair can.",
-   "where": "Frontend bottom: C4 (GRM21BR60J107ME15L, 100 uF, VCCINT) at (122.80, 101.08); C42 and C59 (CC0805MKX5R5BB476, 47 uF) at (104.16, 97.725) and (107.03, 98.45). C89 at (122.80, 103.04) is DNP. Same geometry on Option A and Option B; under the capacitors the LDO board has L1 tracks and 0.26-0.35 mm vias but no parts.",
-   "evidence": "Sides, positions and DNP flags from exports/frontend/parts.csv; JLC BOM and CPL in inputs/frontend/V3_order list C4, C42 and C59 and not C89 (JLC_ORDER_NOTES.txt line 17). Thickness 1.25 +/- 0.20 mm from the Murata GRM21BR60J107ME15 sheet p1 and the Yageo X5R specification V.30 (thickness class EB). Mate transform (213.5 - x, 239.57 - y) for Option A and (213.5 - x, 245.38 - y) for Option B places no LDO component under these capacitors; Option B's R4 and R19 are elsewhere. Solder mask over the LDO L1 features takes about 0.02 mm more. The fit test V10 used the 8L V1 placement; this was recomputed for V3. The record's proposed 0.95 mm maximum part (GRM219R60J476ME44D) is not applied (schematic V45 and V46 records).",
-   "source": "Hirose DF40 catalog (1 Jun 2024 copy), p1 (1.5 mm stacking height, 0.45 mm effective mating length) and p8, https://www.hirose.com/en/product/series/DF40 ; Murata GRM21BR60J107ME15 reference sheet p1; Yageo Class 2 X5R product specification V.30 (6 Dec 2022) pp3, 6.",
-   "consequence": "A capacitor at the top of its tolerance can be loaded by mating force or board flex and crack; a cracked C4 can short VCCINT.",
-   "suggested_action": "Decide before ordering whether to apply the record's low-profile swap (0.95 mm maximum) at these positions; measure the mated gap on the first assembled pair.",
-   "origin": "carried",
-   "category": "Mechanical, stack & thermal"
-  },
-  {
-   "id": "FE-27",
+   "id": "FE-01",
    "severity": "minor",
    "status": "kept",
-   "verification": "Confirmed by one independent re-check",
+   "verification": "Confirmed by two independent re-checks",
    "basis": "needs_vendor_answer",
-   "already_known": "",
+   "already_known": "Partly: schematic V46 note on the VCCINT bypass group (V42: 'fitted total still exceeds the MPS limit') and the C89 Qualification field in Artix_Frontend_8L_V3.kicad_sch cover VCCINT only; no record lists it as an open item or covers VCCAUX, VCCO or VIN_3V3. Both reviewers rate it major, not a note.",
    "found_by": [
+    "frontend-power",
     "frontend-parts"
    ],
-   "title": "The J3 footprint was never checked against the 46765-1001 drawing; JLC links the drawing of another variant.",
-   "area": "Connector footprint",
-   "what": "J3 is a Molex 46765-1001 Micro-HDMI receptacle with surface-mount signal pins and through-hole shell tabs. Its footprint is KiCad's stock 46765-1xxx pattern, which cites the 46765-1301 drawing; nobody has compared it with the 46765-1001 drawing. JLC/LCSC attach SD-46765-001, which covers only the surface-mount-only 46765-0xxx parts. The 0.25 mm signal pads are a deliberate widening and stay inside Molex's 0.23 +/- 0.03 mm land, so the open points are the slot size and position and whether the tabs suit a 1.574 mm board; only the 46765-1001 sales drawing or a Molex answer can settle them.",
-   "where": "Frontend FPGA Board J3 (top side, north edge); SH slots at local x +/-3.1, y 0 and -3.36, board (109.4/115.6, 98.28/101.64).",
-   "evidence": "boards/frontend/LearningFPGA.pretty/Molex_MicroHDMI_46765_1xxx.kicad_mod: descr cites 467651301_sd.pdf; signal pads 0.25 x 0.85 / 0.25 x 1.0; SH slots 0.65 x 1.70 mm drill in 1.5 x 2.55 mm pads, identical to KiCad's stock HDMI_Micro-D_Molex_46765-1xxx (stock signal pads 0.23 mm). Board thickness 1.574 mm; parts.csv MPN 467651001. LCSC C563878 datasheet is byte-identical to SD-46765-001 rev D1, whose part table lists only 46765-0001/0301/0011/0311/0302/0312. Slot pitch 3.36 mm equals the tab pitch in SD-46765-001 sheet 1. The molex.com sales drawing timed out on every attempt.",
-   "source": "Molex SD-46765-001 rev D1, sheets 1 and 4 (https://www.lcsc.com/datasheet/C563878.pdf); Molex 46765-1001 sales drawing, not retrieved: https://www.molex.com/en-us/products/part-detail/467651001",
-   "consequence": "If the slots do not match the 46765-1001 tabs, the shell may not seat or may be poorly anchored. The connector is J3's only mechanical retention for the cable.",
-   "suggested_action": "Get the 46765-1001 sales drawing (or ask Molex) and compare slot size and position and tab length against the 1.574 mm board; adjust the footprint only if they differ.",
-   "origin": "changed",
-   "category": "Pin map & connectors",
-   "v2note": "Partly answered in V3 by FE-41: J3's footprint matches the Molex 46765-1001 drawing (SD-46765-001 rev D1, sheets 2 and 5); the Datasheet field and the tab-length question remain."
+   "title": "With C4 now not fitted, VCCINT is under the MPM3833C's 100 uF maximum, but MPS has not confirmed the remaining output capacitance and feed-forward capacitor.",
+   "area": "Regulator output capacitance",
+   "what": "The MPM3833C datasheet lists 10 uF minimum, 22 uF typical and 100 uF maximum output capacitance, measured at one test point (1.2 V out, 2 A) on engineering samples. The module uses constant-on-time control (each switching pulse lasts a fixed time), and too much output capacitance can make its load-step response unstable. U2 on VCCINT has 186 uF fitted, still about 140-150 uF after the capacitors lose value under DC voltage, and also has a 22 pF feed-forward capacitor (C3, output to FB) that the MPS circuit does not show. VCCAUX (144 uF nominal) is borderline after derating, while VCCO and VIN_3V3 are probably below 100 uF effective; MPS does not show that any of these combinations is stable.",
+   "where": "Frontend. U2 (VCCINT_1V0): C4 100u, C10 47u, C2 22u, C5/C6/C90 4.7u, C7/C8/C9/C11/C91/C92/C93 0.47u, CFF C3 22 pF; C89 100u is DNP. U3 (VCCAUX_1V8): C15/C59 47u, C13 22u, C16/C17/C94/C95/C96 4.7u, small parts, CFF C14. U4 (VCCO_1V5): C42 47u, C22 22u, 8 x 4.7u, 11 x 0.47u, CFF C23. U16 (VIN_3V3, no CFF): Frontend capacitors, SWITCHED_3V3 behind U10, and the FPGA-LDO board's /VIN_3V3 through J2 pins 68-70.",
+   "evidence": "Fitted capacitors to GND summed from exports/frontend/netlist.xml with DNP flags from Artix_Frontend_8L_V3.kicad_sch: VCCINT_1V0 186.4 uF; VCCAUX_1V8 143.6 uF; VCCO_1V5 113.0 uF (11 x 0.47 uF, not 12); VIN_3V3 164.1 uF on the Frontend (mostly 6.3 V 0603 22 uF parts), plus 44.1 uF on SWITCHED_3V3 (C104, C76) when U10 is on, plus 60.8 uF on exports/ldo_a /VIN_3V3; 1V4_GTP_IN 31.4 uF (within limit). 88 uF of the VIN_3V3 total is the required 22 uF input capacitors of U2, U3, U4 and U13 (C1, C12, C21, C85). The JLC BOM fits C4 (GRM21BR60J107ME15L, C141660). C15, C59 and C42 are Yageo CC0805MKX5R5BB476. Effective values after DC-bias derating are estimates; the schematic Effective_capacitance fields say pending except C5/C6. An MPS forum reply (thread 1886) warns of instability above 100 uF, and a user's 1.2 V simulation there went unstable on a 3 A step above about 180 uF of low-ESR ceramics.",
+   "source": "MPS MPM3833C datasheet Rev 1.0 (12/3/2018): p5 Converter System table, COUT 10/22/100 uF at VIN 3.6 V, VOUT 1.2 V, IOUT 2 A (note 6, engineering-sample test); p14 COT control; pp15-16 output capacitor section; p17 Fig. 4 (no CFF). https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPM3833CGRH-Z/document_id/4426/",
+   "consequence": "VCCINT, and possibly VCCAUX, may ring or oscillate on load steps once the FPGA design runs. Start-up is not at risk (1.3 ms soft-start needs well under 1 A to charge these values).",
+   "suggested_action": "Ask MPS to confirm U2 and U3 with these COUT values and the 22 pF CFF, or mark C4 not fitted so VCCINT drops below 100 uF; then do a load-step check on the first boards.",
+   "origin": "carried",
+   "category": "Power & regulators",
+   "upd_note": "In Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST, schematic V50 · edited 13 Nov 2026, 11:15 CST, C4 (100 uF) is not fitted, by the owner's decision. Fitted capacitance is now 86 uF on VCCINT (was 186), 97 uF on VCCAUX (C59 also not fitted) and 113 uF on VCCO, against the 100 uF maximum in the MPM3833C data sheet (https://www.monolithicpower.com/en/documentation/datasheet/MPM3833C). The clear excess on VCCINT is gone. Still open: VIN_3V3 at U16 carries 164 uF nominal (less after DC-bias loss), the 22 pF feed-forward capacitor C3 is unchanged, and MPS has not confirmed any of these combinations. A load-step check on the first board settles it.",
+   "title_was": "Output capacitance on MPM3833C rails exceeds the datasheet's 100 uF maximum, clearly so on VCCINT (186 uF).",
+   "upd": "changed",
+   "upd_sev_was": "major"
   },
   {
    "id": "FE-25",
@@ -290,7 +210,8 @@
    "suggested_action": "Before ordering, add full GND via stacks (L13 up through the buried via) beside the J2 GND pins and in the J2 via rows where room allows, then re-run the same return-distance check aiming for under 1 to 1.5 mm.",
    "origin": "changed",
    "category": "Grounding & return paths",
-   "v2note": "See SYS-74."
+   "v2note": "See SYS-74.",
+   "upd_note": "Numbers for Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST: J2 now has 60 lane layer changes; 57 are more than 2 mm and 48 more than 3 mm from a full ground via stack (worst 6.84 mm). No ground stacks were added; the board still has 55."
   },
   {
    "id": "FE-21",
@@ -324,7 +245,7 @@
    "found_by": [
     "frontend-layout"
    ],
-   "title": "Slow-net hop tracks cut 0.29 mm slots in ground layers L2 and L13 that nine L12 lanes and three L1 nets cross.",
+   "title": "Slow-net hop tracks cut 0.29 mm slots in ground layers L2 and L13 that eleven L12 lanes and four L1 nets cross.",
    "area": "Reference planes",
    "what": "A few slow nets were routed as short 'hop' tracks inside the L2 and L13 ground pours, which cuts narrow slots in those planes. A signal track's return current flows in the plane right beside it, so where an L12 lane crosses an L13 slot it loses one of its two reference planes for 0.24-0.50 mm, and where an L1 track crosses an L2 slot it briefly loses its only reference. The crossings are short and L11 is whole above every L12 crossing, so the effect is small. The 25 MHz clock CLK25_PL is the crossing worth moving, and the project record's open list omits it.",
    "where": "Frontend. L12 lanes over L13 slots: /ASIC5_DATA5 (108.63, 117.9) 0.50 mm; CHIP_RESET_SHARED (113.0, 107.5) 0.46; /STIM_CHIP1_SPI_DR (108.52, 111.3) 0.41; /ASIC5_DATA6 0.35; CLK25_PL (117.2, 116.1) 0.29; /ASIC5_DATA7 0.29; /ASIC5_DATA8 0.29; /ASIC5_READ 0.25; /ASIC5_CLK32MHz_Out (108.76, 117.7) 0.24. L1 tracks over L2 slots: FPGA_JTAG_TDI (115.82, 118.2) 0.24 mm; BOOT_RAILS_PG_3V3 0.21; Net-(U3-FB) 0.18. /ASIC5_DATA8 on L12 also loses L11 for 0.55 mm twice at y 119.0, under foreign buried-via lands.",
@@ -333,7 +254,10 @@
    "consequence": "Small local impedance bumps and some extra crosstalk on the crossing tracks; the 25 MHz clock is the one where an edge disturbance matters most.",
    "suggested_action": "Move the CLK25_PL crossing off the L13 slot, or move the hop under it to another layer; do the same for /ASIC5_CLK32MHz_Out if it is easy, and leave the rest.",
    "origin": "carried",
-   "category": "Grounding & return paths"
+   "category": "Grounding & return paths",
+   "upd_note": "The pin map V6 lanes added three crossings in Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST: /ASIC3_DATA6 (0.43 mm) and /ASIC7_DATA6 (0.21 mm) on L12 over L13 slots, and /ASIC8_DATA2 (0.28 mm) on L1 over an L2 slot. CLK25_PL still crosses an L13 slot for 0.28 mm. The slots themselves are unchanged (38 hop segments on L2, 37 on L13).",
+   "title_was": "Slow-net hop tracks cut 0.29 mm slots in ground layers L2 and L13 that nine L12 lanes and three L1 nets cross.",
+   "upd": "changed"
   },
   {
    "id": "FE-24",
@@ -424,6 +348,31 @@
    "category": "Signals, clocks & timing"
   },
   {
+   "id": "FE-07",
+   "severity": "minor",
+   "status": "kept",
+   "verification": "Confirmed by two independent re-checks",
+   "basis": "needs_decision",
+   "already_known": "START_HERE.md decision 1; JLC_CHECKLIST.csv 'Room for break-off tabs' (Ask JLC). The record calls the east edge free at 0.6 mm keep-off, but J1's joints are 0.665 mm in. Reviewer agrees it is a pre-order decision.",
+   "found_by": [
+    "frontend-order"
+   ],
+   "title": "The panel is drawn now, but its east and west break-off tabs sit beside J1's and J2's pads, 0.65 mm in from the edge.",
+   "area": "Panel and assembly",
+   "what": "JLC's Standard PCBA (assembly) service needs a board or panel of at least 70 x 70 mm with edge rails and fiducials (optical alignment marks). The Frontend is 22.59 x 25.42 mm, has no fiducials, and no panel is drawn; the PCB remark leaves the panel to JLC and asks for break-off tabs ('mouse bites', small perforated bridges snapped after assembly) on the south and east edges only. Along most of the east edge the 70-pin, 0.4 mm-pitch DF40 connector J1 sits 0.665 mm from the edge, and along the south edge small capacitors, a resistor and bare test pads sit 0.50 to 0.66 mm in. The project record judged the east edge free at a 0.6 mm keep-off, which ignores the clearance a tab needs.",
+   "where": "Frontend outline x 102.21-124.80, y 96.50-121.92 mm. East edge: J1 (bottom, DF40C-70DS) pads x 120.355-124.135 over y 105.67-119.47, courtyard to x 124.68 (0.12 mm from the edge). West edge: J2 pads 0.645 mm in. South edge: test pads TP1/6/7/8/9/10/11/13 0.50 mm, C45/C49 (0402 4.7 uF, bottom) 0.52 mm, R9 (0201 resistor, top) 0.66 mm.",
+   "evidence": "exports/frontend/board.json pad boxes with a 1.0 mm keep-off: the east edge is clear only at y 103.77-105.67 (1.9 mm) and y 119.47-121.92 (2.45 mm); the south edge has clear stretches of 3.54, 2.62, 1.95 and 4.58 mm, the two widest next to the ends of J2 and J1, whose courtyards are 0.975 mm from the south edge. With pcbnew courtyards (boards/frontend/Artix_Frontend_8L_V3.kicad_pcb) no edge has a 1.0 mm clear stretch; the best is 0.98 mm at the east edge, y 120.94-121.92. parts.csv has no fiducial footprints. inputs/frontend/V3_order/JLC_ORDER_NOTES.txt asks for tabs 'on the south and east edges only' and for JLC to add rails, fiducials and tooling holes. JLC_CHECKLIST.csv rows 34-37 call the east edge free at 0.6 mm keep-off (margin 0.065 mm).",
+   "source": "JLCPCB PCB Assembly Capabilities (Standard PCBA: 70 x 70 mm minimum board or panel; edge rails and fiducials necessary), https://jlcpcb.com/capabilities/pcb-assembly-capabilities; JLCPCB HDI PCB page (minimum V-cut panel 30 x 60 mm; smaller panels need tab-routing or stamp-hole panelization), https://jlcpcb.com/pcb-fabrication/hdi-pcb; JLC blog panelization guidance (1.5 to 5 mm component-to-tab clearance, figures vary between posts). Tab stress on J1 joints and the stack-fit effect of leftover nubs is engineering judgement.",
+   "consequence": "JLC can probably add rails and tabs itself, but at a place of its choosing, and the remark currently points it at the east edge beside J1. Snapping a tab there can crack J1 solder joints or the small south-edge parts, and leftover nubs sit on edges that set the stack fit.",
+   "suggested_action": "Before ordering, draw the panel (rails, fiducials, tooling holes) with tabs only in the clear south stretches and east-edge corners, or ask JLC to route the boards out fully; either way remove 'east' from the tab instruction.",
+   "origin": "carried",
+   "category": "Layout & manufacturing",
+   "upd_note": "A panel is now drawn (assembly panel V1 for V7 · edited 13 Nov 2026, 11:33 CST): a 70 x 70 mm frame with fiducials, tooling holes and four break-off tabs, so JLC's size rule is met. But two tabs sit right beside the board-to-board connectors: the east tab spans 2.8 mm of J1's pad row and the west tab 4.6 mm of J2's, with pads 0.65-0.67 mm from the board edge and 0.59-0.61 mm from the break-off holes. The west tab also meets U4's pads at 0.64 mm. The south tabs pass test pads 0.5 mm from the edge. The panel asks JLC to cut the tabs, not snap them, and to file the edges flush, which lowers the stress. JLC has not reviewed the panel. The bare-board remark still says only the south edge can take tabs.",
+   "title_was": "No panel is drawn, and the order remark sends break-off tabs to the east edge, 0.665 mm from J1's pads.",
+   "upd": "changed",
+   "upd_sev_was": "major"
+  },
+  {
    "id": "FE-11",
    "severity": "minor",
    "status": "kept",
@@ -434,7 +383,7 @@
     "frontend-layout",
     "frontend-order"
    ],
-   "title": "407 stacked laser-via columns and 577 lasers on buried vias need JLC's written acceptance before ordering.",
+   "title": "427 stacked laser-via columns and 604 lasers on buried vias need JLC's written acceptance before ordering.",
    "area": "HDI via construction",
    "what": "The U1, J1 and J2 escapes are built almost entirely from stacked vias: laser-drilled microvias placed directly on top of each other and directly on the capped L4-L11 buried vias. JLC's published HDI rules do cover stacked vias, define them as aligned blind and buried vias, and offer the 3rd-order process this needs. What JLC does not publish is a limit on stack height or any reliability test or coupon, and it says staggered (offset) vias are generally preferred for yield. The order remark says the lasers are stacked but gives no quantities, so JLC's engineering review, which happens before payment, has to confirm it.",
    "where": "Frontend, mainly the U1 BGA field (272 of 324 U1 balls have a via in the pad centre) and the J1/J2 fan-out. 226 three-high stacks on L1-L2-L3-L4 and 181 on L11-L12-L13-L14 (407 columns at 383 sites); 24 sites are full L1-L14 stacks. 261 of 384 buried vias carry a 3-4 laser on top and all 316 11-12 lasers sit under a buried via.",
@@ -443,7 +392,10 @@
    "consequence": "JLC may re-quote, ask for changes or build with an unstated yield and stacked-microvia reliability; tall stacks can fail open after reflow cycles. A forced move to staggered vias would mean re-routing the U1 field, but that is unlikely given JLC's published support.",
    "suggested_action": "Add the stack counts to the PCB remark and get JLC's written acceptance of three-high stacks on capped buried vias and full L1-L14 stacks in its pre-payment engineering review, with the existing 'Ask JLC' stack-up row.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "The new copper of the pin map V6 rework added stacks. Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST has 427 three-high laser columns (239 on L1-L4, 188 on L11-L14) at 398 sites, 29 full L1-L14 stacks, and 604 lasers sitting on buried vias (274 on top, 330 below). The remark still says the lasers are stacked but gives no counts, and JLC has not given written acceptance.",
+   "title_was": "407 stacked laser-via columns and 577 lasers on buried vias need JLC's written acceptance before ordering.",
+   "upd": "changed"
   },
   {
    "id": "FE-12",
@@ -455,7 +407,7 @@
    "found_by": [
     "frontend-order"
    ],
-   "title": "The placement file uses KiCad's raw bottom angles; ten bottom parts at 0 or 180 degrees flip under 180-minus.",
+   "title": "JLC's bottom-side angle rule is still unconfirmed; seven bottom parts at 0 or 180 degrees would flip under 180-minus, though the remark now gives a pin-1 table.",
    "area": "Placement file",
    "what": "The placement (CPL) file gives JLC the position and rotation of every part. It copies KiCad's footprint angle for all 170 rows, including 124 on the bottom, which is the route JLC's own KiCad guide describes; JLC states no separate bottom-side rule. Some widely used tools (the kicad-jlcpcb-tools plugin, KiBot's JLC example) instead write 180 minus the angle for bottom parts, which turns parts at 0 or 180 degrees by half a turn and leaves parts at 90 or 270 unchanged. JLC applies its own per-part offsets and its engineers check polarity from the silkscreen, but U7, U12, Y1, J1 and J2 on the bottom have no usable pin-1 silk mark, so the preview check decides those.",
    "where": "Frontend bottom parts (CPL degrees): U5, U6, U8, U10, U14, U18, Y1, Y2 at 0; U15, U17 at 180 (these ten change under 180-minus); U7 270, U11 90, U12 90, J1 90, J2 90 (unchanged). No silk on U7, Y1, J1, J2; U12 keeps only one short body line near pin 1. J3 is on the top side and keyed by its shield slots.",
@@ -465,7 +417,10 @@
    "suggested_action": "Before paying, check pin 1 of the ten 0/180-degree bottom parts and of U7, U12, Y1, J1 and J2 in JLC's placement preview against the assembly PDFs, and keep 'confirm placement' selected.",
    "origin": "changed",
    "category": "Layout & manufacturing",
-   "v2note": "See FE-44. See FE-45. See FE-49. See FE-50. See FE-51. See FE-52."
+   "v2note": "See FE-44. See FE-45. See FE-49. See FE-50. See FE-51. See FE-52.",
+   "upd_note": "The placement file of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST now includes JLC's library offsets for U1, U8, U11, U15, U17 and U18, and the remark states that bottom angles are KiCad's own (part flipped top-to-bottom, then turned), asks JLC to place every polarised part by pin 1, and lists pin 1 for 22 parts, U7's empty A1 corner included. Under the 180-minus rule seven bottom parts would still turn half a turn: U5, U6, U10, U11, U14, Y1, Y2. JLC has not confirmed its rule, so the preview check stays (see FE-49).",
+   "title_was": "The placement file uses KiCad's raw bottom angles; ten bottom parts at 0 or 180 degrees flip under 180-minus.",
+   "upd": "changed"
   },
   {
    "id": "FE-28",
@@ -500,7 +455,7 @@
    "found_by": [
     "frontend-order"
    ],
-   "title": "About 223 vias sit 0.15-0.20 mm from other-net copper, below JLC's general 0.20 mm hole-to-copper figure.",
+   "title": "About 279 vias sit 0.15-0.20 mm from other-net copper, below JLC's general 0.20 mm hole-to-copper figure.",
    "area": "Via clearance",
    "what": "The smallest gap from a drilled hole's edge to copper of another net is 0.175 mm, between neighbouring buried vias on L4. About 223 to 226 vias, depending on how a hole is counted, fall between 0.15 and 0.20 mm; none are below 0.15 mm, and the nearest copper is always a via land or track, never a pour. This meets JLC's HDI figures (0.15 mm) but not the 0.20 mm figures in JLC's general rigid-board table. JLC has to say which figure applies to this HDI order.",
    "where": "Frontend FPGA Board, mainly inner layers. Examples on L4: buried vias GND (115.82, 109.40), VCCO_1V5 (115.42, 109.40), FPGA_QSPI_CCLK (115.02, 109.40); FPGA_INIT_B / PG_GTP_1V4 at x 106.02; /ASIC8_DATA5 / GND at x 119.02.",
@@ -509,57 +464,13 @@
    "consequence": "An engineering query that delays the order, or JLC trimming copper near those holes.",
    "suggested_action": "Keep the question in the order remark and get JLC's written answer before fabrication.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
-  },
-  {
-   "title": "The bottom assembly drawing marks U7's /CS ball (B4) as 'pin 1 (A1)', so the only A1 guide for the boot flash points away from the real A1 corner.",
-   "severity": "minor",
-   "board": "frontend",
-   "area": "Assembly marks / pin 1",
-   "what": "U7 is the 21-ball WLCSP boot flash on the bottom side. Its footprint names the eight signal balls by symbol pin number (1-8), and the A1 corner has no ball. The order script colours pad '1' or 'A1' red and labels it 'pin 1 (A1)', so U7's red pad is ball B4 (/CS). B4 is an inner ball 1.58 mm from the A1 corner and nearer the A6 corner (1.12 mm). U7 has no silkscreen mark and the fab layer is not in the Gerbers. The record asks the owner to check U7's rotation in JLC's placement preview against this drawing, which makes the drawing the only A1 reference.",
-   "where": "Frontend U7 W25Q128JWYIQ, bottom, (117.75, 104.5), CPL 270 deg; inputs/frontend/V3_order/Artix_Frontend_8L_V3_14L_V3_Assembly_Bottom.pdf; inputs/frontend/V3_scripts/assy_draw.py line 22; boards/frontend/LearningFPGA.pretty/Winbond_WLCSP-21_P0.5mm.kicad_mod",
-   "evidence": "assy_draw.py: one=p['num'] in ('1','A1'); legend 'red pad = pin 1 (A1)'. I parsed the order PDF. The only red pad in U7's area maps to board (117.00, 104.75) = U7 pad 1, net FLASH_CS_N_1V8. The footprint has pads 1-8 plus NC balls A2, A5, A6, B1, B6, C1, C6, D1, D6, E1, E6, F2, F5, and no A1. In footprint coordinates pad 1 is at (0.25, -0.75), the A1 corner at (-1.25, -1.25) (1.58 mm) and the A6 corner at (1.25, -1.25) (1.12 mm). On the board the A1 corner is at (116.5, 103.25). B_Silkscreen.gbo has 0 draws in x 115.5-120, y 102.5-106.5, and the Gerber set has no Fab layer. The independent pin-1 table also lists U7 'ball 1 (117.00, -104.75)'.",
-   "source": "Winbond W25Q128JW datasheet Rev G (29 Jul 2021), sec. 3.8-3.9 p8, Figure 1e and ball table (B4 = /CS), https://www.winbond.com/resource-files/W25Q128JW_RevG_07292021%20Plus.pdf ; project files listed in 'where'; inputs/frontend/V3_record/START_HERE.md 'Not done / not verified' (preview check against the assembly PDFs). IPC-7351 A1-top-left zero orientation: from memory, not re-read.",
-   "consequence": "A preview check against the red mark can make a correct JLC placement look wrong, or a wrong one look right. A 'correction' to bring A1 next to the red mark would turn U7 by 90 deg, putting VCC, GND and /CS on the wrong balls of a special-order part (FE-05) that is hard to rework on the bottom side.",
-   "suggested_action": "Draw U7's A1 corner in the assembly drawing (special-case WLCSP/BGA parts in assy_draw.py), add an A1 dot on B.Silkscreen beside U7 if room allows, and tell JLC in the remark that A1 is the empty corner next to balls A2 and B1.",
-   "basis": "confirmed_in_files",
-   "relation": "changes FE-12 (the assembly PDF that FE-12's U7 pin-1 check relies on marks ball B4, not A1)",
-   "confidence": "high",
-   "found_by": [
-    "fresh"
-   ],
-   "corrected": "",
-   "verification": "checked by an independent reviewer",
-   "id": "FE-45",
-   "origin": "new",
    "category": "Layout & manufacturing",
-   "merged": [
-    {
-     "title": "The bottom assembly drawing marks U7's inner ball B4 (/CS) as 'pin 1 (A1)'; the real A1 corner is 1.58 mm away.",
-     "severity": "minor",
-     "board": "frontend",
-     "area": "Assembly drawing / U7 polarity",
-     "what": "The KiCad footprint numbers U7's eight signal balls 1 to 8 like an SOIC package, so its pad 1 is Winbond ball B4 (/CS). The drawing script paints pad '1' or 'A1' red under the caption 'red pad = pin 1 (A1)'. For U7 that marks an inner ball, not the package's A1 corner. JLC's footprint, and the part's A1 dot, follow Winbond's ball names. The owner's preview check relies on these drawings, and U7 has no silk mark.",
-     "where": "Frontend U7 (W25Q128JWYIQ, JLC C6750401), bottom side, CPL angle 270. The red pad is B4 at (117.000, 104.750), net FLASH_CS_N_1V8. The true A1 corner (no ball) is at (116.500, 103.250) = CPL (116.500, -103.250), beside balls A2 (116.5, 103.75) and B1 (117.0, 103.25). The red pad is 1.58 mm from that corner.",
-     "evidence": "inputs/frontend/V3_scripts/assy_draw.py marks p['num'] in ('1','A1') red. A render of Artix_Frontend_8L_V3_14L_V3_Assembly_Bottom.pdf (scratch out/assy_bottom.png) shows U7's red pad inside the ball array.\n\nWinbond Figure 1e, decoded from the PDF's vector data (out/w25q_p9_form380.txt): top view with A1 at top-left. Signal balls: B3 VCC, B4 /CS, C3 /HOLD, C4 DO, D3 CLK, D4 /WP, E3 DI, E4 GND. NC balls at A2, A5, A6, B1, B6, C1, C6, D1, D6, E1, E6, F2 and F5.\n\nJLC's footprint uses the same 21 names, with an A1 silk circle at (392, 294), the top-left. It is titled for an AT25SL128A WLCSP-21 3.3 x 3.0 mm body. Mapping the Winbond names to KiCad pads 1-8, the fit is 0.000 mm at 270 under readings a and c. JLC's A1 dot then lands at (116.23, 102.47), next to the true corner. Under readings b/d it lands at (119.27, 106.53), the opposite corner.\n\nTurned 180 degrees, 20 of 21 balls land (A6 has no pad) and VCC goes on GND.",
-     "source": "Winbond W25Q128JW datasheet Rev G (29 Jul 2021), section 3.8 Figure 1e and section 3.9 ball description, PDF page 9 (printed p.8): https://www.winbond.com/resource-files/W25Q128JW_RevG_07292021%20Plus.pdf. Read from the copy saved at a review working file (not published)\n\nEasyEDA API for C6750401: https://easyeda.com/api/products/C6750401/components?version=6.4.19.5\n\nProject file: inputs/frontend/V3_record/START_HERE.md line 101.",
-     "consequence": "If JLC's A1 dot is compared with the red pad, a correct placement looks wrong, and the drawing gives no reference for the corner that matters. A 180-degree error, which puts VCC on GND, could then be accepted.",
-     "suggested_action": "In the preview, accept U7 only if JLC's A1 dot sits at the corner near CPL (116.50, -103.25), beside B1/A2 and not beside F5/E6. In the next drawing, mark A1 rather than pad 1 for U7.",
-     "basis": "confirmed_in_files",
-     "relation": "changes FE-12",
-     "confidence": "high",
-     "found_by": [
-      "gap"
-     ],
-     "verification": "single reviewer (gap round)",
-     "id": "FE-52",
-     "origin": "new",
-     "category": "Layout & manufacturing"
-    }
-   ]
+   "upd_note": "Re-measured on Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST: the least hole-to-other-copper gap is now 0.170 mm (was 0.175), and 279 vias fall between 0.15 and 0.20 mm (229 by the same count on 14 layers V3). None is below 0.15 mm and the nearest copper is a track or via land, never a pour. The remark names the 0.170 mm figure and asks JLC to confirm; JLC's general table gives 0.20 mm (https://jlcpcb.com/capabilities/pcb-capabilities). No answer yet.",
+   "title_was": "About 223 vias sit 0.15-0.20 mm from other-net copper, below JLC's general 0.20 mm hole-to-copper figure.",
+   "upd": "changed"
   },
   {
-   "title": "Under the bottom-side rule used by the HDMI order files and common JLC tools, six symmetric bottom parts land turned 180 degrees with supply and ground swapped.",
+   "title": "JLC has not confirmed its bottom-side rule; under the 180-minus rule seven bottom parts would land turned 180 degrees, though the remark now gives a pin-1 table.",
    "severity": "minor",
    "board": "frontend",
    "area": "Placement file (bottom side)",
@@ -581,78 +492,10 @@
    "origin": "new",
    "category": "Layout & manufacturing",
    "dupnote": "FE-12.",
-   "dupkind": "overlapping"
-  },
-  {
-   "title": "Five bottom parts (U8, U11, U15, U17, U18) are 90 degrees off JLC's library footprints under every bottom-side reading.",
-   "severity": "minor",
-   "board": "frontend",
-   "area": "Placement file (bottom side)",
-   "what": "JLC's footprints for these five parts have pin 1 at bottom-left with the pad rows horizontal. That is a 270-degree library offset against KiCad. The CPL carries no offsets, so these parts do not line up with their pads under any reading, and the preview will show them clearly off. JLC must turn each one 90 degrees one way or the other. For U8, U11 and U15, choosing the wrong way reverses the supply. All five have a silk pin-1 mark, which JLC uses by default.",
-   "where": "CPL angle, then the angle JLC needs under readings a,c / b,d:\n- U8: 0, needs 90 / 270\n- U11: 90, needs 0 (a, b) / 180 (c, d)\n- U15: 180, needs 270 / 90\n- U17: 180, needs 270 / 90\n- U18: 0, needs 90 / 270\nPin 1 positions: U8 (113.780, 106.250) FPGA_QSPI_CCLK; U11 (111.900, 100.260) BOOT_RESET_N; U15 (115.513, 115.400) VCCO_1V5; U17 (112.185, 101.400) /CABLE_CLK_P; U18 (113.235, 101.810) /CABLE_SYNC_P.",
-   "evidence": "scripts/fe_libangle.py: worst pad error at the CPL angle is the same under all four readings: U8 1.93 mm, U11 0.89, U15 1.24, U17 1.53, U18 1.53. At the needed angle it is 0.01-0.04 mm.\n\nJLC footprints: C779392 UQFN-16_L2.6-W1.8-P0.40-BL; C546047 XSON-6_L1.5-W1.0-P0.50-BL; C191003 SOT-563_L1.6-W1.2-P0.50-LS1.6-BL; C106794 USON-10_L2.5-W1.0-P0.50-BL.\n\nThe HDMI V37 CPL already adds this offset for the same JLC part and KiCad footprint (C106794, USON-10_2.5x1.0mm_P0.5mm): U801 KiCad 180 -> CPL 90; U809 0 -> 270.\n\nTurned 180 degrees from correct: U8 VCCA on GND and GND pins on VCCO_1V5; U11 VCC and GND swap; U15 GND on VCCO_1V5. U17/U18 are harmless, because their flow-through pads carry the same nets.",
-   "source": "EasyEDA API for C779392, C546047, C191003 and C106794: https://easyeda.com/api/products/<LCSC>/components?version=6.4.19.5\n\nJLCPCB FAQ Part 2, Q2 and Q10: https://jlcpcb.com/help/article/pcb-assembly-faqs-part-2\n\nProject files: inputs/hdmi/V37_order/HDMI_Extension_Board_V37_CPL.csv; exports/hdmi/board.json.",
-   "consequence": "Expect a delay and an e-mail round at assembly. A wrong manual correction on U8, U11 or U15 reverses its supply.",
-   "suggested_action": "Add the 270-degree library offset for these five parts, as the HDMI file does for C106794. Then confirm pin 1 in the preview at the coordinates above.",
-   "basis": "confirmed_in_files",
-   "relation": "changes FE-12",
-   "confidence": "high",
-   "found_by": [
-    "gap"
-   ],
-   "verification": "single reviewer (gap round)",
-   "id": "FE-50",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "dupnote": "FE-12.",
-   "dupkind": "overlapping"
-  },
-  {
-   "title": "J3's placement point is 1.06 mm from the origin of JLC's footprint, so JLC would set the connector off its pads and slots.",
-   "severity": "minor",
-   "board": "frontend",
-   "area": "Placement file (J3 position)",
-   "what": "The CPL gives J3 at its body centre, 1.35 mm behind the front shell slots. JLC's footprint for C563878 has its origin about 2.39 mm behind the front slots. Placed at the CPL point, the connector sits 1.06 mm toward the board edge. That misses the 0.85-1.0 mm signal pads and puts the shell tabs out of their slots. The angle (180) is right.",
-   "where": "Frontend J3 (Molex 46765-1001, JLC C563878), top side. CPL: 112.5000mm, -99.6300mm, 180. Pin 1 at (110.700, 103.055), CABLE_TARGET_SENSE. Footprint origin at (112.50, 98.28). Slots at x 109.4/115.6, y 98.28/101.64.",
-   "evidence": "JLC footprint: head (4051.238, 3010.6645). Pins 1-19 at y 3001.264 (odd) and 3006.382 (even). Shell pads 20/21 at y 3006.34-3006.84 and 22/23 at y 3020.065, at x 4039.033 and 4063.443.\n\nscripts/fe_libangle.py: worst pad error is 1.11 mm at the CPL point and 0.15 mm after a best-fit shift of (0, -1.061) mm (CPL, y up). The even pins land at y 100.72 against pads at 101.83. JLC's origin therefore needs Mid Y of about -100.69 mm.\n\ninputs/frontend/V3_scripts/make_jlc.py writes the Fab-outline centre for J3 on purpose.",
-   "source": "EasyEDA API for C563878: https://easyeda.com/api/products/C563878/components?version=6.4.19.5\n\nJLCPCB 'Pick & Place File for PCB Assembly' (Mid X/Y is the component centroid): https://jlcpcb.com/help/article/pick-place-file-for-pcb-assembly\n\nAssumption, not confirmed by JLC: JLC uses its library origin as that centroid.",
-   "consequence": "The connector cannot seat as placed. JLC has to move it in the preview or ask, which adds a delay. If it is forced, the 0.2 mm-pitch signal contacts could bridge neighbouring pads.",
-   "suggested_action": "Set J3 Mid Y to about -100.69 mm. Otherwise, check in the preview that J3's four tabs sit in the slots at x 109.4/115.6, y 98.28/101.64.",
-   "basis": "calculated",
-   "relation": "changes FE-12",
-   "confidence": "medium",
-   "found_by": [
-    "gap"
-   ],
-   "verification": "single reviewer (gap round)",
-   "id": "FE-51",
-   "origin": "new",
-   "category": "Layout & manufacturing",
-   "dupnote": "FE-12.",
-   "dupkind": "overlapping"
-  },
-  {
-   "id": "FE-13",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Upheld after a third independent check",
-   "basis": "needs_decision",
-   "already_known": "inputs/frontend/V3_record/START_HERE.md decision 2. frontend-fpga and frontend-parts agree it is a pre-order decision rated minor; frontend-order rates it major.",
-   "found_by": [
-    "frontend-fpga",
-    "frontend-parts",
-    "frontend-order"
-   ],
-   "title": "The schematic names the industrial-grade FPGA, but the JLC order places the commercial grade from inventory.",
-   "area": "U1 part number",
-   "what": "The schematic and KiCad exports call for XC7A35T-2CSG325I, the industrial grade (die, or junction, temperature -40 to 100 C). The JLC order instead fits XC7A35T-2CSG325C, the commercial grade (0 to 85 C), on purpose: 100 of these are already held in the project's JLC parts inventory, and the order note tells JLC to use them. The two grades are electrically the same apart from temperature range, so pinout, timing, transceiver limits and bitstream do not change. What remains is that the built board will not match its schematic, the BOM Comment field carries both part numbers, and the commercial part has a 15 C lower junction ceiling that no Frontend thermal estimate exists to judge.",
-   "where": "Frontend FPGA Board, U1; JLC BOM line 41 (C1521720 = -2CSG325C); alternative C1521749 (-2CSG325I).",
-   "evidence": "Schematic V46 Value/MPN/Drawing_Value on every U1 unit, exports/frontend/bom.csv line 43, parts.csv line 168 and pos.csv line 166: XC7A35T-2CSG325I. inputs/frontend/V3_order/Artix_Frontend_8L_V3_14L_V3_BOM_JLC.csv line 41: Comment 'XC7A35T-2CSG325I XC7A35T-2CSG325C', LCSC C1521720. JLC_ORDER_NOTES.txt line 21: use the -2CSG325C (C1521720) from inventory, marked [CONFIRM]. inputs/system/parts_sourcing_V1/GROUP_MESSAGE.md and PARTS_STOCK_5_vs_10.csv line 41: 100 x -2CSG325C held, chosen for U1 on 5 Nov. V3_review/parts_status.csv row 41: C1521720 orderable 18, 67.71 USD; parts_lookup.json: C1521749 orderable 64, 86.02 USD; 5 needed. The JLC CPL has no part-number column. The XDC line 1 comment names only 'XC7A35T-CSG325'; an XDC file does not set the device part, and no Vivado project file is in the inputs. No Frontend thermal or power estimate was found in the inputs.",
-   "source": "AMD DS181 Artix-7 FPGAs Data Sheet v1.27.1 (3 Jul 2024), p.1 (all DC/AC parameters equal per speed grade except temperature range) and Table 2 p.3 (Tj 0 to 85 C commercial, -40 to 100 C industrial), https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet; schematic V46; V3_record/START_HERE.md decision 2.",
-   "consequence": "Files and boards disagree, which confuses later debugging and reorders. The 85 C ceiling would only bind at a board temperature already unacceptable on an animal's head (engineering judgement, not a calculation).",
-   "suggested_action": "Confirm the commercial grade and write XC7A35T-2CSG325C into the schematic value/MPN with a single part number in the JLC BOM Comment, or order C1521749 instead; record a Frontend thermal estimate as a separate item.",
-   "origin": "carried",
-   "category": "Parts, BOM & sourcing"
+   "dupkind": "overlapping",
+   "upd_note": "The remark of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST now states the rule it assumes (bottom parts flipped top-to-bottom, then turned), asks JLC to place every polarised part by pin 1, and lists pin 1 for 22 parts. Under that reading all bottom parts land right. JLC has still not said which rule it uses. Under the 180-minus rule, seven bottom parts would land turned half a turn with supply and ground swapped: U5, U6, U10, U11, U14, Y1 and Y2. Y1 still has no silkscreen pin-1 mark.",
+   "title_was": "Under the bottom-side rule used by the HDMI order files and common JLC tools, six symmetric bottom parts land turned 180 degrees with supply and ground swapped.",
+   "upd": "changed"
   },
   {
    "id": "FE-18",
@@ -675,7 +518,8 @@
    "suggested_action": "Ask JLC which chip C105263 holds or consign TPS74801DRCRM3; otherwise change R10 to 1.27k 0.1 % so a 2 % chip still lands inside the MGTAVCC window.",
    "origin": "changed",
    "category": "Parts, BOM & sourcing",
-   "v2note": "See FE-43."
+   "v2note": "See FE-43.",
+   "upd_note": "Unchanged: the order still fits TPS74801DRCR (JLC C105263) for the TPS74801DRCRM3 the schematic names, and the remark now states this substitution as accepted. R10 is still 1.3 k, so MGTAVCC can still reach about 1.030 V with an older 2 % chip."
   },
   {
    "title": "Vivado lists the fitted W25Q128JW-Q for Artix 7 x1 boot (FE-16 closes), but no W25Q64 part, so the FE-05 fallback flash would not program with the standard flow.",
@@ -722,7 +566,7 @@
    "category": "Mechanical, stack & thermal"
   },
   {
-   "title": "No order document asks for the flatness the DF40 connectors need, and JLC's published 0.75 % bow allows about 0.055 mm across J1/J2, 2.7 times Hirose's 0.02 mm.",
+   "title": "The remark now asks JLC for the flatness the DF40 connectors need, but JLC has not agreed, and even 0.5 % bow allows about 0.036 mm across J1/J2.",
    "severity": "minor",
    "board": "frontend",
    "area": "Board flatness at J1/J2 and U1 (fabrication requirement)",
@@ -743,7 +587,10 @@
    "origin": "new",
    "category": "Mechanical, stack & thermal",
    "dupnote": "SYS-70 on the Whole system page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "The remarks of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST and of assembly panel V1 for V7 · edited 13 Nov 2026, 11:33 CST now ask JLC for 0.02 mm flatness along J1 and J2, bow and twist of 0.5 % or better, and a report of the measured bow. JLC has not agreed, and its published HDI figure is still 0.75 % (https://jlcpcb.com/capabilities/pcb-capabilities). Even 0.5 % allows about 0.036 mm across J1's and J2's 13.6 mm contact span, above Hirose's 0.02 mm (https://www.hirose.com/en/product/series/DF40). Inspecting J1 and J2 on the first boards remains the check.",
+   "title_was": "No order document asks for the flatness the DF40 connectors need, and JLC's published 0.75 % bow allows about 0.055 mm across J1/J2, 2.7 times Hirose's 0.02 mm.",
+   "upd": "changed"
   },
   {
    "id": "FE-15",
@@ -788,7 +635,8 @@
    "suggested_action": "On the first board, scope VIN_5V at TP14 while plugging the real cable into a live HDMI board port, using the shortest planned cable. If there is spare area, add a DNP TVS footprint on VIN_5V and fit it if the peak exceeds 6 V.",
    "origin": "changed",
    "category": "Safety, ESD & bring-up",
-   "v2note": "See SYS-79."
+   "v2note": "See SYS-79.",
+   "upd_note": "Still no clamp on VIN_5V in Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST. The net now also leaves on contact J1.32 to the FPGA-LDO board (the 5 V provision), so an overshoot would reach that board's test pad too."
   },
   {
    "title": "Four pull-ups are outside the values AMD and TI specify: PROGRAM_B, INIT_B and FCS_B use 4.99 kOhm where UG470 asks for 4.7 kOhm or less, and the TPS74801 power-good node uses 4.99 kOhm where TI requires 10 kOhm to 1 MOhm.",
@@ -813,98 +661,6 @@
    "id": "FE-48",
    "origin": "new",
    "category": "Safety, ESD & bring-up"
-  },
-  {
-   "id": "FE-08",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by two independent re-checks",
-   "basis": "confirmed_in_files",
-   "already_known": "",
-   "found_by": [
-    "frontend-fpga",
-    "frontend-power"
-   ],
-   "title": "If a design drives FPGA ball M15 (EN_GTPWR) low, the FPGA resets itself and can reboot in a loop.",
-   "area": "GT power and reset",
-   "what": "FPGA ball M15 turns on the 1.4 V transceiver (GT) supply U13; U13's power-good starts regulator U5 (MGTAVCC), and U5's power-good is on the same net that drives the reset supervisor U12's manual-reset input. U12 then pulls PROGRAM_B and INIT_B low, which erases the FPGA configuration. So a design that drives M15 low erases itself; M15 then floats, R58 turns GT power back on, U12 releases about 1.07 s later and the same design reloads, so it can repeat. Holding configuration off while a GT rail is bad is intended and required (the GT calibration runs only during configuration), so the only defect is that M15 cannot be used to switch GT power at runtime; no record states that M15 must stay high.",
-   "where": "Frontend: U1.M15 EN_GTPWR_1V5 (R58 4.99k to VCCO_1V5) -> U15 SN74AXC1T45 -> EN_GTPWR_3V3 (R57 10k to GND) -> U13.4 EN; U13.12 PG_GTP_1V4 -> U5.5 EN; U5.3 PG on BOOT_RAILS_PG_3V3 (with U4.12 PG, U6.5 EN, U12.3 MR, R9, TP10); U12.6 BOOT_RESET_N -> U11 (74AUP2G07) -> U11.6 FPGA_PROGRAM_B (U1.P10), U11.4 FPGA_INIT_B (U1.T10).",
-   "evidence": "exports/frontend/netlist.xml: BOOT_RAILS_PG_3V3 = R9.2, TP10.1, U12.3 MR, U4.12 PG, U5.3 PG, U6.5 EN; EN_GTPWR_1V5 = R58.2, U1.M15, U15.3; EN_GTPWR_3V3 = R57.1, U13.4, U15.4; PG_GTP_1V4 = R43.2, U13.12, U5.5; BOOT_RESET_N = R47.2, U11.1/.3, U12.6, U14.2. U15 supplies (VCCO_1V5 from U4, SWITCHED_3V3 from U10) do not depend on BOOT_RAILS_PG, so the loop does not latch off. PUDC_B (U1.J18) is pulled high by R25 470R, so M15 floats during configuration. C84 = 1 uF on U12 CT gives 1.07 s/uF x 1 uF = about 1.07 s. XC7A35T bitstream 17,536,096 bits at the default 3 MHz CCLK = about 5.8 s, so about 7 s per cycle (no CONFIGRATE set). Frontend_V46_pins_V2.xdc lines 118-119 set only pin and LVCMOS15; the comment calls M15 an output. Schematic text: 'default-enable and shutdown function'.",
-   "source": "AMD UG482 7 Series FPGAs GTP Transceivers User Guide v1.9 (19 Dec 2016), p.219 (RCAL runs only during configuration; analog supplies valid before configuration), https://docs.amd.com/v/u/en-US/ug482_7Series_GTP_Transceivers; AMD UG470 7 Series FPGAs Configuration User Guide v1.17 (5 Dec 2023), p.21 Table 2-4 (PROGRAM_B, INIT_B), Table 1-1 (bitstream size), p.158 (PROGRAM_B does not reset the JTAG TAP), https://docs.amd.com/v/u/en-US/ug470_7Series_Config; TI TPS3890 SLVSD65A, p3 pin functions (MR), p5 timing, https://www.ti.com/lit/ds/symlink/tps3890.pdf; TI TPS74801 SBVS074N (Jun 2024), section 6.3.2 (PG asserts when disabled).",
-   "consequence": "A gateware default of 0 on M15, or a firmware attempt to power-cycle the GT link, turns the board into a reboot loop that looks like a power or flash fault at bring-up. GT power gating, the stated purpose of M15, cannot be used without a full reconfiguration.",
-   "suggested_action": "Write 'M15 must be driven high or left undriven' into the XDC and the schematic note, and check that Vivado's default unused-pin pulldown (from memory, not verified) cannot pull M15 below U15's input threshold through R58 4.99k.",
-   "origin": "changed",
-   "category": "Firmware & constraints",
-   "v2note": "See FE-46.",
-   "merged": [
-    {
-     "title": "A bitstream without the EN_GTPWR_1V5 port leaves M15 on Vivado's default pull-down against R58, which can switch GT power off and start the FE-08 reset loop.",
-     "severity": "minor",
-     "board": "frontend",
-     "area": "configuration / GT power enable",
-     "what": "FE-08, and its fix plan, say M15 must be driven high or left undriven, and the plan adds PULLUP to the port. SYS-27 warns against leaving M15 unconstrained but marks Vivado's pull-down default as unchecked. UG908 confirms that Vivado puts a weak pull-down on every unused I/O, and a port PULLUP cannot apply in a design that lacks the port. On M15 that pull-down fights the 4.99 kOhm pull-up R58, while U15 needs at least 0.65 x VCCO_1V5 (about 0.96 V) to read a high. At the strongest pull-down DS181 allows, M15 sits only about 10 mV above that threshold, and if the pull-down acts like a current sink M15 lands in U15's undefined band. If U15 reads low, U13 turns off and U5's power-good resets the FPGA through U12.",
-     "where": "Frontend: U1.M15 EN_GTPWR_1V5, R58 4.99 kOhm to VCCO_1V5, U15.3 (A); U15.4 (B) EN_GTPWR_3V3 with R57 10 kOhm to GND, to U13.4 EN. inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc line 119 (no pull type).",
-     "evidence": "Netlist: EN_GTPWR_1V5 = R58.2, U1.M15, U15.3; R58 is RC0201FR-074K99L (1 %); VCCO_1V5 is 1.476-1.524 V. Resistor model at the strongest pull-down (3.3 V / 330 uA = 10 kOhm) in parallel with U15's 288 kOhm: M15 = 1.476 x 9.67 / (9.67 + 5.04) = 0.970 V against VIH 0.959 V, an 11 mV margin (1.002 V against 0.991 V at 1.524 V). Current-sink model at 150 uA (DS181's pull-up maximum at VCCO 1.5 V, used as a proxy): M15 is about 0.70 V, between VIL 0.52 V and VIH 0.96 V. At a typical 50 uA: about 1.2 V. Loop period per FE-08: about 7 s.",
-     "source": "AMD UG908 v2026.1 (23 Jun 2026) Table 42 '7 Series Bitstream Settings' p.367 (BITSTREAM.CONFIG.UNUSEDPIN default Pulldown), https://docs.amd.com/api/khub/maps/WhxGW6zSnyI_9T8gF2OWFw/attachments/DQr6ZNGZegPEE3ZQr~mfxA-WhxGW6zSnyI_9T8gF2OWFw/content (https://docs.amd.com/go/en-US/ug908-vivado-programming-debugging); AMD DS181 v1.27.1 Table 3 p.3 (IRPD 68-330 uA at VIN 3.3 V; IRPU 23-150 uA at VCCO 1.5 V), https://docs.amd.com/api/khub/documents/iAkxxTOk96ANLJqYf2hgrQ/content; TI SN74AXC1T45 SCES882E (Dec 2023) sec 5.3 (VIH 0.65 x VCCI, VIL 0.35 x VCCI) and sec 7.3.2 (288 kOhm pull-downs), https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf; known/fix_plans_11nov_evening_on_V3.json (FE-08).",
-     "consequence": "On some silicon corners, a first test image (LED test, IBERT or a JTAG-loaded design) that omits EN_GTPWR_1V5 erases itself right after loading or reboots about every 7 s. At bring-up this looks like a power or flash fault.",
-     "suggested_action": "Write 'M15 must be driven high' (not 'or left undriven'), drive EN_GTPWR_1V5 high in every image, and set BITSTREAM.CONFIG.UNUSEDPIN Pullnone in any image without the port. On a later spin, lower R58 to about 1 kOhm.",
-     "basis": "calculated",
-     "relation": "changes FE-08 (its 'or left undriven' wording and the planned port PULLUP do not cover images without the port); changes SYS-27 (confirms its unchecked pull-down premise from UG908)",
-     "confidence": "medium",
-     "found_by": [
-      "gaps"
-     ],
-     "corrected": "",
-     "verification": "checked by an independent reviewer",
-     "id": "FE-46",
-     "origin": "new",
-     "category": "Firmware & constraints"
-    }
-   ]
-  },
-  {
-   "id": "FE-14",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "confirmed_in_files",
-   "already_known": "U7 and U8 part fields mention 'CONFIGRATE 3MHz initial' and the 5.2/6 ns bound, but no limit or XDC setting is recorded. inputs/frontend/V3_record/START_HERE.md says the pin constraints were not run in Vivado.",
-   "found_by": [
-    "frontend-fpga",
-    "frontend-io"
-   ],
-   "title": "The pin constraints omit the configuration settings, GTP pin locations and TX polarity the board needs.",
-   "area": "Configuration constraints",
-   "what": "Frontend_V46_pins_V2.xdc places all 116 user ports but sets no CFGBVS, CONFIG_VOLTAGE, SPI_BUSWIDTH or CONFIGRATE, and does not place the one wired transceiver (GTP) or its reference clock. The board needs CFGBVS GND and CONFIG_VOLTAGE 1.8; without a CONFIGRATE the FPGA reads its flash at the default 3 MHz, so boot takes about 5.8 s. The flash read data passes through the U8 level translator twice and must arrive within the low part of the configuration clock (CCLK), which can be as short as 40 % of the period; with the +/-50 % CCLK tolerance this limits the nominal setting to about 13.2 MHz, so CONFIGRATE 12 is safe and 16 is not. The TX pair is swapped P/N at J3 on purpose (schematic V42 note), so the gateware must also set TXPOLARITY = 1, which no constraint or gateware file records.",
-   "where": "Frontend FPGA Board: inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc; U1 E12 CFGBVS_0 = GND, E10/R10 VCCO_0 = VCCAUX_1V8; U1.E8 CCLK -> U8 pin 1 -> pin 12 -> U7 SCK; U7 DO -> U8 B4 -> A4 -> U1.L17 D01_DIN; GTP TX0 H2/H1 -> J3.5/J3.3 (GTP_TX0_P/N); MGTREFCLK1 B6/B5 via C78/C79; MGTREFCLK0 D6/D5 unconnected.",
-   "evidence": "XDC: 120 lines, 116 set_property PACKAGE_PIN lines, 0 hits for CFGBVS/CONFIG_VOLTAGE/BITSTREAM/CONFIGRATE/POLARITY; a comment line lists B5/B6 and H1/H2 as not constrained. exports/frontend/netlist.xml: E12 on GND, VCCO_0 on VCCAUX_1V8, mode pins M2/M1 = GND, M0 = 1V8 (Master SPI); D5/D6 'unconnected-(U1D-MGTREFCLK0...)'; GTP_TX0_N -> J3.3, GTP_TX0_P -> J3.5. exports/hdmi/netlist.xml: J610.3 = MGT_RXP0_224, J610.5 = MGT_RXN0_224. Read-path budget: U8 A->B 5.2 ns + flash tCLQV 6 ns + U8 B->A 6.0 ns + DIN setup 3.0 ns = 20.2 ns; 20.2 / 0.4 = 50.5 ns -> 19.8 MHz actual; 19.8 / 1.5 = 13.2 MHz nominal. Boot at default: 17,536,096 bits / 3 MHz = 5.8 s (11.7 s at -50 %). Vivado's CONFIGRATE steps (..., 12, 16, 22, ...) are from memory.",
-   "source": "AMD UG470 7 Series FPGAs Configuration User Guide v1.17 (5 Dec 2023), Table 2-3 (CFGBVS) and bitstream length, https://docs.amd.com/v/u/en-US/ug470_7Series_Config; AMD DS181 v1.27.1 pp.58-59 (FMCCK_START 3 MHz, FMCCKTOL +/-50 %, TMCCKL/TMCCKH 40/60 %, TSPIDCC 3.00 ns), https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet; TI SN74AVC4T774 SCES693I (Feb 2025) p.9 table 5.7, VCCA 1.5 V / VCCB 1.8 V, https://www.ti.com/lit/ds/symlink/sn74avc4t774.pdf; Winbond W25Q128JW Rev G (29 Jul 2021) p.64 tCLQV, https://www.winbond.com/resource-files/W25Q128JW_RevG_07292021%20Plus.pdf.",
-   "consequence": "Vivado warns on CFGBVS/CONFIG_VOLTAGE and boot is slow; a later speed-up to 16 MHz or more can give intermittent corrupt flash reads. A GT placed on the wrong channel or reference clock, or left at normal polarity, gives a dead or inverted recording link on a correct board.",
-   "suggested_action": "Before the first bitstream, add CFGBVS GND, CONFIG_VOLTAGE 1.8, BITSTREAM.CONFIG.SPI_BUSWIDTH 1, CONFIGRATE 12 (or lower), PACKAGE_PIN H2/H1 for GTP TX0 and B6/B5 for MGTREFCLK1, and set TXPOLARITY = 1 in the GT setup.",
-   "origin": "carried",
-   "category": "Firmware & constraints"
-  },
-  {
-   "id": "FE-20",
-   "severity": "minor",
-   "status": "kept",
-   "verification": "Confirmed by one independent re-check",
-   "basis": "confirmed_in_files",
-   "already_known": "inputs/hdmi/V35_prefab_review/ALL_FINDINGS.md (P/N inversion, rated no-PCB-change). Reviewer agrees with that severity; the comment it asked for is still missing from both XDC files.",
-   "found_by": [
-    "frontend-io",
-    "frontend-fpga"
-   ],
-   "title": "The GT pair is P/N swapped by design, and no constraint file records that the Frontend GTP must invert it.",
-   "area": "Cable pin map",
-   "what": "The recording data travel on one differential pair, a P wire and an N wire. On the Frontend, cable pin 3 carries N and pin 5 carries P, while on all eight HDMI Extension Board ports pin 3 goes to the receiver's P input and pin 5 to N, so a straight cable delivers inverted data. This is intended: gateware must set TXPOLARITY = 1 on the Frontend transmitter and must not also invert on the XEM receiver. The requirement is written in the Frontend schematic note (V42), the HDMI V35 review and the HDMI V36 record, but not in the current Frontend constraint file or any of the three HDMI constraint files; an earlier Frontend draft constraint file had it.",
-   "where": "Frontend J3.3 = GTP_TX0_N (U1 H1, MGTPTXN0_216), J3.5 = GTP_TX0_P (U1 H2, MGTPTXP0_216). HDMI Extension Board J610-J613 pin 3 = MGT_RXP0..3_224, pin 5 = MGT_RXN0..3_224; J614-J617 pin 3 = MGT_RXP0..3_226, pin 5 = MGT_RXN0..3_226.",
-   "evidence": "exports/frontend/netlist.xml: GTP_TX0_N = J3.3 + U1.H1; GTP_TX0_P = J3.5 + U1.H2. exports/hdmi/netlist.xml: pin 3 = RXP and pin 5 = RXN on 8 of 8 ports. Case-insensitive search for 'polarity': 0 hits in inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc, and 0 in inputs/hdmi/firmware_V34/fit_pins_V34.xdc, fit_pins_V34_sync.xdc and header_pins_V34.xdc. Frontend XDC line 120 lists GTP TX0 H1/H2 as unconstrained with no polarity comment. Requirement recorded in the Frontend schematic note, inputs/hdmi/V36_prefab_fixes/START_HERE.md line 72 and the V35 ALL_FINDINGS.md.",
-   "source": "AMD UG482 7 Series FPGAs GTP Transceivers User Guide v1.9, chapter 3, TX Polarity Control, p.106 (as cited in the schematic note; not re-read for this review), https://docs.amd.com/api/khub/documents/Xk_zMbXsJj92suJ4_0Akkg/content",
-   "consequence": "If gateware inverts on both ends or on neither, the link never locks and no recording data arrive. The requirement is easy to lose because it is not in any constraint file.",
-   "suggested_action": "Add one comment line to Frontend_V46_pins_V2.xdc and to the HDMI fit_pins constraint file stating TXPOLARITY = 1 on the Frontend GTP and RXPOLARITY = 0 on the XEM, and note it in the gateware record.",
-   "origin": "carried",
-   "category": "Firmware & constraints"
   },
   {
    "id": "FE-26",
@@ -1016,6 +772,23 @@
    "category": "Power & regulators"
   },
   {
+   "id": "FE-60",
+   "severity": "note",
+   "board": "frontend",
+   "category": "Power & regulators",
+   "basis": "needs_measurement",
+   "verification": "Update 13 Nov",
+   "title": "With C4 not fitted, VCCINT no longer has the 100 uF bulk capacitor AMD's board guide lists for this FPGA.",
+   "what": "AMD's board guide lists, for the XC7A35T in the CSG325 package, one 100 uF bulk capacitor on VCCINT, the FPGA core supply. Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST leaves C4 (100 uF) unfitted, by the owner's decision, to clear the gap to the FPGA-LDO board (FE-04) and to bring VCCINT under the regulator's 100 uF maximum (FE-01). The core rail now carries 47 uF + 22 uF + three 4.7 uF + seven 0.47 uF, 86 uF in all. That is likely enough for this small FPGA, but nobody has checked the core rail's ripple and load-step response with this set. The schematic records the gap.",
+   "where": "Frontend FPGA Board, net VCCINT_1V0: C4 and C89 (100 uF, not fitted), C10 47 uF, C2 22 uF, C5/C6/C90 4.7 uF, C7-C9/C11/C91-C93 0.47 uF; regulator U2 (MPM3833C).",
+   "evidence": "Fitted capacitors on VCCINT_1V0 in schematic V50 · edited 13 Nov 2026, 11:15 CST: 86.4 uF nominal; C4 and C89 marked not fitted. AMD UG483, Table 2-2, row XC7A35T CSG325 (https://docs.amd.com/v/u/en-US/ug483_7Series_PCB). The schematic's own note on the core supply says the 100 uF bulk is no longer met and that load step and ripple must be measured on the first board.",
+   "source": "Update 13 Nov re-check of schematic V50 and the V6 record.",
+   "consequence": "If the core rail rings or droops on fast load steps, the FPGA could misbehave under heavy logic activity. The pads of C4 and C89 are kept, so a capacitor can be hand-fitted later, at the cost of the height and capacitance limits in FE-04 and FE-01.",
+   "suggested_action": "On the first board, measure VCCINT ripple and a load step (for example a test image that switches a large block of logic on and off). Fit C4 by hand only if the measurement asks for it and the height to the FPGA-LDO board allows it.",
+   "origin": "new13",
+   "upd": "new"
+  },
+  {
    "id": "FE-31",
    "severity": "note",
    "status": "kept",
@@ -1047,7 +820,7 @@
    "found_by": [
     "frontend-io"
    ],
-   "title": "The ASIC's input and output voltage levels are unknown, so the 1.5 V interface cannot be closed.",
+   "title": "The ASIC designer confirmed 1.5 V logic with Schmitt-trigger inputs, but its input and output voltage figures are still not on record.",
    "area": "ASIC I/O levels",
    "what": "Every ASIC-facing FPGA pin uses LVCMOS15, a 1.5 V logic standard, matching the ASIC's 1.5 V digital supply (DVDD). The FPGA side is known: it reads below 35 % of VCCO as low and above 65 % as high, and drives below 25 % and above 75 %. No document in the workspace gives the ASIC's switching levels, output levels, load, clamp or limits when unpowered, so the files cannot show that each side meets the other's levels. Only the ASIC designer's figures would settle it.",
    "where": "Frontend FPGA Board U1 banks 14, 15 and 34 on VCCO_1V5; ASIC lines and control lines on J1/J2.",
@@ -1056,7 +829,10 @@
    "consequence": "If the ASIC pads switch at a different fraction of DVDD, or DVDD and VCCO_1V5 drift apart, there could be data errors or extra current in the ASIC pad ring.",
    "suggested_action": "Ask the ASIC designer for VIH/VIL/VOH/VOL at DVDD = 1.5 V and the allowed pin voltage with DVDD off.",
    "origin": "carried",
-   "category": "Signals, clocks & timing"
+   "category": "Signals, clocks & timing",
+   "upd_note": "At the 12 Nov meeting the ASIC designer said the chip uses 1.5 V logic with Schmitt-trigger inputs, that thresholds 'do not matter', that edges are generally not faster than about 1 ns, and that inputs while unpowered do not matter. That matches the FPGA's LVCMOS15 setting. The actual input and output voltage figures were not given; he said details can follow by email.",
+   "title_was": "The ASIC's input and output voltage levels are unknown, so the 1.5 V interface cannot be closed.",
+   "upd": "changed"
   },
   {
    "title": "Y2's datasheet covers only a 15 pF load, so its drive into the 830 Ohm level-shift divider is not specified.",
@@ -1133,7 +909,7 @@
    "found_by": [
     "frontend-order"
    ],
-   "title": "C89 is not fitted but still has paste openings on both pads.",
+   "title": "C4, C59 and C89 are not fitted but still have paste openings on their pads.",
    "area": "Paste stencil",
    "what": "C89 is marked DNP (do not populate) and is left out of the JLC parts list and placement file, but the bottom paste stencil still prints solder paste on its two pads. The paste will reflow into a solder bump on each bare pad. That pre-tins the pads for later hand-fitting, though a stray solder ball is possible. Seven filled laser vias sit inside its pads, but the order notes say they are copper-filled and planarised, so they are not a paste problem.",
    "where": "Frontend C89 (0805, bottom, VCCINT_1V0/GND), pads at (121.85, 103.04) and (123.75, 103.04).",
@@ -1142,29 +918,10 @@
    "consequence": "A possible loose solder ball near C89; otherwise harmless.",
    "suggested_action": "Accept it, or ask JLC to block the two C89 stencil apertures.",
    "origin": "carried",
-   "category": "Layout & manufacturing"
-  },
-  {
-   "title": "The PCB remark does not say whether JLC may add balancing copper, though five signal layers hold only 6.5-10 % copper and two of them carry the 88-93 ohm cable pairs.",
-   "severity": "note",
-   "board": "frontend",
-   "area": "Order remark: copper thieving",
-   "what": "Copper thieving is non-functional copper that a fabricator adds to sparse layers to even out plating and pressing. JLC's guidance says layers under 30 % copper need extensive thieving. It also says its order review flags imbalanced designs, and that it routinely adds copper to panel rails. The Frontend remark says nothing about thieving. Copper added near the L8/L10 cable pairs would pull their already-low impedance further from 100 ohm. Islands on L5/L6/L8/L10 could reach ground only through the L4-L11 buried vias, so most would float.",
-   "where": "Copper share: Frontend L5 7.9 %, L6 6.5 %, L8 8.1 %, L10 9.8 %, L12 8.4 %. Cable pairs: /CABLE_CLK_P/N and /CABLE_SYNC_P/N on L8, /CABLE_CMDSYNC_P/N on L10. Order remark: inputs/frontend/V3_order/JLC_ORDER_NOTES.txt.",
-   "evidence": "Copper share: fe_cu_area.json (pcbnew) and fe_gerber_area.json (order Gerbers).\nVias: exports/frontend/vias.csv has spans 1-2, 2-3, 3-4, 4-11 (384 buried), 11-12, 12-13 and 13-14, so L5-L10 are reached only by the buried vias.\nRemark: JLC_ORDER_NOTES.txt has no thieving or balancing text (grep). Line 14 asks for the production file before fabrication, which is the only point where added inner-layer copper would show.\nFE-22: the pairs are 88-93 ohm, and the remark sets no impedance target.",
-   "source": "JLCPCB blog 'Copper Balancing in PCBs', 12 Jun 2026: below 30 % needs extensive thieving; at least 0.5 mm between pours and differential pairs; JLC adds copper to panel borders. https://jlcpcb.com/blog/pcb-copper-balancing\nJLCPCB blog 'How Copper Thieving Balances Your PCB', updated 27 Apr 2026: thieves float; keep 3W from impedance lines; imbalance is flagged at order review. https://jlcpcb.com/blog/copper-thieving-pcb-balance\nProject item FE-22 (known/frontend.json).",
-   "consequence": "Most likely nothing changes. Otherwise an engineering query delays the order, or thieving lands beside the pairs and moves them further from 100 ohm, which is easy to miss in the inner-layer production file.",
-   "suggested_action": "Add to the PCB remark: 'No copper thieving or balancing copper inside the board outline; panel rails only.' If JLC insists, allow it only on L5/L6/L12, at least 0.5 mm from all copper, and never on L8/L10.",
-   "basis": "needs_decision",
-   "relation": "new",
-   "confidence": "medium",
-   "found_by": [
-    "gap"
-   ],
-   "verification": "single reviewer (gap round)",
-   "id": "FE-58",
-   "origin": "new",
-   "category": "Layout & manufacturing"
+   "category": "Layout & manufacturing",
+   "upd_note": "In Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST, C4 and C59 are also not fitted, and all three (C4, C59, C89) still have paste openings on both bottom pads. The remark now asks JLC to leave the pads of all three empty, but does not ask it to block the stencil openings, so each pad will still get a solder bump.",
+   "title_was": "C89 is not fitted but still has paste openings on both pads.",
+   "upd": "changed"
   },
   {
    "id": "FE-42",
@@ -1209,7 +966,8 @@
    "origin": "new",
    "category": "Mechanical, stack & thermal",
    "dupnote": "SYS-70 on the Whole system page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Re-measured on Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST: the three pairs now differ by 70-75 points (L3/L12 79.5/9.7 %, L7/L8 81.4/9.3 %, L6/L9 6.7/81.4 %). The conclusion is the same."
   },
   {
    "title": "Option B's 23.6 mm-long 120-position J5 needs bow under about 0.10 % to keep Hirose's 0.02 mm, while JLC's 0.75 % allows 0.15 mm; the FPGA-LDO boards' own L2/L5 copper imbalance adds only a few um.",
@@ -1233,7 +991,8 @@
    "origin": "new",
    "category": "Mechanical, stack & thermal",
    "dupnote": "SYS-70 on the Whole system page.",
-   "dupkind": "overlapping"
+   "dupkind": "overlapping",
+   "upd_note": "Option B is on hold by the owner's decision (12 Nov 2026), so the J5 part waits with it. The remark of FPGA-LDO A layout V16 · edited 13 Nov 2026, 09:49 CST still has no flatness line, unlike the Frontend's."
   },
   {
    "id": "FE-32",
@@ -1282,6 +1041,32 @@
    "dupkind": "same_problem"
   },
   {
+   "id": "FE-20",
+   "severity": "note",
+   "status": "kept",
+   "verification": "Confirmed by one independent re-check",
+   "basis": "confirmed_in_files",
+   "already_known": "inputs/hdmi/V35_prefab_review/ALL_FINDINGS.md (P/N inversion, rated no-PCB-change). Reviewer agrees with that severity; the comment it asked for is still missing from both XDC files.",
+   "found_by": [
+    "frontend-io",
+    "frontend-fpga"
+   ],
+   "title": "The GT pair is P/N swapped by design; the Frontend pin file now records the inversion, but no HDMI Extension Board file does.",
+   "area": "Cable pin map",
+   "what": "The recording data travel on one differential pair, a P wire and an N wire. On the Frontend, cable pin 3 carries N and pin 5 carries P, while on all eight HDMI Extension Board ports pin 3 goes to the receiver's P input and pin 5 to N, so a straight cable delivers inverted data. This is intended: gateware must set TXPOLARITY = 1 on the Frontend transmitter and must not also invert on the XEM receiver. The requirement is written in the Frontend schematic note (V42), the HDMI V35 review and the HDMI V36 record, but not in the current Frontend constraint file or any of the three HDMI constraint files; an earlier Frontend draft constraint file had it.",
+   "where": "Frontend J3.3 = GTP_TX0_N (U1 H1, MGTPTXN0_216), J3.5 = GTP_TX0_P (U1 H2, MGTPTXP0_216). HDMI Extension Board J610-J613 pin 3 = MGT_RXP0..3_224, pin 5 = MGT_RXN0..3_224; J614-J617 pin 3 = MGT_RXP0..3_226, pin 5 = MGT_RXN0..3_226.",
+   "evidence": "exports/frontend/netlist.xml: GTP_TX0_N = J3.3 + U1.H1; GTP_TX0_P = J3.5 + U1.H2. exports/hdmi/netlist.xml: pin 3 = RXP and pin 5 = RXN on 8 of 8 ports. Case-insensitive search for 'polarity': 0 hits in inputs/frontend/V2_review_fixes/Frontend_V46_pins_V2.xdc, and 0 in inputs/hdmi/firmware_V34/fit_pins_V34.xdc, fit_pins_V34_sync.xdc and header_pins_V34.xdc. Frontend XDC line 120 lists GTP TX0 H1/H2 as unconstrained with no polarity comment. Requirement recorded in the Frontend schematic note, inputs/hdmi/V36_prefab_fixes/START_HERE.md line 72 and the V35 ALL_FINDINGS.md.",
+   "source": "AMD UG482 7 Series FPGAs GTP Transceivers User Guide v1.9, chapter 3, TX Polarity Control, p.106 (as cited in the schematic note; not re-read for this review), https://docs.amd.com/api/khub/documents/Xk_zMbXsJj92suJ4_0Akkg/content",
+   "consequence": "If gateware inverts on both ends or on neither, the link never locks and no recording data arrive. The requirement is easy to lose because it is not in any constraint file.",
+   "suggested_action": "Add one comment line to Frontend_V46_pins_V2.xdc and to the HDMI fit_pins constraint file stating TXPOLARITY = 1 on the Frontend GTP and RXPOLARITY = 0 on the XEM, and note it in the gateware record.",
+   "origin": "carried",
+   "category": "Firmware & constraints",
+   "upd_note": "The Frontend pin file V3 · edited 12 Nov 2026, 20:04 CST now says the pair is swapped on purpose: set TXPOLARITY = 1 in the Frontend GT setup and RXPOLARITY = 0 on the XEM, and do not invert at both ends. The HDMI Extension Board V37 (not changed since 10 Nov) has no constraint file that records it, so the XEM side still relies on the Frontend file and the board records.",
+   "title_was": "The GT pair is P/N swapped by design, and no constraint file records that the Frontend GTP must invert it.",
+   "upd": "changed",
+   "upd_sev_was": "minor"
+  },
+  {
    "id": "FE-35",
    "severity": "note",
    "status": "kept",
@@ -1300,7 +1085,8 @@
    "consequence": "Probably none electrically; possibly a Vivado design-rule warning or error that must be understood and waived on purpose.",
    "suggested_action": "Run the XDC through Vivado once (synthesis, implementation and DRC with the intended CONFIG_VOLTAGE and CFGBVS settings) before ordering and record the result.",
    "origin": "carried",
-   "category": "Firmware & constraints"
+   "category": "Firmware & constraints",
+   "upd_note": "The pin file V3 · edited 12 Nov 2026, 20:04 CST now sets CFGBVS GND and CONFIG_VOLTAGE 1.8, and notes that Vivado has not yet been asked whether it accepts 1.5 V on bank 14. One Vivado run still settles it."
   },
   {
    "title": "The Frontend carries no board name, revision, date or reference designators, so assembled boards cannot be told apart by eye.",
@@ -1323,7 +1109,69 @@
    "verification": "checked by an independent reviewer",
    "id": "FE-55",
    "origin": "new",
-   "category": "Records & documentation"
+   "category": "Records & documentation",
+   "upd_note": "The board itself still carries no name, revision or reference designators in Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST. The assembly panel (assembly panel V1 for V7 · edited 13 Nov 2026, 11:33 CST) now names the board and revision on its frame and puts JLC's order number there, so a panel can be told apart until the frame is cut off; a loose board still cannot.",
+   "upd": "changed"
+  },
+  {
+   "id": "FE-44",
+   "title": "The placement file turns the FPGA U1 by 90 degrees against JLC's library footprint, and every ball still lands on a pad.",
+   "severity": "note",
+   "closed_by": "The placement file of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST gives U1 at 270 degrees. Placed with JLC's own library footprint at that angle, every one of the 324 balls lands on its own pad (0.00 mm error), and the remark names ball A1's position beside the silkscreen triangle."
+  },
+  {
+   "id": "FE-13",
+   "title": "The schematic names the industrial-grade FPGA, but the JLC order places the commercial grade from inventory.",
+   "severity": "note",
+   "closed_by": "schematic V50 · edited 13 Nov 2026, 11:15 CST now names XC7A35T-2CSG325C on U1 (value, part number and drawing value), the BOM line carries that single part number with JLC C1521720, and the remark's confirm mark is gone. Board and schematic match. The temperature question stays with FE-03."
+  },
+  {
+   "id": "FE-51",
+   "title": "J3's placement point is 1.06 mm from the origin of JLC's footprint, so JLC would set the connector off its pads and slots.",
+   "severity": "note",
+   "closed_by": "The placement file of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST now puts J3 at Y -100.691 mm, the origin of JLC's footprint. With JLC's footprint at that point every pad and shell tab lands within 0.15 mm of the board's."
+  },
+  {
+   "id": "FE-58",
+   "title": "The PCB remark does not say whether JLC may add balancing copper, though five signal layers hold only 6.5-10 % copper and two of them carry the 88-93 ohm cable pairs.",
+   "severity": "note",
+   "closed_by": "The remarks now say: 'Please add no balancing copper inside the board outline.' The panel remark of assembly panel V1 for V7 · edited 13 Nov 2026, 11:33 CST adds that balancing copper on the frame is fine. That is the instruction this finding asked for."
+  },
+  {
+   "id": "FE-04",
+   "title": "Three fitted 0805 capacitors under the Frontend leave 0.05 mm worst-case clearance to the FPGA-LDO board.",
+   "severity": "note",
+   "closed_by": "In Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST, C4 and C59 are not fitted (owner's decision, 13 Nov 2026), and C42 is now a thinner part, Murata GRM219R60J476ME44D, 0.85 mm nominal (https://pim.murata.com/en-us/pim/details/?partNum=GRM219R60J476ME44D) instead of 1.25 mm. Even at 1.0 mm it leaves about 0.5 mm to the FPGA-LDO board in the 1.5 mm gap. No other 0805 or larger capacitor is fitted on the bottom. Measuring the mated gap on the first pair is still good practice."
+  },
+  {
+   "id": "FE-08",
+   "title": "If a design drives FPGA ball M15 (EN_GTPWR) low, the FPGA resets itself and can reboot in a loop.",
+   "severity": "note",
+   "closed_by": "The Frontend pin file V3 · edited 12 Nov 2026, 20:04 CST now says M15 must be driven high in every FPGA image, explains that driving it low resets the FPGA and can loop, and tells how to stop Vivado's default pull-down from fighting R58 in an image that leaves the pin out. The board behaviour is unchanged and intended; the missing rule is now written down."
+  },
+  {
+   "id": "FE-14",
+   "title": "The pin constraints omit the configuration settings, GTP pin locations and TX polarity the board needs.",
+   "severity": "note",
+   "closed_by": "The Frontend pin file V3 · edited 12 Nov 2026, 20:04 CST now sets CFGBVS GND, CONFIG_VOLTAGE 1.8, SPI x1 mode and bus width 1, and CONFIGRATE 3 (below the 12 worked out here; boot about 5.8 s). It places GTP TX0 on H2/H1 and its reference clock on B6/B5, and says to set TXPOLARITY = 1 in the GT setup. The file has not been run in Vivado (FE-35)."
+  },
+  {
+   "id": "FE-27",
+   "title": "The J3 footprint was never checked against the 46765-1001 drawing; JLC links the drawing of another variant.",
+   "severity": "note",
+   "closed_by": "The footprint has been compared with Molex drawing SD-46765-001 rev D1, which covers the 46765-1001 on its sheets 2 and 5: pad sizes, pitch, slots and pin-1 side match (FE-41), and the footprint is unchanged in Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST. What is left, whether the short shell tabs hold on a 1.57 mm board, is tracked in FE-30. Recording the drawing number in J3's data sheet field is FE-41."
+  },
+  {
+   "id": "FE-45",
+   "title": "The bottom assembly drawing marks U7's /CS ball (B4) as 'pin 1 (A1)', so the only A1 guide for the boot flash points away from the real A1 corner.",
+   "severity": "note",
+   "closed_by": "The assembly drawing script now marks U7's real A1 corner with a red cross labelled 'A1 corner (no ball)' instead of colouring ball B4, and the remark and pin-1 table give the same corner (X 116.500, Y -103.250, beside balls A2 and B1). That corner matches the footprint's A2 and B1 balls. U7 still has no silkscreen mark."
+  },
+  {
+   "id": "FE-50",
+   "title": "Five bottom parts (U8, U11, U15, U17, U18) are 90 degrees off JLC's library footprints under every bottom-side reading.",
+   "severity": "note",
+   "closed_by": "The placement file of Frontend 14 layers V7 · edited 13 Nov 2026, 11:15 CST now carries the library offsets: U8 90, U11 180, U15 270, U17 270, U18 90 degrees. Placed with JLC's footprints under the reading the remark states, all five land within 0.01-0.04 mm of their pads. Which bottom-side rule JLC uses is still FE-49."
   },
   {
    "id": "FE-16",
@@ -1331,5 +1179,6 @@
    "severity": "note",
    "closed_by": "Closed in V3 by FE-47: Vivado lists the fitted W25Q128JW-Q for Artix 7 x1 boot (FE-16 closes), but no W25Q64 part, so the FE-05 fallback flash would not program with the standard flow."
   }
- ]
+ ],
+ "updated": "13 November 2026"
 }
