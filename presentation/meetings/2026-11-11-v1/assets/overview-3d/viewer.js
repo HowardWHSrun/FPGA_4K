@@ -19,7 +19,7 @@ const INFO={
  sheep:{name:'Sheep (illustration)',kicker:'Low-poly model, approximate size',role:'Shows where the eight head stages sit. "Sheep" by Poly by Google, CC BY 3.0, via Poly Pizza. Not a surgical plan.',was:''},
  brain:{name:'Brain (nominal shape)',kicker:'Illustration only',role:'About 80 × 60 × 45 mm, drawn just under the scalp so the probe shanks reach it. Skull, scalp thickness and implant sites are not modelled.',was:''}
 };
-const SCOPE={custom:'4 Option A stacks + 4 Option B stacks → 8 HDMI cables → HDMI Extension Board + XEM8310',
+const SCOPE={custom:'8 Option A stacks → 8 HDMI cables → HDMI Extension Board + XEM8310',
  direct:'XEM8305 + Direct LDO Carrier + existing LDO board',
  head:'8 head stages on a sheep head · probe shanks point down into the brain · 8 HDMI cables leave toward the HDMI Extension Board · sheep: Poly by Google, CC BY 3.0'};
 // Head view: what stays on the head permanently and what unplugs after a recording. Option B follows the
@@ -92,7 +92,7 @@ async function buildCustom(){
  stacks.length=0;
  for(let i=0;i<8;i++){
   const m=new THREE.Group();m.position.set(-190+(i%4)*55,0,i<4?-55:55);root.add(m);modules.push(m);
-  const optB=i>=4,parts=[];
+  const optB=false,parts=[];// 14 Nov 2026: Option B archived, all eight stacks are Option A
   if(!optB){
    const l=new THREE.Group();l.add(ldo.clone());m.add(tag(l,'fpgaldo','FPGA-LDO Option A',list,i===2));parts.push([l,0,-8]);
    const f=new THREE.Group();f.add(fe.clone());m.add(tag(f,'frontend','Frontend FPGA Board',list,i===1));
@@ -147,7 +147,7 @@ async function buildHead(){
  const brain=new THREE.Mesh(new THREE.SphereGeometry(1,40,24),new THREE.MeshStandardMaterial({color:0xd98e98,roughness:.7,transparent:true,opacity:.9}));brain.scale.set(30,22.5,40);brain.position.set(0,low-3-22.5,cz);brain.renderOrder=1;
  const hb=new THREE.Box3(),v=new THREE.Vector3();sheep.traverse(o=>{if(!o.isMesh)return;const P=o.geometry.attributes.position;for(let k=0;k<P.count;k++){v.fromBufferAttribute(P,k).applyMatrix4(o.matrixWorld);if(v.z>cz-50&&v.y>crown.y-120)hb.expandByPoint(v)}});kit.headBox=hb;// whole head for Fit view
  const bp=new THREE.Group();bp.add(brain);root.add(tag(bp,'brain','Brain (nominal)',list,true));bp.userData.below=true;
- for(const opt of ['A','B']){
+ for(const opt of ['A']){
   const set=new THREE.Group();set.visible=opt===headOpt;root.add(set);headSets[opt]=set;
   let topY=-Infinity;const sites=[];
   for(let i=0;i<8;i++){

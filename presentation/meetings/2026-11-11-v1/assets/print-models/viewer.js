@@ -64,7 +64,7 @@ $('fit').onclick=()=>fit();
 $('dims').onclick=()=>{showDims=!showDims;$('dims').setAttribute('aria-pressed',String(showDims));if(boxHelper)boxHelper.visible=showDims;render()};
 window.addEventListener('message',e=>{if(e.origin!==location.origin)return;const d=e.data||{};if(d.type==='print-set-model'&&data)show(d.key);if(d.type==='presentation-slide-active'&&d.active)resize()});
 
-data=await (await fetch('models.json?v=20261113-v3')).json();
+data=await (await fetch('models.json?v=20261114-v4')).json();
 $('zip').href=data.zip;
 let lastGroup='';const items=$('items');
 for(const m of data.models){if(m.group!==lastGroup){const g=document.createElement('p');g.className='group';g.textContent=m.group;items.appendChild(g);lastGroup=m.group}

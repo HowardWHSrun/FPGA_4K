@@ -71,6 +71,111 @@
       "parts": null
     },
     {
+      "key": "frontend",
+      "name": "Frontend FPGA Board",
+      "group": "On the head",
+      "version": "14 layers V7 · edited 13 Nov 2026, 11:15 CST",
+      "where": "14 layers V7 · top of the stack",
+      "glb": "models/Frontend_14L_V7.glb",
+      "stl": "downloads/Frontend_14L_V7.stl",
+      "step": "downloads/Frontend_14L_V7.step",
+      "size": [
+        22.59,
+        26.04,
+        5.93
+      ],
+      "note": "14 layers V7. Board 22.59 × 25.42 × 1.57 mm; the Micro-HDMI socket overhangs the edge. C4 and C59 are not fitted. J1/J2 and the power modules without a model are nominal boxes.",
+      "parts": null
+    },
+    {
+      "key": "fpgaldo",
+      "name": "FPGA-LDO Option A",
+      "group": "On the head",
+      "version": "Layout V16 · edited 13 Nov 2026, 09:49 CST",
+      "where": "Layout V16 · under the Frontend",
+      "glb": "models/FPGA_LDO_A_V16.glb",
+      "stl": "downloads/FPGA_LDO_A_V16.stl",
+      "step": "downloads/FPGA_LDO_A_V16.step",
+      "size": [
+        22.64,
+        36.76,
+        4.4
+      ],
+      "note": "Layout V16. Board 22.64 × 36.76 × 1.58 mm. Part boxes from the KiCad 3D bodies.",
+      "parts": null
+    },
+    {
+      "key": "asic",
+      "name": "ASIC board",
+      "group": "On the head",
+      "version": "V7 · edited 13 Nov 2026, 00:07 CST",
+      "where": "V7 · four per stack (top and bottom boards share the outline)",
+      "glb": "models/ASIC_Board_V7.glb",
+      "stl": "downloads/ASIC_Board_V7.stl",
+      "step": "downloads/ASIC_Board_V7.step",
+      "size": [
+        21.97,
+        17.03,
+        3.47
+      ],
+      "note": "V7 outline 21.97 × 17.03 mm, 0.8 mm thick as saved. Dies are nominal 0.5 mm boxes; DF40 connectors from the Hirose models. J1 is not fitted.",
+      "parts": null
+    },
+    {
+      "key": "hdmi",
+      "name": "HDMI Extension Board",
+      "group": "Bench (not on the head)",
+      "version": "V37 · edited 10 Nov 2026, 13:38 CST",
+      "where": "V37 · by the PC",
+      "glb": "models/HDMI_Extension_V37.glb",
+      "stl": "downloads/HDMI_Extension_V37.stl",
+      "step": "downloads/HDMI_Extension_V37.step",
+      "size": [
+        167.65,
+        115.23,
+        13.44
+      ],
+      "note": "V37. Board 167.65 × 114.10 mm with the two 3.2 mm holes MH2/MH3. The separate XEM8310 module is not included.",
+      "parts": null
+    },
+    {
+      "key": "directldo",
+      "name": "Direct LDO Carrier",
+      "group": "Bench (not on the head)",
+      "version": "V6 · edited 1 Nov 2026, 20:34 CST",
+      "where": "direct approach",
+      "glb": "models/Direct_LDO_Carrier_V6.glb",
+      "stl": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.stl",
+      "step": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.step",
+      "size": [
+        53.0,
+        86.46,
+        16.37
+      ],
+      "note": "Board 53.0 × 83.0 mm. XEM8305 module not included.",
+      "parts": null
+    },
+    {
+      "key": "ldoexisting",
+      "name": "Existing LDO board",
+      "group": "Bench (not on the head)",
+      "version": "source baseline · edited 2 Oct 2026, 11:37 CDT",
+      "where": "plugs into the carrier",
+      "glb": "models/Existing_LDO_Board.glb",
+      "stl": "downloads/Existing_LDO_Board_2026-10-02_1137_print.stl",
+      "step": "downloads/Existing_LDO_Board_2026-10-02_1137_print.step",
+      "size": [
+        42.03,
+        18.3,
+        3.6
+      ],
+      "note": "Board 42.03 × 18.30 mm. Part sizes are nominal boxes.",
+      "parts": null
+    }
+  ],
+  "zip": "downloads/FPGA_Head_Fit_Models_2026-11-13_V3.zip",
+  "archived": [
+    {
       "key": "stack_b",
       "name": "Option B head stack",
       "group": "On the head",
@@ -146,40 +251,6 @@
       "parts": null
     },
     {
-      "key": "frontend",
-      "name": "Frontend FPGA Board",
-      "group": "On the head",
-      "version": "14 layers V7 · edited 13 Nov 2026, 11:15 CST",
-      "where": "14 layers V7 · top of the stack",
-      "glb": "models/Frontend_14L_V7.glb",
-      "stl": "downloads/Frontend_14L_V7.stl",
-      "step": "downloads/Frontend_14L_V7.step",
-      "size": [
-        22.59,
-        26.04,
-        5.93
-      ],
-      "note": "14 layers V7. Board 22.59 × 25.42 × 1.57 mm; the Micro-HDMI socket overhangs the edge. C4 and C59 are not fitted. J1/J2 and the power modules without a model are nominal boxes.",
-      "parts": null
-    },
-    {
-      "key": "fpgaldo",
-      "name": "FPGA-LDO Option A",
-      "group": "On the head",
-      "version": "Layout V16 · edited 13 Nov 2026, 09:49 CST",
-      "where": "Layout V16 · under the Frontend",
-      "glb": "models/FPGA_LDO_A_V16.glb",
-      "stl": "downloads/FPGA_LDO_A_V16.stl",
-      "step": "downloads/FPGA_LDO_A_V16.step",
-      "size": [
-        22.64,
-        36.76,
-        4.4
-      ],
-      "note": "Layout V16. Board 22.64 × 36.76 × 1.58 mm. Part boxes from the KiCad 3D bodies.",
-      "parts": null
-    },
-    {
       "key": "router_b",
       "name": "FPGA-LDO Option B router",
       "group": "On the head",
@@ -212,75 +283,6 @@
       ],
       "note": "Layout V2. Board 27.90 × 35.30 × 1.60 mm. J5 (120 pins) is a nominal box (no 3D model).",
       "parts": null
-    },
-    {
-      "key": "asic",
-      "name": "ASIC board",
-      "group": "On the head",
-      "version": "V7 · edited 13 Nov 2026, 00:07 CST",
-      "where": "V7 · four per stack (top and bottom boards share the outline)",
-      "glb": "models/ASIC_Board_V7.glb",
-      "stl": "downloads/ASIC_Board_V7.stl",
-      "step": "downloads/ASIC_Board_V7.step",
-      "size": [
-        21.97,
-        17.03,
-        3.47
-      ],
-      "note": "V7 outline 21.97 × 17.03 mm, 0.8 mm thick as saved. Dies are nominal 0.5 mm boxes; DF40 connectors from the Hirose models. J1 is not fitted.",
-      "parts": null
-    },
-    {
-      "key": "hdmi",
-      "name": "HDMI Extension Board",
-      "group": "Bench (not on the head)",
-      "version": "V37 · edited 10 Nov 2026, 13:38 CST",
-      "where": "V37 · by the PC",
-      "glb": "models/HDMI_Extension_V37.glb",
-      "stl": "downloads/HDMI_Extension_V37.stl",
-      "step": "downloads/HDMI_Extension_V37.step",
-      "size": [
-        167.65,
-        115.23,
-        13.44
-      ],
-      "note": "V37. Board 167.65 × 114.10 mm with the two 3.2 mm holes MH2/MH3. The separate XEM8310 module is not included.",
-      "parts": null
-    },
-    {
-      "key": "directldo",
-      "name": "Direct LDO Carrier",
-      "group": "Bench (not on the head)",
-      "version": "V6 · edited 1 Nov 2026, 20:34 CST",
-      "where": "direct approach",
-      "glb": "models/Direct_LDO_Carrier_V6.glb",
-      "stl": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.stl",
-      "step": "downloads/Direct_LDO_Carrier_V6_2026-11-01_2034_print.step",
-      "size": [
-        53.0,
-        86.46,
-        16.37
-      ],
-      "note": "Board 53.0 × 83.0 mm. XEM8305 module not included.",
-      "parts": null
-    },
-    {
-      "key": "ldoexisting",
-      "name": "Existing LDO board",
-      "group": "Bench (not on the head)",
-      "version": "source baseline · edited 2 Oct 2026, 11:37 CDT",
-      "where": "plugs into the carrier",
-      "glb": "models/Existing_LDO_Board.glb",
-      "stl": "downloads/Existing_LDO_Board_2026-10-02_1137_print.stl",
-      "step": "downloads/Existing_LDO_Board_2026-10-02_1137_print.step",
-      "size": [
-        42.03,
-        18.3,
-        3.6
-      ],
-      "note": "Board 42.03 × 18.30 mm. Part sizes are nominal boxes.",
-      "parts": null
     }
-  ],
-  "zip": "downloads/FPGA_Head_Fit_Models_2026-11-13_V3.zip"
+  ]
 }
