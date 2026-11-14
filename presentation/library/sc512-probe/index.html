@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SC512 four-shank, 512-channel probe and where it sits on the ASIC boards.">
+<title>SC512 probe · FPGA 4K</title>
+<style>
+:root{--ink:#172a32;--accent:#126a71;--bg:#ffffff;--soft:#edf0ef;--line:#c9d2d0;--mut:#4c5b60}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#e6eeee;--accent:#5fc3c9;--bg:#121a1d;--soft:#1c272b;--line:#2c3a3f;--mut:#9fb0b4}}
+:root[data-theme="dark"]{--ink:#e6eeee;--accent:#5fc3c9;--bg:#121a1d;--soft:#1c272b;--line:#2c3a3f;--mut:#9fb0b4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Arial,Helvetica,sans-serif}
+.bar{background:#172a32;color:#fff;height:54px;display:flex;align-items:center;gap:18px;padding:0 16px}
+.bar a{color:#fff;text-decoration:none;font-size:14px}.bar strong{font-size:15px}
+main{max-width:1100px;margin:0 auto;padding:18px 16px 48px}
+h1{font-size:28px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 16px}
+.files{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.files a{border:1px solid var(--accent);color:var(--accent);border-radius:4px;padding:5px 10px;text-decoration:none;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:780px){.grid{grid-template-columns:1fr}}
+figure{margin:0;background:var(--soft);padding:10px;border-radius:6px}
+figure img{width:100%;height:auto;display:block;background:#fff}
+figcaption{font-size:13px;color:var(--mut);margin-top:6px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin-top:18px}td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+</style>
+</head>
+<body>
+<header class="bar"><strong>FPGA 4K</strong><a href="../../../index.html">← System overview</a><a href="../index.html">Library</a></header>
+<main>
+<h1>SC512 probe</h1>
+<p class="sub">Four shanks, 512 channels. One probe sits on each ASIC, so there are two per ASIC board and eight per head stack.</p>
+<div class="files">
+<a download="" href="downloads/SC512_device.oas">Probe drawing (OASIS) ↓</a>
+<a href="sc512_probe_overview.png">Probe overview image</a>
+<a href="../../../index.html#board/asic">ASIC boards page</a>
+</div>
+<div class="grid">
+<figure><img src="probe_on_asic_top_board_v7.png" alt="Two SC512 probes placed on ASIC top board V7"><figcaption>ASIC top board V7 · edited 13 Nov 2026, 00:07 CST, with one probe (red) on each ASIC. The shanks leave the board's bottom edge, with about 7.5 mm past the edge.</figcaption></figure>
+<figure><img src="sc512_probe_overview.png" alt="SC512 probe layout: four shanks, pads and fan-out"><figcaption>The probe on its own: the pad field at the top fans out into four shanks 500 µm apart.</figcaption></figure>
+</div>
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Channels</td><td>512 (4 shanks × 128)</td></tr>
+<tr><td>Probe size</td><td>3.6 × 15.2 mm, shanks about 7 mm long, 500 µm apart</td></tr>
+<tr><td>Pad field</td><td>16 × 32 pads at 180 µm</td></tr>
+<tr><td>Per head stack</td><td>8 probes, 32 shanks, 4,096 channels</td></tr>
+<tr><td>Source</td><td>SC512 design handoff, device drawing <code>SC512_device.oas</code> (handoff dated 12 Nov 2026)</td></tr>
+</table>
+</main>
+</body>
+</html>
