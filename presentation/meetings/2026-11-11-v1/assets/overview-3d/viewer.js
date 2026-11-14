@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {addPcb5Bodies} from './pcb5.js?v=2';
+import {addProbeBodies} from './probe.js?v=1';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {OrbitControls} from './vendor/OrbitControls.js';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
@@ -11,7 +12,7 @@ const INFO={
  frontend:{name:'Frontend FPGA Board',kicker:'8L V3 · 14 layers · every connection routed',role:'Reads its ASIC boards and sends the data over one HDMI cable.',was:'Was: Artix-7 FPGA board, 35T FPGA PCB, custom FPGA'},
  fpgaldo:{name:'FPGA-LDO PCB · Option A',kicker:'Layout V12 · four of the eight stacks',role:'One board under the Frontend FPGA Board; powers the four ASIC boards.',was:''},
  fpgaldob:{name:'FPGA-LDO PCB · Option B',kicker:'Router V2 + LDO board V2 · four of the eight stacks',role:'Same circuit on two boards: the router carries the ASIC boards, the plug-in LDO board sits under the Frontend, joined by the 120-pin J5.',was:''},
- asic:{name:'ASIC boards · top and bottom',kicker:'V4 · two bottom and two top boards per stack',role:'Two ASICs per board, each with its four-shank probe leaving the board edge. On each FPGA-LDO port a bottom board plugs in and a top board stacks on it.',was:''},
+ asic:{name:'ASIC boards · top and bottom',kicker:'V7 · two bottom and two top boards per stack',role:'Two ASICs per board, each with its SC512 four-shank, 512-channel probe leaving the board edge. On each FPGA-LDO port a bottom board plugs in and a top board stacks on it.',was:''},
  cable:{name:'HDMI cable',kicker:'One per stack',role:'Connects a Frontend FPGA Board to one HDMI Extension Board port.',was:''},
  directldo:{name:'Direct LDO Carrier',kicker:'V6 · JLCPCB placement review',role:'Carries the XEM8305 and connects the existing LDO board directly, with no custom FPGA board. Our first board sent to fabrication.',was:'Was: XEM8305 carrier, LDO carrier'},
  xem8305:{name:'XEM8305',kicker:'Opal Kelly module',role:'FPGA module that mounts on the Direct LDO Carrier (MC1–MC3).',was:''},
@@ -73,7 +74,7 @@ async function buildCustom(){
  const ldo=nativeBoard(ldoG,-100,0,-128.72);
  const fe=nativeBoard(feG,113.505,3.1,110.855,Math.PI);
  // ASIC boards V7 (0.8 mm as saved; same outline and connector positions as V4): the bottom board sits next to the FPGA-LDO connector, the top board on it.
- addPcb5Bodies(asicG.scene);addPcb5Bodies(asicTG.scene);
+ addProbeBodies(asicG.scene);addProbeBodies(asicTG.scene);// SC512 probe outline from the design handoff, one per ASIC (14 Nov 2026)
  const asic=nativeBoard(asicG,135.323,0,55.803,Math.PI),asicT=nativeBoard(asicTG,135.323,0,55.803,Math.PI);
  const j3=new THREE.Vector3(113.505-112.5,3.1+3.0,110.855-96.5);// J3 (112.5, 98.28) plug mouth at the board edge y = 96.5
  const asicHeights=[-4.60,-2.30,3.10,5.40];

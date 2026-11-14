@@ -2,14 +2,15 @@ import * as THREE from 'three';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {OrbitControls} from './vendor/OrbitControls.js';
 import {addPcb5Bodies} from './pcb5.js?v=3';
+import {addProbeBodies} from './probe.js?v=1';
 
 const boards = {
  hdmi: ['HDMI Extension Board · V37','hdmi-extension-v37.glb','Pre-fab review fixes; nine voltage test holes at J920'],
  frontend: ['Frontend FPGA Board · 14 layers V7','frontend-14l-v7.glb','14 layers · pin map V6 · every connection routed'],
  ldo: ['FPGA-LDO Option A · V16','fpga-ldo-a-v16.glb','Pin map V6 · ±8 V stimulation rails · vendor connector models'],
  asic: ['ASIC board · PCB-5','asic-pcb5-real.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
- asic_top: ['ASIC board · top · V7','asic-top-v7.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
- asic_bottom: ['ASIC board · bottom · V7','asic-bottom-v7.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies with probes (probe size illustrative)'],
+ asic_top: ['ASIC board · top · V7','asic-top-v7.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies, each with its SC512 probe'],
+ asic_bottom: ['ASIC board · bottom · V7','asic-bottom-v7.glb','0.8 mm board · Hirose DF40C-80 connectors · two ASIC dies, each with its SC512 probe'],
  ldob_router: ['FPGA-LDO Option B · router V2','fpga-ldo-b-router-v2.glb','On the head · J5 (120-pin) has no vendor model yet'],
  ldob_ldo: ['FPGA-LDO Option B · LDO board V2','fpga-ldo-b-ldo-v2.glb','Plug-in board · J5 (120-pin) has no vendor model yet']
 };
@@ -42,7 +43,7 @@ async function showBoard(){
  const gltf = await new GLTFLoader().loadAsync('assets/'+filename);
  const board = gltf.scene;
  if(key==='asic') addPcb5Bodies(board);
- if(key==='asic_top'||key==='asic_bottom') addPcb5Bodies(board);  // V7 files are 0.8 mm (V4 files were 1.6 mm, lift 0.8)
+ if(key==='asic_top'||key==='asic_bottom') addProbeBodies(board);  // SC512 probe per ASIC (14 Nov 2026)  // V7 files are 0.8 mm (V4 files were 1.6 mm, lift 0.8)
  board.scale.setScalar(1000);
  scene.add(board);
  const bounds = new THREE.Box3().setFromObject(board);
