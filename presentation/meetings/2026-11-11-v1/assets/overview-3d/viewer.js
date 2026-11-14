@@ -63,7 +63,7 @@ function nativeBoard(gltf,x,y,z,rotation=0){
 
 async function buildCustom(){
  const list=pickables.custom,root=roots.custom;
- const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG,asicTG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-8l-v3.glb?v=14l'),loader.loadAsync('assets/fpga-ldo-a-v12.glb'),loader.loadAsync('assets/asic-bottom-v4-0p8mm.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb'),loader.loadAsync('assets/asic-top-v4-0p8mm.glb')]);
+ const [hdmiG,xemG,feG,ldoG,asicG,routerBG,ldoBG,asicTG]=await Promise.all([loader.loadAsync('assets/hdmi-extension-v37.glb'),loader.loadAsync('assets/xem8310.glb'),loader.loadAsync('assets/frontend-14l-v7.glb'),loader.loadAsync('assets/fpga-ldo-a-v16.glb'),loader.loadAsync('assets/asic-bottom-v7.glb'),loader.loadAsync('assets/fpga-ldo-b-router-v2.glb'),loader.loadAsync('assets/fpga-ldo-b-ldo-v2.glb'),loader.loadAsync('assets/asic-top-v7.glb')]);
  // HDMI Extension Board + XEM8310. MC1–MC3 coordinates are unchanged from BRK8310 Custom V1, so the earlier XEM registration applies.
  const host=new THREE.Group();host.position.set(160,0,0);root.add(host);
  const hdmi=compact(hdmiG.scene);hdmi.scale.setScalar(1000);const hb=new THREE.Box3().setFromObject(hdmi),hc=hb.getCenter(new THREE.Vector3());hdmi.position.set(-hc.x,0,-hc.z);const hdmiPart=new THREE.Group();hdmiPart.add(hdmi);host.add(tag(hdmiPart,'hdmi','HDMI Extension Board',list,true));hdmiPart.userData.anchor=[.82,.15];
@@ -72,7 +72,7 @@ async function buildCustom(){
  // and the 80-pin centres for PCB-5. Heights use nominal 1.5 mm DF40 mating gaps.
  const ldo=nativeBoard(ldoG,-100,0,-128.72);
  const fe=nativeBoard(feG,113.505,3.1,110.855,Math.PI);
- // ASIC boards V3 (drawn at the 0.8 mm the stack fit uses): the bottom board sits next to the FPGA-LDO connector, the top board on it.
+ // ASIC boards V7 (0.8 mm as saved; same outline and connector positions as V4): the bottom board sits next to the FPGA-LDO connector, the top board on it.
  addPcb5Bodies(asicG.scene);addPcb5Bodies(asicTG.scene);
  const asic=nativeBoard(asicG,135.323,0,55.803,Math.PI),asicT=nativeBoard(asicTG,135.323,0,55.803,Math.PI);
  const j3=new THREE.Vector3(113.505-112.5,3.1+3.0,110.855-96.5);// J3 (112.5, 98.28) plug mouth at the board edge y = 96.5
